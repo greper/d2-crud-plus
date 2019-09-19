@@ -22,7 +22,6 @@ export default {
       } else {
         date = dayjs(this.value)
       }
-      console.log('date format this:', this)
       return date.format(this.format)
     }
   },

@@ -119,7 +119,7 @@ const dict = {
   set,
   clear,
   getRemoteDictFunc: () => {
-    console.error('请在install d2-crud-plus时传入 options={getRemoteDictData:function}')
+    console.error('请在install d2-crud-plus时传入 options={getRemoteDictFunc:()->{ http 请求获取枚举字典 }}')
   }
 }
 

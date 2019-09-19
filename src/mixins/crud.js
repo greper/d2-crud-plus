@@ -65,7 +65,6 @@ export default {
   },
   created () {
     this.initColumns()
-
     this.doLoad()
   },
   mounted () {
@@ -185,6 +184,9 @@ export default {
     },
     handleRowAdd (row, done) {
       this.crud.formOptions.saveLoading = true
+      if (this.addBefore != null) {
+        row = this.addBefore(row)
+      }
       this.addRequest(row).then(() => {
         this.$message({
           message: '保存成功',
@@ -192,25 +194,24 @@ export default {
         })
         done()
         this.crud.formOptions.saveLoading = false
-        if (this.addAfter != null) this.addAfter(row)
+        this.addAfter(row)
       }).catch(() => {
         this.crud.formOptions.saveLoading = false
       })
     },
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
-      if (this.handleRowEditSaveBefore != null) {
-        row = this.handleRowEditSaveBefore(row)
+      if (this.updateBefore != null) {
+        row = this.updateBefore(row)
       }
       this.updateRequest(row).then((ret) => {
         this.$message({
           message: '保存成功',
           type: 'success'
         })
-
         done()
         this.crud.formOptions.saveLoading = false
-        if (this.updateAfter != null) this.updateAfter(row)
+        this.updateAfter(row)
       }).catch(() => {
         this.crud.formOptions.saveLoading = false
       })
@@ -225,13 +226,16 @@ export default {
       console.log(currentRow)
     },
     handleRowRemove ({ index, row }, done) {
+      if (this.delBefore != null) {
+        row = this.delBefore(row)
+      }
       this.delRequest(row).then(() => {
         this.$message({
           message: '删除成功',
           type: 'success'
         })
         done()
-        if (this.delAfter != null) this.delAfter(row)
+        this.delAfter(row)
       })
     },
     addRequest (row) {

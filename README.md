@@ -22,6 +22,7 @@ column用type字段来自动配置component
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
 ## 以下为简单示例
+###1. crud配置
 ```javascript
 export const crudOptions = {
   columns: [
@@ -79,10 +80,72 @@ export const crudOptions = {
     }
   ]
 }
+``` 
+###2. 页面模块
+``` 
+<template>
+  <d2-container>
+    <template slot="header">测试页面</template>
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" ></crud-search>
+    <d2-crud
+        ref="d2Crud"
+        :columns="crud.columns"
+        :data="crud.list"
+        :rowHandle="crud.rowHandle"
+        edit-title="修改"
+        :add-template="crud.addTemplate"
+        :add-rules="crud.addRules"
+        :edit-template="crud.editTemplate"
+        :edit-rules="crud.editRules"
+        :form-options="crud.formOptions"
+        :options="crud.options"
+        @dialog-open="handleDialogOpen"
+        @row-edit="handleRowEdit"
+        @row-add="handleRowAdd"
+        @row-remove="handleRowRemove"
+        @dialog-cancel="handleDialogCancel">
+      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+    </d2-crud>
+    <crud-footer ref="footer" slot="footer"
+                  :current="crud.page.pageCurrent"
+                  :size="crud.page.pageSize"
+                  :total="crud.page.pageTotal"
+                  @change="handlePaginationChange"
+    >
+    </crud-footer>
+  </d2-container>
+</template>
+
+<script>
+import { crudOptions } from './crud'
+import d2CrudPlus from '@d2-crud-plus'
+export default {
+  name: 'testPage',
+  mixins: [d2CrudPlus.crud],
+  methods: {
+    getCrudOptions () {
+      return crudOptions
+    }
+  }
+}
+</script>
+
+``` 
+###3. 示例数据
 ```
-###效果
+ [
+    {date: '2016-05-02',status: '0', province: 'sz'},
+    {date: '2016-05-04',status: '1',province: 'sh'},
+    {date: 2232433534511,status: '1', province: 'gz'},
+    {date: '2016-05-03',status: '2',province: 'wh'}
+  ]
+```
+###4. 效果
+
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-list.png)
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-add.png)
+
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-edit.png)
 
 

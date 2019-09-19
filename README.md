@@ -79,9 +79,10 @@ export const crudOptions = {
     }
   ]
 }
+```
+###效果
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-list.png)
 
-
-![](https://raw.githubusercontent.com/greper/d2-crud-crud/master/doc/image/example-list.png)
-![](https://raw.githubusercontent.com/greper/d2-crud-crud/master/doc/image/example-add.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-add.png)
 
 

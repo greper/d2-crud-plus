@@ -190,11 +190,6 @@ export default {
           message: '保存成功',
           type: 'success'
         })
-
-        // done可以传入一个对象来修改提交的某个字段
-        // done({
-        //   address: '我是通过done事件传入的数据！'
-        // })
         done()
         this.crud.formOptions.saveLoading = false
         if (this.addAfter != null) this.addAfter(row)
@@ -208,9 +203,6 @@ export default {
         row = this.handleRowEditSaveBefore(row)
       }
       this.updateRequest(row).then((ret) => {
-        if (ret.code !== 1) {
-          return
-        }
         this.$message({
           message: '保存成功',
           type: 'success'
@@ -234,8 +226,6 @@ export default {
     },
     handleRowRemove ({ index, row }, done) {
       this.delRequest(row).then(() => {
-        console.log(index)
-        console.log(row)
         this.$message({
           message: '删除成功',
           type: 'success'
@@ -245,8 +235,6 @@ export default {
       })
     },
     addRequest (row) {
-      // do somthing;
-      console.log('add row:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现addRequest' })
       })
@@ -255,8 +243,6 @@ export default {
       this.doAfterRowChange(row)
     },
     updateRequest (row) {
-      // do somthing;
-      console.log('update row:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现updateRequest' })
       })
@@ -265,8 +251,6 @@ export default {
       this.doAfterRowChange(row)
     },
     delRequest (row) {
-      // do somthing;
-      console.log('del row:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现delRequest' })
       })
@@ -275,13 +259,11 @@ export default {
       this.doAfterRowChange(row)
     },
     fetchList (page) {
-      // do somthing;
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现fetchList' })
       })
     },
     doAfterRowChange (row) {
-      console.log('doAfterRowChange:', row)
       this.doRefresh()
     }
 

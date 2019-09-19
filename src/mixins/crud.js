@@ -73,6 +73,12 @@ export default {
     })
   },
   methods: {
+    /**
+     * 初始化column配置
+     * 将配置解析成columns、addTemplate、editTemplate、searchOptions等
+     * 将columns的type 解析成不同的component配置
+     * 每个column的add、edit、search共用一个form.component的配置
+     */
     initColumns () {
       let crudOptions = this.getCrudOptions()
 
@@ -126,6 +132,13 @@ export default {
         }
       }
     },
+    /**
+     * 动态计算crud表格高度，当表格数据大于一屏的时候不会撑开，给翻页组件留出空间
+     * crud表格高度 = 可视窗口高度 - crud表头的top位置 - adjust高度
+     * @param ref 表格的ref name
+     * @param adjust 自定义调整高度（一般传翻页footer组件的高度）
+     * @returns {string}
+     */
     computeCrudHeight (ref, adjust) {
       if (ref == null) {
         ref = 'd2Crud'
@@ -140,11 +153,21 @@ export default {
       }
       return HeightUtil.computeMaxHeight(target, adjust, subclass)
     },
+    /**
+     * 翻页组件change事件触发方法
+     * @param val
+     */
     handlePaginationChange (val) {
       this.crud.page = val
       console.log('page changed:', val)
-      this.$refs.search.handleFormSubmit()
+      if (this.$refs.search != null) {
+        this.$refs.search.handleFormSubmit()
+      }
     },
+    /**
+     * 查询按钮点击
+     * @param form
+     */
     handleSearch (form) {
       console.log('do search :', form)
       for (let key in form) {
@@ -155,6 +178,9 @@ export default {
       this.crud.searchForm = form
       this.doRefresh()
     },
+    /**
+     * 表格刷新，重新拉取数据
+     */
     doRefresh () {
       let form = this.crud.searchForm
       let query = {
@@ -163,7 +189,7 @@ export default {
         ...form
       }
       this.crud.loading = true
-      this.fetchList(query).then(ret => {
+      this.pageRequest(query).then(ret => {
         this.crud.page.current = ret.data.current
         this.crud.page.size = ret.data.size
         this.crud.page.total = ret.data.total
@@ -172,16 +198,33 @@ export default {
         this.crud.loading = false
       })
     },
+    /**
+     * 加载数据
+     * 页面初始化后触发的方法
+     */
     doLoad () {
       this.handleSearch({})
     },
+    /**
+     * 编辑对话框打开前要做的操作
+     * @param mode
+     * @param row
+     */
     handleDialogOpen ({ mode, row }) {
     },
+    /**
+     * 点击添加按钮
+     */
     addRow () {
       this.$refs.d2Crud.showDialog({
         mode: 'add'
       })
     },
+    /**
+     * 添加form提交
+     * @param row
+     * @param done
+     */
     handleRowAdd (row, done) {
       this.crud.formOptions.saveLoading = true
       if (this.addBefore != null) {
@@ -199,6 +242,12 @@ export default {
         this.crud.formOptions.saveLoading = false
       })
     },
+    /**
+     * 修改form提交
+     * @param index
+     * @param row
+     * @param done
+     */
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
       if (this.updateBefore != null) {
@@ -216,15 +265,34 @@ export default {
         this.crud.formOptions.saveLoading = false
       })
     },
+    /**
+     * 编辑对话框取消
+     * @param done
+     */
     handleDialogCancel (done) {
       done()
     },
+    /**
+     * 多条勾选选中
+     * @param selection
+     */
     handleSelectionChange (selection) {
       console.log(selection)
     },
+    /**
+     * 单条点击选中
+     * @param currentRow
+     * @param oldCurrentRow
+     */
     handleCurrentChange (currentRow, oldCurrentRow) {
       console.log(currentRow)
     },
+    /**
+     * 删除请求
+     * @param index
+     * @param row
+     * @param done
+     */
     handleRowRemove ({ index, row }, done) {
       if (this.delBefore != null) {
         row = this.delBefore(row)
@@ -238,35 +306,73 @@ export default {
         this.delAfter(row)
       })
     },
+    /**
+     * 添加http请求
+     * @param row
+     * @returns {Promise<any>}
+     */
     addRequest (row) {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现addRequest' })
       })
     },
+    /**
+     * 添加成功后触发
+     * @param row
+     */
     addAfter (row) {
       this.doAfterRowChange(row)
     },
+    /**
+     * 修改http请求
+     * @param row
+     * @returns {Promise<any>}
+     */
     updateRequest (row) {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现updateRequest' })
       })
     },
+    /**
+     * 修改成功后触发
+     * @param row
+     */
     updateAfter (row) {
       this.doAfterRowChange(row)
     },
+    /**
+     * 删除http请求
+     * @param row
+     * @returns {Promise<any>}
+     */
     delRequest (row) {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现delRequest' })
       })
     },
+    /**
+     * 删除成功后触发
+     * @param row
+     */
     delAfter (row) {
       this.doAfterRowChange(row)
     },
-    fetchList (page) {
+    /**
+     * 翻页http请求
+     * @param page
+     * @returns {Promise<any>}
+     */
+    pageRequest (page) {
       return new Promise((resolve) => {
-        resolve({ code: 1, msg: '请实现fetchList' })
+        resolve({ code: 1, msg: '请实现pageRequest' })
       })
     },
+    /**
+     * 行变动之后触发
+     * 添加、修改、删除之后触发
+     * 默认触发刷新列表
+     * @param row
+     */
     doAfterRowChange (row) {
       this.doRefresh()
     }

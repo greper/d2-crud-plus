@@ -1,0 +1,54 @@
+{
+  "name": "d2-crud-plus",
+  "description": "d2-admin的d2-crud的扩展 ",
+  "version": "1.0.0",
+  "author": "Greper <252959493@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/d2-crud-plus.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greper/d2-crud-plus.git"
+  },
+  "keywords": [
+    "d2-crud",
+    "table",
+    "d2-projects",
+    "vue",
+    "element",
+    "d2-crud-plus",
+    "d2-admin"
+  ],
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.5.19",
+    "dayjs": "^1.8.12",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.merge": "^4.5.0",
+    "lodash.foreach": "^4.5.0",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.5.19",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  }
+}

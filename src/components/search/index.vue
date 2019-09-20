@@ -5,18 +5,21 @@
       ref="searchForm"
       size="small" >
 
-    <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.label" :prop="item.key" >
+    <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.label" :prop="item.key"  >
+      <template v-if="item.slot === true">
+        <slot :name="item.key+'SearchSlot'" v-bind:form="form" ></slot>
+      </template>
       <el-input
-          v-if="item.component == null || item.component.name == null ||  item.component.name === 'el-input'"
+          v-else-if="item.component == null || item.component.name == null ||  item.component.name === 'el-input'"
           v-model="form[item.key]"
           :placeholder="item.label"
-          style="width: 100px;"/>
+          :style="'width:'+(item.width!=null?item.width:150)+'px'"/>
       <render-custom-component
           v-else-if="item.component && item.component.name"
           :component-name="item.component.name"
           v-model="form[item.key]"
           :props="item.component.props ? item.component.props : null"
-           style="max-width: 150px;">
+          :style="'width:'+(item.width!=null?item.width:150)+'px'">
       </render-custom-component>
     </el-form-item>
     <el-form-item>

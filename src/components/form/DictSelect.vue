@@ -4,6 +4,7 @@
         :placeholder="placeholder"
         :filterable="filterable"
         :clearable="clearable"
+        :multiple="multiple"
         @change="doChange"
     >
       <el-option
@@ -28,12 +29,13 @@ export default {
     placeholder: { require: false },
     value: { require: false },
     filterable: { defaultValue: false, require: false },
-    clearable: { defaultValue: false, require: false }
+    clearable: { defaultValue: false, require: false },
+    multiple: { defaultValue: false, require: false }
   },
   data () {
     return {
       options: [],
-      selectValue: this.value
+      selectValue: ''
     }
   },
   computed: {
@@ -42,15 +44,33 @@ export default {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'options', data)
     })
+    this.setValue(this.value)
   },
   watch: {
     value: function (newVal, oldVal) {
-      if (newVal !== this.selectValue) {
-        this.selectValue = newVal
-      }
+      this.setValue(newVal)
     }
   },
   methods: {
+    setValue (newVal) {
+      if (!this.multiple) {
+        if (newVal === this.selectValue) {
+          return
+        }
+        this.selectValue = newVal
+        return
+      }
+      if (this.value == null) {
+        this.selectValue = []
+      }
+      if (typeof this.value === 'string') {
+        this.selectValue = this.value.split(',')
+      }
+      if (this.value instanceof Array) {
+        this.selectValue = this.value
+      }
+      console.log('select:', this.selectValue)
+    },
     handleClick () {
       // this.$emit('input', !this.value)
     },

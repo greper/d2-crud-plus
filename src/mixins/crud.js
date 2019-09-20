@@ -90,35 +90,41 @@ export default {
       this.crud.searchOptions.columns = []
       for (let item of crudOptions.columns) {
         let key = item.key
-        if (item.form == null) {
-          item.form = { disabled: true }
-        }
-        let form = item.form
-
         let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
+        console.log('defaultColumn', defaultColumn)
         // 用户配置覆盖默认配置
         let itemCopy = _clonedeep(item)
         Object.assign(item, defaultColumn)
         _merge(item, itemCopy)
+        // 统一component的props
+        if (item.form.component != null) {
+          let props = item.form.component.props
+          for (let key in props) {
+            item.form.component[key] = props[key]
+          }
+        }
+        let form = item.form
+        console.log('form', form)
         if (item.search != null && item.search.disabled !== true) {
+          let component = _clonedeep(item.form.component)
           let search = {
             label: item.title,
             key: item.key,
             dict: item.dict,
-            component: item.form.component
+            component: component
           }
           _merge(search, item.search)
           this.crud.searchOptions.columns.push(search)
         }
-        if (form && form.disabled !== true) {
-          if (!form.addDisabled) {
+        if (form.disabled !== true) {
+          if (form.addDisabled !== true) {
             this.crud.addTemplate[key] = {
               title: item.title,
               ...form
             }
             this.crud.addRules[key] = form.rules
           }
-          if (!form.editDisabled) {
+          if (form.editDisabled !== true) {
             this.crud.editTemplate[key] = {
               title: item.title,
               ...form
@@ -131,6 +137,7 @@ export default {
           this.crud.columns.push(item)
         }
       }
+      console.log('crud inited:', this.crud)
     },
     /**
      * 动态计算crud表格高度，当表格数据大于一屏的时候不会撑开，给翻页组件留出空间
@@ -250,8 +257,8 @@ export default {
      */
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
-      if (this.updateBefore != null) {
-        row = this.updateBefore(row)
+      if (this.editBefore != null) {
+        row = this.editBefore(row)
       }
       this.updateRequest(row).then((ret) => {
         this.$message({
@@ -312,6 +319,7 @@ export default {
      * @returns {Promise<any>}
      */
     addRequest (row) {
+      console.log('addRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现addRequest' })
       })
@@ -329,6 +337,7 @@ export default {
      * @returns {Promise<any>}
      */
     updateRequest (row) {
+      console.log('updateRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现updateRequest' })
       })
@@ -346,6 +355,7 @@ export default {
      * @returns {Promise<any>}
      */
     delRequest (row) {
+      console.log('delRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现delRequest' })
       })

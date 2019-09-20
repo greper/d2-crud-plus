@@ -1,19 +1,12 @@
 import _clonedeep from 'lodash.clonedeep'
 
-function daterangeFormatter (row, column, value, index) {
-  if (value != null && value instanceof Array && value.length > 1) {
-    return value[0] + '-' + value[1]
-  }
-  return value
-}
-
 /**
- * 根据类型名称获取column的默认配置
- * @type {{date: {component: {name: string, props: {format: string}}, form: {component: {name: string}}}, datetime: {component: {name: string}, form: {component: {name: string, type: string}}}, daterange: {formatter: daterangeFormatter, form: {component: {"range-separator": string, "start-placeholder": string, name: string, type: string, "end-placeholder": string}}}, select: {component: {name: string, props: {}}, form: {component: {name: string, props: {}}}, _handle(*): void}, datetimerange: {formatter: daterangeFormatter, form: {component: {"range-separator": string, "start-placeholder": string, name: string, type: string, "end-placeholder": string}}}, time: {component: {name: string, props: {format: string}}, form: {component: {name: string}}}}}
+ * 根据type获取column的默认配置
+ * @type
  */
 const DefaultComponents = {
   datetime: {
-    form: { component: { name: 'el-date-picker', type: 'datetime' } },
+    form: { component: { name: 'el-date-picker', props: { type: 'datetime' } } },
     component: { name: 'date-format' }
   },
   date: {
@@ -24,10 +17,12 @@ const DefaultComponents = {
     form: {
       component: {
         name: 'el-date-picker',
-        type: 'daterange',
-        'range-separator': '至',
-        'start-placeholder': '开始',
-        'end-placeholder': '结束'
+        props: {
+          type: 'daterange',
+          'range-separator': '至',
+          'start-placeholder': '开始',
+          'end-placeholder': '结束'
+        }
       }
     },
     formatter: daterangeFormatter
@@ -36,10 +31,12 @@ const DefaultComponents = {
     form: {
       component: {
         name: 'el-date-picker',
-        type: 'datetimerange',
-        'range-separator': '至',
-        'start-placeholder': '开始',
-        'end-placeholder': '结束'
+        props: {
+          type: 'datetimerange',
+          'range-separator': '至',
+          'start-placeholder': '开始',
+          'end-placeholder': '结束'
+        }
       }
     },
     formatter: daterangeFormatter
@@ -49,6 +46,7 @@ const DefaultComponents = {
     component: { name: 'date-format', props: { format: 'HH:mm:ss' } }
   },
   select: {
+    search: { component: { props: { clearable: true } } },
     form: { component: { name: 'dict-select', props: {} } },
     component: { name: 'values-format', props: {} },
     _handle (item) {
@@ -57,7 +55,19 @@ const DefaultComponents = {
         this.component.props.dict = item.dict
       }
     }
+  },
+  cascader: {
+    form: { component: { name: 'el-cascader', props: {} } },
+    _handle (item) {
+    }
   }
+}
+
+function daterangeFormatter (row, column, value, index) {
+  if (value != null && value instanceof Array && value.length > 1) {
+    return value[0] + '-' + value[1]
+  }
+  return value
 }
 
 function getByType (type, item) {

@@ -54,12 +54,10 @@ export default {
   data () {
     return {
       form: {
-        'house_id': null
       }
     }
   },
   created () {
-    console.log('search:', this.form, this.options, this.options.columns)
   },
   methods: {
     handleFormSubmit () {
@@ -77,7 +75,6 @@ export default {
     },
     handleFormReset () {
       this.$refs.searchForm.resetFields()
-      console.log('form reseted:', this.form)
     }
   }
 }

@@ -98,7 +98,7 @@ export const crudOptions = {
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
-###3. 效果
+###3. 效果    
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/list.png)
 

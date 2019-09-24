@@ -64,10 +64,18 @@ const DefaultComponents = {
   phoneNumber: {
     form: { component: { name: 'el-phone-number-input', props: { size: 'sm', 'only-countries': ['CN', 'HK', 'TW', 'US'] } } },
     formatter (row, column, value, index) {
-      if (value != null && value.callingCode != null && value.phoneNumber != null) {
-        return '+' + value.callingCode + ' ' + value.phoneNumber
+      let ret = ''
+      if (value != null) {
+        if (value.callingCode != null) {
+          ret += '(+' + value.callingCode + ')'
+        } else if (value.countryCode != null) {
+          ret += '(' + value.countryCode + ')'
+        }
+        if (value.phoneNumber != null) {
+          ret += value.phoneNumber
+        }
       }
-      return ''
+      return ret
     }
   }
 }

@@ -183,6 +183,7 @@ export default {
         }
       }
       this.crud.searchForm = form
+      this.doValueResolve(form)
       this.doRefresh()
     },
     /**
@@ -242,7 +243,7 @@ export default {
     handleRowAdd (row, done) {
       this.crud.formOptions.saveLoading = true
       if (this.addBefore != null) {
-        row = this.addBefore(row)
+        this.addBefore(row)
       }
       this.addRequest(row).then(() => {
         this.$message({
@@ -265,7 +266,7 @@ export default {
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
       if (this.editBefore != null) {
-        row = this.editBefore(row)
+        this.editBefore(row)
       }
       this.updateRequest(row).then((ret) => {
         this.$message({
@@ -278,6 +279,22 @@ export default {
       }).catch(() => {
         this.crud.formOptions.saveLoading = false
       })
+    },
+    editBefore (row) {
+      this.doValueResolve(row)
+    },
+    addBefore (row) {
+      this.doValueResolve(row)
+    },
+    doValueResolve (row) {
+      if (row == null) {
+        return
+      }
+      for (const col of this.crud.columns) {
+        if (col.valueResolve) {
+          col.valueResolve(row)
+        }
+      }
     },
     /**
      * 编辑对话框取消

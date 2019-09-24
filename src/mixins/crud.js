@@ -197,6 +197,13 @@ export default {
       }
       this.crud.loading = true
       this.pageRequest(query).then(ret => {
+        for (const col of this.crud.columns) {
+          if (col.valueBuilder) {
+            for (const row of ret.data.records) {
+              col.valueBuilder(row)
+            }
+          }
+        }
         this.crud.page.current = ret.data.current
         this.crud.page.size = ret.data.size
         this.crud.page.total = ret.data.total

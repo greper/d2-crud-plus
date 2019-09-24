@@ -60,6 +60,15 @@ const DefaultComponents = {
     form: { component: { name: 'el-cascader', props: {} } },
     _handle (item) {
     }
+  },
+  phoneNumber: {
+    form: { component: { name: 'el-phone-number-input', props: { size: 'sm', 'only-countries': ['CN', 'HK', 'TW', 'US'] } } },
+    formatter (row, column, value, index) {
+      if (value != null && value.callingCode != null && value.phoneNumber != null) {
+        return '+' + value.callingCode + ' ' + value.phoneNumber
+      }
+      return ''
+    }
   }
 }
 

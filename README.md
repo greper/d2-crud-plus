@@ -73,7 +73,14 @@ export const crudOptions = {
       form: {
         addDisabld: false, //支持添加
         editDisabled: false,//支持修改
-        rules: [{ required: true, message: '请选择地区' }]
+        rules: [{ required: true, message: '请选择地区' }],
+        component: {
+          props: {
+            filterable: true,
+            multiple: true,
+            clearable: true
+          }
+        }
       },
       dict: {  //本地数据字典
         data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
@@ -86,17 +93,17 @@ export const crudOptions = {
 ```
  [
     {date: '2016-05-02',status: '0', province: 'sz'},
-    {date: '2016-05-04',status: '1',province: 'sh'},
+    {date: '2016-05-04',status: '1',province: 'sh,sz'},
     {date: 2232433534511,status: '1', province: 'gz'},
-    {date: '2016-05-03',status: '2',province: 'wh'}
+    {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
 ###3. 效果
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-list.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/list.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-add.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/add.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/example-edit.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/edit.png)
 
 

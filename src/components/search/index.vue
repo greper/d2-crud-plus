@@ -13,13 +13,13 @@
           v-else-if="item.component == null || item.component.name == null ||  item.component.name === 'el-input'"
           v-model="form[item.key]"
           :placeholder="item.label"
-          :style="'width:'+(item.width!=null?item.width:150)+'px'"/>
+          :style="{width:(item.width?item.width:150+'px')}"/>
       <render-custom-component
           v-else-if="item.component && item.component.name"
           :component-name="item.component.name"
           v-model="form[item.key]"
           :props="item.component.props ? item.component.props : null"
-          :style="'width:'+(item.width!=null?item.width:150)+'px'">
+          :style="{width:(item.width?item.width:150+'px')}">
       </render-custom-component>
     </el-form-item>
     <el-form-item>
@@ -56,18 +56,9 @@ export default {
       form: {
         'house_id': null
       }
-      // rules: {
-      //   type: [ { required: true, message: '请选择一个状态', trigger: 'change' } ],
-      //   user: [ { required: true, message: '请输入用户', trigger: 'change' } ]
-      // }
     }
   },
   created () {
-    // do somthing
-    // for (let item of this.options.columns) {
-    //   this.form[item.key]
-    // }
-
     console.log('search:', this.form, this.options, this.options.columns)
   },
   methods: {

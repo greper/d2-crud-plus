@@ -1,1 +1,1 @@
-module.exports = require('./src')
+module.exports = require('./src/d2-crud-plus')

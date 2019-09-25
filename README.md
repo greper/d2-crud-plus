@@ -22,6 +22,11 @@ column用type字段来自动配置component
 * 支持本地和远程获取
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
+### 4.表单组件slot支持
+* 
+* 此功能需要d2-crud-x支持，基于d2-crud的修改版
+* 详情：
+
 ## 以下为简单示例
 ###1. crud配置
 ```javascript

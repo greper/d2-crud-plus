@@ -2,15 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: {
-    d2Crud: './src/d2-crud-x/index.js',
-    index: './src/lib/index.js'
-  },
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: '[name].js',
-    library: 'D2CrudPlus',
+    filename: 'd2-crud.js',
+    library: 'D2Crud',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

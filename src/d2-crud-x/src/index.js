@@ -22,7 +22,6 @@ const install = (Vue, options) => {
   Vue.component('d2Crud', d2Crud)
 
   Vue.component(renderComponent.name, renderComponent)
-
   Vue.component(renderCustomComponent.name, renderCustomComponent)
 }
 if (typeof window !== 'undefined' && window.Vue) {
@@ -40,8 +39,6 @@ const components = {
   pagination,
   exposeMethods,
   utils,
-  renderComponent,
-  renderCustomComponent,
   d2Crud
 }
 

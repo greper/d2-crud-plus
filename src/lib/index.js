@@ -42,7 +42,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 // 注意 有些组件使用异步加载会有影响
 export default { install,
-  ...components,
   util,
   crud
 }

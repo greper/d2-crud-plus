@@ -9,7 +9,7 @@
     <div class="d2-crud-header" v-if="$slots.header">
       <slot name="header"></slot>
     </div>
-    <div class="d2-crud-body" v-if="options && options.hide===true">
+    <div class="d2-crud-body">
       <el-table
         ref="elTable"
         :data="d2CrudData"
@@ -52,11 +52,8 @@
           v-bind="item"
         >
           <template slot-scope="scope">
-            <template v-if="item.rowSlot === true">
-              <slot :name="item.key+'Slot'" v-bind:row="scope.row"></slot>
-            </template>
             <el-input
-              v-else-if="item.component && item.component.name === 'el-input'"
+              v-if="item.component && item.component.name === 'el-input'"
               v-model="scope.row[item.key]"
               v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, item.component) : item.component"
               @change="$emit('cell-data-change', {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
@@ -551,8 +548,8 @@
             </el-button>
             <template
               v-for="(item, index) in handleAttribute(rowHandle.custom, [])"
-              >
-              <el-button :key="index"
+              :key="index">
+              <el-button
                 v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
                 :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                 v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, item) : item"
@@ -589,8 +586,8 @@
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions">
-          <template v-for="(value, key, index) in formData" >
-            <el-col :key="index"
+          <template v-for="(value, key, index) in formData" :key="index">
+            <el-col
               v-if="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.show, true) : true"
               :span="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.span, 24) : 24"
               :offset="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.offset, 0) : 0"
@@ -599,11 +596,8 @@
                 :label="handleFormTemplateMode(key).title"
                 :prop="key"
               >
-                <template v-if="handleFormTemplateMode(key).slot === true">
-                  <slot :name="key+'FormSlot'" v-bind:form="formData" ></slot>
-                </template>
                 <el-input
-                  v-else-if="(!handleFormTemplateMode(key).component) ||((!handleFormTemplateMode(key).component.name) && (!handleFormTemplateMode(key).component.render)) || handleFormTemplateMode(key).component.name === 'el-input'"
+                  v-if="(!handleFormTemplateMode(key).component) ||((!handleFormTemplateMode(key).component.name) && (!handleFormTemplateMode(key).component.render)) || handleFormTemplateMode(key).component.name === 'el-input'"
                   v-model="formData[key]"
                   v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, handleFormTemplateMode(key).component) : handleFormTemplateMode(key).component"
                   @change="$emit('form-data-change', {key: key, value: value})"

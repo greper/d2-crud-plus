@@ -9,7 +9,7 @@
     <div class="d2-crud-header" v-if="$slots.header">
       <slot name="header"></slot>
     </div>
-    <div class="d2-crud-body">
+    <div class="d2-crud-body" v-if="options && options.hide===true">
       <el-table
         ref="elTable"
         :data="d2CrudData"

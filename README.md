@@ -1,8 +1,9 @@
 # d2-crud-plus
-基于d2-admin的d2-crud,简化d2-crud配置，快速开发crud功能
+基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。    
 
 ## 特性
-以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可      
+以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可。   
+
 ### 1. 简化addTemplate、editTemplate配置 
 
 addTemplate、editTemplate根据column配置自动生成
@@ -16,38 +17,55 @@ column用type字段来自动配置component
  * select【单选、多选、搜索选择】   
  * date类：datepicker【单个日期、日期段】、 datetimepicker【单个时间、时间段】、timepicker
  * 陆续增加中   
+ 
+### 3. 根据column配置开启关闭顶部查询
+* column中可以配置各个字段是否开启search
 
-### 3. 枚举字典功能  
+### 4. 枚举字典功能  
 
 * 支持本地和远程获取
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
-### 4.表单组件slot支持
-* 
-* 此功能需要d2-crud-x支持，基于d2-crud的修改版
-* 详情：
+### 5. d2-crud-x,基于d2-crud的修改版，功能与d2-crud一致【可选】
+见【https://github.com/greper/d2-crud-plus/blob/master/src/d2-crud-x/README.md】
+* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】
+* 支持slot编写各个字段的form表单
 
-## 以下为简单示例
-###1. crud配置
+## 快速开始
+###1.安装
+```shell
+npm i  @d2-project/d2-crud  d2-crud-plus  -S
+```
+###2.引入
+ ```javascript
+import d2Crud from '@d2-project/d2-crud'
+import d2CrudPlus from 'd2-crud-plus'
+Vue.use(d2Crud)
+Vue.use(d2CrudPlus)
+
+// 如果需要slot功能，要将d2-crud替换为d2-crud-x【功能与d2-crud一致】，代码如下
+import d2CrudX from 'd2-crud-plus/d2-crud-x'
+import d2CrudPlus from 'd2-crud-plus'
+Vue.use(d2CrudX)
+Vue.use(d2CrudPlus)
+
+ ```
+###3. crud配置示例
 ```javascript
 export const crudOptions = {
   columns: [
     {
       title: '日期',
       key: 'createDate',
-      sortable: true,
-      type: 'date', //datepicker
-      search: {
-        key: 'create_date',
-        disabled: true //禁止查询
+      sortable: true, 
+      type: 'date', //字段类型为时间选择器datepicker,根据类型可自动生成默认配置
+      search: {//查询配置，默认启用查询
+        key: 'create_date',//【可选】查询字段，默认为column.key
+        disabled: true, //【可选】true禁止查询,默认为false
+        component:{}//
       },
-      form: {
-        disabled: true, //添加和修改均禁用本字段
-        addDisabled: true, //添加时禁用本字段
-        editDisabled: true, //修改时禁用本字段
-        rules: [
-          { required: true, message: '请输入日期' }
-        ]
+      form: {//form表单的配置
+        disabled: true, //【可选】添加和修改均禁用本字段，默认false
       }
     },
     {
@@ -55,14 +73,15 @@ export const crudOptions = {
       key: 'status',
       sortable: true,
       search: {
-        key: 'status',
-        disabled: false //启用查询
+        disabled: false //启用查询，默认启用
       },
-      type: 'select', //选择框
-      form: { //添加 和修改均启用
-        rules: [{ required: true, message: '请选择状态' }]
+      type: 'select', //字段类型为选择框
+      form: { //配置添加和编辑，根据form的配置自动生成addTemplate和editTemplate
+        rules: [//【可选】添加和修改时的校验规则，不配置则不校验
+          { required: true, message: '请选择状态' }
+        ]
       },
-      dict: {
+      dict: { //数据字典配置
         url: '/api/dicts/StatusEnum' //远程获取数据字典
       }
     },
@@ -71,19 +90,16 @@ export const crudOptions = {
       key: 'province', 
       sortable: true,
       search: {
-        key: 'province',
         disabled: false //启用查询
       },
-      type: 'select', //选择框
+      type: 'select', //字段类型为选择框
       form: {
-        addDisabld: false, //支持添加
-        editDisabled: false,//支持修改
         rules: [{ required: true, message: '请选择地区' }],
-        component: {
-          props: {
-            filterable: true,
-            multiple: true,
-            clearable: true
+        component: { //添加和修改时form表单的组件
+          props: { //配置自定义组件的属性
+            filterable: true, //可过滤选择项
+            multiple: true, //支持多选
+            clearable: true //可清除
           }
         }
       },
@@ -112,3 +128,5 @@ export const crudOptions = {
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/edit.png)
 
 
+
+<a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>

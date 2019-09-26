@@ -4,7 +4,7 @@
       <span v-for="(item) in items" :key="item.value">{{item.label}}</span>
     </template>
     <template v-else >
-      <el-tag class='tag-item' v-for="(item) in items" :key="item.value"  size="small"  :type="item.color" >
+      <el-tag class='tag-item  d2-mr-5' v-for="(item) in items" :key="item.value"  size="small"  :type="item.color" >
         {{item.label}}
       </el-tag>
     </template>
@@ -98,7 +98,4 @@ export default {
 }
 </script>
 <style lang="scss">
-  .tag-item{
-    margin-right: 10px;
-  }
 </style>

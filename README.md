@@ -22,14 +22,16 @@ column用type字段来自动配置component
 * column中可以配置各个字段是否开启search
 
 ### 4. 枚举字典功能  
-
 * 支持本地和远程获取
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
 ### 5. d2-crud-x,基于d2-crud的修改版，功能与d2-crud一致【可选】
-见【https://github.com/greper/d2-crud-plus/blob/master/src/d2-crud-x/README.md】
+见【https://github.com/greper/d2-crud】
 * 支持隐藏表格，自定义列表展示方式【配置options.hide=true】
-* 支持slot编写各个字段的form表单
+* 支持slot编写各个字段的form表单：   
+为了某个字段单独写个renderCustomComponent有点费劲   
+可以通过在d2-crud下写slot的方式自定义组件
+
 
 ## 快速开始
 ###1.安装
@@ -39,14 +41,14 @@ npm i  @d2-project/d2-crud  d2-crud-plus  -S
 ###2.引入
  ```javascript
 import d2Crud from '@d2-project/d2-crud'
-import d2CrudPlus from 'd2-crud-plus'
+import { d2CrudPlus } from 'd2-crud-plus'
 Vue.use(d2Crud)
 Vue.use(d2CrudPlus)
 
 // 如果需要slot功能，要将d2-crud替换为d2-crud-x【功能与d2-crud一致】，代码如下
-import d2CrudX from 'd2-crud-plus/d2-crud-x'
-import d2CrudPlus from 'd2-crud-plus'
-Vue.use(d2CrudX)
+import d2Crud from 'd2-crud-x'
+import { d2CrudPlus } from 'd2-crud-plus'
+Vue.use(d2Crud)
 Vue.use(d2CrudPlus)
 
  ```

@@ -1,6 +1,5 @@
 import HeightUtil from '../utils/util.height'
-import _merge from 'lodash.merge'
-import _clonedeep from 'lodash.clonedeep'
+import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 
 export default {
@@ -93,9 +92,9 @@ export default {
         let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
         console.log('defaultColumn', defaultColumn)
         // 用户配置覆盖默认配置
-        let itemCopy = _clonedeep(item)
+        let itemCopy = cloneDeep(item)
         Object.assign(item, defaultColumn)
-        _merge(item, itemCopy)
+        merge(item, itemCopy)
         // 统一component的props
         if (item.form.component != null) {
           let props = item.form.component.props
@@ -106,14 +105,14 @@ export default {
         let form = item.form
         console.log('form', form)
         if (item.search != null && item.search.disabled !== true) {
-          let component = _clonedeep(item.form.component)
+          let component = cloneDeep(item.form.component)
           let search = {
             label: item.title,
             key: item.key,
             dict: item.dict,
             component: component
           }
-          _merge(search, item.search)
+          merge(search, item.search)
           this.crud.searchOptions.columns.push(search)
         }
         if (form.disabled !== true) {

@@ -1,5 +1,4 @@
-import _clonedeep from 'lodash.clonedeep'
-
+import { cloneDeep } from 'lodash'
 /**
  * 根据type获取column的默认配置
  * @type
@@ -91,7 +90,7 @@ function getByType (type, item) {
   let config = DefaultComponents[type]
   let column = {}
   if (config != null) {
-    column = _clonedeep(config)
+    column = cloneDeep(config)
   }
   if (column._handle != null) {
     column._handle(item)

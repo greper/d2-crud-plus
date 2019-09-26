@@ -2,7 +2,7 @@
 build/
 tests/
 node_modules/
-src/d2-crud-x/*
+
 # node 覆盖率文件
 coverage/
 

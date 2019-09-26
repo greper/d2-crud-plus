@@ -107,7 +107,12 @@ function getByType (type, item) {
 }
 
 const ColumnResolveUtil = {
-  getByType: getByType
+  getByType: getByType,
+  addTypes (newTypes) {
+    for (const key in newTypes) {
+      DefaultComponents[key] = newTypes[key]
+    }
+  }
 }
 
 export default ColumnResolveUtil

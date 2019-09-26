@@ -1,4 +1,3 @@
-import LabelTag from './tag/LabelTag'
 
 import DictSelect from './form/DictSelect'
 
@@ -7,12 +6,15 @@ import ValuesFormat from './format/ValuesFormat'
 
 import CrudSearch from './search/index'
 import CrudFooter from './footer/index'
+import renderComponent from './render/renderComponent'
+import renderCustomComponent from './render/renderCustomComponent'
 
-export {
-  LabelTag,
+export default {
   DictSelect,
   DateFormat,
   ValuesFormat,
   CrudSearch,
-  CrudFooter
+  CrudFooter,
+  renderComponent,
+  renderCustomComponent
 }

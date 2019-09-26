@@ -1,10 +1,4 @@
-import DictSelect from './components/form/DictSelect'
-
-import DateFormat from './components/format/DateFormat'
-import ValuesFormat from './components/format/ValuesFormat'
-
-import CrudSearch from './components/search/index'
-import CrudFooter from './components/footer/index'
+import components from './components'
 
 import crud from './mixins/crud'
 import dict from './utils/util.dicts'
@@ -15,14 +9,6 @@ const util = {
   dict,
   height,
   columnResolve
-}
-
-const components = {
-  DictSelect,
-  DateFormat,
-  ValuesFormat,
-  CrudSearch,
-  CrudFooter
 }
 
 const install = (Vue, options) => {

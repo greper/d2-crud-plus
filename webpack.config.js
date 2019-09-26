@@ -4,7 +4,8 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     'd2-crud-x': './src/d2-crud-x/index.js',
-    index: './src/lib/index.js'
+    'lib': './src/lib/index.js',
+    'index': './src/index.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),

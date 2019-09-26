@@ -1,5 +1,3 @@
-import LabelTag from './components/tag/LabelTag'
-
 import DictSelect from './components/form/DictSelect'
 
 import DateFormat from './components/format/DateFormat'
@@ -20,7 +18,6 @@ const util = {
 }
 
 const components = {
-  LabelTag,
   DictSelect,
   DateFormat,
   ValuesFormat,
@@ -40,7 +37,6 @@ const install = (Vue, options) => {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
-// 注意 有些组件使用异步加载会有影响
 export default { install,
   util,
   crud

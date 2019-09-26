@@ -97,7 +97,7 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
   .tag-item{
     margin-right: 10px;
   }

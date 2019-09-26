@@ -14,7 +14,7 @@ export default {
      */
     scope: {
       default: null
-    },
+    }
   },
   render (h) {
     return this.handleRender(h, this.scope)

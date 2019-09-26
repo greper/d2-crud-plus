@@ -3,8 +3,8 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    'd2-crud-x': './src/d2-crud-x/index.js',
-    'lib': './src/lib/index.js',
+    // 'd2-crud-x': './src/d2-crud-x/index.js',
+    // 'lib': './src/lib/index.js',
     'index': './src/index.js'
   },
   output: {

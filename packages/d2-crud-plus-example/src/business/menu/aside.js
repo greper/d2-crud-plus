@@ -19,8 +19,7 @@ export default [
       { path: '/hotel/dashboard', title: '工作台' },
       { path: '/hotel/room/list', title: '房间管理' },
       { path: '/hotel/room/checkin', title: '入住管理' },
-      { path: '/hotel/room/type', title: '房间类型管理' },
-      { path: '/hotel/test', title: '测试页面' }
+      { path: '/hotel/room/type', title: '房间类型管理' }
     ]
   },
   { path: '/test', title: '测试页面' }

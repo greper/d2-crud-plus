@@ -4,6 +4,7 @@ node_js: stable
 cache:
   directories:
     - "node_modules"
+    - "packages/d2-crud-plus-example/node_modules"
 
 branches:
   only:
@@ -11,6 +12,7 @@ branches:
 
 script:
   - cd packages/d2-crud-plus-example
+  - npm install
   - npm run build:travis
 
 before_install:

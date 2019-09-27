@@ -12,19 +12,25 @@
 ### 1. 简化配置 
 * addTemplate、editTemplate根据column配置自动生成   
 * column用type字段来自动配置component    
-* 同时也支持自定义字段类型   
+* 同时也支持自定义字段类型 
  
 ### 2. 根据column配置自动生成查询配置
 * column中可以配置各个字段是否开启search
 
 ### 3. 枚举字典功能  
 * 支持本地和远程获取
-* 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
+* 配合select，轻松实现数据存的是value值，需要对应字典的label来展示的需求
 
-### 4. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】
+### 4. 一些其他组件  
+* 国际手机号输入框及校验   
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone
+
+### 5. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】
 见https://github.com/greper/d2-crud/
-* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】
-* 支持slot编写各个字段的form表单
+* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】   
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard
+* 支持slot编写各个字段的form表单   
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot
 
 ## 快速开始
 ### 1.安装

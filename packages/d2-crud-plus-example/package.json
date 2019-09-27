@@ -1,6 +1,6 @@
 {
   "name": "d2-crud-plus-example",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.15.2",
     "core-js": "^2.6.5",
-    "d2-crud-plus": "^1.0.7",
+    "d2-crud-plus": "^1.0.8",
     "d2-crud-x": "^2.0.5-1.0.0",
     "dayjs": "^1.8.16",
     "el-phone-number-input": "^1.0.1",

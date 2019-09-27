@@ -1,6 +1,7 @@
 {
   "src_dir"            :   "/home/travis/build/greper/d2-crud-plus/packages/d2-crud-plus-example/dist",
   "bucket"             :   "greper",
+  "key_prefix"         :   "D2CrudPlusExample/",
   "ignore_dir"         :   false,
   "overwrite"          :   true,
   "check_exists"       :   true,

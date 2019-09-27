@@ -303,6 +303,16 @@ export const crudOptions = {
 
 配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
 用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可
+```javascript
+export const crudOptions = {
+  columns: [ 
+    {
+      type: 'select'//字段类型
+    }
+  ]
+}
+```
+
 #### a. 目前支持的类型   
 默认支持的类型：  
  https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/utils/util.column.resolve.js

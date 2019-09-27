@@ -148,9 +148,9 @@ export const crudOptions = {
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer" slot="footer"
-                  :current="crud.page.pageCurrent"
-                  :size="crud.page.pageSize"
-                  :total="crud.page.pageTotal"
+                  :current="crud.page.current"
+                  :size="crud.page.size"
+                  :total="crud.page.total"
                   @change="handlePaginationChange"
     >
     </crud-footer>

@@ -44,9 +44,9 @@
       </template>
     </d2-crud>
     <crud-footer ref="footer"
-                  :current="crud.page.pageCurrent"
-                  :size="crud.page.pageSize"
-                  :total="crud.page.pageTotal"
+                  :current="crud.page.current"
+                  :size="crud.page.size"
+                  :total="crud.page.total"
                   @change="handlePaginationChange"
     >
     </crud-footer>

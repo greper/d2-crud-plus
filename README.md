@@ -9,22 +9,19 @@
 ## 特性
 以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可。   
 
-### 1. 简化addTemplate、editTemplate配置 
-
-addTemplate、editTemplate根据column配置自动生成
-
-### 2. 简化component配置   
-column用type字段来自动配置component    
-同时也支持自定义类型   
+### 1. 简化配置 
+* addTemplate、editTemplate根据column配置自动生成   
+* column用type字段来自动配置component    
+* 同时也支持自定义字段类型   
  
-### 3. 根据column配置开启关闭顶部查询
+### 2. 根据column配置自动生成查询配置
 * column中可以配置各个字段是否开启search
 
-### 4. 枚举字典功能  
+### 3. 枚举字典功能  
 * 支持本地和远程获取
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
-### 5. d2-crud-x,基于d2-crud的修改版，功能与d2-crud一致【可选】
+### 4. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】
 见【https://github.com/greper/d2-crud/
 * 支持隐藏表格，自定义列表展示方式【配置options.hide=true】
 * 支持slot编写各个字段的form表单
@@ -69,21 +66,16 @@ export const crudOptions = {
       sortable: true, 
       type: 'date', //字段类型为时间选择器datepicker,根据类型可自动生成默认配置
       search: {//查询配置，默认启用查询
-        key: 'create_date',//【可选】查询字段，默认为column.key
-        disabled: true, //【可选】true禁止查询,默认为false
-        component:{}//
+        disabled: true //【可选】true禁止查询,默认为false
       },
       form: {//form表单的配置
-        disabled: true, //【可选】添加和修改均禁用本字段，默认false
+        disabled: true, //禁止添加输入与修改输入【可选】默认false
       }
     },
     {
       title: '状态',
       key: 'status',
-      sortable: true,
-      search: {
-        disabled: false //启用查询，默认启用
-      },
+      search: {},//启用查询
       type: 'select', //字段类型为选择框
       form: { //配置添加和编辑，根据form的配置自动生成addTemplate和editTemplate
         rules: [//【可选】添加和修改时的校验规则，不配置则不校验
@@ -97,10 +89,7 @@ export const crudOptions = {
     {
       title: '地区', 
       key: 'province', 
-      sortable: true,
-      search: {
-        disabled: false //启用查询
-      },
+      search: {},//启用查询
       type: 'select', //字段类型为选择框
       form: {
         rules: [{ required: true, message: '请选择地区' }],
@@ -120,14 +109,13 @@ export const crudOptions = {
 }
 ``` 
 ### 4. page
-大部分页面都一样，通常复制即可
+大部分页面都一样，通常直接复制即可
 ```
 <template>
   <d2-container>
     <template slot="header">测试页面</template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" ></crud-search>
-    <d2-crud
-        ref="d2Crud"
+    <d2-crud ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
         :rowHandle="crud.rowHandle"
@@ -156,32 +144,19 @@ export const crudOptions = {
 </template>
 
 <script>
-import { crudOptions } from './crud'
+import { crudOptions } from './crud' //上文的crudOptions配置
 import { d2CrudPlus } from 'd2-crud-plus'
-import { AddObj, GetList, UpdateObj, DelObj } from './api'
+import { AddObj, GetList, UpdateObj, DelObj } from './api' //查询添加修改删除的http请求接口
 export default {
   name: 'testPage',
-  mixins: [d2CrudPlus.crud],
+  mixins: [d2CrudPlus.crud], // 最核心部分，继承d2CrudPlus.crud
   methods: {
-    getCrudOptions () {
-      return crudOptions
-    },
-    pageRequest (query) {
-      // 数据请求
-      return GetList(query)
-    },
-    addRequest (row) {
-      // 添加请求
-      return AddObj(row)
-    },
-    updateRequest (row) {
-      // 修改请求
-      return UpdateObj(row)
-    },
-    delRequest (row) {
-      // 删除请求
-      return DelObj(row.id)
-    },
+    getCrudOptions () { return crudOptions },
+    pageRequest (query) { return GetList(query)},// 数据请求
+    addRequest (row) { return AddObj(row) }, // 添加请求
+    updateRequest (row) {return UpdateObj(row)},// 修改请求
+    delRequest (row) {return DelObj(row.id)}// 删除请求
+    ...// 还可以覆盖d2CrudPlus.crud中的方法来实现你的定制化需求
   }
 }
 </script>
@@ -192,7 +167,7 @@ export default {
  [
     {date: '2016-05-02',status: '0', province: 'sz'},
     {date: '2016-05-04',status: '1',province: 'sh,sz'},
-    {date: 2232433534511,status: '1', province: 'gz'},
+    {date: 2232433534511,status: '1', province: 'gz'},  //支持各种时间类型
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
@@ -317,23 +292,27 @@ export const crudOptions = {
 ```
 
 ### 2. 字段类型
-配置字段类型可生成默认配置，减少大部分的column繁琐配置   
+
+配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
 用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可
 #### a. 目前支持的类型   
 默认支持的类型：  
- https://github.com/greper/d2-crud-plus/blob/master/src/lib/utils/util.column.resolve.js
+ https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/utils/util.column.resolve.js
 
  * select【单选、多选、搜索选择】   
  * date类：datepicker【单个日期、日期段】、 datetimepicker【单个时间、时间段】、timepicker
  * phoneNumber：国际手机号输入框+校验
-
+ * phoneNumber：国际手机号输入框+校验
+ * cascader: 级联输入框
 
    
 #### b. 自定义字段类型
+其实就是事先自定义好column的配置，根据type直接生成默认配置，减轻配置工作量
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
 Vue.use(d2CrudPlus)
-//自定义字段类型（其实就是事先定义好column的配置，根据type直接生成默认配置）
+
+//添加自定义字段类型
 d2CrudPlus.util.columnResolve.addTypes({
   'time2':{
      form: { component: { name: 'el-date-picker' } },
@@ -349,10 +328,34 @@ d2CrudPlus.util.columnResolve.addTypes({
 })
 ```
 
-
 ### 3. 外部使用数据字典
+* 某些时候数据字典需要在crud外部使用
+```javascript
+import { d2CrudPlus } from 'd2-crud-plus'
+export default {
+  data () {
+    return {
+      dict: { url: '/hotel/roomtype/options' },
+      dictData:[]
+    }
+  },
+  created () {
+    d2CrudPlus.util.dict.get(this.dict).then((data) => {
+        this.dictData = data
+    })
+  }
+}
+```
+* 清除字典缓存   
+远程字典会以url作为key缓存在内存里面  
+某些情况下需要清空字典缓存，比如添加修改删除字典项的时候
+```javascript
+import { d2CrudPlus } from 'd2-crud-plus'
+d2CrudPlus.util.dict.clear() //清空所有字典缓存
+d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
+```
 
-### 4. 
+
 
 ## d2-crud-x文档
 d2-crud某些功能并不支持，d2-crud-x为d2-crud的修改版，用于支持一些新特性

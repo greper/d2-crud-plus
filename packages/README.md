@@ -1,6 +1,10 @@
 # d2-crud-plus
 基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。    
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
+<a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
+
 
 ## 特性
 以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可。   
@@ -194,11 +198,11 @@ export default {
 ```
 ### 6. 效果    
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/list.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/add.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/add.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/doc/image/edit.png)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
 
 ## 文档
@@ -361,6 +365,3 @@ d2-crud某些功能并不支持，d2-crud-x为d2-crud的修改版，用于支持
 
 
 
-<a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
-
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)

@@ -6,7 +6,6 @@
         <div class="btn-group">
           <span class="btn-group__btn" @click="$open('https://github.com/greper/d2-crud-plus')">d2-crud-plus</span> |
           <span class="btn-group__btn" @click="$open('https://github.com/greper/d2-crud')">d2-crud-x</span> |
-          <span class="btn-group__btn" @click="$open('https://github.com/greper/d2-crud-plus-example')">example</span> |
 <!--          <span class="btn-group__btn" @click="$open('https://alibaba.github.io/ice/scaffold?type=vue')">飞冰</span> |-->
 <!--          <span class="btn-group__btn" @click="$open('https://juejin.im/user/57a48b632e958a006691b946/posts')">掘金</span> |-->
 <!--          <span class="btn-group__btn" @click="$open('https://daily.fairyever.com')">日报</span> |-->

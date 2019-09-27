@@ -15,6 +15,10 @@
             <d2-icon name="github" class="d2-mr-5"/>
             主页
           </el-button>
+          <el-button @click="$open('http://qiniu.veryreader.com/D2CrudPlusExample/index.html')">
+            <d2-icon name="github" class="d2-mr-5"/>
+            示例
+          </el-button>
           <el-button @click="$open('https://doc.d2admin.fairyever.com/zh/')">
             <d2-icon name="book" class="d2-mr-5"/>
             d2-admin 中文文档

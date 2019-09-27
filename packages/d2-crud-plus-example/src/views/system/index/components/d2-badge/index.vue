@@ -1,13 +1,13 @@
 <template>
   <div class="d2-badge">
     <p align="center">
-      <a><img src="https://img.shields.io/github/release/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/forks/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/stars/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/issues/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/issues-closed/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/issues-pr/greper/d2-crud-plus-example.svg"/></a>
-      <a><img src="https://img.shields.io/github/issues-pr-closed/greper/d2-crud-plus-example.svg"/></a>
+      <a><img src="https://img.shields.io/github/release/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/forks/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/stars/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/issues/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/issues-closed/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/issues-pr/greper/d2-crud-plus.svg"/></a>
+      <a><img src="https://img.shields.io/github/issues-pr-closed/greper/d2-crud-plus.svg"/></a>
     </p>
     <p align="center">
 <!--      <a><img src="https://img.shields.io/npm/v/@d2-admin/ice-scaffold.svg"/></a>-->

@@ -34,12 +34,22 @@
 <script>
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
+import { AddObj, GetList, UpdateObj, DelObj } from './api'
 export default {
   name: 'testPage',
   mixins: [d2CrudPlus.crud],
   methods: {
     getCrudOptions () {
       return crudOptions
+    },
+    addRequest (row) {
+      return AddObj(row)
+    },
+    updateRequest (row) {
+      return UpdateObj(row)
+    },
+    delRequest (row) {
+      return DelObj(row.id)
     },
     pageRequest (query) {
       return new Promise(resolve => {

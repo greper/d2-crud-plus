@@ -56,7 +56,14 @@ import Vue from 'vue'
 Vue.use(d2Crud)
 
  ```
-### 3. crud配置
+### 3. curd功能
+
+更多示例代码   
+https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views   
+通常在其中找一个合适的复制，再根据需求修改即可    
+也可以根据数据库表以及模版自动生成
+
+#### 1.crud.js
 ```javascript
 export const crudOptions = {
   columns: [
@@ -108,8 +115,8 @@ export const crudOptions = {
   ]
 }
 ``` 
-### 4. page
-大部分页面都一样，通常直接复制即可
+### 4. page.vue
+大部分页面都一样，通常直接复制即可   
 ```
 <template>
   <d2-container>
@@ -160,9 +167,10 @@ export default {
   }
 }
 </script>
-
 ``` 
-### 5. 示例数据
+### 5. api.js
+实现添删改查请求接口   
+以下为本案例示例数据
 ```
  [
     {date: '2016-05-02',status: '0', province: 'sz'},

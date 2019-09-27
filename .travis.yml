@@ -11,11 +11,10 @@ branches:
   - master
 
 script:
-  - cd packages/d2-crud-plus-example
-  - npm install
   - npm run build:travis
 
 before_install:
+  - cd packages/d2-crud-plus-example
   - chmod 755 ./qshell
   - ./qshell account $AK $SK
   - curl -o- -L https://yarnpkg.com/install.sh | bash

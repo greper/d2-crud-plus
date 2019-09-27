@@ -4,7 +4,15 @@ const _import = require('./util.import.' + process.env.NODE_ENV)
  * 在主框架内显示
  */
 export const businessFrameIn = [
-
+  {
+    path: 'test',
+    name: 'test',
+    meta: {
+      title: '测试页面',
+      auth: true
+    },
+    component: _import('test')
+  },
   // form
   {
     path: 'form/date',
@@ -87,15 +95,6 @@ export const businessFrameIn = [
       auth: true
     },
     component: _import('hotel/room/roomtype')
-  },
-  {
-    path: 'hotel/test',
-    name: 'hotelTest',
-    meta: {
-      title: '测试页面',
-      auth: true
-    },
-    component: _import('hotel/test')
   }
 ]
 

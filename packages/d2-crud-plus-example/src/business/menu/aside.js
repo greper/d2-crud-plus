@@ -22,5 +22,6 @@ export default [
       { path: '/hotel/room/type', title: '房间类型管理' },
       { path: '/hotel/test', title: '测试页面' }
     ]
-  }
+  },
+  { path: '/test', title: '测试页面' }
 ]

@@ -34,7 +34,7 @@
 <script>
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { AddObj, GetList, UpdateObj, DelObj } from './api'
+import { AddObj, UpdateObj, DelObj } from './api'
 export default {
   name: 'testPage',
   mixins: [d2CrudPlus.crud],

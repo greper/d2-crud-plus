@@ -63,7 +63,7 @@ https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example
 通常在其中找一个合适的复制，再根据需求修改即可    
 也可以根据数据库表以及模版自动生成
 
-#### 1.crud.js
+#### 3.1 crud.js
 ```javascript
 export const crudOptions = {
   columns: [
@@ -115,7 +115,7 @@ export const crudOptions = {
   ]
 }
 ``` 
-### 4. page.vue
+#### 3.2 page.vue
 大部分页面都一样，通常直接复制即可   
 ```
 <template>
@@ -168,7 +168,7 @@ export default {
 }
 </script>
 ``` 
-### 5. api.js
+#### 3.3  api.js
 实现添删改查请求接口   
 以下为本案例示例数据
 ```
@@ -179,7 +179,7 @@ export default {
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
-### 6. 效果    
+### 4. 效果    
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
 
@@ -377,7 +377,7 @@ d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 
 
 ## d2-crud-x文档
-d2-crud某些功能并不支持，d2-crud-x为d2-crud的修改版，用于支持一些新特性
+d2-crud-x为d2-crud的修改版，用于支持一些新特性
 ### 1. 字段插槽 slot
 字段组件可以随便作   
 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot

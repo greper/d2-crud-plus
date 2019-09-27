@@ -9,7 +9,7 @@
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
       <template slot="slotExampleSearchSlot" slot-scope="scope">
-        <el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的"></el-input>
+        <el-input v-model="scope.form['slotExample']" placeholder="这是写在slot上的" @blur="inputBlur('search')"></el-input>
       </template>
     </crud-search>
     <d2-crud
@@ -36,7 +36,7 @@
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
-        slot自定义：<el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" ></el-input>
+        slot自定义：<el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
       </template>
     </d2-crud>
     <crud-footer ref="footer"
@@ -85,6 +85,10 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    inputBlur (event) {
+      console.log('失去焦点：', event)
+      this.$message('失去焦点：' + event)
     }
   }
 }

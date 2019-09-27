@@ -11,16 +11,24 @@ export function GetList (query) {
         size: 10,
         records: [
           {
-            slotExample: 'slotExample1'
+            createDate: new Date().getTime() - 900000,
+            updateDate: new Date().getTime() - 10000,
+            slotExample: '可以愉快的写filter啦'
           },
           {
-            slotExample: 'slotExample2'
+            createDate: new Date().getTime() - 800000,
+            updateDate: new Date().getTime() - 20000,
+            slotExample: '可以愉快的写filter啦'
           },
           {
-            slotExample: 'slotExample3'
+            createDate: new Date().getTime() - 70000,
+            updateDate: new Date().getTime() - 30000,
+            slotExample: '可以愉快的写filter啦'
           },
           {
-            slotExample: 'slotExample4'
+            createDate: new Date().getTime() - 9990000,
+            updateDate: new Date().getTime() - 40000,
+            slotExample: '可以愉快的写filter啦'
           }
         ]
       }

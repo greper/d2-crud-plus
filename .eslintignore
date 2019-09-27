@@ -1,8 +1,8 @@
 # 忽略目录
 build/
-tests/
 node_modules/
-
+.idea
+dist
 # node 覆盖率文件
 coverage/
 
@@ -10,8 +10,3 @@ coverage/
 **/*-min.js
 **/*.min.js
 
-packages/d2-crud-plus/src/d2-crud-x/*
-src/business/plugin/d2-crud/*
-src/business/plugin/d2-crud-plus/*
-!src/business/plugin/d2-crud-plus/src
-!src/business/plugin/d2-crud-plus/index.js

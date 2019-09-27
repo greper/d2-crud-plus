@@ -9,7 +9,7 @@
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
       <template slot="slotExampleSearchSlot" slot-scope="scope">
-        <el-input v-model="scope.form['slotExample']" placeholder="这是写在slot上的" @blur="inputBlur('search')"></el-input>
+        <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"></el-input>
       </template>
     </crud-search>
     <d2-crud
@@ -32,6 +32,10 @@
         @dialog-cancel="handleDialogCancel">
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
 
+      <template slot="createDateSlot" slot-scope="scope">
+        创建时间：{{scope.row['createDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
+        更新时间：{{scope.row['updateDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
+      </template>
       <template slot="slotExampleSlot" slot-scope="scope">
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>

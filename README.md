@@ -317,9 +317,10 @@ export const crudOptions = {
 默认支持的类型：  
  https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/utils/util.column.resolve.js
 
- * select【单选、多选、搜索选择】   
- * date类：datepicker【单个日期、日期段】、 datetimepicker【单个时间、时间段】、timepicker
- * phoneNumber：国际手机号输入框+校验
+ * select：单选、多选、搜索选择   
+ * date：单个日期、日期段
+ * datetime：日期时间、日期时间段
+ * time：时间选择器
  * phoneNumber：国际手机号输入框+校验
  * cascader: 级联输入框
 

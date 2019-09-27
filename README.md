@@ -22,7 +22,7 @@
 * 轻松实现数据存的是value值，需要对应字典的label来展示，配合select等使用更佳
 
 ### 4. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】
-见【https://github.com/greper/d2-crud/
+见https://github.com/greper/d2-crud/
 * 支持隐藏表格，自定义列表展示方式【配置options.hide=true】
 * 支持slot编写各个字段的form表单
 
@@ -377,7 +377,9 @@ d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 
 
 ## d2-crud-x文档
-d2-crud-x为d2-crud的修改版，用于支持一些新特性
+d2-crud-x为d2-crud的修改版，用于支持一些新特性   
+见https://github.com/greper/d2-crud/   
+当要用以下功能时，需要用d2-crud-x替换d2-crud
 ### 1. 字段插槽 slot
 字段组件可以随便作   
 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot

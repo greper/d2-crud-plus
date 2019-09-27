@@ -1,6 +1,6 @@
 {
-  "src_dir"            :   "/home/travis/build/d2-projects/d2-admin-start-kit/dist",
-  "bucket"             :   "d2-admin-start-kit",
+  "src_dir"            :   "/home/travis/build/greper/d2-crud-plus/packages/d2-crud-plus-example/dist",
+  "bucket"             :   "greper",
   "ignore_dir"         :   false,
   "overwrite"          :   true,
   "check_exists"       :   true,

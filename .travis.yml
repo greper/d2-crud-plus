@@ -1,0 +1,23 @@
+language: node_js
+node_js: stable
+
+cache:
+  directories:
+    - "node_modules"
+
+branches:
+  only:
+  - master
+
+script:
+  - cd packages/d2-crud-plus-example
+  - npm run build:travis
+
+before_install:
+  - ./qshell account $AK $SK
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+after_success:
+  - ./qshell qupload qiniu-config
+  - ./qshell cdnrefresh -dirs cdnrefresh-dirs.txt

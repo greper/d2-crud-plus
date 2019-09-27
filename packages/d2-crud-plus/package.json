@@ -1,0 +1,70 @@
+{
+  "name": "d2-crud-plus",
+  "description": "d2-admin的d2-crud的扩展 ",
+  "version": "1.0.7",
+  "author": "Greper <252959493@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greper/d2-crud-plus.git"
+  },
+  "keywords": [
+    "d2-crud",
+    "table",
+    "d2-projects",
+    "vue",
+    "element",
+    "d2-crud-plus",
+    "d2-admin"
+  ],
+  "main": "dist/d2-crud-plus.common.js",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build:lib": "vue-cli-service build --target lib ./src/index.js"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "dayjs": "^1.8.16",
+    "lodash": "^4.17.11",
+    "module-a": "^2.0.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.22.12",
+    "sass-loader": "^7.3.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

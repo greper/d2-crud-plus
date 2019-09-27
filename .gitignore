@@ -19,6 +19,3 @@ yarn-error.log*
 src/business/plugin/d2-crud/*
 src/business/plugin/d2-crud-plus/*
 
-d2-crud
-el-phone-number-input
-packages/*

@@ -1,0 +1,36 @@
+.el-form .el-input,.el-form .el-select{
+  width: 100%;
+}
+.el-form .el-date-editor.el-input,.el-form .el-date-editor.el-input__inner ,.el-form .el-cascader   {
+  width:100%;
+}
+
+.bg-success{
+  background-color: #f0f9eb;
+  border-color: #e1f3d8;
+  color: #67c23a;
+}
+.bg-info{
+  background-color: #f4f4f5;
+  border-color: #e9e9eb;
+  color: #909399;
+}
+.bg-danger{
+  background-color: #fef0f0;
+  border-color: #fde2e2;
+  color: #f56c6c;
+}
+.bg-warning{
+  background-color: #fdf6ec;
+  border-color: #faecd8;
+  color: #e6a23c;
+}
+.bg-primary{
+  background-color: #ecf5ff;
+  border-color: #d9ecff;
+  color: #409EFF;
+}
+
+.tag-item{
+  margin-right: 10px;
+}

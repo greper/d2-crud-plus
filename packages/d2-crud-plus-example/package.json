@@ -1,6 +1,14 @@
 {
   "name": "d2-crud-plus-example",
+  "description": "d2-crud-plus的示例工程",
   "version": "1.0.8",
+  "author": "Greper <252959493@qq.com>",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greper/d2-crud-plus.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",

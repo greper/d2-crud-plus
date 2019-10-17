@@ -44,21 +44,25 @@ function get (dict) {
     // 远程加载
     return this.getRemoteDictFunc(url).then((ret) => {
       // prop mapping
+      let data = ret.data
+      if (data == null) {
+        data = ret
+      }
       if (propMapping != null) {
-        for (let item of ret.data) {
+        for (let item of data) {
           if (propMapping['value'] != null) item.value = item[propMapping['value']]
           if (propMapping['label'] != null) item.label = item[propMapping['label']]
         }
       }
 
-      item.data = ret.data
+      item.data = data
       // 之前注册过的callback全部触发
       for (let callback of item.callbacks) {
         callback(item.data)
       }
       item.loading = false
       item.callbacks = []
-      return ret.data
+      return data
     }).catch(() => {
       item.loading = false
       item.error = true
@@ -114,13 +118,15 @@ function clear (url) {
     remoteDicts.delete(url)
   }
 }
+function getRemoteDictFunc (url) {
+  console.error('请在install d2-crud-plus时传入 options={getRemoteDictFunc:()->{ http 请求获取枚举字典 }}')
+  return new Promise()
+}
 const dict = {
   get,
   set,
   clear,
-  getRemoteDictFunc: () => {
-    console.error('请在install d2-crud-plus时传入 options={getRemoteDictFunc:()->{ http 请求获取枚举字典 }}')
-  }
+  getRemoteDictFunc
 }
 
 export default dict

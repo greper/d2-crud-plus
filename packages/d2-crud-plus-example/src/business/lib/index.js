@@ -1,10 +1,37 @@
-import { d2CrudPlus } from 'd2-crud-plus'
-import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
-import { GetDictData } from '../api/sys.dicts'
+import d2Crud from 'd2-crud-x'
+import { d2CrudPlus } from 'd2-crud-plus'
+import { D2pFileUploader } from 'd2-crud-plus-extends'
+import request from '@/plugin/axios'
+// 引入d2Crud
 Vue.use(d2Crud)
-Vue.use(d2CrudPlus, { getRemoteDictFunc: GetDictData })
-
+// 引入d2CrudPlus
+Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
+  return request({
+    url: url,
+    method: 'get'
+  }).then(ret => {
+    return ret.data
+  })
+}
+})
+// 安装扩展插件
+Vue.use(D2pFileUploader, { d2CrudPlus,
+  getUploadUrl (opts) {
+    return request({
+      url: '/api/basic/attachment/uploadUrl',
+      method: 'get',
+      params: {
+        type: opts.fileType,
+        fileName: opts.fileName,
+        appendRandom: true,
+        keepOriginalName: true
+      }
+    }).then(ret => {
+      return ret.data
+    })
+  }
+})
 //  自定义字段类型示例
 d2CrudPlus.util.columnResolve.addTypes({
   'time2': {

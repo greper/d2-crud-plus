@@ -3,7 +3,7 @@ import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 
 export default {
-  components: { },
+  components: {},
   data () {
     return {
       crud: {
@@ -72,6 +72,13 @@ export default {
     })
   },
   methods: {
+    /**
+     * 获取编辑框的formData
+     * @returns {(() => Promise<FormData>) | {}}
+     */
+    getEditForm () {
+      return this.$refs.d2Crud.formData
+    },
     /**
      * 初始化column配置
      * 将配置解析成columns、addTemplate、editTemplate、searchOptions等

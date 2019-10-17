@@ -28,9 +28,9 @@ export default {
     },
     placeholder: { require: false },
     value: { require: false },
-    filterable: { defaultValue: false, require: false },
-    clearable: { defaultValue: false, require: false },
-    multiple: { defaultValue: false, require: false }
+    filterable: { default: false, require: false },
+    clearable: { default: false, require: false },
+    multiple: { default: false, require: false }
   },
   data () {
     return {

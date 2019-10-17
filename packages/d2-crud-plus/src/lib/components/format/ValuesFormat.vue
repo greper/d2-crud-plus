@@ -25,10 +25,10 @@ export default {
     },
     color: {
       require: false,
-      defaultValue: 'primary'
+      default: 'primary'
     },
     type: {
-      defaultValue: 'tag' // text
+      default: 'tag' // text
     }
   },
   data () {

@@ -59,6 +59,15 @@ export const businessFrameIn = [
     },
     component: _import('form/customType')
   },
+  {
+    path: 'form/uploader',
+    name: 'formUploader',
+    meta: {
+      title: '文件上传',
+      auth: true
+    },
+    component: _import('form/uploader')
+  },
   //  酒店示例
   {
     path: 'hotel/dashboard',

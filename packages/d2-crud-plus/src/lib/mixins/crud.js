@@ -207,7 +207,7 @@ export default {
         for (const col of this.crud.columns) {
           if (col.valueBuilder) {
             for (const row of ret.data.records) {
-              col.valueBuilder(row)
+              col.valueBuilder(row, col)
             }
           }
         }
@@ -298,7 +298,7 @@ export default {
       }
       for (const col of this.crud.columns) {
         if (col.valueResolve) {
-          col.valueResolve(row)
+          col.valueResolve(row, col)
         }
       }
     },

@@ -14,7 +14,6 @@ import menuAside from '@/menu/aside'
 import { frameInRoutes } from '@/router/routes'
 
 import '@/mock'
-import '@/business/mock'
 import '@/business'
 // 核心插件
 Vue.use(d2Admin)

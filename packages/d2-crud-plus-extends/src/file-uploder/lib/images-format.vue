@@ -24,6 +24,9 @@ export default {
   computed: {
     urls () {
       let urls = []
+      if (this.value == null) {
+        return urls
+      }
       if (typeof (this.value) === 'string') {
         urls.push(this.value)
       } else if (this.value instanceof Array) {

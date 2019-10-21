@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import cos from './upload/cos'
-import utils from './utils'
 import SparkMD5 from 'spark-md5'
 
 /**
@@ -101,6 +99,9 @@ export default {
     }
   },
   methods: {
+    getUploader () {
+      return require('./uploader/' + this.type + '.js').default
+    },
     initValue () {
       console.log('init value:', this.value)
       let fileList = []
@@ -120,16 +121,8 @@ export default {
       this.$set(this, 'fileList', fileList)
     },
     handleUploadFileSuccess (res, file, fileList) {
-      //  item = this.url;
-      let fileUrl = ''
-      if (this.action != null) {
-        fileUrl = this.action.substring(0, this.action.indexOf('?'))
-        fileUrl = decodeURI(fileUrl)
-      }
-      let fileName = file.name
-      res.url = fileUrl
-      res.name = fileName
-      // res.uid = file.uid
+      res.size = res.size != null ? res.size : file.size
+      res.name = res.name != null ? res.name : file.name
       this.$emit('success', res, file)
       this.resetFileList(fileList)
       let list = []
@@ -149,16 +142,9 @@ export default {
       console.log('handleUploadFileSuccess list', list, res)
     },
     beforeUpload (file) {
-      let fileName = file.name
-      console.log('-----------开始上传----------', fileName)
-      return utils.getUploadUrl({
-        fileType: this.fileType,
-        fileName: fileName,
-        type: this.type
-      }).then((url) => {
-        this.action = url
-        console.log('cos上传url:', this.action)
-      })
+      let uploader = this.getUploader()
+      console.log('uploader:', uploader)
+      return uploader.beforeUpload(this, file)
     },
     httpRequest (option) {
       Promise.all([
@@ -172,7 +158,7 @@ export default {
       })
     },
     doUpload (option) {
-      return cos.doUpload(option)
+      return this.getUploader().doUpload(this, option)
     },
     onExceed (files, fileList) {
       console.log('文件数量超出限制')

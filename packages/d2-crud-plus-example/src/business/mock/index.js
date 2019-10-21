@@ -8,3 +8,11 @@ const options = req(require.context('./api/', true, /\.js$/))
 options.forEach(option => {
   d2Mock.load(option)
 })
+
+const options2 = req(require.context('../views/', true, /mock\.js$/))
+  .filter(e => e.default)
+  .map(e => e.default)
+
+options2.forEach(option => {
+  d2Mock.load(option)
+})

@@ -29,6 +29,7 @@
     "d2-crud-plus-extends": "^1.0.1",
     "d2-crud-x": "^2.0.5-1.1.0",
     "dayjs": "^1.8.16",
+    "el-phone-number-input": "^1.0.1",
     "element-ui": "^2.12.0",
     "flex.css": "^1.1.7",
     "fuse.js": "^3.4.4",
@@ -71,5 +72,5 @@
     "svg-sprite-loader": "^4.1.3",
     "vue-template-compiler": "^2.5.21"
   },
-  "gitHead": "176c79f7ad8baf81d7f58c4f1805f6d0a12c3e51"
+  "gitHead": "517e3b883072b9a994ff5d380be10778f2fe4aed"
 }

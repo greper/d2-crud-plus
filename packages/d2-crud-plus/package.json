@@ -21,7 +21,7 @@
   "main": "dist/d2-crud-plus.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib ./src/index.js",
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib ./src/index.js"
   },
@@ -65,5 +65,5 @@
     "> 1%",
     "last 2 versions"
   ],
-  "gitHead": "176c79f7ad8baf81d7f58c4f1805f6d0a12c3e51"
+  "gitHead": "517e3b883072b9a994ff5d380be10778f2fe4aed"
 }

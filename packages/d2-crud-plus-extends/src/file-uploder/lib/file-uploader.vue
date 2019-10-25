@@ -19,7 +19,7 @@
 
 <script>
 import SparkMD5 from 'spark-md5'
-
+import choose from './choose'
 /**
    * emit success(item,file)
    * fileList item = {url:'',name:''}
@@ -37,8 +37,9 @@ export default {
     value: {
       type: [String, Array, Object]
     },
-    style: { // 样式 追加到url的后面，进行图片处理，需要到对象存储平台配置样式
-      type: String
+    suffix: { // 样式后缀 追加到url的后面，进行图片处理，需要到对象存储平台配置样式
+      type: String,
+      required: false
     },
     custom: { // 自定义参数
       type: Object
@@ -99,7 +100,7 @@ export default {
   },
   methods: {
     getUploader () {
-      return require('./uploader/' + this.type + '.js').default
+      return choose.get(this.type)
     },
     initValue () {
       console.log('init value:', this.value)
@@ -164,8 +165,8 @@ export default {
     doUpload (option) {
       console.error('do upload options:', option)
       return this.getUploader().doUpload(option, this.custom, this.context).then(ret => {
-        if (this.style != null) {
-          ret.url += this.style
+        if (this.suffix != null) {
+          ret.url += this.suffix
         }
         return ret
       })

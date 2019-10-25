@@ -81,7 +81,7 @@ export const crudOptions = {
         component: {
           props: {
             type: 'alioss',
-            style: '!200_200'
+            suffix: '!200_200'
           },
           span: 24
         },

@@ -1,4 +1,6 @@
 import config from './lib/config'
+import D2pFileUploader from './lib/file-uploader'
+import D2pImagesFormat from './lib/images-format'
 
 const types = {
   'image-uploader': {
@@ -27,8 +29,8 @@ const types = {
 }
 
 function install (Vue, options) {
-  Vue.component('d2p-file-uploader', () => import('./lib/file-uploader'))
-  Vue.component('d2p-images-format', () => import('./lib/images-format.vue'))
+  Vue.component('d2p-file-uploader', D2pFileUploader)
+  Vue.component('d2p-images-format', D2pImagesFormat)
 
   if (options != null) {
     // 覆盖用户配置

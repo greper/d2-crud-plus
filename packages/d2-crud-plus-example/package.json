@@ -25,7 +25,7 @@
     "core-js": "^2.6.5",
     "d2-crud-plus": "^1.0.8",
     "d2-crud-plus-extends": "^1.0.0",
-    "d2-crud-x": "^2.0.5-1.0.0",
+    "d2-crud-x": "^2.0.5-1.1.0",
     "dayjs": "^1.8.16",
     "element-ui": "^2.12.0",
     "flex.css": "^1.1.7",

@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus-extends",
   "description": "d2-crud-plus的扩展 ",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,

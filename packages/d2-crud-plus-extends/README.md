@@ -9,9 +9,8 @@
 import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { D2pFileUploader } from 'd2-crud-plus-extends'
+import { D2pFileUploader } from 'd2p-extends'
 import request from '@/plugin/axios'
-import axios from 'axios'
 // 引入d2Crud
 Vue.use(d2Crud)
 // 引入d2CrudPlus
@@ -25,47 +24,56 @@ Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
 }
 })
 
-let qiniuToken = null
 // 安装扩展插件
 Vue.use(D2pFileUploader, {
   d2CrudPlus,
-  defaultType: 'cos', //默认后端存储类型【cos、qiniu、alioss】
-  cos: { //腾讯云cos的配置，如果不使用cos，可以不配置
+  defaultType: 'cos',
+  cos: {
     domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
-    bucket: 'd2p-demo-1251260344',//存储桶
+    bucket: 'd2p-demo-1251260344',
     region: 'ap-guangzhou',
-    secretId: '', // secretId
-    secretKey: '', // 配置secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
-    getAuthorization  (options, callback) { // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-      axios.get('http://example.com/server/sts.php', { // 请参考https://cloud.tencent.com/document/product/436/11459
-        // 可从 options 取需要的参数
-      }, function (data) {
-        // eslint-disable-next-line standard/no-callback-literal
-        callback({
-          TmpSecretId: data.TmpSecretId,
-          TmpSecretKey: data.TmpSecretKey,
-          XCosSecurityToken: data.XCosSecurityToken,
-          ExpiredTime: data.ExpiredTime // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
-        })
+    secretId: '', //
+    secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
+    getAuthorization  (custom) { // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
+      return request({
+        url: '/upload/cos/getAuthorization',
+        method: 'get'
+      }).then(ret => {
+        // 返回结构如下
+        // ret.data:{
+        //   TmpSecretId,
+        //   TmpSecretKey,
+        //   XCosSecurityToken,
+        //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
+        // }
+        return ret.data
       })
     }
   },
-  qiniu: { //七牛的配置，如果不使用qiniu，可以不配置
+  alioss: {
+    domain: 'https://d2p-demo.oss-cn-shenzhen.aliyuncs.com',
     bucket: 'd2p-demo',
-    getToken (custom) { //getToken，远程获取token配置
-      if (qiniuToken == null) {
-        return request({
-          url: '/upload/qiniu/getToken',
-          method: 'get'
-        }).then(ret => {
-          qiniuToken = ret.data
-          return ret.data
-        })
-      } else {
-        return new Promise(resolve => {
-          resolve(qiniuToken)
-        })
-      }
+    region: 'oss-cn-shenzhen',
+    accessKeyId: '',
+    accessKeySecret: '',
+    getAuthorization  (custom, context) { // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
+      return request({
+        url: '/upload/alioss/getAuthorization',
+        method: 'get'
+      }).then(ret => {
+        return ret.data
+      })
+    }
+  },
+  qiniu: {
+    bucket: 'd2p-demo',
+    getToken (custom) {
+      return request({
+        url: '/upload/qiniu/getToken',
+        method: 'get'
+      }).then(ret => {
+        return ret.data // {token:xxx,expires:xxx}
+      })
     },
     domain: 'http://pzrsldiu3.bkt.clouddn.com'
   }

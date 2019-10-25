@@ -26,7 +26,7 @@
     "core-js": "^2.6.5",
     "cos-js-sdk-v5": "^0.5.20",
     "d2-crud-plus": "^1.1.1",
-    "d2p-extends": "^1.0.3",
+    "d2p-extends": "^1.0.4",
     "d2-crud-x": "^2.0.5-1.1.0",
     "dayjs": "^1.8.16",
     "el-phone-number-input": "^1.0.1",

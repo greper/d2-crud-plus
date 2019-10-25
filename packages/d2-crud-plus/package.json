@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus",
   "description": "d2-admin的d2-crud的扩展 ",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -30,12 +30,12 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "core-js": "^2.6.5",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.22.12",

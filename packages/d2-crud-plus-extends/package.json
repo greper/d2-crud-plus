@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus-extends",
   "description": "d2-crud-plus的扩展 ",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -34,15 +34,15 @@
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-standard": "^4.0.0",
+    "ali-oss": "^6.1.1",
     "babel-eslint": "^10.0.1",
+    "cos-js-sdk-v5": "^0.5.20",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "qiniu-js": "^2.5.4",
     "sass": "^1.22.12",
     "sass-loader": "^7.3.1",
-    "vue-template-compiler": "^2.6.10",
-    "cos-js-sdk-v5": "^0.5.20",
-    "qiniu-js": "^2.5.4",
-    "ali-oss": "^6.1.1"
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,

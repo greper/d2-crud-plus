@@ -93,9 +93,9 @@ export default {
     },
     uploadClass () {
       if (this._elProps.listType === 'avatar') {
-        return 'avatar-uploader'
+        return 'file-uploader avatar-uploader'
       }
-      return ''
+      return 'file-uploader'
     }
   },
   methods: {
@@ -258,22 +258,19 @@ export default {
     color: #8c939d;
   }
 
-  .el-upload-list--picture-card .el-upload-list__item-thumbnail {
+  .file-uploader .el-upload-list--picture-card .el-upload-list__item-thumbnail {
     max-width: 100%;
     max-height: 100%;
     width:auto;
     height: auto;
   }
-  .el-upload-list--picture-card .el-upload-list__item {
+  .file-uploader .el-upload-list--picture-card .el-upload-list__item {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .el-upload-list--picture-card .el-upload-list__item-status-label {
-
-  }
-  .el-form-item__content>div{display: flex;flex-wrap: wrap;}
-  .el-upload-list--picture-card {
+   .el-form-item__content>div.file-uploader{display: flex;flex-wrap: wrap;}
+  .file-uploader .el-upload-list--picture-card {
     display: flex;
     flex-wrap: wrap;
   }

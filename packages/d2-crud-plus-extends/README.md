@@ -3,7 +3,7 @@
 目前支持：
 
 ## 1.支持的组件
-### 1、file-uploader
+### 1、file-uploader  文件上传组件
 #### 引入
 ```javascript
 import Vue from 'vue'
@@ -35,7 +35,7 @@ Vue.use(D2pFileUploader, {
     secretId: '', //
     secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
     getAuthorization  (custom) { // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-      return request({
+      return request({ //请求后端获取sts授权
         url: '/upload/cos/getAuthorization',
         method: 'get'
       }).then(ret => {
@@ -57,10 +57,16 @@ Vue.use(D2pFileUploader, {
     accessKeyId: '',
     accessKeySecret: '',
     getAuthorization  (custom, context) { // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-      return request({
+      return request({ //请求后端获取sts授权
         url: '/upload/alioss/getAuthorization',
         method: 'get'
       }).then(ret => {
+       // ret.data:{
+       //   securityToken,
+       //   accessKeySecret,
+       //   accessKeyId,
+       //   expiration
+       // }
         return ret.data
       })
     }
@@ -68,7 +74,7 @@ Vue.use(D2pFileUploader, {
   qiniu: {
     bucket: 'd2p-demo',
     getToken (custom) {
-      return request({
+      return request({ //请求后端获取token
         url: '/upload/qiniu/getToken',
         method: 'get'
       }).then(ret => {
@@ -111,8 +117,9 @@ export const crudOptions = {
             btnSize: 'small', // type=file-uploader时按钮的大小
             btnName: '选择文件',// type=file-uploader时按钮文字
             accept: '.png', // 接受的文件后缀类型
+            suffix: '!200_200', //url后缀，用于图片样式处理，需要到对象存储平台配置样式
             type: 'cos', // 当前使用哪种存储后端【cos/qiniu/alioss】
-            custom:{}, //自定义参数，可以在获取token时传入不同的参数给后台
+            custom:{}, //自定义参数，可以在获取token时传入不同的参数给后端
             elProps: { // 与el-uploader配置一致
               limit: 5 // 限制上传文件数量
             }

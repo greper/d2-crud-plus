@@ -2,10 +2,19 @@
   <d2-container>
     <template slot="header">文件上传
       <example-helper title="文件上传组件crud配置" >
-          <h4>目前暂时仅支持腾讯云cos、七牛</h4>
-          <h4>引入</h4>
+          <h4>目前支持腾讯云cos、七牛、阿里云oss等三种对象存储的web端直传</h4>
+          <h4>1、准备</h4>
+          <div>
+              <ul>
+                  <li>创建相应的bucket</li>
+                  <li>生产环境还需配置获取相应的授权：腾讯云、阿里云的sts，七牛要获取token</li>
+                  <li>后端实现请参考：https://github.com/greper/d2-crud-plus-server.git</li>
+                  <li>更多文档：https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends</li>
+              </ul>
+          </div>
+          <h4>2、引入</h4>
           <d2-highlight :code="helper.init" lang="javascript"/>
-          <h4>使用：crud配置</h4>
+          <h4>3、使用：crud配置</h4>
           <div>
               <ul>
                   <li>给column配置type即可，可选值：[avatar-uploader，image-uploader，file-uploader]</li>

@@ -2,50 +2,60 @@ export default {
   init: `  import Vue from 'vue'
   import d2Crud from 'd2-crud-x'
   import { d2CrudPlus } from 'd2-crud-plus'
-  import { D2pFileUploader } from 'd2-crud-plus-extends'
-  import request from '@/plugin/axios'
-  Vue.use(D2pFileUploader, {
-    d2CrudPlus,
-    defaultType: 'cos',
-    cos: {
-      domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
-      bucket: 'd2p-demo-1251260344',
-      region: 'ap-guangzhou',
-      secretId: 'AKIDbz3tUqJn6D8tPeNJm22lJb9xWq0uqz8x', // 为了演示环境配置了真实的secretId与secretKey，请大家遵守规则，切勿泄漏
-      secretKey: 'kFVWFhwve7KGwMUQ6XrypRmphKgnkQIx', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
-      getAuthorization  (options, callback) { // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
-        axios.get('http://example.com/server/sts.php', {
-          // 可从 options 取需要的参数
-        }, function (data) {
-          // eslint-disable-next-line standard/no-callback-literal
-          callback({
-            TmpSecretId: data.TmpSecretId,
-            TmpSecretKey: data.TmpSecretKey,
-            XCosSecurityToken: data.XCosSecurityToken,
-            ExpiredTime: data.ExpiredTime // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
-          })
-        })
-      }
-    },
-    qiniu: {
-      bucket: 'd2p-demo',
-      getToken (custom) {
-        if (qiniuToken == null) {
-          return request({
-            url: '/upload/qiniu/getToken',
-            method: 'get'
-          }).then(ret => {
-            qiniuToken = ret.data
-            return ret.data
-          })
-        } else {
-          return new Promise(resolve => {
-            resolve(qiniuToken)
-          })
-        }
-      },
-      domain: 'http://pzrsldiu3.bkt.clouddn.com'
+  import { D2pFileUploader } from 'd2p-extends'
+  // 安装扩展插件
+Vue.use(D2pFileUploader, {
+  d2CrudPlus,
+  defaultType: 'cos', //默认使用腾讯云
+  cos: { //腾讯云cos配置
+    domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
+    bucket: 'd2p-demo-1251260344',
+    region: 'ap-guangzhou',
+    secretId: '', //
+    secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
+    getAuthorization  (custom) { // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
+      return request({ //请求后端获取sts授权
+        url: '/upload/cos/getAuthorization', 
+        method: 'get'
+      }).then(ret => {
+        // 返回结构如下
+        // ret.data:{
+        //   TmpSecretId,
+        //   TmpSecretKey,
+        //   XCosSecurityToken,
+        //   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
+        // }
+        return ret.data
+      })
     }
+  },
+  alioss: { //阿里云oss配置
+    domain: 'https://d2p-demo.oss-cn-shenzhen.aliyuncs.com',
+    bucket: 'd2p-demo',
+    region: 'oss-cn-shenzhen',
+    accessKeyId: '',
+    accessKeySecret: '',
+    getAuthorization  (custom, context) { // 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
+      return request({ //请求后端获取sts授权
+        url: '/upload/alioss/getAuthorization',
+        method: 'get'
+      }).then(ret => {
+        return ret.data
+      })
+    }
+  },
+  qiniu: {
+    bucket: 'd2p-demo',
+    getToken (custom) {
+      return request({ //请求后端获取token
+        url: '/upload/qiniu/getToken',
+        method: 'get'
+      }).then(ret => {
+        return ret.data // {token:xxx,expires:xxx}
+      })
+    },
+    domain: 'http://pzrsldiu3.bkt.clouddn.com'
+  }
 })
 
   `,
@@ -121,6 +131,22 @@ export default {
           }
         },
         helper: '这里演示的是七牛文件上传'
+      }
+    },
+    {
+      title: '阿里云',
+      key: 'aliossAvatar',
+      sortable: true,
+      type: 'avatar-uploader',
+      form: {
+        component: {
+          props: {
+            type: 'alioss',
+            suffix: '!200_200'
+          },
+          span: 24
+        },
+        helper: '这里演示的是阿里云文件上传,配置样式，居中裁剪成200x200方形图片'
       }
     }
   ]

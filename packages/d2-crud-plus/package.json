@@ -26,12 +26,12 @@
     "build:lib": "vue-cli-service build --target lib ./src/index.js"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
     "dayjs": "^1.8.16",
-    "lodash": "^4.17.11",
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "lodash": "^4.17.11",
+    "core-js": "^2.6.5",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",

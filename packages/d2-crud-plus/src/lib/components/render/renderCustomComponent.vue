@@ -38,6 +38,9 @@ export default {
       on: {
         input: function (event) {
           self.$emit('input', event)
+        },
+        change: function (event) {
+          self.$emit('change', event)
         }
       }
     })

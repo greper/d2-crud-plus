@@ -94,6 +94,7 @@ export default {
 
       this.crud.columns = []
       this.crud.searchOptions.columns = []
+      this.crud.columnsMap = {}
       for (let item of crudOptions.columns) {
         let key = item.key
         let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
@@ -142,6 +143,8 @@ export default {
         if (!item.disabled) { // 如果该列没有禁用显示
           this.crud.columns.push(item)
         }
+        // 放到map里面方便快速查找
+        this.crud.columnsMap[key] = item
       }
       console.log('crud inited:', this.crud)
     },
@@ -415,6 +418,24 @@ export default {
      */
     doAfterRowChange (row) {
       this.doRefresh()
+    },
+    /**
+     * 编辑框表单改变事件
+     */
+    handleFormDataChange ({ key, value }) {
+      let column = this.crud.columnsMap[key]
+      console.log('FormDataChange', key, value)
+      if (column.form != null && column.form.valueChange != null) {
+        column.form.valueChange(key, value, this.getEditForm())
+      }
+      this.doFormDataChange({ key, value })
+    },
+    /**
+     * 用户可覆盖的编辑框表单改变事件
+     * @param key
+     * @param value
+     */
+    doFormDataChange ({ key, value }) {
     }
 
   }

@@ -1,6 +1,7 @@
 
 import DictSelect from './form/DictSelect'
-
+import CascadeSelect from './form/CascadeSelect'
+import CascadeFormat from './format/CascadeFormat'
 import DateFormat from './format/DateFormat'
 import ValuesFormat from './format/ValuesFormat'
 
@@ -11,6 +12,8 @@ import renderCustomComponent from './render/renderCustomComponent'
 
 export default {
   DictSelect,
+  CascadeSelect,
+  CascadeFormat,
   DateFormat,
   ValuesFormat,
   CrudSearch,

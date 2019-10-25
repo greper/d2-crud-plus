@@ -1,10 +1,18 @@
 <template>
   <d2-container>
     <template slot="header">文件上传
-<!--      <example-helper title="文件上传组件帮助说明" >-->
-<!--          <d2-highlight :code="helper.crud"/>-->
-<!--          <d2-highlight :code="helper.template"/>-->
-<!--      </example-helper>-->
+      <example-helper title="文件上传组件crud配置" >
+          <h4>目前暂时仅支持腾讯云cos、七牛</h4>
+          <h4>引入</h4>
+          <d2-highlight :code="helper.init" lang="javascript"/>
+          <h4>使用：crud配置</h4>
+          <div>
+              <ul>
+                  <li>给column配置type即可，可选值：[avatar-uploader，image-uploader，file-uploader]</li>
+              </ul>
+          </div>
+          <d2-highlight :code="helper.crud" lang="javascript"/>
+      </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" ></crud-search>
     <d2-crud
@@ -24,7 +32,9 @@
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
-        @dialog-cancel="handleDialogCancel">
+        @dialog-cancel="handleDialogCancel"
+        @form-data-change="handleFormDataChange"
+        >
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer"

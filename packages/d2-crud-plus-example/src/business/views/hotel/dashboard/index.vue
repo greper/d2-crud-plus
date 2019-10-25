@@ -29,7 +29,9 @@
             @row-edit="handleRowEdit"
             @row-add="handleRowAdd"
             @row-remove="handleRowRemove"
-            @dialog-cancel="handleDialogCancel">
+            @dialog-cancel="handleDialogCancel"
+            @form-data-change="handleFormDataChange"
+    >
       <template slot="body">
         <div class="main">
           <el-row :gutter="10">

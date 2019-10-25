@@ -1,20 +1,13 @@
-import FileUploader from './lib/file-uploader.vue'
-import ImagesFormat from './lib/images-format.vue'
 import config from './lib/config'
 
 const types = {
-  'image-cos-uploader': {
-    form: { component: { name: 'd2p-file-uploader', props: { type: 'cos', fileType: 'img', elProps: { listType: 'picture-card' } } } },
+  'image-uploader': {
+    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },
     component: { name: 'd2p-images-format' },
     align: 'center'
   },
-  'avatar-cos-uploader': {
-    form: {
-      component: {
-        name: 'd2p-file-uploader',
-        props: { type: 'cos', elProps: { listType: 'avatar', fileType: 'avatar', showFileList: false } }
-      }
-    },
+  'avatar-uploader': {
+    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'avatar', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif', showFileList: false } } } },
     component: { name: 'd2p-images-format' },
     align: 'center',
     valueResolve (row, col) {
@@ -28,17 +21,28 @@ const types = {
       }
     }
   },
-  'file-cos-uploader': {
-    form: { component: { name: 'd2p-file-uploader', props: { type: 'cos', fileType: 'file', elProps: { listType: 'text' } } } }
+  'file-uploader': {
+    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } }
   }
 }
 
 function install (Vue, options) {
-  Vue.component(FileUploader.name, FileUploader)
-  Vue.component(ImagesFormat.name, ImagesFormat)
+  Vue.component('d2p-file-uploader', () => import('./lib/file-uploader'))
+  Vue.component('d2p-images-format', () => import('./lib/images-format.vue'))
 
-  Object.assign(config, options)
-  options.d2CrudPlus.util.columnResolve.addTypes(types)
+  if (options != null) {
+    // 覆盖用户配置
+    Object.assign(config, options)
+    // 配置type
+    if (options.d2CrudPlus != null) {
+      // 设置默认uploader
+      let defaultType = config.defaultType != null ? config.defaultType : 'cos'
+      for (let typesKey in types) {
+        types[typesKey].form.component.props.type = defaultType
+      }
+      options.d2CrudPlus.util.columnResolve.addTypes(types)
+    }
+  }
 }
 
 export default {

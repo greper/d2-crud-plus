@@ -25,7 +25,9 @@
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
-        @dialog-cancel="handleDialogCancel">
+        @dialog-cancel="handleDialogCancel"
+        @form-data-change="handleFormDataChange"
+    >
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer" :current="crud.page.current"

@@ -56,12 +56,20 @@ const DefaultComponents = {
     }
   },
   cascader: {
-    form: { component: { name: 'el-cascader', props: {} } },
+    form: { component: { name: 'cascade-select', props: {} } },
+    component: { name: 'cascade-format', props: {} },
     _handle (item) {
+      this.form.component.props.dict = item.dict
+      this.component.props.dict = item.dict
     }
   },
   phoneNumber: {
-    form: { component: { name: 'el-phone-number-input', props: { size: 'sm', 'only-countries': ['CN', 'HK', 'TW', 'US'] } } },
+    form: { component: { name: 'el-phone-number-input',
+      props: {
+        // 'only-countries': ['CN', 'HK', 'TW', 'US'],
+        size: 'sm'
+      }
+    } },
     formatter (row, column, value, index) {
       let ret = ''
       if (value != null) {

@@ -25,6 +25,8 @@
 ### 4. 一些其他组件  
 * 国际手机号输入框及校验   
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone
+* 对象存储文件上传组件
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader
 
 ### 5. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】
 见https://github.com/greper/d2-crud/
@@ -32,6 +34,10 @@ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard
 * 支持slot编写各个字段的form表单   
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot
+* 自定义组件支持form-data-change事件  
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader  
+上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
+
 
 ## 快速开始
 ### 1.安装
@@ -53,7 +59,9 @@ Vue.use(d2CrudPlus, {
     return request({
       url: url,
       method: 'get'
-    })
+    }).then(ret=>{
+      return ret.data  //返回字典数组
+    })  
   }
 })
 
@@ -144,7 +152,8 @@ export const crudOptions = {
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
-        @dialog-cancel="handleDialogCancel">
+        @dialog-cancel="handleDialogCancel"
+        @form-data-change="handleFormDataChange">
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer" slot="footer"
@@ -196,7 +205,7 @@ export default {
 
 
 ## 文档
-### 1. 配置说明
+### <a id="options-example">1. 配置说明</a>
 
 #### * 简单配置
 ```javascript
@@ -274,6 +283,7 @@ export const crudOptions = {
       }
     }
   ],
+  // 下方的配置都是可选的
   formOptions: { // 与d2-crud一致
     labelWidth: '100px',
     labelPosition: 'left',
@@ -306,7 +316,7 @@ export const crudOptions = {
 
 ```
 
-### 2. 字段类型
+### <a id="column-type">2. 字段类型</a>
 
 配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
 用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可
@@ -320,7 +330,7 @@ export const crudOptions = {
 }
 ```
 
-#### a. 目前支持的类型   
+#### <a id="type-support">a. 目前支持的类型 </a>
 默认支持的类型：  
  https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/utils/util.column.resolve.js
 
@@ -332,7 +342,7 @@ export const crudOptions = {
  * cascader: 级联输入框
 
    
-#### b. 自定义字段类型
+#### <a id="type-custom">b. 自定义字段类型</a>
 其实就是事先自定义好column的配置，根据type直接生成默认配置，减轻配置工作量
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
@@ -354,7 +364,11 @@ d2CrudPlus.util.columnResolve.addTypes({
 })
 ```
 
-### 3. 外部使用数据字典
+### <a id="type-extend">3. 类型扩展</a>
+您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块
+
+
+### <a id="dict-out">4. 外部使用数据字典</a>
 * 某些时候数据字典需要在crud外部使用
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
@@ -383,16 +397,18 @@ d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 
 
 
-## d2-crud-x文档
+## <a id="d2-crud-x">d2-crud-x文档</a>
 d2-crud-x为d2-crud的修改版，用于支持一些新特性   
 见https://github.com/greper/d2-crud/   
 当要用以下功能时，需要用d2-crud-x替换d2-crud
-### 1. 字段插槽 slot
+### <a id="d2-crud-x-slot">1. 字段插槽 slot</a>
 字段组件可以随便作   
 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
-### 2. 表格自定义
+### <a id="d2-crud-x-table-hide">2. 表格隐藏+自定义</a>
 某些需求下，数据内容展示方式不一定是表格，但又需要添加修改和删除功能
 示例：http://qiniu.veryreader.com/D2CrudPlusExample/#/hotel/dashboard
-
+### <a id="d2-crud-x-form-change">3. formDataChange支持自定义组件</a>
+官方版formDataChange不支持自定义组件
+示例：http://qiniu.veryreader.com/D2CrudPlusExample/#/form/uploader
 
 

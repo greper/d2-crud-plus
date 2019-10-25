@@ -1,6 +1,5 @@
 <template>
-  <el-upload :accept="accept" :action="action"
-             :before-upload="beforeUpload"
+  <el-upload :before-upload="beforeUpload"
              :class="uploadClass"
              :file-list="fileList"
              :http-request="httpRequest"
@@ -31,20 +30,18 @@ export default {
     btnSize: { default: 'small' },
     btnName: { default: '选择文件' },
     accept: {},
-    randomFileName: {
-      type: Boolean,
-      default: true
-    }, // 是否随机一个文件名
-    fileType: {
-      type: String,
-      default: 'file'
-    },
     type: {
       type: String,
-      default: 'cos' // 上传类型：form cos qiniu  aliyun
+      default: 'cos' // 上传类型：form cos qiniu  alioss
     },
     value: {
       type: [String, Array, Object]
+    },
+    style: { // 样式 追加到url的后面，进行图片处理，需要到对象存储平台配置样式
+      type: String
+    },
+    custom: { // 自定义参数
+      type: Object
     },
     elProps: {
       type: Object
@@ -52,8 +49,8 @@ export default {
   },
   data () {
     return {
-      action: '',
-      fileList: []
+      fileList: [],
+      context: {}
     }
   },
   created () {
@@ -65,6 +62,7 @@ export default {
         return
       }
       this.initValue()
+      this.$emit('change', this.fileList)
     }
   },
   computed: {
@@ -72,7 +70,8 @@ export default {
       let defaultElProps = {
         limit: 1,
         listType: 'text',
-        showFileList: true
+        showFileList: true,
+        action: ''
       }
       let props = Object.assign(defaultElProps, this.elProps)
       console.log('props:', props)
@@ -107,8 +106,10 @@ export default {
       let fileList = []
       if (this.value == null) {
       } else if (typeof (this.value) === 'string') {
-        let fileName = this.value.substring(this.value.lastIndexOf('/') + 1)
-        fileList = [{ url: this.value, name: fileName }]
+        if (this.value !== '') {
+          let fileName = this.value.substring(this.value.lastIndexOf('/') + 1)
+          fileList = [{ url: this.value, name: fileName }]
+        }
       } else if (this.value instanceof Array) {
         fileList = this.value
       } else if (this.value instanceof Object) {
@@ -133,18 +134,21 @@ export default {
           list.push(item)
         }
       }
-      if (this.limit === 1) {
+      console.log('handleUploadFileSuccess list', list, res)
+      if (this._elProps.limit === 1) {
         this.$emit('input', res)
       } else {
         this.$emit('input', list)
       }
-
-      console.log('handleUploadFileSuccess list', list, res)
     },
     beforeUpload (file) {
       let uploader = this.getUploader()
       console.log('uploader:', uploader)
-      return uploader.beforeUpload(this, file)
+      return uploader.beforeUpload(file, this.custom).then(ret => {
+        this.$set(this, 'context', ret)
+        console.log('beforeUpload:context:', ret)
+        return ret
+      })
     },
     httpRequest (option) {
       Promise.all([
@@ -158,15 +162,18 @@ export default {
       })
     },
     doUpload (option) {
-      return this.getUploader().doUpload(this, option)
+      console.error('do upload options:', option)
+      return this.getUploader().doUpload(option, this.custom, this.context).then(ret => {
+        if (this.style != null) {
+          ret.url += this.style
+        }
+        return ret
+      })
     },
     onExceed (files, fileList) {
       console.log('文件数量超出限制')
       if (this._elProps.limit === 1) {
         this.clearFiles()
-
-        // this.fileList.length=0;
-        // fileList.push(files[0]);
         this.$refs.fileUploader.handleStart(files[0])
         this.$refs.fileUploader.submit()
         return
@@ -196,14 +203,12 @@ export default {
         let fileReader = new FileReader()
 
         fileReader.onload = (e) => {
-          console.log('read chunk nr', currentChunk + 1, 'of', chunks)
           spark.append(e.target.result) // Append array buffer
           currentChunk++
 
           if (currentChunk < chunks) {
             loadNext()
           } else {
-            console.log('finished loading')
             let md5 = spark.end()
             console.info('computed hash', md5) // Compute hash
 
@@ -231,28 +236,44 @@ export default {
 }
 </script>
 <style>
-
-  .avatar-uploader .el-upload img{
+  .avatar-uploader .el-upload{
+    width: 148px;
+    height: 148px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fbfdff;
     border: 1px dashed #c0ccda;
     border-radius: 6px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 148px;
-    height: 148px;
-    line-height: 146px;
-    vertical-align: top;
+  }
+  .avatar-uploader .el-upload img{
+    max-width: 148px;
+    max-height: 148px;
   }
 
   .avatar-uploader .avatar-uploader-icon {
-    background-color: #fbfdff;
-    border: 1px dashed #c0ccda;
-    border-radius: 6px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 148px;
-    height: 148px;
-    line-height: 146px;
     vertical-align: top;
+    font-size: 28px;
+    color: #8c939d;
+  }
+
+  .el-upload-list--picture-card .el-upload-list__item-thumbnail {
+    max-width: 100%;
+    max-height: 100%;
+    width:auto;
+    height: auto;
+  }
+  .el-upload-list--picture-card .el-upload-list__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .el-upload-list--picture-card .el-upload-list__item-status-label {
+
+  }
+  .el-form-item__content>div{display: flex;flex-wrap: wrap;}
+  .el-upload-list--picture-card {
+    display: flex;
+    flex-wrap: wrap;
   }
 </style>

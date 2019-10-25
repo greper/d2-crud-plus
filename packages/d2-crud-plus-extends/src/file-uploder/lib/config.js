@@ -1,31 +1,40 @@
-import axios from 'axios'
-function getAuthorization (options, callback) {
-  // 服务端 JS 和 PHP 例子：https://github.com/tencentyun/cos-js-sdk-v5/blob/master/server/
-  // 服务端其他语言参考 COS STS SDK ：https://github.com/tencentyun/qcloud-cos-sts-sdk
-  // STS 详细文档指引看：https://cloud.tencent.com/document/product/436/14048
-  axios.get('http://example.com/server/sts.php', {
-    // 可从 options 取需要的参数
-  }, function (data) {
-    // eslint-disable-next-line standard/no-callback-literal
-    callback({
-      TmpSecretId: data.TmpSecretId,
-      TmpSecretKey: data.TmpSecretKey,
-      XCosSecurityToken: data.XCosSecurityToken,
-      ExpiredTime: data.ExpiredTime // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization
-    })
-  })
-}
 export default {
-  cos: {
+  defaultType: 'cos', // 默认的上传后端类型
+  cos: { // 腾讯云 cos 的配置
     domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
     bucket: 'd2p-demo-1251260344',
-    region: 'ap-guangzhou',
-    secretId: 'AKIDbz3tUqJn6D8tPeNJm22lJb9xWq0uqz8x', //
-    secretKey: 'kFVWFhwve7KGwMUQ6XrypRmphKgnkQIx', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
-    getAuthorizationFunc: getAuthorization // 不传secretKey代表使用临时签名模式时，此参数必传（安全，生产环境推荐）
+    region: '',
+    secretId: '', //
+    secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
+    getAuthorization: null // 不传secretKey代表使用临时签名模式时，此参数必传（安全，生产环境推荐）
   },
-  buildKey (fileType, fileName) {
+  alioss: {
+    domain: 'https://d2p-demo.oss-cn-shenzhen.aliyuncs.com',
+    bucket: 'd2p-demo',
+    region: 'oss-cn-shenzhen',
+    secretId: '',
+    secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
+    getAuthorization (custom) { // 不传secretKey代表使用临时签名模式时（安全）
+      return new Promise((resolve, reject) => {
+        reject(new Error('请实现config.alioss.getAuthorization，返回Promise获取临时授权token'))
+      })
+    }
+  },
+  qiniu: {
+    bucket: 'd2p-demo',
+    getToken (custom, fileType) {
+      return new Promise((resolve, reject) => {
+        reject(new Error('请实现config.qiniu.getToken方法，返回Promise获取七牛的授权token{token:xxx,expires:xxx}'))
+      })
+    },
+    domain: 'http://pzrsldiu3.bkt.clouddn.com'
+  },
+  buildKey (fileName, custom, context) { // 文件key的构建规则
     const date = new Date()
+    let fileType = 'file'
+    if (custom != null && custom.fileType != null) {
+      fileType = custom.fileType
+    }
     return fileType + '/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '/' + Math.floor(Math.random() * 1000000000000) + '-' + fileName
   }
 }

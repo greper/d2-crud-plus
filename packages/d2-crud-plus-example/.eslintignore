@@ -15,3 +15,5 @@ src/business/plugin/d2-crud/*
 src/business/plugin/d2-crud-plus/*
 !src/business/plugin/d2-crud-plus/src
 !src/business/plugin/d2-crud-plus/index.js
+
+src/mock/mockjs/*

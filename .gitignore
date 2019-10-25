@@ -16,6 +16,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-src/business/plugin/d2-crud/*
-src/business/plugin/d2-crud-plus/*
 
+packages/d2-crud

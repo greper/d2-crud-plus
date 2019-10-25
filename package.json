@@ -3,5 +3,8 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.16.4"
+  },
+  "dependencies": {
+    "qiniu-js": "^2.5.4"
   }
 }

@@ -1,5 +1,5 @@
 import cos from './uploader/cos'
-import alioss from './uploader/alioss'
+import alioss from './uploader/alioss/alioss'
 import qiniu from './uploader/qiniu'
 let map = {
   cos: cos,

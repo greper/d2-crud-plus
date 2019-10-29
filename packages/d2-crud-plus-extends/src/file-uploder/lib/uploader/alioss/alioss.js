@@ -1,5 +1,5 @@
-import config from '../config'
-import OSS from 'ali-oss'
+import config from '../../config'
+import OSS from './sdk/index'
 let sts = null
 
 function getSts (custom) {

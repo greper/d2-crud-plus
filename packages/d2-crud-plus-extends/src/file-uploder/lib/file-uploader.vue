@@ -145,9 +145,8 @@ export default {
       }
     },
     beforeUpload (file) {
-      let uploader = this.getUploader()
-      console.log('uploader:', uploader)
-      return uploader.beforeUpload(file, this.custom).then(ret => {
+      console.log('this.getUploader :', this.getUploader())
+      return this.getUploader().beforeUpload(file, this.custom).then(ret => {
         this.$set(this, 'context', ret)
         console.log('beforeUpload:context:', ret)
         return ret

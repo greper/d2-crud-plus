@@ -8,9 +8,7 @@
         "packages/d2-crud",
         "packages/d2-crud-plus-example",
         "*.md"
-      ],
-      "message": "chore(release): publish",
-      "registry": "https://npm.pkg.github.com"
+      ]
     },
     "bootstrap": {
       "ignore": [

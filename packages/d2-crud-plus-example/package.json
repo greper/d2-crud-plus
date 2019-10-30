@@ -23,9 +23,9 @@
     "axios": "^0.18.0",
     "better-scroll": "^1.15.2",
     "core-js": "^2.6.5",
-    "d2-crud-plus": "^1.1.2-alpha.0",
+    "d2-crud-plus": "^1.1.1-alpha.0",
     "d2-crud-x": "^2.0.5-1.1.0",
-    "d2p-extends": "^1.0.7-alpha.0",
+    "d2p-extends": "^1.0.8",
     "dayjs": "^1.8.16",
     "el-phone-number-input": "^1.0.1",
     "element-ui": "^2.12.0",
@@ -70,5 +70,5 @@
     "vue-template-compiler": "^2.5.21",
     "webpack-bundle-analyzer": "^3.6.0"
   },
-  "gitHead": "d7b50f6b13508336bbde6492cfc852cc11ecd7dc"
+  "gitHead": "80fa6cb173b9ef712fef8ff2490eda474bd0858d"
 }

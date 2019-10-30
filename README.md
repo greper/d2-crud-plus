@@ -262,13 +262,13 @@ export const crudOptions = {
         },
         slot:false //是否启用form编辑框的slot插槽,需要d2-crud-x才支持，示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
       },
-      valueBuilder (row) {
+      valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
         // 例如：国际手机号(mobileValue为此column的key) 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/phone
         // row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
       },
-      valueResolve (row) { 
+      valueResolve (row,key) { 
         // 组件中传回的值也需要分解成row中多个字段的值，用于提交给后台。
         // if (row.mobileValue != null) {
         //  row.phone = row.mobileValue.phoneNumber
@@ -276,6 +276,9 @@ export const crudOptions = {
         //  row.country = row.mobileValue.countryCode
         // } 
       },
+      valueChange(key ,value ,form){
+        //form表单数据change事件
+      },   
       dict: { // 数据字典配置， 供select等组件通过value匹配label
         data: [ // 本地数据字典
           { value: 'sz', label: '深圳' },

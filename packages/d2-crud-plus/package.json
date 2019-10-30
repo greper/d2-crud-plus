@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus",
   "description": "d2-admin的d2-crud的扩展 ",
-  "version": "1.1.1",
+  "version": "1.1.2-alpha.0",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -26,9 +26,9 @@
     "build:lib": "vue-cli-service build --report --target lib ./src/index.js"
   },
   "dependencies": {
-    "vue": "^2.6.10",
     "dayjs": "^1.8.16",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

@@ -1,4 +1,3 @@
-import md5 from 'md5'
 import base64js from 'base64-js'
 import Digest from '../vendor/digest'
 
@@ -47,21 +46,6 @@ function assertOptions (options) {
   if (!bucket && !endpoint) {
     throw new Error('need bucket or endpoint')
   }
-}
-
-function hexToBuffer (hex) {
-  const arr = []
-  for (let i = 0; i < hex.length; i += 2) {
-    arr.push(parseInt(hex[i] + hex[i + 1], 16))
-  }
-  return Uint8Array.from(arr)
-}
-
-function getContentMd5 (buf) {
-  // md5 doesn't work for Uint8Array
-  const bytes = Array.prototype.slice.call(buf, 0)
-  const md5Buf = hexToBuffer(md5(bytes))
-  return base64js.fromByteArray(md5Buf)
 }
 
 function getCanonicalizedOSSHeaders (headers) {
@@ -161,7 +145,6 @@ export {
   unix,
   blobToBuffer,
   assertOptions,
-  getContentMd5,
   getCanonicalizedOSSHeaders,
   getCanonicalizedResource,
   getSignature

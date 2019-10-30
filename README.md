@@ -39,6 +39,14 @@ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader
 上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 
 
+## 目录结构
+```
+packages    
+   |-- d2-crud-plus               //基础工程
+   |-- d2-crud-plus-example       //示例工程，进入到该目录下，npm run dev 即可运行示例
+   |-- d2-crud-plus-extends       //扩展组件，目前仅有文件上传组件
+```
+
 ## 快速开始
 ### 1.安装
 ```shell
@@ -365,8 +373,8 @@ d2CrudPlus.util.columnResolve.addTypes({
 ```
 
 ### <a id="type-extend">3. 类型扩展</a>
-您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块
-
+您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块   
+https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends
 
 ### <a id="dict-out">4. 外部使用数据字典</a>
 * 某些时候数据字典需要在crud外部使用

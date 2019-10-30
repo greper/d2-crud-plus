@@ -1,6 +1,25 @@
 {
   "packages": [
-    "packages/d2-crud-*"
+    "packages/*"
   ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "packages/d2-crud",
+        "packages/d2-crud-plus-example",
+        "*.md"
+      ],
+      "message": "chore(release): publish",
+      "registry": "https://npm.pkg.github.com"
+    },
+    "bootstrap": {
+      "ignore": [
+        "packages/d2-crud"
+      ],
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    }
+  },
   "version": "independent"
 }

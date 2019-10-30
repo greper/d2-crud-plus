@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { D2pFileUploader } from 'd2p-extends'
+import { D2pFileUploader } from 'd2p-extends/src'
 import request from '@/plugin/axios'
 // 引入d2Crud
 Vue.use(d2Crud)

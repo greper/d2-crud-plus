@@ -1,1 +1,1 @@
-module.exports = require('./TinyOSS').default;
+module.exports = require('./TinyOSS').default

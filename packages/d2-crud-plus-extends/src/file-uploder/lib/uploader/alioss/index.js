@@ -1,5 +1,6 @@
 import config from '../../config'
 import OSS from './sdk/index'
+// import OSS from 'ali-oss'
 let sts = null
 
 function getSts (custom) {

@@ -35,6 +35,10 @@ export default {
     if (custom != null && custom.fileType != null) {
       fileType = custom.fileType
     }
-    return fileType + '/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '/' + Math.floor(Math.random() * 1000000000000) + '-' + fileName
+    let ext = ''
+    if (fileName.lastIndexOf('.') >= 0) {
+      ext = fileName.substring(fileName.lastIndexOf('.'))
+    }
+    return fileType + '/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '/' + Math.floor(Math.random() * 100000000000000) + ext
   }
 }

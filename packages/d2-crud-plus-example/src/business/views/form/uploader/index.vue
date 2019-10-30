@@ -53,6 +53,7 @@
                   @change="handlePaginationChange"
     >
     </crud-footer>
+
   </d2-container>
 </template>
 
@@ -61,6 +62,7 @@ import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
+
 export default {
   name: 'uploaderPage',
   components: {},

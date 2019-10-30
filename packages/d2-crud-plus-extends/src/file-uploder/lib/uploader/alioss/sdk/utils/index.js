@@ -1,123 +1,123 @@
-import md5 from 'md5';
-import base64js from 'base64-js';
-import Digest from '../vendor/digest';
+import md5 from 'md5'
+import base64js from 'base64-js'
+import Digest from '../vendor/digest'
 
-function isDate(obj) {
-  return obj && Object.prototype.toString.call(obj) === '[object Date]' && obj.toString !== 'Invalid Date';
+function isDate (obj) {
+  return obj && Object.prototype.toString.call(obj) === '[object Date]' && obj.toString !== 'Invalid Date'
 }
 
-function unix(date) {
-  let d;
+function unix (date) {
+  let d
   if (date) {
-    d = new Date(date);
+    d = new Date(date)
   }
   if (!isDate(d)) {
-    d = new Date();
+    d = new Date()
   }
-  return Math.round(d.getTime() / 1000);
+  return Math.round(d.getTime() / 1000)
 }
 
-function blobToBuffer(blob) {
+function blobToBuffer (blob) {
   return new Promise((resolve, reject) => {
-    const fr = new FileReader();
+    const fr = new FileReader()
     fr.onload = () => {
-      const result = new Uint8Array(fr.result);
-      resolve(result);
-    };
+      const result = new Uint8Array(fr.result)
+      resolve(result)
+    }
     fr.onerror = () => {
-      reject(fr.error);
-    };
-    fr.readAsArrayBuffer(blob);
-  });
+      reject(fr.error)
+    }
+    fr.readAsArrayBuffer(blob)
+  })
 }
 
-function assertOptions(options) {
+function assertOptions (options) {
   const {
     accessKeyId,
     accessKeySecret,
     bucket,
-    endpoint,
-  } = options;
+    endpoint
+  } = options
   if (!accessKeyId) {
-    throw new Error('need accessKeyId');
+    throw new Error('need accessKeyId')
   }
   if (!accessKeySecret) {
-    throw new Error('need accessKeySecret');
+    throw new Error('need accessKeySecret')
   }
   if (!bucket && !endpoint) {
-    throw new Error('need bucket or endpoint');
+    throw new Error('need bucket or endpoint')
   }
 }
 
-function hexToBuffer(hex) {
-  const arr = [];
+function hexToBuffer (hex) {
+  const arr = []
   for (let i = 0; i < hex.length; i += 2) {
-    arr.push(parseInt(hex[i] + hex[i + 1], 16));
+    arr.push(parseInt(hex[i] + hex[i + 1], 16))
   }
-  return Uint8Array.from(arr);
+  return Uint8Array.from(arr)
 }
 
-function getContentMd5(buf) {
+function getContentMd5 (buf) {
   // md5 doesn't work for Uint8Array
-  const bytes = Array.prototype.slice.call(buf, 0);
-  const md5Buf = hexToBuffer(md5(bytes));
-  return base64js.fromByteArray(md5Buf);
+  const bytes = Array.prototype.slice.call(buf, 0)
+  const md5Buf = hexToBuffer(md5(bytes))
+  return base64js.fromByteArray(md5Buf)
 }
 
-function getCanonicalizedOSSHeaders(headers) {
-  let result = '';
-  let headerNames = Object.keys(headers);
+function getCanonicalizedOSSHeaders (headers) {
+  let result = ''
+  let headerNames = Object.keys(headers)
 
-  headerNames = headerNames.map(name => name.toLowerCase());
-  headerNames.sort();
+  headerNames = headerNames.map(name => name.toLowerCase())
+  headerNames.sort()
 
   headerNames.forEach((name) => {
     if (name.indexOf('x-oss-') === 0) {
-      result += `${name}:${headers[name]}\n`;
+      result += `${name}:${headers[name]}\n`
     }
-  });
+  })
 
-  return result;
+  return result
 }
 
-function getCanonicalizedResource(bucket = '', objectName = '', parameters) {
-  let resourcePath = '';
+function getCanonicalizedResource (bucket = '', objectName = '', parameters) {
+  let resourcePath = ''
   if (bucket) {
-    resourcePath += `/${bucket}`;
+    resourcePath += `/${bucket}`
   }
   if (objectName) {
     if (objectName.charAt(0) !== '/') {
-      resourcePath += '/';
+      resourcePath += '/'
     }
-    resourcePath += objectName;
+    resourcePath += objectName
   }
 
-  let canonicalizedResource = `${resourcePath}`;
-  let separatorString = '?';
+  let canonicalizedResource = `${resourcePath}`
+  let separatorString = '?'
 
   if (parameters) {
     const compareFunc = (entry1, entry2) => {
       if (entry1[0] > entry2[0]) {
-        return 1;
+        return 1
       } if (entry1[0] < entry2[0]) {
-        return -1;
+        return -1
       }
-      return 0;
-    };
+      return 0
+    }
     const processFunc = (key) => {
-      canonicalizedResource += separatorString + key;
+      canonicalizedResource += separatorString + key
       if (parameters[key]) {
-        canonicalizedResource += `=${parameters[key]}`;
+        canonicalizedResource += `=${parameters[key]}`
       }
-      separatorString = '&';
-    };
-    Object.keys(parameters).sort(compareFunc).forEach(processFunc);
+      separatorString = '&'
+    }
+    Object.keys(parameters).sort(compareFunc).forEach(processFunc)
   }
 
-  return canonicalizedResource;
+  return canonicalizedResource
 }
 
-function getSignature(options = {}) {
+function getSignature (options = {}) {
   const {
     type = 'header',
     verb = '',
@@ -127,34 +127,34 @@ function getSignature(options = {}) {
     objectName,
     accessKeySecret,
     headers = {},
-    subResource,
-  } = options;
-  const date = headers['x-oss-date'] || '';
-  const contentType = headers['Content-Type'] || '';
+    subResource
+  } = options
+  const date = headers['x-oss-date'] || ''
+  const contentType = headers['Content-Type'] || ''
   const data = [
     verb,
     contentMd5,
-    contentType,
-  ];
+    contentType
+  ]
 
   if (type === 'header') {
-    data.push(date);
+    data.push(date)
   } else {
-    data.push(expires);
+    data.push(expires)
   }
 
-  const canonicalizedOSSHeaders = getCanonicalizedOSSHeaders(headers);
-  const canonicalizedResource = getCanonicalizedResource(bucket, objectName, subResource);
+  const canonicalizedOSSHeaders = getCanonicalizedOSSHeaders(headers)
+  const canonicalizedResource = getCanonicalizedResource(bucket, objectName, subResource)
 
-  data.push(`${canonicalizedOSSHeaders}${canonicalizedResource}`);
-
-  const text = data.join('\n');
-  const hmac = new Digest.HMAC_SHA1();
-  hmac.setKey(accessKeySecret);
-  hmac.update(text);
-  const hashBuf = new Uint8Array(hmac.finalize());
-  const signature = base64js.fromByteArray(hashBuf);
-  return signature;
+  data.push(`${canonicalizedOSSHeaders}${canonicalizedResource}`)
+  const text = data.join('\n')
+  console.log('text', text, accessKeySecret)
+  const hmac = new Digest.HMAC_SHA1()
+  hmac.setKey(accessKeySecret)
+  hmac.update(text)
+  const hashBuf = new Uint8Array(hmac.finalize())
+  const signature = base64js.fromByteArray(hashBuf)
+  return signature
 }
 
 export {
@@ -164,5 +164,5 @@ export {
   getContentMd5,
   getCanonicalizedOSSHeaders,
   getCanonicalizedResource,
-  getSignature,
-};
+  getSignature
+}

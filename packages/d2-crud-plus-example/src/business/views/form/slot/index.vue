@@ -30,7 +30,8 @@
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
-        @form-data-change="handleFormDataChange">
+        @form-data-change="handleFormDataChange"
+        @custom-emit="customEmit">
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
 
       <template slot="createDateSlot" slot-scope="scope">
@@ -94,6 +95,9 @@ export default {
     inputBlur (event) {
       console.log('失去焦点：', event)
       this.$message('失去焦点：' + event)
+    },
+    customEmit () {
+      this.$message('自定义按钮')
     }
   }
 }

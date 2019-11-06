@@ -20,5 +20,16 @@ export const crudOptions = {
       },
       rowSlot: true
     }
-  ]
+  ],
+  rowHandle: {
+    width: 400,
+    custom: [
+      {
+        text: '自定义按钮',
+        type: 'warning',
+        size: 'small',
+        emit: 'custom-emit'
+      }
+    ]
+  }
 }

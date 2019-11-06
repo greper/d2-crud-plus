@@ -87,10 +87,10 @@ export default {
      */
     initColumns () {
       let crudOptions = this.getCrudOptions()
-
-      Object.assign(this.crud.options, crudOptions.options ? crudOptions.options : {})
-      Object.assign(this.crud.formOptions, crudOptions.formOptions ? crudOptions.formOptions : {})
-      Object.assign(this.crud.searchOptions, crudOptions.searchOptions ? crudOptions.searchOptions : {})
+      merge(this.crud, crudOptions)
+      // Object.assign(this.crud.options, crudOptions.options ? crudOptions.options : {})
+      // Object.assign(this.crud.formOptions, crudOptions.formOptions ? crudOptions.formOptions : {})
+      // Object.assign(this.crud.searchOptions, crudOptions.searchOptions ? crudOptions.searchOptions : {})
 
       this.crud.columns = []
       this.crud.searchOptions.columns = []
@@ -98,7 +98,6 @@ export default {
       for (let item of crudOptions.columns) {
         let key = item.key
         let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
-        console.log('defaultColumn', defaultColumn)
         // 用户配置覆盖默认配置
         let itemCopy = cloneDeep(item)
         Object.assign(item, defaultColumn)
@@ -111,7 +110,6 @@ export default {
           }
         }
         let form = item.form
-        console.log('form', form)
         if (item.search != null && item.search.disabled !== true) {
           let component = cloneDeep(item.form.component)
           let search = {

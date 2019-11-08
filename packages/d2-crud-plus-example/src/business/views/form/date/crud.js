@@ -120,7 +120,7 @@ export const crudOptions = {
         }
       },
       valueResolve (row, key) {
-        if (row.daterange != null) {
+        if (row.daterange != null && !StringUtils.hasEmpty(row.daterange)) {
           row.daterangeStart = row.daterange[0].getTime()
           row.daterangeEnd = row.daterange[1].getTime()
         }
@@ -131,7 +131,7 @@ export const crudOptions = {
       key: 'datetimerange',
       sortable: true,
       type: 'datetimerange',
-      width: 290,
+      width: 300,
       form: {
         component: {
           'time-arrow-control': true,
@@ -145,7 +145,7 @@ export const crudOptions = {
         }
       },
       valueResolve (row, key) {
-        if (row.datetimerange != null) {
+        if (row.datetimerange != null && !StringUtils.hasEmpty(row.datetimerange)) {
           row.datetimerangeStart = row.datetimerange[0].getTime()
           row.datetimerangeEnd = row.datetimerange[1].getTime()
         }

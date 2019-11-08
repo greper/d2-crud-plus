@@ -63,18 +63,6 @@ export default {
      * @returns {*}
      */
     beforeSave (row) {
-      let daterange = row.daterange // 一个date数组
-      if (daterange != null && daterange.length >= 2) {
-        row.daterangeStart = daterange[0].getTime()
-        row.daterangeEnd = daterange[1].getTime()
-        delete row.daterange
-      }
-      let datetimerange = row.datetimerange // 一个date数组
-      if (datetimerange != null && datetimerange.length >= 2) {
-        row.datetimerangeStart = datetimerange[0].getTime()
-        row.datetimerangeEnd = datetimerange[1].getTime()
-        delete row.datetimerange
-      }
       return row
     },
     /**
@@ -82,10 +70,6 @@ export default {
      * @param opt
      */
     handleDialogOpen (opt) {
-      if (opt.row != null) {
-        opt.row.daterange = [new Date(opt.row.daterangeStart), new Date(opt.row.daterangeEnd)]
-        opt.row.datetimerange = [new Date(opt.row.datetimerangeStart), new Date(opt.row.datetimerangeEnd)]
-      }
     },
     delRequest (row) {
       return DelObj(row.id)

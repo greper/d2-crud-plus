@@ -6,7 +6,6 @@
     "publish": {
       "ignoreChanges": [
         "packages/d2-crud",
-        "packages/d2-crud-plus-example",
         "*.md"
       ]
     },

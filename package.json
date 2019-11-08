@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "lerna": "^3.18.4"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "publish": "lerna publish --skip-npm"
   }
 }

@@ -123,6 +123,9 @@ export const crudOptions = {
         if (row.daterange != null && !StringUtils.hasEmpty(row.daterange)) {
           row.daterangeStart = row.daterange[0].getTime()
           row.daterangeEnd = row.daterange[1].getTime()
+        } else {
+          row.daterangeStart = null
+          row.daterangeEnd = null
         }
       }
     },
@@ -148,6 +151,9 @@ export const crudOptions = {
         if (row.datetimerange != null && !StringUtils.hasEmpty(row.datetimerange)) {
           row.datetimerangeStart = row.datetimerange[0].getTime()
           row.datetimerangeEnd = row.datetimerange[1].getTime()
+        } else {
+          row.datetimerangeStart = null
+          row.datetimerangeEnd = null
         }
       }
     }

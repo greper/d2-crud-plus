@@ -7,10 +7,11 @@ export const crudOptions = {
       width: 200,
       form: {
         valueChange (key, value, form) {
-          console.log('valueResolve', value)
-          if (value != null) {
-            form.avatarSize = value.size
-            form.avatarMd5 = value.md5
+          console.log('valueResolve', value, key, form)
+          if (value != null && value.length > 0 && value[0] != null) {
+            form.avatarSize = value[0].size
+            form.avatarMd5 = value[0].md5
+            console.log('avatarMd5,size:', form, value.size, value.md5)
           }
         },
         helper: '上传后，右边将获取到头像大小和md5值'

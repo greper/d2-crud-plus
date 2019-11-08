@@ -164,7 +164,6 @@ export default {
       })
     },
     doUpload (option) {
-      console.error('do upload options:', option)
       return this.getUploader().doUpload(option, this.custom, this.context).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix

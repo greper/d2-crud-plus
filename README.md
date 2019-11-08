@@ -417,9 +417,12 @@ d2-crud-x为d2-crud的修改版，用于支持一些新特性
 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
 ### <a id="d2-crud-x-table-hide">2. 表格隐藏+自定义</a>
 某些需求下，数据内容展示方式不一定是表格，但又需要添加修改和删除功能
+    
 示例：http://qiniu.veryreader.com/D2CrudPlusExample/#/hotel/dashboard
 ### <a id="d2-crud-x-form-change">3. formDataChange支持自定义组件</a>
-官方版formDataChange不支持自定义组件
+1. 官方版formDataChange不支持自定义组件
+2. 修复formDataChange获取的值是旧值的bug   
+   
 示例：http://qiniu.veryreader.com/D2CrudPlusExample/#/form/uploader
 
 

@@ -1,31 +1,15 @@
 import request from '@/plugin/axios'
 export function GetList (query) {
-  return new Promise(resolve => {
-    resolve({
-      code: 1,
-      msg: '',
-      data: {
-        current: 1,
-        total: 4,
-        size: 10,
-        records: [
-          {
-            code: '86',
-            phone: '18601010202'
-          },
-          {
-            country: 'CN',
-            phone: '18601010202'
-          }
-        ]
-      }
-    })
+  return request({
+    url: '/phone/page',
+    method: 'get',
+    data: query
   })
 }
 
 export function AddObj (obj) {
   return request({
-    url: '/test/add',
+    url: '/phone/add',
     method: 'post',
     data: obj
   })
@@ -33,15 +17,22 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: '/test/update',
+    url: '/phone/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: '/test/delete',
+    url: '/phone/delete',
     method: 'post',
     params: { id }
+  })
+}
+export function GetCustomName (callingCode, mobile) {
+  return request({
+    url: '/phone/getCustomName',
+    method: 'get',
+    params: { callingCode, mobile }
   })
 }

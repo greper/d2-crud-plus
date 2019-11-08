@@ -6,13 +6,13 @@ let options = {
 }
 const list = [
   {
-    id: ++options.idGenerator,
+    id: 1,
     avatar: 'http://qiniu.veryreader.com/extends/avatar.jpg',
     file: 'http://qiniu.veryreader.com/extends/avatar.jpg',
     image: 'http://qiniu.veryreader.com/extends/avatar.jpg'
   },
   {
-    id: ++options.idGenerator,
+    id: 2,
     avatar: 'http://qiniu.veryreader.com/extends/avatar.jpg',
     file: 'http://qiniu.veryreader.com/extends/avatar.jpg',
     image: 'http://qiniu.veryreader.com/extends/avatar.jpg'

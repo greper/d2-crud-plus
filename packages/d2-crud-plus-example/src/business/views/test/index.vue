@@ -35,13 +35,16 @@
 <script>
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { AddObj, UpdateObj, DelObj } from './api'
+import { GetList, AddObj, UpdateObj, DelObj } from './api'
 export default {
   name: 'testPage',
   mixins: [d2CrudPlus.crud],
   methods: {
     getCrudOptions () {
       return crudOptions
+    },
+    pageRequest (query) {
+      return GetList(query)
     },
     addRequest (row) {
       return AddObj(row)
@@ -51,41 +54,6 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
-    },
-    pageRequest (query) {
-      return new Promise(resolve => {
-        resolve({
-          code: 1,
-          msg: '',
-          data: {
-            current: 1,
-            total: 4,
-            size: 10,
-            records: [
-              {
-                date: '2016-05-02',
-                status: '0',
-                province: 'sz'
-              },
-              {
-                date: '2016-05-04',
-                status: '1',
-                province: 'sh,sz'
-              },
-              {
-                date: 2232433534511,
-                status: '1',
-                province: 'gz'
-              },
-              {
-                date: '2016-05-03',
-                status: '2',
-                province: 'wh,gz'
-              }
-            ]
-          }
-        })
-      })
     }
   }
 }

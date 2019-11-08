@@ -1,4 +1,6 @@
 import { cloneDeep } from 'lodash'
+import dayjs from 'dayjs'
+import StringUtils from './util.string'
 /**
  * 根据type获取column的默认配置
  * @type
@@ -38,7 +40,7 @@ const DefaultComponents = {
         }
       }
     },
-    formatter: daterangeFormatter
+    formatter: datetimerangeFormatter
   },
   time: {
     form: { component: { name: 'el-time-picker' } },
@@ -88,10 +90,29 @@ const DefaultComponents = {
 }
 
 function daterangeFormatter (row, column, value, index) {
+  console.log('daterangeFormatter:', value)
+  return dateFormatter(value, 'YYYY-MM-DD')
+}
+function datetimerangeFormatter (row, column, value, index) {
+  console.log('datetimerangeFormatter:', value)
+  return dateFormatter(value, 'YYYY-MM-DD HH:mm:ss')
+}
+
+function dateFormatter (value, format = 'YYYY-MM-DD HH:mm:ss') {
   if (value != null && value instanceof Array && value.length > 1) {
-    return value[0] + '-' + value[1]
+    if (StringUtils.hasEmpty(value)) {
+      return undefined
+    }
+    return doFormat(value[0], format) + '至' + doFormat(value[1], format)
   }
-  return value
+  return doFormat(value, format)
+}
+
+function doFormat (date, format) {
+  if (StringUtils.isEmpty(date)) {
+    return undefined
+  }
+  return dayjs(date).format(format)
 }
 
 function getByType (type, item) {

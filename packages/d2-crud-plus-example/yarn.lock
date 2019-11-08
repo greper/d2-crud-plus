@@ -637,13 +637,6 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.4.4":
-  version "7.6.3"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.3.tgz#935122c74c73d2240cafd32ddb5fc2a6cd35cf1f"
-  integrity sha512-kq6anf9JGjW8Nt5rYfEuGRaEAaH1mkv3Bbu6rYvLOpPh/RusSJXuKPEAoZ7L7gybZkchE8+NV5g9vKF4AGAtsA==
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
 "@babel/template@^7.1.0", "@babel/template@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.4.tgz#f4b88d1225689a08f5bc3a17483545be9e4ed237"
@@ -3246,11 +3239,6 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-charenc@~0.0.1:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
-  integrity sha1-wKHS86cJLgN3S/qD8UwPxXkKhmc=
-
 check-types@^8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
@@ -3857,11 +3845,6 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-crypt@~0.0.1:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
-  integrity sha1-iNf/fsDfuG9xPch7u0LQRNPmxBs=
-
 crypto-browserify@^3.11.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/crypto-browserify/-/crypto-browserify-3.12.0.tgz#396cf9f3137f03e4b8e532c58f698254e00f80ec"
@@ -4094,12 +4077,13 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
-d2-crud-plus@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.1.1.tgz#e6bc60105f89426f44cd29e0ac14f414ae2cc236"
-  integrity sha512-uofSKmiH//18D5NHr0ugPlhBujjEePwFv8JWIKaZmRmD04Lj2g30tnFGR21GoepcI0GmYCkhhYNzxrY+wSGrOQ==
+d2-crud-plus@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.1.3.tgz#e39430a5f81624404c733deeccea51c34e6cb92d"
+  integrity sha512-bVeEIIKdp3m9HXMc+5qIEMhm8k01vWAiPjbXha54EsKLpB4nKUIFSCbRftWh8OYG+M66yINT+7MTMRxps6IKiQ==
   dependencies:
     dayjs "^1.8.16"
+    lodash "^4.17.11"
     vue "^2.6.10"
 
 d2-crud-x@^2.0.5-1.1.0:
@@ -4114,15 +4098,13 @@ d2-crud-x@^2.0.5-1.1.0:
     lodash.set "^4.3.2"
     vue "^2.6.10"
 
-d2p-extends@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.0.6.tgz#5a7212d08ef3d69309a984d3b690a5964c3e5689"
-  integrity sha512-W4OKZcYkKSwZF9s35adLN7zdldRpgao1IJ3tTZ6DFxIa/FvnmzZxVP+sYa7fiqniWsKpUUeNJIlxH6s2s42VIg==
+d2p-extends@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.0.9.tgz#6e7a8446847f7ec018349e412568cb323685b27e"
+  integrity sha512-J8VtRswtqJY9NmwEqxKAp/dN+T7aOc72Bxz5mtNUDzrRpIysSvtz2e8IY5wmrZ/f/p/aIAAZfNmV7Jxls6okNQ==
   dependencies:
-    "@babel/runtime" "^7.4.4"
     base64-js "^1.3.0"
     cos-js-sdk-v5 "^0.5.20"
-    md5 "^2.2.1"
     object-assign "^4.1.1"
     qiniu-js "^2.5.4"
     spark-md5 "^3.0.0"
@@ -4596,12 +4578,11 @@ ejs@^2.6.1:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.6.2.tgz#3a32c63d1cd16d11266cd4703b14fec4e74ab4f6"
   integrity sha512-PcW2a0tyTuPHz3tWyYqtK6r1fZ3gp+3Sop8Ph+ZYN81Ob5rwmbHEzaqs10N3BEsaGTkh/ooniXK+WwszGlc2+Q==
 
-el-phone-number-input@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/el-phone-number-input/-/el-phone-number-input-1.0.2.tgz#e56959c20ae7aae851bfea4d097dea844593c9df"
-  integrity sha512-sRzdN+WXiVlLfvmrLGOqLVj9p0WVshTf1Ie7d5DOMZUq+8mhoj2UhDUF4udhr3VTDHVkqvNDrDRoVTOcw4L9rQ==
+el-phone-number-input@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/el-phone-number-input/-/el-phone-number-input-1.0.4.tgz#eb4d0de1cc370dfd95a2a004fd3c26a5faf9b8f3"
+  integrity sha512-x1BzEM8ZASz5C/BiOstaf5Zv0JCBbToeuswpSbCgC85eBTgC3C4W1TdO9tFbeTb+EWYka7irqux0psZwI3f6ZQ==
   dependencies:
-    element-ui "^2.11.1"
     libphonenumber-js "^1.7.25"
     vue "^2.6.10"
 
@@ -4609,18 +4590,6 @@ electron-to-chromium@^1.3.191:
   version "1.3.232"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.232.tgz#3d812f5082b26b852bd4e98818cd86f10b6ff128"
   integrity sha512-11F8S49B+8AJy5V540BofxvJ1tWP4wZZ0sOre6KF32evS1YSHXiUB7+TQ/mjrfzg1lirnlA8XDdU8CDcJrBCbA==
-
-element-ui@^2.11.1:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.11.1.tgz#2b67f9eee3eda2e6884873c1c589cbe30d9a9d60"
-  integrity sha512-PACNMHPWqm+/Wc2f/q93pLNzbNyVbpMCXCrYe81czengSWj7IBku7F3zccybkxtWn5qdCmMDBCpG5BzGJL4rKA==
-  dependencies:
-    async-validator "~1.8.1"
-    babel-helper-vue-jsx-merge-props "^2.0.0"
-    deepmerge "^1.2.0"
-    normalize-wheel "^1.0.1"
-    resize-observer-polyfill "^1.5.0"
-    throttle-debounce "^1.0.1"
 
 element-ui@^2.12.0:
   version "2.12.0"
@@ -6629,7 +6598,7 @@ is-binary-path@^2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-buffer@^1.1.5, is-buffer@~1.1.1:
+is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
@@ -8031,15 +8000,6 @@ md5.js@^1.3.4:
     hash-base "^3.0.0"
     inherits "^2.0.1"
     safe-buffer "^5.1.2"
-
-md5@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/md5/-/md5-2.2.1.tgz#53ab38d5fe3c8891ba465329ea23fac0540126f9"
-  integrity sha1-U6s41f48iJG6RlMp6iP6wFQBJvk=
-  dependencies:
-    charenc "~0.0.1"
-    crypt "~0.0.1"
-    is-buffer "~1.1.1"
 
 mdn-data@2.0.4:
   version "2.0.4"

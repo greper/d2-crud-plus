@@ -1,29 +1,15 @@
 import request from '@/plugin/axios'
 export function GetList (query) {
-  return new Promise(resolve => {
-    resolve({
-      code: 1,
-      msg: '',
-      data: {
-        current: 1,
-        total: 4,
-        size: 10,
-        records: [
-          {
-            date: '2550-12-11 11:11:11'
-          },
-          {
-            date: '2550-11-11 11:11:11'
-          }
-        ]
-      }
-    })
+  return request({
+    url: '/customType/page',
+    method: 'get',
+    data: query
   })
 }
 
 export function AddObj (obj) {
   return request({
-    url: '/test/add',
+    url: '/customType/add',
     method: 'post',
     data: obj
   })
@@ -31,14 +17,14 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: '/test/update',
+    url: '/customType/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: '/test/delete',
+    url: '/customType/delete',
     method: 'post',
     params: { id }
   })

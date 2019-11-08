@@ -1,4 +1,5 @@
-import dayjs from 'dayjs'
+import StringUtils from 'd2-crud-plus/src/lib/utils/util.string'
+
 function toNooning (date) {
   if (date == null) {
     date = new Date()
@@ -113,8 +114,16 @@ export const crudOptions = {
           'picker-options': { shortcuts: shortcuts }
         }
       },
-      formatter (row, column, value, index) {
-        return dayjs(row['daterangeStart']).format('YYYY-MM-DD') + '至' + dayjs(row['daterangeEnd']).format('YYYY-MM-DD')
+      valueBuilder (row, key) {
+        if (!StringUtils.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
+          row.daterange = [new Date(row.daterangeStart), new Date(row.daterangeEnd)]
+        }
+      },
+      valueResolve (row, key) {
+        if (row.daterange != null) {
+          row.daterangeStart = row.daterange[0].getTime()
+          row.daterangeEnd = row.daterange[1].getTime()
+        }
       }
     },
     {
@@ -122,7 +131,7 @@ export const crudOptions = {
       key: 'datetimerange',
       sortable: true,
       type: 'datetimerange',
-      width: 260,
+      width: 290,
       form: {
         component: {
           'time-arrow-control': true,
@@ -130,8 +139,16 @@ export const crudOptions = {
           'picker-options': { shortcuts: shortcuts }
         }
       },
-      formatter (row, column, value, index) {
-        return dayjs(row['datetimerangeStart']).format('YYYY-MM-DD HH:mm') + '至' + dayjs(row['datetimerangeEnd']).format('YYYY-MM-DD HH:mm')
+      valueBuilder (row, key) {
+        if (!StringUtils.hasEmpty(row.datetimerangeStart, row.datetimerangeEnd)) {
+          row.datetimerange = [new Date(row.datetimerangeStart), new Date(row.datetimerangeEnd)]
+        }
+      },
+      valueResolve (row, key) {
+        if (row.datetimerange != null) {
+          row.datetimerangeStart = row.datetimerange[0].getTime()
+          row.datetimerangeEnd = row.datetimerange[1].getTime()
+        }
       }
     }
   ]

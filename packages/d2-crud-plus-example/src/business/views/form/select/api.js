@@ -1,45 +1,15 @@
 import request from '@/plugin/axios'
 
 export function GetList (query) {
-  return new Promise(resolve => {
-    resolve({
-      code: 1,
-      msg: '',
-      data: {
-        current: 1,
-        total: 4,
-        size: 10,
-        records: [
-          {
-            status: '0',
-            mselect: 'sz',
-            cascader: ['zhinan', 'shejiyuanze', 'yizhi']
-          },
-          {
-            status: '1',
-            mselect: 'sh,sz',
-            slotExample: 'slotExample'
-          },
-          {
-            status: '1',
-            mselect: 'gz',
-            slotExample: 'slotExample'
-          },
-          {
-            date: '2016-05-03',
-            status: '2',
-            mselect: 'wh,gz',
-            slotExample: 'slotExample'
-          }
-        ]
-      }
-    })
+  return request({
+    url: '/select/page',
+    method: 'get',
+    data: query
   })
 }
-
 export function AddObj (obj) {
   return request({
-    url: '/test/add',
+    url: '/select/add',
     method: 'post',
     data: obj
   })
@@ -47,14 +17,14 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: '/test/update',
+    url: '/select/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: '/test/delete',
+    url: '/select/delete',
     method: 'post',
     params: { id }
   })

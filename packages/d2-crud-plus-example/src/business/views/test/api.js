@@ -2,7 +2,7 @@ import request from '@/plugin/axios'
 
 export function GetList (query) {
   return request({
-    url: '/test/list',
+    url: '/test/page',
     method: 'get',
     params: query
   })

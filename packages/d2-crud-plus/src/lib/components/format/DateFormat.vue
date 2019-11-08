@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     doFormat () {
-      if (this.value == null) {
+      if (this.value == null || this.value === '') {
         return ''
       }
       let date = null

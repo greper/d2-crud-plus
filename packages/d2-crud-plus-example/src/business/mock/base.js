@@ -2,6 +2,9 @@ export default {
   buildMock (options) {
     let name = options.name
     let list = options.list
+    for (let item of list) {
+      item.id = ++options.idGenerator
+    }
     return [
       {
         path: 'api/' + name + '/page',

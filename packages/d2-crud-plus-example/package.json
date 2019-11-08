@@ -27,7 +27,7 @@
     "d2-crud-x": "^2.0.5-1.1.0",
     "d2p-extends": "^1.0.9",
     "dayjs": "^1.8.16",
-    "el-phone-number-input": "^1.0.2",
+    "el-phone-number-input": "^1.0.4",
     "element-ui": "^2.12.0",
     "flex.css": "^1.1.7",
     "fuse.js": "^3.4.4",

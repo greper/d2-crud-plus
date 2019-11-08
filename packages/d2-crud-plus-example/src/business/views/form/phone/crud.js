@@ -13,6 +13,11 @@ export const crudOptions = {
       },
       type: 'phoneNumber',
       form: {
+        component: {
+          props: {
+            onlyCountries: ['CN', 'HK', 'TW', 'US']
+          }
+        },
         rules: [{ required: true, message: '请输入手机号' }, { validator: mobileValidator, message: '手机号不正确' }],
         helper: '手机号输入完成后，可以远程获取客户姓名',
         valueChange (key, value, form) {
@@ -45,7 +50,23 @@ export const crudOptions = {
         disabled: false
       },
       form: {
-        rules: [{ required: false, message: '请输入客户姓名' }]
+        rules: [{ required: false, message: '请输入客户姓名' }],
+        helper: '远程获取客户姓名在这里显示'
+      }
+    },
+    {
+      title: '手机号2',
+      key: 'allMobileValue',
+      sortable: true,
+      align: 'left',
+      search: {
+        disabled: false,
+        width: '260px'
+      },
+      type: 'phoneNumber',
+      form: {
+        rules: [{ required: true, message: '请输入手机号' }, { validator: mobileValidator, message: '手机号不正确' }],
+        helper: '支持全部国家，支持输入筛选'
       }
     }
   ]

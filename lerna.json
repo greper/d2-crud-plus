@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/d2-*"
+    "packages/d2-crud-*"
   ],
   "command": {
     "publish": {

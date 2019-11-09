@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { D2pFileUploader } from 'd2p-extends/src' // 源码方式引入，上传组件支持懒加载
+import {D2pAreaSelector, D2pFileUploader, ElComponents} from 'd2p-extends/src' // 源码方式引入，上传组件支持懒加载
 import request from '@/plugin/axios'
 // 引入d2Crud
 Vue.use(d2Crud)
@@ -17,6 +17,8 @@ Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
 })
 
 // 安装扩展插件
+Vue.use(ElComponents, { d2CrudPlus })
+Vue.use(D2pAreaSelector, { d2CrudPlus })
 Vue.use(D2pFileUploader, {
   d2CrudPlus,
   defaultType: 'cos',

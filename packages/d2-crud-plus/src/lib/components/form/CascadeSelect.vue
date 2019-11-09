@@ -2,10 +2,12 @@
   <el-cascader
     v-model="_value"
     :options="options"
+    v-bind="_elProps"
     @change="handleChange"></el-cascader>
 </template>
 
 <script>
+import { merge } from 'lodash'
 import dict from '../../utils/util.dicts'
 export default {
   name: 'cascade-select',
@@ -25,6 +27,18 @@ export default {
     }
   },
   computed: {
+    _elProps () {
+      let defaultElProps = { props: {} }
+      if (this.dict != null && this.dict.label != null) {
+        defaultElProps.props.label = this.dict.label
+      }
+      if (this.dict != null && this.dict.value != null) {
+        defaultElProps.props.value = this.dict.value
+      }
+      merge(defaultElProps, this.elProps)
+      console.log('props:', defaultElProps)
+      return defaultElProps
+    },
     _value: {
       get () {
         if (this.value == null) {
@@ -52,8 +66,7 @@ export default {
     setValue (newVal) {
     },
     handleChange ($event) {
-      console.log('event:', $event)
-      // this.$emit('input', $event)
+      this.$emit('change', $event)
     }
   }
 }

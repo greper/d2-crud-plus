@@ -4,11 +4,13 @@ import crud from './mixins/crud'
 import dict from './utils/util.dicts'
 import height from './utils/util.height'
 import columnResolve from './utils/util.column.resolve'
+import lodash from './utils/util.lodash'
 
 const util = {
   dict,
   height,
-  columnResolve
+  columnResolve,
+  lodash
 }
 
 const install = (Vue, options) => {

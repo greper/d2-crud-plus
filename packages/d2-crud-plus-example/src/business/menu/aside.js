@@ -10,7 +10,9 @@ export default [
       { path: '/form/slot', title: '插槽式自定义组件' },
       { path: '/form/phone', title: '国际电话输入校验' },
       { path: '/form/uploader', title: '文件上传' },
-      { path: '/form/customType', title: '自定义字段类型' }
+      { path: '/form/customType', title: '自定义字段类型' },
+      { path: '/form/el', title: 'El表单组件' },
+      { path: '/form/area', title: '省市区选择组件' }
     ]
   },
   {

@@ -55,7 +55,7 @@ export default {
         }
       },
       {
-        path: 'api/upload/delete',
+        path: 'api/' + name + '/delete',
         method: 'post',
         handle (req) {
           for (let i = 0; i < list.length; i++) {

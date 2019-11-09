@@ -12,9 +12,6 @@
     "bootstrap": {
       "ignore": [
         "packages/d2-crud"
-      ],
-      "npmClientArgs": [
-        "--no-package-lock"
       ]
     }
   },

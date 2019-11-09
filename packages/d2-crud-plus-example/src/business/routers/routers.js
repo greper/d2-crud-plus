@@ -15,6 +15,24 @@ export const businessFrameIn = [
   },
   // form
   {
+    path: 'form/area',
+    name: 'formArea',
+    meta: {
+      title: '省市区选择组件',
+      auth: true
+    },
+    component: _import('form/area')
+  },
+  {
+    path: 'form/el',
+    name: 'formEl',
+    meta: {
+      title: 'El表单组件',
+      auth: true
+    },
+    component: _import('form/el')
+  },
+  {
     path: 'form/date',
     name: 'formDate',
     meta: {

@@ -20,6 +20,10 @@ export default {
     dict: {
       type: Object,
       require: false
+    },
+    props: {
+      type: Object,
+      require: false
     }
   },
   data () {
@@ -45,6 +49,14 @@ export default {
         arr = this.value
       }
 
+      let labelName = 'label'
+      if (this.props != null && this.props.label != null) {
+        labelName = this.props.label
+      }
+      if (this.dict != null && this.dict.label != null) {
+        labelName = this.dict.label
+      }
+
       let labelArr = []
       if (this.options != null) {
         let dict = this.options
@@ -53,7 +65,7 @@ export default {
             let dictItem = this.getDictItem(value, dict)
             if (dictItem != null) {
               dict = dictItem.children
-              labelArr.push(dictItem.label)
+              labelArr.push(dictItem[labelName])
               continue
             }
           }
@@ -65,8 +77,15 @@ export default {
   },
   methods: {
     getDictItem (value, dict) {
+      let valueName = 'value'
+      if (this.props != null && this.props.value != null) {
+        valueName = this.props.value
+      }
+      if (this.dict != null && this.dict.value != null) {
+        valueName = this.dict.value
+      }
       for (let item of dict) {
-        if (item.value === value) {
+        if (item[valueName] === value) {
           return item
         }
       }

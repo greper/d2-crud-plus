@@ -25,6 +25,10 @@ function get (dict) {
   }
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
+    if (dictData instanceof Promise) {
+      console.log('dict data:', dictData)
+      return dictData
+    }
     return new Promise((resolve) => {
       resolve(dictData)
     })

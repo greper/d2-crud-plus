@@ -59,6 +59,7 @@ export default {
   },
   mounted () {
     dict.get(this.dict).then((data) => {
+      console.log('dict data:', data)
       this.$set(this, 'options', data)
     })
   },

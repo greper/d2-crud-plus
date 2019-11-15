@@ -55,6 +55,25 @@ packages
    |-- d2-crud-plus-example       //示例工程，进入到该目录下，npm run dev 即可运行示例
    |-- d2-crud-plus-extends       //扩展组件，目前包含文件上传组件、地区选择组件、树形选择组件
 ```
+## 运行示例
+执行如下命令即可运行示例项目
+```shell script
+git clone https://github.com/greper/d2-crud-plus.git
+cd d2-crud-plus/packages/d2-crud-plus-example
+yarn install  //或者npm install
+npm run dev
+```
+如果想要修改d2-crud-plus或者d2-crud-plus-extends后在示例中热加载
+需要安装lerna，执行如下命令
+```shell script
+npm install lerna -g
+git clone https://github.com/greper/d2-crud-plus.git
+cd d2-crud-plus
+lerna bootstrap
+cd d2-crud-plus/packages/d2-crud-plus-example
+yarn install  //或者npm install
+npm run dev
+```
 
 ## 快速开始
 ### 1.安装

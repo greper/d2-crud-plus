@@ -36,7 +36,6 @@ export default {
         defaultElProps.props.value = this.dict.value
       }
       merge(defaultElProps, this.elProps)
-      console.log('props:', defaultElProps)
       return defaultElProps
     },
     _value: {
@@ -59,13 +58,10 @@ export default {
   },
   mounted () {
     dict.get(this.dict).then((data) => {
-      console.log('dict data:', data)
       this.$set(this, 'options', data)
     })
   },
   methods: {
-    setValue (newVal) {
-    },
     handleChange ($event) {
       this.$emit('change', $event)
     }

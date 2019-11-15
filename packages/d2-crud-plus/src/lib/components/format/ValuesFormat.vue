@@ -1,11 +1,11 @@
 <template>
   <span>
     <template v-if="type === 'text'">
-      <span v-for="(item) in items" :key="item.value">{{item.label}}</span>
+      <span v-for="(item) in items" :key="item[dict.value]">{{item[dict.label]}}</span>
     </template>
     <template v-else >
-      <el-tag class='tag-item  d2-mr-5' v-for="(item) in items" :key="item.value"  size="small"  :type="item.color" >
-        {{item.label}}
+      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" >
+        {{item[dict.label]}}
       </el-tag>
     </template>
   </span>
@@ -28,20 +28,21 @@ export default {
       default: 'primary'
     },
     type: {
-      default: 'tag' // text
+      default: 'tag' // 可选【text,tag】
     }
   },
   data () {
     return {
-      dictData: []
+      dictCopy: {},
+      dictDataMap: {}
     }
   },
   computed: {
     items () {
-      let dictData = this.dictData
       if (this.value == null || this.value === '') {
         return []
       }
+      let dictDataMap = this.dictDataMap
       let valueArr = []
       let options = []
       if (typeof (this.value) === 'string') {
@@ -53,49 +54,69 @@ export default {
         valueArr = [this.value]
       }
 
-      if (dictData == null || dictData.length === 0) {
+      let dict = this.dict
+      // 没有字典，直接显示值
+      if (dictDataMap == null || dictDataMap.length === 0) {
         for (let str of valueArr) {
-          options.push({
-            value: str,
-            label: str,
-            color: this.color
-          })
+          let item = {}
+          item[dict.value] = str
+          item[dict.label] = str
+          item[dict.color] = this.color
+          options.push(item)
         }
         return options
       }
       // 根据字典展示
       for (let str of valueArr) {
-        let found = null
-        for (let dict of this.dictData) {
-          if (dict.value === str) {
-            found = dict
-            break
-          }
-        }
-        if (found) {
-          options.push(found)
+        let item = this.dictDataMap[str]
+        if (item != null) {
+          options.push(item)
         } else {
-          options.push({
-            value: str,
-            label: str,
-            color: this.color
-          })
+          item = {}
+          item[dict.value] = str
+          item[dict.label] = str
+          item[dict.color] = this.color
+          options.push(item)
         }
       }
       return options
     }
   },
-  mounted () {
+  created () {
+    if (this.dict == null) {
+      this.dict = {}
+    }
+    dict.mergeDefault(this.dict)
     dict.get(this.dict).then((data) => {
-      this.$set(this, 'dictData', data)
+      let dataMap = this.dict.dataMap
+      if (dataMap == null) {
+        dataMap = {}
+        console.log('初始化 dictDataMap')
+        this.putAll(dataMap, data, this.dict.isTree)
+        // this.$set(this, 'dictData', data)
+        // dict.putCache(this.dict.mapCacheName, dataMap)
+        this.dict.dataMap = dataMap
+        // console.log('dictDataMap', this.dict, dataMap)
+      }
+      this.$set(this, 'dictDataMap', dataMap)
     })
   },
   methods: {
-    handleClick () {
-      // this.$emit('input', !this.value)
+    putAll (map, list, isTree) {
+      let valueName = this.dict.value
+      let childrenName = this.dict.children
+      for (let item of list) {
+        map[item[valueName]] = item
+        // console.log('isTree', isTree, item[childrenName], childrenName, item, this.dict)
+        if (isTree && item[childrenName] != null) {
+          this.putAll(map, item[childrenName], isTree)
+        }
+      }
     }
   }
 }
 </script>
-<style lang="scss">
+<style >
+  .d2-mb-2{margin-bottom: 2px}
+  .d2-mt-2{margin-top: 2px;}
 </style>

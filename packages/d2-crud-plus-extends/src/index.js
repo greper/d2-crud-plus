@@ -1,6 +1,6 @@
 import D2pFileUploader from './file-uploder'
-import ElComponents from './el-components'
 import D2pAreaSelector from './area-selector'
+import D2pTreeSelector from './tree-selector'
 export {
-  D2pFileUploader, ElComponents, D2pAreaSelector
+  D2pFileUploader, D2pAreaSelector, D2pTreeSelector
 }

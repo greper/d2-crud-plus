@@ -1,9 +1,17 @@
 <template>
   <span>
-    <template v-for="(item,index) in labels" >
-      <span :key="item">
+    <template v-if="multiple"  >
+      <div v-for="(Labels,Index) in multipleLabels" :key="Index">
+        <span  v-for="(label,index) in Labels" :key="label">
+          <span  v-if="index!==0"> / </span>
+          <span>{{label}}</span>
+        </span>
+      </div>
+    </template>
+    <template v-else >
+      <span v-for="(label,index) in labels"  :key="label">
         <span  v-if="index!==0"> / </span>
-        <span  >{{item}}</span>
+        <span  >{{label}}</span>
       </span>
     </template>
   </span>
@@ -17,11 +25,8 @@ export default {
     value: {
       require: true
     },
+    multiple: { type: Boolean, default: false },
     dict: {
-      type: Object,
-      require: false
-    },
-    props: {
       type: Object,
       require: false
     }
@@ -34,7 +39,6 @@ export default {
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'options', data)
-      console.log('dict update', this.options)
     })
   },
   computed: {
@@ -42,45 +46,22 @@ export default {
       if (this.value == null) {
         return []
       }
-      let arr = null
-      if (typeof (this.value) === 'string') {
-        arr = this.value.split(',')
-      } else if (this.value instanceof Array) {
-        arr = this.value
+      return this.buildValueItem(this.value)
+    },
+    multipleLabels () {
+      if (this.value == null) {
+        return []
       }
-
-      let labelName = 'label'
-      if (this.props != null && this.props.label != null) {
-        labelName = this.props.label
+      let arr = []
+      for (let item of this.value) {
+        arr.push(this.buildValueItem(item))
       }
-      if (this.dict != null && this.dict.label != null) {
-        labelName = this.dict.label
-      }
-
-      let labelArr = []
-      if (this.options != null) {
-        let dict = this.options
-        for (let value of arr) {
-          if (dict != null) {
-            let dictItem = this.getDictItem(value, dict)
-            if (dictItem != null) {
-              dict = dictItem.children
-              labelArr.push(dictItem[labelName])
-              continue
-            }
-          }
-          labelArr.push(value)
-        }
-      }
-      return labelArr
+      return arr
     }
   },
   methods: {
     getDictItem (value, dict) {
       let valueName = 'value'
-      if (this.props != null && this.props.value != null) {
-        valueName = this.props.value
-      }
       if (this.dict != null && this.dict.value != null) {
         valueName = this.dict.value
       }
@@ -89,6 +70,40 @@ export default {
           return item
         }
       }
+    },
+    buildValueItem (values) {
+      let arr = null
+      if (typeof (values) === 'string') {
+        arr = values.split(',')
+      } else if (values instanceof Array) {
+        arr = values
+      }
+
+      let labelName = 'label'
+      if (this.dict != null && this.dict.label != null) {
+        labelName = this.dict.label
+      }
+
+      let childrenName = 'children'
+      if (this.dict != null && this.dict.children != null) {
+        childrenName = this.dict.children
+      }
+      let labelArr = []
+      if (this.options != null) {
+        let dict = this.options
+        for (let value of arr) {
+          if (dict != null) {
+            let dictItem = this.getDictItem(value, dict)
+            if (dictItem != null) {
+              dict = dictItem[childrenName]
+              labelArr.push(dictItem[labelName])
+              continue
+            }
+          }
+          labelArr.push(value)
+        }
+      }
+      return labelArr
     }
   }
 }

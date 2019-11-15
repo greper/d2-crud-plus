@@ -11,7 +11,7 @@ export default [
       { path: '/form/phone', title: '国际电话输入校验' },
       { path: '/form/uploader', title: '文件上传' },
       { path: '/form/customType', title: '自定义字段类型' },
-      { path: '/form/el', title: 'El表单组件' },
+      { path: '/form/el', title: 'EL表单组件' },
       { path: '/form/area', title: '省市区选择组件' }
     ]
   },

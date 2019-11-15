@@ -87,21 +87,26 @@ export default {
      */
     initColumns () {
       let crudOptions = this.getCrudOptions()
+      let columns = crudOptions.columns
       merge(this.crud, crudOptions)
-      // Object.assign(this.crud.options, crudOptions.options ? crudOptions.options : {})
-      // Object.assign(this.crud.formOptions, crudOptions.formOptions ? crudOptions.formOptions : {})
-      // Object.assign(this.crud.searchOptions, crudOptions.searchOptions ? crudOptions.searchOptions : {})
-
       this.crud.columns = []
       this.crud.searchOptions.columns = []
       this.crud.columnsMap = {}
-      for (let item of crudOptions.columns) {
+      for (let item of columns) {
         let key = item.key
         let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
+        let newItem = cloneDeep(defaultColumn)
         // 用户配置覆盖默认配置
-        let itemCopy = cloneDeep(item)
-        Object.assign(item, defaultColumn)
-        merge(item, itemCopy)
+        merge(newItem, item)
+        item = newItem
+        if (item._handle != null) {
+          item._handle(item)
+        }
+        if (item.dict != null) {
+          item.form.component.props.dict = item.dict
+          item.component.props.dict = item.dict
+        }
+        // delete item._handle
         // 统一component的props
         if (item.form.component != null) {
           let props = item.form.component.props

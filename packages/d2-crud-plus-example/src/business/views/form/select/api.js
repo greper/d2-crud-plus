@@ -29,3 +29,9 @@ export function DelObj (id) {
     params: { id }
   })
 }
+export function GetCascadeData () {
+  return request({
+    url: '/select/cascadeData',
+    method: 'get'
+  })
+}

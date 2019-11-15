@@ -1,4 +1,4 @@
-const remoteDicts = new Map()
+const cache = new Map()
 
 /**
  * 远程获取数据字典
@@ -13,20 +13,17 @@ function get (dict) {
     })
   }
   let url = null
-  let propMapping = null
   let dictData = null
 
   if (typeof (dict) === 'string') {
     url = dict
   } else {
     url = dict.url
-    propMapping = dict.propMapping
     dictData = dict.data
   }
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
     if (dictData instanceof Promise) {
-      console.log('dict data:', dictData)
       return dictData
     }
     return new Promise((resolve) => {
@@ -35,30 +32,28 @@ function get (dict) {
   }
 
   // 远程获取
-  let item = remoteDicts.get(url)
+  let item = cache.get(url)
   if (item == null || item.error === true) {
     // 还没加载过
     if (item == null) {
       item = { loading: true, callbacks: [] }
-      remoteDicts.set(url, item)
+      cache.set(url, item)
     }
 
     item.loading = true
     item.error = false
     // 远程加载
+
+    if (url == null) {
+      console.error('远程加载数据字典失败：', dict)
+      throw new Error('远程加载数据字典失败：没有配置url')
+    }
     return this.getRemoteDictFunc(url).then((ret) => {
       // prop mapping
       let data = ret.data
       if (data == null) {
         data = ret
       }
-      if (propMapping != null) {
-        for (let item of data) {
-          if (propMapping['value'] != null) item.value = item[propMapping['value']]
-          if (propMapping['label'] != null) item.label = item[propMapping['label']]
-        }
-      }
-
       item.data = data
       // 之前注册过的callback全部触发
       for (let callback of item.callbacks) {
@@ -87,49 +82,62 @@ function get (dict) {
   }
 }
 
-/**
- * 将数据字典从远程获取然后设置到目标属性中去
- * @param obj
- * @param prop
- * @param dictOptions
- * @param propMapping
- */
-function set (obj, prop, dictOptions, propMapping) {
-  if (dictOptions.url != null) {
-    obj[prop] = []
-    dict.get(dictOptions.url).then((ret) => {
-      obj[prop].splice(0, obj[prop].length)
-      for (let opt of ret) {
-        if (propMapping != null) {
-          if (propMapping['value'] != null) opt.value = opt[propMapping['value']]
-          if (propMapping['label'] != null) opt.label = opt[propMapping['label']]
-        }
-        obj[prop].push(opt)
-      }
-      console.log('dictUrl Update:', obj[prop])
-    })
-  } else {
-    obj[prop] = dictOptions.data
-  }
-  console.log('dictUrl:', obj[prop])
-}
-
 function clear (url) {
   console.log('dict clear:', url)
   if (url == null) {
-    remoteDicts.clear()
+    cache.clear()
   } else {
-    remoteDicts.delete(url)
+    cache.delete(url)
   }
 }
 function getRemoteDictFunc (url) {
   console.error('请在install d2-crud-plus时传入 options={getRemoteDictFunc:()->{ http 请求获取枚举字典 }}')
   return new Promise()
 }
+
+function mergeDefault (dict) {
+  if (dict == null) {
+    throw new Error('dict 不能为空')
+  }
+  let defaultDict = {
+    value: 'value',
+    label: 'label',
+    color: 'color',
+    children: 'children',
+    isTree: false
+  }
+  for (let key in defaultDict) {
+    if (dict[key] == null) {
+      dict[key] = defaultDict[key]
+    }
+  }
+}
+function getCache (key) {
+  return cache.get(key)
+}
+function putCache (key, value) {
+  console.log('set cache:', key)
+  return cache.set(key, value)
+}
+function getByValue (value, data, dict) {
+  for (let item of data) {
+    if (item[dict.value] === value) {
+      return item
+    }
+    if (dict.isTree && item[dict.children] != null) {
+      return getByValue(value, item[dict.children], dict)
+    }
+  }
+  return null
+}
+
 const dict = {
   get,
-  set,
+  getByValue,
   clear,
+  getCache,
+  putCache,
+  mergeDefault,
   getRemoteDictFunc
 }
 

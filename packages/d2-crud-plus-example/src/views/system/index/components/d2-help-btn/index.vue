@@ -6,22 +6,26 @@
       @click="dialogVisible = true">
     <el-dialog
       title="帮助"
-      width="600px"
+      width="800px"
       :visible.sync="dialogVisible"
       :append-to-body="true">
       <div style="margin-top: -25px; margin-bottom: -25px;">
         <el-button-group class="d2-mb">
           <el-button @click="$open('https://github.com/greper/d2-crud-plus')">
-            <d2-icon name="github" class="d2-mr-5"/>
+            <d2-icon name="github" class="d2-mr-5 "/>
             主页
           </el-button>
           <el-button @click="$open('http://qiniu.veryreader.com/D2CrudPlusExample/index.html')">
-            <d2-icon name="github" class="d2-mr-5"/>
+            <d2-icon name="book" class="d2-mr-5"/>
             示例
           </el-button>
-          <el-button @click="$open('https://doc.d2admin.fairyever.com/zh/')">
+          <el-button @click="$open('https://fairyever.com/d2-admin/doc/zh/')">
             <d2-icon name="book" class="d2-mr-5"/>
-            d2-admin 中文文档
+            d2-admin 文档
+          </el-button>
+          <el-button @click="$open('https://fairyever.com/d2-admin/doc/zh/ecosystem-d2-crud/')">
+            <d2-icon name="book" class="d2-mr-5"/>
+            d2-crud 文档
           </el-button>
           <el-button @click="$open('https://github.com/greper/d2-crud-plus/issues')">
             <d2-icon name="question" class="d2-mr-5"/>

@@ -58,8 +58,16 @@ const DefaultComponents = {
     }
   },
   cascader: {
-    form: { component: { name: 'cascade-select', props: {} } },
-    component: { name: 'cascade-format', props: {} },
+    form: { component: { name: 'cascade-select', props: { elProps: { filterable: true } } } },
+    component: { name: 'cascade-format', props: { multiple: false } },
+    _handle (item) {
+      this.form.component.props.dict = item.dict
+      this.component.props.dict = item.dict
+    }
+  },
+  'cascader-multi': {
+    form: { component: { name: 'cascade-select', props: { elProps: { filterable: true, props: { multiple: true }, 'collapse-tags': true } } } },
+    component: { name: 'cascade-format', props: { multiple: true } },
     _handle (item) {
       this.form.component.props.dict = item.dict
       this.component.props.dict = item.dict
@@ -86,6 +94,30 @@ const DefaultComponents = {
       }
       return ret
     }
+  },
+  'number': {
+    form: { component: { name: 'el-input-number', props: { } } },
+    align: 'center'
+  },
+  'switch': {
+    form: { component: { name: 'el-switch', props: { } } },
+    align: 'center'
+  },
+  'slider': {
+    form: { component: { name: 'el-slider', props: { } } },
+    align: 'center'
+  },
+  'rate': {
+    form: { component: { name: 'el-rate', props: { } } },
+    align: 'center'
+  },
+  'color-picker': {
+    form: { component: { name: 'el-color-picker', props: { } } },
+    align: 'center'
+  },
+  'transfer': {
+    form: { component: { name: 'el-transfer', props: { } } },
+    align: 'center'
   }
 }
 
@@ -121,10 +153,6 @@ function getByType (type, item) {
   if (config != null) {
     column = cloneDeep(config)
   }
-  if (column._handle != null) {
-    column._handle(item)
-  }
-  delete column._handle
   if (column.form == null) {
     column.form = {}
   }

@@ -69,14 +69,13 @@ export default {
       if (this.value instanceof Array) {
         this.selectValue = this.value
       }
-      console.log('select:', this.selectValue)
     },
     handleClick () {
       // this.$emit('input', !this.value)
     },
-    doChange ($event, e2) {
-      console.log('event:', $event, e2)
+    doChange ($event) {
       this.$emit('input', $event)
+      this.$emit('change', $event)
     }
   }
 }

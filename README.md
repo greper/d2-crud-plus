@@ -65,7 +65,7 @@ import Vue from 'vue'
 import request from '@/plugin/axios'
 Vue.use(d2Crud)
 Vue.use(d2CrudPlus, {
-  getRemoteDictFunc (url) { //获取数据字典的请求
+  getRemoteDictFunc (url) { //获取数据字典的请求方法，不配置此项则无法加载远程数据字典
     return request({
       url: url,
       method: 'get'
@@ -317,7 +317,7 @@ export const crudOptions = {
   editRules: {},//根据form配置自动生成
   list: [], //数据列表
   loading: false, //当前是否loading
-  page: { //与d2-crud一致
+  page: {
     current: 1,
     size: 20,
     total: 1
@@ -381,7 +381,28 @@ d2CrudPlus.util.columnResolve.addTypes({
 您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块   
 https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends
 
-### <a id="dict-out">4. 外部使用数据字典</a>
+### <a id="dict-out">4. 数据字典</a>
+* 数据字典的配置   
+通常配置在column下,然后被分别赋值到component.dict和form.component.dict
+```javascript
+export const crudOptions = {
+  columns: [ //字段配置
+    {
+      dict:{
+        url:'remote/dict/url', // 这里配置远程获取字典数据的请求地址
+        data: [], // 如果数据无需远程获取，可以直接将字典数组写在这里，或者你还可以配置一个Promise
+        value: 'value', // 数据字典中value字段的属性名
+        label: 'label', // 数据字典中label字段的属性名
+        children: 'children', // 数据字典中children字段的属性名
+        isTree: false // 此数据字典是否是树形的，通常用于级联组件、地区选择组件等处
+      }   
+    }
+]}
+```
+* 数据字典有什么用   
+配置数据字典之后， type=【select/area-selector/cascader/tree-selector】
+这些字段类型就可以通过数据字典获取label及其选项，无需自己写各种各样乱七八糟的options
+
 * 某些时候数据字典需要在crud外部使用
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'

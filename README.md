@@ -18,10 +18,10 @@
 ### 2. 根据column配置自动生成查询配置
 * column中可以配置各个字段是否开启search
 
-### 3. [数据字典功能](#dict)  
+### 3. 数据字典功能  
 * 支持本地和远程获取
 * 配合select，轻松实现数据存的是value值，需要对应字典的label来展示的需求
-* [详细说明](#dict)  
+* [详细说明](#数据字典)  
 ### 4. 扩展组件  
 通过扩展自定义字段类型，支持扩展组件
 * [详细说明](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends)     
@@ -355,7 +355,7 @@ export const crudOptions = {
 
 ```
 
-### <a id="column-type">2. 字段类型</a>
+### 2. 字段类型</a>
 
 配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
 用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可
@@ -369,7 +369,7 @@ export const crudOptions = {
 }
 ```
 
-#### <a id="type-support">a. 目前支持的类型 </a>
+#### a. 目前支持的类型 
 默认支持的类型：  
  https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/utils/util.column.resolve.js
 
@@ -381,7 +381,7 @@ export const crudOptions = {
  * cascader: 级联输入框
 
    
-#### <a id="type-custom">b. 自定义字段类型</a>
+#### b. 自定义字段类型
 其实就是事先自定义好column的配置，根据type直接生成默认配置，减轻配置工作量
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
@@ -403,11 +403,11 @@ d2CrudPlus.util.columnResolve.addTypes({
 })
 ```
 
-### <a id="type-extend">3. 类型扩展</a>
+### 3. 类型扩展
 您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块   
 https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends
 
-### <a id="dict">4. 数据字典</a>
+### 4. 数据字典
 * 数据字典的配置   
 通常配置在column下,然后被分别赋值到component.dict和form.component.dict
 ```javascript

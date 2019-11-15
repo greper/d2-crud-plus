@@ -24,7 +24,7 @@
     "better-scroll": "^1.15.2",
     "core-js": "^2.6.5",
     "d2-crud-plus": "^1.1.4",
-    "d2-crud-x": "^2.0.5-1.2.0",
+    "d2-crud-x": "^2.0.5-1.2.1",
     "d2p-extends": "^1.0.9",
     "dayjs": "^1.8.16",
     "el-phone-number-input": "^1.0.4",

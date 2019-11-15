@@ -4086,10 +4086,10 @@ d2-crud-plus@^1.1.4:
     lodash "^4.17.11"
     vue "^2.6.10"
 
-d2-crud-x@^2.0.5-1.2.0:
-  version "2.0.5-1.2.0"
-  resolved "https://registry.npm.taobao.org/d2-crud-x/download/d2-crud-x-2.0.5-1.2.0.tgz#44334047af464316984c26375b281700ef80513d"
-  integrity sha1-RDNAR69GQxaYTCY3WygXAO+AUT0=
+d2-crud-x@^2.0.5-1.2.1:
+  version "2.0.5-1.2.1"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.0.5-1.2.1.tgz#89e8f9b8406c315db68c94d8d4fe70f33e0cf280"
+  integrity sha512-AiSF7MCJWb2UJc+sFNYgGYc08DZ1qJKmh8ch/FTx2T6SFslCcOC4XGR7/Bm6HhdXAsnoZqqxm/m1xityxSOM3Q==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"

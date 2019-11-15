@@ -42,7 +42,7 @@ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot
 * 自定义组件支持form-data-change事件  
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader  
-上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
+例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 
 
 ## 目录结构

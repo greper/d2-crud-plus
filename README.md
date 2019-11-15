@@ -21,7 +21,7 @@
 ### 3. 数据字典功能  
 * 支持本地和远程获取
 * 配合select，轻松实现数据存的是value值，需要对应字典的label来展示的需求
-* [详细说明](#数据字典)  
+* [详细说明](#4-数据字典)  
 ### 4. 扩展组件  
 通过扩展自定义字段类型，支持扩展组件
 * [详细说明](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends)     

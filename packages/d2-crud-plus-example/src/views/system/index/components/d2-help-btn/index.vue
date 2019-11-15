@@ -36,16 +36,16 @@
             New issue
           </el-button>
         </el-button-group>
-<!--        <el-row :gutter="20">-->
+        <el-row :gutter="20">
 <!--          <el-col :span="12">-->
 <!--            <el-alert :closable="false" type="info" title="QQ群 [ 1500+ / 2000 人 ]" class="d2-mb"/>-->
 <!--            <img src="./image/qq.jpg" style="width: 100%;">-->
 <!--          </el-col>-->
-<!--          <el-col :span="12">-->
-<!--            <el-alert :closable="false" type="info" title="与作者成为好友后邀请进微信群" class="d2-mb"/>-->
-<!--            <img src="./image/we.jpg" style="width: 100%;">-->
-<!--          </el-col>-->
-<!--        </el-row>-->
+          <el-col :span="8">
+            <el-alert :closable="false" type="info" title="微信加作者好友寻求帮助" class="d2-mb"/>
+            <img src="./image/we.png" style="width: 100%;">
+          </el-col>
+        </el-row>
       </div>
     </el-dialog>
   </div>

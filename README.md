@@ -27,14 +27,11 @@
 * [详细说明](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends)     
 
 目前支持的扩展组件：  
-* 国际手机号输入框及校验   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone
-* 对象存储文件上传组件   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader
-* 地区选择组件   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area
-* 树形选择组件  
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area
+* [国际手机号输入框及校验](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone)
+* [对象存储文件上传组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader)  
+* [地区选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)
+* [树形选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)  
+
 
 
 ### 5. d2-crud-x,基于d2-crud的修改版，功能与官方d2-crud一致【可选】

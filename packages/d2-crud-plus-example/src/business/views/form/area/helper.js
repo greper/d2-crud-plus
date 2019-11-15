@@ -1,4 +1,27 @@
-export const crudOptions = {
+export default {
+  init: `import Vue from 'vue'
+import d2Crud from 'd2-crud-x'
+import { d2CrudPlus } from 'd2-crud-plus'
+import { D2pAreaSelector,  D2pTreeSelector } from 'd2p-extends/src' // 源码方式引入，上传组件支持懒加载
+import request from '@/plugin/axios'
+// 引入d2Crud
+Vue.use(d2Crud)
+// 引入d2CrudPlus
+Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
+  return request({
+    url: url,
+    method: 'get'
+  }).then(ret => {
+    return ret.data
+  })
+}
+})
+
+// 安装扩展插件
+Vue.use(D2pTreeSelector)
+Vue.use(D2pAreaSelector)
+  `,
+  crud: `export const crudOptions = {
   columns: [
     {
       title: '级联式',
@@ -61,4 +84,10 @@ export const crudOptions = {
       }
     }
   ]
+}
+
+
+`,
+  template: `
+  `
 }

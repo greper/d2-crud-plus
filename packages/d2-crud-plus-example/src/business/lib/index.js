@@ -17,8 +17,8 @@ Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
 })
 
 // 安装扩展插件
-Vue.use(D2pTreeSelector, { d2CrudPlus })
-Vue.use(D2pAreaSelector, { d2CrudPlus })
+Vue.use(D2pTreeSelector)
+Vue.use(D2pAreaSelector)
 Vue.use(D2pFileUploader, {
   d2CrudPlus,
   defaultType: 'cos',

@@ -1,6 +1,16 @@
 <template>
   <d2-container>
-    <template slot="header">地区选择</template>
+    <template slot="header">地区选择
+      <example-helper title="帮助说明" >
+        <h4>省市区选择组件</h4>
+        <ul>
+          <li>支持级联方式、树形方式选择</li>
+          <li> <a href="https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-extends/src/area-selector/README.md">更多文档</a></li>
+        </ul>
+        <d2-highlight :code="helper.init"/>
+        <d2-highlight :code="helper.crud"/>
+      </example-helper>
+    </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
     </crud-search>
     <d2-crud
@@ -38,9 +48,15 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
+import helper from './helper'
 export default {
   name: 'areaPage',
   mixins: [d2CrudPlus.crud],
+  data () {
+    return {
+      helper: helper
+    }
+  },
   methods: {
     getCrudOptions () {
       return crudOptions

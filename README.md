@@ -18,14 +18,15 @@
 ### 2. 根据column配置自动生成查询配置
 * column中可以配置各个字段是否开启search
 
-### 3. 枚举字典功能  
+### 3. [数据字典功能](#dict)  
 * 支持本地和远程获取
 * 配合select，轻松实现数据存的是value值，需要对应字典的label来展示的需求
-
+* [详细说明](#dict)  
 ### 4. 扩展组件  
-* 扩展组件文档      
-https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends
-扩展组件列表：  
+通过扩展自定义字段类型，支持扩展组件
+* [详细说明](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends)     
+
+目前支持的扩展组件：  
 * 国际手机号输入框及校验   
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone
 * 对象存储文件上传组件   
@@ -387,7 +388,7 @@ d2CrudPlus.util.columnResolve.addTypes({
 您还可以自定义类型扩展，将自定义类型、自定义组件整合为一个模块   
 https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends
 
-### <a id="dict-out">4. 数据字典</a>
+### <a id="dict">4. 数据字典</a>
 * 数据字典的配置   
 通常配置在column下,然后被分别赋值到component.dict和form.component.dict
 ```javascript

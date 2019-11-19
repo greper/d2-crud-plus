@@ -22,7 +22,7 @@ export default {
     open: {
       type: Boolean,
       required: false,
-      default: true
+      default: false
     },
     title: {
       type: String,
@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      drawer: true
+      drawer: false
     }
   },
   created () {

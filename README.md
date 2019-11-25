@@ -285,6 +285,9 @@ export const crudOptions = {
             clearable: true //可清除[不同组件参数不同]
           }
         },
+        valueChange(key ,value ,form){
+            //form表单数据change事件，表单某项有改动将触发此事件
+        },
         slot:false //是否启用form编辑框的slot插槽,需要d2-crud-x才支持，示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
       },
       valueBuilder (row,key) {
@@ -301,9 +304,6 @@ export const crudOptions = {
         //  row.country = row.mobileValue.countryCode
         // } 
       },
-      valueChange(key ,value ,form){
-        //form表单数据change事件
-      },   
       dict: { // 数据字典配置， 供select等组件通过value匹配label
         data: [ // 本地数据字典
           { value: 'sz', label: '深圳' },

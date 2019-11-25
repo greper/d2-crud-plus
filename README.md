@@ -311,7 +311,11 @@ export const crudOptions = {
            { value: 'wh', label: '武汉' }, 
            { value: 'sh', label: '上海' }
         ],
-        url:'/dict/get'// 若data为空，则通过http请求获取远程数据字典
+        url:'/dict/get', // 若data为空，则通过http请求获取远程数据字典
+        // value:'value', value的属性名
+        // label:'label', label的属性名
+        // children:'children', children的属性名
+        // isTree: false //是否是树形结构
       },
       rowSlot: false, // 是否启用该cell的slot插槽,需要d2-crud-x才支持，见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
       formatter (row, column, value, index) {

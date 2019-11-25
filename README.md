@@ -380,6 +380,9 @@ export const crudOptions = {
  * time：时间选择器
  * phoneNumber：国际手机号输入框+校验
  * cascader: 级联输入框
+ 
+更多组件请见[示例](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area) 
+ 
 
    
 #### b. 自定义字段类型
@@ -455,7 +458,12 @@ import { d2CrudPlus } from 'd2-crud-plus'
 d2CrudPlus.util.dict.clear() //清空所有字典缓存
 d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 ```
-
+### 5. 扩展组件（d2p-extends）如何懒加载
+通过源码导入的方式即可实现组件懒加载（内部采用()=>import()方式进行导入）
+```
+import {xxx} from 'd2p-extends/src'
+```
+更多信息请参考此文章 https://www.jianshu.com/p/b2b434e73817
 
 
 ## <a id="d2-crud-x">d2-crud-x文档</a>

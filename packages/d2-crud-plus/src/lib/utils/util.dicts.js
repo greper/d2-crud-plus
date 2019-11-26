@@ -30,6 +30,11 @@ function get (dict) {
       resolve(dictData)
     })
   }
+  if (url == null) {
+    return new Promise((resolve) => {
+      resolve([])
+    })
+  }
 
   // 远程获取
   let item = cache.get(url)

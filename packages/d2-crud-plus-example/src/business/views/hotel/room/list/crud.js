@@ -7,6 +7,7 @@ export const crudOptions = {
       key: 'id',
       width: '90',
       sortable: true,
+      disabled: true,
       search: {
         name: 'id',
         disabled: true
@@ -43,7 +44,6 @@ export const crudOptions = {
         name: 'name',
         disabled: false
       },
-      // type: 'select',
       form: {
         rules: [{ required: true, message: '请输入房间名称' }]
       },
@@ -99,9 +99,7 @@ export const crudOptions = {
       },
       dict: { url: '/hotel/roomtype/options' }
     },
-
     {
-
       title: '备注',
       key: 'remark',
       columnName: 'remark',
@@ -110,8 +108,6 @@ export const crudOptions = {
         name: 'remark',
         disabled: true
       },
-
-      // type: 'select',
       form: {
         rules: [{ required: false, message: '请输入备注' }]
       }

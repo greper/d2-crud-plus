@@ -15,7 +15,6 @@ export const crudOptions = {
       key: 'mselect',
       sortable: true,
       search: {
-        key: 'mselect',
         disabled: false
       },
       type: 'select',

@@ -21,7 +21,10 @@ export default {
     },
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default () {
+        return {}
+      }
     },
     color: {
       require: false,
@@ -56,7 +59,7 @@ export default {
 
       let dict = this.dict
       // 没有字典，直接显示值
-      if (dictDataMap == null || dictDataMap.length === 0) {
+      if (dictDataMap == null || Object.keys(dictDataMap).length === 0) {
         for (let str of valueArr) {
           let item = {}
           item[dict.value] = str
@@ -89,7 +92,7 @@ export default {
     dict.mergeDefault(this.dict)
     dict.get(this.dict).then((data) => {
       let dataMap = this.dict.dataMap
-      if (dataMap == null) {
+      if (dataMap == null && data != null && data.length > 0) {
         dataMap = {}
         console.log('初始化 dictDataMap')
         this.putAll(dataMap, data, this.dict.isTree)

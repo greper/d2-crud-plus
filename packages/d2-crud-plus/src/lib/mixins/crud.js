@@ -103,8 +103,12 @@ export default {
           item._handle(item)
         }
         if (item.dict != null) {
-          item.form.component.props.dict = item.dict
-          item.component.props.dict = item.dict
+          if (item.form != null && item.form.component != null && item.form.component.props != null) {
+            item.form.component.props.dict = item.dict
+          }
+          if (item.component != null && item.component.props != null) {
+            item.component.props.dict = item.dict
+          }
         }
         // delete item._handle
         // 统一component的props

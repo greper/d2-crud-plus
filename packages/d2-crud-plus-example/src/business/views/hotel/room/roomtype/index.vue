@@ -45,7 +45,6 @@ export default {
     }
   },
   created () {
-    this.initColumns()
   },
   methods: {
     getCrudOptions () {

@@ -130,7 +130,10 @@ function getByValue (value, data, dict) {
       return item
     }
     if (dict.isTree && item[dict.children] != null) {
-      return getByValue(value, item[dict.children], dict)
+      let target = getByValue(value, item[dict.children], dict)
+      if (target != null) {
+        return target
+      }
     }
   }
   return null

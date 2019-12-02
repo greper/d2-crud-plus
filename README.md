@@ -463,7 +463,7 @@ d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 ```
 import {xxx} from 'd2p-extends/src'
 ```
-更多信息请参考此文章 https://www.jianshu.com/p/b2b434e73817
+更多信息请参考此文章 https://www.jianshu.com/p/306dee896428
 
 
 ## <a id="d2-crud-x">d2-crud-x文档</a>

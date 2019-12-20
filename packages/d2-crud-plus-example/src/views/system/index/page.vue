@@ -48,14 +48,12 @@ export default {
 
 <style lang="scss" scoped>
 .page {
-  .logo {
-    width: 120px;
-  }
+
   .btn-group {
     color: $color-text-placehoder;
     font-size: 12px;
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     .btn-group__btn {
       color: $color-text-sub;
       &:hover {
@@ -66,5 +64,7 @@ export default {
       }
     }
   }
+
+
 }
 </style>

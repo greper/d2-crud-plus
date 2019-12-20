@@ -1,10 +1,19 @@
 <template>
   <div class="d2-page-cover">
-    <div class="d2-page-cover__logo">
-      <slot/>
+    <p class="d2-page-cover__title" @click="$open('https://github.com/greper/d2-crud-plus')"><d2-icon-svg class="logo" name="d2-admin"/> d2-crud-plus {{$version}}</p>
+    <p class="d2-page-cover__sub-title">d2-crud加强版，简化d2-crud配置，定义字段类型，快速开发crud功能</p>
+    <div class="exampleBox">
+      <div class="left">
+        <d2-highlight :code="helper.crud" lang="javascript"/>
+      </div>
+      <div class="icon">
+        <i class="el-icon-right"></i>
+      </div>
+      <div class="right">
+        <img src="./image/gif.webp">
+      </div>
     </div>
-    <p class="d2-page-cover__title">d2-crud-plus {{$version}}</p>
-    <p class="d2-page-cover__sub-title">d2-crud加强版，优化配置结构，减轻配置</p>
+
     <p class="d2-page-cover__build-time">FINAL BUILD TIME {{$buildTime}}</p>
     <slot name="footer"/>
     <a target="blank" href="https://github.com/greper/d2-crud-plus">
@@ -15,11 +24,23 @@
     </a>
   </div>
 </template>
+<script>
+import helper from './helper'
 
+export default {
+  data () {
+    return {
+      helper: helper
+    }
+  }
+}
+</script>
 <style lang="scss" scoped>
 .d2-page-cover {
-  @extend %full;
-  @extend %unable-select;
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -31,20 +52,52 @@
   }
   .d2-page-cover__title {
     margin: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
     color: $color-text-main;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
   }
   .d2-page-cover__sub-title {
     margin: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: $color-text-normal;
   }
   .d2-page-cover__build-time {
     margin: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-top: 10px;
     font-size: 12px;
     color: $color-text-placehoder;
+  }
+
+  .exampleBox{
+    display: flex;
+    align-items:center;
+    height:420px;
+    width:90%;
+    padding:5px;
+    margin:auto;
+    justify-content: center;
+    .left{
+      height:100%;
+      overflow-y: hidden;
+      border: 1px solid #aaa;
+    }
+    .icon{font-size: 50px;}
+    .right{
+      height:100%;
+      img{
+        height:100%;
+      }
+    }
+    .d2-highlight{
+      font-size: 8px;
+    }
   }
 }
 </style>

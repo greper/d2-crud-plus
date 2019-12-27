@@ -1,10 +1,7 @@
 <template>
     <el-select
         v-model="selectValue"
-        :placeholder="placeholder"
-        :filterable="filterable"
-        :clearable="clearable"
-        :multiple="multiple"
+        v-bind="_elProps"
         @change="doChange"
     >
       <el-option
@@ -26,11 +23,16 @@ export default {
       type: Object,
       require: false
     },
-    placeholder: { require: false },
     value: { require: false },
+    separator: { default: ',', require: false },
+    placeholder: { require: false },
     filterable: { default: false, require: false },
     clearable: { default: false, require: false },
-    multiple: { default: false, require: false }
+    multiple: { default: false, require: false },
+    elProps: {
+      type: Object,
+      require: false
+    }
   },
   data () {
     return {
@@ -39,6 +41,15 @@ export default {
     }
   },
   computed: {
+    _elProps () {
+      return {
+        placeholder: this.placeholder,
+        filterable: this.filterable,
+        clearable: this.clearable,
+        multiple: this.multiple,
+        ...this.elProps
+      }
+    }
   },
   mounted () {
     dict.get(this.dict).then((data) => {
@@ -64,7 +75,7 @@ export default {
         this.selectValue = []
       }
       if (typeof this.value === 'string') {
-        this.selectValue = this.value.split(',')
+        this.selectValue = this.value.split(this.separator)
       }
       if (this.value instanceof Array) {
         this.selectValue = this.value

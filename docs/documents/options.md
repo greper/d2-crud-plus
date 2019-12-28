@@ -75,6 +75,8 @@ export const crudOptions = {
         // children:'children', children的属性名
         // isTree: false //是否是树形结构
       },
+      component:{ name:'dict-select', props:{...}},//行内单元格显示组件
+      disabled: false, //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
       rowSlot: false, // 是否启用该cell的slot插槽,需要d2-crud-x才支持，见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
       formatter (row, column, value, index) {
         // cell 格式化，与d2-crud一致

@@ -13,7 +13,7 @@ cd d2-crud-plus/packages/d2-crud-plus-example
 yarn install  //或者npm install
 npm run dev
 ```
-如果想要修改d2-crud-plus或者d2-crud-plus-extends后在示例中热加载
+如果想要修改d2-crud-plus或者d2-crud-plus-extends后在示例中热加载  
 需要安装lerna，执行如下命令
 ```shell script
 npm install lerna -g
@@ -31,8 +31,8 @@ npm run dev
 ```shell
 npm i  @d2-project/d2-crud  d2-crud-plus  -S
 
-如果需要slot功能，需要用d2-crud-x替换d2-crud
-npm i  d2-crud-x  -S
+如果需要slot等d2-crud增强功能，需要用d2-crud-x替换d2-crud【推荐】
+npm i  d2-crud-x   d2-crud-plus -S
 ```
 ### 2.引入
  ```javascript
@@ -52,7 +52,7 @@ Vue.use(d2CrudPlus, {
   }
 })
 
-// 如果需要slot功能，要将d2-crud替换为d2-crud-x【其他与d2-crud一致】
+// 如果需要slot等增强功能，要将d2-crud替换为d2-crud-x【其他与d2-crud一致，推荐】
 import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)

@@ -31,14 +31,14 @@
 * [树形选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)  
 
 ## 5. d2-crud-x
-基于d2-crud的修改版，功能与官方d2-crud一致【可选】
-在官方基础上修复了一些bug，增强了部分功能
-见https://github.com/greper/d2-crud/
-* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】   
+基于d2-crud的修改版，功能与官方d2-crud一致【推荐】   
+在官方基础上修复了一些bug，增强了部分功能   
+见https://github.com/greper/d2-crud/   
+* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】     
 http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard
-* 支持slot编写各个字段的form表单   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot
-* 自定义组件支持form-data-change事件（官方是不支持的） 
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader  
+* 支持slot编写各个字段的form表单     
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot  
+* 自定义组件支持form-data-change事件（官方是不支持的）   
+http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader    
 例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
-* 修复官方的form-data-change某些情况下获取到的值不是最新的bug
+* 修复官方的form-data-change某些情况下获取到的值不是最新的bug  

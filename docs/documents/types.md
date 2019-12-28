@@ -1,25 +1,30 @@
 ## 文本输入框
-默认即是text 文本输入框
+不配置type，默认即是文本输入框
 
-## 选择
-
+## 选择框【select】
 ```javascript
-let crudOptions={
-    columns:[
-        {
-            type: 'select',
-            form: {
-            component: {
-                props: {
-                    filterable: true,
-                    multiple: true,
-                    clearable: true
-                }
-             }
-            },
-            dict: {} 
-        }
-    ]
+let column={
+   type: 'select',
+   form: {
+     component: { 
+       name:'dict-select',
+       props: {
+          separator: ',' ,//多选时，value的分隔符
+          elProps:{ //
+            filterable: true,
+            multiple: true,
+            clearable: true
+           }            
+       }    
+     }
+   },
+   component:{
+     name:'values-format',
+     props:{
+       multiple:true, //默认支持多选
+       separator: ',' ,//多选时，value的分隔符
+     }   
+   }
 }
 
 ```

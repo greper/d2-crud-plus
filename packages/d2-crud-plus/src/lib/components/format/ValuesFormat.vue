@@ -19,6 +19,8 @@ export default {
     value: {
       require: true
     },
+    multiple: { default: true, require: false },
+    separator: { default: ',', require: false },
     dict: {
       type: Object,
       require: false,
@@ -49,7 +51,7 @@ export default {
       let valueArr = []
       let options = []
       if (typeof (this.value) === 'string') {
-        valueArr = this.value.split(',')
+        valueArr = this.value.split(this.separator)
       } else if (this.value instanceof Array) {
         // 本来就是数组的
         valueArr = this.value

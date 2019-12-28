@@ -9,37 +9,44 @@
 export const crudOptions = {
   columns: [ 
     {
-      name: 'foo',
-      key: 'foo',
-      type: 'select'//字段类型
+      name: '城市',
+      key: 'city',
+      type: 'select' ,//字段类型
+      form:{ component:{ props: {multiple:true} } }, //用户自定义配置
+      dict: { 
+        data:[  //select字段类型需要配置数据字典
+          {value:'sz',label:'深圳'},
+          {value:'bj',label:'北京'} 
+        ] 
+      } 
     }
   ]
 }
 ```
-将会根据type，生成如下配置
+运行时，将会根据type，生成如下配置，其中用户自定义配置会被继承
 ```javascript
 export const crudOptions = {
   columns: [ 
     {
-      name: 'foo',
-      key: 'foo',
+      name: '城市',
+      key: 'city',
       type: 'select',//字段类型
       search: { 
         component: {
-            dict:{ }, 
+            dict:{...}, 
             props: { clearable: true } //查询框可以清除掉选择项
         } 
       },
-      form: { 
+      form: { // form中的配置将会被复制到addTemplate和editTemplate中
         component: { //添加和修改表单组件的配置
-          name: 'dict-select',
-          dict: {}, 
-          props: {} 
+          name: 'dict-select', //form表单中使用的组件名
+          dict: {...}, 
+          props: { multiple:true } //继承的用户配置
         } 
       },
       component: { //行显示组件配置
-        name: 'values-format',
-        dict: {},
+        name: 'values-format', //列表行中使用的组件名
+        dict: {...},
         props: {}
       }
     }
@@ -47,34 +54,20 @@ export const crudOptions = {
 }
 ```
 
-最终转化成d2-crud的最终配置
+最终转化成d2-crud的最终配置    
+内容太多就不一一列出来了
 ```javascript
-export const crudOptions = {
-  columns: [ 
-    {
-      name: 'foo',
-      key: 'foo',
-      type: 'select',//字段类型
-      search: { 
-        component: {
-            dict:{ }, 
-            props: { clearable: true } 
-        } 
-      },
-      form: { 
-        component: { //表单组件的配置
-          name: 'dict-select',
-          dict: {}, 
-          props: {} 
-        } 
-      },
-      component: { //行显示组件配置
-        name: 'values-format',
-        dict: {},
-        props: {}
-      }
-    }
-  ]
+this.crud= {
+  columns: [...],
+  addRules:{...},
+  addTemplate:{...},
+  editRules:{...},
+  editTemplate:{...},
+  formOptions:{...},
+  list:[],
+  options:{...},
+  rowHandle:{...},
+  searchOptions:{columns:[...]}
 }
 ```
 

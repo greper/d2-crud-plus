@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     setValue (newVal) {
-      if (!this.multiple) {
+      if (!this._elProps.multiple) {
         if (newVal === this.selectValue) {
           return
         }

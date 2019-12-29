@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>文件上传组件 | d2-crud-plus</title>
+    <meta name="description" content="d2-crud-plus">
+    <link rel="icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon-152x152.png">
+  <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#3eaf7c">
+  <meta name="msapplication-TileImage" content="/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.a0ed572a.css" as="style"><link rel="preload" href="/assets/js/app.63ab5302.js" as="script"><link rel="preload" href="/assets/js/2.38672536.js" as="script"><link rel="preload" href="/assets/js/27.29b07bcd.js" as="script"><link rel="prefetch" href="/assets/js/10.82c832d8.js"><link rel="prefetch" href="/assets/js/11.3f07efd3.js"><link rel="prefetch" href="/assets/js/12.01ad5ac3.js"><link rel="prefetch" href="/assets/js/13.792dd7e9.js"><link rel="prefetch" href="/assets/js/14.f62da951.js"><link rel="prefetch" href="/assets/js/15.b78aa9be.js"><link rel="prefetch" href="/assets/js/16.453ce94d.js"><link rel="prefetch" href="/assets/js/17.f9c52592.js"><link rel="prefetch" href="/assets/js/18.596f9ec0.js"><link rel="prefetch" href="/assets/js/19.4ad65c7a.js"><link rel="prefetch" href="/assets/js/20.eca41170.js"><link rel="prefetch" href="/assets/js/21.88894747.js"><link rel="prefetch" href="/assets/js/22.734c84a4.js"><link rel="prefetch" href="/assets/js/23.181a8ac2.js"><link rel="prefetch" href="/assets/js/24.cec3b95b.js"><link rel="prefetch" href="/assets/js/25.d348d5c8.js"><link rel="prefetch" href="/assets/js/26.d4990f7e.js"><link rel="prefetch" href="/assets/js/28.38f341a7.js"><link rel="prefetch" href="/assets/js/29.0e0728bb.js"><link rel="prefetch" href="/assets/js/3.230ae7a4.js"><link rel="prefetch" href="/assets/js/30.46613a36.js"><link rel="prefetch" href="/assets/js/31.1802751f.js"><link rel="prefetch" href="/assets/js/32.e88e8d10.js"><link rel="prefetch" href="/assets/js/33.69eb480d.js"><link rel="prefetch" href="/assets/js/34.4ddb4155.js"><link rel="prefetch" href="/assets/js/4.dc29082d.js"><link rel="prefetch" href="/assets/js/5.0bf7023c.js"><link rel="prefetch" href="/assets/js/6.43ac89e4.js"><link rel="prefetch" href="/assets/js/7.63fac468.js"><link rel="prefetch" href="/assets/js/8.a2d5f627.js"><link rel="prefetch" href="/assets/js/9.3b3f896a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a0ed572a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">d2-crud-plus</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">指南</a></div> <a href="https://github.com/greper/d2-crud-plus" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">指南</a></div> <a href="https://github.com/greper/d2-crud-plus" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" class="sidebar-link">介绍</a></li><li><a href="/guide/quickstart.html" class="sidebar-link">快速上手</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/options.html" class="sidebar-link">crud配置项</a></li><li><a href="/guide/column-type.html" class="sidebar-link">字段类型</a></li><li><a href="/guide/dict.html" class="sidebar-link">数据字典</a></li><li><a href="/guide/extends.html" class="sidebar-link">自定义扩展</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>字段类型</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/types.html" class="sidebar-link">字段类型列表</a></li><li><a href="/guide/types-code.html" class="sidebar-link">字段类型默认配置参考</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>d2p-extends</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/extends/area-selector.html" class="sidebar-link">省市区选择组件</a></li><li><a href="/guide/extends/file-uploader.html" class="active sidebar-link">文件上传组件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/extends/file-uploader.html#准备" class="sidebar-link">准备</a></li><li class="sidebar-sub-header"><a href="/guide/extends/file-uploader.html#引入" class="sidebar-link">引入</a></li><li class="sidebar-sub-header"><a href="/guide/extends/file-uploader.html#使用" class="sidebar-link">使用</a></li><li class="sidebar-sub-header"><a href="/guide/extends/file-uploader.html#参数说明" class="sidebar-link">参数说明</a></li></ul></li><li><a href="/guide/extends/tree-selector.html" class="sidebar-link">树形选择组件</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>组件文档</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/components/cascade-format.html" class="sidebar-link">cascade-format</a></li><li><a href="/guide/components/cascade-select.html" class="sidebar-link">cascade-select</a></li><li><a href="/guide/components/d2p-file-uploader.html" class="sidebar-link">d2p-file-uploader</a></li><li><a href="/guide/components/d2p-images-format.html" class="sidebar-link">d2p-images-format</a></li><li><a href="/guide/components/d2p-tree-selector.html" class="sidebar-link">d2p-tree-selector</a></li><li><a href="/guide/components/date-format.html" class="sidebar-link">date-format</a></li><li><a href="/guide/components/dict-select.html" class="sidebar-link">dict-select</a></li><li><a href="/guide/components/values-format.html" class="sidebar-link">values-format</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="文件上传组件"><a href="#文件上传组件" class="header-anchor">#</a> 文件上传组件</h1> <p>目前支持腾讯云cos、七牛、阿里云oss等三种对象存储的web端直传</p> <h2 id="准备"><a href="#准备" class="header-anchor">#</a> 准备</h2> <ol><li>创建相应的bucket，配置跨域访问等</li> <li>生产环境还需配置获取相应的授权(以各平台上java为例)：</li></ol> <ul><li><a target="_blank" href="https://cloud.tencent.com/document/product/436/14048">腾讯云临时密钥</a></li> <li><a target="_blank" href="https://help.aliyun.com/document_detail/100624.html">阿里云的sts</a></li> <li><a target="_blank" href="https://developer.qiniu.com/kodo/sdk/1239/java#simple-uptoken">七牛获取token</a></li> <li>后端实现参考：https://github.com/greper/d2-crud-plus-server.git</li></ul> <h2 id="引入"><a href="#引入" class="header-anchor">#</a> 引入</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> d2Crud <span class="token keyword">from</span> <span class="token string">'d2-crud-x'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> d2CrudPlus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'d2-crud-plus'</span>
+<span class="token comment">// import { D2pFileUploader } from 'd2p-extends' //全部引入，包会比较大</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> D2pFileUploader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'d2p-extends/src'</span>  <span class="token comment">//通过源码引入的方式，上传组件将会懒加载</span>
+<span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'@/plugin/axios'</span>
+<span class="token comment">// 引入d2Crud</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>d2Crud<span class="token punctuation">)</span>
+<span class="token comment">// 引入d2CrudPlus</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>d2CrudPlus<span class="token punctuation">)</span>
+
+<span class="token comment">// 安装文件上传扩展插件</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>D2pFileUploader<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  d2CrudPlus<span class="token punctuation">,</span>
+  defaultType<span class="token punctuation">:</span> <span class="token string">'cos'</span><span class="token punctuation">,</span> <span class="token comment">//默认类型为腾讯云上传，可选值：【cos、qiniu、alioss】</span>
+  cos<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    domain<span class="token punctuation">:</span> <span class="token string">'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com'</span><span class="token punctuation">,</span>
+    bucket<span class="token punctuation">:</span> <span class="token string">'d2p-demo-1251260344'</span><span class="token punctuation">,</span>
+    region<span class="token punctuation">:</span> <span class="token string">'ap-guangzhou'</span><span class="token punctuation">,</span>
+    secretId<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment">//</span>
+    secretKey<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment">// 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）</span>
+    <span class="token function">getAuthorization</span>  <span class="token punctuation">(</span><span class="token parameter">custom<span class="token punctuation">,</span>context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）</span>
+      <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment">//请求后端获取sts授权</span>
+        url<span class="token punctuation">:</span> <span class="token string">'/upload/cos/getAuthorization'</span><span class="token punctuation">,</span>
+        method<span class="token punctuation">:</span> <span class="token string">'get'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">ret</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 返回结构如下</span>
+        <span class="token comment">// ret.data:{</span>
+        <span class="token comment">//   TmpSecretId,</span>
+        <span class="token comment">//   TmpSecretKey,</span>
+        <span class="token comment">//   XCosSecurityToken,</span>
+        <span class="token comment">//   ExpiredTime, // SDK 在 ExpiredTime 时间前，不会再次调用 getAuthorization</span>
+        <span class="token comment">// }</span>
+        <span class="token keyword">return</span> ret<span class="token punctuation">.</span>data
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  alioss<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    domain<span class="token punctuation">:</span> <span class="token string">'https://d2p-demo.oss-cn-shenzhen.aliyuncs.com'</span><span class="token punctuation">,</span>
+    bucket<span class="token punctuation">:</span> <span class="token string">'d2p-demo'</span><span class="token punctuation">,</span>
+    region<span class="token punctuation">:</span> <span class="token string">'oss-cn-shenzhen'</span><span class="token punctuation">,</span>
+    accessKeyId<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    accessKeySecret<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token function">getAuthorization</span>  <span class="token punctuation">(</span><span class="token parameter">custom<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 不传accessKeySecret代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）</span>
+      <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment">//请求后端获取sts授权</span>
+        url<span class="token punctuation">:</span> <span class="token string">'/upload/alioss/getAuthorization'</span><span class="token punctuation">,</span>
+        method<span class="token punctuation">:</span> <span class="token string">'get'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">ret</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+       <span class="token comment">// ret.data:{</span>
+       <span class="token comment">//   securityToken,</span>
+       <span class="token comment">//   accessKeySecret,</span>
+       <span class="token comment">//   accessKeyId,</span>
+       <span class="token comment">//   expiration</span>
+       <span class="token comment">// }</span>
+        <span class="token keyword">return</span> ret<span class="token punctuation">.</span>data
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  qiniu<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    bucket<span class="token punctuation">:</span> <span class="token string">'d2p-demo'</span><span class="token punctuation">,</span>
+    <span class="token function">getToken</span> <span class="token punctuation">(</span><span class="token parameter">custom</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment">//请求后端获取token</span>
+        url<span class="token punctuation">:</span> <span class="token string">'/upload/qiniu/getToken'</span><span class="token punctuation">,</span>
+        method<span class="token punctuation">:</span> <span class="token string">'get'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">ret</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ret<span class="token punctuation">.</span>data <span class="token comment">// {token:xxx,expires:xxx}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    domain<span class="token punctuation">:</span> <span class="token string">'http://pzrsldiu3.bkt.clouddn.com'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h2> <p>配置type=avatar-uploader 即可<br>
+type可选值：【avatar-uploader（头像上传） / image-uploader（多图片上传） / file-uploader（多文件上传）】</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">const</span> crudOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+  columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">'头像'</span><span class="token punctuation">,</span>
+      key<span class="token punctuation">:</span> <span class="token string">'avatar'</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'avatar-uploader'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="参数说明"><a href="#参数说明" class="header-anchor">#</a> 参数说明</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">const</span> crudOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      title<span class="token punctuation">:</span> <span class="token string">'图片'</span><span class="token punctuation">,</span>
+      key<span class="token punctuation">:</span> <span class="token string">'image'</span><span class="token punctuation">,</span>
+      type<span class="token punctuation">:</span> <span class="token string">'image-uploader'</span><span class="token punctuation">,</span>
+      width<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+      form<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        component<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          props<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            btnSize<span class="token punctuation">:</span> <span class="token string">'small'</span><span class="token punctuation">,</span> <span class="token comment">// type=file-uploader时按钮的大小</span>
+            btnName<span class="token punctuation">:</span> <span class="token string">'选择文件'</span><span class="token punctuation">,</span><span class="token comment">// type=file-uploader时按钮文字</span>
+            accept<span class="token punctuation">:</span> <span class="token string">'.png'</span><span class="token punctuation">,</span> <span class="token comment">// 接受的文件后缀类型</span>
+            suffix<span class="token punctuation">:</span> <span class="token string">'!200_200'</span><span class="token punctuation">,</span> <span class="token comment">//url后缀，用于图片样式处理，需要到对象存储平台配置样式</span>
+            type<span class="token punctuation">:</span> <span class="token string">'cos'</span><span class="token punctuation">,</span> <span class="token comment">// 当前使用哪种存储后端【cos/qiniu/alioss】</span>
+            custom<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//自定义参数，可以在获取token、sts时传入不同的参数给后端</span>
+            elProps<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">// 与el-uploader配置一致</span>
+              limit<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token comment">// 限制上传文件数量</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>  
+  <span class="token punctuation">]</span>
+ <span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/greper/d2-crud-plus/edit/master//docs/guide/extends/file-uploader.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/extends/area-selector.html" class="prev">省市区选择组件</a></span> <span class="next"><a href="/guide/extends/tree-selector.html">树形选择组件</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.63ab5302.js" defer></script><script src="/assets/js/2.38672536.js" defer></script><script src="/assets/js/27.29b07bcd.js" defer></script>
+  </body>
+</html>

@@ -5,12 +5,17 @@
 </template>
 
 <script>
+// 图片行展示组件
 export default {
   name: 'd2p-images-format',
   props: {
+    // 图片的url
+    // 'url' 或 ['url1','url2']
     value: {
+      type: [String, Array],
       require: true
     },
+    // 图片的高度设置
     height: {
       require: false,
       default: 30

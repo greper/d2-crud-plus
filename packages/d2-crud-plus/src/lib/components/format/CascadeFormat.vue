@@ -19,13 +19,25 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+// 级联数据格式化组件
 export default {
   name: 'cascade-format',
   props: {
+    // 值<br/>
+    // 单选时 '1,2,3' 或 [1,2,3]<br/>
+    // 多选[[1,2,3],[4,5,6]]<br/>
     value: {
+      type: [String, Array],
       require: true
     },
+    // value的分隔符<br/>
+    // 多选时，如果value为string，则以该分隔符分割成多个展示<br/>
+    // 传入空字符串，表示不分割<br/>
+    separator: { default: ',', require: false },
+    // 是否多选
     multiple: { type: Boolean, default: false },
+    // 数据字典<br/>
+    // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
       require: false
@@ -73,10 +85,12 @@ export default {
     },
     buildValueItem (values) {
       let arr = null
-      if (typeof (values) === 'string') {
-        arr = values.split(',')
+      if (typeof (values) === 'string' && !this.multiple && this.separator != null && this.separator !== '') {
+        arr = values.split(this.separator)
       } else if (values instanceof Array) {
         arr = values
+      } else {
+        arr = [values]
       }
 
       let labelName = 'label'

@@ -9,14 +9,19 @@
 <script>
 import { merge } from 'lodash'
 import dict from '../../utils/util.dicts'
+// 级联选择器
 export default {
   name: 'cascade-select',
   props: {
+    // 数据字典<br/>
+    // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
       require: false
     },
+    // 值
     value: { require: false },
+    // el-cascader的属性,[el-cascader](https://element.eleme.cn/#/zh-CN/component/cascader)
     elProps: {
       type: Object
     }

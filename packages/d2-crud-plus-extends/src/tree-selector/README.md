@@ -16,6 +16,7 @@ export const crudOptions = {
       title: '树形选择',
       key: 'pcaTree',
       type: 'tree-selector',
+      dict: {url:'xxx',isTree:true}
     }
   ]
 }

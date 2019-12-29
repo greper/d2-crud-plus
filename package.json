@@ -2,10 +2,14 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.18.4"
+    "@vuepress/shared-utils": "^1.2.0",
+    "lerna": "^3.18.4",
+    "vuepress": "^1.2.0"
   },
   "scripts": {
     "build": "lerna run build",
-    "publish": "lerna publish --skip-npm"
+    "publish": "lerna publish --skip-npm",
+    "docs:dev": "vuepress dev docspress --temp .temp",
+    "docs:build": "vuese gen && vuepress build docspress"
   }
 }

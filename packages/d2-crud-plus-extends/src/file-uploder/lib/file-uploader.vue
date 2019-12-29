@@ -20,30 +20,43 @@
 <script>
 import SparkMD5 from 'spark-md5'
 import choose from './choose'
-/**
-   * emit success(item,file)
-   * fileList item = {url:'',name:''}
-   */
+
+// 文件上传组件 ，需要import xx from 'd2p-extends/src'
 export default {
   name: 'd2p-file-uploader',
   props: {
+    // 选择文件按钮的大小
     btnSize: { default: 'small' },
+    // 选择文件按钮的名称
     btnName: { default: '选择文件' },
+    // 可选哪些类型的文件
     accept: {},
+    // 上传后端类型，[cos,qiniu,alioss]
     type: {
       type: String,
       default: 'cos' // 上传类型：form cos qiniu  alioss
     },
+    // 值 <br/>
+    // 'url'<br/>
+    // 或 ['url1','url2']<br/>
+    // 或 {url:'url',md5:'',size:number}<br/>
+    // 或 [{url:'url',md5:'',size:number}]<br/>
+    // <br/>
+    // limit=1 时 input事件返回 {url:'url',md5:'',size:number}<br/>
+    // limit>1 时 input事件返回 [{url:'url',md5:'',size:number}]<br/>
     value: {
       type: [String, Array, Object]
     },
-    suffix: { // 样式后缀 追加到url的后面，进行图片处理，需要到对象存储平台配置样式
+    // 样式后缀 追加到url的后面，进行图片处理，需要到对象存储平台配置样式
+    suffix: {
       type: String,
       required: false
     },
-    custom: { // 自定义参数
+    // 自定义参数
+    custom: {
       type: Object
     },
+    // [el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件属性参数
     elProps: {
       type: Object
     }

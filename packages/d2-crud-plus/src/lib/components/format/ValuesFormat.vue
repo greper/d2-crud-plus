@@ -13,14 +13,22 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+// value格式化展示组件
 export default {
   name: 'values-format',
   props: {
+    // 值
     value: {
       require: true
     },
+    // 是否多选
     multiple: { default: true, require: false },
+    // value的分隔符<br/>
+    // 多选时，如果value为string，则以该分隔符分割成多个展示<br/>
+    // 传入空字符串，表示不分割<br/>
     separator: { default: ',', require: false },
+    // 数据字典<br/>
+    // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
       require: false,
@@ -28,10 +36,12 @@ export default {
         return {}
       }
     },
+    // 颜色，【primary, success, warning, danger ,info】
     color: {
       require: false,
       default: 'primary'
     },
+    // 展示类型【text, tag】
     type: {
       default: 'tag' // 可选【text,tag】
     }
@@ -50,7 +60,7 @@ export default {
       let dictDataMap = this.dictDataMap
       let valueArr = []
       let options = []
-      if (typeof (this.value) === 'string') {
+      if (typeof (this.value) === 'string' && this.multiple && this.separator != null && this.separator !== '') {
         valueArr = this.value.split(this.separator)
       } else if (this.value instanceof Array) {
         // 本来就是数组的

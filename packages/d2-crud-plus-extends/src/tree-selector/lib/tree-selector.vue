@@ -48,22 +48,30 @@
 <script>
 import _merge from 'lodash.merge'
 import { d2CrudPlus } from 'd2-crud-plus'
+// 树形选择组件，需要import xx from 'd2p-extends/src'
 export default {
   name: 'd2p-tree-selector',
   props: {
+    // 值
     value: {
-      type: [String, Array, Object]
+      type: [Number, String, Array, Object]
     },
+    // 过滤
     filter: { //  value中的nodes过滤方法 参数为nodes
       type: Function,
       require: false
     },
-    ignoreFullCheckedChidren: { type: Boolean, default: true }, // 是否忽略选中节点的子节点
-    leafOnly: { type: Boolean, default: false }, // 是否只返回叶子节点
-    includeHalfChecked: { type: Boolean, default: false }, // 是否包含半选节点
+    // 是否忽略选中节点的子节点
+    ignoreFullCheckedChidren: { type: Boolean, default: true },
+    // 是否只返回叶子节点
+    leafOnly: { type: Boolean, default: false },
+    // 是否包含半选节点
+    includeHalfChecked: { type: Boolean, default: false },
+    // el-tree的属性配置
     elProps: {
       type: Object
     },
+    // 数据字典配置
     dict: {
       type: Object,
       require: false

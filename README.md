@@ -49,6 +49,13 @@ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader
 例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 
 
+>
+>帮助文档全新改版  
+>https://greper.github.io/d2-crud-plus/
+>
+
+
+
 ## 目录结构
 ```
 packages    
@@ -239,6 +246,12 @@ export default {
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/add.png)
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
+
+
+>
+>帮助文档全新改版  
+>https://greper.github.io/d2-crud-plus/
+>
 
 
 ## 文档

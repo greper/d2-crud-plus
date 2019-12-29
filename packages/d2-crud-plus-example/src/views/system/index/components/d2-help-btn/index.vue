@@ -19,6 +19,10 @@
             <d2-icon name="book" class="d2-mr-5"/>
             示例
           </el-button>
+          <el-button @click="$open('https://greper.github.io/d2-crud-plus/')">
+            <d2-icon name="book" class="d2-mr-5"/>
+            文档
+          </el-button>
           <el-button @click="$open('https://fairyever.com/d2-admin/doc/zh/')">
             <d2-icon name="book" class="d2-mr-5"/>
             d2-admin 文档
@@ -26,14 +30,6 @@
           <el-button @click="$open('https://fairyever.com/d2-admin/doc/zh/ecosystem-d2-crud/')">
             <d2-icon name="book" class="d2-mr-5"/>
             d2-crud 文档
-          </el-button>
-          <el-button @click="$open('https://github.com/greper/d2-crud-plus/issues')">
-            <d2-icon name="question" class="d2-mr-5"/>
-            issues
-          </el-button>
-          <el-button @click="$open('https://github.com/greper/d2-crud-plus/issues/new/choose')">
-            <d2-icon name="plus" class="d2-mr-5"/>
-            New issue
           </el-button>
         </el-button-group>
         <el-row :gutter="20">

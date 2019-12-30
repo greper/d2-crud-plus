@@ -26,7 +26,9 @@ export const crudOptions = {
       search: {
         disabled: false, //是否禁用该字段的查询，默认false
         component:{}, //查询框组件配置，默认根据form配置生成 
-        slot:false //是否启用搜索框的slot插槽,需要d2-crud-x才支持，示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        // 是否启用搜索框的slot插槽,需要d2-crud-x才支持
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        slot:false 
       },
       form: { //添加和编辑表单配置
         rules: [ // 表单校验规则
@@ -48,14 +50,18 @@ export const crudOptions = {
           span:12 //该字段占据多宽，24为占满一行
         },
         valueChange(key ,value ,form){
-            //form表单数据change事件，表单某项有改动将触发此事件
+            // form表单数据change事件，表单某项有改动将触发此事件
         },
-        slot:false //是否启用form编辑框的slot插槽,需要d2-crud-x才支持，示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        slot:false 
+        
       },
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
-        // 例如：国际手机号(mobileValue为此column的key) 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/phone
+        // 例如：国际手机号(mobileValue为此column的key) 
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/phone
         // row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
       },
       valueResolve (row,key) { 
@@ -73,15 +79,21 @@ export const crudOptions = {
            { value: 'wh', label: '武汉' }, 
            { value: 'sh', label: '上海' }
         ],
-        url:'/dict/get', // 若data为空，则通过http请求获取远程数据字典
+        // 若data为空，则通过http请求获取远程数据字典
+        url:'/dict/get', 
         // value:'value', value的属性名
         // label:'label', label的属性名
         // children:'children', children的属性名
         // isTree: false //是否是树形结构
       },
-      component:{ name:'dict-select', props:{...}},//行内单元格显示组件
-      disabled: false, //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
-      rowSlot: false, // 是否启用该cell的slot插槽,需要d2-crud-x才支持，见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+      //行内单元格显示组件
+      component:{ name:'dict-select', props:{...}},
+      //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
+      disabled: false, 
+      // 是否启用该cell的slot插槽,需要d2-crud-x才支持
+      // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+      rowSlot: false, 
+      
       formatter (row, column, value, index) {
         // cell 格式化，与d2-crud一致
       }

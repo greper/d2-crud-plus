@@ -1,5 +1,6 @@
 ---
 home: true
+tagline: 简化crud配置，快速开发crud功能
 heroImage: /icon-only.png
 actionText: 快速上手 →
 actionLink: /guide/
@@ -10,6 +11,43 @@ features:
   details: 丰富的字段类型，大幅减少代码量。
 - title: 自定义扩展
   details: 再困难的需求，也能实现。
-footer: MIT Licensed | Copyright © 2018-present Xiaojunnuo
+footer: MIT Licensed | Copyright © 2018-present Greper
 ---
 
+简单的字段配置
+
+```js
+  columns: [
+    {
+      title: '日期', //字段名称
+      key: 'date', //字段key
+      type: 'date', //字段类型，添加、修改、查询将自动生成相应表单组件
+    },
+    {
+      title: '状态',
+      key: 'status',
+      type: 'select', //选择框，默认单选
+      dict: { url: '/api/dicts/OpenStatusEnum' }//远程数据字典
+    },
+    {
+      title: '地区',
+      key: 'province',
+      type: 'select', //选择框
+      form: { //表单组件配置，此处配置选择框为多选
+        component: { props: { filterable: true, multiple: true, clearable: true } }
+      },
+      dict: {
+        data: [ //本地数据字典
+          { value: 'sz', label: '深圳' },
+          { value: 'gz', label: '广州' },
+          { value: 'wh', label: '武汉' },
+          { value: 'sh', label: '上海' }
+        ]
+      }
+    }
+  ]
+```
+
+ 一个完全体crud就出来了 :point_down:
+ 
+![完全体crud](/gif.webp)

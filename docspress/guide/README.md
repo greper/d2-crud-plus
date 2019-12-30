@@ -46,8 +46,9 @@ Github: <https://github.com/greper/d2-crud-plus>
 例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 * 修复官方的form-data-change某些情况下获取到的值不是最新的bug  
 
-## 基于
-本项目基于d2-admin 以及 d2-crud
+## 请先了解
+本项目基于d2-admin 以及 d2-crud   
+本文档假设您已熟悉d2-admin以及d2-crud的基础知识
 ### 1. d2-admin
 Github: <https://github.com/d2-projects/d2-admin>  
 文档：<https://d2.pub/zh/doc/d2-admin/> 

@@ -59,12 +59,13 @@ let column={
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone>
 ### 省市区级联选择
 * type= area-selector | area-multi-selector
-* 表单组件：el-phone-number-input 
+* 表单组件：cascade-select
+* 行展示组件：cascade-format
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area>
 
 ### 省市区树形选择
 * type = area-tree-selector | tree-selector 
-* 表单组件：el-phone-number-input 
+* 表单组件：d2p-tree-selector 
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area>
 
 ### 文件上传

@@ -11,7 +11,7 @@ module.exports = ctx => ({
     },
   },
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }],
+    ['link', { rel: 'icon', href: `/icon-only.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -42,7 +42,7 @@ module.exports = ctx => ({
         nav: require('./nav/zh'),
         sidebar: {
          // '/api/': getApiSidebar(),
-          '/guide/': getGuideSidebar('指南', '进阶','字段类型'),
+          '/guide/': getGuideSidebar('指南', '进阶','字段类型配置'),
          // '/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
          // '/theme/': getThemeSidebar('主题', '介绍')
         }

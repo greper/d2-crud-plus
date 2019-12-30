@@ -56,7 +56,7 @@ export default {
 ```
 
 ### 2. 定义一个行展示组件
->d2-crud-plus舍弃了component的行编辑功能，将component作为了行展示组件使用
+>d2-crud-plus舍弃了column.component的行编辑功能，将column.component作为了行展示组件使用
 
 该组件也需要符合`v-model`写法，由于是展示组件，无需发送input和change事件   
 但要求能够感知传入的value值的变化   

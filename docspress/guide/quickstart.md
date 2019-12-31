@@ -125,7 +125,6 @@ export const crudOptions = {
 ``` 
 ### 3.2 page.vue
 大部分页面都一样，通常直接复制即可    
-注意：`mixins: [d2CrudPlus.crud], //d2CrudPlus最核心部分，继承d2CrudPlus.crud `
 ::: warning 
 请不要修改ref的值
 :::

@@ -69,7 +69,7 @@ Vue.use(D2pFileUploader, {
         return ret.data // {token:xxx,expires:xxx}
       })
     },
-    domain: 'http://pzrsldiu3.bkt.clouddn.com'
+    domain: 'http://d2p.file.veryreader.com'
   }
 })
 

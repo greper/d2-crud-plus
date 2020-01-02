@@ -99,7 +99,8 @@ this.crud= {
 
    
 ## 自定义字段类型
-其实就是事先自定义好column的配置，运行时根据type直接生成默认配置，减轻配置工作量
+其实就是事先自定义好column的配置，运行时根据type直接生成默认配置，减轻配置工作量   
+如果官方的字段类型不符合您的需求，您也可以配置相同的type覆盖官方配置，从而实现定制化
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
 Vue.use(d2CrudPlus)

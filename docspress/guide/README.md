@@ -34,8 +34,8 @@ Github: <https://github.com/greper/d2-crud-plus>
 * [树形选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)  
 
 ### 5. d2-crud-x
-基于d2-crud的修改版，功能与官方d2-crud一致【推荐】   
-在官方基础上修复了一些bug，增强了部分功能   
+基于d2-crud的修改版，功能与官方d2-crud一致   
+在官方基础上修复了一些bug，增强了部分功能【推荐使用d2-crud-x】   
 见<https://github.com/greper/d2-crud/>   
 * 支持隐藏表格，自定义列表展示方式【配置options.hide=true】     
 <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard> 

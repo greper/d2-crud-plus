@@ -6,8 +6,8 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'd2-crud-plus',
-      description: 'd2-crud-plus'
+      title: 'd2-crud-plus-doc',
+      description: 'd2-crud-plus-doc'
     },
   },
   head: [

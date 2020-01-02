@@ -50,4 +50,4 @@ footer: MIT Licensed | Copyright © 2018-present Greper
 
  一个完全体crud就出来了 :point_down:
  
-![完全体crud](/gif.webp)
+![完全体crud]($withBase('/gif.webp'))

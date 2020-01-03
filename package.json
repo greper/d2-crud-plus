@@ -2,7 +2,10 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@vuepress/shared-utils": "^1.2.0",
+    "husky": "^3.1.0",
     "lerna": "^3.18.4",
     "vuepress": "^1.2.0"
   },
@@ -11,5 +14,10 @@
     "publish": "lerna publish --skip-npm",
     "docs:dev": "vuepress dev docspress --temp .temp",
     "docs:build": "vuese gen && vuepress build docspress"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
   }
 }

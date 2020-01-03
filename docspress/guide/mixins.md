@@ -85,4 +85,7 @@ crudOptions的初始化方法，会在create方法中被调用
 
 
 ## 注意事项
-请不要修改page.vue 中 ref 的值
+::: warning 
+请不要修改page.vue中ref的值
+:::
+

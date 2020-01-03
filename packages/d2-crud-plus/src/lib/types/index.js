@@ -4,6 +4,18 @@ import { daterangeFormatter, shortcuts, datetimerangeFormatter } from './functio
  * @type
  */
 export default {
+  'slot-all': {
+    search: { slot: true },
+    form: { slot: true },
+    rowSlot: true
+  },
+  'slot': {
+    form: { slot: true },
+    rowSlot: true
+  },
+  'slot-form': {
+    form: { slot: true }
+  },
   datetime: {
     form: { component: { name: 'el-date-picker', props: { type: 'datetime' } } },
     component: { name: 'date-format' }

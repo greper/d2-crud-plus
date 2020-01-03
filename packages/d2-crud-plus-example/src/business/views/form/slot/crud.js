@@ -10,6 +10,7 @@ export const crudOptions = {
     {
       title: '插槽式',
       key: 'slotExample',
+      // type: 'slot-all', // slot-all等效
       sortable: true,
       search: {
         disabled: false,
@@ -19,6 +20,14 @@ export const crudOptions = {
         slot: true
       },
       rowSlot: true
+    },
+    {
+      title: '主题',
+      key: 'topics',
+      type: 'select',
+      form: {
+        slot: true
+      }
     }
   ],
   rowHandle: {

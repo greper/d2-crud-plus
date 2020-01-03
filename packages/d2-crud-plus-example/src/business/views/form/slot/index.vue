@@ -44,6 +44,14 @@
       <template slot="slotExampleFormSlot" slot-scope="scope">
         slot自定义：<el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
       </template>
+
+      <template slot="topicsFormSlot" slot-scope="scope">
+        <el-input class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >
+          <el-button slot="append" icon="el-icon-remove-outline" v-on:click="removeTopic(index)"></el-button>
+        </el-input>
+        <el-button v-on:click="addTopic">添加主题</el-button>
+      </template>
+
     </d2-crud>
     <crud-footer ref="footer"
                   :current="crud.page.current"
@@ -61,7 +69,7 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
 export default {
-  name: 'selectPage',
+  name: 'slotPage',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {
@@ -98,6 +106,19 @@ export default {
     },
     customEmit () {
       this.$message('自定义按钮')
+    },
+    addTopic () {
+      let form = this.getEditForm()
+      console.log('form:', form)
+      if (form.topics == null || form.topics === '') {
+        form.topics = []
+      }
+      form.topics.push('')
+    },
+    removeTopic (index) {
+      let form = this.getEditForm()
+      console.log('form:', form)
+      form.topics.splice(index, 1)
     }
   }
 }

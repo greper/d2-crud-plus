@@ -108,3 +108,11 @@ let column={
 ### 穿梭框
 * type = transfer   
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/el>
+
+
+## slot自定义快捷字段类型
+* type = slot （表单以及行展示组件需要通过slot自定义）
+* type = slot-all （表单、行展示组件、查询组件均需要通过slot自定义）
+* type = slot-form （仅表单组件需要通过slot自定义）
+
+更多详情请[slot自定义表单功能](./slot)

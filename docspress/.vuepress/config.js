@@ -6,8 +6,8 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'd2-crud-plus-doc',
-      description: 'd2-crud-plus-doc'
+      title: 'd2-crud-plus',
+      description: 'd2-crud-plus doc'
     },
   },
   head: [
@@ -114,8 +114,9 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'mixins',
         'options',
         'column-type',
-        'dict',
-        'extends'
+        'extends',
+        'slot',
+        'dict'
       ]
     },
     {

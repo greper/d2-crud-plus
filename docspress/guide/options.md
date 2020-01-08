@@ -39,7 +39,7 @@ export const crudOptions = {
         editDisabled: false, //是否在修改时禁用该字段
         component: { //添加和修改时form表单的组件
           name: 'dict-select', //表单组件名称
-          props: { //dict-select组件的参数，其他组件的参数请查看相应的组件文档
+          props: { //表单组件的参数，其他组件的参数请查看相应的组件文档
             separator:",",
             elProps:{ //el-select的参数，dict-select内部封装了el-select
               filterable: true, //可过滤选择项[不同组件参数不同]

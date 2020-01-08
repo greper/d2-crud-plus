@@ -40,12 +40,12 @@ crudOptions的初始化方法，会在create方法中被调用
 ### handleRowEdit(row, done)
 编辑对话框点击提交的处理
 ### editBefore(row)
-编辑对话框提交到后端前对表单数据进行处理   
-默认会调用各个column中配置的_`this.doValueResolve(row)`   
+编辑对话框提交到后端前对表单数据进行处理    
+默认会调用`this.doValueResolve(row)`，内部会遍历column配置的`valueResolve(row,key)`   
 如要覆盖此方法，不要忘记调用`this.doValueResolve(row)`
 ### addBefore(row)
 添加对话框提交到后端前对表单数据进行处理   
-默认会调用各个column中配置的`this.doValueResolve(row)`方法   
+默认会调用`this.doValueResolve(row)` ，内部会遍历column配置的`valueResolve(row,key)`       
 如要覆盖此方法，不要忘记调用`this.doValueResolve(row)`
 ### handleDialogCancel(done)
 编辑对话框取消的处理

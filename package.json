@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "publish": "lerna publish --skip-npm",
+    "version": "lerna version --conventional-commits",
     "docs:dev": "vuepress dev docspress --temp .temp",
     "docs:build": "vuese gen && vuepress build docspress"
   },

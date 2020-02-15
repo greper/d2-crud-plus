@@ -106,7 +106,6 @@ export default {
       let dataMap = this.dict.dataMap
       if (dataMap == null && data != null && data.length > 0) {
         dataMap = {}
-        console.log('初始化 dictDataMap')
         this.putAll(dataMap, data, this.dict.isTree)
         // this.$set(this, 'dictData', data)
         // dict.putCache(this.dict.mapCacheName, dataMap)

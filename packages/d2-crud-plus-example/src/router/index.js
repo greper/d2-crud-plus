@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PM from '../permission'
+import PM from '../business/modules/permission/lib'
 // 进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -24,6 +24,7 @@ const router = new VueRouter({
  * 权限验证
  */
 router.beforeEach(async (to, from, next) => {
+  console.log('router.beforeEach')
   // 确认已经加载多标签页数据 https://github.com/d2-projects/d2-admin/issues/201
   await store.dispatch('d2admin/page/isLoaded')
   // 确认已经加载组件尺寸设置 https://github.com/d2-projects/d2-admin/issues/198
@@ -32,16 +33,31 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start()
   // 关闭搜索面板
   store.commit('d2admin/search/set', false)
+
+  // add by greper
+  // 初始化动态路由
+  if (PM.isEnabled() && !PM.isInited()) {
+    const token = util.cookies.get('token')
+    if (token && token !== 'undefined') {
+      try {
+        await PM.loadRemoteRoute()
+      } catch (e) {
+        console.error('加载动态路由失败', e)
+        next()
+        return
+      }
+      next({ path: to.path, replace: true })
+      return
+    }
+  }
+  // add end
   // 验证当前路由所有的匹配中是否需要有登录验证的
   if (to.matched.some(r => r.meta.auth)) {
     // 这里暂时将cookie里是否存有token作为验证是否登录的条件
     // 请根据自身业务需要修改
     const token = util.cookies.get('token')
     if (token && token !== 'undefined') {
-      // add by greper
-      // next()
-      await PM.doNext(next, to)
-      // add end
+      next()
     } else {
       // 没有登录的时候跳转到登录界面
       // 携带上登陆成功之后需要跳转的页面完整路径

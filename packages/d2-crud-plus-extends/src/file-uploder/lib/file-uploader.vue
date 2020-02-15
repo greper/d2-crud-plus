@@ -52,6 +52,10 @@ export default {
       type: String,
       required: false
     },
+    returnType: {
+      type: String,
+      default: 'url' // 返回类型: url=仅返回链接, object=包含md5和size
+    },
     // 自定义参数
     custom: {
       type: Object
@@ -127,7 +131,16 @@ export default {
           fileList = [{ url: this.value, name: fileName }]
         }
       } else if (this.value instanceof Array) {
-        fileList = this.value
+        if (this.value.length > 0 && typeof (this.value[0]) === 'string') {
+          let tmp = []
+          this.value.forEach(item => {
+            let fileName = item.substring(item.lastIndexOf('/') + 1)
+            tmp.push({ url: item, name: fileName })
+          })
+          fileList = tmp
+        } else {
+          fileList = this.value
+        }
       } else if (this.value instanceof Object) {
         fileList = [this.value]
       }
@@ -152,8 +165,18 @@ export default {
       }
       console.log('handleUploadFileSuccess list', list, res)
       if (this._elProps.limit === 1) {
+        if (this.returnType === 'url') {
+          res = res.url
+        }
         this.$emit('input', res)
       } else {
+        if (this.returnType === 'url') {
+          const tmp = []
+          list.forEach(item => {
+            tmp.push(item.url)
+          })
+          list = tmp
+        }
         this.$emit('input', list)
       }
     },

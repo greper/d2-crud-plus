@@ -48,11 +48,6 @@ function get (dict) {
     item.loading = true
     item.error = false
     // 远程加载
-
-    if (url == null) {
-      console.error('远程加载数据字典失败：', dict)
-      throw new Error('远程加载数据字典失败：没有配置url')
-    }
     return this.getRemoteDictFunc(url).then((ret) => {
       // prop mapping
       let data = ret.data

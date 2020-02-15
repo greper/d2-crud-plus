@@ -52,9 +52,10 @@ export default {
       type: String,
       required: false
     },
+    // 返回类型: url=仅返回链接, object=包含md5和size
     returnType: {
       type: String,
-      default: 'url' // 返回类型: url=仅返回链接, object=包含md5和size
+      default: 'url'
     },
     // 自定义参数
     custom: {

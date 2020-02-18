@@ -7,14 +7,14 @@ export const crudOptions = {
       type: 'icon-selector'
     },
     {
-      title: '普通',
+      title: '用户可输入',
       key: 'iconSelect2',
       sortable: true,
       type: 'icon-selector',
       form: {
         component: {
           props: {
-            'user-input': false
+            'user-input': true
           }
         }
       }

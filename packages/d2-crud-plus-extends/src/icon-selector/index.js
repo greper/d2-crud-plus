@@ -1,7 +1,7 @@
 import { d2CrudPlus } from 'd2-crud-plus'
 const types = {
   'icon-selector': {
-    form: { component: { name: 'd2-icon-select', props: { 'user-input': true } } },
+    form: { component: { name: 'd2-icon-select' } },
     component: { name: 'd2p-icon' },
     align: 'center'
   }

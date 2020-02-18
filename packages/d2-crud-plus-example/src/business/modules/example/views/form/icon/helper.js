@@ -15,14 +15,14 @@ export default {
       type: 'icon-selector' // 字段类型
     },
     {
-      title: '普通',
+      title: '用户可输入',
       key: 'iconSelect2',
       sortable: true,
       type: 'icon-selector',
       form: {
         component: { // 组件参数配置
           props: {
-            'user-input': false 
+            'user-input': true 
           }
         }
       }

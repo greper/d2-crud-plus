@@ -174,7 +174,6 @@ export default {
     .d2-icon-select--class-title {
       line-height: 30px;
       text-align: center;
-      background-color: $color-bg;
       border-radius: 4px;
       margin: 10px 0px;
     }
@@ -182,13 +181,9 @@ export default {
       .d2-icon-select--class-col {
         line-height: 40px;
         text-align: center;
-        color: $color-text-sub;
         &:hover {
-          color: $color-text-main;
-          background-color: $color-bg;
           border-radius: 4px;
           font-size: 26px;
-          box-shadow: inset 0px 0px 0px 1px $color-border-1;
         }
       }
     }

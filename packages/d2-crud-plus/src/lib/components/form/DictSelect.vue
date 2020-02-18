@@ -83,13 +83,15 @@ export default {
         this.selectValue = newVal
         return
       }
-      if (this.value == null) {
+      if (newVal == null) {
         this.selectValue = []
+        return
       }
-      if (typeof this.value === 'string' && this.separator != null && this.separator !== '') {
-        this.selectValue = this.value.split(this.separator)
+      if (typeof newVal === 'string' && this.separator != null && this.separator !== '') {
+        this.selectValue = newVal.split(this.separator)
+        return
       }
-      this.selectValue = this.value
+      this.selectValue = newVal
     },
     handleClick () {
       // this.$emit('input', !this.value)

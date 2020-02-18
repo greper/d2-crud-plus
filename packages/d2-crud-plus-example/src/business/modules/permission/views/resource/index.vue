@@ -1,6 +1,6 @@
 <template>
     <d2-container>
-        <template slot="header">菜单管理</template>
+        <template slot="header">资源管理</template>
         <div>
         <el-button-group>
             <el-button type="primary"
@@ -40,17 +40,17 @@
                              label-width="80px"
                              :model="form"
                              ref="form">
-                        <el-form-item label="父级节点"
-                                      prop="parentId">
-                            <el-input v-model="form.parentId"
-                                      :disabled="true"
-                                      placeholder="请输入父级节点"></el-input>
-                        </el-form-item>
                         <el-form-item label="节点ID"
                                       prop="id">
                             <el-input v-model="form.id"
                                       :disabled="true"
                                       placeholder="请输入节点ID"></el-input>
+                        </el-form-item>
+                        <el-form-item label="父级节点"
+                                      prop="parentId">
+                            <el-input v-model="form.parentId"
+                                      :disabled="formEdit"
+                                      placeholder="请输入父级节点"></el-input>
                         </el-form-item>
                         <el-form-item label="标题"
                                       prop="title">
@@ -72,9 +72,9 @@
                         </el-form-item>
                         <el-form-item label="图标"
                                       prop="icon">
-                            <el-input v-model="form.icon"
-                                      :disabled="formEdit"
-                                      placeholder="请输入图标"></el-input>
+                            <d2-icon-select v-model="form.icon"
+                                            :disabled="formEdit"
+                                            placeholder="请输入图标" :user-input="true"></d2-icon-select>
                         </el-form-item>
                         <el-form-item label="类型"
                                       prop="type">

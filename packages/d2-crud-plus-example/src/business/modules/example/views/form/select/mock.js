@@ -8,23 +8,27 @@ const list = [
   {
     status: '0',
     mselect: 'sz',
-    cascader: ['zhinan', 'shejiyuanze', 'yizhi']
+    cascader: ['zhinan', 'shejiyuanze', 'yizhi'],
+    status3: '0'
   },
   {
     status: '1',
     mselect: 'sh,sz',
-    slotExample: 'slotExample'
+    slotExample: 'slotExample',
+    status3: '0'
   },
   {
     status: '1',
     mselect: 'gz',
-    slotExample: 'slotExample'
+    slotExample: 'slotExample',
+    status3: '0'
   },
   {
     date: '2016-05-03',
     status: '2',
     mselect: 'wh,gz',
-    slotExample: 'slotExample'
+    slotExample: 'slotExample',
+    status3: '0'
   }
 ]
 

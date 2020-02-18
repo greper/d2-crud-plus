@@ -31,7 +31,7 @@ function formatRouter (routers, list) {
       formatRouter(routers, item.children)
     }
 
-    if (item.type === 2 || StringUtils.isEmpty(item.path) || StringUtils.isEmpty(item.component)) { // 如果是按钮，则不加入路由
+    if (item.type === 2 || StringUtils.isEmpty(item.path) || StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置path，则不加入路由
       return
     }
     routers.push({
@@ -59,7 +59,11 @@ function formatMenu (menuTree) {
     if (item.children != null && item.children.length > 0) {
       children = formatMenu(item.children)
     }
-    menus.push({ path: item.path, title: item.title, children: children })
+    let icon
+    if (item.icon != null && item.icon !== '') {
+      icon = item.icon
+    }
+    menus.push({ path: item.path, title: item.title, icon: icon, children: children })
   })
   if (menus.length === 0) {
     menus = undefined
@@ -67,14 +71,8 @@ function formatMenu (menuTree) {
   return menus
 }
 
-/**
- * Filter asynchronous routing tables by recursion
- * @param routes asyncRoutes
- * @param roles
- */
 export function filterAsyncRoutes (routes, roles) {
   const res = []
-
   routes.forEach(route => {
     const tmp = { ...route }
     if (hasPermission(roles, tmp)) {
@@ -116,17 +114,20 @@ const actions = {
   generateRoutes ({ commit }, { roles, menuTree: resourceList }) {
     return new Promise(resolve => {
       let asyncRoutes = formatRouter([], resourceList)
-      let accessedRoutes
-      if (roles.includes('super_admin')) {
-        accessedRoutes = asyncRoutes || []
-      } else {
-        accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-      }
+      let accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
       commit('SET_ROUTES', accessedRoutes)
 
-      const accessMenus = formatMenu(resourceList)
-      const allMenuHeader = menuHeader
-      const allMenuAside = menuAside.concat(accessMenus)
+      const menus = formatMenu(resourceList)
+      const accessMenus = {
+        aside: menus[0].children,
+        header: menus[1].children
+      }
+      const allMenuHeader = accessMenus.header != null ? menuHeader.concat(accessMenus.header) : menuHeader
+      const allMenuAside = accessMenus.aside != null ? menuAside.concat(accessMenus.aside) : menuAside
+      console.log('accessRouter:', accessedRoutes)
+      console.log('menuHeader:', allMenuHeader)
+      console.log('menuAside:', allMenuAside)
+
       // 处理路由 得到每一级的路由设置
       commit('d2admin/page/init', frameInRoutes.concat(accessedRoutes), { root: true })
       // 设置顶栏菜单

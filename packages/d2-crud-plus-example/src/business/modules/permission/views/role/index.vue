@@ -4,6 +4,7 @@
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" ></crud-search>
         <d2-crud
                 ref="d2Crud"
+                size="mini"
                 :columns="crud.columns"
                 :data="crud.list"
                 :rowHandle="crud.rowHandle"
@@ -95,21 +96,47 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     },
+    /**
+       * 找出所有已选择的叶子节点
+       * @param json 待解析的json串
+       * @param idArr 原始节点数组
+       * @param temp 临时存放节点id的数组
+       * @return 太监节点id数组
+       */
+    getAllCheckedLeafNodeId (tree, checkedIds, temp) {
+      for (let i = 0; i < tree.length; i++) {
+        const item = tree[i]
+        // 存在子节点，递归遍历;不存在子节点，将
+        if (item.children && item.children.length !== 0) {
+          this.getAllCheckedLeafNodeId(item.children, checkedIds, temp)
+        } else {
+          if (checkedIds.indexOf(item.id) !== -1) {
+            temp.push(item.id)
+          }
+        }
+      }
+      return temp
+    },
     authzHandle (event) {
       console.log('authz', event)
       GetTree({}).then(ret => {
         this.treeData = ret.data
         this.roleId = event.row.id
+        this.dialogPermissionVisible = true
         return this.updateChecked(event.row.id)
       }).then(() => {
-        this.dialogPermissionVisible = true
+
       })
     },
     updateChecked (id) {
       return GetPermission(id).then(ret => {
         let checkedIds = ret.data
-        console.log('menuTree', this.$refs)
+        // 找出所有的叶子节点
+        checkedIds = this.getAllCheckedLeafNodeId(this.treeData, checkedIds, [])
         this.$set(this, 'checkedKeys', checkedIds)
+        // this.$nextTick(() => {
+        //   this.$refs.menuTree.setCheckedKeys(checkedIds)
+        // })
       })
     },
     updatePermession (roleId) {

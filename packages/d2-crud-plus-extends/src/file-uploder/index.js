@@ -1,6 +1,6 @@
 import config from './lib/config'
 import D2pImagesFormat from './lib/images-format'
-
+import { d2CrudPlus } from 'd2-crud-plus'
 const types = {
   'image-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },
@@ -34,15 +34,15 @@ function install (Vue, options) {
   if (options != null) {
     // 覆盖用户配置
     Object.assign(config, options)
-    // 配置type
-    if (options.d2CrudPlus != null) {
-      // 设置默认uploader
-      let defaultType = config.defaultType != null ? config.defaultType : 'cos'
-      for (let typesKey in types) {
-        types[typesKey].form.component.props.type = defaultType
-      }
-      options.d2CrudPlus.util.columnResolve.addTypes(types)
+  }
+  // 配置type
+  if (d2CrudPlus != null) {
+    // 设置默认uploader
+    let defaultType = config.defaultType != null ? config.defaultType : 'cos'
+    for (let typesKey in types) {
+      types[typesKey].form.component.props.type = defaultType
     }
+    d2CrudPlus.util.columnResolve.addTypes(types)
   }
 }
 

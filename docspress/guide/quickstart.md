@@ -57,8 +57,13 @@ Vue.use(d2CrudPlus, {
 import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)
-
  ```
+### 3.去掉mock，连接真实后端
+修改.env.*的配置
+```
+VUE_APP_BUILD_MODE=nomock
+```
+
 ## 开发一个crud
 
 更多示例代码   

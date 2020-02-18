@@ -3,7 +3,7 @@
       :inline="true"
       :model="form"
       ref="searchForm"
-      size="small" >
+      size="small" class="d2p-search-form" >
 
     <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.label" :prop="item.key"  >
       <template v-if="item.slot === true">

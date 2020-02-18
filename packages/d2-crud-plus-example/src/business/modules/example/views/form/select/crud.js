@@ -54,6 +54,26 @@ export const crudOptions = {
       dict: {
         url: '/api/select/cascadeData'
       }
+    },
+    {
+      title: 'radio',
+      key: 'status2',
+      sortable: true,
+      search: {},
+      type: 'radio',
+      dict: {
+        url: '/api/dicts/OpenStatusEnum'
+      }
+    },
+    {
+      title: 'checkbox',
+      key: 'status3',
+      sortable: true,
+      search: {},
+      type: 'checkbox',
+      dict: {
+        url: '/api/dicts/OpenStatusEnum'
+      }
     }
   ]
 }

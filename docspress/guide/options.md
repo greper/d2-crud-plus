@@ -35,8 +35,8 @@ export const crudOptions = {
           { required: true, message: '请选择地区' }
         ],
         disabled:false, //是否禁用该字段的添加与修改
-        addDisabled: false, //是否在添加时禁用该字段
-        editDisabled: false, //是否在修改时禁用该字段
+        addDisabled: false, //是否在添加时在编辑框中隐藏该字段
+        editDisabled: false, //是否在修改时在编辑框中隐藏该字段
         component: { //添加和修改时form表单的组件
           name: 'dict-select', //表单组件名称
           props: { //表单组件的参数，其他组件的参数请查看相应的组件文档
@@ -52,6 +52,15 @@ export const crudOptions = {
         valueChange(key ,value ,form){
             // form表单数据change事件，表单某项有改动将触发此事件
         },
+        addTemplateHandle(form){
+            //对添加的form配置做单独处理
+        },  
+        editTemplateHandle(form){
+            //对编辑的form配置做单独处理
+            //比如，某些字段在添加时需要输入，而编辑时要禁用控件，可以做如下处理
+            //form.component.disabled=true // element原生控件
+            //或 form.component.props.disabled=true // 封装控件
+        },     
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
         slot:false 
@@ -112,7 +121,8 @@ export const crudOptions = {
   options: { // 与官d2-crud一致
     stripe: true,
     border: true,
-    highlightCurrentRow: false
+    highlightCurrentRow: false,
+    size: 'mini'
   },
   addTemplate: {}, //根据form配置自动生成
   editTemplate: {}, //根据form配置自动生成

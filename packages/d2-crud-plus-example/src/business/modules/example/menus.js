@@ -12,7 +12,8 @@ export default {
         { path: '/form/uploader', title: '文件上传' },
         { path: '/form/customType', title: '自定义字段类型' },
         { path: '/form/el', title: 'EL表单组件' },
-        { path: '/form/area', title: '省市区选择组件' }
+        { path: '/form/area', title: '省市区选择组件' },
+        { path: '/form/icon', title: '图标选择' }
       ]
     },
     {

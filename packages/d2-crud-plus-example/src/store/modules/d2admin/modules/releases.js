@@ -14,7 +14,6 @@ export default {
       // add by greper
       util.log.capsule('D2CrudPlusExample', `v${process.env.VUE_APP_VERSION}`)
       console.log('D2 Crud Plus   https://github.com/greper/d2-crud-plus')
-      console.log('D2 Crud Plus Example   https://github.com/greper/d2-crud-plus-example')
       console.log('请不要吝啬您的 star，谢谢 ~')
     }
   }

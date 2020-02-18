@@ -1,6 +1,6 @@
 <template>
   <div  style="margin-left: 16px;float:right">
-    <el-button @click="drawer = true" type="primary">
+    <el-button @click="drawer = true" size="mini" type="primary">
       帮助
     </el-button>
     <el-drawer

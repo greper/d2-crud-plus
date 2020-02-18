@@ -1,16 +1,15 @@
 import request from '@/plugin/axios'
-const apiPrefix = '/user/user'
 export function GetList (query) {
   return request({
-    url: apiPrefix + '/page',
+    url: '/icon/page',
     method: 'get',
-    params: query
+    data: query
   })
 }
 
 export function AddObj (obj) {
   return request({
-    url: apiPrefix + '/add',
+    url: '/icon/add',
     method: 'post',
     data: obj
   })
@@ -18,15 +17,22 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: apiPrefix + '/update',
+    url: '/icon/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: apiPrefix + '/delete',
+    url: '/icon/delete',
     method: 'post',
     params: { id }
+  })
+}
+export function GetCustomName (callingCode, mobile) {
+  return request({
+    url: '/icon/getCustomName',
+    method: 'get',
+    params: { callingCode, mobile }
   })
 }

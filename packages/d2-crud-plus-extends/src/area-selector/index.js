@@ -19,7 +19,9 @@ const types = {
 }
 
 function install (Vue) {
-  d2CrudPlus.util.columnResolve.addTypes(types)
+  if (d2CrudPlus != null) {
+    d2CrudPlus.util.columnResolve.addTypes(types)
+  }
 }
 
 export default {

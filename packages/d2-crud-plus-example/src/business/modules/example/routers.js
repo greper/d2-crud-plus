@@ -87,6 +87,15 @@ export default {
       },
       component: _import(viewsPrefix + 'form/uploader')
     },
+    {
+      path: 'form/icon',
+      name: 'formIcon',
+      meta: {
+        title: '图标选择',
+        auth: true
+      },
+      component: _import(viewsPrefix + 'form/icon')
+    },
     //  酒店示例
     {
       path: 'hotel/dashboard',

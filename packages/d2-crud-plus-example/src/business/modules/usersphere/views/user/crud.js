@@ -1,5 +1,18 @@
 import { mobileValidator } from 'el-phone-number-input'
 export const crudOptions = {
+  rowHandle: {
+    // columnHeader: '操作',
+    width: 300,
+    custom: [
+      {
+        text: ' 授权',
+        type: 'warning',
+        size: 'small',
+        emit: 'authz',
+        icon: 'el-icon-s-flag'
+      }
+    ]
+  },
   columns: [
     {
       title: 'id',
@@ -15,6 +28,7 @@ export const crudOptions = {
       title: '创建时间',
       key: 'createTime',
       type: 'datetime',
+      width: 140,
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
       form: { disabled: true }, // 表单配置
@@ -25,6 +39,7 @@ export const crudOptions = {
       title: '修改时间',
       key: 'updateTime',
       type: 'datetime',
+      width: 140,
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
       form: { disabled: true }, // 表单配置
@@ -37,7 +52,10 @@ export const crudOptions = {
       // type: 'select',
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
-      // form: { disabled: true }, // 表单配置
+      form: {
+        editDisabled: true,
+        rules: [{ required: true, message: '请输入用户名' }]
+      },
       // disabled: false, // 是否隐藏列
       sortable: true
     },
@@ -47,7 +65,15 @@ export const crudOptions = {
       // type: 'select',
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
-      // form: { disabled: true }, // 表单配置
+      form: {
+        // disabled: true,
+        component: {
+          props: {
+            showPassword: true
+          }
+        },
+        helper: '填写则修改密码'
+      }, // 表单配置
       disabled: true, // 是否隐藏列
       sortable: true
     },
@@ -65,6 +91,7 @@ export const crudOptions = {
       title: '手机号',
       key: 'mobileValue',
       type: 'phoneNumber',
+      width: 150,
       form: {
         rules: [{ required: true, message: '请输入手机号' }, { validator: mobileValidator, message: '手机号不正确' }]
       },
@@ -96,7 +123,7 @@ export const crudOptions = {
     {
       title: '性别',
       key: 'gender',
-      type: 'select',
+      type: 'radio',
       dict: { data: [
         { value: 1, label: '男' }, { value: 2, label: '女' }
       ] }, // 数据字典
@@ -115,6 +142,19 @@ export const crudOptions = {
       form: { // 表单配置
         // disabled: true, // 禁用表单编辑
         rules: [{ required: false, message: '请输入邮箱' }, { type: 'email', message: '请输入正确的邮箱' }]
+      },
+      sortable: true
+    },
+    {
+      title: '角色',
+      key: 'roles',
+      type: 'select',
+      width: 300,
+      dict: { url: '/permission/manager/role/list', value: 'id', label: 'name' }, // 数据字典
+      // search: { disabled: true}, // 开启查询
+      // disabled: false, // 是否隐藏列
+      form: { // 表单配置
+        disabled: true // 禁用表单编辑
       },
       sortable: true
     }

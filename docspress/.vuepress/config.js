@@ -116,7 +116,9 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'column-type',
         'extends',
         'slot',
-        'dict'
+        'dict',
+        'permission',
+        'generate'
       ]
     },
     {
@@ -139,6 +141,14 @@ function getGuideSidebar (groupA, groupB,groupC) {
       collapsable: false,
       sidebarDepth: 3,
       children: componentDocs
+    },
+    {
+      title: '其他',
+      collapsable: false,
+      sidebarDepth: 3,
+      children: [
+          'log'
+      ]
     }
   ]
 }

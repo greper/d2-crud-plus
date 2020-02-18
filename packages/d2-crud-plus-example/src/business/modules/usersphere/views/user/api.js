@@ -1,5 +1,5 @@
 import request from '@/plugin/axios'
-const apiPrefix = '/usersphere/user'
+const apiPrefix = '/usersphere/manager/user'
 export function GetList (query) {
   return request({
     url: apiPrefix + '/page',
@@ -37,5 +37,20 @@ export function GetObj (id) {
     url: apiPrefix + '/info',
     method: 'get',
     params: { id }
+  })
+}
+export function GetRoleList () {
+  return request({
+    url: apiPrefix + '/getAllRole',
+    method: 'get'
+  })
+}
+
+export function DoAuthz (userId, roleIds) {
+  return request({
+    url: apiPrefix + '/authz',
+    method: 'post',
+    params: { userId },
+    data: roleIds
   })
 }

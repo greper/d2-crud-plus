@@ -1,5 +1,5 @@
 import request from '@/plugin/axios'
-const apiPrefix = '/permission/resource'
+const apiPrefix = '/permission/manager/resource'
 export function GetList (query) {
   return request({
     url: apiPrefix + '/page',

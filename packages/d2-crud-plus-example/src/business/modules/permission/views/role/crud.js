@@ -54,7 +54,11 @@ export const crudOptions = {
       key: 'code',
       // type: 'select',
       search: { disabled: false }, // 开启查询
-      // form: { disabled: true } //表单配置
+      form: {
+        editTemplateHandle (form) {
+          form.component.disabled = true // 编辑时禁用控件，不允许编辑
+        }
+      }, // 表单配置
       // disabled: false //是否隐藏列
       sortable: true
     },

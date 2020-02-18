@@ -17,13 +17,18 @@ function getByType (type, item) {
   return column
 }
 
+function getTypes () {
+  return DefaultTypes
+}
+
 const ColumnResolveUtil = {
   getByType: getByType,
   addTypes (newTypes) {
     for (const key in newTypes) {
       DefaultTypes[key] = newTypes[key]
     }
-  }
+  },
+  getTypes: getTypes
 }
 
 export default ColumnResolveUtil

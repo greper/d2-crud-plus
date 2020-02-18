@@ -4,7 +4,7 @@ const userDB = [
   { username: 'user1', password: 'user1', uuid: 'user1-uuid', name: '用户1' }
 ]
 
-export default [
+let apis = [
   {
     path: '/api/login',
     method: 'post',
@@ -29,3 +29,8 @@ export default [
     }
   }
 ]
+
+if (process.env.VUE_APP_PM_ENABLED) {
+  apis = []
+}
+export default apis

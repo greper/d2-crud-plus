@@ -16,7 +16,8 @@ export default {
         options: {
           stripe: true,
           border: true,
-          highlightCurrentRow: false
+          highlightCurrentRow: false,
+          size: 'mini'
         },
         columns: [],
         addTemplate: {},
@@ -131,17 +132,25 @@ export default {
           this.crud.searchOptions.columns.push(search)
         }
         if (form.disabled !== true) {
+          const template = {
+            title: item.title,
+            ...form
+          }
+          delete template.addTemplateHandle
+          delete template.editTemplateHandle
           if (form.addDisabled !== true) {
-            this.crud.addTemplate[key] = {
-              title: item.title,
-              ...form
+            const addTemplate = cloneDeep(template)
+            this.crud.addTemplate[key] = addTemplate
+            if (form.addTemplateHandle != null) {
+              form.addTemplateHandle(addTemplate)
             }
-            this.crud.addRules[key] = form.rules
+            this.crud.addRules[key] = addTemplate.rules
           }
           if (form.editDisabled !== true) {
-            this.crud.editTemplate[key] = {
-              title: item.title,
-              ...form
+            const editTemplate = cloneDeep(template)
+            this.crud.editTemplate[key] = editTemplate
+            if (form.editTemplateHandle != null) {
+              form.editTemplateHandle(editTemplate)
             }
             this.crud.editRules[key] = form.rules
           }

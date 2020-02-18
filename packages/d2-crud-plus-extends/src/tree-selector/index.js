@@ -8,7 +8,9 @@ const types = {
 
 function install (Vue) {
   Vue.component('d2p-tree-selector', () => import('./lib/tree-selector'))
-  d2CrudPlus.util.columnResolve.addTypes(types)
+  if (d2CrudPlus != null) {
+    d2CrudPlus.util.columnResolve.addTypes(types)
+  }
 }
 
 export default {

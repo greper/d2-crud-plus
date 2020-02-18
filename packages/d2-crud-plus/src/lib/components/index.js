@@ -9,9 +9,13 @@ import CrudSearch from './search/index'
 import CrudFooter from './footer/index'
 import renderComponent from './render/renderComponent'
 import renderCustomComponent from './render/renderCustomComponent'
+import DictRadio from './form/DictRadio'
+import DictCheckbox from './form/DictCheckbox'
 
 export default {
   DictSelect,
+  DictRadio,
+  DictCheckbox,
   CascadeSelect,
   CascadeFormat,
   DateFormat,

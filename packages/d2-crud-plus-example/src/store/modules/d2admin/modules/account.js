@@ -26,6 +26,7 @@ export default {
           .then(async res => {
             // add by greper
             res = res.data
+            console.log('登录成功：', res)
             // 设置 cookie 一定要存 uuid 和 token 两个 cookie
             // 整个系统依赖这两个数据进行校验和存储
             // uuid 是用户身份唯一标识 用户注册的时候确定 并且不可改变 不可重复
@@ -35,6 +36,8 @@ export default {
             util.cookies.set('token', res.token)
             // 设置 vuex 用户信息
             await dispatch('d2admin/user/set', {
+              id: res.id,
+              username: res.username,
               name: res.name
             }, { root: true })
             // 用户登录后从持久化数据加载一系列的设置
@@ -65,7 +68,7 @@ export default {
         await dispatch('d2admin/user/set', {}, { root: true })
 
         // 清空动态路由
-        await dispatch('permisson/clear', null, { root: true })
+        await dispatch('permission/clear', null, { root: true })
         // 跳转路由
         router.push({
           name: 'login'

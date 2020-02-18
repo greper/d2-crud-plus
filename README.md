@@ -7,8 +7,13 @@
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
 
 >
->帮助文档全新改版  
+>###帮助文档全新改版  
 >https://greper.github.io/d2-crud-plus/
+>
+
+>
+>### 新增权限管理功能、代码生成功能 
+>
 >
 
 ## 特性
@@ -249,10 +254,13 @@ export default {
 
 
 >
->帮助文档全新改版  
+>###帮助文档全新改版  
 >https://greper.github.io/d2-crud-plus/
 >
 
+>
+>### 新增权限管理功能、代码生成功能 
+>
 
 ## 文档
 ### <a id="options-example">1. 配置说明</a>

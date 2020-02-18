@@ -1,7 +1,7 @@
 # 代码生成
 
 ## 项目地址【java】
-https://github.com/greper/d2-crud-plus-server/code-generator
+[d2-crud-plus-server/code-generator](https://github.com/greper/d2-crud-plus-server/code-generator)
 ```shell
 git clone https://github.com/greper/d2-crud-plus-server.git
 # 导入idea或eclipse
@@ -9,7 +9,8 @@ git clone https://github.com/greper/d2-crud-plus-server.git
 ## 代码生成
 通过单元测试，生成代码   
 ### 1.编写单元测试，并运行
-```
+```java
+// ./code-generator/src/test/java/.../CodeGeneratorApplicationTests
 @SpringBootTest
 class CodeGeneratorApplicationTests {
     @Autowired

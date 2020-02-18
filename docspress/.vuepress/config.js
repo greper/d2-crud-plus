@@ -42,7 +42,7 @@ module.exports = ctx => ({
         nav: require('./nav/zh'),
         sidebar: {
          // '/api/': getApiSidebar(),
-          '/guide/': getGuideSidebar('指南', '进阶','字段类型配置'),
+          '/guide/': getGuideSidebar(),
          // '/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
          // '/theme/': getThemeSidebar('主题', '介绍')
         }
@@ -98,7 +98,7 @@ console.log('----------------')
 function getGuideSidebar (groupA, groupB,groupC) {
   return [
     {
-      title: groupA,
+      title: '指南',
       collapsable: false,
       sidebarDepth: 3,
       children: [
@@ -107,7 +107,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       ]
     },
     {
-      title: groupB,
+      title: '进阶',
       collapsable: false,
       sidebarDepth: 3,
       children: [
@@ -116,13 +116,20 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'column-type',
         'extends',
         'slot',
-        'dict',
+        'dict'
+      ]
+    },
+    {
+      title: '附加功能',
+      collapsable: false,
+      sidebarDepth: 3,
+      children: [
         'permission',
         'generate'
       ]
     },
     {
-      title: groupC,
+      title: '字段类型文档',
       collapsable: false,
       sidebarDepth: 3,
       children: [
@@ -131,7 +138,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       ]
     },
     {
-      title: 'd2p-extends',
+      title: 'd2p-extends文档',
       collapsable: false,
       sidebarDepth: 3,
       children: extendsDocs
@@ -143,7 +150,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: componentDocs
     },
     {
-      title: '其他',
+      title: '其他帮助',
       collapsable: false,
       sidebarDepth: 3,
       children: [

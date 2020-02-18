@@ -7,7 +7,7 @@ RBAC权限管理模块
 d2-crud-plus-example中提供权限管理模块，位于`/src/business/modules/permission`下
 
 ### 1.启动后端【java】
-后端项目地址： https://github.com/greper/d2-crud-plus-server
+[d2-crud-plus-server](https://github.com/greper/d2-crud-plus-server)
 #### 1.1克隆项目
 ```shell
 git clone https://github.com/greper/d2-crud-plus-server.git
@@ -19,8 +19,9 @@ git clone https://github.com/greper/d2-crud-plus-server.git
 将`./sql/d2p_pm.sql` 导入数据库
 ```
 #### 1.3修改数据库连接配置
-api-service/src/main/resources/application.xml
+
 ```yaml
+# ./api-service/src/main/resources/application.xml
 spring:
   datasource:
     username: root

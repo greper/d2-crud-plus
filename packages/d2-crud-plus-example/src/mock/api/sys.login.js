@@ -30,7 +30,7 @@ let apis = [
   }
 ]
 
-if (process.env.VUE_APP_PM_ENABLED) {
+if (process.env.VUE_APP_PM_ENABLED === 'true') {
   apis = []
 }
 export default apis

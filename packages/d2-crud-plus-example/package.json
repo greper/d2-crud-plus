@@ -13,6 +13,7 @@
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
     "dev": "npm run serve",
+    "dev:pm": "vue-cli-service serve --open --mode pm",
     "build": "vue-cli-service build",
     "build:nomock": "vue-cli-service build --mode nomock",
     "build:travis": "vue-cli-service build --mode travis",

@@ -37,6 +37,7 @@ router.beforeEach(async (to, from, next) => {
   // add by greper
   // 初始化动态路由
   if (PM.isEnabled() && !PM.isInited()) {
+    console.log('PM is enabled')
     const token = util.cookies.get('token')
     if (token && token !== 'undefined') {
       try {

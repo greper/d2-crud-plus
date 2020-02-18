@@ -4,7 +4,7 @@ import { getUserInfo, getPermissions } from '@/business/modules/permission/lib/a
 
 export default {
   isEnabled () {
-    return process.env.VUE_APP_PM_ENABLED
+    return process.env.VUE_APP_PM_ENABLED === 'true'
   },
   isInited () {
     if (!this.isEnabled()) {

@@ -1,6 +1,7 @@
 import HeightUtil from '../utils/util.height'
 import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
+import CommonOptionsUtil from '../utils/util.options.common'
 
 export default {
   components: {},
@@ -88,6 +89,8 @@ export default {
      */
     initColumns () {
       let crudOptions = this.getCrudOptions()
+      let commonOptions = CommonOptionsUtil.create()
+      merge(crudOptions, commonOptions)
       let columns = crudOptions.columns
       merge(this.crud, crudOptions)
       this.crud.columns = []

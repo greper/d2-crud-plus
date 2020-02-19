@@ -20,7 +20,7 @@ npm run dev
 npm install lerna -g
 git clone https://github.com/greper/d2-crud-plus.git
 cd d2-crud-plus
-lerna bootstrap
+lerna link
 cd d2-crud-plus/packages/d2-crud-plus-example
 yarn install  //或者npm install
 npm run dev
@@ -50,6 +50,11 @@ Vue.use(d2CrudPlus, {
     }).then(ret=>{
       return ret.data  //返回字典数组
     })  
+  },
+  commonOption(){ //d2-crud option 全局设置
+    return {
+      options: {size:'mini'} //全局配置表格大小
+    }
   }
 })
 
@@ -58,7 +63,9 @@ import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)
  ```
-### 3.去掉mock，连接真实后端
+### 3.去掉mock，连接真实后端【可选】
+运用到实际项目中需要去掉mock，某些情况下的http请求会有问题    
+
 修改.env.*的配置
 ```
 VUE_APP_BUILD_MODE=nomock

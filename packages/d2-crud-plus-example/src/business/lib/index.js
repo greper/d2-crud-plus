@@ -6,14 +6,22 @@ import request from '@/plugin/axios'
 // 引入d2Crud
 Vue.use(d2Crud)
 // 引入d2CrudPlus
-Vue.use(d2CrudPlus, { getRemoteDictFunc (url) {
-  return request({
-    url: url,
-    method: 'get'
-  }).then(ret => {
-    return ret.data
-  })
-}
+Vue.use(d2CrudPlus, {
+  getRemoteDictFunc (url) {
+    return request({
+      url: url,
+      method: 'get'
+    }).then(ret => {
+      return ret.data
+    })
+  },
+  commonOption () { // 公共配置
+    return {
+      options: {
+        size: 'mini'
+      }
+    }
+  }
 })
 
 // 安装扩展插件

@@ -18,7 +18,7 @@ Vue.use(d2CrudPlus, {
   commonOption () { // 公共配置
     return {
       options: {
-        size: 'mini'
+        size: 'small'
       }
     }
   }

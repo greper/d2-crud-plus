@@ -116,7 +116,7 @@ export default {
         }
         // delete item._handle
         // 统一component的props
-        if (item.form.component != null) {
+        if (item.form != null && item.form.component != null) {
           let props = item.form.component.props
           for (let key in props) {
             item.form.component[key] = props[key]
@@ -124,7 +124,7 @@ export default {
         }
         let form = item.form
         if (item.search != null && item.search.disabled !== true) {
-          let component = cloneDeep(item.form.component)
+          let component = item.form != null ? cloneDeep(item.form.component) : {}
           let search = {
             label: item.title,
             key: item.key,

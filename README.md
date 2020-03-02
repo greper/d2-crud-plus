@@ -1,5 +1,6 @@
 # d2-crud-plus
-基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。    
+基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。   
+附带常用组件、权限管理以及前后端代码生成等。   
 示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/index   
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)

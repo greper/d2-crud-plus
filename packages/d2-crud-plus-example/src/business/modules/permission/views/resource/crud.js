@@ -3,6 +3,7 @@ export const crudOptions = {
     {
       title: 'id',
       key: 'id',
+      width: 100,
       // type: 'select',
       // search: { disabled: true }, // 开启查询
       form: { disabled: true }, // 表单配置
@@ -28,7 +29,7 @@ export const crudOptions = {
       sortable: true
     },
     {
-      title: '菜单名称',
+      title: '资源代码',
       key: 'name',
       sortable: true
       // type: 'select',
@@ -37,7 +38,7 @@ export const crudOptions = {
       // disabled: false //是否隐藏列
     },
     {
-      title: '显示名称',
+      title: '资源名称',
       key: 'title',
       sortable: true
       // type: 'select',

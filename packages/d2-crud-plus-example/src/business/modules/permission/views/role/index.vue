@@ -23,7 +23,11 @@
                 @form-data-change="handleFormDataChange"
                 @authz="authzHandle"
         >
-            <el-button slot="header" class="d2-mb-5" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+            <div slot="header" class="d2-mb-5">
+                <platform-selector size="small" @change="platformChanged" @init="platformInit"></platform-selector>
+                <el-button v-permission="'permission:role:add'" size="small" type="primary" @click="addRow">新增</el-button>
+            </div>
+
         </d2-crud>
         <crud-footer ref="footer" slot="footer"
                      :current="crud.page.current"
@@ -62,11 +66,14 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj, GetPermission, DoAuthz } from './api'
 import { GetTree } from '../resource/api'
+import PlatformSelector from '../../component/platform-selector'
 export default {
   name: 'Role',
   mixins: [d2CrudPlus.crud],
+  components: { PlatformSelector },
   data () {
     return {
+      platformId: 1,
       dsScopeData: [],
       treeData: [],
       checkedKeys: [],
@@ -81,6 +88,24 @@ export default {
     }
   },
   methods: {
+    initAfter () {
+      // 检查权限
+      if (!this.hasPermissions('permission:role:edit')) {
+        this.crud.rowHandle.edit.disabled = true
+        //  delete this.crud.rowHandle.edit  // 也可以隐藏不显示
+      }
+      if (!this.hasPermissions('permission:role:del')) {
+        this.crud.rowHandle.remove.disabled = true
+        //  delete this.crud.rowHandle.remove  // 也可以隐藏不显示
+      }
+      if (!this.hasPermissions('permission:role:authz')) {
+        this.crud.rowHandle.custom[0].disabled = true
+        // delete this.crud.rowHandle.custom // 也可以隐藏不显示
+      }
+    },
+    doLoad () {
+    // 打开页面不加载，等平台列表加载完了再刷新列表
+    },
     getCrudOptions () {
       return crudOptions
     },
@@ -96,17 +121,19 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     },
-    /**
-       * 找出所有已选择的叶子节点
-       * @param json 待解析的json串
-       * @param idArr 原始节点数组
-       * @param temp 临时存放节点id的数组
-       * @return 太监节点id数组
-       */
+    platformInit (platformId) {
+      this.platformId = platformId
+      this.getSearch().setForm({ platformId }, true)
+      this.getSearch().doSearch()
+    },
+    platformChanged (platformId) {
+      this.platformInit(platformId)
+    },
+    // 如果勾选节点中存在非叶子节点，tree组件会将其所有子节点全部勾选
+    // 所以要找出所有叶子节点，仅勾选叶子节点，tree组件会将父节点同步勾选
     getAllCheckedLeafNodeId (tree, checkedIds, temp) {
       for (let i = 0; i < tree.length; i++) {
         const item = tree[i]
-        // 存在子节点，递归遍历;不存在子节点，将
         if (item.children && item.children.length !== 0) {
           this.getAllCheckedLeafNodeId(item.children, checkedIds, temp)
         } else {
@@ -119,13 +146,15 @@ export default {
     },
     authzHandle (event) {
       console.log('authz', event)
-      GetTree({}).then(ret => {
-        this.treeData = ret.data
+
+      GetTree({ platformId: this.platformId }).then(ret => {
+        this.$set(this, 'treeData', ret.data)
+        this.$set(this, 'checkedKeys', [])
+        // this.treeData = ret.data
         this.roleId = event.row.id
-        this.dialogPermissionVisible = true
         return this.updateChecked(event.row.id)
       }).then(() => {
-
+        this.dialogPermissionVisible = true
       })
     },
     updateChecked (id) {
@@ -133,6 +162,7 @@ export default {
         let checkedIds = ret.data
         // 找出所有的叶子节点
         checkedIds = this.getAllCheckedLeafNodeId(this.treeData, checkedIds, [])
+        console.log('all leaf ', checkedIds)
         this.$set(this, 'checkedKeys', checkedIds)
         // this.$nextTick(() => {
         //   this.$refs.menuTree.setCheckedKeys(checkedIds)

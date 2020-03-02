@@ -1,2 +1,2 @@
-import menus from '@/business/modules/menus'
-export default menus.aside
+import modules from '@/business/modules'
+export default modules.menus.aside

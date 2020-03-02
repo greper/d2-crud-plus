@@ -7,19 +7,6 @@ import layoutHeaderAside from '@/layout/header-aside'
 const _import = require('@/business/routers/util.import')
 
 /**
- * Use meta.role to determine if the current user has permission
- * @param roles
- * @param route
- */
-function hasPermission (roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some(role => route.meta.roles.includes(role))
-  } else {
-    return true
-  }
-}
-
-/**
  * menuType 1=menu 2=btn 3=route
  * @param routers
  * @param list
@@ -27,23 +14,21 @@ function hasPermission (roles, route) {
  */
 function formatRouter (routers, list) {
   list.forEach((item) => {
+    if (item.type !== 2 && !StringUtils.isEmpty(item.path) && !StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置path，则不加入路由
+      routers.push({
+        path: item.path,
+        name: item.name,
+        hidden: false,
+        component: _import(item.component),
+        meta: {
+          title: item.title,
+          auth: true
+        }
+      })
+    }
     if (item.children != null && item.children.length > 0) {
       formatRouter(routers, item.children)
     }
-
-    if (item.type === 2 || StringUtils.isEmpty(item.path) || StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置path，则不加入路由
-      return
-    }
-    routers.push({
-      path: item.path,
-      name: item.name,
-      hidden: false,
-      component: _import(item.component),
-      meta: {
-        title: item.title,
-        auth: true
-      }
-    })
   })
 
   return routers
@@ -71,53 +56,58 @@ function formatMenu (menuTree) {
   return menus
 }
 
-export function filterAsyncRoutes (routes, roles) {
-  const res = []
-  routes.forEach(route => {
-    const tmp = { ...route }
-    if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      res.push(tmp)
+function formatPermissions (menuTree, permissionList) {
+  menuTree.forEach((item) => {
+    if (item.permission != null && item.permission !== '') { // 权限为空
+      permissionList.push(item.permission)
+    }
+    if (item.children != null && item.children.length > 0) {
+      formatPermissions(item.children, permissionList)
     }
   })
+  return permissionList
+}
 
+export function buildRoutes (routes) {
   return [{
     path: '/',
     redirect: { name: 'index' },
     component: layoutHeaderAside,
-    children: res
+    children: routes
   }]
 }
 
 const state = {
   routes: [],
   addRoutes: [],
+  permissions: [],
   inited: false
 }
 
 const mutations = {
-  SET_ROUTES: (state, routes) => {
+  SET_ROUTES: (state, { accessedRoutes: routes, permissions }) => {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
     state.inited = true
+    state.permissions = permissions
   },
   clear: () => {
     state.addRoutes = []
     state.routes = []
     state.inited = false
+    state.permissions = []
   }
 }
 
 const actions = {
-  generateRoutes ({ commit }, { roles, menuTree: resourceList }) {
+  generateRoutes ({ commit }, { menuTree }) {
     return new Promise(resolve => {
-      let asyncRoutes = formatRouter([], resourceList)
-      let accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-      commit('SET_ROUTES', accessedRoutes)
+      let asyncRoutes = formatRouter([], menuTree)
+      let accessedRoutes = buildRoutes(asyncRoutes)
+      const permissions = formatPermissions(menuTree, [])
+      commit('SET_ROUTES', { accessedRoutes, permissions })
 
-      const menus = formatMenu(resourceList)
+      const menus = formatMenu(menuTree)
       const accessMenus = {
         aside: menus[0].children,
         header: menus[1].children
@@ -148,6 +138,9 @@ const actions = {
 const getters = {
   inited (state) {
     return state.inited
+  },
+  permissions (state) {
+    return state.permissions
   }
 }
 

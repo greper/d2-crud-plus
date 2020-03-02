@@ -1,8 +1,8 @@
 <template>
   <el-radio-group v-model="selectValue" v-bind="_elProps"  @change="doChange">
     <el-radio v-for="option in options"
-              :key="option.value"
-              :label="option.value">{{option.label}}</el-radio>
+              :key="option[dict.value]"
+              :label="option[dict.value]">{{option[dict.label]}}</el-radio>
   </el-radio-group>
 </template>
 
@@ -20,10 +20,6 @@ export default {
     },
     // 值
     value: { require: false },
-    // value的分隔符<br/>
-    // 多选时，如果value为string，则以该分隔符分割成多个展示<br/>
-    // 传入空字符串，表示不分割<br/>
-    separator: { default: ',', require: false },
     // el-radio的配置，[el-radio](https://element.eleme.cn/#/zh-CN/component/radio#radio-attributes)
     elProps: {
       type: Object,

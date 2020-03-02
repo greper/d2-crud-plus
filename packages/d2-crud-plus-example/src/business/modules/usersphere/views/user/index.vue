@@ -32,11 +32,17 @@
         </crud-footer>
         <el-dialog title="授予角色"
                    :visible.sync="dialogPermissionVisible">
-            <el-checkbox-group v-model="checked">
-                <el-checkbox v-for="option in roleList"
-                             :key="option.id"
-                             :label="option.id" >{{option.name}}</el-checkbox>
-            </el-checkbox-group>
+
+            <el-collapse v-model="activeNames" >
+                <el-collapse-item v-for="group in roleList" :key="group.platform.id" :title="group.platform.name" :name="group.platform.id">
+                        <el-checkbox-group v-model="group.checked">
+                        <el-checkbox v-for="option in group.roles"
+                                     :key="option.id"
+                                     :label="option.id" >{{option.name}}</el-checkbox>
+                    </el-checkbox-group>
+                </el-collapse-item>
+            </el-collapse>
+
             <div slot="footer"
                  class="dialog-footer">
                 <el-button type="primary"
@@ -56,6 +62,7 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
+      activeNames: [],
       roleList: [],
       checked: [],
       dialogPermissionVisible: false,
@@ -84,19 +91,28 @@ export default {
     authzHandle (event) {
       console.log('authz', event)
       GetRoleList().then(ret => {
-        this.$set(this, 'roleList', ret.data)
-        this.currentUserId = event.row.id
-        return event.row.roles
-      }).then((ret) => {
-        if (ret == null) {
-          ret = []
+        let roleList = ret.data
+        let userRoles = event.row.roles
+        if (userRoles == null) {
+          userRoles = []
         }
-        this.$set(this, 'checked', ret)
+        this.activeNames.splice(0, this.activeNames.length)
+        roleList.forEach(item => {
+          item.checked = item.roles.map(item => item.id).filter(item => userRoles.indexOf(item) >= 0)
+          this.activeNames.push(item.platform.id)
+          console.log('checked', item.checked)
+        })
+        this.$set(this, 'roleList', roleList)
+        this.currentUserId = event.row.id
         this.dialogPermissionVisible = true
       })
     },
     updatePermession (userId) {
-      DoAuthz(userId, this.checked).then(ret => {
+      let checked = []
+      for (let item of this.roleList) {
+        checked = checked.concat(item.checked)
+      }
+      DoAuthz(userId, checked).then(ret => {
         this.dialogPermissionVisible = false
         this.doRefresh()
       })

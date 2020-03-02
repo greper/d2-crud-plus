@@ -1,5 +1,5 @@
 import layoutHeaderAside from '@/layout/header-aside'
-import businessRouters from '@/business/modules/routers'
+import businessModules from '@/business/modules'
 // 由于懒加载页面太多的话会造成webpack热更新太慢，所以开发环境不使用懒加载，只有生产环境使用懒加载
 const _import = require('@/libs/util.import.' + process.env.NODE_ENV)
 
@@ -46,7 +46,7 @@ const frameIn = [
         hidden: true,
         component: _import('system/function/redirect')
       },
-      ...businessRouters.frameIn
+      ...businessModules.routers.frameIn
     ]
   }
 ]
@@ -61,7 +61,7 @@ const frameOut = [
     name: 'login',
     component: _import('system/login')
   },
-  ...businessRouters.frameOut
+  ...businessModules.routers.frameOut
 ]
 
 /**
@@ -73,7 +73,7 @@ const errorPage = [
     name: '404',
     component: _import('system/error/404')
   },
-  ...businessRouters.errorPage
+  ...businessModules.routers.errorPage
 ]
 
 // 导出需要显示菜单的

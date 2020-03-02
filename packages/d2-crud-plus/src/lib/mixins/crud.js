@@ -24,7 +24,7 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false },
+        searchOptions: { disabled: false, form: {} },
         list: [],
         loading: false,
         page: {
@@ -155,14 +155,22 @@ export default {
             this.crud.editRules[key] = form.rules
           }
         }
-
+        delete item.type
+        delete item.form
         if (!item.disabled) { // 如果该列没有禁用显示
           this.crud.columns.push(item)
         }
         // 放到map里面方便快速查找
         this.crud.columnsMap[key] = item
       }
+      this.initAfter()
       console.log('crud inited:', this.crud)
+    },
+    /**
+     * 初始化结束后调用方法
+     */
+    initAfter () {
+
     },
     /**
      * 动态计算crud表格高度，当表格数据大于一屏的时候不会撑开，给翻页组件留出空间
@@ -192,9 +200,7 @@ export default {
     handlePaginationChange (val) {
       this.crud.page = val
       console.log('page changed:', val)
-      if (this.$refs.search != null) {
-        this.$refs.search.handleFormSubmit()
-      }
+      this.doRefresh()
     },
     /**
      * 查询按钮点击
@@ -207,7 +213,8 @@ export default {
           delete form[key]
         }
       }
-      this.crud.searchForm = form
+      this.crud.page.current = 1 // 点击查询后，从第一页开始
+      this.crud.searchOptions.form = form
       this.doValueResolve(form)
       this.doRefresh()
     },
@@ -215,7 +222,7 @@ export default {
      * 表格刷新，重新拉取数据
      */
     doRefresh () {
-      let form = this.crud.searchForm
+      let form = this.crud.searchOptions.form
       let query = {
         size: this.crud.page.size,
         current: this.crud.page.current,
@@ -243,7 +250,14 @@ export default {
      * 页面初始化后触发的方法
      */
     doLoad () {
-      this.handleSearch({})
+      this.doRefresh()
+    },
+    /**
+     * 获取search组件
+     * @returns {*}
+     */
+    getSearch () {
+      return this.$refs.search
     },
     /**
      * 编辑对话框打开前要做的操作

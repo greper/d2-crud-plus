@@ -1,21 +1,25 @@
 <template>
     <d2-container>
         <template slot="header">资源管理</template>
-        <div>
-        <el-button-group>
-            <el-button type="primary"
-                       icon="plus"
-                       @click="handlerAdd">添加
-            </el-button>
-            <el-button type="primary"
-                       icon="edit"
-                       @click="handlerEdit">编辑
-            </el-button>
-            <el-button type="primary"
-                       icon="delete"
-                       @click="handleDelete">删除
-            </el-button>
-        </el-button-group>
+        <div style="display: flex">
+            <platform-selector size="small" @change="platformChanged" @init="platformChanged"></platform-selector>
+            <el-button-group size="small" >
+                <el-button size="small" type="primary"
+                           icon="plus"
+                           v-permission="'permission:resource:add'"
+                           @click="handlerAdd">添加
+                </el-button>
+                <el-button  size="small" type="primary"
+                           icon="edit"
+                            v-permission="'permission:resource:edit'"
+                           @click="handlerEdit">编辑
+                </el-button>
+                <el-button size="small" type="primary"
+                           icon="delete"
+                           v-permission="'permission:resource:del'"
+                           @click="handleDelete">删除
+                </el-button>
+            </el-button-group>
         </div>
 
         <el-row>
@@ -109,12 +113,15 @@
                         </el-form-item>
                         <el-form-item v-if="formStatus == 'update'">
                             <el-button type="primary"
-                                       @click="update">更新
+                                       @click="update"
+                                        :disabled="!pm.edit"
+                            >更新
                             </el-button>
                             <el-button @click="onCancel">取消</el-button>
                         </el-form-item>
                         <el-form-item v-if="formStatus == 'create'">
                             <el-button type="primary"
+                                       :disabled="!pm.add"
                                        @click="create">保存
                             </el-button>
                             <el-button @click="onCancel">取消</el-button>
@@ -130,8 +137,10 @@
 <script>
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj, GetTree, GetObj } from './api'
+import PlatformSelector from '../../component/platform-selector'
 export default {
   name: 'Resource',
+  components: { PlatformSelector },
   data () {
     return {
       list: null,
@@ -141,11 +150,10 @@ export default {
       formStatus: '',
       showElement: false,
       typeOptions: [],
-      methodOptions: ['GET', 'POST', 'PUT', 'DELETE'],
       listQuery: {
         name: undefined
       },
-      dict: { url: '/base/dicts/ResourceTypeEnum' },
+      resourceTypeDict: { url: '/base/dicts/ResourceTypeEnum' },
       treeData: [],
       oExpandedKey: {
         // key (from tree id) : expandedOrNot boolean
@@ -172,29 +180,26 @@ export default {
         path: undefined
       },
       currentId: 0,
-      menuManager_btn_add: false,
-      menuManager_btn_edit: false,
-      menuManager_btn_del: false
-    }
-  },
-  filters: {
-    typeFilter (type) {
-      const typeMap = {
-        0: '菜单',
-        1: '按钮'
+      pm: {
+        add: this.hasPermissions('permission:resource:add'),
+        edit: this.hasPermissions('permission:resource:edit'),
+        del: this.hasPermissions('permission:resource:del')
       }
-      return typeMap[type]
     }
   },
-  created () {
-    this.getTree()
-    d2CrudPlus.util.dict.get(this.dict).then(data => {
+  async created () {
+    d2CrudPlus.util.dict.get(this.resourceTypeDict).then(data => {
       this.typeOptions = data
     })
   },
   methods: {
+    initAfter () {
+    },
+    refresh () {
+      this.getTree()
+    },
     getTree () {
-      this.treeRequest({}).then(ret => {
+      this.treeRequest({ platformId: this.platformId }).then(ret => {
         this.treeData = ret.data
       })
     },
@@ -213,6 +218,10 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    platformChanged (id) {
+      this.platformId = id
+      this.refresh()
     },
     filterNode (value, data) {
       if (!value) return true
@@ -295,6 +304,7 @@ export default {
       })
     },
     update () {
+      delete this.form.platformId
       UpdateObj(this.form).then(() => {
         this.getTree()
         this.$notify({
@@ -306,6 +316,7 @@ export default {
       })
     },
     create () {
+      this.form.platformId = this.platformId
       AddObj(this.form).then((ret) => {
         this.form.id = ret.data
         this.formStatus = 'update'

@@ -4,22 +4,25 @@ import { Message } from 'element-ui'
 import util from '@/libs/util'
 
 // 创建一个错误
-function errorCreate (msg) {
+function errorCreate (msg, addStore) {
   const error = new Error(msg)
-  errorLog(error)
+  errorLog(error, addStore)
   throw error
 }
 
 // 记录和显示错误
-function errorLog (error) {
-  // 添加到日志
-  store.dispatch('d2admin/log/push', {
-    message: '数据请求异常',
-    type: 'danger',
-    meta: {
-      error
-    }
-  })
+function errorLog (error, addStore = true) {
+  if (addStore) {
+    // 添加到日志
+    store.dispatch('d2admin/log/push', {
+      message: '数据请求异常',
+      type: 'danger',
+      meta: {
+        error
+      }
+    })
+  }
+
   // 打印到控制台
   if (process.env.NODE_ENV === 'development') {
     util.log.danger('>>>>>> Error >>>>>>')
@@ -82,11 +85,11 @@ service.interceptors.response.use(
           return dataAxios
         case 'xxx':
           // [ 示例 ] 其它和后台约定的 code
-          errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`, false)
           break
         default:
           // 不是正确的 code
-          errorCreate(`${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(`${dataAxios.msg}: ${response.config.url}`, false)
           break
       }
     }
@@ -107,6 +110,11 @@ service.interceptors.response.use(
         case 504: error.message = '网关超时'; break
         case 505: error.message = 'HTTP版本不受支持'; break
         default: break
+      }
+
+      // 收到401错误，直接跳转到登录页面
+      if (error.response.status === 401) {
+        store.dispatch('d2admin/account/logout')
       }
     }
     errorLog(error)

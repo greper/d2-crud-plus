@@ -19,7 +19,8 @@
           :component-name="item.component.name"
           v-model="form[item.key]"
           :props="item.component.props ? item.component.props : null"
-          :style="{width:(item.width?item.width:150+'px')}">
+          :style="{width:(item.width?item.width:150+'px')}"
+      >
       </render-custom-component>
     </el-form-item>
     <el-form-item>
@@ -43,10 +44,12 @@
 </template>
 
 <script>
+import { merge } from 'lodash'
 export default {
   name: 'crud-search',
   components: { },
   props: {
+    // 查询参数，options.form为表单初始值
     options: {
       type: Object
     }
@@ -58,8 +61,30 @@ export default {
     }
   },
   created () {
+    if (this.options.form != null) {
+      this.setForm(this.options.form)
+    }
   },
   methods: {
+    // 获取查询form表单值
+    getForm () {
+      return this.form
+    },
+    /**
+     * 设置form值
+     * @param form form对象
+     * @param isMerge 是否与原有form值合并
+     */
+    setForm (form, isMerge = false) {
+      if (isMerge) {
+        merge(this.form, form)
+      } else {
+        this.$set(this, 'form', form)
+      }
+    },
+    doSearch () {
+      this.handleFormSubmit()
+    },
     handleFormSubmit () {
       this.$refs.searchForm.validate((valid) => {
         if (valid) {

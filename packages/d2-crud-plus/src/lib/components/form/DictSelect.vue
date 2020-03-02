@@ -6,9 +6,9 @@
     >
       <el-option
           v-for="option in options"
-          :key="option.value"
-          :value="option.value"
-          :label="option.label"
+          :key="option[dict.value]"
+          :value="option[dict.value]"
+          :label="option[dict.label]"
       >
       </el-option>
     </el-select>
@@ -27,7 +27,7 @@ export default {
       require: false
     },
     // 值
-    value: { type: [String, Array], require: false },
+    value: { type: [Number, String, Boolean, Array], require: false },
     // value的分隔符<br/>
     // 多选时，如果value为string，则以该分隔符分割成多个展示<br/>
     // 传入空字符串，表示不分割<br/>
@@ -71,6 +71,9 @@ export default {
   },
   watch: {
     value: function (newVal, oldVal) {
+      if (this.selectValue === newVal) {
+        return
+      }
       this.setValue(newVal)
     }
   },
@@ -89,6 +92,10 @@ export default {
       }
       if (typeof newVal === 'string' && this.separator != null && this.separator !== '') {
         this.selectValue = newVal.split(this.separator)
+        return
+      }
+      if (!(newVal instanceof Array)) {
+        this.selectValue = [newVal]
         return
       }
       this.selectValue = newVal

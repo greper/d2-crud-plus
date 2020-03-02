@@ -17,6 +17,7 @@ export const crudOptions = {
     {
       title: 'id',
       key: 'id',
+      width: 70,
       // type: 'select',
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
@@ -51,7 +52,7 @@ export const crudOptions = {
       key: 'username',
       // type: 'select',
       // dict: { url: ''} //数据字典
-      // search: { disabled: true}, // 开启查询
+      search: { disabled: false }, // 开启查询
       form: {
         editDisabled: true,
         rules: [{ required: true, message: '请输入用户名' }]
@@ -82,7 +83,7 @@ export const crudOptions = {
       key: 'nickname',
       // type: 'select',
       // dict: { url: ''} //数据字典
-      // search: { disabled: true}, // 开启查询
+      search: { disabled: false }, // 开启查询
       // form: { disabled: true }, // 表单配置
       // disabled: false, // 是否隐藏列
       sortable: true
@@ -105,7 +106,7 @@ export const crudOptions = {
         }
       },
       // dict: { url: ''} //数据字典
-      // search: { disabled: true}, // 开启查询
+      search: { disabled: false, width: '260px' }, // 开启查询
       // form: { disabled: true }, // 表单配置
       // disabled: false, // 是否隐藏列
       sortable: true
@@ -114,6 +115,7 @@ export const crudOptions = {
       title: '头像',
       key: 'avatar',
       type: 'avatar-uploader',
+      width: 100,
       // dict: { url: ''} //数据字典
       // search: { disabled: true}, // 开启查询
       // form: { disabled: true }, // 表单配置
@@ -124,8 +126,9 @@ export const crudOptions = {
       title: '性别',
       key: 'gender',
       type: 'radio',
+      width: 70,
       dict: { data: [
-        { value: 1, label: '男' }, { value: 2, label: '女' }
+        { value: 1, label: '男' }, { value: 2, label: '女', color: 'danger' }
       ] }, // 数据字典
       // search: { disabled: true}, // 开启查询
       // form: { disabled: true }, // 表单配置
@@ -137,7 +140,7 @@ export const crudOptions = {
       key: 'email',
       // type: 'select',
       // dict: { url: ''} //数据字典
-      // search: { disabled: true}, // 开启查询
+      search: { disabled: false }, // 开启查询
       // disabled: false, // 是否隐藏列
       form: { // 表单配置
         // disabled: true, // 禁用表单编辑
@@ -149,9 +152,9 @@ export const crudOptions = {
       title: '角色',
       key: 'roles',
       type: 'select',
-      width: 300,
+      width: 250,
       dict: { url: '/permission/manager/role/list', value: 'id', label: 'name' }, // 数据字典
-      // search: { disabled: true}, // 开启查询
+      search: { disabled: true }, // 开启查询
       // disabled: false, // 是否隐藏列
       form: { // 表单配置
         disabled: true // 禁用表单编辑

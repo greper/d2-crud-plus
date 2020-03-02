@@ -8,16 +8,19 @@ const cache = new Map()
 function get (dict) {
   if (dict == null) {
     // 如果没有配置字典，直接返回空数组
+    console.error('没有配置数据字典，返回空数组')
     return new Promise((resolve) => {
       resolve([])
     })
   }
+
   let url = null
   let dictData = null
 
   if (typeof (dict) === 'string') {
     url = dict
   } else {
+    this.mergeDefault(dict)
     url = dict.url
     dictData = dict.data
   }
@@ -94,17 +97,16 @@ function getRemoteDictFunc (url) {
   console.error('请在install d2-crud-plus时传入 options={getRemoteDictFunc:()->{ http 请求获取枚举字典 }}')
   return new Promise()
 }
-
+const defaultDict = {
+  value: 'value',
+  label: 'label',
+  color: 'color',
+  children: 'children',
+  isTree: false
+}
 function mergeDefault (dict) {
   if (dict == null) {
     throw new Error('dict 不能为空')
-  }
-  let defaultDict = {
-    value: 'value',
-    label: 'label',
-    color: 'color',
-    children: 'children',
-    isTree: false
   }
   for (let key in defaultDict) {
     if (dict[key] == null) {

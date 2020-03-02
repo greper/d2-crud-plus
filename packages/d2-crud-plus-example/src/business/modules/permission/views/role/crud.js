@@ -17,6 +17,7 @@ export const crudOptions = {
       title: 'id',
       key: 'id',
       sortable: true,
+      width: 100,
       // type: 'select',
       // search: { disabled: true }, //开启查询
       form: { disabled: true } // 表单配置
@@ -70,6 +71,20 @@ export const crudOptions = {
       // search: { disabled: true }, //开启查询
       // form: { disabled: true } //表单配置
       // disabled: false //是否隐藏列
+    },
+    {
+      title: '所属平台',
+      key: 'platformId',
+      type: 'select',
+      search: { disabled: true }, // 开启查询
+      dict: { url: '/permission/manager/platform/list', value: 'id', label: 'name' },
+      form: {
+        editTemplateHandle (form) {
+          form.component.disabled = true // 编辑时禁用控件，不允许编辑
+        }
+      }, // 表单配置
+      // disabled: false //是否隐藏列
+      sortable: true
     }
 
   ]

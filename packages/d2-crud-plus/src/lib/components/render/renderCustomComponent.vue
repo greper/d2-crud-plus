@@ -36,11 +36,11 @@ export default {
         ...self.props
       },
       on: {
-        input: function (event) {
-          self.$emit('input', event)
+        input: function (value) {
+          self.$emit('input', value)
         },
-        change: function (event) {
-          self.$emit('change', event)
+        change: function (value) {
+          self.$emit('change', value)
         }
       }
     })

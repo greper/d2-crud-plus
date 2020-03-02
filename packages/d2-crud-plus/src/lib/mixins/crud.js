@@ -159,7 +159,6 @@ export default {
           }
         }
         delete item.type
-        delete item.form
         if (!item.disabled) { // 如果该列没有禁用显示
           this.crud.columns.push(item)
         }

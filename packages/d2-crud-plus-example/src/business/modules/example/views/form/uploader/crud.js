@@ -12,7 +12,7 @@ export const crudOptions = {
           }
         },
         valueChange (key, value, form) { // 当返回值有变化时触发
-          console.log('valueResolve', value, key, form)
+          console.log('valueChange', value, key, form)
           if (value != null && value.length > 0 && value[0] != null) {
             form.avatarSize = value[0].size
             form.avatarMd5 = value[0].md5

@@ -8,7 +8,12 @@
 
 ## 帮助文档 
 > 
+>GitHub Pages   
 >https://greper.github.io/d2-crud-plus/
+>
+>码云（国内访问推荐 ）  
+>http://greper.gitee.io/d2-crud-plus/   
+>
 >
 
 

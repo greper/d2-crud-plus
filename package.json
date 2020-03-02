@@ -1,12 +1,12 @@
 {
   "name": "root",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@vuepress/shared-utils": "yarn yarn 1.2.0",
     "husky": "^3.1.0",
-    "lerna": "^3.18.4",
+    "lerna": "^3.20.2",
     "vuepress": "1.2.0"
   },
   "scripts": {

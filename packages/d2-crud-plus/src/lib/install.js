@@ -5,12 +5,14 @@ import dict from './utils/util.dicts'
 import height from './utils/util.height'
 import columnResolve from './utils/util.column.resolve'
 import lodash from './utils/util.lodash'
+import commonOptions from './utils/util.options.common'
 
 const util = {
   dict,
   height,
   columnResolve,
-  lodash
+  lodash,
+  commonOptions
 }
 
 const install = (Vue, options) => {
@@ -20,6 +22,13 @@ const install = (Vue, options) => {
 
   if (options.getRemoteDictFunc != null) {
     util.dict.getRemoteDictFunc = options.getRemoteDictFunc
+  }
+  if (options.commonOption != null) {
+    if (options.commonOption instanceof Function) {
+      commonOptions.create = options.commonOption
+    } else {
+      console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
+    }
   }
 }
 if (typeof window !== 'undefined' && window.Vue) {

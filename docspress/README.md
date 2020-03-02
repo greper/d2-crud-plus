@@ -9,8 +9,14 @@ features:
   details: 以 d2-crud 为基础，以最少的配置帮助你简化crud开发。
 - title: 字段类型
   details: 丰富的字段类型，大幅减少代码量。
+- title: 数据字典
+  details: 轻松实现动态select。
 - title: 自定义扩展
   details: 再困难的需求，也能实现。
+- title: 权限管理
+  details: RBAC权限管理示例。
+- title: 代码生成
+  details: 根据数据表生成前后端代码，一气呵成。  
 footer: MIT Licensed | Copyright © 2018-present Greper
 ---
 

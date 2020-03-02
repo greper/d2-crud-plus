@@ -16,12 +16,15 @@
 
     <p class="d2-page-cover__build-time">FINAL BUILD TIME {{$buildTime}}</p>
     <slot name="footer"/>
-    <a target="blank" href="https://github.com/greper/d2-crud-plus">
-      <img
-        style="position: absolute; top: 0; right: 0; border: 0; width: 150px;"
-        src="./image/darkblue@2x.png"
-        alt="Fork me on GitHub">
-    </a>
+    <div style="">
+      <div class="toStar">喜欢就去star一下吧 <i class="fa fa-hand-o-right"></i></div>
+      <a target="blank" href="https://github.com/greper/d2-crud-plus" >
+        <img
+          style="position: absolute; top: 0; right: 0; border: 0;vertical-align:top; width: 150px;"
+          src="./image/darkblue@2x.png"
+          alt="Fork me on GitHub">
+      </a>
+    </div>
   </div>
 </template>
 <script>
@@ -98,6 +101,43 @@ export default {
     .d2-highlight{
       font-size: 8px;
     }
+  }
+
+  .toStar{
+    position: absolute; top: 20px; right: 150px; border: 0;
+    color:#4cc134;
+    margin: 10px;
+    animation: changeshadow 1s  ease-in  infinite ;
+    /* 其它浏览器兼容性前缀 */
+    -webkit-animation: changeshadow 1s linear infinite;
+    -moz-animation: changeshadow 1s linear infinite;
+    -ms-animation: changeshadow 1s linear infinite;
+    -o-animation: changeshadow 1s linear infinite;
+  }
+  @keyframes changeshadow {
+    0%{ text-shadow: 0 0 4px #4cc134}
+    50%{ text-shadow: 0 0 40px #4cc134}
+    100%{ text-shadow: 0 0 4px #4cc134}
+  }
+  @-webkit-keyframes changeshadow {
+    0%{ text-shadow: 0 0 4px #4cc134}
+    50%{ text-shadow: 0 0 40px #4cc134}
+    100%{ text-shadow: 0 0 4px #4cc134}
+  }
+  @-moz-keyframes changeshadow {
+    0%{ text-shadow: 0 0 4px #4cc134}
+    50%{ text-shadow: 0 0 40px #4cc134}
+    100%{ text-shadow: 0 0 4px #4cc134}
+  }
+  @-ms-keyframes changeshadow {
+    0%{ text-shadow: 0 0 4px #4cc134}
+    50%{ text-shadow: 0 0 40px #4cc134}
+    100%{ text-shadow: 0 0 4px #4cc134}
+  }
+  @-o-keyframes changeshadow {
+    0%{ text-shadow: 0 0 4px #4cc134}
+    50%{ text-shadow: 0 0 40px #4cc134}
+    100%{ text-shadow: 0 0 4px #4cc134}
   }
 }
 </style>

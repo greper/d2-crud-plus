@@ -46,8 +46,25 @@ run ApiServerApplication
 
 
 ### 2.查看效果
-登录 admin/admin 可以查看全部菜单  
-登录 test/123456 只能查看资源和角色管理菜单，无法看到用户管理菜单
+* 登录 admin/admin 可以查看全部菜单，拥有全部功能   
+* 登录 test/123456 只能查看资源和角色管理菜单，无法看到用户管理菜单    
+* 登录 readonly/123456 只能查看，不能编辑    
+* 登录 authz/123456 只能查看与授权，不能编辑   
 
-## 待完善
-1.按钮权限判断
+系统默认数据不允许修改，如需体验，请自行添加数据进行测试
+
+## 2 按钮权限
+### 2.1 directive控制
+```html
+<el-button v-permission="'permission:role:add'">添加角色</el-button>
+```
+### 2.2 代码控制
+```js
+export default {
+    created(){
+        if(this.hasPermissions('permission:role:add')){
+            console.log("您拥有添加权限")
+        }
+    }
+}
+```

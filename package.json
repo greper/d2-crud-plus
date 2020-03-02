@@ -12,6 +12,7 @@
   "scripts": {
     "build": "lerna run build",
     "version": "lerna version --conventional-commits",
+    "publish": "lerna publish",
     "docs:dev": "vuepress dev docspress --temp .temp",
     "docs:build": "vuese gen && vuepress build docspress"
   },

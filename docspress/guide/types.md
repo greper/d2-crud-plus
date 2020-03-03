@@ -82,7 +82,7 @@ let column={
 * 行组件：[date-format](./components/date-format)
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/date>
 ### 时间选择
-* type = datetime | date | daterange | datetimerange
+* type = time
 * 表单组件：[el-time-picker](https://element.eleme.cn/#/zh-CN/component/time-picker)  
 * 示例：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/date>
 ### 数字输入

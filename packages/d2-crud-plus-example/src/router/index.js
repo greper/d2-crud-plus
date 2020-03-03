@@ -24,7 +24,6 @@ const router = new VueRouter({
  * 权限验证
  */
 router.beforeEach(async (to, from, next) => {
-  console.log('router.beforeEach')
   // 确认已经加载多标签页数据 https://github.com/d2-projects/d2-admin/issues/201
   await store.dispatch('d2admin/page/isLoaded')
   // 确认已经加载组件尺寸设置 https://github.com/d2-projects/d2-admin/issues/198
@@ -35,6 +34,14 @@ router.beforeEach(async (to, from, next) => {
   store.commit('d2admin/search/set', false)
 
   // add by greper
+
+  // 百度分析
+  if (to.path) {
+    if (window._hmt) {
+      window._hmt.push(['_trackPageview', '/#' + to.fullPath])
+    }
+  }
+
   // 初始化动态路由
   if (PM.isEnabled() && !PM.isInited()) {
     console.log('PM is enabled')
@@ -51,6 +58,7 @@ router.beforeEach(async (to, from, next) => {
       return
     }
   }
+
   // add end
 
   // 验证当前路由所有的匹配中是否需要有登录验证的

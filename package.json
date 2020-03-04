@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "d2-crud-plus-project",
   "private": false,
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",

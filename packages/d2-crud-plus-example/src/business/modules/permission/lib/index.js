@@ -1,27 +1,47 @@
-import router from '../../../../router'
-import store from '../../../../store'
+import router from '@/router'
+import store from '@/store'
 import { getPermissions } from '@/business/modules/permission/lib/api'
-
-export default {
-  isEnabled () {
-    return process.env.VUE_APP_PM_ENABLED === 'true'
-  },
-  getPlatformCode () {
-    return process.env.VUE_APP_PM_PLATFORM ? process.env.VUE_APP_PM_PLATFORM : 'admin'
-  },
-  isInited () {
-    if (!this.isEnabled()) {
-      return true
-    }
-    return store.getters['permission/inited']
-  },
-  async  loadRemoteRoute () {
-    const menuTreeRes = await getPermissions(this.getPlatformCode())
-    const menuTree = menuTreeRes.data
-    // generate accessible routes map based on roles
-    const accessRoutes = await store.dispatch('permission/generateRoutes', { menuTree })
-    console.log('accesssRouters', accessRoutes, menuTree)
-    // dynamically add accessible routes
-    router.addRoutes(accessRoutes)
+import util from '@/libs/util'
+import RouterHook from '@/router/router.hook'
+function isEnabled () {
+  return process.env.VUE_APP_PM_ENABLED === 'true'
+}
+function getPlatformCode () {
+  return process.env.VUE_APP_PM_PLATFORM ? process.env.VUE_APP_PM_PLATFORM : 'admin'
+}
+function isInited () {
+  if (!isEnabled()) {
+    return true
   }
+  return store.getters['permission/inited']
+}
+async function loadRemoteRoute () {
+  const menuTreeRes = await getPermissions(getPlatformCode())
+  const menuTree = menuTreeRes.data
+  // generate accessible routes map based on roles
+  const accessRoutes = await store.dispatch('permission/generateRoutes', { menuTree })
+  console.log('accesssRouters', accessRoutes, menuTree)
+  // dynamically add accessible routes
+  router.addRoutes(accessRoutes)
+}
+RouterHook.beforeEach = async (to, from, next) => {
+// 初始化动态路由
+  if (isEnabled() && !isInited()) {
+    console.log('PM is enabled')
+    const token = util.cookies.get('token')
+    if (token && token !== 'undefined') {
+      try {
+        await loadRemoteRoute()
+      } catch (e) {
+        console.error('加载动态路由失败', e)
+        next()
+        return
+      }
+      next({ path: to.path, replace: true })
+    }
+  }
+}
+export default {
+  isEnabled: isEnabled,
+  isInited: isInited
 }

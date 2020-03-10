@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import PM from '../business/modules/permission/lib'
+import RouterHook from './router.hook'
 // 进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -42,23 +42,12 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 
-  // 初始化动态路由
-  if (PM.isEnabled() && !PM.isInited()) {
-    console.log('PM is enabled')
-    const token = util.cookies.get('token')
-    if (token && token !== 'undefined') {
-      try {
-        await PM.loadRemoteRoute()
-      } catch (e) {
-        console.error('加载动态路由失败', e)
-        next()
-        return
-      }
-      next({ path: to.path, replace: true })
+  if (RouterHook.beforeEach) {
+    const hookRet = await RouterHook.beforeEach(to, from, next)
+    if (hookRet) {
       return
     }
   }
-
   // add end
 
   // 验证当前路由所有的匹配中是否需要有登录验证的

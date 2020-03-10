@@ -26,7 +26,6 @@ async function loadRemoteRoute () {
 }
 
 if (isEnabled) {
-  console.error('permission register')
   Vue.use(permissionDirective)
   store.registerModule('permission', storeModule)
 }

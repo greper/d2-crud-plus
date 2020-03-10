@@ -1,22 +1,22 @@
 import router from '@/router'
 import store from '@/store'
-import { getPermissions } from '@/business/modules/permission/lib/api'
+import { getPermissions } from './api'
 import util from '@/libs/util'
 import RouterHook from '@/router/router.hook'
-function isEnabled () {
-  return process.env.VUE_APP_PM_ENABLED === 'true'
-}
-function getPlatformCode () {
-  return process.env.VUE_APP_PM_PLATFORM ? process.env.VUE_APP_PM_PLATFORM : 'admin'
-}
+import Vue from 'vue'
+import permissionDirective from '../directive/permission'
+import storeModule from './permission.store'
+
+const isEnabled = process.env.VUE_APP_PM_ENABLED === 'true'
+const platformCode = process.env.VUE_APP_PM_PLATFORM ? process.env.VUE_APP_PM_PLATFORM : 'admin'
 function isInited () {
-  if (!isEnabled()) {
+  if (!isEnabled) {
     return true
   }
   return store.getters['permission/inited']
 }
 async function loadRemoteRoute () {
-  const menuTreeRes = await getPermissions(getPlatformCode())
+  const menuTreeRes = await getPermissions(platformCode)
   const menuTree = menuTreeRes.data
   // generate accessible routes map based on roles
   const accessRoutes = await store.dispatch('permission/generateRoutes', { menuTree })
@@ -24,9 +24,16 @@ async function loadRemoteRoute () {
   // dynamically add accessible routes
   router.addRoutes(accessRoutes)
 }
+
+if (isEnabled) {
+  console.error('permission register')
+  Vue.use(permissionDirective)
+  store.registerModule('permission', storeModule)
+}
+
 RouterHook.beforeEach = async (to, from, next) => {
 // 初始化动态路由
-  if (isEnabled() && !isInited()) {
+  if (isEnabled && !isInited()) {
     console.log('PM is enabled')
     const token = util.cookies.get('token')
     if (token && token !== 'undefined') {
@@ -42,6 +49,6 @@ RouterHook.beforeEach = async (to, from, next) => {
   }
 }
 export default {
-  isEnabled: isEnabled,
-  isInited: isInited
+  isEnabled,
+  isInited
 }

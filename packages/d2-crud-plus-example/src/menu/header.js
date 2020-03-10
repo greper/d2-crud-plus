@@ -1,4 +1,3 @@
-import modules from '@/business/modules'
 // 菜单 顶栏
 export default [
   { path: '/index', title: '首页', icon: 'home' },
@@ -8,6 +7,5 @@ export default [
       { path: 'https://greper.github.io/d2-crud-plus/', title: 'GitHub Pages', icon: 'file-text-o' },
       { path: 'http://greper.gitee.io/d2-crud-plus/', title: '码云（国内速度快）', icon: 'file-text-o' }
     ]
-  },
-  ...modules.menus.header
+  }
 ]

@@ -19,7 +19,7 @@ export default {
       require: false
     },
     // 值
-    value: { type: [Number, Boolean, String, Array], require: false },
+    value: { type: [Number, String, Boolean, Array], require: false },
     // value的分隔符<br/>
     // 如果value为string，则以该分隔符分割成多个展示<br/>
     // 传入空字符串，表示不分割<br/>

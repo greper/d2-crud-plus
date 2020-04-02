@@ -14,7 +14,8 @@ const aside = [
       { path: '/form/customType', title: '自定义字段类型' },
       { path: '/form/el', title: 'EL表单组件' },
       { path: '/form/area', title: '省市区选择组件' },
-      { path: '/form/icon', title: '图标选择' }
+      { path: '/form/icon', title: '图标选择' },
+      { path: '/form/header', title: '多级表头' }
     ]
   },
   {
@@ -45,6 +46,15 @@ const routers = {
       component: _import(viewsPrefix + 'test')
     },
     // form
+    {
+      path: 'form/header',
+      name: 'formHeader',
+      meta: {
+        title: '多级表头',
+        auth: true
+      },
+      component: _import(viewsPrefix + 'form/header')
+    },
     {
       path: 'form/area',
       name: 'formArea',

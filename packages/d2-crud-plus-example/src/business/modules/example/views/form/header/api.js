@@ -2,7 +2,7 @@ import request from '@/plugin/axios'
 
 export function GetList (query) {
   return request({
-    url: '/test/page',
+    url: '/header/page',
     method: 'get',
     data: query
   })
@@ -10,7 +10,7 @@ export function GetList (query) {
 
 export function AddObj (obj) {
   return request({
-    url: '/test/add',
+    url: '/header/add',
     method: 'post',
     data: obj
   })
@@ -18,14 +18,14 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: '/test/update',
+    url: '/header/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: '/test/delete',
+    url: '/header/delete',
     method: 'post',
     params: { id }
   })

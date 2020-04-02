@@ -19,15 +19,17 @@ const install = (Vue, options) => {
   for (let key in components) {
     Vue.component(components[key].name, components[key])
   }
-
-  if (options.getRemoteDictFunc != null) {
-    util.dict.getRemoteDictFunc = options.getRemoteDictFunc
-  }
-  if (options.commonOption != null) {
-    if (options.commonOption instanceof Function) {
-      commonOptions.create = options.commonOption
-    } else {
-      console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
+  console.log('d2-crud-plus install options:', options)
+  if (options != null) {
+    if (options.getRemoteDictFunc != null) {
+      util.dict.getRemoteDictFunc = options.getRemoteDictFunc
+    }
+    if (options.commonOption != null) {
+      if (options.commonOption instanceof Function) {
+        commonOptions.create = options.commonOption
+      } else {
+        console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
+      }
     }
   }
 }

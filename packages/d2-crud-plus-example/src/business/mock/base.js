@@ -10,14 +10,66 @@ export default {
         path: 'api/' + name + '/page',
         method: 'get',
         handle (req) {
+          let data = list
+          let size = 20
+          let current = 1
+          if (req != null && req.body != null) {
+            if (req.body.size != null) {
+              size = parseInt(req.body.size)
+            }
+            if (req.body.current != null) {
+              current = parseInt(req.body.current)
+            }
+            const query = { ...req.body }
+            delete query.current
+            delete query.size
+            if (Object.keys(query).length > 0) {
+              data = list.filter(item => {
+                for (let key in query) {
+                  let value = query[key]
+                  if (value == null) {
+                    continue
+                  }
+                  if (value instanceof Array) {
+                    if (value.length === 0) {
+                      continue
+                    }
+                    for (let i of value) {
+                      if (item[key] === i) {
+                        continue
+                      }
+                    }
+                    return false
+                  }
+                  if (item[key] !== value) {
+                    return false
+                  }
+                }
+                return true
+              })
+            }
+          }
+
+          let start = size * (current - 1)
+          let end = size * current
+          if (data.length < end) {
+            end = data.length
+          }
+          let records = data.slice(start, end)
+          const maxPage = data.length % size === 0 ? data.length / size : Math.floor(data.length / size) + 1
+          if (current > maxPage) {
+            current = maxPage
+          } else if (current < 1) {
+            current = 1
+          }
           return {
             code: 0,
             msg: 'success',
             data: {
-              records: list,
-              total: list.length,
-              size: 20,
-              current: list.length % 20 === 0 ? list.length / 20 : list.length / 20 + 1
+              records: records,
+              total: data.length,
+              size: size,
+              current: current
             }
           }
         }

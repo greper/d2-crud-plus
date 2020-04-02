@@ -97,76 +97,88 @@ export default {
       this.crud.searchOptions.columns = []
       this.crud.columnsMap = {}
       for (let item of columns) {
-        let key = item.key
-        let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
-        let newItem = cloneDeep(defaultColumn)
-        // 用户配置覆盖默认配置
-        merge(newItem, item)
-        item = newItem
-        if (item._handle != null) {
-          item._handle(item)
-        }
-        if (item.dict != null) {
-          if (item.form != null && item.form.component != null && item.form.component.props != null) {
-            item.form.component.props.dict = item.dict
-          }
-          if (item.component != null && item.component.props != null) {
-            item.component.props.dict = item.dict
-          }
-        }
-        // delete item._handle
-        // 统一component的props
-        if (item.form != null && item.form.component != null) {
-          let props = item.form.component.props
-          for (let key in props) {
-            item.form.component[key] = props[key]
-          }
-        }
-        let form = item.form
-        if (item.search != null && item.search.disabled !== true) {
-          let component = item.form != null ? cloneDeep(item.form.component) : {}
-          let search = {
-            label: item.title,
-            key: item.key,
-            dict: item.dict,
-            component: component
-          }
-          merge(search, item.search)
-          this.crud.searchOptions.columns.push(search)
-        }
-        if (form.disabled !== true) {
-          const template = {
-            title: item.title,
-            ...form
-          }
-          delete template.addTemplateHandle
-          delete template.editTemplateHandle
-          if (form.addDisabled !== true) {
-            const addTemplate = cloneDeep(template)
-            this.crud.addTemplate[key] = addTemplate
-            if (form.addTemplateHandle != null) {
-              form.addTemplateHandle(addTemplate)
-            }
-            this.crud.addRules[key] = addTemplate.rules
-          }
-          if (form.editDisabled !== true) {
-            const editTemplate = cloneDeep(template)
-            this.crud.editTemplate[key] = editTemplate
-            if (form.editTemplateHandle != null) {
-              form.editTemplateHandle(editTemplate)
-            }
-            this.crud.editRules[key] = form.rules
-          }
-        }
-        delete item.type
-        if (!item.disabled) { // 如果该列没有禁用显示
-          this.crud.columns.push(item)
-        }
-        // 放到map里面方便快速查找
-        this.crud.columnsMap[key] = item
+        this.initColumnItem(this.crud.columns, item)
       }
       this.initAfter()
       console.log('crud inited:', this.crud)
+    },
+    initColumnItem (parantColumns, item) {
+      if (item.children != null && item.children.length > 0) {
+        // 复杂表头
+        let children = []
+        parantColumns.push({ title: item.title, children: children })
+        for (let subItem of item.children) {
+          this.initColumnItem(children, subItem)
+        }
+        return
+      }
+      let key = item.key
+      let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
+      let newItem = cloneDeep(defaultColumn)
+      // 用户配置覆盖默认配置
+      merge(newItem, item)
+      item = newItem
+      if (item._handle != null) {
+        item._handle(item)
+      }
+      if (item.dict != null) {
+        if (item.form != null && item.form.component != null && item.form.component.props != null) {
+          item.form.component.props.dict = item.dict
+        }
+        if (item.component != null && item.component.props != null) {
+          item.component.props.dict = item.dict
+        }
+      }
+      // delete item._handle
+      // 统一component的props
+      if (item.form != null && item.form.component != null) {
+        let props = item.form.component.props
+        for (let key in props) {
+          item.form.component[key] = props[key]
+        }
+      }
+      let form = item.form
+      if (item.search != null && item.search.disabled !== true) {
+        let component = item.form != null ? cloneDeep(item.form.component) : {}
+        let search = {
+          label: item.title,
+          key: item.key,
+          dict: item.dict,
+          component: component
+        }
+        merge(search, item.search)
+        this.crud.searchOptions.columns.push(search)
+      }
+      if (form.disabled !== true) {
+        const template = {
+          title: item.title,
+          ...form
+        }
+        delete template.addTemplateHandle
+        delete template.editTemplateHandle
+        if (form.addDisabled !== true) {
+          const addTemplate = cloneDeep(template)
+          this.crud.addTemplate[key] = addTemplate
+          if (form.addTemplateHandle != null) {
+            form.addTemplateHandle(addTemplate)
+          }
+          this.crud.addRules[key] = addTemplate.rules
+        }
+        if (form.editDisabled !== true) {
+          const editTemplate = cloneDeep(template)
+          this.crud.editTemplate[key] = editTemplate
+          if (form.editTemplateHandle != null) {
+            form.editTemplateHandle(editTemplate)
+          }
+          this.crud.editRules[key] = form.rules
+        }
+      }
+      delete item.type
+      if (!item.disabled) { // 如果该列没有禁用显示
+        parantColumns.push(item)
+      }
+      // 放到map里面方便快速查找
+      this.crud.columnsMap[key] = item
     },
     /**
      * 初始化结束后调用方法

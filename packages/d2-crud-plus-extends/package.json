@@ -18,7 +18,7 @@
     "d2-crud-plus",
     "d2-admin"
   ],
-  "main": "dist/d2p-extends.umd.min.js",
+  "main": "src/index",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --report --target lib ./src/index.js",

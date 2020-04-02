@@ -1,5 +1,5 @@
 {
-  "name": "d2-crud-plus-example",
+  "name": "@d2p/d2-crud-plus-example",
   "description": "d2-crud-plus的示例工程",
   "version": "1.2.3",
   "author": "Greper <252959493@qq.com>",
@@ -71,5 +71,5 @@
     "vue-template-compiler": "^2.5.21",
     "webpack-bundle-analyzer": "^3.6.0"
   },
-  "gitHead": "218e164222a9d7d3d563bf38bade74c984c6a612"
+  "gitHead": "d364dc812a93a464466420685619ad056b77be39"
 }

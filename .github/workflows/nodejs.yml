@@ -27,11 +27,12 @@ jobs:
         qshell-version: 2.4.0 # optional, default is
     - name: test qshell
       run: qshell version
+    - name: install
+      working-directory: ./packages/d2-crud-plus-example/
+      run: npm install
     - name: build
       working-directory: ./packages/d2-crud-plus-example/
-      run: |
-        npm install
-        npm run build:travis
+      run: npm run build:travis
     - name: deploy
       working-directory: ./packages/d2-crud-plus-example/
       run: |

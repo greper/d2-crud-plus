@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import D2HelpBtn from './components/d2-help-btn'
-import D2Badge from './components/d2-badge'
-import D2PageCover from './components/d2-page-cover'
+import D2HelpBtn from './components/d2-help-btn/index'
+import D2Badge from './components/d2-badge/index'
+import D2PageCover from './components/d2-page-cover/index'
 export default {
   components: {
     D2HelpBtn,

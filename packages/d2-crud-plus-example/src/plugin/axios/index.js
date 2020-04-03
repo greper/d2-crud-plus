@@ -4,7 +4,7 @@ import { Message } from 'element-ui'
 import util from '@/libs/util'
 
 // 创建一个错误
-function errorCreate (msg, addStore) {
+function errorCreate (msg, addStore = true) {
   const error = new Error(msg)
   errorLog(error, addStore)
   throw error
@@ -22,7 +22,6 @@ function errorLog (error, addStore = true) {
       }
     })
   }
-
   // 打印到控制台
   if (process.env.NODE_ENV === 'development') {
     util.log.danger('>>>>>> Error >>>>>>')
@@ -63,12 +62,16 @@ service.interceptors.response.use(
   response => {
     // dataAxios 是 axios 返回数据中的 data
     const dataAxios = response.data
+
+    // ----add by greper
     console.info('--------Request-------------' +
       '\r\n--------url:', response.config.url,
     '\r\n--------query:', response.config.params,
     '\r\n--------data:', response.config.data != null && typeof (response.config.data) === 'string' ? JSON.parse(response.config.data) : response.config.data,
     '\r\n--------response:', dataAxios,
     '\r\n------------------------------')
+    // ----add by greper
+
     // 这个状态码是和后端约定的
     const { code } = dataAxios
     // 根据 code 进行判断
@@ -81,7 +84,6 @@ service.interceptors.response.use(
         case 0:
           // [ 示例 ] code === 0 代表没有错误
           // return dataAxios.data
-          // update by greper
           return dataAxios
         case 'xxx':
           // [ 示例 ] 其它和后台约定的 code
@@ -111,7 +113,6 @@ service.interceptors.response.use(
         case 505: error.message = 'HTTP版本不受支持'; break
         default: break
       }
-
       // 收到401错误，直接跳转到登录页面
       if (error.response.status === 401) {
         store.dispatch('d2admin/account/logout')

@@ -1,7 +1,7 @@
 <template>
   <d2-container>
     <template slot="header">多级表头</template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" ></crud-search>
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud
         ref="d2Crud"
         :columns="crud.columns"

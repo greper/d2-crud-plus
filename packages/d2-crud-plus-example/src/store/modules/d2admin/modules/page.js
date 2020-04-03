@@ -25,7 +25,7 @@ export default {
      * @param {Object} context
      */
     isLoaded ({ state }) {
-      if (state.value) return Promise.resolve()
+      if (state.openedLoaded) return Promise.resolve()
       return new Promise(resolve => {
         const timer = setInterval(() => {
           if (state.openedLoaded) {
@@ -80,7 +80,7 @@ export default {
      * 将 opened 属性赋值并持久化 在这之前请先确保已经更新了 state.opened
      * @param {Object} context
      */
-    opend2db ({ state, dispatch }) {
+    opened2db ({ state, dispatch }) {
       return new Promise(async resolve => {
         // 设置数据
         dispatch('d2admin/db/set', {
@@ -108,7 +108,25 @@ export default {
         page.fullPath = fullPath || page.fullPath
         state.opened.splice(index, 1, page)
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
+        // end
+        resolve()
+      })
+    },
+    /**
+     * @class opened
+     * @description 重排页面列表上的某一项
+     * @param {Object} context
+     * @param {Object} payload { oldIndex, newIndex } 位置信息
+     */
+    openedSort ({ state, commit, dispatch }, { oldIndex, newIndex }) {
+      return new Promise(async resolve => {
+        // 重排页面列表某一项
+        let page = state.opened[oldIndex]
+        state.opened.splice(oldIndex, 1)
+        state.opened.splice(newIndex, 0, page)
+        // 持久化
+        await dispatch('opened2db')
         // end
         resolve()
       })
@@ -133,7 +151,7 @@ export default {
           commit('keepAlivePush', tag.name)
         }
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // end
         resolve()
       })
@@ -216,7 +234,7 @@ export default {
           state.opened.splice(index, 1)
         }
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // 最后需要判断是否需要跳到首页
         if (isCurrent) {
           const { name = '', params = {}, query = {} } = newPage
@@ -255,7 +273,7 @@ export default {
           router.push(pageAim)
         }
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // end
         resolve()
       })
@@ -283,7 +301,7 @@ export default {
           router.push(pageAim)
         }
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // end
         resolve()
       })
@@ -316,7 +334,7 @@ export default {
           router.push(pageAim)
         }
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // end
         resolve()
       })
@@ -331,7 +349,7 @@ export default {
         // 删除打开的页面 并在缓存设置中删除
         state.opened.splice(1).forEach(({ name }) => commit('keepAliveRemove', name))
         // 持久化
-        await dispatch('opend2db')
+        await dispatch('opened2db')
         // 关闭所有的标签页后需要判断一次现在是不是在首页
         if (router.app.$route.name !== 'index') {
           router.push({
@@ -402,7 +420,7 @@ export default {
       const pool = []
       const push = function (routes) {
         routes.forEach(route => {
-          if (route.children) {
+          if (route.children && route.children.length > 0) {
             push(route.children)
           } else {
             if (!route.hidden) {

@@ -35,7 +35,7 @@ export default {
 `,
   template: `<template>
   <d2-container>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
       <template slot="slotExampleSearchSlot" slot-scope="scope">
         <el-input v-model="scope.form['slotExample']" placeholder="这是写在slot上的" @blur="inputBlur('search')"></el-input>
       </template>

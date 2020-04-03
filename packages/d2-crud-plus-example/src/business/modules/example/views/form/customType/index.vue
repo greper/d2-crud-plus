@@ -6,7 +6,7 @@
         <d2-highlight :code="helper.code"/>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
     </crud-search>
     <d2-crud
         ref="d2Crud"

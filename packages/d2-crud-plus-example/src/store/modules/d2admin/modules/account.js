@@ -66,9 +66,6 @@ export default {
         util.cookies.remove('uuid')
         // 清空 vuex 用户信息
         await dispatch('d2admin/user/set', {}, { root: true })
-
-        // 清空动态路由
-        await dispatch('permission/clear', null, { root: true })
         // 跳转路由
         router.push({
           name: 'login'
@@ -78,8 +75,6 @@ export default {
       if (confirm) {
         commit('d2admin/gray/set', true, { root: true })
         MessageBox.confirm('确定要注销当前用户吗', '注销用户', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
           type: 'warning'
         })
           .then(() => {
@@ -114,6 +109,8 @@ export default {
         await dispatch('d2admin/menu/asideCollapseLoad', null, { root: true })
         // DB -> store 持久化数据加载全局尺寸
         await dispatch('d2admin/size/load', null, { root: true })
+        // DB -> store 持久化数据加载颜色设置
+        await dispatch('d2admin/color/load', null, { root: true })
         // end
         resolve()
       })

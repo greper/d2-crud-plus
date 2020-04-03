@@ -7,7 +7,7 @@
           <d2-highlight :code="helper.template"/>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" class="d2-mb-10" >
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
       <template slot="slotExampleSearchSlot" slot-scope="scope">
         <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"></el-input>
       </template>

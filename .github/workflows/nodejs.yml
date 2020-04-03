@@ -18,9 +18,8 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-    - working-directory: ./packages/d2-crud-plus-example/
     - uses: actions/checkout@v2
-    - name: node setup
+    - name: setup node
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
@@ -31,13 +30,16 @@ jobs:
         qshell-version: 2.4.0 # optional, default is
     - name: test qshell
       run: qshell version
-    - name: install
-
-      run: npm install
     - name: build
-      run: npm run build:travis
+      working-directory: ./packages/d2-crud-plus-example/
+      run: |
+        npm install
+        npm run build:travis
     - name: deploy
-      run: qshell account ${{secrets.AK}} ${{secrets.SK}}
-    - run: qshell qupload qiniu-config
-    - run: qshell cdnrefresh -dirs cdnrefresh-dirs.txt
+      working-directory: ./packages/d2-crud-plus-example/
+      run: |
+        qshell account ${{secrets.AK}} ${{secrets.SK}}
+        qshell qupload qiniu-config
+        qshell cdnrefresh -dirs cdnrefresh-dirs.txt
+
 

@@ -2,6 +2,7 @@
     <el-select
         v-model="selectValue"
         v-bind="_elProps"
+        :value-key="dict.value"
         @change="doChange"
     >
       <el-option

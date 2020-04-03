@@ -42,7 +42,7 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { AddRoom, GetRoomList, UpdateRoom, DelRoom } from './api'
 export default {
-  name: 'roomList',
+  name: 'hotelRoomList',
   mixins: [d2CrudPlus.crud],
   data () {
     return {

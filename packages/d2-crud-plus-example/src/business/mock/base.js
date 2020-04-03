@@ -34,12 +34,14 @@ export default {
                     if (value.length === 0) {
                       continue
                     }
+                    let found = false
                     for (let i of value) {
                       if (item[key] === i) {
-                        continue
+                        found = true
+                        break
                       }
                     }
-                    return false
+                    return found
                   }
                   if (item[key] !== value) {
                     return false

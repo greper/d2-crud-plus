@@ -64,7 +64,7 @@ import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
 
 export default {
-  name: 'uploaderPage',
+  name: 'formUploader',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {

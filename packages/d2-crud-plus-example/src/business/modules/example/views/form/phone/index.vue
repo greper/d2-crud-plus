@@ -47,7 +47,7 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
 export default {
-  name: 'phonePage',
+  name: 'formPhone',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {

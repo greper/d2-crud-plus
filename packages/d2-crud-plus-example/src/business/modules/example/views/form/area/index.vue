@@ -50,7 +50,7 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
 export default {
-  name: 'areaPage',
+  name: 'formArea',
   mixins: [d2CrudPlus.crud],
   data () {
     return {

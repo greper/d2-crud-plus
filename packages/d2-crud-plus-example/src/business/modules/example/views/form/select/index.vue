@@ -39,7 +39,7 @@ import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
-  name: 'selectPage',
+  name: 'formSelect',
   mixins: [d2CrudPlus.crud],
   methods: {
     getCrudOptions () {

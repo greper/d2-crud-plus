@@ -39,7 +39,7 @@
 import { GetList } from './api'
 import crudEditMixin from './crud-edit-mixin'
 export default {
-  name: 'checkin',
+  name: 'hotelRoomCheckin',
   mixins: [crudEditMixin],
   data () {
     return {

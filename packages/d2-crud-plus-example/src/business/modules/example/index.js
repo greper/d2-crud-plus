@@ -41,7 +41,8 @@ const routers = {
       name: 'test',
       meta: {
         title: '测试页面',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'test')
     },
@@ -51,7 +52,8 @@ const routers = {
       name: 'formHeader',
       meta: {
         title: '多级表头',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/header')
     },
@@ -60,7 +62,8 @@ const routers = {
       name: 'formArea',
       meta: {
         title: '省市区选择组件',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/area')
     },
@@ -69,7 +72,8 @@ const routers = {
       name: 'formEl',
       meta: {
         title: 'El表单组件',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/el')
     },
@@ -78,7 +82,8 @@ const routers = {
       name: 'formDate',
       meta: {
         title: '日期时间',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/date')
     },
@@ -87,7 +92,8 @@ const routers = {
       name: 'formSelect',
       meta: {
         title: '选择组件',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/select')
     },
@@ -96,7 +102,8 @@ const routers = {
       name: 'formSlot',
       meta: {
         title: '插槽式自定义组件',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/slot')
     },
@@ -105,7 +112,8 @@ const routers = {
       name: 'formPhone',
       meta: {
         title: '国际电话输入框',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/phone')
     },
@@ -114,7 +122,8 @@ const routers = {
       name: 'formCustomType',
       meta: {
         title: '自定义字段类型',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/customType')
     },
@@ -123,7 +132,8 @@ const routers = {
       name: 'formUploader',
       meta: {
         title: '文件上传',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/uploader')
     },
@@ -132,7 +142,8 @@ const routers = {
       name: 'formIcon',
       meta: {
         title: '图标选择',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'form/icon')
     },
@@ -142,7 +153,8 @@ const routers = {
       name: 'hotelDashboard',
       meta: {
         title: '工作台',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'hotel/dashboard')
     },
@@ -151,7 +163,8 @@ const routers = {
       name: 'hotelRoomList',
       meta: {
         title: '房间管理',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'hotel/room/list')
     },
@@ -160,16 +173,18 @@ const routers = {
       name: 'hotelRoomCheckin',
       meta: {
         title: '入住管理',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'hotel/room/checkin')
     },
     {
       path: 'hotel/room/type',
-      name: 'hotelRoomtype',
+      name: 'hotelRoomType',
       meta: {
         title: '房间类型管理',
-        auth: true
+        auth: true,
+        cache: true
       },
       component: _import(viewsPrefix + 'hotel/room/roomtype')
     }

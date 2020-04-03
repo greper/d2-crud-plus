@@ -22,7 +22,8 @@ function formatRouter (routers, list) {
         component: _import(item.component),
         meta: {
           title: item.title,
-          auth: true
+          auth: true,
+          cache: true
         }
       })
     }

@@ -81,6 +81,7 @@ import { GetRoomList } from './api'
 import checkInCrudEditMixin from '../room/checkin/crud-edit-mixin'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
+  name: 'hotelDashboard',
   components: {
   },
   mixins: [checkInCrudEditMixin],

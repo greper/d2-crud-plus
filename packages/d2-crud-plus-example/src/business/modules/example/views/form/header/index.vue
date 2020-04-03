@@ -37,7 +37,7 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj } from './api'
 export default {
-  name: 'headerPage',
+  name: 'formHeader',
   mixins: [d2CrudPlus.crud],
   methods: {
     getCrudOptions () {

@@ -5,6 +5,8 @@ name: build and deploy to qiniu
 
 on:
   push:
+    paths:
+      - 'packages/d2-crud-plus-example/**'
     branches: [ master ]
   pull_request:
     branches: [ master ]
@@ -28,8 +30,8 @@ jobs:
         qshell-version: 2.4.0 # optional, default is
     - name: test qshell
       run: qshell version
-    - run: cd ./packages/d2-crud-plus-example/
     - name: install
+      working-directory: ./packages/d2-crud-plus-example/
       run: npm install
     - name: build
       run: npm run build:travis

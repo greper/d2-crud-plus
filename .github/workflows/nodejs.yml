@@ -18,6 +18,7 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
+    - working-directory: ./packages/d2-crud-plus-example/
     - uses: actions/checkout@v2
     - name: node setup
       uses: actions/setup-node@v1
@@ -31,7 +32,7 @@ jobs:
     - name: test qshell
       run: qshell version
     - name: install
-      working-directory: ./packages/d2-crud-plus-example/
+
       run: npm install
     - name: build
       run: npm run build:travis

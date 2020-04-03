@@ -24,9 +24,6 @@ export default {
           password
         })
           .then(async res => {
-            // add by greper
-            res = res.data
-            console.log('登录成功：', res)
             // 设置 cookie 一定要存 uuid 和 token 两个 cookie
             // 整个系统依赖这两个数据进行校验和存储
             // uuid 是用户身份唯一标识 用户注册的时候确定 并且不可改变 不可重复
@@ -36,8 +33,6 @@ export default {
             util.cookies.set('token', res.token)
             // 设置 vuex 用户信息
             await dispatch('d2admin/user/set', {
-              id: res.id,
-              username: res.username,
               name: res.name
             }, { root: true })
             // 用户登录后从持久化数据加载一系列的设置
@@ -66,9 +61,6 @@ export default {
         util.cookies.remove('uuid')
         // 清空 vuex 用户信息
         await dispatch('d2admin/user/set', {}, { root: true })
-
-        // 清空动态路由
-        await dispatch('permission/clear', null, { root: true })
         // 跳转路由
         router.push({
           name: 'login'
@@ -78,8 +70,6 @@ export default {
       if (confirm) {
         commit('d2admin/gray/set', true, { root: true })
         MessageBox.confirm('确定要注销当前用户吗', '注销用户', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
           type: 'warning'
         })
           .then(() => {
@@ -114,6 +104,8 @@ export default {
         await dispatch('d2admin/menu/asideCollapseLoad', null, { root: true })
         // DB -> store 持久化数据加载全局尺寸
         await dispatch('d2admin/size/load', null, { root: true })
+        // DB -> store 持久化数据加载颜色设置
+        await dispatch('d2admin/color/load', null, { root: true })
         // end
         resolve()
       })

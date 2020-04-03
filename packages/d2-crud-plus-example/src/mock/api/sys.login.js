@@ -1,10 +1,10 @@
 const userDB = [
-  { username: 'admin', password: 'admin', uuid: 'admin-uuid', name: '管理员' },
-  { username: 'editor', password: 'editor', uuid: 'editor-uuid', name: '编辑' },
-  { username: 'user1', password: 'user1', uuid: 'user1-uuid', name: '用户1' }
+  { username: 'admin', password: 'admin', uuid: 'admin-uuid', name: 'Admin' },
+  { username: 'editor', password: 'editor', uuid: 'editor-uuid', name: 'Editor' },
+  { username: 'user1', password: 'user1', uuid: 'user1-uuid', name: 'User1' }
 ]
 
-let apis = [
+export default [
   {
     path: '/api/login',
     method: 'post',
@@ -29,8 +29,3 @@ let apis = [
     }
   }
 ]
-
-if (process.env.VUE_APP_PM_ENABLED === 'true') {
-  apis = []
-}
-export default apis

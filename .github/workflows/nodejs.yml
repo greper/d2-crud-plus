@@ -36,7 +36,7 @@ jobs:
     - name: deploy
       working-directory: ./packages/d2-crud-plus-example/
       run: |
-        qshell account ${{secrets.AK}} ${{secrets.SK}}
+        qshell account ${{secrets.AK}} ${{secrets.SK}} 252959493@qq.com
         qshell qupload qiniu-config
         qshell cdnrefresh -dirs cdnrefresh-dirs.txt
 

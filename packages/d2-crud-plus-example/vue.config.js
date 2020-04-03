@@ -29,7 +29,16 @@ module.exports = {
   publicPath,
   lintOnSave: true,
   devServer: {
-    publicPath // 和 publicPath 保持一致
+    publicPath, // 和 publicPath 保持一致
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:7070',
+        ws: true,
+        pathRewrite: {
+          '^/api': '/api'
+        }
+      }
+    }
   },
   css: {
     loaderOptions: {

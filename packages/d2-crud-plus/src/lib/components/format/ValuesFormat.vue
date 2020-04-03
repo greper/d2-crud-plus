@@ -133,4 +133,7 @@ export default {
 <style >
   .d2-mb-2{margin-bottom: 2px}
   .d2-mt-2{margin-top: 2px;}
+  .tag-item{
+    margin-right: 10px;
+  }
 </style>

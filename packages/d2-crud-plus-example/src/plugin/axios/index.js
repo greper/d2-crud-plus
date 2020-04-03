@@ -4,22 +4,24 @@ import { Message } from 'element-ui'
 import util from '@/libs/util'
 
 // 创建一个错误
-function errorCreate (msg) {
+function errorCreate (msg, addStore = true) {
   const error = new Error(msg)
-  errorLog(error)
+  errorLog(error, addStore)
   throw error
 }
 
 // 记录和显示错误
-function errorLog (error) {
-  // 添加到日志
-  store.dispatch('d2admin/log/push', {
-    message: '数据请求异常',
-    type: 'danger',
-    meta: {
-      error
-    }
-  })
+function errorLog (error, addStore = true) {
+  if (addStore) {
+    // 添加到日志
+    store.dispatch('d2admin/log/push', {
+      message: '数据请求异常',
+      type: 'danger',
+      meta: {
+        error
+      }
+    })
+  }
   // 打印到控制台
   if (process.env.NODE_ENV === 'development') {
     util.log.danger('>>>>>> Error >>>>>>')
@@ -60,6 +62,16 @@ service.interceptors.response.use(
   response => {
     // dataAxios 是 axios 返回数据中的 data
     const dataAxios = response.data
+
+    // ----add by greper
+    console.info('--------Request-------------' +
+      '\r\n--------url:', response.config.url,
+    '\r\n--------query:', response.config.params,
+    '\r\n--------data:', response.config.data != null && typeof (response.config.data) === 'string' ? JSON.parse(response.config.data) : response.config.data,
+    '\r\n--------response:', dataAxios,
+    '\r\n------------------------------')
+    // ----add by greper
+
     // 这个状态码是和后端约定的
     const { code } = dataAxios
     // 根据 code 进行判断
@@ -71,17 +83,19 @@ service.interceptors.response.use(
       switch (code) {
         case 0:
           // [ 示例 ] code === 0 代表没有错误
-          return dataAxios.data
+          // return dataAxios.data
+          return dataAxios
         case 'xxx':
           // [ 示例 ] 其它和后台约定的 code
-          errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`, false)
           break
         default:
           // 不是正确的 code
-          errorCreate(`${dataAxios.msg}: ${response.config.url}`)
+          errorCreate(`${dataAxios.msg}: ${response.config.url}`, false)
           break
       }
     }
+    return dataAxios
   },
   error => {
     if (error && error.response) {
@@ -98,6 +112,10 @@ service.interceptors.response.use(
         case 504: error.message = '网关超时'; break
         case 505: error.message = 'HTTP版本不受支持'; break
         default: break
+      }
+      // 收到401错误，直接跳转到登录页面
+      if (error.response.status === 401) {
+        store.dispatch('d2admin/account/logout')
       }
     }
     errorLog(error)

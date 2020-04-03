@@ -1,4 +1,4 @@
-import Mock from 'mockjs'
+import Mock from 'mockjs-x'
 import qs from 'qs'
 import withCredentials from './patch/withCredentials'
 

@@ -16,15 +16,29 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: node setup
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - name: Setup qiniu qshell environment
+      uses: foxundermoon/setup-qshell@v1.0
+      with:
+        # version to use.  Examples: 2.4.0
+        qshell-version: 2.4.0 # optional, default is    
+    - name: test qshell
+      run: qshell version
+    - uses: ./packages/d2-crud-plus-example/
+    - name: build
+    - run: npm install
     - run: npm run build:travis 
       env:
         CI: true
+    - name: deploy
+    - run: qshell account ${{secrets.AK}} ${{secrets.SK}}
+    - run: qshell qupload qiniu-config
+    - run: qshell cdnrefresh -dirs cdnrefresh-dirs.txt
+       

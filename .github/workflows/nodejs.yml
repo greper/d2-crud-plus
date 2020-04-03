@@ -1,16 +1,13 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: build and deploy to qiniu
+name: deploy
 
 on:
   push:
     paths:
       - 'packages/d2-crud-plus-example/**'
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
 jobs:
   build:
     runs-on: ubuntu-latest

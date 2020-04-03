@@ -38,6 +38,6 @@ jobs:
       run: |
         qshell account ${{secrets.AK}} ${{secrets.SK}} 252959493@qq.com
         qshell qupload qiniu-config
-        qshell cdnrefresh -r cdnrefresh-dirs.txt
+        qshell cdnrefresh -i qiniu-cdnrefresh-dirs.txt
 
 

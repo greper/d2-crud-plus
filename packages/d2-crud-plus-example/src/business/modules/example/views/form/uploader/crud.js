@@ -31,6 +31,18 @@ export const crudOptions = {
       width: 200
     },
     {
+      title: '头像裁剪',
+      key: 'avatarCropper',
+      type: 'avatar-cropper',
+      width: 200,
+      form: {
+        component: {
+          span: 24
+        },
+        helper: '裁剪头像'
+      }
+    },
+    {
       title: '图片',
       key: 'image',
       type: 'image-uploader',
@@ -39,10 +51,10 @@ export const crudOptions = {
         component: {
           props: {
             elProps: { // 与el-uploader 配置一致
+              multiple: true,
               limit: 5 // 限制5个文件
             }
-          },
-          span: 24
+          }
         },
         helper: '默认腾讯云cos上传'
       }

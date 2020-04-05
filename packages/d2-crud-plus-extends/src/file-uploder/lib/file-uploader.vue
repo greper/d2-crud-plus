@@ -1,4 +1,5 @@
 <template>
+  <div class="d2p-file-uplaoder">
   <el-upload :before-upload="beforeUpload"
              :class="uploadClass"
              :file-list="fileList"
@@ -15,6 +16,7 @@
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
     </template>
   </el-upload>
+  </div>
 </template>
 
 <script>
@@ -123,7 +125,6 @@ export default {
       return choose.get(this.type)
     },
     initValue () {
-      console.log('init value:', this.value)
       let fileList = []
       if (this.value == null) {
       } else if (typeof (this.value) === 'string') {
@@ -273,42 +274,58 @@ export default {
   }
 }
 </script>
-<style>
-  .avatar-uploader .el-upload{
-    width: 148px;
-    height: 148px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fbfdff;
-    border: 1px dashed #c0ccda;
-    border-radius: 6px;
-  }
-  .avatar-uploader .el-upload img{
-    max-width: 148px;
-    max-height: 148px;
+<style lang="scss">
+  .d2p-file-uplaoder{
+    .avatar-uploader{
+      .el-upload{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfdff;
+        border: 1px dashed #c0ccda;
+        border-radius: 6px;
+      }
+      .el-upload img{
+        max-width: 100px;
+        max-height: 100px;
+      }
+      .avatar-uploader-icon {
+        vertical-align: top;
+        font-size: 28px;
+        color: #8c939d;
+      }
+    }
+    .image-uploader .el-upload-list--picture-card .el-upload-list__item-thumbnail {
+      max-width: 100%;
+      max-height: 100%;
+      width:auto;
+      height: auto;
+    }
+    .image-uploader .el-upload-list--picture-card .el-upload-list__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .image-uploader{display: flex;flex-wrap: wrap;}
+    .image-uploader .el-upload-list--picture-card {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .el-upload--picture-card {
+      background-color: #fbfdff;
+      border: 1px dashed #c0ccda;
+      border-radius: 6px;
+      box-sizing: border-box;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
-  .avatar-uploader .avatar-uploader-icon {
-    vertical-align: top;
-    font-size: 28px;
-    color: #8c939d;
-  }
-
-  .image-uploader .el-upload-list--picture-card .el-upload-list__item-thumbnail {
-    max-width: 100%;
-    max-height: 100%;
-    width:auto;
-    height: auto;
-  }
-  .image-uploader .el-upload-list--picture-card .el-upload-list__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-   .image-uploader{display: flex;flex-wrap: wrap;}
-  .image-uploader .el-upload-list--picture-card {
-    display: flex;
-    flex-wrap: wrap;
-  }
 </style>

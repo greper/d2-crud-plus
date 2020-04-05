@@ -24,12 +24,28 @@ const types = {
   },
   'file-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } }
+  },
+  'avatar-cropper': {
+    form: { component: { name: 'd2p-image-cropper', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
+    component: { name: 'd2p-images-format' },
+    align: 'center',
+    valueResolve (row, col) {
+      let value = row[col.key]
+      if (value != null && value instanceof Array) {
+        if (value.length >= 0) {
+          row[col.key] = value[0].url
+        } else {
+          row[col.key] = null
+        }
+      }
+    }
   }
 }
 
 function install (Vue, options) {
   Vue.component('d2p-file-uploader', () => import('./lib/file-uploader'))
   Vue.component('d2p-images-format', D2pImagesFormat)
+  Vue.component('d2p-image-cropper', () => import('./lib/image-cropper'))
 
   if (options != null) {
     // 覆盖用户配置

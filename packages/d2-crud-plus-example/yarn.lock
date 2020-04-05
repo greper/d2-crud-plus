@@ -3272,10 +3272,10 @@ cyclist@^1.0.1:
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.2.2.tgz#5e824abc5889026a35baee132ee93a6dd5b9a4bf"
-  integrity sha512-00yyT1NXyLQx74wqmIyKYM9sZ1peF7ztC+oGON2WRudV3e/t2xfM3bFZtruz8EmrrQ76B/vccJF0oNaV5AdKhQ==
+d2-crud-plus@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/d2-crud-plus/download/d2-crud-plus-1.2.3.tgz#fed4aaa1bf8577d70a4591521b3b0a2f428e9dc9"
+  integrity sha1-/tSqob+Fd9cKRZFSGzsKL0KOnck=
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
@@ -3291,10 +3291,10 @@ d2-crud-x@^2.0.5-1.2.1:
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.1.5.tgz#9bdec48aff0e40fcc6b312e982661dbf9f3c23a6"
-  integrity sha512-5YfdIjpsyse2+6mhOMyIZwX0+uNxTVCfoToo84FZWv8MeqfB9OyNgs47bH6/1Aq7pqEKuXfemYRoqDELBq/JOw==
+d2p-extends@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.npm.taobao.org/d2p-extends/download/d2p-extends-1.1.6.tgz#0097adbcb5af5fc1d83a0aa6ec680cafae122dd1"
+  integrity sha1-AJetvLWvX8HYOgqm7GgMr64SLdE=
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
@@ -4152,6 +4152,11 @@ execa@^3.3.0:
     p-finally "^2.0.0"
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
+
+exif-js@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/exif-js/download/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
+  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
 
 exit@^0.1.2:
   version "0.1.2"
@@ -10091,6 +10096,13 @@ vue-cli-plugin-i18n@^0.6.0:
     vue "^2.5.16"
     vue-i18n "^8.0.0"
     vue-i18n-extract "^0.4.13"
+
+vue-cropper@^0.2.9:
+  version "0.2.9"
+  resolved "https://registry.npm.taobao.org/vue-cropper/download/vue-cropper-0.2.9.tgz#5c91ce2474788ad4d0e9bdac0b6032005dcb7898"
+  integrity sha1-XJHOJHR4itTQ6b2sC2AyAF3LeJg=
+  dependencies:
+    exif-js "^2.3.0"
 
 vue-eslint-parser@^5.0.0:
   version "5.0.0"

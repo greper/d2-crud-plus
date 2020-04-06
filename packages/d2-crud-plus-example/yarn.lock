@@ -3018,6 +3018,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cropperjs@^1.5.6:
+  version "1.5.6"
+  resolved "https://registry.npm.taobao.org/cropperjs/download/cropperjs-1.5.6.tgz#82faf432bec709d828f2f7a96d1179198edaf0e2"
+  integrity sha1-gvr0Mr7HCdgo8vepbRF5GY7a8OI=
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.npm.taobao.org/cross-spawn/download/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -4152,11 +4157,6 @@ execa@^3.3.0:
     p-finally "^2.0.0"
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
-
-exif-js@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npm.taobao.org/exif-js/download/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
-  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
 
 exit@^0.1.2:
   version "0.1.2"
@@ -10096,13 +10096,6 @@ vue-cli-plugin-i18n@^0.6.0:
     vue "^2.5.16"
     vue-i18n "^8.0.0"
     vue-i18n-extract "^0.4.13"
-
-vue-cropper@^0.2.9:
-  version "0.2.9"
-  resolved "https://registry.npm.taobao.org/vue-cropper/download/vue-cropper-0.2.9.tgz#5c91ce2474788ad4d0e9bdac0b6032005dcb7898"
-  integrity sha1-XJHOJHR4itTQ6b2sC2AyAF3LeJg=
-  dependencies:
-    exif-js "^2.3.0"
 
 vue-eslint-parser@^5.0.0:
   version "5.0.0"

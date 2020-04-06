@@ -1,6 +1,7 @@
 import config from './lib/config'
 import D2pImagesFormat from './lib/images-format'
 import { d2CrudPlus } from 'd2-crud-plus'
+import 'cropperjs/dist/cropper.css'
 const types = {
   'image-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },

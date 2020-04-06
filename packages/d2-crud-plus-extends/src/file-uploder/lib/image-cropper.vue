@@ -5,51 +5,50 @@
         style="width: 100px; height: 100px"
         :src="item"
         :fit="fit"></el-image>
-      <div class="image-item">
-        <i class="el-icon-plus avatar-uploader-icon" ></i>
+      <div class="image-item" @click="addNewImage">
+        <i class="el-icon-plus cropper-uploader-icon" ></i>
       </div>
-
     </div>
-    <el-dialog class="avatar-uploader quying-dialog" title="上传图片" :visible.sync="dialogVisible" width="490px"
-               :before-close="handleClose" :close-on-click-modal="true" ref="editAvatar">
-      <div class="avatar-uploader-wrap">
-        <!-- step1 -->
-        <div class="avatar-uploader__choose avatar-uploader_left" v-show="!current && !isSuccess">
-          <button class="avatar-uploader_left__btn" @click="handleClick">+选择图片</button>
-          <p>只支持JPG,PNG,GIF,大小不超过5M</p>
-          <input type="file" v-show="false" ref="fileinput" accept=".jpg, .jpeg, .png, .gif" @change="handleChange">
-        </div>
-        <!-- step2 -->
-        <div class="avatar-uploader__edit" v-show="current || isSuccess">
-          <div class="avatar-uploader_left avatar-uploader__edit-area">
-            <vueCropper ref="cropper"
-                        :img="cropper.img"
-                        :info="false"
-                        :autoCrop="cropper.autoCrop"
-                        :autoCropWidth="cropper.autoCropWidth"
-                        :autoCropHeight="cropper.autoCropHeight"
-                        :fixedBox="cropper.fixedBox"
-                        @realTime="realTime"
-                        :outputType="cropper.outputType"
-                        :fixed="cropper.fixed"
-                        :fixedNumber="cropper.fixedNumber">
-
-            </vueCropper>
+    <el-dialog class="cropper-uploader quying-dialog" title="上传图片" :visible.sync="dialogVisible" append-to-body
+               :before-close="handleClose" :close-on-click-modal="true" ref="editAvatar" :width="_dialogWidth" :height="_dialogHeight">
+          <div class="cropper-uploader-wrap">
+            <input type="file" v-show="false" ref="fileinput" accept=".jpg, .jpeg, .png, .gif" @change="handleChange">
+            <!-- step1 -->
+            <div class="cropper-uploader__choose cropper-uploader_left" v-show="!current && !isSuccess">
+              <el-button round @click="handleClick">+选择图片</el-button>
+              <p>只支持JPG,PNG,GIF,大小不超过5M</p>
+            </div>
+            <!-- step2 -->
+            <div class="cropper-uploader__edit cropper-uploader_left" v-show="current || isSuccess">
+              <div class="cropper-uploader__edit-area">
+                <section class="cropper-area">
+                  <div class="img-cropper">
+                    <vue-cropper
+                      ref="cropper"
+                      :aspect-ratio="16 / 9"
+                      :src="imgSrc"
+                      preview=".preview"
+                    />
+                  </div>
+                </section>
+              </div>
+              <div style="margin:10px;">
+                <el-button-group>
+                  <el-button round icon="el-icon-edit" @click="handleClick">重新选择</el-button>
+                  <el-button round icon="el-icon-share">翻转</el-button>
+                  <el-button round icon="el-icon-delete">旋转</el-button>
+                  <el-button round icon="el-icon-delete">重置</el-button>
+                </el-button-group>
+              </div>
+            </div>
+            <div class="cropper-uploader__preview">
+              <span class="cropper-uploader__preview-title">预览</span>
+              <div class="cropper-uploader__preview-120 preview">
+              </div>
+              <span>120*120</span>
+            </div>
           </div>
-          <input type="file" v-show="false" ref="fileinput" accept=".jpg, .jpeg, .png, .gif" @change="handleChange">
-          <button class="avatar-uploader_left__btn" @click="handleClick">+重新选择</button>
-          <button class="avatar-uploader_left__btn" @click="rotateRight">+旋转90°</button>
-        </div>
-        <div class="avatar-uploader__preview">
-          <span class="avatar-uploader__preview-title">预览</span>
-          <img :src="previews.url" alt="" class="avatar-uploader__preview-120">
-          <span>120*120</span>
-          <img :src="previews.url" alt="" class="avatar-uploader__preview-65">
-          <span>65*65</span>
-          <img :src="previews.url" alt="" class="avatar-uploader__preview-40">
-          <span>40*40</span>
-        </div>
-      </div>
+
       <div slot="footer" class="dialog-footer">
         <el-button @click="handleClose" size="mini">取 消</el-button>
         <el-button type="primary" size="mini" @click="summitAvata()">确 定</el-button>
@@ -60,18 +59,35 @@
 </template>
 
 <script>
-import vueCropper from 'vue-cropper'
-
+import VueCropper from './cropper/vue-cropper'
 export default {
   name: 'd2p-image-cropper',
+  components: {
+    VueCropper
+  },
   props: {
     // 初始图片url
     value: {
       type: [String, Array]
+    },
+    dialogHeight: {
+      type: [String, Number]
+    },
+    dialogWidth: {
+      type: [String, Number]
+    },
+    height: {
+      type: [String, Number]
+    },
+    width: {
+      type: [String, Number]
     }
   },
   data () {
     return {
+      imgSrc: '',
+      cropImg: '',
+      data: null,
       dialogVisible: false,
       current: undefined,
       cropper: {
@@ -90,9 +106,6 @@ export default {
       // step: 2
     }
   },
-  components: {
-    vueCropper
-  },
   computed: {
     _list () {
       const list = []
@@ -105,9 +118,29 @@ export default {
         list.push(this.value)
       }
       return list
+    },
+    _dialogHeight () {
+      let height = this.dialogHeight
+      if (height == null) {
+        height = document.documentElement.clientHeight * 0.6
+        if (height < 300) {
+          height = 300
+        }
+      }
+      return height
+    },
+    _dialogWidth () {
+      let width = this.dialogWidth
+      if (width == null) {
+        width = '50%'
+      }
+      return width
     }
   },
   methods: {
+    addNewImage () {
+      this.dialogVisible = true
+    },
     /*
          * fixMe: 检查文件类型
          *
@@ -169,6 +202,7 @@ export default {
       this.isSuccess = true
       if (this.checkFile(files[0])) {
         this.setSourceImg(files[0])
+        this.setImage(e)
       }
     },
     // 点击向右旋转
@@ -178,6 +212,7 @@ export default {
     },
     // 点击关闭弹窗
     handleClose () {
+      this.dialogVisible = false
       this.cropper.img = ''
       this.$emit('on-close')
     },
@@ -195,7 +230,7 @@ export default {
         this.$emit('uploadAvatar', data)
         this.dialogVisible = !this.dialogVisible
       })
-    }
+    },
     // 判断当前处于step1还是step2，切换step
     // isStep1() {
     //   if (!this.photo) {
@@ -207,6 +242,75 @@ export default {
     //   }
     // }
     /* -------------------------------头像上传组件end-------------------------------- */
+
+    cropImage () {
+      // get image data for post processing, e.g. upload or setting image src
+      this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL()
+    },
+    flipX () {
+      const dom = this.$refs.flipX
+      let scale = dom.getAttribute('data-scale')
+      scale = scale ? -scale : -1
+      this.$refs.cropper.scaleX(scale)
+      dom.setAttribute('data-scale', scale)
+    },
+    flipY () {
+      const dom = this.$refs.flipY
+      let scale = dom.getAttribute('data-scale')
+      scale = scale ? -scale : -1
+      this.$refs.cropper.scaleY(scale)
+      dom.setAttribute('data-scale', scale)
+    },
+    getCropBoxData () {
+      this.data = JSON.stringify(this.$refs.cropper.getCropBoxData(), null, 4)
+    },
+    getData () {
+      this.data = JSON.stringify(this.$refs.cropper.getData(), null, 4)
+    },
+    move (offsetX, offsetY) {
+      this.$refs.cropper.move(offsetX, offsetY)
+    },
+    reset () {
+      this.$refs.cropper.reset()
+    },
+    rotate (deg) {
+      this.$refs.cropper.rotate(deg)
+    },
+    setCropBoxData () {
+      if (!this.data) return
+      this.$refs.cropper.setCropBoxData(JSON.parse(this.data))
+    },
+    setData () {
+      if (!this.data) return
+      this.$refs.cropper.setData(JSON.parse(this.data))
+    },
+    setImage (e) {
+      const file = e.target.files[0]
+      if (file.type.indexOf('image/') === -1) {
+        alert('Please select an image file')
+        return
+      }
+      // if (this.imgSrc == null || this.imgSrc === '') {
+      //   return
+      // }
+      if (typeof FileReader === 'function') {
+        const reader = new FileReader()
+        reader.onload = (event) => {
+          this.imgSrc = event.target.result
+          // rebuild cropperjs with the updated source
+          this.$refs.cropper.replace(event.target.result)
+        }
+        reader.readAsDataURL(file)
+      } else {
+        alert('Sorry, FileReader API not supported')
+      }
+    },
+    showFileChooser () {
+      this.$refs.input.click()
+    },
+    zoom (percent) {
+      this.$refs.cropper.relativeZoom(percent)
+    }
   },
   watch: {
     // 实时预览
@@ -237,7 +341,7 @@ export default {
      border: 1px dashed #c0ccda;
      border-radius: 6px;
       cursor: pointer;
-     .avatar-uploader-icon {
+     .cropper-uploader-icon {
        vertical-align: top;
        font-size: 28px;
        color: #8c939d;
@@ -246,7 +350,7 @@ export default {
  }
 
   $area-height: 280px;
-  .avatar-uploader {
+  .cropper-uploader {
     &-wrap {
       display: flex;
       justify-content: space-between;
@@ -255,55 +359,34 @@ export default {
     }
 
     &_left {
-      height: $area-height;
-      width: $area-height;
       font-size: 13px;
       color: #999999;
       position: relative;
       background: #ecf2f6;
-
-      &__btn {
-        color: #999999;
-        width: 88px;
-        height: 34px;
-        border: none;
-        background: #fff;
-        outline: none;
-        border: 1px solid #cecece;
-        border-radius: 82px;
-      }
+      flex-grow:5;
+      margin:10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction:  column
     }
 
     &__choose {
       p {
-        margin-top: 59%;
         width: 100%;
         text-align: center;
-      }
-
-      button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
       }
     }
 
     &__edit {
       &-area {
+        width:100%;
+        height: 100%;
         overflow: hidden;
 
         &-img {
           object-fit: cover;
         }
-      }
-
-      button {
-        margin-top: 13px;
-      }
-
-      button:last-child {
-        float: right;
       }
     }
 
@@ -312,16 +395,18 @@ export default {
     &__preview {
       background: #ecf2f6;
       text-align: center;
-      width: 158px;
+      width: 200px;
       padding-top: $top;
-      height: $area-height - $top;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 13px;
-
+      margin:10px;
       &-title {
         color: #999999;
+      }
+      .preview{
+        overflow: hidden;
       }
 
       img {
@@ -331,8 +416,8 @@ export default {
       }
 
       &-120 {
-        height: 60px;
-        width: 60px;
+        height: 120px;
+        width: 120px;
       }
 
       &-65 {
@@ -344,26 +429,6 @@ export default {
         height: 30px;
         width: 30px;
       }
-    }
-  }
-</style>
-
-<style lang="scss">
-  // 小的弹窗用el-messagebox，大弹窗有复杂交互的用el-dialog
-  // 弹窗（el-dialog）样式修改
-  .quying-dialog {
-    .el-dialog__body {
-      padding: 5px 20px;
-      overflow: hidden;
-    }
-
-    .el-dialog__headerbtn .el-dialog__close {
-      font-size: 20px;
-    }
-
-    .el-dialog__footer {
-      text-align: center;
-      padding: 20px 20px 30px 20px;
     }
   }
 </style>

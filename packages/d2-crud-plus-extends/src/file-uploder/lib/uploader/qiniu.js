@@ -3,7 +3,8 @@ import * as qiniu from 'qiniu-js'
 let tokenCache = null
 
 function getToken (custom, context) {
-  if (tokenCache == null || new Date().getTime() >= tokenCache.expiresTime) {
+  let noCache = true // 七牛更新后，token不支持多次复用了
+  if (noCache || tokenCache == null || new Date().getTime() >= tokenCache.expiresTime) {
     return config.qiniu.getToken(custom, context).then(ret => {
       let token = null
       if (typeof (ret) === 'string') {

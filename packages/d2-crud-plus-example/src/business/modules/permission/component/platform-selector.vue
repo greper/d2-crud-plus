@@ -15,7 +15,7 @@ export default {
   name: 'platform-selector',
   props: {
     value: { type: Number },
-    size: { type: String, defaultValue: 'small' }
+    size: { type: String, default: 'small' }
   },
   data () {
     return {

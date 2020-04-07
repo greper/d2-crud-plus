@@ -27,26 +27,17 @@ const types = {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } }
   },
   'avatar-cropper': {
-    form: { component: { name: 'd2p-image-cropper', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
+    form: { component: { name: 'd2p-cropper-uploader', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
     component: { name: 'd2p-images-format' },
-    align: 'center',
-    valueResolve (row, col) {
-      let value = row[col.key]
-      if (value != null && value instanceof Array) {
-        if (value.length >= 0) {
-          row[col.key] = value[0].url
-        } else {
-          row[col.key] = null
-        }
-      }
-    }
+    align: 'center'
   }
 }
 
 function install (Vue, options) {
   Vue.component('d2p-file-uploader', () => import('./lib/file-uploader'))
   Vue.component('d2p-images-format', D2pImagesFormat)
-  Vue.component('d2p-image-cropper', () => import('./lib/image-cropper'))
+  Vue.component('d2p-cropper-uploader', () => import('./lib/cropper-uploader'))
+  Vue.component('d2p-cropper', () => import('./lib/cropper'))
 
   if (options != null) {
     // 覆盖用户配置

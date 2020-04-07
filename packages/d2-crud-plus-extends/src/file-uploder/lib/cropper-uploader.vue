@@ -1,0 +1,312 @@
+<template>
+  <div class="d2p-cropper-uploader" >
+    <div class="image-list">
+      <div class="image-item" v-for="(item,index) in list" :key="index">
+        <el-image class="image"
+          :src="item.url"
+          fit="contain" ></el-image>
+        <div class="delete"><i class="el-icon-delete" @click="removeImage(index,item)"></i></div>
+        <div class="status-uploading" v-if="item.status==='uploading'">
+          <el-progress type="circle" :percentage="item.progress" :width="70"></el-progress>
+        </div>
+        <div class="status-done" v-else>
+          <i class="el-icon-upload-success el-icon-check"></i>
+        </div>
+      </div>
+      <div v-if="limit>list.length" class="image-item image-plus" @click="addNewImage">
+        <i class="el-icon-plus cropper-uploader-icon"></i>
+      </div>
+    </div>
+    <d2p-cropper ref="cropper"
+                        :title="title"
+                        :cropperHeight="cropperHeight"
+                        :dialogWidth="dialogWidth"
+                        :accept="accept"
+                        :uploadTip="uploadTip"
+                        :maxSize="maxSize"
+                        :cropper="cropper"
+                        output="all"
+                        @done="cropComplete"
+    ></d2p-cropper>
+  </div>
+
+</template>
+
+<script>
+import D2pCropper from './cropper'
+import choose from './choose'
+export default {
+  name: 'd2p-cropper-uploader',
+  components: {
+    D2pCropper
+  },
+  props: {
+    // 初始图片url
+    value: {
+      type: [String, Array]
+    },
+    // 上传后端类型，[cos,qiniu,alioss]
+    type: {
+      type: String,
+      default: 'cos' // 上传类型：form cos qiniu  alioss
+    },
+    // 上传提示
+    uploadTip: {
+      type: String
+    },
+    // 对话框标题
+    title: String,
+    // cropper的高度，默认为浏览器可视窗口高度的40%，最小270
+    cropperHeight: {
+      type: [String, Number]
+    },
+    // 对话框宽度，默认50%
+    dialogWidth: {
+      type: [String, Number],
+      default: '50%'
+    },
+    // 图片大小限制，单位MB
+    maxSize: {
+      type: Number,
+      default: 5
+    },
+    // 图片数量限制
+    limit: {
+      type: Number,
+      default: 1
+    },
+    // cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs
+    cropper: {
+      type: Object
+    },
+    // 可接收的文件后缀
+    accept: {
+      type: String,
+      default: '.jpg, .jpeg, .png, .gif, .webp'
+    }
+  },
+  data () {
+    return {
+      index: undefined,
+      list: []
+    }
+  },
+  watch: {
+    value (val) {
+      if (val === this.value) {
+        return
+      }
+      this.initValue()
+    }
+  },
+  created () {
+    this.initValue()
+  },
+  methods: {
+    initValue () {
+      console.log('initValue', this.value)
+      const list = []
+      if (this.value == null || this.value === '') {
+        return list
+      }
+      if (typeof (this.value) === 'string') {
+        list.push({ url: this.value })
+      } else {
+        for (let item of this.value) {
+          list.push({ url: item, status: 'done' })
+        }
+      }
+      this.$set(this, 'list', list)
+    },
+    addNewImage () {
+      this.index = undefined
+      this.$refs.cropper.clear()
+      this.$refs.cropper.open()
+    },
+    removeImage (index, item) {
+      this.list.splice(index)
+      this.emit()
+    },
+    async cropComplete (ret) {
+      let blob = ret.blob
+      let dataUrl = ret.dataUrl
+      let file = ret.file
+      // 开始上传
+      let item = {
+        url: dataUrl,
+        status: 'uploading',
+        progress: 0
+      }
+      let cropFile = { name: file.name, type: file.type, size: blob.length }
+      let context = await this.beforeUpload(cropFile)
+      console.log('context', context)
+      let onProgress = (e) => {
+        item.progress = e.percent
+      }
+      let onError = (e) => {
+        item.status = 'error'
+        item.message = '文件上传出错:' + e.message
+        console.log(e)
+      }
+      let option = { file: blob, onProgress, onError }
+      this.list.push(item)
+      let upload = await this.doUpload(option, context)
+      item.url = upload.url
+      item.status = 'done'
+      this.emit()
+    },
+    doUpload (option, context) {
+      return this.getUploader().doUpload(option, {}, context).then(ret => {
+        if (this.suffix != null) {
+          ret.url += this.suffix
+        }
+        return ret
+      })
+    },
+    beforeUpload (file) {
+      return this.getUploader().beforeUpload(file)
+    },
+    getUploader () {
+      return choose.get(this.type)
+    },
+    emit () {
+      const list = []
+      for (let item of this.list) {
+        if (item.status != null && item.status !== 'done') {
+          // 全部上传完再发通知
+          return
+        }
+        if (typeof (item) === 'string') {
+          list.push(item)
+        } else {
+          list.push(item.url)
+        }
+      }
+      let ret = list
+      if (this.limit === 1) {
+        ret = list[0]
+      }
+      console.log('change', ret)
+      this.$emit('change', ret)
+      console.log('input', ret)
+      this.$emit('input', ret)
+    }
+
+  }
+}
+</script>
+
+<style lang="scss" >
+  .d2p-cropper-uploader{
+    .image-list{
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      flex-wrap: wrap;
+      .image-item{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfdff;
+        border: 1px solid #c0ccda;
+        border-radius: 6px;
+        position: relative;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        &.image-plus{
+          border: 1px dashed #c0ccda;
+        }
+        .cropper-uploader-icon {
+          vertical-align: top;
+          font-size: 28px;
+          color: #8c939d;
+        }
+        .image{
+          width: 100px;
+          height: 100px;
+        }
+
+        .delete{
+          border-radius: 6px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          cursor: default;
+          text-align: center;
+          color: #fff;
+          opacity: 0;
+          font-size: 20px;
+          background-color: rgba(0,0,0,.9);
+          -webkit-transition: opacity .3s;
+          transition: opacity .3s;
+          &:hover{
+            opacity: 0.9;
+          }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i{
+            cursor: pointer;
+          }
+        }
+        .status-uploading{
+          border-radius: 6px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          cursor: default;
+          text-align: center;
+          color: #fff;
+          opacity: 1;
+          font-size: 20px;
+          background-color: rgba(0, 0, 0, 0.5);
+          -webkit-transition: opacity .3s;
+          transition: opacity .3s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .el-progress{
+            width: 70px;
+            height: 70px;
+            .el-progress__text {
+              color:#fff;
+            }
+          }
+
+        }
+        .status-done{
+          position: absolute;
+          right: -15px;
+          top: -6px;
+          width: 40px;
+          height: 24px;
+          background: #13ce66;
+          text-align: center;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          -webkit-box-shadow: 0 0 1pc 1px rgba(0,0,0,.2);
+          box-shadow: 0 0 1pc 1px rgba(0,0,0,.2);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          i{
+            font-size: 12px;
+            margin-top: 11px;
+            color: #fff;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+</style>

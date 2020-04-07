@@ -17,7 +17,7 @@ export const crudOptions = {
             form.avatarMd5 = value[0].md5
           }
         },
-        helper: '上传后，右边将获取到头像大小和md5值'
+        helper: '上传后，右边将获取到头像大小和md5值，文件上传组件不支持裁剪，如需裁剪，请参考头像裁剪上传组件'
       }
     },
     {
@@ -29,18 +29,6 @@ export const crudOptions = {
       title: '头像文件md5',
       key: 'avatarMd5',
       width: 200
-    },
-    {
-      title: '头像裁剪',
-      key: 'avatarCropper',
-      type: 'avatar-cropper',
-      width: 200,
-      form: {
-        component: {
-          span: 24
-        },
-        helper: '裁剪头像'
-      }
     },
     {
       title: '图片',

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.2.0...d2p-extends@1.2.1) (2020-04-07)
+
+
+### Bug Fixes
+
+* 七牛token不再支持复用 ([69c35be](https://github.com/greper/d2-crud-plus/commit/69c35be9cff2f3234e0f12e74b0621bee28c0461))
+
+
+
+
+
 # [1.2.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.1.6...d2p-extends@1.2.0) (2020-04-07)
 
 

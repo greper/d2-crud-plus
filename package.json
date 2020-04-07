@@ -1,6 +1,10 @@
 {
   "name": "d2-crud-plus-project",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greper/d2-crud-plus.git"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",

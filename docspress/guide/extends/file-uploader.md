@@ -99,7 +99,7 @@ export const crudOptions = {
 }
 ```
 ## 参数说明
-
+[参考d2p-file-uploader组件详情](../components/d2p-file-uploader) 
 ```javascript
 export const crudOptions = {
     columns: [

@@ -466,9 +466,9 @@ export default {
     /**
      * 编辑框表单改变事件
      */
-    handleFormDataChange ({ key, value }) {
+    handleFormDataChange ({ key, value, form }) {
       let column = this.crud.columnsMap[key]
-      console.log('FormDataChange', key, value)
+      console.log('FormDataChange', key, value, form)
       if (column.form != null && column.form.valueChange != null) {
         column.form.valueChange(key, value, this.getEditForm())
       }
@@ -479,7 +479,8 @@ export default {
      * @param key
      * @param value
      */
-    doFormDataChange ({ key, value }) {
+    doFormDataChange ({ key, value, form }) {
+
     }
 
   }

@@ -34,7 +34,9 @@
     "object-assign": "^4.1.1",
     "qiniu-js": "^2.5.4",
     "spark-md5": "^3.0.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "cropperjs": "^1.5.6",
+    "vue-cropperjs":"1.0.3"
   },
   "devDependencies": {
     "@babel/runtime": "^7.4.4",

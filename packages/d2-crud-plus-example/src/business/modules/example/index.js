@@ -11,6 +11,7 @@ const aside = [
       { path: '/form/slot', title: '插槽式自定义组件' },
       { path: '/form/phone', title: '国际电话输入校验' },
       { path: '/form/uploader', title: '文件上传' },
+      { path: '/form/cropper', title: '图片裁剪上传' },
       { path: '/form/customType', title: '自定义字段类型' },
       { path: '/form/el', title: 'EL表单组件' },
       { path: '/form/area', title: '省市区选择组件' },
@@ -136,6 +137,16 @@ const routers = {
         cache: true
       },
       component: _import(viewsPrefix + 'form/uploader')
+    },
+    {
+      path: 'form/cropper',
+      name: 'formCropper',
+      meta: {
+        title: '图片裁剪上传',
+        auth: true,
+        cache: true
+      },
+      component: _import(viewsPrefix + 'form/cropper')
     },
     {
       path: 'form/icon',

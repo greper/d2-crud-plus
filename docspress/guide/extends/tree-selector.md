@@ -24,4 +24,9 @@ export const crudOptions = {
 ##  3. 效果
  http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area
  
+ 
+## 4. 参数说明
+[参考d2p-tree-selector组件详情](../components/d2p-tree-selector) 
+
+[参考cascade-select组件详情](../components/cascade-select) 
 

@@ -1,6 +1,9 @@
 <template>
   <span>
-    <img v-for="url in urls"  :key="url" :src="url" :style="{width:'auto',height:imgHeight,'margin-right':'10px'}" />
+     <el-image
+       :style="{width:imgWidth,height:imgHeight,'margin-right':'10px',border:'1px solid #eee'}"
+       v-for="url in urls"  :key="url" :src="url"
+       :preview-src-list="urls"  fit="contain"/>
   </span>
 </template>
 
@@ -15,10 +18,18 @@ export default {
       type: [String, Array],
       require: true
     },
+    // 图片的宽度设置
+    width: {
+      require: false,
+      default: 30
+    },
     // 图片的高度设置
     height: {
       require: false,
       default: 30
+    },
+    fit: {
+      default: 'contain'
     }
   },
   data () {
@@ -29,7 +40,7 @@ export default {
   computed: {
     urls () {
       let urls = []
-      if (this.value == null) {
+      if (this.value == null || this.value === '') {
         return urls
       }
       if (typeof (this.value) === 'string') {
@@ -52,6 +63,12 @@ export default {
         return this.height + 'px'
       }
       return this.height
+    },
+    imgWidth () {
+      if (typeof (this.width) === 'number') {
+        return this.width + 'px'
+      }
+      return this.width
     }
   },
   mounted () {

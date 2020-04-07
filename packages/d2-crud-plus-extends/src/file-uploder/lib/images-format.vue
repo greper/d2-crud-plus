@@ -40,7 +40,7 @@ export default {
   computed: {
     urls () {
       let urls = []
-      if (this.value == null) {
+      if (this.value == null || this.value === '') {
         return urls
       }
       if (typeof (this.value) === 'string') {

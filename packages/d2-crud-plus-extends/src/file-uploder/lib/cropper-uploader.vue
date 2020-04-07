@@ -35,6 +35,7 @@
 <script>
 import D2pCropper from './cropper'
 import choose from './choose'
+// 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
 export default {
   name: 'd2p-cropper-uploader',
   components: {
@@ -75,15 +76,16 @@ export default {
       type: Number,
       default: 1
     },
-    // cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs
-    cropper: {
-      type: Object
-    },
     // 可接收的文件后缀
     accept: {
       type: String,
       default: '.jpg, .jpeg, .png, .gif, .webp'
+    },
+    // cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs
+    cropper: {
+      type: Object
     }
+
   },
   data () {
     return {

@@ -9,7 +9,7 @@
 |---|---|---|---|---|
 |value|值|`Number` /  `String` /  `Array` /  `Object`|`false`|-|
 |filter|过滤|value中的nodes过滤方法 参数为nodes|`false`|-|
-|ignoreFullCheckedChidren|是否忽略选中节点的子节点|`Boolean`|`false`|-|
+|ignoreFullCheckedChildren|是否忽略选中节点的子节点|`Boolean`|`false`|-|
 |leafOnly|是否只返回叶子节点|`Boolean`|`false`|-|
 |includeHalfChecked|是否包含半选节点|`Boolean`|`false`|-|
 |elProps|el-tree的属性配置|`Object`|`false`|-|

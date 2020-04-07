@@ -71,6 +71,9 @@ let column={
 ### 文件上传
 * type= file-uploader（文件上传） | image-uploader（图片上传） | avatar-uploader（头像上传，单图片）
 * 示例： <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader>
+### 图片裁剪上传
+* type= avatar-cropper
+* 示例： <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/cropper>
 
 ## ElementUI组件
 以下字段类型对应的组件为ElementUI的相应组件   

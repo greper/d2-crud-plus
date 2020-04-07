@@ -15,7 +15,7 @@
     "lerna:publish": "lerna publish --conventional-commits --no-commit-hooks",
     "changelog": "lerna-changelog",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
-    "docs:dev": "vuepress dev docspress --temp .temp",
+    "docs:dev": "vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": "vuese gen && vuepress build docspress"
   },
   "husky": {

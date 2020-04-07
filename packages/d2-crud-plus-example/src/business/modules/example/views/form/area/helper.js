@@ -78,7 +78,7 @@ Vue.use(D2pAreaSelector)
       form: {
         component: {
           span: 24,
-          props: { ignoreFullCheckedChidren: false, leafOnly: true, includeHalfChecked: false }
+          props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
         },
         helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
       }

@@ -1,5 +1,5 @@
 <template>
-    <el-dialog class="cropper-uploader quying-dialog" title="上传图片" :visible.sync="dialogVisible" append-to-body
+    <el-dialog class="cropper-uploader quying-dialog" :title="title" :visible.sync="dialogVisible" append-to-body
                :before-close="handleClose" :close-on-click-modal="true" ref="editAvatar" :width="_dialogWidth" >
           <div class="cropper-uploader-wrap" >
             <input type="file" v-show="false" ref="fileinput" :accept="accept" @change="handleChange">
@@ -45,13 +45,18 @@
 
 <script>
 import VueCropper from './vue-cropper'
-
+// 图片裁剪对话框，封装cropperjs
 export default {
   name: 'd2p-cropper',
   components: {
     VueCropper
   },
   props: {
+    // 对话框标题
+    title: {
+      type: String,
+      default: '图片裁剪'
+    },
     // cropper的高度，默认为浏览器可视窗口高度的40%，最小270
     cropperHeight: {
       type: [String, Number]

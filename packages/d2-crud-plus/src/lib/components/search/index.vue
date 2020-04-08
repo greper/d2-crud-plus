@@ -104,3 +104,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .d2p-search-form{
+    .el-form-item {
+      margin-bottom: 8px;
+    }
+  }
+</style>

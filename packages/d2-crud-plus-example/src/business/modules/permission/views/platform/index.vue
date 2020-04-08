@@ -22,7 +22,7 @@
                 @form-data-change="handleFormDataChange">
             <el-button slot="header" class="d2-mb-5" v-permission="'permission:platform:add'" size="small" type="primary" @click="addRow">新增</el-button>
         </d2-crud>
-        <crud-footer ref="footer" slot="footer"
+        <crud-footer ref="footer"
                      :current="crud.page.current"
                      :size="crud.page.size"
                      :total="crud.page.total"

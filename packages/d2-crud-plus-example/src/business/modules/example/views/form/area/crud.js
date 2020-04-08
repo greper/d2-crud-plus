@@ -1,4 +1,7 @@
 export const crudOptions = {
+  options: {
+    maxHeightAdjust: 42
+  },
   columns: [
     {
       title: '级联式选择',

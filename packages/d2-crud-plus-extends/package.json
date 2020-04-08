@@ -1,7 +1,7 @@
 {
   "name": "d2p-extends",
   "description": "d2-crud-plus的扩展 ",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -45,7 +45,7 @@
     "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
-    "d2-crud-plus": "^1.3.0",
+    "d2-crud-plus": "^1.3.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.22.12",

@@ -87,9 +87,13 @@ npm run dev
 ## 快速开始
 ### 1.安装
 ```shell
+使用npm
 npm i  @d2-project/d2-crud  d2-crud-plus  -S
 
-如果需要slot功能，需要用d2-crud-x替换d2-crud
+使用yarn
+yarn add @d2-projects/d2-crud d2-crud-plus 
+
+如果需要slot功能，需要用d2-crud-x替换d2-crud【推荐使用d2-crud-x，在官方基础上修复了bug】
 npm i  d2-crud-x  -S
 ```
 ### 2.引入

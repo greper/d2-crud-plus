@@ -30,10 +30,16 @@ npm run dev
 
 ### 1.安装
 ```shell
-npm i  @d2-project/d2-crud  d2-crud-plus  -S
+使用npm
+npm i  @d2-project/d2-crud  -S //官方d2-crud此方式安装会报错，可以使用yarn安装，或者使用d2-crud-x
+npm i  d2-crud-plus  -S
 
-如果需要slot等d2-crud增强功能，需要用d2-crud-x替换d2-crud【推荐】
-npm i  d2-crud-x   d2-crud-plus -S
+使用yarn
+yarn add @d2-projects/d2-crud 
+yarn add d2-crud-plus 
+
+如果需要slot功能，需要用d2-crud-x替换d2-crud【推荐使用d2-crud-x，在官方基础上修复了bug】
+npm i  d2-crud-x  -S
 ```
 ### 2.引入
  ```javascript

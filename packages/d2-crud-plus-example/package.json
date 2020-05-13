@@ -76,5 +76,6 @@
     "vue-template-compiler": "^2.6.10",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-theme-color-replacer": "^1.3.3"
-  }
+  },
+  "gitHead": "1977bbb033b6f89e081f1e7ea8c567109cbe9385"
 }

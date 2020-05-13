@@ -1,7 +1,4 @@
 export const crudOptions = {
-  page: {
-    size: 10
-  },
   columns: [
     {
       title: '级联式选择',

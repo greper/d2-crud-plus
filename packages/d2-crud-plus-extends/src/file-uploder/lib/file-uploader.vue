@@ -4,6 +4,7 @@
              :file-list="fileList"
              :http-request="httpRequest"
              :on-exceed="onExceed"
+             :on-remove="handleUploadFileRemove"
              :on-success="handleUploadFileSuccess"
              ref="fileUploader"
              v-bind="_elProps"
@@ -171,15 +172,21 @@ export default {
         }
         this.$emit('input', res)
       } else {
-        if (this.returnType === 'url') {
-          const tmp = []
-          list.forEach(item => {
-            tmp.push(item.url)
-          })
-          list = tmp
-        }
-        this.$emit('input', list)
+        this.emitList(list)
       }
+    },
+    handleUploadFileRemove (file, fileList) {
+      this.emitList(fileList)
+    },
+    emitList (list) {
+      if (this.returnType === 'url') {
+        const tmp = []
+        list.forEach(item => {
+          tmp.push(item.url)
+        })
+        list = tmp
+      }
+      this.$emit('input', list)
     },
     beforeUpload (file) {
       console.log('this.getUploader :', this.getUploader())

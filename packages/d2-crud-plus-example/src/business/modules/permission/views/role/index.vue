@@ -15,6 +15,7 @@
                 :edit-rules="crud.editRules"
                 :form-options="crud.formOptions"
                 :options="crud.options"
+                :pagination="crud.pagination"
                 @dialog-open="handleDialogOpen"
                 @row-edit="handleRowEdit"
                 @row-add="handleRowAdd"
@@ -29,7 +30,7 @@
             </div>
 
         </d2-crud>
-        <crud-footer ref="footer" slot="footer"
+        <crud-footer ref="footer"
                      :current="crud.page.current"
                      :size="crud.page.size"
                      :total="crud.page.total"

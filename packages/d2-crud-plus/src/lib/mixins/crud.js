@@ -18,7 +18,8 @@ export default {
           stripe: true,
           border: true,
           highlightCurrentRow: false,
-          size: 'mini'
+          size: 'mini',
+          maxHeightAdjust: undefined //
         },
         columns: [],
         addTemplate: {},
@@ -193,19 +194,30 @@ export default {
      * @param adjust 自定义调整高度（一般传翻页footer组件的高度）
      * @returns {string}
      */
-    computeCrudHeight (ref, adjust) {
-      if (ref == null) {
-        ref = 'd2Crud'
+    computeCrudHeight ({ targetRef, targetSubClass, footerRef, adjust } = {}) {
+      if (targetRef == null) {
+        targetRef = 'd2Crud'
       }
-      let subclass = 'el-table__header-wrapper'
-      if (adjust == null) {
-        adjust = 50
+      if (footerRef == null) {
+        footerRef = 'footer'
       }
-      let target = this.$refs[ref]
+      if (targetSubClass == null) {
+        targetSubClass = 'el-table'
+      }
+      let target = this.$refs[targetRef]
       if (target != null) {
         target = target.$el
       }
-      return HeightUtil.computeMaxHeight(target, adjust, subclass)
+
+      let footer = this.$refs[footerRef]
+      if (footer != null) {
+        footer = footer.$el
+      }
+      if (adjust == null) {
+        adjust = this.crud.options.maxHeightAdjust
+      }
+
+      return HeightUtil.computeMaxHeight({ target, targetSubClass, footer, adjust })
     },
     /**
      * 翻页组件change事件触发方法
@@ -466,9 +478,9 @@ export default {
     /**
      * 编辑框表单改变事件
      */
-    handleFormDataChange ({ key, value }) {
+    handleFormDataChange ({ key, value, form }) {
       let column = this.crud.columnsMap[key]
-      console.log('FormDataChange', key, value)
+      console.log('FormDataChange', key, value, form)
       if (column.form != null && column.form.valueChange != null) {
         column.form.valueChange(key, value, this.getEditForm())
       }
@@ -479,7 +491,8 @@ export default {
      * @param key
      * @param value
      */
-    doFormDataChange ({ key, value }) {
+    doFormDataChange ({ key, value, form }) {
+
     }
 
   }

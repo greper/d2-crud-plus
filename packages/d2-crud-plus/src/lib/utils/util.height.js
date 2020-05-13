@@ -1,19 +1,24 @@
-function computeMaxHeight (target, adjust, subclass) {
-  if (target != null && subclass != null) {
-    target = findSubDom(target, subclass)
+function computeMaxHeight ({ target, targetSubClass, footer, adjust = 35 }) {
+  if (target != null && targetSubClass != null) {
+    target = findSubDom(target, targetSubClass)
   }
-
   if (target == null) {
     return 'auto'
   }
-  if (adjust == null) {
-    adjust = 225
-  }
 
-  let rectObject = target.getBoundingClientRect()
+  let targetRect = target.getBoundingClientRect()
+  let targetTop = targetRect.top // 表头body x坐标
+
+  let footerHeight = 0
+  if (footer != null) {
+    let footerRect = footer.getBoundingClientRect()
+    footerHeight = footerRect.height
+  }
   let clientHeight = document.documentElement.clientHeight
-  let height = clientHeight - rectObject.top - adjust
-  return height
+
+  let maxHeight = clientHeight - targetTop - footerHeight - adjust
+  console.log('max height:', maxHeight, clientHeight, targetTop, footerHeight, adjust)
+  return maxHeight // 表格body最大高度= 可视窗口高度 - 表头body x坐标 - 表格底部所有组件高度（翻页组件）- 调整高度
 }
 function findSubDom (target, className) {
   if (target.className != null && target.className.indexOf(className) >= 0) {

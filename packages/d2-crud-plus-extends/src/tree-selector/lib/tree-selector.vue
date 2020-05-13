@@ -62,7 +62,7 @@ export default {
       require: false
     },
     // 是否忽略选中节点的子节点
-    ignoreFullCheckedChidren: { type: Boolean, default: true },
+    ignoreFullCheckedChildren: { type: Boolean, default: true },
     // 是否只返回叶子节点
     leafOnly: { type: Boolean, default: false },
     // 是否包含半选节点
@@ -167,7 +167,7 @@ export default {
       let nodes = this.$refs.elTree.getCheckedNodes(this.leafOnly, this.includeHalfChecked)
       if (this.filter != null) {
         nodes = this.filter(nodes)
-      } else if (this.ignoreFullCheckedChidren) {
+      } else if (this.ignoreFullCheckedChildren) {
         nodes = this.filterFullCheckedChildren(nodes)
       }
       this.$set(this, 'selected', nodes)

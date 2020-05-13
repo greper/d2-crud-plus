@@ -1,6 +1,7 @@
 import config from './lib/config'
 import D2pImagesFormat from './lib/images-format'
 import { d2CrudPlus } from 'd2-crud-plus'
+import 'cropperjs/dist/cropper.css'
 const types = {
   'image-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },
@@ -24,12 +25,19 @@ const types = {
   },
   'file-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } }
+  },
+  'avatar-cropper': {
+    form: { component: { name: 'd2p-cropper-uploader', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
+    component: { name: 'd2p-images-format' },
+    align: 'center'
   }
 }
 
 function install (Vue, options) {
   Vue.component('d2p-file-uploader', () => import('./lib/file-uploader'))
   Vue.component('d2p-images-format', D2pImagesFormat)
+  Vue.component('d2p-cropper-uploader', () => import('./lib/cropper-uploader'))
+  Vue.component('d2p-cropper', () => import('./lib/cropper'))
 
   if (options != null) {
     // 覆盖用户配置

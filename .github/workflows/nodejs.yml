@@ -6,7 +6,8 @@ name: deploy
 on:
   push:
     paths:
-      - 'packages/d2-crud-plus-example/**'
+      - 'packages/d2-crud-plus-example/.github.action.trigger'
+      - 'packages/d2-crud-plus-example/package.json'
     branches: [ master ]
 jobs:
   build:
@@ -38,6 +39,9 @@ jobs:
       run: |
         qshell account ${{secrets.AK}} ${{secrets.SK}} 252959493@qq.com
         qshell qupload qiniu-config
+    - name: refresh
+      working-directory: ./packages/d2-crud-plus-example/
+      run: |
         qshell cdnrefresh -i qiniu-cdnrefresh-dirs.txt
 
 

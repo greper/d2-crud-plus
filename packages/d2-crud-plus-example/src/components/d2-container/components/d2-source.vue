@@ -39,7 +39,7 @@ export default {
   methods: {
     // 点击按钮的时候跳转到源代码
     handleClick () {
-      this.$open(`${process.env.VUE_APP_REPO}/blob/master/${this.path}`)
+      this.$open(`${process.env.VUE_APP_REPO}/blob/master/packages/d2-crud-plus-example/${this.path}`)
     }
   }
 }

@@ -1,6 +1,10 @@
 {
   "name": "d2-crud-plus-project",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/greper/d2-crud-plus.git"
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
@@ -12,8 +16,10 @@
   "scripts": {
     "lerna:build": "lerna run build",
     "lerna:version": "lerna version --conventional-commits",
-    "lerna:publish": "lerna publish --no-commit-hooks",
-    "docs:dev": "vuepress dev docspress --temp .temp",
+    "lerna:publish": "lerna publish --conventional-commits --no-commit-hooks",
+    "changelog": "lerna-changelog",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
+    "docs:dev": "vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": "vuese gen && vuepress build docspress"
   },
   "husky": {
@@ -21,5 +27,5 @@
       "commit-msg": "commitlint -e $GIT_PARAMS"
     }
   },
-  "version": "1.0.0"
+  "version": "1.1.0"
 }

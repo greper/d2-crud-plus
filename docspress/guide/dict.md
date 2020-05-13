@@ -12,7 +12,9 @@ export const crudOptions = {
     {
       dict:{
         url:'remote/dict/url', // 这里配置远程获取字典数据的请求地址
-        data: [], // 如果数据无需远程获取，可以直接将字典数组写在这里，或者你还可以配置一个Promise
+        data: [], // [Array|Promise]
+        // 如果数据无需远程获取，可以直接将字典数组写在这里
+        // 或者你还可以配置一个Promise，自定义获取远程字典数据
         value: 'value', // 数据字典中value字段的属性名
         label: 'label', // 数据字典中label字段的属性名
         children: 'children', // 数据字典中children字段的属性名

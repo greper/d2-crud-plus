@@ -22,5 +22,4 @@ export const crudOptions = {
 ```
 ##  3. 效果
  http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/icon
- 
 

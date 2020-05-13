@@ -718,17 +718,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@d2-projects/d2-crud@^2.1.2":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@d2-projects/d2-crud/-/d2-crud-2.1.2.tgz#516e61b51f0b017d5807668a9f56d730afb6015e"
-  integrity sha512-7TUNLsu67EAJsknvyURQD/FzAVo64uruVIatROYogCtq6vfmNxba+x7U+RYMAmWgOSx82zNbQheGXBaY3KkxHA==
-  dependencies:
-    lodash.clonedeep "^4.5.0"
-    lodash.foreach "^4.5.0"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
-    vue "^2.5.19"
-
 "@d2-projects/vue-filename-injector@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@d2-projects/vue-filename-injector/-/vue-filename-injector-1.1.0.tgz#32f73ed115fec5c544f715c1a19942dfa3a2350f"
@@ -10215,7 +10204,7 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.5.16, vue@^2.5.19, vue@^2.6.10, vue@^2.6.11:
+vue@^2.5.16, vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.3.2...@d2-plus/d2-crud-plus-example@1.3.3) (2020-05-13)
+
+
+### Bug Fixes
+
+* 文件上传组件，删除时没有改变value值的bug ([af264c7](https://github.com/greper/d2-crud-plus/commit/af264c74759cdd9d1955eb868041dbc13a83d4c6))
+
+
+
+
+
+
 ## [1.3.2](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.3.1...@d2-plus/d2-crud-plus-example@1.3.2) (2020-04-08)
 
 

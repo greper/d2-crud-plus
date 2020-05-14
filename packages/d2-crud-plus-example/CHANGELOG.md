@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.3.3...@d2-plus/d2-crud-plus-example@1.4.0) (2020-05-14)
+
+
+### Features
+
+* quill富文本编辑器 ([238760b](https://github.com/greper/d2-crud-plus/commit/238760b1c63385850721f3eb018c9f2ebe0595ec))
+* quill富文本编辑器 ([54c39cc](https://github.com/greper/d2-crud-plus/commit/54c39cc911f5a481894850ea227cdc627c5b0716))
+* textArea支持 ([12f2c91](https://github.com/greper/d2-crud-plus/commit/12f2c91ea492b4b5f4b781c7826b0c6939e0db93))
+* 支持本地服务器上传文件 ([1f319f2](https://github.com/greper/d2-crud-plus/commit/1f319f20afcee32c4527bfd0e10f263234723b3a))
+* 新增展开行功能，新增特殊列、固定列示例 ([0a2b60a](https://github.com/greper/d2-crud-plus/commit/0a2b60a6a0c9ece1e7391ce3b72eff0d5d0e8e7a))
+* 新增展开行功能，新增特殊列、固定列示例 ([69bacf0](https://github.com/greper/d2-crud-plus/commit/69bacf00edf016968be723c7457d8002e30fc285))
+
+
+
+
+
+
 ## [1.3.3](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.3.2...@d2-plus/d2-crud-plus-example@1.3.3) (2020-05-13)
 
 

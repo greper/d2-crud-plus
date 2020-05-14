@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.2.3...d2p-extends@1.3.0) (2020-05-14)
+
+
+### Features
+
+* quill富文本编辑器 ([238760b](https://github.com/greper/d2-crud-plus/commit/238760b1c63385850721f3eb018c9f2ebe0595ec))
+* quill富文本编辑器 ([54c39cc](https://github.com/greper/d2-crud-plus/commit/54c39cc911f5a481894850ea227cdc627c5b0716))
+* 支持本地服务器上传文件 ([1f319f2](https://github.com/greper/d2-crud-plus/commit/1f319f20afcee32c4527bfd0e10f263234723b3a))
+
+
+
+
+
+
 ## [1.2.3](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.2.2...d2p-extends@1.2.3) (2020-05-13)
 
 

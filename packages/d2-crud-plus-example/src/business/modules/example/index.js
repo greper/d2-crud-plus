@@ -16,7 +16,9 @@ const aside = [
       { path: '/form/el', title: 'EL表单组件' },
       { path: '/form/area', title: '省市区选择组件' },
       { path: '/form/icon', title: '图标选择' },
-      { path: '/form/header', title: '多级表头' }
+      { path: '/form/header', title: '多级表头' },
+      { path: '/form/column', title: '特殊列' },
+      { path: '/form/fix', title: '固定列' }
     ]
   },
   {
@@ -57,6 +59,26 @@ const routers = {
         cache: true
       },
       component: _import(viewsPrefix + 'form/header')
+    },
+    {
+      path: 'form/column',
+      name: 'formColumn',
+      meta: {
+        title: '特殊列',
+        auth: true,
+        cache: true
+      },
+      component: _import(viewsPrefix + 'form/column')
+    },
+    {
+      path: 'form/fix',
+      name: 'formFix',
+      meta: {
+        title: '固定列',
+        auth: true,
+        cache: true
+      },
+      component: _import(viewsPrefix + 'form/fix')
     },
     {
       path: 'form/area',

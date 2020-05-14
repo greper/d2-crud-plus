@@ -17,6 +17,7 @@
 |limit|图片数量限制|`Number`|`false`|1|
 |accept|可接收的文件后缀|`String`|`false`|.jpg, .jpeg, .png, .gif, .webp|
 |cropper|cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs|`Object`|`false`|-|
+|uploader|form上传参数，action=上传链接，headers=请求headers[Object]，name=文件参数名|`Object`|`false`|-|
 
 <!-- @vuese:d2p-cropper-uploader:props:end -->
 

@@ -3282,10 +3282,10 @@ cyclist@^1.0.1:
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.3.1.tgz#924ca13c7933b42c38d3ed5cb9c90a9331bab10b"
-  integrity sha512-v8qxoEUyuBalmVxin7dXbxpkqW+jrbRsiG1GcCBCLKhMg2xIHWdpE1HkjpO0uqexCFStdF9gXDNPBQhLjeS8gg==
+d2-crud-plus@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.3.2.tgz#e1f21e76be8f8051bcd7da4baedf88e166fa773e"
+  integrity sha512-lkqkwdTm6W2PAvVDPwqnl5y3cr01djBOfBBlhbo5oA/IpezhhQyhf3fwsJN5WLQonpLNFubJHkGnCVnKP3XHzw==
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
@@ -3301,10 +3301,10 @@ d2-crud-x@^2.0.5-1.2.1:
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.2.2.tgz#820408aebfb787c4dc84652eac4e86610495e878"
-  integrity sha512-edPzmOcE93UBuvQdikSOq4bJ1cd/YWkBhOpglVTR/bDKOe6UjOELMGuP0IVgyKVICV3qY2f1acoJ8s6JIvRsKQ==
+d2p-extends@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.2.3.tgz#ff42590e37cdde135ddd35dcda8d36f0e64f25ae"
+  integrity sha512-Uo/oAQrCtMssqduIy9SUSJdoeIUpJT9QeGmSLoYraL79j6W8TT87XGVfj1Pn5G5bgJLOzi739N5KFDneMSaJrQ==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"

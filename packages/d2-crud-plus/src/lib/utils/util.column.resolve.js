@@ -13,7 +13,10 @@ function getByType (type, item) {
   if (column.form.component == null) {
     column.form.component = {}
   }
-  column.form.component.span = 12
+  if (column.form.component.span == null) {
+    column.form.component.span = 12
+  }
+
   return column
 }
 

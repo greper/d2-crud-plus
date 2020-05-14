@@ -86,6 +86,27 @@ export default {
         }
       },
       {
+        path: 'api/' + name + '/get',
+        method: 'get',
+        handle (req) {
+          let id = req.params.id
+          id = parseInt(id)
+          console.log('req', req, id, list)
+          let current = null
+          for (let item of list) {
+            if (item.id === id) {
+              current = item
+              break
+            }
+          }
+          return {
+            code: 0,
+            msg: 'success',
+            data: current
+          }
+        }
+      },
+      {
         path: 'api/' + name + '/add',
         method: 'post',
         handle (req) {

@@ -10,7 +10,6 @@ export default {
   },
   doUpload (option, custom, context) {
     return new Promise((resolve, reject) => {
-      console.log('-----', option)
       ajax(option,
         (res) => {
           resolve(config.form.successHandle(res))

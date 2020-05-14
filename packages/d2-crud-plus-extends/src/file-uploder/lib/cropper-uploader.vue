@@ -85,6 +85,7 @@ export default {
     cropper: {
       type: Object
     },
+    // form上传参数， elProps.action=上传连接， elProps.headers=header，elProps.name=文件参数名
     elProps: {
       type: Object
     }

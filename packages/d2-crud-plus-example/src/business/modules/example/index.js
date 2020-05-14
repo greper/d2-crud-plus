@@ -18,7 +18,9 @@ const aside = [
       { path: '/form/icon', title: '图标选择' },
       { path: '/form/header', title: '多级表头' },
       { path: '/form/column', title: '特殊列' },
-      { path: '/form/fix', title: '固定列' }
+      { path: '/form/fix', title: '固定列' },
+      { path: '/form/editor', title: '富文本' }
+
     ]
   },
   {
@@ -79,6 +81,16 @@ const routers = {
         cache: true
       },
       component: _import(viewsPrefix + 'form/fix')
+    },
+    {
+      path: 'form/editor',
+      name: 'formEditor',
+      meta: {
+        title: '富文本',
+        auth: true,
+        cache: true
+      },
+      component: _import(viewsPrefix + 'form/editor')
     },
     {
       path: 'form/area',

@@ -154,7 +154,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       collapsable: false,
       sidebarDepth: 3,
       children: [
-          'log'
+        'contact'
       ]
     }
   ]

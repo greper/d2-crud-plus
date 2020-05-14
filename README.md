@@ -253,7 +253,8 @@ export default {
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
 
-## ChangeLog
-* 权限管理功能
-* 代码生成功能 
+## 联系作者
 
+欢迎bug反馈，需求建议，技术交流等
+
+![](http://d2p.file.veryreader.com/greper/contact.png)

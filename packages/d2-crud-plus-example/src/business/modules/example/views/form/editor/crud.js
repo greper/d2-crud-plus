@@ -22,9 +22,19 @@ export const crudOptions = {
       key: 'content',
       sortable: true,
       width: 300,
-      type: 'editor-quill',
+      type: 'editor-quill', // 富文本图片上传依赖file-uploader，请先配置好file-uploader
       disabled: true,
-      form: { component: { } }
+      form: {
+        component: {
+          props: {
+            uploader: {
+              type: 'form', // 上传后端类型【cos,aliyun,oss,form】
+              action: '/api/upload/form/upload',
+              name: 'file'
+            }
+          }
+        }
+      }
     }
   ]
 }

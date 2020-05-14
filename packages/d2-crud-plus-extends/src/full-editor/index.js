@@ -1,7 +1,7 @@
 import { d2CrudPlus } from 'd2-crud-plus'
 const types = {
   'editor-quill': {
-    form: { component: { name: 'd2p-quill', span: 24 }, span: 24 }
+    form: { component: { name: 'd2p-quill', span: 24 } }
   }
 
 }

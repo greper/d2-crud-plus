@@ -49,7 +49,7 @@ export default {
     // 上传后端类型，[cos,qiniu,alioss]
     type: {
       type: String,
-      default: 'cos' // 上传类型：form cos qiniu  alioss
+      default: 'cos' // 上传类型：form, cos, qiniu , alioss
     },
     // 上传提示
     uploadTip: {
@@ -85,8 +85,8 @@ export default {
     cropper: {
       type: Object
     },
-    // form上传参数， elProps.action=上传连接， elProps.headers=header，elProps.name=文件参数名
-    elProps: {
+    // form上传参数，action=上传链接，headers=请求headers[Object]，name=文件参数名
+    uploader: {
       type: Object
     }
 
@@ -110,7 +110,6 @@ export default {
   },
   methods: {
     initValue () {
-      console.log('initValue', this.value)
       const list = []
       if (this.value == null || this.value === '') {
         return list
@@ -159,9 +158,10 @@ export default {
         onProgress,
         onError
       }
-      if (this.elProps != null) {
-        option.action = this.elProps.action
-        option.filename = this.elProps.name
+      if (this.uploader != null) {
+        option.action = this.uploader.action
+        option.filename = this.uploader.name
+        option.headers = this.uploader.headers
       }
 
       this.list.push(item)

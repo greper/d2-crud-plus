@@ -16,14 +16,12 @@ export default {
       required: false,
       default: ''
     },
-    // 上传后端类型，[cos,qiniu,alioss]
-    type: {
-      type: String,
-      default: 'cos' // 上传类型：form / cos / qiniu / alioss
-    },
-    // form上传参数， elProps.action=上传连接， elProps.headers=header，elProps.name=文件参数名
-    elProps: {
-      type: Object
+    // form上传参数 type=[alioss/cos/qiniu/form]，action=上传链接，headers=请求headers[Object]，name=文件参数名
+    uploader: {
+      type: Object,
+      default: () => {
+        return { type: 'cos' }
+      }
     }
   },
   data () {
@@ -139,9 +137,10 @@ export default {
             onProgress,
             onError
           }
-          if (this.elProps != null) {
-            option.action = this.elProps.action
-            option.filename = this.elProps.name
+          if (this.uploader != null) {
+            option.action = this.uploader.action
+            option.filename = this.uploader.name
+            option.headers = this.uploader.headers
           }
 
           this.doUpload(option, context).then(upload => {
@@ -161,7 +160,7 @@ export default {
       })
     },
     getUploader () {
-      return uploadChoose.get(this.type)
+      return uploadChoose.get(this.uploader.type)
     },
     beforeUpload (file) {
       return this.getUploader().beforeUpload(file)

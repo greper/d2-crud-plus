@@ -89,7 +89,6 @@ export default {
         return res.data
       })
     }
-
   }
 }
 </script>

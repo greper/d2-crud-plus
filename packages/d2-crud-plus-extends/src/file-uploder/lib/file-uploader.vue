@@ -34,7 +34,7 @@ export default {
     btnName: { default: '选择文件' },
     // 可选哪些类型的文件
     accept: {},
-    // 上传后端类型，[cos,qiniu,alioss]
+    // 上传后端类型，[cos,qiniu,alioss,form]
     type: {
       type: String,
       default: 'cos' // 上传类型：form cos qiniu  alioss

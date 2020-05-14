@@ -91,6 +91,25 @@ export const crudOptions = {
         },
         helper: '这里演示的是阿里云文件上传,配置样式，居中裁剪成200x200方形图片'
       }
+    },
+    {
+      title: '普通表单上传',
+      key: 'formAvatar',
+      sortable: true,
+      type: 'avatar-uploader',
+      form: {
+        component: {
+          props: {
+            type: 'form',
+            elProps: {
+              action: '/api/upload/form/upload',
+              name: 'file'
+            }
+          },
+          span: 24
+        },
+        helper: 'form表单上传'
+      }
     }
   ]
 }

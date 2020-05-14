@@ -84,6 +84,9 @@ export default {
     // cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs
     cropper: {
       type: Object
+    },
+    elProps: {
+      type: Object
     }
 
   },
@@ -150,7 +153,16 @@ export default {
         item.message = '文件上传出错:' + e.message
         console.log(e)
       }
-      let option = { file: blob, onProgress, onError }
+      let option = {
+        file: blob,
+        onProgress,
+        onError
+      }
+      if (this.elProps != null) {
+        option.action = this.elProps.action
+        option.filename = this.elProps.name
+      }
+
       this.list.push(item)
       let upload = await this.doUpload(option, context)
       item.url = upload.url

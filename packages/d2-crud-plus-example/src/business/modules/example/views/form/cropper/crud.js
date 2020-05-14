@@ -60,6 +60,23 @@ export const crudOptions = {
         },
         helper: '上传到七牛'
       }
+    },
+    {
+      title: '本地服务器',
+      key: 'local',
+      type: 'avatar-cropper',
+      form: {
+        component: {
+          props: {
+            type: 'form',
+            elProps: {
+              action: '/api/upload/form/upload',
+              name: 'file'
+            }
+          }
+        },
+        helper: '上传到本地服务器'
+      }
     }
   ]
 }

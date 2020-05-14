@@ -59,17 +59,17 @@ export default {
     component: { name: 'date-format', props: { format: 'HH:mm:ss' } }
   },
   select: {
-    search: { component: { props: { clearable: true } } },
+    search: { disabled: true, component: { props: { clearable: true } } },
     form: { component: { name: 'dict-select', props: {} } },
     component: { name: 'values-format', props: {} }
   },
   radio: {
-    search: { component: { name: 'dict-select', props: { clearable: true } } },
+    search: { disabled: true, component: { name: 'dict-select', props: { clearable: true } } },
     form: { component: { name: 'dict-radio', props: {} } },
     component: { name: 'values-format', props: {} }
   },
   checkbox: {
-    search: { component: { name: 'dict-select', props: { clearable: true, multiple: true } } },
+    search: { disabled: true, component: { name: 'dict-select', props: { clearable: true, multiple: true } } },
     form: { component: { name: 'dict-checkbox', props: {} } },
     component: { name: 'values-format', props: {} }
   },

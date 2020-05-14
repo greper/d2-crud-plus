@@ -29,6 +29,11 @@ export default {
     },
     domain: 'http://pzrsldiu3.bkt.clouddn.com'
   },
+  form: {
+    successHandle (res) { // 需要将res.url 设置为url
+      return { url: res.data }
+    }
+  },
   buildKey (fileName, custom, context) { // 文件key的构建规则
     const date = new Date()
     let fileType = 'file'

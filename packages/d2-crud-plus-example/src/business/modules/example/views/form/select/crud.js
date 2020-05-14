@@ -59,7 +59,7 @@ export const crudOptions = {
       title: 'radio',
       key: 'status2',
       sortable: true,
-      search: {},
+      search: { disabled: false },
       type: 'radio',
       dict: {
         url: '/api/dicts/OpenStatusEnum'
@@ -69,7 +69,7 @@ export const crudOptions = {
       title: 'checkbox',
       key: 'status3',
       sortable: true,
-      search: {},
+      search: { disabled: false },
       type: 'checkbox',
       dict: {
         url: '/api/dicts/OpenStatusEnum'

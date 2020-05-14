@@ -15,12 +15,12 @@ export const crudOptions = {
               form: { disabled: true }
             },
             {
-              title: '日期',
+              title: '日期2',
               key: 'date2',
               sortable: true,
               type: 'date',
               search: { disabled: true },
-              form: { disabled: true }
+              form: { disabled: false }
             }
           ]
         },

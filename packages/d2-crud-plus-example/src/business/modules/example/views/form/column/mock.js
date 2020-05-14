@@ -9,18 +9,24 @@ const list = [
     data: 'data1',
     time: '2020-01-01 11:11:11',
     province: 'wh',
+    amount: 100
+  },
+  {
+    data: 'data2',
+    province: 'sh',
+    time: '2020-01-01 11:11:11',
     amount: 100,
     children: [
       { id: 999,
         data: 'data1_1',
         time: '2020-01-01 11:11:11',
-        province: 'gz,sh',
+        province: ['gz', 'sz'], // 可以逗号分隔的字符串 'gz,sz'
         amount: 100,
         children: [
           { id: 1000,
             data: 'data1_1_1',
             time: '2020-01-01 11:11:11',
-            province: 'sz,gz',
+            province: ['sz', 'gz'], // 可以逗号分隔的字符串 'gz,sz'
             amount: 100
           }
         ]
@@ -42,20 +48,14 @@ const list = [
     ]
   },
   {
-    data: 'data2',
-    province: 'sh',
-    time: '2020-01-01 11:11:11',
-    amount: 100
-  },
-  {
     data: 'data3',
-    province: 'sh,gz',
+    province: ['sh', 'gz'],
     time: '2020-01-01 11:11:11',
     amount: 100
   },
   {
     data: 'data4',
-    province: 'sh,sz',
+    province: ['sh', 'sz'],
     time: '2020-01-01 11:11:11',
     amount: 100
   }

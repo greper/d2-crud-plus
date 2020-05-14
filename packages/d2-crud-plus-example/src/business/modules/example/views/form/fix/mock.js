@@ -19,13 +19,13 @@ const list = [
   },
   {
     data: 'data3',
-    province: 'sh,gz',
+    province: 'gz',
     time: '2020-01-01 11:11:11',
     amount: 100
   },
   {
     data: 'data4',
-    province: 'sh,sz',
+    province: 'sh',
     time: '2020-01-01 11:11:11',
     amount: 100
   }

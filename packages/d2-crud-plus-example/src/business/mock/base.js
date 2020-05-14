@@ -36,9 +36,18 @@ export default {
                     }
                     let found = false
                     for (let i of value) {
-                      if (item[key] === i) {
-                        found = true
-                        break
+                      if (item[key] instanceof Array) {
+                        for (let j of item[key]) {
+                          if (i === j) {
+                            found = true
+                            break
+                          }
+                        }
+                      } else {
+                        if (item[key] === i) {
+                          found = true
+                          break
+                        }
                       }
                     }
                     return found

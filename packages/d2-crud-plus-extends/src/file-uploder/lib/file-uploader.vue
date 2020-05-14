@@ -1,5 +1,5 @@
 <template>
-  <div class="d2p-file-uplaoder">
+  <div class="d2p-file-uploader">
   <el-upload :before-upload="beforeUpload"
              :class="uploadClass"
              :file-list="fileList"
@@ -282,7 +282,7 @@ export default {
 }
 </script>
 <style lang="scss">
-  .d2p-file-uplaoder{
+  .d2p-file-uploader{
     .avatar-uploader{
       .el-upload{
         width: 100px;

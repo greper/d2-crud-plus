@@ -11,6 +11,7 @@ import renderComponent from './render/renderComponent'
 import renderCustomComponent from './render/renderCustomComponent'
 import DictRadio from './form/DictRadio'
 import DictCheckbox from './form/DictCheckbox'
+import TextArea from './form/TextArea'
 
 export default {
   DictSelect,
@@ -22,6 +23,7 @@ export default {
   ValuesFormat,
   CrudSearch,
   CrudFooter,
+  TextArea,
   renderComponent,
   renderCustomComponent
 }

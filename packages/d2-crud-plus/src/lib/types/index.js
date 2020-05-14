@@ -126,5 +126,8 @@ export default {
   'transfer': {
     form: { component: { name: 'el-transfer', props: { } } },
     align: 'center'
+  },
+  'text-area': {
+    form: { component: { name: 'text-area', span: 24 } }
   }
 }

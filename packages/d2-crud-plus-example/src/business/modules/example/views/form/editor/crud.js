@@ -29,7 +29,7 @@ export const crudOptions = {
           props: {
             uploader: {
               type: 'form', // 上传后端类型【cos,aliyun,oss,form】
-              action: '/api/upload/form/upload',
+              action: process.env.VUE_APP_API + '/upload/form/upload',
               name: 'file'
             }
           }

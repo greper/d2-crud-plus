@@ -45,6 +45,7 @@ Github: <https://github.com/greper/d2-crud-plus>
 <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader>    
 例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 * 修复官方的form-data-change某些情况下获取到的值不是最新的bug  
+* 支持行展开
 
 ## 请先了解
 本项目基于d2-admin 以及 d2-crud   

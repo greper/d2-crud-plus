@@ -266,7 +266,6 @@ export default {
       }
     },
     getFileList () {
-      console.log('elFileUploader', this.fileList)
       return this.fileList
     },
     computeMd5 (file) {

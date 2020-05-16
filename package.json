@@ -15,7 +15,7 @@
   "scripts": {
     "lerna:build": "lerna run build",
     "lerna:version": "lerna version --conventional-commits",
-    "lerna:publish": "lerna publish --conventional-commits --no-commit-hooks",
+    "lerna:publish": "lerna publish --conventional-commits",
     "changelog": "lerna-changelog",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
     "docs:dev": "vuese gen && vuepress dev docspress --temp .temp",

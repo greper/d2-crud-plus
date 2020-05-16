@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.4.0...d2-crud-plus@1.5.0) (2020-05-16)
+
+
+### Features
+
+* 多文件上传显示优化，批量删除，上传文件参数优化 ([8946934](https://github.com/greper/d2-crud-plus/commit/89469349cdd6495ddd503f206ab110bf75dce60c))
+* 多文件上传显示优化，批量删除，上传文件参数优化 ([91e2437](https://github.com/greper/d2-crud-plus/commit/91e243796221b706b0bb906aca5c00e59ed597fe))
+
+
+
+
+
+
 # [1.4.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.3.2...d2-crud-plus@1.4.0) (2020-05-14)
 
 

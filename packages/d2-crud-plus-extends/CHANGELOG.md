@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.3.0...d2p-extends@1.4.0) (2020-05-16)
+
+
+### Features
+
+* 多文件上传显示优化，批量删除，上传文件参数优化 ([91e2437](https://github.com/greper/d2-crud-plus/commit/91e243796221b706b0bb906aca5c00e59ed597fe))
+
+
+
+
+
+
 # [1.3.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.2.3...d2p-extends@1.3.0) (2020-05-14)
 
 

@@ -29,3 +29,10 @@ export function DelObj (id) {
     params: { id }
   })
 }
+export function BatchDel (ids) {
+  return request({
+    url: '/date/batchDelete',
+    method: 'post',
+    data: { ids }
+  })
+}

@@ -1,6 +1,6 @@
 export default {
   get (type) {
-    return require('./uploader/' + type).default
+    return require('./lib/' + type).default
     // return map[type]
   }
 }

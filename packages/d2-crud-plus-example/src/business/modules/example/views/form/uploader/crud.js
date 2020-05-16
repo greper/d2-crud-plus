@@ -4,7 +4,7 @@ export const crudOptions = {
       title: '头像',
       key: 'avatar',
       type: 'avatar-uploader',
-      width: 200,
+      width: 120,
       form: {
         component: {
           props: {
@@ -23,7 +23,7 @@ export const crudOptions = {
     {
       title: '头像文件大小',
       key: 'avatarSize',
-      width: 200
+      width: 120
     },
     {
       title: '头像文件md5',
@@ -31,15 +31,33 @@ export const crudOptions = {
       width: 200
     },
     {
-      title: '图片',
+      title: '照片墙',
       key: 'image',
       type: 'image-uploader',
-      width: 200,
+      width: 150,
       form: {
         component: {
           props: {
             elProps: { // 与el-uploader 配置一致
               multiple: true,
+              limit: 5 // 限制5个文件
+            }
+          }
+        },
+        helper: '默认腾讯云cos上传'
+      }
+    },
+    {
+      title: '图片列表',
+      key: 'image2',
+      type: 'image-uploader',
+      width: 150,
+      form: {
+        component: {
+          props: {
+            elProps: { // 与el-uploader 配置一致
+              multiple: true,
+              listType: 'picture',
               limit: 5 // 限制5个文件
             }
           }
@@ -67,6 +85,7 @@ export const crudOptions = {
       key: 'qiniuAvatar',
       sortable: true,
       type: 'avatar-uploader',
+      width: 100,
       form: {
         component: {
           props: {
@@ -81,6 +100,7 @@ export const crudOptions = {
       key: 'aliossAvatar',
       sortable: true,
       type: 'avatar-uploader',
+      width: 100,
       form: {
         component: {
           props: {
@@ -93,15 +113,16 @@ export const crudOptions = {
       }
     },
     {
-      title: '普通表单上传',
+      title: '本地服务器上传',
       key: 'formAvatar',
       sortable: true,
       type: 'avatar-uploader',
+      width: 130,
       form: {
         component: {
           props: {
             type: 'form',
-            elProps: {
+            uploader: {
               action: process.env.VUE_APP_API + 'upload/form/upload',
               name: 'file'
             }

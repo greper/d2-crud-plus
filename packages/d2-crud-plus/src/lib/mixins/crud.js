@@ -2,6 +2,7 @@ import HeightUtil from '../utils/util.height'
 import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
+import { BatchDel } from '../../../../d2-crud-plus-example/src/business/modules/example/views/form/column/api'
 
 export default {
   components: {},
@@ -15,6 +16,7 @@ export default {
           gutter: 20
         },
         options: {
+          rowKey: 'id',
           stripe: true,
           border: true,
           highlightCurrentRow: false,
@@ -62,7 +64,8 @@ export default {
             }
           }
         }
-      }
+      },
+      multipleSelection: undefined
     }
   },
   created () {
@@ -301,6 +304,36 @@ export default {
       })
     },
     /**
+     * 批量删除
+     */
+    batchDelete () {
+      if (this.multipleSelection == null || this.multipleSelection.length === 0) {
+        this.$message({
+          message: '您还未选择数据',
+          type: 'warning'
+        })
+        return
+      }
+      let ids = []
+      for (let row of this.multipleSelection) {
+        ids.push(row[this.crud.options.rowKey])
+      }
+      this.$confirm('确定要批量删除这' + ids.length + '条数据吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        return BatchDel(ids)
+      }).then(() => {
+        this.delAfter()
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+      })
+    },
+
+    /**
      * 添加form提交
      * @param row
      * @param done
@@ -374,6 +407,7 @@ export default {
      */
     handleSelectionChange (selection) {
       console.log(selection)
+      this.multipleSelection = selection
     },
     /**
      * 单条点击选中

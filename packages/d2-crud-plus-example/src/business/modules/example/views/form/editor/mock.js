@@ -7,11 +7,13 @@ let options = {
 const list = [
   {
     title: 'd2-crud-plus好用吗？',
-    content: '非常好用'
+    text: '非常好用',
+    content: '<h1 class="ql-align-center">非常好用哦</h1>'
   },
   {
     title: 'd2-crud-plus有什么优势？',
-    content: '简单，方便'
+    text: '简单，方便',
+    content: '简单方便'
   }
 ]
 options.list = list

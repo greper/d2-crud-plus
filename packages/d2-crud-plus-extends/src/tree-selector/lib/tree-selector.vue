@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import _merge from 'lodash.merge'
+import lodash from 'lodash'
 import { d2CrudPlus } from 'd2-crud-plus'
 // 树形选择组件，需要import xx from 'd2p-extends/src'
 export default {
@@ -99,7 +99,7 @@ export default {
         if (this.dict.value != null) { defaultElProps.props.value = this.dict.value }
         if (this.dict.children != null) { defaultElProps.props.children = this.dict.children }
       }
-      _merge(defaultElProps, this.elProps)
+      lodash.merge(defaultElProps, this.elProps)
       return defaultElProps
     },
     collapseTagSize () {

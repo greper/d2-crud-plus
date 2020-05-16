@@ -13,8 +13,7 @@
 import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
-// import { D2pFileUploader } from 'd2p-extends' //全部引入，包会比较大
-import { D2pFileUploader } from 'd2p-extends/src'  //通过源码引入的方式，上传组件将会懒加载
+import { D2pFileUploader } from 'd2p-extends'  //组件支持懒加载
 import request from '@/plugin/axios'
 // 引入d2Crud
 Vue.use(d2Crud)

@@ -1,7 +1,8 @@
-import config from './lib/config'
 import D2pImagesFormat from './lib/images-format'
+import D2pFilesFormat from './lib/files-format'
 import { d2CrudPlus } from 'd2-crud-plus'
 import 'cropperjs/dist/cropper.css'
+import D2pUploader from '../uploader'
 const types = {
   'image-uploader': {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },
@@ -24,7 +25,8 @@ const types = {
     }
   },
   'file-uploader': {
-    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } }
+    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'text' } } } },
+    component: { name: 'd2p-files-format' }
   },
   'avatar-cropper': {
     form: { component: { name: 'd2p-cropper-uploader', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
@@ -38,15 +40,13 @@ function install (Vue, options) {
   Vue.component('d2p-images-format', D2pImagesFormat)
   Vue.component('d2p-cropper-uploader', () => import('./lib/cropper-uploader'))
   Vue.component('d2p-cropper', () => import('./lib/cropper'))
+  Vue.component('d2p-files-format', D2pFilesFormat)
 
-  if (options != null) {
-    // 覆盖用户配置
-    Object.assign(config, options)
-  }
+  Vue.use(D2pUploader, options)
   // 配置type
   if (d2CrudPlus != null) {
     // 设置默认uploader
-    let defaultType = config.defaultType != null ? config.defaultType : 'cos'
+    let defaultType = D2pUploader.getDefaultType()
     for (let typesKey in types) {
       types[typesKey].form.component.props.type = defaultType
     }

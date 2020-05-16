@@ -7,7 +7,7 @@ import Quill from 'quill'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-import uploadChoose from '../../../file-uploder/lib/choose'
+import D2pUploader from '../../../uploader'
 export default {
   name: 'd2p-quill',
   props: {
@@ -16,7 +16,7 @@ export default {
       required: false,
       default: ''
     },
-    // form上传参数 type=[alioss/cos/qiniu/form]，action=上传链接，headers=请求headers[Object]，name=文件参数名
+    // 上传config参数 type=[alioss/cos/qiniu/form]，action=上传链接，headers=请求headers[Object]，name=文件参数名,会临时覆盖默认配置
     uploader: {
       type: Object,
       default: () => {
@@ -122,45 +122,42 @@ export default {
           status: 'uploading',
           progress: 0
         }
-        this.beforeUpload(file).then(context => {
-          console.log('context', context)
-          let onProgress = (e) => {
-            item.progress = e.percent
-          }
-          let onError = (e) => {
-            item.status = 'error'
-            item.message = '文件上传出错:' + e.message
-            console.log(e)
-          }
-          let option = {
-            file: file,
-            onProgress,
-            onError
-          }
-          if (this.uploader != null) {
-            option.action = this.uploader.action
-            option.filename = this.uploader.name
-            option.headers = this.uploader.headers
-          }
 
-          this.doUpload(option, context).then(upload => {
-            let url = item.url = upload.url
-            item.status = 'done'
-            let range = quill.getSelection(true)
-            // let index = range.index + range.length
-            quill.insertEmbed(range.index, 'image', url)
-          })
+        let onProgress = (e) => {
+          item.progress = e.percent
+        }
+        let onError = (e) => {
+          item.status = 'error'
+          item.message = '文件上传出错:' + e.message
+          console.log(e)
+        }
+        let option = {
+          file: file,
+          fileName: file.name,
+          onProgress,
+          onError
+        }
+
+        this.doUpload(option).then(upload => {
+          let url = item.url = upload.url
+          item.status = 'done'
+          let range = quill.getSelection(true)
+          // let index = range.index + range.length
+          quill.insertEmbed(range.index, 'image', url)
         })
       })
       Imageinput.click()
     },
-    doUpload (option, context) {
-      return this.getUploader().doUpload(option, {}, context).then(ret => {
-        return ret
-      })
+    doUpload (option) {
+      option.config = this.uploader
+      return this.getUploader().upload(option)
     },
     getUploader () {
-      return uploadChoose.get(this.uploader.type)
+      let type = this.type
+      if (this.uploader != null && this.uploader.type != null) {
+        type = this.uploader.type
+      }
+      return D2pUploader.getUploader(type)
     },
     beforeUpload (file) {
       return this.getUploader().beforeUpload(file)

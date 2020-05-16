@@ -77,6 +77,9 @@ const shortcuts = [
 ]
 
 export const crudOptions = {
+  formOptions: {
+    width: '60%'
+  },
   columns: [
     {
       title: '时间戳',

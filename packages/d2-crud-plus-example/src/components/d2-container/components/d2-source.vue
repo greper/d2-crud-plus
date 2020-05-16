@@ -1,10 +1,20 @@
 <template>
-  <div
-    v-if="show"
-    class="d2-source"
-    :class="{ 'd2-source--active': isActive }"
-    @click="handleClick">
-    <d2-icon name="code"/> 本页源码
+  <div>
+    <div
+      v-if="show"
+      class="d2-source"
+      :class="{ 'd2-source--active': isActive }"
+      @click="handleClick">
+      <d2-icon name="code"/> 本页源码
+    </div>
+    <div
+      v-if="show"
+      class="d2-source"
+      :class="{ 'd2-source--active': isActive }"
+      style="margin-bottom: 30px"
+      @click="handleClick2">
+      <d2-icon name="code"/> 码云源码
+    </div>
   </div>
 </template>
 
@@ -40,6 +50,9 @@ export default {
     // 点击按钮的时候跳转到源代码
     handleClick () {
       this.$open(`${process.env.VUE_APP_REPO}/blob/master/packages/d2-crud-plus-example/${this.path}`)
+    },
+    handleClick2 () {
+      this.$open(`${process.env.VUE_APP_REPO2}/blob/master/packages/d2-crud-plus-example/${this.path}`)
     }
   }
 }

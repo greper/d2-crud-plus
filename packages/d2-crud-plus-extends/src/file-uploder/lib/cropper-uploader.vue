@@ -34,7 +34,7 @@
 
 <script>
 import D2pCropper from './cropper'
-import choose from './choose'
+import D2pUploader from '../../uploader'
 // 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
 export default {
   name: 'd2p-cropper-uploader',
@@ -85,7 +85,7 @@ export default {
     cropper: {
       type: Object
     },
-    // form上传参数，action=上传链接，headers=请求headers[Object]，name=文件参数名
+    // 上传参数
     uploader: {
       type: Object
     }
@@ -142,9 +142,6 @@ export default {
         status: 'uploading',
         progress: 0
       }
-      let cropFile = { name: file.name, type: file.type, size: blob.length }
-      let context = await this.beforeUpload(cropFile)
-      console.log('context', context)
       let onProgress = (e) => {
         item.progress = e.percent
       }
@@ -153,36 +150,34 @@ export default {
         item.message = '文件上传出错:' + e.message
         console.log(e)
       }
+      console.log('blob:', blob)
       let option = {
         file: blob,
+        fileName: file.name,
         onProgress,
         onError
       }
-      if (this.uploader != null) {
-        option.action = this.uploader.action
-        option.filename = this.uploader.name
-        option.headers = this.uploader.headers
-      }
-
       this.list.push(item)
-      let upload = await this.doUpload(option, context)
+      let upload = await this.doUpload(option)
       item.url = upload.url
       item.status = 'done'
       this.emit()
     },
-    doUpload (option, context) {
-      return this.getUploader().doUpload(option, {}, context).then(ret => {
+    doUpload (option) {
+      option.config = this.uploader
+      return this.getUploader().upload(option).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix
         }
         return ret
       })
     },
-    beforeUpload (file) {
-      return this.getUploader().beforeUpload(file)
-    },
     getUploader () {
-      return choose.get(this.type)
+      let type = this.type
+      if (this.uploader != null && this.uploader.type != null) {
+        type = this.uploader.type
+      }
+      return D2pUploader.getUploader(type)
     },
     emit () {
       const list = []

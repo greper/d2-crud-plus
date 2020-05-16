@@ -157,6 +157,26 @@ export default {
             data: null
           }
         }
+      },
+      {
+        path: 'api/' + name + '/batchDelete',
+        method: 'post',
+        handle (req) {
+          console.log('req', req, list)
+          let ids = req.body.ids
+          for (let i = list.length - 1; i >= 0; i--) {
+            let item = list[i]
+            if (ids.indexOf(item.id) >= 0) {
+              list.splice(i, 1)
+            }
+          }
+          console.log('req', req, list)
+          return {
+            code: 0,
+            msg: 'success',
+            data: null
+          }
+        }
       }
     ]
   }

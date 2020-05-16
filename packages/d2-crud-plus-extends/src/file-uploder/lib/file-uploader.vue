@@ -1,7 +1,6 @@
 <template>
   <div class="d2p-file-uploader">
-  <el-upload :before-upload="beforeUpload"
-             :class="uploadClass"
+  <el-upload :class="uploadClass"
              :file-list="fileList"
              :http-request="httpRequest"
              :on-exceed="onExceed"
@@ -10,8 +9,8 @@
              ref="fileUploader"
              v-bind="_elProps"
   >
-    <el-button :size="btnSize" type="primary" v-if="_elProps.listType === 'text'">{{btnName}}</el-button>
-    <i class="el-icon-plus" v-else-if="this._elProps.listType === 'picture-card'"></i>
+    <el-button :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
+    <i class="el-icon-plus avatar-uploader-icon" v-else-if="this._elProps.listType === 'picture-card'"></i>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
@@ -22,9 +21,9 @@
 
 <script>
 import SparkMD5 from 'spark-md5'
-import choose from './choose'
+import D2pUploader from '../../uploader'
 
-// 文件上传组件 ，需要import xx from 'd2p-extends/src'
+// 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',
   props: {
@@ -64,8 +63,13 @@ export default {
     custom: {
       type: Object
     },
-    // [el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件属性参数
+    // 内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数
+    // 注意，form方式上传的action、name、headers等参数不在此设置
     elProps: {
+      type: Object
+    },
+    // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/components/d2p-uploader.html)
+    uploader: {
       type: Object
     }
   },
@@ -78,15 +82,15 @@ export default {
   created () {
     this.initValue()
   },
-  watch: {
-    value (val) {
-      if (val instanceof Array && val.length > 0 && val[0]._uid != null) {
-        return
-      }
-      this.initValue()
-      this.$emit('change', this.fileList)
-    }
-  },
+  // watch: {
+  //   value (val) {
+  //     if (val instanceof Array && val.length > 0 && val[0]._uid != null) {
+  //       return
+  //     }
+  //     this.initValue()
+  //     this.$emit('change', this.fileList)
+  //   }
+  // },
   computed: {
     _elProps () {
       let defaultElProps = {
@@ -122,30 +126,41 @@ export default {
     }
   },
   methods: {
-    getUploader () {
-      return choose.get(this.type)
+    setValue (value) {
+      this.initValue(value)
+      // this.$emit('change', this.fileList)
     },
-    initValue () {
+    getUploader () {
+      let type = this.type
+      if (this.uploader != null && this.uploader.type != null) {
+        type = this.uploader.type
+      }
+      return D2pUploader.getUploader(type)
+    },
+    initValue (value) {
+      if (value == null) {
+        value = this.value
+      }
       let fileList = []
-      if (this.value == null) {
-      } else if (typeof (this.value) === 'string') {
-        if (this.value !== '') {
-          let fileName = this.value.substring(this.value.lastIndexOf('/') + 1)
-          fileList = [{ url: this.value, name: fileName }]
+      if (value == null) {
+      } else if (typeof (value) === 'string') {
+        if (value !== '') {
+          let fileName = value.substring(value.lastIndexOf('/') + 1)
+          fileList = [{ url: value, name: fileName }]
         }
-      } else if (this.value instanceof Array) {
-        if (this.value.length > 0 && typeof (this.value[0]) === 'string') {
+      } else if (value instanceof Array) {
+        if (value.length > 0 && typeof (value[0]) === 'string') {
           let tmp = []
-          this.value.forEach(item => {
+          value.forEach(item => {
             let fileName = item.substring(item.lastIndexOf('/') + 1)
             tmp.push({ url: item, name: fileName })
           })
           fileList = tmp
         } else {
-          fileList = this.value
+          fileList = value
         }
-      } else if (this.value instanceof Object) {
-        fileList = [this.value]
+      } else if (value instanceof Object) {
+        fileList = [value]
       }
       this.resetFileList(fileList)
     },
@@ -189,14 +204,6 @@ export default {
       }
       this.$emit('input', list)
     },
-    beforeUpload (file) {
-      console.log('this.getUploader :', this.getUploader())
-      return this.getUploader().beforeUpload(file, this.custom).then(ret => {
-        this.$set(this, 'context', ret)
-        console.log('beforeUpload:context:', ret)
-        return ret
-      })
-    },
     httpRequest (option) {
       Promise.all([
         this.doUpload(option),
@@ -209,7 +216,17 @@ export default {
       })
     },
     doUpload (option) {
-      return this.getUploader().doUpload(option, this.custom, this.context).then(ret => {
+      return this.getUploader().upload({
+        file: option.file,
+        fileName: option.file.name,
+        onProgress: option.onProgress,
+        onError: option.onError,
+        config: {
+          custom: this.custom,
+          ...this.uploader,
+          ...this._elProps()
+        }
+      }).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix
         }
@@ -287,9 +304,9 @@ export default {
       .el-upload{
         width: 100px;
         height: 100px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        /*display: flex;*/
+        /*justify-content: center;*/
+        /*align-items: center;*/
         background-color: #fbfdff;
         border: 1px dashed #c0ccda;
         border-radius: 6px;
@@ -298,11 +315,18 @@ export default {
         max-width: 100px;
         max-height: 100px;
       }
-      .avatar-uploader-icon {
+      .el-icon-plus.avatar-uploader-icon {
         vertical-align: top;
         font-size: 28px;
         color: #8c939d;
+        line-height: 100px;
       }
+    }
+    .el-upload--picture-card .el-icon-plus.avatar-uploader-icon {
+      vertical-align: top;
+      font-size: 28px;
+      color: #8c939d;
+      line-height: 100px;
     }
     .image-uploader .el-upload-list--picture-card .el-upload-list__item-thumbnail {
       max-width: 100%;
@@ -310,15 +334,21 @@ export default {
       width:auto;
       height: auto;
     }
-    .image-uploader .el-upload-list--picture-card .el-upload-list__item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+     .el-upload-list--picture .el-upload-list__item-thumbnail {
+      max-height: 100%;
+      height: auto;
     }
-    .image-uploader{display: flex;flex-wrap: wrap;}
+    .image-uploader .el-upload-list--picture-card .el-upload-list__item {
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*align-items: center;*/
+    }
+    .image-uploader{
+      /*display: flex;flex-wrap: wrap;*/
+    }
     .image-uploader .el-upload-list--picture-card {
-      display: flex;
-      flex-wrap: wrap;
+      /*display: flex;*/
+      /*flex-wrap: wrap;*/
     }
 
     .el-upload--picture-card {
@@ -329,9 +359,9 @@ export default {
       width: 100px;
       height: 100px;
       cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*align-items: center;*/
     }
     .el-upload-list--picture-card .el-upload-list__item{
       width: 100px;

@@ -18,11 +18,14 @@ export default {
       return new Promise((resolve, reject) => {
         reject(new Error('请实现config.alioss.getAuthorization，返回Promise获取临时授权token'))
       })
+    },
+    custom: {
+      keepName: false // 阿里云的精简oss有点问题，中文文件名的文件无法上传
     }
   },
   qiniu: {
     bucket: 'd2p-demo',
-    getToken (custom, fileType) {
+    getToken (custom, fileName) {
       return new Promise((resolve, reject) => {
         reject(new Error('请实现config.qiniu.getToken方法，返回Promise获取七牛的授权token{token:xxx,expires:xxx}'))
       })
@@ -32,18 +35,31 @@ export default {
   form: {
     successHandle (res) { // 需要将res.url 设置为url
       return { url: res.data }
-    }
+    },
+    action: '',
+    name: 'file',
+    headers: {},
+    data: {}
   },
-  buildKey (fileName, custom, context) { // 文件key的构建规则
+  buildKey (fileName, custom = {}) { // 文件key的构建规则
     const date = new Date()
     let fileType = 'file'
     if (custom != null && custom.fileType != null) {
       fileType = custom.fileType
     }
-    let ext = ''
-    if (fileName.lastIndexOf('.') >= 0) {
-      ext = fileName.substring(fileName.lastIndexOf('.'))
+    let keepName = true
+    if (custom.keepName != null) {
+      keepName = custom.keepName
     }
+    let ext = ''
+    if (keepName) {
+      ext = '/' + fileName
+    } else {
+      if (fileName.lastIndexOf('.') >= 0) {
+        ext = fileName.substring(fileName.lastIndexOf('.'))
+      }
+    }
+
     return fileType + '/' + date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '/' + Math.floor(Math.random() * 100000000000000) + ext
   }
 }

@@ -34,8 +34,10 @@
         @selection-change="handleSelectionChange"
         @customHandleBtn="customHandleBtnHandle"
     >
-      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
-
+      <el-button-group slot="header" style="margin-bottom: 5px">
+        <el-button   size="small" type="primary" @click="addRow"><i class="el-icon-plus"></i> 新增</el-button>
+        <el-button   size="small" type="danger" @click="batchDelete"><i class="el-icon-delete"></i> 批量删除</el-button>
+      </el-button-group>
       <template slot="expandSlot" slot-scope="scope">
         这里显示行展开数据:{{scope.row.data}}
       </template>
@@ -51,7 +53,7 @@
 </template>
 
 <script>
-import { AddObj, GetList, UpdateObj, DelObj } from './api'
+import { AddObj, GetList, UpdateObj, DelObj, BatchDel } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import helper from './helper'
@@ -61,7 +63,8 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      helper: helper
+      helper: helper,
+      multipleSelection: undefined
     }
   },
   computed: {
@@ -82,11 +85,11 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     },
+    batchDelRequest (ids) {
+      return BatchDel(ids)
+    },
     handleCurrentChange (currentRow, oldCurrentRow) {
       this.$message('单选' + currentRow.data)
-    },
-    handleSelectionChange (selection) {
-      console.log('多选数据：', selection)
     },
     customHandleBtnHandle ({ index, row }) {
       this.$message('自定义操作按钮：' + row.data)

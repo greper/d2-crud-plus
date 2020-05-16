@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.0...d2p-extends@1.4.1) (2020-05-16)
+
+
+### Bug Fixes
+
+* 修复头像上传后获取不到md5值的问题 ([36266ad](https://github.com/greper/d2-crud-plus/commit/36266adc2b5c51d26081ef689ee1a063cd4ec047))
+* 修复头像上传后获取不到md5值的问题 ([704d74b](https://github.com/greper/d2-crud-plus/commit/704d74b80d03f8d606f979913015750eeb7ae9b9))
+* 修复头像上传后获取不到md5值的问题 ([27ff933](https://github.com/greper/d2-crud-plus/commit/27ff933c698dd64ff5cbbce8fbd7c6df1dc8dbc0))
+
+
+
+
+
 # [1.4.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.3.0...d2p-extends@1.4.0) (2020-05-16)
 
 

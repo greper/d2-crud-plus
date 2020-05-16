@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.5.0...@d2-plus/d2-crud-plus-example@1.5.1) (2020-05-16)
+
+
+### Bug Fixes
+
+* 修复头像上传后获取不到md5值的问题 ([27ff933](https://github.com/greper/d2-crud-plus/commit/27ff933c698dd64ff5cbbce8fbd7c6df1dc8dbc0))
+
+
+
+
+
 # [1.5.0](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.4.0...@d2-plus/d2-crud-plus-example@1.5.0) (2020-05-16)
 
 

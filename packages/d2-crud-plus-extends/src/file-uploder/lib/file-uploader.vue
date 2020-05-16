@@ -203,6 +203,7 @@ export default {
         list = tmp
       }
       this.$emit('input', list)
+      this.$emit('change', list)
     },
     httpRequest (option) {
       Promise.all([

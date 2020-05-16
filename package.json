@@ -9,7 +9,7 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@vuepress/shared-utils": "yarn yarn 1.2.0",
-    "lerna": "^3.20.2",
+    "lerna": "^3.21.0",
     "vuepress": "1.2.0"
   },
   "scripts": {

@@ -12,10 +12,11 @@ export const crudOptions = {
           }
         },
         valueChange (key, value, form) { // 当返回值有变化时触发
-          if (value != null && value.length > 0 && value[0] != null) {
-            form.avatarSize = value[0].size
-            form.avatarMd5 = value[0].md5
+          if (value != null) {
+            form.avatarSize = value.size
+            form.avatarMd5 = value.md5
           }
+          console.log('avatar value Changed:', key, value, form)
         },
         helper: '上传后，右边将获取到头像大小和md5值，文件上传组件不支持裁剪，如需裁剪，请参考头像裁剪上传组件'
       }
@@ -113,7 +114,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '本地服务器上传',
+      title: '本地服务器',
       key: 'formAvatar',
       sortable: true,
       type: 'avatar-uploader',
@@ -124,7 +125,10 @@ export const crudOptions = {
             type: 'form',
             uploader: {
               action: process.env.VUE_APP_API + 'upload/form/upload',
-              name: 'file'
+              name: 'file',
+              custom: {
+                keepName: false
+              }
             }
           },
           span: 24

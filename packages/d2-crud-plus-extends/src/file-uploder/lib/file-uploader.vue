@@ -22,7 +22,7 @@
 <script>
 import SparkMD5 from 'spark-md5'
 import D2pUploader from '../../uploader'
-
+import lodash from 'lodash'
 // 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',
@@ -94,7 +94,7 @@ export default {
   computed: {
     _elProps () {
       let defaultElProps = {
-        limit: 1,
+        limit: 0,
         listType: 'text',
         showFileList: true,
         action: ''
@@ -104,13 +104,13 @@ export default {
       return props
     },
     avatarUrl () {
-      console.log('avatarUrl:', this.fileList[0])
       if (this.fileList.length > 0) {
         let file = this.fileList[0]
         if (file.response != null && file.response.url != null) {
           console.log('avatarUrl:', file.response.url)
           return file.response.url
         } else if (file.url != null) {
+          console.log('avatarUrl:', file.url)
           return file.url
         }
       }
@@ -165,7 +165,6 @@ export default {
       this.resetFileList(fileList)
     },
     resetFileList (fileList) {
-      console.log('reset file List', fileList)
       this.$set(this, 'fileList', fileList)
     },
     handleUploadFileSuccess (res, file, fileList) {
@@ -187,6 +186,7 @@ export default {
           res = res.url
         }
         this.$emit('input', res)
+        this.$emit('change', res)
       } else {
         this.emitList(list)
       }
@@ -216,16 +216,28 @@ export default {
       })
     },
     doUpload (option) {
+      let config = this.uploader
+      if (!lodash.isEmpty(this._elProps.action)) {
+        config.action = this._elProps.action
+      }
+      if (!lodash.isEmpty(this._elProps.name)) {
+        config.name = this._elProps.name
+      }
+      if (!lodash.isEmpty(this._elProps.data)) {
+        config.data = this._elProps.data
+      }
+      if (!lodash.isEmpty(this._elProps.headers)) {
+        config.headers = this._elProps.headers
+      }
+      if (!lodash.isEmpty(this.custom)) {
+        config.custom = this.custom
+      }
       return this.getUploader().upload({
         file: option.file,
         fileName: option.file.name,
         onProgress: option.onProgress,
         onError: option.onError,
-        config: {
-          custom: this.custom,
-          ...this.uploader,
-          ...this._elProps()
-        }
+        config: config
       }).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix

@@ -36,7 +36,7 @@ export default {
     successHandle (res) { // 需要将res.url 设置为url
       return { url: res.data }
     },
-    action: '',
+    action: undefined,
     name: 'file',
     headers: {},
     data: {}

@@ -100,12 +100,15 @@ export default {
       // 将一些 quill 自带的事件传递出去
       this.Quill.on('text-change', (delta, oldDelta, source) => {
         this.$emit('text-change', delta, oldDelta, source)
+        console.log('text-change')
       })
       this.Quill.on('selection-change', (range, oldRange, source) => {
         this.$emit('selection-change', range, oldRange, source)
+        console.log('editor-change')
       })
       this.Quill.on('editor-change', (eventName, ...args) => {
         this.$emit('editor-change', eventName, ...args)
+        console.log('editor-change')
       })
     },
     handlerImage () {

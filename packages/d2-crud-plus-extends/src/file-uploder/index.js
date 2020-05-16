@@ -10,7 +10,7 @@ const types = {
     align: 'center'
   },
   'avatar-uploader': {
-    form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'avatar', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif', showFileList: false } } } },
+    form: { component: { name: 'd2p-file-uploader', props: { elProps: { limit: 1, listType: 'avatar', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif', showFileList: false } } } },
     component: { name: 'd2p-images-format' },
     align: 'center',
     valueResolve (row, col) {

@@ -2,7 +2,6 @@ import HeightUtil from '../utils/util.height'
 import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
-import { BatchDel } from '../../../../d2-crud-plus-example/src/business/modules/example/views/form/column/api'
 
 export default {
   components: {},
@@ -323,7 +322,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        return BatchDel(ids)
+        return this.batchDelRequest(ids)
       }).then(() => {
         this.delAfter()
         this.$message({

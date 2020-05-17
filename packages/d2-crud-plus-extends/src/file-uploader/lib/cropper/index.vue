@@ -24,8 +24,10 @@
                   <el-button round size="mini"  icon="el-icon-edit" @click="handleClick">重新选择</el-button>
                   <el-button round size="mini" type=""  @click="flipX">左右翻转</el-button>
                   <el-button round size="mini" type=""  @click="flipY">上下翻转</el-button>
+                  <el-button round size="mini" type=""  icon="el-icon-zoom-in" @click="zoom(0.1)"></el-button>
+                  <el-button round size="mini" type=""  icon="el-icon-zoom-out" @click="zoom(-0.1)"></el-button>
                   <el-button round size="mini" type="" icon="el-icon-refresh-right" @click="rotate(90)">旋转</el-button>
-                  <el-button round size="mini" type="" icon="el-icon-delete" @click="reset">重置</el-button>
+                  <el-button round size="mini" type="" icon="el-icon-refresh" @click="reset">重置</el-button>
                 </el-button-group>
               </div>
             </div>
@@ -116,7 +118,8 @@ export default {
     },
     _cropper () {
       let def = {
-        aspectRatio: 1
+        aspectRatio: 1,
+        ready: this.ready
       }
       if (this.cropper == null) {
         return def
@@ -172,6 +175,10 @@ export default {
     getCropper () {
       return this.$refs.cropper
     },
+    ready (event) {
+      console.log('cropper ready:', event)
+      // this.zoom(-0.3)
+    },
     preventDefault (e) {
       e.preventDefault()
       return false
@@ -210,6 +217,9 @@ export default {
       if (this.checkFile(file)) {
         this.file = file
         this.setImage(e)
+        // setTimeout(() => {
+        //   this.zoom(-0.3)
+        // }, 1)
       }
     },
     // 点击关闭弹窗

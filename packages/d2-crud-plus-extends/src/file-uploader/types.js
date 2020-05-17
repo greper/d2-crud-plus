@@ -24,7 +24,7 @@ export default {
     component: { name: 'd2p-files-format' }
   },
   'avatar-cropper': {
-    form: { component: { name: 'd2p-cropper-uploader', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } },
+    form: { component: { name: 'd2p-cropper-uploader', props: { accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif', cropper: { viewMode: 1 } } } },
     component: { name: 'd2p-images-format' },
     align: 'center'
   }

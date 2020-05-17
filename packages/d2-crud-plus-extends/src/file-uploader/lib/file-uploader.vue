@@ -5,6 +5,7 @@
              :http-request="httpRequest"
              :on-exceed="onExceed"
              :on-remove="handleUploadFileRemove"
+             :on-preview="handlePictureCardPreview"
              :on-success="handleUploadFileSuccess"
              ref="fileUploader"
              v-bind="_elProps"
@@ -16,6 +17,11 @@
       <i class="el-icon-plus avatar-uploader-icon" v-else></i>
     </template>
   </el-upload>
+    <el-dialog :visible.sync="dialogVisible" append-to-body >
+      <div style="text-align: center">
+        <img  style="max-width: 100%;" :src="dialogImageUrl" alt="">
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -76,7 +82,9 @@ export default {
   data () {
     return {
       fileList: [],
-      context: {}
+      context: {},
+      dialogImageUrl: '',
+      dialogVisible: false
     }
   },
   created () {
@@ -213,6 +221,10 @@ export default {
     handleUploadFileRemove (file, fileList) {
       this.fileList = fileList
       this.emitList(fileList)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
     },
     emitList (list) {
       if (this.returnType === 'url') {
@@ -373,6 +385,7 @@ export default {
       /*display: flex;*/
       /*justify-content: center;*/
       /*align-items: center;*/
+      text-align: center;
     }
     .image-uploader{
       /*display: flex;flex-wrap: wrap;*/

@@ -386,13 +386,20 @@ export default {
       /*justify-content: center;*/
       /*align-items: center;*/
       text-align: center;
+      line-height: 125px;
     }
     .image-uploader{
       /*display: flex;flex-wrap: wrap;*/
-    }
-    .image-uploader .el-upload-list--picture-card {
-      /*display: flex;*/
-      /*flex-wrap: wrap;*/
+      .el-upload-list--picture-card .el-upload-list__item-actions{
+        line-height: 100px;
+      }
+      .el-upload-list--picture-card {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+      }
+      .el-upload-list__item-status-label{
+        line-height: 1;
+      }
     }
 
     .el-upload--picture-card {

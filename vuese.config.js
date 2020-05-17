@@ -6,5 +6,6 @@ module.exports = {
     "packages/d2-crud-plus-extends/src/*/lib/*/*.vue",
 
   ],
+  genType:'markdown',
   outDir:"docspress/guide",
 }

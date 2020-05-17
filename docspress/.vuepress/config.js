@@ -133,14 +133,24 @@ function getGuideSidebar (groupA, groupB,groupC) {
     {
       title: 'd2p-extends文档',
       collapsable: false,
-      sidebarDepth: 3,
+      sidebarDepth: 0,
       children: extendsDocs
     },
     {
       title: '组件文档',
       collapsable: false,
-      sidebarDepth: 3,
+      sidebarDepth: 0,
       children: componentDocs
+    },
+    {
+      title: 'ChangeLog',
+      collapsable: false,
+      sidebarDepth: 0,
+      children: [
+        ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],
+        ['./changelogs/packages/d2-crud-plus-extends/CHANGELOG','d2-crud-plus-extends'],
+        ['./changelogs/packages/d2-crud-plus-example/CHANGELOG','d2-crud-plus-example'],
+      ]
     },
     {
       title: '其他帮助',
@@ -149,7 +159,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: [
         'contact'
       ]
-    }
+    },
   ]
 }
 

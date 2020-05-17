@@ -1,4 +1,4 @@
 # changelog
 
-d2-crud-plus changelog
+d2-crud-plus [changelog]()
 

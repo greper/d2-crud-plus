@@ -18,8 +18,9 @@
     "lerna:publish": "lerna publish --conventional-commits",
     "changelog": "lerna-changelog",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
-    "docs:dev": "vuese gen && vuepress dev docspress --temp .temp",
-    "docs:build": "vuese gen && vuepress build docspress"
+    "docs:dev": "npm run copylogs && vuese gen && vuepress dev docspress --temp .temp",
+    "docs:build": "npm run copylogs && vuese gen  && vuepress build docspress",
+    "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/"
   },
   "version": "1.1.0"
 }

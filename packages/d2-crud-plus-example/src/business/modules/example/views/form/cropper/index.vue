@@ -1,12 +1,7 @@
 <template>
   <d2-container>
     <template slot="header">图片裁剪上传
-      <example-helper title="图片裁剪上传组件使用" >
-          <div>
-            使用方式与文件上传组件一样， 只需将 column.type 配置为  avatar-cropper 即可
-          </div>
-        <d2-highlight :code="helper.crud" lang="javascript"/>
-      </example-helper>
+      <el-link style="float:right" type="primary" href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html#头像裁剪上传" target="_blank">帮助</el-link>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud

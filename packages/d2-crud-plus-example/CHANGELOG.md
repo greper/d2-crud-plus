@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.3](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.5.2...@d2-plus/d2-crud-plus-example@1.5.3) (2020-05-17)
+
+
+### Bug Fixes
+
+* 修复d2p-file-uploader会覆盖上传参数的问题 ([d09a934](https://github.com/greper/d2-crud-plus/commit/d09a93406f5900c9649bd79c626abe6f5af4eb52))
+
+
+
+
+
 ## [1.5.2](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.5.1...@d2-plus/d2-crud-plus-example@1.5.2) (2020-05-17)
 
 

@@ -5,8 +5,8 @@
 <!-- @vuese:d2p-quill:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|value|-|`String`|`false`|-|
-|uploader|form上传参数 type=[alioss/cos/qiniu/form]，action=上传链接，headers=请求headers[Object]，name=文件参数名|`Object`|`false`|{"type":"cos"}|
+|value|-|`String`|`false`|''|
+|uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|[object Object]|
 
 <!-- @vuese:d2p-quill:props:end -->
 

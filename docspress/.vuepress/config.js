@@ -113,7 +113,9 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: [
         'mixins',
         'options',
+        'component',
         'column-type',
+        'types',
         'extends',
         'slot',
         'dict'
@@ -126,15 +128,6 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: [
         'permission',
         'generate'
-      ]
-    },
-    {
-      title: '字段类型文档',
-      collapsable: false,
-      sidebarDepth: 3,
-      children: [
-        'types',
-        'types-code'
       ]
     },
     {

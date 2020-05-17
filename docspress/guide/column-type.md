@@ -4,7 +4,6 @@
 配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
 用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可   
 
-
 ## 配置生成过程
 
 #### 1.‘select’类型的默认配置
@@ -18,7 +17,8 @@
 }
 ```
 #### 2.用户的字段配置
-其中自定义设置为多选
+本示例中用户自定义设置select为多选
+
 ```javascript
 export const crudOptions = {
   columns: [ 
@@ -81,23 +81,6 @@ this.crud= {
   searchOptions:{columns:[...]}
 }
 ```
-
-
-## 目前支持的类型 
-
- * select：单选、多选、搜索选择   
- * date：单个日期、日期段
- * datetime：日期时间、日期时间段
- * time：时间选择器
- * phoneNumber：国际手机号输入框+校验
- * cascader: 级联输入框    
-  
- 以上仅列出部分类型   
-[更多类型](./types)  
-[更多示例](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area) 
-
-
-   
 ## 自定义字段类型
 其实就是事先自定义好column的配置，运行时根据type直接生成默认配置，减轻配置工作量   
 如果官方的字段类型不符合您的需求，您也可以配置相同的type覆盖官方配置，从而实现定制化

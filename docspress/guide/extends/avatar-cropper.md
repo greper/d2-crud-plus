@@ -1,8 +1,10 @@
 
 # 头像裁剪上传
-将图片根据比例裁剪后上传
+将图片根据比例裁剪后上传   
+[d2p-cropper-uploader组件详情](../components/d2p-cropper-uploader) 
 ## 准备
- 先配置好文件上传组件,[配置D2pFileUploader](./file-uploader) 
+本扩展依赖d2p-uploader文件上传库   
+请务必先安装配置好[d2p-uploader](./uploader.md)
 ## 使用
 配置column.type=avatar-cropper 即可   
 
@@ -35,7 +37,10 @@ export const crudOptions = {
               // 裁剪组件 cropperjs 参数配置
               //https://github.com/fengyuanchen/cropperjs
               aspectRatio: 1 / 1 //图片裁剪比例
-            } 
+            } ,
+            uploader:{
+                // 上传临时配置，参考[d2p-uploader](./uploader.md)
+            }
             // 更多请参考d2p-cropper-uploader组件参数配置
           }
         }

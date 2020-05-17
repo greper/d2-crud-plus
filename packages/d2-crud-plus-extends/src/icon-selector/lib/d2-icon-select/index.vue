@@ -69,7 +69,7 @@
 import icon from './data'
 // d2-icon-select
 export default {
-  name: 'd2-icon-select',
+  name: 'd2p-icon-select',
   props: {
     // 值
     value: {

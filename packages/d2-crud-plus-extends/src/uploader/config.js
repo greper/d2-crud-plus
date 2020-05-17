@@ -4,6 +4,9 @@ export default {
     domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
     bucket: 'd2p-demo-1251260344',
     region: '',
+    custom: {
+      // buildKey，获取授权等接口中将会传入
+    },
     secretId: '', //
     secretKey: '', // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
     getAuthorization: null // 不传secretKey代表使用临时签名模式时，此参数必传（安全，生产环境推荐）
@@ -20,6 +23,7 @@ export default {
       })
     },
     custom: {
+      // buildKey，获取授权等接口中将会传入
       keepName: false // 阿里云的精简oss有点问题，中文文件名的文件无法上传
     }
   },
@@ -30,7 +34,10 @@ export default {
         reject(new Error('请实现config.qiniu.getToken方法，返回Promise获取七牛的授权token{token:xxx,expires:xxx}'))
       })
     },
-    domain: 'http://pzrsldiu3.bkt.clouddn.com'
+    domain: 'http://pzrsldiu3.bkt.clouddn.com',
+    custom: {
+      // buildKey，获取授权等接口中将会传入
+    }
   },
   form: {
     successHandle (res) { // 需要将res.url 设置为url
@@ -39,7 +46,9 @@ export default {
     action: undefined,
     name: 'file',
     headers: {},
-    data: {}
+    data: {},
+    custom: { // buildKey，获取授权等接口中将会传入
+    }
   },
   buildKey (fileName, custom = {}) { // 文件key的构建规则
     const date = new Date()
@@ -47,7 +56,7 @@ export default {
     if (custom != null && custom.fileType != null) {
       fileType = custom.fileType
     }
-    let keepName = true
+    let keepName = false
     if (custom.keepName != null) {
       keepName = custom.keepName
     }

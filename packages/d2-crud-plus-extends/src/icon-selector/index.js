@@ -1,15 +1,9 @@
 import { d2CrudPlus } from 'd2-crud-plus'
-const types = {
-  'icon-selector': {
-    form: { component: { name: 'd2-icon-select' } },
-    component: { name: 'd2p-icon' },
-    align: 'center'
-  }
-}
+import types from './types'
 
 function install (Vue, options) {
-  Vue.component('d2-icon-select', () => import('./d2-icon-select'))
-  Vue.component('d2p-icon', () => import('./d2p-icon'))
+  Vue.component('d2p-icon-select', () => import('./lib/d2-icon-select'))
+  Vue.component('d2p-icon', () => import('./lib/d2p-icon'))
   if (d2CrudPlus != null) {
     d2CrudPlus.util.columnResolve.addTypes(types)
     console.log('icon-selector installed', d2CrudPlus.util.columnResolve.getTypes())

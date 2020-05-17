@@ -68,7 +68,7 @@ export default {
     elProps: {
       type: Object
     },
-    // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/components/d2p-uploader.html)
+    // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object
     }
@@ -292,7 +292,6 @@ export default {
         }
 
         fileReader.onerror = function (error) {
-          console.warn('oops, something went wrong.')
           // eslint-disable-next-line prefer-promise-reject-errors
           reject('md5 computer error', error)
         }

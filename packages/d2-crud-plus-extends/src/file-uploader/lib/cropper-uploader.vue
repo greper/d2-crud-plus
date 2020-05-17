@@ -13,7 +13,7 @@
           <i class="el-icon-upload-success el-icon-check"></i>
         </div>
       </div>
-      <div v-if="limit>list.length" class="image-item image-plus" @click="addNewImage">
+      <div v-if="limit <=0 || limit>list.length" class="image-item image-plus" @click="addNewImage">
         <i class="el-icon-plus cropper-uploader-icon"></i>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
       type: Number,
       default: 5
     },
-    // 图片数量限制
+    // 图片数量限制,0为不限制
     limit: {
       type: Number,
       default: 1
@@ -85,7 +85,7 @@ export default {
     cropper: {
       type: Object
     },
-    // 上传参数
+    // 上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object
     }

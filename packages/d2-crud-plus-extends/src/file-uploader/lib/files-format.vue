@@ -14,7 +14,7 @@
 <script>
 // 文件格式化展示组件
 export default {
-  name: 'files-format',
+  name: 'd2p-files-format',
   props: {
     // 值
     value: {

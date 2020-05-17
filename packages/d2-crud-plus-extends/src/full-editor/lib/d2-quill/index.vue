@@ -16,7 +16,7 @@ export default {
       required: false,
       default: ''
     },
-    // 上传config参数 type=[alioss/cos/qiniu/form]，action=上传链接，headers=请求headers[Object]，name=文件参数名,会临时覆盖默认配置
+    // 上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object,
       default: () => {

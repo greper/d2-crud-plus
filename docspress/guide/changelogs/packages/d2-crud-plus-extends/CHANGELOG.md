@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.3...d2p-extends@1.4.4) (2020-05-17)
+
+
+### Bug Fixes
+
+* 优化图片上传时的闪烁 ([640907b](https://github.com/greper/d2-crud-plus/commit/640907b65719a338323968c94399c0f9a1e3c6fd))
+* 图片上传增加预览显示 ([ff2a021](https://github.com/greper/d2-crud-plus/commit/ff2a02105d7aa7da86fbe68c15528fca7eee1057))
+* 图片上传非方形图片垂直居中显示 ([bad13a1](https://github.com/greper/d2-crud-plus/commit/bad13a17a135853f7c30992bfd83ce43e375400e))
+* 图片裁剪增加放大缩小 ([be96a7b](https://github.com/greper/d2-crud-plus/commit/be96a7b445a902066f45bdb9afd9c2124f0cceac))
+* 图片裁剪增加放大缩小 ([75eb8e5](https://github.com/greper/d2-crud-plus/commit/75eb8e5b51c9e492c11e956bf2ea79d807280ef8))
+
+
+
+
+
 ## [1.4.3](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.2...d2p-extends@1.4.3) (2020-05-17)
 
 

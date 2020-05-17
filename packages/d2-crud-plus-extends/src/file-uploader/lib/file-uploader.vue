@@ -82,15 +82,37 @@ export default {
   created () {
     this.initValue()
   },
-  // watch: {
-  //   value (val) {
-  //     if (val instanceof Array && val.length > 0 && val[0]._uid != null) {
-  //       return
-  //     }
-  //     this.initValue()
-  //     this.$emit('change', this.fileList)
-  //   }
-  // },
+  watch: {
+    value (val) {
+      if (val instanceof Array && val.length > 0 && val[0]._uid != null) {
+        return
+      }
+      console.log('value cchanged:', val, this.fileList)
+      let arr = []
+      if (typeof val === 'string') {
+        arr.push(val)
+      } else {
+        arr = val
+      }
+      let changed = false
+      if (this.fileList.length === arr.length) {
+        for (let i = 0; i < arr.length; i++) {
+          let cur = this.fileList[i]
+          if (arr[i] !== cur.url) {
+            changed = true
+            break
+          }
+        }
+      } else {
+        changed = true
+      }
+      if (changed) {
+        this.initValue()
+      }
+
+      // this.$emit('change', this.fileList)
+    }
+  },
   computed: {
     _elProps () {
       let defaultElProps = {
@@ -170,6 +192,7 @@ export default {
     handleUploadFileSuccess (res, file, fileList) {
       res.size = res.size != null ? res.size : file.size
       res.name = res.name != null ? res.name : file.name
+      file.url = res.url
       this.$emit('success', res, file)
       this.resetFileList(fileList)
       let list = []
@@ -192,6 +215,7 @@ export default {
       }
     },
     handleUploadFileRemove (file, fileList) {
+      this.fileList = fileList
       this.emitList(fileList)
     },
     emitList (list) {

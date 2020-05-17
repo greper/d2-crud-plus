@@ -17,7 +17,6 @@ function computeMaxHeight ({ target, targetSubClass, footer, adjust = 35 }) {
   let clientHeight = document.documentElement.clientHeight
 
   let maxHeight = clientHeight - targetTop - footerHeight - adjust
-  console.log('max height:', maxHeight, clientHeight, targetTop, footerHeight, adjust)
   return maxHeight // 表格body最大高度= 可视窗口高度 - 表头body x坐标 - 表格底部所有组件高度（翻页组件）- 调整高度
 }
 function findSubDom (target, className) {

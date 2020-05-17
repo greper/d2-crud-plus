@@ -3,7 +3,6 @@ import config from './config'
 import lodash from 'lodash'
 function install (Vue, options) {
   lodash.merge(config, options)
-
   const buildKey = config.buildKey
   options = {
     alioss: config.alioss,
@@ -30,6 +29,7 @@ export default {
     if (uploader == null) {
       uploader = config.defaultType
     }
+    console.log('getUploader:', uploader)
     return uploader
   },
   getConfig () {

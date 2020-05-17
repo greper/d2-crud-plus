@@ -6,7 +6,6 @@ function install (Vue, options) {
   Vue.component('d2p-icon', () => import('./lib/d2p-icon'))
   if (d2CrudPlus != null) {
     d2CrudPlus.util.columnResolve.addTypes(types)
-    console.log('icon-selector installed', d2CrudPlus.util.columnResolve.getTypes())
   }
 }
 

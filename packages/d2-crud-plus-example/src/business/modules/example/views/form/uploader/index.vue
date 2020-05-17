@@ -75,7 +75,6 @@ export default {
   computed: {
     helperHeight () {
       let height = document.documentElement.clientHeight - 100
-      console.log('height:', height)
       return height + 'px'
     }
   },

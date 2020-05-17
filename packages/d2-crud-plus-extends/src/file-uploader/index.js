@@ -12,7 +12,10 @@ function install (Vue, options) {
   Vue.component('d2p-cropper', () => import('./lib/cropper'))
   Vue.component('d2p-files-format', D2pFilesFormat)
 
-  Vue.use(D2pUploader, options)
+  if (options != null) {
+    Vue.use(D2pUploader, options)
+  }
+
   // 配置type
   if (d2CrudPlus != null) {
     // 设置默认uploader

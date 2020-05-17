@@ -84,10 +84,6 @@ export default {
   },
   watch: {
     value (val) {
-      if (val instanceof Array && val.length > 0 && val[0]._uid != null) {
-        return
-      }
-      console.log('value cchanged:', val, this.fileList)
       let arr = []
       if (typeof val === 'string') {
         arr.push(val)

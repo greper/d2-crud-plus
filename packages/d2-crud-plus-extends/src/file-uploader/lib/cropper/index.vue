@@ -131,7 +131,7 @@ export default {
     _cropperHeight () {
       let height = this.cropperHeight
       if (height == null) {
-        height = document.documentElement.clientHeight * 0.4
+        height = document.documentElement.clientHeight * 0.55
         if (height < 270) {
           height = 270
         }

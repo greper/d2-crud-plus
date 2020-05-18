@@ -59,6 +59,7 @@ export default {
       handler (val) {
         // 确认是新的值
         if (val !== this.currentValue) {
+          console.log('text changed,newVal:', val)
           this.currentValue = val
           // 尝试更新
           if (this.Quill) {
@@ -84,7 +85,11 @@ export default {
       })
 
       // 默认值
+      this.Quill.enable(false)
       this.Quill.pasteHTML(this.currentValue)
+      this.$nextTick(() => {
+        this.Quill.enable(true)
+      })
       // 绑定事件
       this.Quill.on('text-change', (delta, oldDelta, source) => {
         const html = this.$refs.editor.children[0].innerHTML

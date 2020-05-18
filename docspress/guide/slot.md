@@ -7,7 +7,7 @@
 * 想要使用filter
 * 合并多个字段到一个格子里面
 
-## from表单slot自定义
+## form表单slot自定义
 当现有的表单组件均无法满足你的需求时，你可以自己写form表单
 
 1.配置`form.slot=true`

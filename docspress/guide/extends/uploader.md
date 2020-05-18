@@ -73,7 +73,7 @@ Vue.use(D2pUploader, {
     },
     domain: 'http://pzrsldiu3.bkt.clouddn.com'
   },
-  from: { //本地服务端上传
+  form: { //本地服务端上传
     action: '', //上传url
     name:'file', //上传时文件的参数名
     data:{}, //上传附加参数

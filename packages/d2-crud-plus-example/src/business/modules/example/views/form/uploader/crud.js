@@ -125,10 +125,8 @@ export const crudOptions = {
       form: {
         component: {
           props: {
-            type: 'form',
             uploader: {
-              action: process.env.VUE_APP_API + 'upload/form/upload',
-              name: 'file',
+              type: 'form',
               custom: {
                 keepName: false
               }

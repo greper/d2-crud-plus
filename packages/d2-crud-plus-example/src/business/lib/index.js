@@ -80,6 +80,10 @@ Vue.use(D2pUploader, {
       })
     },
     domain: 'http://d2p.file.veryreader.com'
+  },
+  form: {
+    action: process.env.VUE_APP_API + 'upload/form/upload',
+    name: 'file'
   }
 })
 

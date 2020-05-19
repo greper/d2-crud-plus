@@ -1,6 +1,6 @@
 <template>
   <el-radio-group v-model="selectValue" v-bind="_elProps"  @change="doChange">
-    <el-radio v-for="option in options"
+    <el-radio v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]">{{option[dict.label]}}</el-radio>
   </el-radio-group>
@@ -24,11 +24,15 @@ export default {
     elProps: {
       type: Object,
       require: false
+    },
+    options: {
+      type: Object,
+      require: false
     }
   },
   data () {
     return {
-      options: [],
+      dictOptions: [],
       selectValue: ''
     }
   },
@@ -37,11 +41,17 @@ export default {
       return {
         ...this.elProps
       }
+    },
+    _options () {
+      if (this.options != null) {
+        return this.options
+      }
+      return this.dictOptions
     }
   },
   mounted () {
     dict.get(this.dict).then((data) => {
-      this.$set(this, 'options', data)
+      this.$set(this, 'dictOptions', data)
     })
     this.setValue(this.value)
   },
@@ -51,6 +61,9 @@ export default {
     }
   },
   methods: {
+    setOptions (options) {
+      this.$set(this, 'dictOptions', options)
+    },
     setValue (newVal) {
       if (newVal === this.selectValue) {
         return

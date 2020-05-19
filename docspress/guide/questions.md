@@ -55,6 +55,8 @@ export default {
   }
 }
 ```
+示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select
+
 
 ## 4. 怎么获取某个字段的数据字典的选项列表？
 ```js
@@ -65,4 +67,4 @@ let dictData = this.crud.columnsMap[columnKey].dict.data;
 let value = '某个字典项的value'
 let label = this.crud.columnsMap[columnKey].dict.dataMap[value]
 ```
-
+示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select

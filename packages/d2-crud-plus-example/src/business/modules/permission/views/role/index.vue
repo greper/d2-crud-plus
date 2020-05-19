@@ -108,7 +108,7 @@ export default {
     // 打开页面不加载，等平台列表加载完了再刷新列表
     },
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)

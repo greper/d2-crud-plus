@@ -43,7 +43,7 @@ export default {
   mixins: [d2CrudPlus.crud],
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)

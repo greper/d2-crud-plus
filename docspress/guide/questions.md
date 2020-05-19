@@ -27,4 +27,42 @@ column:[
 ]
 ```
 
+## 3. 如何在crud.js中拿到this？
+修改两处地方即可
+```js
+// crud.js
+export const crudOptions = (vm) => { //这里改成一个Function
+  return {
+    columns: [
+      {
+        key:'xxx',
+        valueBuilder(row, col){
+          // 比如这里就可以用vm.$set等方法啦
+        } 
+      } 
+    ]
+  }
+}
+```
+```js
+// index.vue
+export default {
+  ...
+  methods: {
+    getCrudOptions () {
+      return crudOptions(this) //这里调用这个Function，把this传进去
+    }
+  }
+}
+```
+
+## 4. 怎么获取某个字段的数据字典的选项列表？
+```js
+let columnKey = '你的字段key'
+let dictData = this.crud.columnsMap[columnKey].dict.data;
+
+//通过字典value获取label
+let value = '某个字典项的value'
+let label = this.crud.columnsMap[columnKey].dict.dataMap[value]
+```
 

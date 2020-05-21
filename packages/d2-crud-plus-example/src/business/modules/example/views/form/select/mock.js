@@ -9,7 +9,8 @@ const list = [
     status: '0',
     mselect: 'sz',
     cascader: ['zhinan', 'shejiyuanze', 'yizhi'],
-    status3: '0'
+    status3: '0',
+    checkedRadio: undefined
   },
   {
     status: '1',

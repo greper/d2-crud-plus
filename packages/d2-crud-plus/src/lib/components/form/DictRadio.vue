@@ -16,7 +16,13 @@ export default {
     // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default () {
+        return {
+          label: 'label',
+          value: 'value'
+        }
+      }
     },
     // 值
     value: { require: false },
@@ -25,8 +31,9 @@ export default {
       type: Object,
       require: false
     },
+    // 选项列表，优先级比dict高
     options: {
-      type: Object,
+      type: Array,
       require: false
     }
   },
@@ -46,7 +53,10 @@ export default {
       if (this.options != null) {
         return this.options
       }
-      return this.dictOptions
+      if (this.dictOptions != null) {
+        return this.dictOptions
+      }
+      return []
     }
   },
   mounted () {

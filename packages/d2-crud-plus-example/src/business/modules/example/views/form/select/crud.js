@@ -69,7 +69,8 @@ export const crudOptions = (vm) => {
         type: 'radio',
         dict: {
           url: '/api/dicts/OpenStatusEnum'
-        }
+        },
+        form: { component: { span: 24 } }
       },
       {
         title: 'checkbox',
@@ -90,7 +91,7 @@ export const crudOptions = (vm) => {
             // form.checkedRadio = '1'
             // form.status = '2'
           },
-          helper: '此处选中的项目，是下方【选中联动】radio的选项'
+          helper: '此处选中的项目，是右边【选中联动】radio的选项'
         }
       },
       {

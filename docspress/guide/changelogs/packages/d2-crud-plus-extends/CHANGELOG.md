@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.4...d2p-extends@1.4.5) (2020-05-21)
+
+
+### Bug Fixes
+
+* 修复d2p-quill打开对话框就获得focus导致对话框滚动条下拉的问题 ([00c9476](https://github.com/greper/d2-crud-plus/commit/00c94766eb17689e0bd674a6092872711f385ae5))
+
+
+
+
+
 ## [1.4.4](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.3...d2p-extends@1.4.4) (2020-05-17)
 
 

@@ -13,6 +13,7 @@
 |clearable|等效于 elProps.clearable|—|`false`|false|
 |multiple|等效于 elProps.multiple|—|`false`|false|
 |elProps|el-select的配置，[el-select](https://element.eleme.cn/#/zh-CN/component/select#select-attributes)|`Object`|`false`|-|
+|options|选项列表，优先级比dict高|`Array`|`false`|-|
 
 <!-- @vuese:dict-select:props:end -->
 

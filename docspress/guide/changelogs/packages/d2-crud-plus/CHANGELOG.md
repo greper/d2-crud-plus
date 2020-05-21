@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.5.2...d2-crud-plus@1.6.0) (2020-05-21)
+
+
+### Bug Fixes
+
+* 修复dict有时候获取不到data list的bug ([2a68822](https://github.com/greper/d2-crud-plus/commit/2a68822d74e6b805808fd652dfe58840caa43f5c))
+
+
+### Features
+
+* checkbox联动radio修改radio的选项功能示例，d2-crud的表单组件增加ref ([66d26bb](https://github.com/greper/d2-crud-plus/commit/66d26bb039cb0848936e41019883ec9a1ec1ce7d))
+
+
+
+
+
 ## [1.5.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.5.1...d2-crud-plus@1.5.2) (2020-05-17)
 
 

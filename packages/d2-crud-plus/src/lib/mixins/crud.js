@@ -125,10 +125,10 @@ export default {
         item._handle(item)
       }
       if (item.dict != null) {
-        if (item.form != null && item.form.component != null && item.form.component.props != null) {
+        if (item.form != null && item.form.component != null && item.form.component.props != null && item.form.component.props.dict == null) {
           item.form.component.props.dict = item.dict
         }
-        if (item.component != null && item.component.props != null) {
+        if (item.component != null && item.component.props != null && item.component.props.dict == null) {
           item.component.props.dict = item.dict
         }
       }

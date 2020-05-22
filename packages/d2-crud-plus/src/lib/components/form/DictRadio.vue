@@ -1,6 +1,6 @@
 <template>
   <el-radio-group v-model="selectValue" v-bind="_elProps"  @change="doChange">
-    <el-radio v-for="option in options"
+    <el-radio v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]">{{option[dict.label]}}</el-radio>
   </el-radio-group>
@@ -16,7 +16,13 @@ export default {
     // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default () {
+        return {
+          label: 'label',
+          value: 'value'
+        }
+      }
     },
     // 值
     value: { require: false },
@@ -24,11 +30,16 @@ export default {
     elProps: {
       type: Object,
       require: false
+    },
+    // 选项列表，优先级比dict高
+    options: {
+      type: Array,
+      require: false
     }
   },
   data () {
     return {
-      options: [],
+      dictOptions: [],
       selectValue: ''
     }
   },
@@ -37,11 +48,20 @@ export default {
       return {
         ...this.elProps
       }
+    },
+    _options () {
+      if (this.options != null) {
+        return this.options
+      }
+      if (this.dictOptions != null) {
+        return this.dictOptions
+      }
+      return []
     }
   },
   mounted () {
     dict.get(this.dict).then((data) => {
-      this.$set(this, 'options', data)
+      this.$set(this, 'dictOptions', data)
     })
     this.setValue(this.value)
   },
@@ -51,6 +71,9 @@ export default {
     }
   },
   methods: {
+    setOptions (options) {
+      this.$set(this, 'dictOptions', options)
+    },
     setValue (newVal) {
       if (newVal === this.selectValue) {
         return

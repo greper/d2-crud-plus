@@ -6,7 +6,7 @@
         @change="doChange"
     >
       <el-option
-          v-for="option in options"
+          v-for="option in _options"
           :key="option[dict.value]"
           :value="option[dict.value]"
           :label="option[dict.label]"
@@ -45,11 +45,16 @@ export default {
     elProps: {
       type: Object,
       require: false
+    },
+    // 选项列表，优先级比dict高
+    options: {
+      type: Array,
+      require: false
     }
   },
   data () {
     return {
-      options: [],
+      dictOptions: [],
       selectValue: ''
     }
   },
@@ -62,11 +67,20 @@ export default {
         multiple: this.multiple,
         ...this.elProps
       }
+    },
+    _options () {
+      if (this.options != null) {
+        return this.options
+      }
+      if (this.dictOptions != null) {
+        return this.dictOptions
+      }
+      return []
     }
   },
   mounted () {
     dict.get(this.dict).then((data) => {
-      this.$set(this, 'options', data)
+      this.$set(this, 'dictOptions', data)
     })
     this.setValue(this.value)
   },

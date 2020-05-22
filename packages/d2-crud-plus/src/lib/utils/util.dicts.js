@@ -19,6 +19,7 @@ function get (dict) {
 
   if (typeof (dict) === 'string') {
     url = dict
+    dict = { url }
   } else {
     this.mergeDefault(dict)
     url = dict.url
@@ -73,12 +74,14 @@ function get (dict) {
     // 正在加载中，注册callback，等加载完了之后，再统一触发，就只需要向服务器请求一次字典
     return new Promise((resolve) => {
       let callback = (data) => {
+        dict.data = data
         resolve(data)
       }
       item.callbacks.push(callback)
     })
   } else {
     //  从缓存拿
+    dict.data = item.data
     return new Promise((resolve) => {
       resolve(item.data)
     })

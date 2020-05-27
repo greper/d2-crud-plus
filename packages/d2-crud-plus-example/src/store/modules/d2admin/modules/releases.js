@@ -8,10 +8,10 @@ export default {
      * @param {Object} state state
      */
     versionShow () {
-      util.log.capsule('D2Admin', `v${process.env.VUE_APP_VERSION}`)
-      console.log('D2 Admin  https://github.com/d2-projects/d2-admin')
-      console.log('D2 Crud   https://github.com/d2-projects/d2-crud')
-      console.log('Document  https://d2.pub/zh/doc/d2-admin')
+      util.log.capsule('d2-crud-plus', `v${process.env.VUE_APP_VERSION}`)
+      console.log('演示地址  http://qiniu.veryreader.com/D2CrudPlusExample/')
+      console.log('d2-crud-plus   https://github.com/greper/d2-crud-plus')
+      console.log('文档  http://greper.gitee.io/d2-crud-plus/')
       console.log('请不要吝啬您的 star，谢谢 ~')
     }
   }

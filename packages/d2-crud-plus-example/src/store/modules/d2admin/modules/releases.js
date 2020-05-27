@@ -10,7 +10,7 @@ export default {
     versionShow () {
       util.log.capsule('d2-crud-plus', `v${process.env.VUE_APP_VERSION}`)
       console.log('演示地址  http://qiniu.veryreader.com/D2CrudPlusExample/')
-      console.log('d2-crud-plus   https://github.com/greper/d2-crud-plus')
+      console.log('Git   https://github.com/greper/d2-crud-plus')
       console.log('文档  http://greper.gitee.io/d2-crud-plus/')
       console.log('请不要吝啬您的 star，谢谢 ~')
     }

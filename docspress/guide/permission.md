@@ -13,10 +13,10 @@ d2-crud-plus-example中提供权限管理模块，位于`/src/business/modules/p
 git clone https://github.com/greper/d2-crud-plus-server.git
 # 导入idea或eclipse
 ```
-#### 1.2导入sql
+#### 1.2创建数据库
 ```
 创建数据库`d2p_pm`
-将`./sql/d2p_pm.sql` 导入数据库
+server启动后会自动创建表
 ```
 #### 1.3修改数据库连接配置
 
@@ -66,5 +66,36 @@ export default {
             console.log("您拥有添加权限")
         }
     }
+}
+```
+
+## 3 权限模块如何接入到你的d2-admin项目中
+ 1. 复制example中 `src/business/modules/permission` 到你的d2-admin项目中
+ 2. 复制`src/router/router.hook.js` 
+ 3. 在`src/router/index.js` 的`beforeEach` 中加入以下代码
+```js {12-17}
+router.beforeEach(async (to, from, next) => {
+  // 确认已经加载多标签页数据 https://github.com/d2-projects/d2-admin/issues/201
+  await store.dispatch('d2admin/page/isLoaded')
+  // 确认已经加载组件尺寸设置 https://github.com/d2-projects/d2-admin/issues/198
+  await store.dispatch('d2admin/size/isLoaded')
+ // 进度条
+  NProgress.start()
+  // 关闭搜索面板
+  store.commit('d2admin/search/set', false)
+
+  // 添加根据菜单获取权限
+  if (RouterHook.beforeEach) {
+    const hookRet = await RouterHook.beforeEach(to, from, next)
+    if (hookRet) {
+      return
+    }
+  }
+  // add end
+
+  // 验证当前路由所有的匹配中是否需要有登录验证的
+  if (to.matched.some(r => r.meta.auth)) {
+    ...
+  }
 }
 ```

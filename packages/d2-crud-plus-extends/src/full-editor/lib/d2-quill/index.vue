@@ -8,6 +8,7 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
+// quill富文本编辑器
 export default {
   name: 'd2p-quill',
   props: {

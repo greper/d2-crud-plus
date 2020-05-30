@@ -37,7 +37,7 @@ export default {
     // 是否多选
     multiple: { type: Boolean, default: false },
     // 数据字典<br/>
-    // {url:'xxx',data:[],value:'',label:'',children:''}
+    // 示例：{url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
       require: false

@@ -44,14 +44,13 @@ export default {
       type: String,
       default: 'cos' // 上传类型：form cos qiniu  alioss
     },
-    // 值 <br/>
-    // 'url'<br/>
-    // 或 ['url1','url2']<br/>
+    // 值：url<br/>
+    // 或 [url1,url2]<br/>
     // 或 {url:'url',md5:'',size:number}<br/>
     // 或 [{url:'url',md5:'',size:number}]<br/>
     // <br/>
     // limit=1 时 input事件返回 {url:'url',md5:'',size:number}<br/>
-    // limit>1 时 input事件返回 [{url:'url',md5:'',size:number}]<br/>
+    // limit>1 时 input事件返回 数组<br/>
     value: {
       type: [String, Array, Object]
     },

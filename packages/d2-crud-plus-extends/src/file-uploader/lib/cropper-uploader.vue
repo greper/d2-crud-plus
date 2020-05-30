@@ -35,7 +35,11 @@
 <script>
 import D2pCropper from './cropper'
 import D2pUploader from '../../uploader'
-// 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
+
+/**
+ * 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
+ */
+
 export default {
   name: 'd2p-cropper-uploader',
   components: {
@@ -46,10 +50,10 @@ export default {
     value: {
       type: [String, Array]
     },
-    // 上传后端类型，[cos,qiniu,alioss]
+    // 上传后端类型，[form, cos, qiniu , alioss]
     type: {
       type: String,
-      default: 'cos' // 上传类型：form, cos, qiniu , alioss
+      default: 'cos'
     },
     // 上传提示
     uploadTip: {
@@ -196,9 +200,7 @@ export default {
       if (this.limit === 1) {
         ret = list[0]
       }
-      console.log('change', ret)
       this.$emit('change', ret)
-      console.log('input', ret)
       this.$emit('input', ret)
     }
 

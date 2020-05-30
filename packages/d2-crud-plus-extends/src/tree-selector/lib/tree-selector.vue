@@ -56,8 +56,8 @@ export default {
     value: {
       type: [Number, String, Array, Object]
     },
-    // 过滤
-    filter: { //  value中的nodes过滤方法 参数为nodes
+    // 过滤，value中的nodes过滤方法 参数为nodes
+    filter: {
       type: Function,
       require: false
     },

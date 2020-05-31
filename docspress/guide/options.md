@@ -52,10 +52,10 @@ export const crudOptions = {
         valueChange(key ,value ,form){
             // form表单数据change事件，表单某项有改动将触发此事件
         },
-        addTemplateHandle(form){
+        addTemplateHandle(formTemplate){
             //对添加的form配置做单独处理
         },  
-        editTemplateHandle(form){
+        editTemplateHandle(formTemplate){
             //对编辑的form配置做单独处理
             //比如，某些字段在添加时需要输入，而编辑时要禁用控件，可以做如下处理
             //form.component.disabled=true // element原生控件

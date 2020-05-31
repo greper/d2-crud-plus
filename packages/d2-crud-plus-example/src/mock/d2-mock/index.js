@@ -6,7 +6,7 @@ import withCredentials from './patch/withCredentials'
 withCredentials(Mock)
 
 /* Mock 默认配置 */
-Mock.setup({ timeout: '200-300' })
+Mock.setup({ timeout: '200-500' })
 
 /* 扩展 [生成器] */
 const Generator = (prop, template) => {

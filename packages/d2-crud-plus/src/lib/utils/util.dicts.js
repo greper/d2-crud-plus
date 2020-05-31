@@ -10,24 +10,19 @@ function get (dict) {
     // 如果没有配置字典，直接返回空数组
     console.error('没有配置数据字典，返回空数组')
     return new Promise((resolve) => {
+      onReady(dict, { data: [], dataMap: {} })
       resolve([])
     })
   }
 
-  let url = null
-  let dictData = null
-
-  if (typeof (dict) === 'string') {
-    url = dict
-    dict = { url }
-  } else {
-    this.mergeDefault(dict)
-    url = dict.url
-    dictData = dict.data
-  }
+  let url = dict.url
+  let dictData = dict.data
+  this.mergeDefault(dict)
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
     return new Promise((resolve) => {
+      let dataMap = getDataMap(dict, dictData)
+      onReady(dict, { dictData, dataMap })
       resolve(dictData)
     })
   }
@@ -53,14 +48,18 @@ function get (dict) {
     item.error = false
     // 远程加载
     let promise = null
-    if (url != null && typeof url !== 'string') {
-      promise = url(dict)
-    } else {
+    if (url == null || typeof url === 'string') {
       let getRemoteDictFunc = this.getRemoteDictFunc
       if (dict.getData != null) {
         getRemoteDictFunc = dict.getData
       }
       promise = getRemoteDictFunc(url, dict)
+    } else {
+      if (url instanceof Promise) {
+        promise = url
+      } else {
+        promise = url(dict)
+      }
     }
 
     return promise.then((ret) => {
@@ -70,33 +69,60 @@ function get (dict) {
         data = ret
       }
       item.data = data
-      dict.data = data
+      item.dataMap = getDataMap(dict, data)
+      onReady(dict, item)
       // 之前注册过的callback全部触发
       for (let callback of item.callbacks) {
-        callback(item.data)
+        callback(item)
       }
       item.loading = false
       item.callbacks = []
       return data
-    }).catch(() => {
+    }).catch((err) => {
+      console.log(err)
       item.loading = false
       item.error = true
     })
   } else if (item.loading === true) {
     // 正在加载中，注册callback，等加载完了之后，再统一触发，就只需要向服务器请求一次字典
     return new Promise((resolve) => {
-      let callback = (data) => {
-        dict.data = data
-        resolve(data)
+      let callback = (item) => {
+        onReady(dict, item)
+        resolve(item.data)
       }
       item.callbacks.push(callback)
     })
   } else {
     //  从缓存拿
-    dict.data = item.data
+    onReady(dict, item)
     return new Promise((resolve) => {
       resolve(item.data)
     })
+  }
+}
+function putAll (dict, map, list) {
+  let valueName = dict.value
+  let childrenName = dict.children
+  for (let item of list) {
+    map[item[valueName]] = item
+    if (dict.isTree && item[childrenName] != null) {
+      putAll(dict, map, item[childrenName])
+    }
+  }
+}
+function getDataMap (dict, data) {
+  let dataMap = {}
+  putAll(dict, dataMap, data)
+  return dataMap
+}
+
+function onReady (dict, item) {
+  dict.data = item.data
+  dict.dataMap = item.dataMap
+  if (dict.onReady != null) {
+    setTimeout(() => {
+      dict.onReady(item.data, dict)
+    }, 1)
   }
 }
 
@@ -118,13 +144,17 @@ const defaultDict = {
   color: 'color',
   children: 'children',
   isTree: false,
-  data: undefined
+  data: undefined,
+  dataMap: undefined
 }
 function mergeDefault (dict) {
   if (dict == null) {
     throw new Error('dict 不能为空')
   }
   for (let key in defaultDict) {
+    if (key === 'data') {
+      continue
+    }
     if (dict[key] == null) {
       dict[key] = defaultDict[key]
     }

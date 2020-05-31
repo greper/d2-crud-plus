@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group v-model="selectValue" v-bind="_elProps"  @change="doChange">
+  <el-radio-group :value="value" v-bind="_elProps" @input="doInput" @change="doChange">
     <el-radio v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]">{{option[dict.label]}}</el-radio>
@@ -17,11 +17,8 @@ export default {
     dict: {
       type: Object,
       require: false,
-      default () {
-        return {
-          label: 'label',
-          value: 'value'
-        }
+      default: () => {
+        return { data: undefined }
       }
     },
     // 值
@@ -35,11 +32,15 @@ export default {
     options: {
       type: Array,
       require: false
+    },
+    onReady: {
+      type: Function,
+      require: false
     }
   },
   data () {
     return {
-      dictOptions: [],
+      dictOptions: undefined,
       selectValue: ''
     }
   },
@@ -59,34 +60,22 @@ export default {
       return []
     }
   },
+  created () {
+  },
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'dictOptions', data)
+      if (this.onReady != null) {
+        this.onReady(this)
+      }
     })
-    this.setValue(this.value)
-  },
-  watch: {
-    value: function (newVal, oldVal) {
-      this.setValue(newVal)
-    }
   },
   methods: {
-    setOptions (options) {
-      this.$set(this, 'dictOptions', options)
-    },
-    setValue (newVal) {
-      this.$emit('change', newVal)
-      if (newVal === this.selectValue) {
-        return
-      }
-      this.selectValue = newVal
-    },
-    handleClick () {
-      // this.$emit('input', !this.value)
+    doInput ($event) {
+      this.$emit('input', $event)
     },
     doChange ($event) {
       this.$emit('change', $event)
-      this.$emit('input', $event)
     }
   }
 }

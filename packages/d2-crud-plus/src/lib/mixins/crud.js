@@ -2,7 +2,7 @@ import HeightUtil from '../utils/util.height'
 import { cloneDeep, merge } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
-
+import DictUtil from '../utils/util.dicts'
 export default {
   components: {},
   data () {
@@ -79,10 +79,17 @@ export default {
   methods: {
     /**
      * 获取编辑框的formData
-     * @returns {(() => Promise<FormData>) | {}}
+     * @returns
      */
     getEditForm () {
       return this.$refs.d2Crud.formData
+    },
+    /**
+     * 获取编辑框的组件参数配置
+     * @returns
+     */
+    getEditFormTemplate (key) {
+      return this.$refs.d2Crud.handleFormTemplateMode(key)
     },
     /**
      * 初始化column配置
@@ -105,6 +112,14 @@ export default {
       this.initAfter()
       console.log('crud inited:', this.crud)
     },
+    userConfigCover (userConfig, defaultConfig) {
+      let target = cloneDeep(defaultConfig)
+      if (userConfig == null) {
+        return target
+      }
+      merge(target, userConfig)
+      return target
+    },
     initColumnItem (parantColumns, item) {
       if (item.children != null && item.children.length > 0) {
         // 复杂表头
@@ -125,21 +140,28 @@ export default {
         item._handle(item)
       }
       if (item.dict != null) {
-        if (item.form != null && item.form.component != null && item.form.component.props != null && item.form.component.props.dict == null) {
-          item.form.component.props.dict = item.dict
+        DictUtil.mergeDefault(item.dict)
+        if (item.form && item.form.component && item.form.component.props) {
+          if (item.form.component.props.dict == null) {
+            item.form.component.props.dict = {}
+          }
+          item.form.component.props.dict = this.userConfigCover(item.form.component.props.dict, item.dict)
         }
-        if (item.component != null && item.component.props != null && item.component.props.dict == null) {
-          item.component.props.dict = item.dict
+        if (item.component && item.component.props) {
+          if (item.component.props.dict == null) {
+            item.component.props.dict = {}
+          }
+          item.component.props.dict = this.userConfigCover(item.component.props.dict, item.dict)
         }
       }
-      // delete item._handle
-      // 统一component的props
-      if (item.form != null && item.form.component != null) {
-        let props = item.form.component.props
-        for (let key in props) {
-          item.form.component[key] = props[key]
-        }
-      }
+
+      // 不再统一component的props
+      // if (item.form != null && item.form.component != null) {
+      //   let props = item.form.component.props
+      //   for (let key in props) {
+      //     item.form.component[key] = props[key]
+      //   }
+      // }
       let form = item.form
       if (item.search != null && item.search.disabled !== true) {
         let component = item.form != null ? cloneDeep(item.form.component) : {}
@@ -160,7 +182,7 @@ export default {
         delete template.addTemplateHandle
         delete template.editTemplateHandle
         if (form.addDisabled !== true) {
-          const addTemplate = cloneDeep(template)
+          let addTemplate = this.userConfigCover(item.addForm, template)
           this.crud.addTemplate[key] = addTemplate
           if (form.addTemplateHandle != null) {
             form.addTemplateHandle(addTemplate)
@@ -168,7 +190,7 @@ export default {
           this.crud.addRules[key] = addTemplate.rules
         }
         if (form.editDisabled !== true) {
-          const editTemplate = cloneDeep(template)
+          const editTemplate = this.userConfigCover(item.editForm, template)
           this.crud.editTemplate[key] = editTemplate
           if (form.editTemplateHandle != null) {
             form.editTemplateHandle(editTemplate)

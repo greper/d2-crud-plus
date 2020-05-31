@@ -1,10 +1,10 @@
 <template>
   <span>
     <template v-if="type === 'text'">
-      <span v-for="(item) in items" :key="item[dict.value]">{{item[dict.label]}}</span>
+      <span v-for="(item) in _items" :key="item[dict.value]">{{item[dict.label]}}</span>
     </template>
     <template v-else >
-      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" >
+      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in _items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" >
         {{item[dict.label]}}
       </el-tag>
     </template>
@@ -48,12 +48,11 @@ export default {
   },
   data () {
     return {
-      dictCopy: {},
       dictDataMap: {}
     }
   },
   computed: {
-    items () {
+    _items () {
       if (this.value == null || this.value === '') {
         return []
       }
@@ -83,7 +82,7 @@ export default {
       }
       // 根据字典展示
       for (let str of valueArr) {
-        let item = this.dictDataMap[str]
+        let item = dictDataMap[str]
         if (item != null) {
           options.push(item)
         } else {
@@ -98,20 +97,8 @@ export default {
     }
   },
   created () {
-    if (this.dict == null) {
-      this.dict = {}
-    }
-    dict.mergeDefault(this.dict)
     dict.get(this.dict).then((data) => {
       let dataMap = this.dict.dataMap
-      if (dataMap == null && data != null && data.length > 0) {
-        dataMap = {}
-        this.putAll(dataMap, data, this.dict.isTree)
-        // this.$set(this, 'dictData', data)
-        // dict.putCache(this.dict.mapCacheName, dataMap)
-        this.dict.dataMap = dataMap
-        // console.log('dictDataMap', this.dict, dataMap)
-      }
       this.$set(this, 'dictDataMap', dataMap)
     })
   },

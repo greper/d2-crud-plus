@@ -1,9 +1,23 @@
+function copyList (originList, newList, options) {
+  for (let item of originList) {
+    let newItem = { ...item }
+    newItem.id = ++options.idGenerator
+    newList.push(newItem)
+    if (item.children != null) {
+      newItem.children = []
+      copyList(item.children, newItem.children, options)
+    }
+  }
+}
 export default {
   buildMock (options) {
     let name = options.name
-    let list = options.list
-    for (let item of list) {
-      item.id = ++options.idGenerator
+    if (options.copyTimes == null) {
+      options.copyTimes = 30
+    }
+    let list = []
+    for (let i = 0; i < options.copyTimes; i++) {
+      copyList(options.list, list, options)
     }
     return [
       {
@@ -111,7 +125,7 @@ export default {
         method: 'post',
         handle (req) {
           req.body.id = ++options.idGenerator
-          list.push(req.body)
+          list.unshift(req.body)
           console.log('req', req, list)
           return {
             code: 0,

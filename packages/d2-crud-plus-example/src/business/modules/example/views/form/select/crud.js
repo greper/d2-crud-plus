@@ -1,5 +1,17 @@
 import request from '@/plugin/axios'
-
+function radioOptionsChanged (vm, value) {
+  let checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
+  let checkedRadio = vm.getEditFormTemplate('checkedRadio')
+  if (checkedRadio == null || checkbox == null) {
+    return
+  }
+  // 获取checkbox选中的选项
+  let options = checkbox.component.props.dict.data.filter(item => {
+    return value.indexOf(item.value) >= 0
+  })
+  // 直接修改DictRadio的options 它的优先级比dict.data高
+  checkedRadio.component.props.options = options
+}
 export const crudOptions = (vm) => {
   return {
     columns: [
@@ -10,7 +22,8 @@ export const crudOptions = (vm) => {
         search: {},
         type: 'select',
         dict: {
-          url: '/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum',
+          data: undefined
         },
         form: {
           rules: [{ required: true, message: '请选择一个选项' }],
@@ -120,7 +133,7 @@ export const crudOptions = (vm) => {
       },
       {
         title: 'checkbox',
-        key: 'status3',
+        key: 'checkbox',
         sortable: true,
         search: { disabled: false },
         type: 'checkbox',
@@ -130,12 +143,23 @@ export const crudOptions = (vm) => {
         form: {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
-            let options = vm.crud.columnsMap.status3.dict.data.filter(item => {
-              return value.indexOf(item.value) >= 0
-            })
-            vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio').component.props.options = options
+            radioOptionsChanged(vm, value)
             // form.checkedRadio = '1'
             // form.status = '2'
+          },
+          component: {
+            props: {
+              dict: {
+                url: '/dicts/OpenStatusEnum',
+                onReady: (data, dict) => {
+                  let value = vm.getEditForm().checkbox
+                  if (value == null) {
+                    value = []
+                  }
+                  radioOptionsChanged(vm, value)
+                }
+              }
+            }
           },
           helper: '此处选中的项目，是右边【选中联动】radio的选项'
         }
@@ -146,6 +170,7 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: { disabled: true },
         type: 'radio',
+        dict: { data: undefined },
         form: {
           component: {
             props: {
@@ -153,6 +178,9 @@ export const crudOptions = (vm) => {
             }
           },
           helper: '这里的选项是checkbox的选中项目'
+        },
+        component: {
+          props: { dict: { url: '/dicts/OpenStatusEnum' } }
         }
       }
     ]

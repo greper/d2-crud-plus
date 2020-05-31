@@ -1,4 +1,4 @@
-function computeMaxHeight ({ target, targetSubClass, footer, adjust = 35 }) {
+function computeMaxHeight ({ target, targetSubClass, footer, adjust = 38 }) {
   if (target != null && targetSubClass != null) {
     target = findSubDom(target, targetSubClass)
   }

@@ -1,5 +1,5 @@
 <template>
-  <el-checkbox-group v-model="selectValue" v-bind="_elProps"  @change="doChange">
+  <el-checkbox-group :value="selectValue" v-bind="_elProps" @input="doInput"  @change="doChange">
     <el-checkbox v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]" >{{option[dict.label]}}</el-checkbox>
@@ -16,7 +16,10 @@ export default {
     // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default: () => {
+        return {}
+      }
     },
     // 值
     value: { type: [Number, String, Boolean, Array], require: false },
@@ -33,11 +36,15 @@ export default {
     options: {
       type: Array,
       require: false
+    },
+    onReady: {
+      type: Function,
+      require: false
     }
   },
   data () {
     return {
-      dictOptions: [],
+      dictOptions: undefined,
       selectValue: ''
     }
   },
@@ -57,11 +64,16 @@ export default {
       return []
     }
   },
+  created () {
+    this.setValue(this.value)
+  },
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'dictOptions', data)
+      if (this.onReady != null) {
+        this.onReady(this)
+      }
     })
-    this.setValue(this.value)
   },
   watch: {
     value: function (newVal, oldVal) {
@@ -70,6 +82,9 @@ export default {
   },
   methods: {
     setValue (newVal) {
+      if (newVal === this.selectValue) {
+        return
+      }
       if (newVal == null) {
         this.selectValue = []
         return
@@ -80,11 +95,10 @@ export default {
       }
       this.selectValue = newVal
     },
-    handleClick () {
-      // this.$emit('input', !this.value)
+    doInput ($event) {
+      this.$emit('input', $event)
     },
     doChange ($event) {
-      this.$emit('input', $event)
       this.$emit('change', $event)
     }
   }

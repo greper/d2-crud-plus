@@ -7,7 +7,7 @@ import request from '@/plugin/axios'
 Vue.use(d2Crud)
 // 引入d2CrudPlus
 Vue.use(d2CrudPlus, {
-  getRemoteDictFunc (url) {
+  getRemoteDictFunc (url, dict) {
     return request({
       url: url,
       method: 'get'

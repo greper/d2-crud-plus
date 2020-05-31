@@ -1,8 +1,9 @@
 <template>
     <el-select
-        v-model="selectValue"
+        :value="selectValue"
         v-bind="_elProps"
         :value-key="dict.value"
+        @input="doInput"
         @change="doChange"
     >
       <el-option
@@ -25,7 +26,10 @@ export default {
     // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default: () => {
+        return { data: undefined }
+      }
     },
     // 值
     value: { type: [Number, String, Boolean, Array], require: false },
@@ -50,12 +54,16 @@ export default {
     options: {
       type: Array,
       require: false
+    },
+    onReady: {
+      type: Function,
+      require: false
     }
   },
   data () {
     return {
-      dictOptions: [],
-      selectValue: ''
+      dictOptions: undefined,
+      selectValue: undefined
     }
   },
   computed: {
@@ -78,11 +86,16 @@ export default {
       return []
     }
   },
+  created () {
+    this.setValue(this.value)
+  },
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'dictOptions', data)
+      if (this.onReady != null) {
+        this.onReady(this)
+      }
     })
-    this.setValue(this.value)
   },
   watch: {
     value: function (newVal, oldVal) {
@@ -118,8 +131,10 @@ export default {
     handleClick () {
       // this.$emit('input', !this.value)
     },
-    doChange ($event) {
+    doInput ($event) {
       this.$emit('input', $event)
+    },
+    doChange ($event) {
       this.$emit('change', $event)
     }
   }

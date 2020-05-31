@@ -1,9 +1,10 @@
 <template>
   <el-cascader
-    v-model="_value"
-    :options="options"
+    :value="selectValue"
+    :options="_options"
     v-bind="_elProps"
-    @change="handleChange"></el-cascader>
+    @input="doInput"
+    @change="doChange"></el-cascader>
 </template>
 
 <script>
@@ -17,18 +18,31 @@ export default {
     // {url:'xxx',data:[],value:'',label:'',children:''}
     dict: {
       type: Object,
-      require: false
+      require: false,
+      default: () => {
+        return {}
+      }
     },
     // 值
     value: { require: false },
     // el-cascader的属性,[el-cascader](https://element.eleme.cn/#/zh-CN/component/cascader)
     elProps: {
       type: Object
+    },
+    // 选项列表，优先级比dict高
+    options: {
+      type: Array,
+      require: false
+    },
+    onReady: {
+      type: Function,
+      require: false
     }
   },
   data () {
     return {
-      options: []
+      dictOptions: undefined,
+      selectValue: undefined
     }
   },
   computed: {
@@ -43,31 +57,55 @@ export default {
       merge(defaultElProps, this.elProps)
       return defaultElProps
     },
-    _value: {
-      get () {
-        if (this.value == null) {
-          return []
-        }
-        if (typeof this.value === 'string') {
-          return this.value.split(',')
-        }
-        if (this.value instanceof Array) {
-          return this.value
-        }
-        return []
-      },
-      set (value) {
-        this.$emit('input', value)
+    _options () {
+      if (this.options != null) {
+        return this.options
       }
+      if (this.dictOptions != null) {
+        return this.dictOptions
+      }
+      return []
     }
+  },
+  created () {
+    this.setValue(this.value)
   },
   mounted () {
     dict.get(this.dict).then((data) => {
-      this.$set(this, 'options', data)
+      this.$set(this, 'dictOptions', data)
+      if (this.onReady != null) {
+        this.onReady(this)
+      }
     })
   },
+  watch: {
+    value: function (newVal, oldVal) {
+      if (this.selectValue === newVal) {
+        return
+      }
+      this.setValue(newVal)
+    }
+  },
   methods: {
-    handleChange ($event) {
+    setValue (value) {
+      if (value == null) {
+        this.selectValue = []
+        return
+      }
+      if (typeof this.value === 'string') {
+        this.selectValue = value.split(',')
+        return
+      }
+      if (value instanceof Array) {
+        this.selectValue = value
+        return
+      }
+      this.selectValue = []
+    },
+    doInput ($event) {
+      this.$emit('input', $event)
+    },
+    doChange ($event) {
       this.$emit('change', $event)
     }
   }

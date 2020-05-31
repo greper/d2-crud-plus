@@ -34,7 +34,7 @@ export default {
 
       this.fetchDetail(index, row).then(newRow => {
         _forEach(this.formData, (value, key) => {
-          this.formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : ''
+          this.formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
         })
         this.isDialogShow = true
       })

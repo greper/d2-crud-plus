@@ -3,7 +3,7 @@ const cache = new Map()
 /**
  * 远程获取数据字典
  * @param dict 数据字典配置
- * @returns {Promise<any>|Promise<T | never>}
+ * @returns {Promise<T>}
  */
 function get (dict) {
   if (dict == null) {
@@ -27,38 +27,50 @@ function get (dict) {
   }
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
-    if (dictData instanceof Promise) {
-      return dictData
-    }
     return new Promise((resolve) => {
       resolve(dictData)
     })
   }
-  if (url == null) {
+  if (url == null && dict.getData == null) {
     return new Promise((resolve) => {
       resolve([])
     })
   }
-
+  let cacheKey = url
+  if (url == null) {
+    cacheKey = dict.getData
+  }
   // 远程获取
-  let item = cache.get(url)
+  let item = cache.get(cacheKey)
   if (item == null || item.error === true) {
     // 还没加载过
     if (item == null) {
       item = { loading: true, callbacks: [] }
-      cache.set(url, item)
+      cache.set(cacheKey, item)
     }
 
     item.loading = true
     item.error = false
     // 远程加载
-    return this.getRemoteDictFunc(url).then((ret) => {
+    let promise = null
+    if (url != null && typeof url !== 'string') {
+      promise = url(dict)
+    } else {
+      let getRemoteDictFunc = this.getRemoteDictFunc
+      if (dict.getData != null) {
+        getRemoteDictFunc = dict.getData
+      }
+      promise = getRemoteDictFunc(url, dict)
+    }
+
+    return promise.then((ret) => {
       // prop mapping
       let data = ret.data
       if (data == null) {
         data = ret
       }
       item.data = data
+      dict.data = data
       // 之前注册过的callback全部触发
       for (let callback of item.callbacks) {
         callback(item.data)
@@ -105,7 +117,8 @@ const defaultDict = {
   label: 'label',
   color: 'color',
   children: 'children',
-  isTree: false
+  isTree: false,
+  data: undefined
 }
 function mergeDefault (dict) {
   if (dict == null) {

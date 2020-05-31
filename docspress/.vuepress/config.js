@@ -155,7 +155,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
     {
       title: '其他帮助',
       collapsable: false,
-      sidebarDepth: 3,
+      sidebarDepth: 0,
       children: [
         'questions',
         'contact'

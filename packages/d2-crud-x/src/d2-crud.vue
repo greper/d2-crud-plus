@@ -66,7 +66,7 @@
         >
           <template slot-scope="scope">
             <template v-if="item.rowSlot === true">
-              <slot :name="item.key+'Slot'" v-bind:row="scope.row"></slot>
+              <slot :name="item.key+'Slot'" v-bind:row="scope.row"/>
             </template>
             <render-custom-component
               v-else-if="item.component && item.component.name"
@@ -250,7 +250,12 @@
                   @change="handleFormDataChange($event,key)"
                 >
                 </render-component>
-                <div class="form-item-helper" v-if="handleFormTemplateMode(key).helper">{{handleFormTemplateMode(key).helper}}</div>
+                <template v-if="handleFormTemplateMode(key).helper">
+                  <div class="form-item-helper" v-if=" typeof  handleFormTemplateMode(key).helper === 'string'">{{handleFormTemplateMode(key).helper}}</div>
+                  <template v-else-if="handleFormTemplateMode(key).helper.slot === true">
+                    <slot :name="key+'HelperSlot'" v-bind:form="formData" ></slot>
+                  </template>
+                </template>
               </el-form-item>
             </el-col>
           </template>

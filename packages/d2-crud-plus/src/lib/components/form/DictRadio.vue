@@ -75,6 +75,7 @@ export default {
       this.$set(this, 'dictOptions', options)
     },
     setValue (newVal) {
+      this.$emit('change', newVal)
       if (newVal === this.selectValue) {
         return
       }
@@ -84,8 +85,8 @@ export default {
       // this.$emit('input', !this.value)
     },
     doChange ($event) {
-      this.$emit('input', $event)
       this.$emit('change', $event)
+      this.$emit('input', $event)
     }
   }
 }

@@ -35,7 +35,7 @@ const openStatus = [
 
 export default [
   {
-    path: '/api/hotel/roomtype/options',
+    path: '/hotel/roomtype/options',
     method: 'get',
     handle ({ body }) {
       return {
@@ -46,7 +46,7 @@ export default [
     }
   },
   {
-    path: '/api/hotel/dicts/RoomStatusEnum',
+    path: '/hotel/dicts/RoomStatusEnum',
     method: 'get',
     handle ({ body }) {
       return {
@@ -57,7 +57,7 @@ export default [
     }
   },
   {
-    path: '/api/hotel/room/options',
+    path: '/hotel/room/options',
     method: 'get',
     handle ({ body }) {
       return {
@@ -68,8 +68,19 @@ export default [
     }
   },
   {
-    path: '/api/dicts/OpenStatusEnum',
+    path: '/dicts/OpenStatusEnum',
     method: 'get',
+    handle ({ body }) {
+      return {
+        code: 0,
+        msg: 'success',
+        data: openStatus
+      }
+    }
+  },
+  {
+    path: '/dicts/OpenStatusEnum',
+    method: 'post',
     handle ({ body }) {
       return {
         code: 0,

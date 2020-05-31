@@ -89,11 +89,13 @@ export const crudOptions = {
            { value: 'sh', label: '上海' }
         ],
         // 若data为空，则通过http请求获取远程数据字典
+        // 也可以传入一个异步请求来自定义请求方式
         url:'/dict/get', 
         // value:'value', value的属性名
         // label:'label', label的属性名
         // children:'children', children的属性名
         // isTree: false //是否是树形结构
+        // getData: (url,dict)=>{} 覆盖全局getRemoteDictData方法
       },
       //行内单元格显示组件
       component:{ name:'dict-select', props:{...}},

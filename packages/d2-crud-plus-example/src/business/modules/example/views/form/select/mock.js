@@ -10,16 +10,22 @@ const list = [
     mselect: 'sz',
     cascader: ['zhinan', 'shejiyuanze', 'yizhi'],
     status3: '0',
+    status_custom_1: '0',
+    status_custom_2: '0',
     checkedRadio: undefined
   },
   {
     status: '1',
+    status_custom_1: '0',
+    status_custom_2: '0',
     mselect: 'sh,sz',
     slotExample: 'slotExample',
     status3: '0'
   },
   {
     status: '1',
+    status_custom_1: '0',
+    status_custom_2: '0',
     mselect: 'gz',
     slotExample: 'slotExample',
     status3: '0'
@@ -27,6 +33,8 @@ const list = [
   {
     date: '2016-05-03',
     status: '2',
+    status_custom_1: '0',
+    status_custom_2: '0',
     mselect: 'wh,gz',
     slotExample: 'slotExample',
     status3: '0'
@@ -233,7 +241,7 @@ const dictData = [
 options.list = list
 let mock = mockUtil.buildMock(options)
 mock.push({
-  path: 'api/select/cascadeData',
+  path: '/api/select/cascadeData',
   method: 'get',
   handle (req) {
     return {

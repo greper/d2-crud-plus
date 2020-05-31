@@ -1,3 +1,5 @@
+import request from '@/plugin/axios'
+
 export const crudOptions = (vm) => {
   return {
     columns: [
@@ -8,12 +10,56 @@ export const crudOptions = (vm) => {
         search: {},
         type: 'select',
         dict: {
-          url: '/api/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum'
         },
         form: {
+          rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
             console.log('-----你选择了', value, vm.crud.columnsMap.status.dict.dataMap[value].label)
           }
+        }
+      },
+      {
+        title: '字典请求覆盖',
+        key: 'status_custom_1',
+        sortable: true,
+        search: {},
+        type: 'select',
+        dict: {
+          url: '/dicts/OpenStatusEnum',
+          getData (url, dict) {
+            console.log('我是从自定义的getData方法中加载的数据字典', dict)
+            return request({
+              url: url,
+              method: 'post'
+            }).then(ret => {
+              return ret.data
+            })
+          }
+        },
+        form: {
+          helper: 'dict.getData可以覆盖全局配置的getRemoteDictFunc'
+        }
+      },
+      {
+        title: '字典自定义',
+        key: 'status_custom_2',
+        sortable: true,
+        search: {},
+        type: 'select',
+        dict: {
+          url: (dict) => {
+            console.log('我是从自定义的getData方法中加载的数据字典', dict)
+            return request({
+              url: '/dicts/OpenStatusEnum?a=2',
+              method: 'post'
+            }).then(ret => {
+              return ret.data
+            })
+          }
+        },
+        form: {
+          helper: 'dict.url可以直接配置一个ajax请求获取数据字典'
         }
       },
       {
@@ -46,7 +92,7 @@ export const crudOptions = (vm) => {
         },
         type: 'cascader',
         dict: {
-          url: '/api/select/cascadeData'
+          url: '/select/cascadeData'
         }
       },
       {
@@ -58,7 +104,7 @@ export const crudOptions = (vm) => {
         },
         type: 'cascader-multi',
         dict: {
-          url: '/api/select/cascadeData'
+          url: '/select/cascadeData'
         }
       },
       {
@@ -68,9 +114,9 @@ export const crudOptions = (vm) => {
         search: { disabled: false },
         type: 'radio',
         dict: {
-          url: '/api/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum'
         },
-        form: { component: { span: 24 } }
+        form: { rules: [{ required: true, message: '请选择一个选项' }], component: { span: 24 } }
       },
       {
         title: 'checkbox',
@@ -79,7 +125,7 @@ export const crudOptions = (vm) => {
         search: { disabled: false },
         type: 'checkbox',
         dict: {
-          url: '/api/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum'
         },
         form: {
           valueChange (key, value, form) {

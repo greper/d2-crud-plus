@@ -49,7 +49,9 @@ import Vue from 'vue'
 import request from '@/plugin/axios'
 Vue.use(d2Crud)
 Vue.use(d2CrudPlus, {
-  getRemoteDictFunc (url) { //获取数据字典的请求方法，不配置此项则无法加载远程数据字典
+  //获取数据字典的请求方法
+  //可在dict中配置getData方法覆盖此全局方法
+  getRemoteDictFunc (url,dict) { 
     return request({
       url: url,
       method: 'get'
@@ -199,7 +201,7 @@ export default {
 </script>
 ``` 
 ### 3.3  api.js
-实现添删改查请求接口，通常复制，改一下url即可
+实现添删改查请求接口，通常复制，改一下url即可，你也可以自行增加方法，用于业务需求
 ```javascript
 import request from '@/plugin/axios'
 export function GetList (query) {

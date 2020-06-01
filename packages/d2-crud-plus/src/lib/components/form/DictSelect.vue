@@ -5,6 +5,7 @@
         :value-key="dict.value"
         @input="doInput"
         @change="doChange"
+        style="width:100%"
     >
       <el-option
           v-for="option in _options"

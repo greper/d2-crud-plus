@@ -189,6 +189,34 @@ export const crudOptions = (vm) => {
         component: {
           props: { dict: { url: '/dicts/OpenStatusEnum' } }
         }
+      },
+      {
+        title: '动态显示',
+        key: 'show',
+        sortable: true,
+        search: { disabled: true },
+        type: 'radio',
+        dict: { data: [{ value: true, label: '显示' }, { value: false, label: '隐藏' }] },
+        form: {
+          valueChange (key, value, form) {
+            console.log('您选中了：', value, vm.getEditFormTemplate('show_ret'))
+            vm.getEditFormTemplate('show_ret').component.show = value
+            // vm.$set(vm.getEditFormTemplate('show_ret').component, 'show', value)
+          },
+          helper: '点击显示与隐藏右边整个字段'
+        }
+      },
+      {
+        title: '显示与隐藏',
+        key: 'show_ret',
+        sortable: true,
+        search: { disabled: true },
+        disabled: true,
+        form: {
+          component: {
+            show: true
+          }
+        }
       }
     ]
   }

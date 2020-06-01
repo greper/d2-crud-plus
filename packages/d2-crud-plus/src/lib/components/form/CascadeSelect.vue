@@ -4,7 +4,7 @@
     :options="_options"
     v-bind="_elProps"
     @input="doInput"
-    @change="doChange"></el-cascader>
+    @change="doChange" style="width:100%"></el-cascader>
 </template>
 
 <script>

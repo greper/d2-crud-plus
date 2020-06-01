@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group :value="value" v-bind="_elProps" @input="doInput" @change="doChange">
+  <el-radio-group class="dict_radio" :value="value" v-bind="_elProps" style="width:100%" @input="doInput" @change="doChange">
     <el-radio v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]">{{option[dict.label]}}</el-radio>
@@ -80,3 +80,9 @@ export default {
   }
 }
 </script>
+<style>
+  .dict_radio .el-radio-button__inner, .el-radio-group {
+    line-height: 40px;
+  }
+
+</style>

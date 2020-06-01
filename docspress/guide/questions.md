@@ -82,3 +82,8 @@ let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
 // 请使用 this.crud.columnsMap[columnKey].component.props.dict
 ```
 示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select
+
+## 6. 怎么获取表单各个字段的值？
+```js
+let value = this.getEditForm().columnKey;
+```

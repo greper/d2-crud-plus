@@ -1,5 +1,5 @@
 <template>
-  <el-checkbox-group :value="selectValue" v-bind="_elProps" @input="doInput"  @change="doChange">
+  <el-checkbox-group :value="selectValue" v-bind="_elProps" style="width:100%" @input="doInput"  @change="doChange">
     <el-checkbox v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]" >{{option[dict.label]}}</el-checkbox>

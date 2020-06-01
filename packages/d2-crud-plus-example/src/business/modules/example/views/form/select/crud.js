@@ -17,6 +17,7 @@ function radioOptionsChanged (vm, value) {
   vm.crud.columnsMap['checkbox'].dict.data
   // eslint-disable-next-line no-unused-expressions
   vm.crud.columnsMap['checkbox'].dict.dataMap
+  console.log('component.dict', vm.crud.columnsMap['checkbox'].component.props.dict.data)
 }
 export const crudOptions = (vm) => {
   return {

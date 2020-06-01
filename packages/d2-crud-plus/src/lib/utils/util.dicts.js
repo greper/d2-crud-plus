@@ -22,12 +22,13 @@ function get (dict) {
     // 配置中就有字典数据，直接返回
     return new Promise((resolve) => {
       let dataMap = getDataMap(dict, dictData)
-      onReady(dict, { dictData, dataMap })
+      onReady(dict, { data: dictData, dataMap: dataMap })
       resolve(dictData)
     })
   }
   if (url == null && dict.getData == null) {
     return new Promise((resolve) => {
+      onReady(dict, { data: [], dataMap: {} })
       resolve([])
     })
   }

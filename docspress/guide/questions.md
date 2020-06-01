@@ -57,14 +57,23 @@ export default {
 ```
 示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select
 
-
-## 4. 怎么获取某个字段的数据字典的选项列表？
+## 4. 怎么动态获取表单组件的配置
 ```js
+let template = this.getEditFormTemplate(columnKey) //获取组件配置
+template.component.props.options = [] //动态将选项置空
+```
+示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select
+
+## 5. 怎么获取某个字段的数据字典的选项列表？
+```js
+
 let columnKey = '你的字段key'
-let dictData = this.crud.columnsMap[columnKey].dict.data;
+let dictData = this.getEditFormTemplate(columnKey).component.props.dict.data;
 
 //通过字典value获取label
 let value = '某个字典项的value'
-let label = this.crud.columnsMap[columnKey].dict.dataMap[value]
+let label = this.getEditFormTemplate(columnKey).component.props.dict.dataMap[value]
+
+// 注意：新版本已不支持 this.crud.columnsMap[columnKey].dict 方式获取
 ```
 示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/select

@@ -11,6 +11,12 @@ function radioOptionsChanged (vm, value) {
   })
   // 直接修改DictRadio的options 它的优先级比dict.data高
   checkedRadio.component.props.options = options
+
+  // 注意：新版本已不支持 vm.crud.columnsMap[columnKey].dict 方式获取
+  // eslint-disable-next-line no-unused-expressions
+  vm.crud.columnsMap['checkbox'].dict.data
+  // eslint-disable-next-line no-unused-expressions
+  vm.crud.columnsMap['checkbox'].dict.dataMap
 }
 export const crudOptions = (vm) => {
   return {

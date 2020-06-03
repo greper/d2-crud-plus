@@ -35,13 +35,12 @@ export const crudOptions = (vm) => {
         valueBuilder (row) { // 将row里面手机号相关的字段组合成组件需要的value对象
           row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
         },
-        valueResolve (row) { // 将value解析成row的字段
-          if (row.mobileValue != null) {
-            row.phone = row.mobileValue.phoneNumber
-            row.code = row.mobileValue.callingCode
-            row.country = row.mobileValue.countryCode
+        valueResolve (form) { // 将value解析成row的字段
+          if (form.mobileValue != null) {
+            form.phone = form.mobileValue.phoneNumber
+            form.code = form.mobileValue.callingCode
+            form.country = form.mobileValue.countryCode
           }
-          console.log('----this:', vm)
         }
       },
       {

@@ -77,9 +77,14 @@ export const crudOptions = {
             elProps: {// element upload组件的props
               limit: 0 // 不限制数量
             },
-            custom: {
-              keepName: true // 保持文件名，注意：中文及特殊符号文件名在ios上支持不是很好
+            uploader: {
+              // action: 'http://d2p.veryreader.com:7070/api/upload/form/upload',
+              custom: {
+                keepName: true // 保持文件名，注意：中文及特殊符号文件名在ios上支持不是很好
+              },
+              type: 'form'
             }
+
           }
         }
       }

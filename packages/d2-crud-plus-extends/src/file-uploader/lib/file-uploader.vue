@@ -13,8 +13,10 @@
     <el-button :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
     <i class="el-icon-plus avatar-uploader-icon" v-else-if="this._elProps.listType === 'picture-card'"></i>
     <template v-else-if="_elProps.listType ===  'avatar'">
-      <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
-      <i class="el-icon-plus avatar-uploader-icon" v-else></i>
+      <div class="avatar-item-wrapper">
+        <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
+        <i class="el-icon-plus avatar-uploader-icon" v-else></i>
+      </div>
     </template>
   </el-upload>
     <el-dialog :visible.sync="dialogVisible" append-to-body >
@@ -125,17 +127,14 @@ export default {
         action: ''
       }
       let props = Object.assign(defaultElProps, this.elProps)
-      console.log('props:', props)
       return props
     },
     avatarUrl () {
       if (this.fileList.length > 0) {
         let file = this.fileList[0]
         if (file.response != null && file.response.url != null) {
-          console.log('avatarUrl:', file.response.url)
           return file.response.url
         } else if (file.url != null) {
-          console.log('avatarUrl:', file.url)
           return file.url
         }
       }
@@ -249,6 +248,9 @@ export default {
     },
     doUpload (option) {
       let config = this.uploader
+      if (config == null) {
+        config = {}
+      }
       if (!lodash.isEmpty(this._elProps.action)) {
         config.action = this._elProps.action
       }
@@ -424,6 +426,13 @@ export default {
     .el-progress{
       width: 70px !important;
       height: 70px !important;
+    }
+    .avatar-item-wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
     }
   }
 

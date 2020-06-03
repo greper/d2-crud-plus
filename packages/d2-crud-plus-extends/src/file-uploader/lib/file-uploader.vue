@@ -77,7 +77,10 @@ export default {
     },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
-      type: Object
+      type: Object,
+      default () {
+        return {}
+      }
     }
   },
   data () {

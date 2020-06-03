@@ -59,11 +59,12 @@ export default {
     value: {
       handler (val) {
         // 确认是新的值
+
         if (val !== this.currentValue) {
-          console.log('text changed,newVal:', val)
           this.currentValue = val
           // 尝试更新
           if (this.Quill) {
+            this.$emit('change', val)
             this.Quill.pasteHTML(this.value)
           }
         }
@@ -94,27 +95,24 @@ export default {
       // 绑定事件
       this.Quill.on('text-change', (delta, oldDelta, source) => {
         const html = this.$refs.editor.children[0].innerHTML
-        const text = this.Quill.getText()
-        const quill = this.Quill
+        // const text = this.Quill.getText()
+        // const quill = this.Quill
         // 更新内部的值
         this.currentValue = html
         // 发出事件 v-model
         this.$emit('input', html)
         // 发出事件
-        this.$emit('change', { html, text, quill })
+        this.$emit('change', html)
       })
       // 将一些 quill 自带的事件传递出去
       this.Quill.on('text-change', (delta, oldDelta, source) => {
         this.$emit('text-change', delta, oldDelta, source)
-        console.log('text-change')
       })
       this.Quill.on('selection-change', (range, oldRange, source) => {
         this.$emit('selection-change', range, oldRange, source)
-        console.log('editor-change')
       })
       this.Quill.on('editor-change', (eventName, ...args) => {
         this.$emit('editor-change', eventName, ...args)
-        console.log('editor-change')
       })
     },
     handlerImage () {

@@ -2680,10 +2680,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.4.0.tgz#137fca4f07bcb464ef2cebe4d2563d081d768a0f"
-  integrity sha512-TDWKWK2J+LIeI3iO5F0XMHaX+i2ErND5lKYfnC85LtR+w5MoS10yNMN58Yhtqq7Jgc1WzstBo0hjdPq2PNFh4A==
+d2-crud-plus@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.6.0.tgz#ab8934ff2f25cdcb09145bd259c23a0a12b6f4b5"
+  integrity sha512-S46euYYJRbrpShOdszNKaVrXTkSbmnVq3Dueo8QSzC1Fxiy0170dxFFio1R2qj2MOEoYp3+LLsA1BHHOoA7ObA==
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
@@ -8347,6 +8347,11 @@ vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
+
+vue-ueditor-wrap@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/vue-ueditor-wrap/-/vue-ueditor-wrap-2.4.2.tgz#5865258aedb6b540f37592d98158d450471ef6ed"
+  integrity sha512-bZZdUmhT/n9QPdVwR10b8u2A9+Q2L6vyfr3Nls2EDKI3GmuWQwGqBwcgjBWbaM50twyHjXwAPXiKlUhn3JAFtA==
 
 vue@^2.6.10:
   version "2.6.11"

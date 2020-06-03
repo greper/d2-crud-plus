@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)
@@ -86,8 +86,18 @@ export default {
     // 编辑对话框打开前获取详情
     fetchDetail (index, row) {
       return GetObj(row.id).then(res => {
+        this.changeEditor(res.data.change)
         return res.data
       })
+    },
+    changeEditor (value) {
+      if (value === 'quill') {
+        this.getEditFormTemplate('content').component.show = true
+        this.getEditFormTemplate('content_ueditor').component.show = false
+      } else {
+        this.getEditFormTemplate('content').component.show = false
+        this.getEditFormTemplate('content_ueditor').component.show = true
+      }
     }
   }
 }

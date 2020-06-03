@@ -16,7 +16,7 @@
 |returnType|返回类型: url=仅返回链接, object=包含md5和size|`String`|`false`|url|
 |custom|自定义参数|`Object`|`false`|-|
 |elProps|内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数 注意，form方式上传的action、name、headers等参数不在此设置|`Object`|`false`|-|
-|uploader|上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|-|
+|uploader|上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|{}|
 
 <!-- @vuese:d2p-file-uploader:props:end -->
 

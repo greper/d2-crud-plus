@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.6.0...d2-crud-plus@1.7.0) (2020-06-03)
+
+
+### Bug Fixes
+
+* column.dict不再覆盖用户已经自定义的component.props.dict ([531de7e](https://github.com/greper/d2-crud-plus/commit/531de7e926b2428141f9b0cb89c400258945c60d))
+
+
+### Features
+
+* dict配置增加覆盖全局getRemoteDataFunc的方法，全局方法增加dict参数 ([22db385](https://github.com/greper/d2-crud-plus/commit/22db38591d7c285b0e50ce8b9cd6aedd0c5032f9))
+* 优化字典获取自定义，修复bug，增加示例的行数 ([e94749d](https://github.com/greper/d2-crud-plus/commit/e94749de0ad885ee5feea6b1b6a2a2096f057a2c))
+* 动态显示隐藏整个表单字段 ([3153602](https://github.com/greper/d2-crud-plus/commit/31536028be6ac052d4c5c9d5432807be4f46d1de))
+
+
+
+
+
+
 # [1.6.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.5.2...d2-crud-plus@1.6.0) (2020-05-21)
 
 

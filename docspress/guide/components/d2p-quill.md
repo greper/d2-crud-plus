@@ -18,8 +18,8 @@ quill富文本编辑器
 <!-- @vuese:d2p-quill:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|change|-|-|
 |input|发出事件 v-model|-|
-|change|发出事件|-|
 |text-change|-|-|
 |selection-change|-|-|
 |editor-change|-|-|

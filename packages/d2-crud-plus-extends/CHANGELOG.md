@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.5...d2p-extends@1.5.0) (2020-06-03)
+
+
+### Bug Fixes
+
+* 修复文件上传失败的bug ([b61238b](https://github.com/greper/d2-crud-plus/commit/b61238b537c284ef0c28a9626becfa34cf008f27))
+
+
+### Features
+
+* 优化字典获取自定义，修复bug，增加示例的行数 ([e94749d](https://github.com/greper/d2-crud-plus/commit/e94749de0ad885ee5feea6b1b6a2a2096f057a2c))
+* 富文本增加ueditor ([ee6e6f6](https://github.com/greper/d2-crud-plus/commit/ee6e6f6430e5aa2ebf3bcfe2987af56d512b5e96))
+
+
+
+
+
+
 ## [1.4.5](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.4.4...d2p-extends@1.4.5) (2020-05-21)
 
 

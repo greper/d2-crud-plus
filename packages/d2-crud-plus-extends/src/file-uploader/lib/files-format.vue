@@ -1,11 +1,13 @@
 <template>
   <span>
     <template v-if="type === 'text'">
-      <span v-for="(item) in items" :key="item.url">{{item.name}}</span>
+      <span v-for="(item) in items" :key="item.url" >
+        <el-link type="primary" size="mini" :underline="false" :href="item.url"  target="_blank"> {{item.name}} </el-link>
+      </span>
     </template>
     <template v-else >
-      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in items" :key="item.url"  size="small"  :type="item.color" >
-        {{item.name}}
+      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in items" :key="item.url"  size="small"  :type="item.color"  >
+        <el-link type="primary"  :underline="false" :href="item.url"  target="_blank">{{item.name}}</el-link>
       </el-tag>
     </template>
   </span>
@@ -76,5 +78,8 @@ export default {
   .d2-mt-2{margin-top: 2px;}
   .tag-item{
     margin-right: 10px;
+  }
+  .el-divider__text, .el-link {
+    font-size: inherit;
   }
 </style>

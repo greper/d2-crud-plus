@@ -44,7 +44,7 @@ export const crudOptions = (vm) => {
                 multiple: true,
                 limit: 5 // 限制5个文件
               },
-              sizeLimit: 50 * 1024 // 不能超过20k
+              sizeLimit: 50 * 1024 // 不能超过限制
             }
           },
           helper: '默认腾讯云cos上传,限制文件大小不能超过50k'

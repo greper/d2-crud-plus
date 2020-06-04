@@ -75,7 +75,8 @@ export default {
     elProps: {
       type: Object
     },
-    // 文件大小限制
+    // 文件大小限制 <br/>
+    // 如果传入{limit,tip(fileSize,limit){vm.$message('可以自定义提示')}}
     sizeLimit: {
       type: Number, Object
     },

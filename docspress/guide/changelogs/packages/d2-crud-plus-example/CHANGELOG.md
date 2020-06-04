@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.7.0...@d2-plus/d2-crud-plus-example@1.7.1) (2020-06-04)
+
+
+### Bug Fixes
+
+* 修复文件上传onPreview可自定义 ([be37294](https://github.com/greper/d2-crud-plus/commit/be372947d5a4281b661f01ca1f84a202691023e0))
+* 修复文件上传进度条显示的bug，优化一些其他显示上的问题 ([53d54ba](https://github.com/greper/d2-crud-plus/commit/53d54bad45782ddc7a6970ad25c2811e137ff41b))
+* 文件上传支持文件大小限制配置 ([af22fe1](https://github.com/greper/d2-crud-plus/commit/af22fe1fb36cc4d2406c1c4ecc310f5e829fb239))
+
+
+
+
+
+
 # [1.7.0](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.6.0...@d2-plus/d2-crud-plus-example@1.7.0) (2020-06-03)
 
 

@@ -65,7 +65,6 @@ export default {
   methods: {
     onInput (event) {
       this.currentValue = event
-      console.log('input:', event)
       this.$emit('input', event)
     },
     onChange (event) {

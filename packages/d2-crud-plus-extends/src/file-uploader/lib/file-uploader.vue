@@ -75,6 +75,10 @@ export default {
     elProps: {
       type: Object
     },
+    // 文件大小限制
+    sizeLimit: {
+      type: Number, Object
+    },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object,
@@ -127,10 +131,37 @@ export default {
         limit: 0,
         listType: 'text',
         showFileList: true,
-        action: ''
+        action: '',
+        beforeUpload: (file) => {
+          if (this.sizeLimit == null) {
+            return true
+          }
+          let limit = this.sizeLimit
+          let showMessage = null
+          if (typeof limit === 'number') {
+            console.log('1111：', file.size)
+            limit = this.sizeLimit
+            showMessage = (fileSize, limit) => {
+              if (this.$message) {
+                let limitTip = this.computeFileSize(limit)
+                let fileSizeTip = this.computeFileSize(file.size)
+                this.$message({ message: '文件大小不能超过' + limitTip + '，当前文件大小:' + fileSizeTip, type: 'warning' })
+              }
+            }
+          } else {
+            console.log('2222：', typeof limit)
+            limit = this.sizeLimit.limit
+            showMessage = this.sizeLimit.tip
+          }
+          if (file.size > limit) {
+            console.log('文件大小超过限制：', file.size)
+            showMessage(file.size, limit)
+            return false
+          }
+        }
       }
-      let props = Object.assign(defaultElProps, this.elProps)
-      return props
+      Object.assign(defaultElProps, this.elProps)
+      return defaultElProps
     },
     avatarUrl () {
       if (this.fileList.length > 0) {
@@ -190,6 +221,17 @@ export default {
         fileList = [value]
       }
       this.resetFileList(fileList)
+    },
+    computeFileSize (fileSize) {
+      let sizeTip = fileSize
+      if (fileSize > (1024 * 1024 * 1024)) {
+        sizeTip = (fileSize / (1024 * 1024 * 1024)).toFixed(2) + 'G'
+      } else if (fileSize > (1024 * 1024)) {
+        sizeTip = (fileSize / (1024 * 1024)).toFixed(2) + 'M'
+      } else {
+        sizeTip = Math.round(fileSize / (1024)) + 'K'
+      }
+      return sizeTip
     },
     resetFileList (fileList) {
       this.$set(this, 'fileList', fileList)

@@ -19,7 +19,6 @@ export default {
     let option = {
       file,
       onProgress,
-      onError,
       ...config
     }
     return new Promise((resolve, reject) => {
@@ -28,7 +27,7 @@ export default {
           resolve(config.successHandle(res))
         },
         (e) => {
-          option.onError(e)
+          onError(e)
           reject(e)
         })
     })

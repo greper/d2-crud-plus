@@ -418,17 +418,19 @@ export default {
       /*justify-content: center;*/
       /*align-items: center;*/
     }
-    .el-upload-list--picture-card .el-upload-list__item{
-      width: 100px;
-      height: 100px;
-    }
-    .el-progress-circle{
-      width: 70px !important;
-      height: 70px !important;
-    }
-    .el-progress{
-      width: 70px !important;
-      height: 70px !important;
+    .el-upload-list--picture-card {
+      .el-upload-list__item{
+        width: 100px;
+        height: 100px;
+      }
+      .el-progress-circle{
+        width: 70px !important;
+        height: 70px !important;
+      }
+      .el-progress{
+        width: 70px !important;
+        height: 70px !important;
+      }
     }
     .avatar-item-wrapper{
       display: flex;

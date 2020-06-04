@@ -66,6 +66,7 @@ export default {
         Key: key,
         Body: file,
         onProgress (progressEvent) {
+          debugger
           console.log('progressEvent', progressEvent)
           let e = progressEvent
           if (e.total > 0) {

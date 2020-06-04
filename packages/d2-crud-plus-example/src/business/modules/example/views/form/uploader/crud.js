@@ -62,8 +62,7 @@ export const crudOptions = {
               limit: 5 // 限制5个文件
             }
           }
-        },
-        helper: '默认腾讯云cos上传'
+        }
       }
     },
     {
@@ -81,11 +80,13 @@ export const crudOptions = {
               // action: 'http://d2p.veryreader.com:7070/api/upload/form/upload',
               custom: {
                 keepName: true // 保持文件名，注意：中文及特殊符号文件名在ios上支持不是很好
-              },
-              type: 'form'
+              }
             }
-
-          }
+          },
+          span: 24
+        },
+        helper: {
+          slot: true
         }
       }
     },

@@ -64,8 +64,6 @@ export default function upload (option, onSuccess, onError) {
     if (xhr.status < 200 || xhr.status >= 300) {
       return option.onError(getError(action, option, xhr))
     }
-
-    // option.onSuccess(getBody(xhr))
     onSuccess(getBody(xhr))
   }
 

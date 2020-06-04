@@ -81,8 +81,9 @@ export default {
 }
 </script>
 <style lang="scss">
-  .dict_radio{
-    .el-radio-button__inner, .el-radio-group {
+  .dict_radio.el-radio-button__inner, .dict_radio.el-radio-group {
+      line-height: 40px;
+    .el-radio, .el-radio__input{
       line-height: 40px;
     }
   }

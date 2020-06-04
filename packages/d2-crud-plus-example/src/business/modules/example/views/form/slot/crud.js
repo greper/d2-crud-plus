@@ -17,7 +17,8 @@ export const crudOptions = {
         slot: true
       },
       form: {
-        slot: true
+        slot: true,
+        helper: { slot: true }
       },
       rowSlot: true
     },

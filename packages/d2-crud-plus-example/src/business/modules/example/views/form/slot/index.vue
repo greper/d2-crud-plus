@@ -44,6 +44,11 @@
       <template slot="slotExampleFormSlot" slot-scope="scope">
         slot自定义：<el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
       </template>
+      <template slot="slotExampleHelperSlot" slot-scope="scope">
+        <el-alert type="warning" >
+          我也可以自定义哦，还可以获取到行数据->{{scope.form.slotExample}}
+        </el-alert>
+      </template>
 
       <template slot="topicsFormSlot" slot-scope="scope">
         <el-input class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >

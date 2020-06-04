@@ -252,9 +252,9 @@
                 </render-component>
                 <template v-if="handleFormTemplateMode(key).helper">
                   <div class="form-item-helper" v-if=" typeof  handleFormTemplateMode(key).helper === 'string'">{{handleFormTemplateMode(key).helper}}</div>
-                  <template v-else-if="handleFormTemplateMode(key).helper.slot === true">
+                  <div class="form-item-helper"  v-else-if="handleFormTemplateMode(key).helper.slot === true">
                     <slot :name="key+'HelperSlot'" v-bind:form="formData" ></slot>
-                  </template>
+                  </div>
                 </template>
               </el-form-item>
             </el-col>

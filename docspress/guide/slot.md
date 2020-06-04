@@ -83,6 +83,9 @@ let crudOption={
 ## search表单组件slot自定义
 与form表单类似，slot名称为 `column.key+'SearchSlot'`
 
+## 表单helper的slot自定义
+与form表单类似，slot名称为 `column.key+'HelperSlot'`
+
 
 ## slot快捷字段类型
 * type = slot           // 开启该字段行和表单的slot

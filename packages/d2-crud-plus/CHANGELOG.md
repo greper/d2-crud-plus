@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.7.0...d2-crud-plus@1.7.1) (2020-06-04)
+
+
+### Bug Fixes
+
+* 修复文件上传进度条显示的bug，优化一些其他显示上的问题 ([53d54ba](https://github.com/greper/d2-crud-plus/commit/53d54bad45782ddc7a6970ad25c2811e137ff41b))
+
+
+
+
+
+
 # [1.7.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.6.0...d2-crud-plus@1.7.0) (2020-06-03)
 
 

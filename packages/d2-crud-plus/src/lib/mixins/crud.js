@@ -81,15 +81,22 @@ export default {
      * 获取编辑框的formData
      * @returns
      */
+    getD2Crud () {
+      return this.$refs.d2Crud
+    },
+    /**
+     * 获取编辑框的formData
+     * @returns
+     */
     getEditForm () {
-      return this.$refs.d2Crud.formData
+      return this.getD2Crud().formData
     },
     /**
      * 获取编辑框的组件参数配置
      * @returns
      */
     getEditFormTemplate (key) {
-      return this.$refs.d2Crud.handleFormTemplateMode(key)
+      return this.getD2Crud().handleFormTemplateMode(key)
     },
     /**
      * 初始化column配置

@@ -25,10 +25,26 @@ export default {
      */
     scope: {
       default: null
+    },
+    /**
+     * 监听组件事件
+     */
+    events: {
+      default: null
     }
   },
   render (h) {
     let self = this
+    let events = {}
+    if (self.events) {
+      for (let key in self.events) {
+        events[key] = (event) => {
+          if (self.events[key]) {
+            self.events[key]({ vm: self._self, event: event, props: this.props })
+          }
+        }
+      }
+    }
     return h(self.componentName, {
       props: {
         value: self.value,
@@ -41,7 +57,11 @@ export default {
         },
         change: function (event) {
           self.$emit('change', event)
-        }
+        },
+        ready: function (event) {
+          self.$emit('ready', event)
+        },
+        ...events
       }
     })
   }

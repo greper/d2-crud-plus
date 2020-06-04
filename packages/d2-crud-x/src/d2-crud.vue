@@ -239,8 +239,11 @@
                   v-else-if="handleFormTemplateMode(key).component.name"
                   v-model="formData[key]"
                   :component-name="handleFormTemplateMode(key).component.name"
-                  :props="handleFormTemplateMode(key).component.props ? handleFormTemplateMode(key).component.props : null"
+                  :props="handleFormTemplateMode(key).component.props"
+                  :events="handleFormTemplateMode(key).component.events"
                   @change="handleFormDataChange($event,key)"
+                  @ready="handleFormComponentReady($event,key)"
+                  @custom="handleFormCustomEvent($event,key)"
                 >
                 </render-custom-component>
                 <render-component
@@ -262,6 +265,10 @@
         </el-row>
       </el-form>
       <div slot="footer">
+        <template v-if="formOptions && formOptions.footer && formOptions.footer.slot">
+          <slot name="FormFooterSlot" v-bind:data="formData" ></slot>
+        </template>
+
         <el-button
           :size="formOptions ? handleAttribute(formOptions.saveButtonSize, null) : null"
           :type="formOptions ? handleAttribute(formOptions.saveButtonType, null) : null"
@@ -316,6 +323,12 @@ export default {
     handleCellDataChange (value, column, row) {
       column.value = value
       this.$emit('cell-data-change', { key: column.key, value: value, row: row })
+    },
+    handleFormComponentReady (event, key) {
+      this.$emit('form-component-ready', { event: event, key: key, form: this.formData })
+    },
+    handleFormCustomEvent (event, key) {
+      this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     }
   }
 }

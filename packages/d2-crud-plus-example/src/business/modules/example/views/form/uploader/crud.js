@@ -76,6 +76,9 @@ export const crudOptions = (vm) => {
           component: {
             props: {
               elProps: {// element upload组件的props
+                onPreview: (file) => { // 自定义点击事件
+                  window.open(file.url)
+                },
                 limit: 0 // 不限制数量
               },
               uploader: {

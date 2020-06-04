@@ -1,5 +1,5 @@
 <template>
-  <div ref="editor" style="width:100%;min-height: 300px;"></div>
+  <div ref="editor" class="ql-editor" style="width:100%;min-height: 300px;"></div>
 </template>
 
 <script>
@@ -8,6 +8,7 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
+import lodash from 'lodash'
 // quill富文本编辑器
 export default {
   name: 'd2p-quill',
@@ -16,6 +17,9 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    config: {
+      type: Object
     },
     // 上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
@@ -79,6 +83,7 @@ export default {
     init () {
       const editor = this.$refs.editor
       // 初始化编辑器
+      lodash.merge(this.options, this.config)
       this.Quill = new Quill(editor, this.options)
 
       let toolbar = this.Quill.getModule('toolbar')

@@ -7,19 +7,26 @@
 <script>
 import LoadEvent from './utils/Event'
 
+/**
+ * ueditor富文本编辑器包装，支持v-model绑定
+ */
 export default {
   name: 'd2p-ueditor',
   props: {
+    // 富文本
     value: {
       type: String,
       default: ''
     },
+    // 编辑器配置
+    // 请参考：http://fex.baidu.com/ueditor/#start-config
     config: {
       type: Object,
       default: () => {
         return {}
       }
     },
+    // 编辑器名称
     name: {
       type: String,
       default: ''

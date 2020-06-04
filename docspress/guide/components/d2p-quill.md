@@ -8,6 +8,7 @@ quill富文本编辑器
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |value|-|`String`|`false`|-|
+|config|-|`Object`|`false`|-|
 |uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|{"type":"cos"}|
 
 <!-- @vuese:d2p-quill:props:end -->
@@ -20,9 +21,10 @@ quill富文本编辑器
 |---|---|---|
 |change|-|-|
 |input|发出事件 v-model|-|
-|text-change|-|-|
-|selection-change|-|-|
-|editor-change|-|-|
+|text-change|文本变更事件|-|
+|selection-change|选择框变更事件|-|
+|editor-change|editor-change事件|-|
+|ready|编辑器ready事件|-|
 
 <!-- @vuese:d2p-quill:events:end -->
 

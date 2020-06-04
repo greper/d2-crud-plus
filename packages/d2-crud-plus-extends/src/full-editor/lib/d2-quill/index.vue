@@ -42,16 +42,16 @@ export default {
             ['bold', 'italic', 'underline', 'strike'],
             ['blockquote', 'code-block'],
             [{ list: 'ordered' }, { list: 'bullet' }],
-            // [{ 'script': 'sub' }, { 'script': 'super' }],
-            // [{ 'indent': '-1' }, { 'indent': '+1' }],
-            // [{ 'direction': 'rtl' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],
+            [{ 'indent': '-1' }, { 'indent': '+1' }],
+            [{ 'direction': 'rtl' }],
             [{ size: ['small', false, 'large', 'huge'] }],
             [{ header: [1, 2, 3, 4, 5, 6, false] }],
             [{ color: [] }, { background: [] }],
-            // [{ 'font': [] }],
+            [{ 'font': ['Microsoft-YaHei', 'SimSun', 'SimHei', 'KaiTi', 'Arial', 'Times-New-Roman'] }],
             [{ align: [] }],
             ['clean'],
-            ['link', 'image']
+            ['link', 'image', 'video']
           ]
         },
         placeholder: '书写你的内容',
@@ -63,7 +63,6 @@ export default {
     value: {
       handler (val) {
         // 确认是新的值
-
         if (val !== this.currentValue) {
           this.currentValue = val
           // 尝试更新
@@ -106,18 +105,25 @@ export default {
         this.currentValue = html
         // 发出事件 v-model
         this.$emit('input', html)
-        // 发出事件
+        // 发出事件 change
         this.$emit('change', html)
       })
       // 将一些 quill 自带的事件传递出去
       this.Quill.on('text-change', (delta, oldDelta, source) => {
+        // 文本变更事件
         this.$emit('text-change', delta, oldDelta, source)
       })
       this.Quill.on('selection-change', (range, oldRange, source) => {
+        // 选择框变更事件
         this.$emit('selection-change', range, oldRange, source)
       })
       this.Quill.on('editor-change', (eventName, ...args) => {
+        // editor-change事件
         this.$emit('editor-change', eventName, ...args)
+      })
+      this.$nextTick(() => {
+        // 编辑器ready事件
+        this.$emit('ready', { vm: this, quill: this.Quill })
       })
     },
     handlerImage () {

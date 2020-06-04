@@ -57,6 +57,11 @@
         <el-button v-on:click="addTopic">添加主题</el-button>
       </template>
 
+      <template slot="FormFooterSlot" slot-scope="scope">
+        <el-button type="success" @click="customBtn()">我是自定义按钮</el-button>
+        <el-button v-on:click="saveDraft(scope)">保存草稿</el-button>
+      </template>
+
     </d2-crud>
     <crud-footer ref="footer"
                   :current="crud.page.current"
@@ -123,6 +128,14 @@ export default {
       let form = this.getEditForm()
       console.log('form:', form)
       form.topics.splice(index, 1)
+    },
+    saveDraft (scope) {
+      console.log('保存草稿：', scope)
+      this.$message('保存草稿成功，我是自定义按钮')
+      this.getD2Crud().isDialogShow = false
+    },
+    customBtn () {
+      this.$message('我是自定义按钮')
     }
   }
 }

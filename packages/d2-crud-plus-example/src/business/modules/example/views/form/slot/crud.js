@@ -31,6 +31,12 @@ export const crudOptions = {
       }
     }
   ],
+  formOptions: {
+    footer: {
+      slot: true // 自定义编辑框按钮slot ， slot名称为 FormFooterSlot
+    },
+    center: true // 标题与按钮居中布局
+  },
   rowHandle: {
     width: 400,
     custom: [

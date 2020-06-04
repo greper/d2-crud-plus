@@ -27,6 +27,7 @@
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
+        @form-component-ready="handleFormComponentReady"
     >
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
 
@@ -98,6 +99,9 @@ export default {
         this.getEditFormTemplate('content').component.show = false
         this.getEditFormTemplate('content_ueditor').component.show = true
       }
+    },
+    handleFormComponentReady (event, key, form) {
+      console.log('form component ready:', event, key, form)
     }
   }
 }

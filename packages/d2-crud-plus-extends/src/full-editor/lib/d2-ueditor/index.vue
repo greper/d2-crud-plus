@@ -89,7 +89,7 @@ export default {
           this.editor.setContent(this.value)
         } else {
           this.status = 2
-          this.$emit('ready', this.editor)
+          this.$emit('ready', { vm: this, editor: this.editor })
           if (this.initValue) {
             console.log('initvalue ', this.initValue)
             this.editor.setContent(this.initValue)

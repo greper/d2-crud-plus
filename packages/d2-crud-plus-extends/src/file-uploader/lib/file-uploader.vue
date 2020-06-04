@@ -5,7 +5,6 @@
              :http-request="httpRequest"
              :on-exceed="onExceed"
              :on-remove="handleUploadFileRemove"
-             :on-preview="handlePictureCardPreview"
              :on-success="handleUploadFileSuccess"
              ref="fileUploader"
              v-bind="_elProps"
@@ -70,7 +69,7 @@ export default {
     custom: {
       type: Object
     },
-    // 内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数
+    // 内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数<br/>
     // 注意，form方式上传的action、name、headers等参数不在此设置
     elProps: {
       type: Object
@@ -122,45 +121,11 @@ export default {
       if (changed) {
         this.initValue()
       }
-
-      // this.$emit('change', this.fileList)
     }
   },
   computed: {
     _elProps () {
-      let defaultElProps = {
-        limit: 0,
-        listType: 'text',
-        showFileList: true,
-        action: '',
-        beforeUpload: (file) => {
-          if (this.sizeLimit == null) {
-            return true
-          }
-          let limit = this.sizeLimit
-          let showMessage = null
-          if (typeof limit === 'number') {
-            console.log('1111：', file.size)
-            limit = this.sizeLimit
-            showMessage = (fileSize, limit) => {
-              if (this.$message) {
-                let limitTip = this.computeFileSize(limit)
-                let fileSizeTip = this.computeFileSize(file.size)
-                this.$message({ message: '文件大小不能超过' + limitTip + '，当前文件大小:' + fileSizeTip, type: 'warning' })
-              }
-            }
-          } else {
-            console.log('2222：', typeof limit)
-            limit = this.sizeLimit.limit
-            showMessage = this.sizeLimit.tip
-          }
-          if (file.size > limit) {
-            console.log('文件大小超过限制：', file.size)
-            showMessage(file.size, limit)
-            return false
-          }
-        }
-      }
+      let defaultElProps = this.getDefaultElProps()
       Object.assign(defaultElProps, this.elProps)
       return defaultElProps
     },
@@ -185,6 +150,47 @@ export default {
     }
   },
   methods: {
+    getDefaultElProps () {
+      return {
+        limit: 0,
+        listType: 'text',
+        showFileList: true,
+        action: '',
+        onPreview: (file) => {
+          if (this._elProps.listType === 'picture-card' || this._elProps.listType === 'picture') {
+            this.dialogImageUrl = file.url
+            this.dialogVisible = true
+          } else {
+            window.open(file.url)
+          }
+        },
+        beforeUpload: (file) => {
+          if (this.sizeLimit == null) {
+            return true
+          }
+          let limit = this.sizeLimit
+          let showMessage = null
+          if (typeof limit === 'number') {
+            limit = this.sizeLimit
+            showMessage = (fileSize, limit) => {
+              if (this.$message) {
+                let limitTip = this.computeFileSize(limit)
+                let fileSizeTip = this.computeFileSize(file.size)
+                this.$message({ message: '文件大小不能超过' + limitTip + '，当前文件大小:' + fileSizeTip, type: 'warning' })
+              }
+            }
+          } else {
+            limit = this.sizeLimit.limit
+            showMessage = this.sizeLimit.tip
+          }
+          if (file.size > limit) {
+            console.log('文件大小超过限制：', file.size)
+            showMessage(file.size, limit)
+            return false
+          }
+        }
+      }
+    },
     setValue (value) {
       this.initValue(value)
       // this.$emit('change', this.fileList)
@@ -265,10 +271,6 @@ export default {
     handleUploadFileRemove (file, fileList) {
       this.fileList = fileList
       this.emitList(fileList)
-    },
-    handlePictureCardPreview (file) {
-      this.dialogImageUrl = file.url
-      this.dialogVisible = true
     },
     emitList (list) {
       if (this.returnType === 'url') {

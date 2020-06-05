@@ -16,7 +16,7 @@
 |maxSize|图片大小限制，单位MB|`Number`|`false`|5|
 |limit|图片数量限制,0为不限制|`Number`|`false`|1|
 |accept|可接收的文件后缀|`String`|`false`|.jpg, .jpeg, .png, .gif, .webp|
-|cropper|cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs|`Object`|`false`|-|
+|cropper|[cropperjs的参数](https://github.com/fengyuanchen/cropperjs)|`Object`|`false`|-|
 |uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|-|
 
 <!-- @vuese:d2p-cropper-uploader:props:end -->

@@ -85,7 +85,7 @@ export default {
       type: String,
       default: '.jpg, .jpeg, .png, .gif, .webp'
     },
-    // cropperjs的参数，详见：https://github.com/fengyuanchen/cropperjs
+    // [cropperjs的参数](https://github.com/fengyuanchen/cropperjs)
     cropper: {
       type: Object
     },

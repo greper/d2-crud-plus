@@ -24,7 +24,10 @@ export const crudOptions = {
         value: 'value', // 数据字典中value字段的属性名
         label: 'label', // 数据字典中label字段的属性名
         children: 'children', // 数据字典中children字段的属性名
-        isTree: false // 此数据字典是否是树形的，通常用于级联组件、地区选择组件等处
+        isTree: false, // 此数据字典是否是树形的，通常用于级联组件、地区选择组件等处
+        onReady:(data, dict)=>{
+          //远程数据字典加载完成事件，每个引用该字典的组件都会触发一次
+        }   
       }   
     }
 ]}
@@ -62,3 +65,16 @@ d2CrudPlus.util.dict.clear() //清空所有字典缓存
 d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 ```
 
+## onReady事件监听
+当dict获取到远程数据之后，会触发onReady事件
+```js
+dict:{
+  onReady: (data, dict) => {
+      let value = vm.getEditForm().checkbox
+      if (value == null) {
+        value = []
+      }
+      radioOptionsChanged(vm, value)
+  }
+}
+``` 

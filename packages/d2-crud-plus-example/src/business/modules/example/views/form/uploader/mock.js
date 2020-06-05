@@ -7,16 +7,16 @@ let options = {
 const list = [
   {
     id: 1,
-    avatar: 'http://qiniu.veryreader.com/extends/avatar.jpg',
-    file: ['http://qiniu.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],
-    image: ['http://qiniu.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],
-    image2: ['http://qiniu.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png']
+    avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
+    file: ['http://greper.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],
+    image: ['http://greper.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],
+    image2: ['http://greper.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png']
   },
   {
     id: 2,
-    avatar: 'http://qiniu.veryreader.com/extends/avatar.jpg',
-    file: 'http://qiniu.veryreader.com/extends/avatar.jpg',
-    image: 'http://qiniu.veryreader.com/extends/avatar.jpg'
+    avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
+    file: 'http://greper.veryreader.com/extends/avatar.jpg',
+    image: 'http://greper.veryreader.com/extends/avatar.jpg'
   }
 ]
 options.list = list

@@ -131,7 +131,9 @@ export default {
     openDialog () {
       this.dialogVisible = true
       this.$nextTick(() => {
-        this.$refs.elTree.setCheckedKeys(this.value, this.leafOnly)
+        if (this.value != null) {
+          this.$refs.elTree.setCheckedKeys(this.value, this.leafOnly)
+        }
       })
     },
     getValueKey (item) {

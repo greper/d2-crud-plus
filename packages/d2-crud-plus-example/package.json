@@ -16,6 +16,7 @@
     "dev:pm": "vue-cli-service serve --open --mode pm",
     "build": "vue-cli-service build",
     "build:nomock": "vue-cli-service build --mode nomock",
+    "build:local": "vue-cli-service build --mode local",
     "build:travis": "vue-cli-service build --mode travis",
     "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit"

@@ -1,3 +1,4 @@
+import './fix.ie'
 import './lib'
 import './components'
 import './filters'

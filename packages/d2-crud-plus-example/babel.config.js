@@ -3,9 +3,8 @@ module.exports = {
     '@vue/cli-plugin-babel/preset',
     ['@babel/env', {
       'targets': {
-        'browsers': ['last 2 versions', 'ie >= 11']
+        'browsers': ['last 2 versions', '> 1%', 'ie >= 11']
       },
-      'corejs': '3',
       'useBuiltIns': 'usage'
     }]
   ],

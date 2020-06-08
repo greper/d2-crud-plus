@@ -64,7 +64,8 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 10"
   ],
   "gitHead": "1977bbb033b6f89e081f1e7ea8c567109cbe9385"
 }

@@ -19,6 +19,20 @@ function radioOptionsChanged (vm, value) {
   vm.crud.columnsMap['checkbox'].dict.dataMap
   console.log('component.dict', vm.crud.columnsMap['checkbox'].component.props.dict.data)
 }
+function disabledAllChanged (vm, key, value, form) {
+  for (let formKey in form) {
+    if (formKey === key) {
+      continue
+    }
+    let column = vm.getEditFormTemplate(formKey)
+    if (column && column.component.props) {
+      column.component.props.disabled = value
+      if (column.component.props.elProps) {
+        column.component.props.elProps.disabled = value
+      }
+    }
+  }
+}
 export const crudOptions = (vm) => {
   return {
     columns: [
@@ -203,7 +217,18 @@ export const crudOptions = (vm) => {
             vm.getEditFormTemplate('show_ret').component.show = value
             // vm.$set(vm.getEditFormTemplate('show_ret').component, 'show', value)
           },
-          helper: '点击显示与隐藏右边整个字段'
+          component: {
+            props: {
+              dict: {
+                onReady: (data, dict) => {
+                  let value = vm.getEditForm().show
+                  vm.getEditFormTemplate('show_ret').component.show = value
+                }
+              }
+            }
+          },
+          helper: '点击显示与隐藏右边整个字段',
+          span: 24
         }
       },
       {
@@ -214,7 +239,32 @@ export const crudOptions = (vm) => {
         disabled: true,
         form: {
           component: {
-            show: true
+            show: true,
+            props: {
+              disabled: false
+            }
+          }
+        }
+      },
+      {
+        title: '禁用启用',
+        key: 'disableAll',
+        sortable: true,
+        search: { disabled: false },
+        type: 'dict-switch',
+        dict: { data: [{ value: true, label: '禁用全部' }, { value: false, label: '启用' }] },
+        form: {
+          component: {
+            span: 24,
+            dict: {
+              onReady () {
+                disabledAllChanged(vm, 'disableAll', vm.getEditForm().disableAll, vm.getEditForm())
+              }
+            }
+          },
+          valueChange (key, value, form) {
+            console.log('您选中了：', value)
+            disabledAllChanged(vm, key, value, form)
           }
         }
       }

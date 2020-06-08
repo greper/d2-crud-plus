@@ -1,17 +1,18 @@
 <template>
     <el-select
         :value="selectValue"
-        v-bind="_elProps"
         :value-key="dict.value"
         @input="doInput"
         @change="doChange"
         style="width:100%"
+        v-bind="_elProps"
     >
       <el-option
           v-for="option in _options"
           :key="option[dict.value]"
           :value="option[dict.value]"
           :label="option[dict.label]"
+          v-bind="option"
       >
       </el-option>
     </el-select>

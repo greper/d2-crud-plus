@@ -73,6 +73,18 @@ export const crudOptions = {
             },
             helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
           }
+        }, {
+          title: '树形选择3',
+          key: 'tree3',
+          type: 'tree-selector',
+          dict: { url: '/area/tree', isTree: true, value: 'id' },
+          form: {
+            component: {
+              span: 24,
+              props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
+            },
+            helper: '自定义获取省市区数据'
+          }
         }
       ]
     }

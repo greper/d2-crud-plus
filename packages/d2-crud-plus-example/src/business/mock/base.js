@@ -1,15 +1,42 @@
-function copyList (originList, newList, options) {
+function copyList (originList, newList, options, parentId) {
   for (let item of originList) {
-    let newItem = { ...item }
+    let newItem = { ...item, parentId }
     newItem.id = ++options.idGenerator
     newList.push(newItem)
     if (item.children != null) {
       newItem.children = []
-      copyList(item.children, newItem.children, options)
+      copyList(item.children, newItem.children, options, newItem.id)
+    }
+  }
+}
+
+function delById (req, list) {
+  for (let i = 0; i < list.length; i++) {
+    let item = list[i]
+    if ((item.id) === parseInt(req.params.id)) {
+      console.log('remove i')
+      list.splice(i, 1)
+      break
+    }
+    if (item.children != null && item.children.length > 0) {
+      delById(req, item.children)
     }
   }
 }
 export default {
+  findById (id, list) {
+    for (let item of list) {
+      if (item.id === id) {
+        return item
+      }
+      if (item.children != null && item.children.length > 0) {
+        let sub = this.findById(id, item.children)
+        if (sub != null) {
+          return sub
+        }
+      }
+    }
+  },
   buildMock (options) {
     let name = options.name
     if (options.copyTimes == null) {
@@ -19,6 +46,7 @@ export default {
     for (let i = 0; i < options.copyTimes; i++) {
       copyList(options.list, list, options)
     }
+    options.list = list
     return [
       {
         path: 'api/' + name + '/page',
@@ -27,6 +55,12 @@ export default {
           let data = list
           let size = 20
           let current = 1
+          for (let item of list) {
+            if (item.children != null && item.children.length === 0) {
+              item.hasChildren = false
+              item.lazy = false
+            }
+          }
           if (req != null && req.body != null) {
             if (req.body.size != null) {
               size = parseInt(req.body.size)
@@ -156,14 +190,7 @@ export default {
         path: 'api/' + name + '/delete',
         method: 'post',
         handle (req) {
-          for (let i = 0; i < list.length; i++) {
-            let item = list[i]
-            if ((item.id) === parseInt(req.params.id)) {
-              console.log('remove i')
-              list.splice(i, 1)
-              break
-            }
-          }
+          delById(req, list)
           console.log('req', req, list)
           return {
             code: 0,

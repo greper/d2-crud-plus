@@ -8,11 +8,7 @@ const cache = new Map()
 function get (dict) {
   if (dict == null) {
     // 如果没有配置字典，直接返回空数组
-    console.error('没有配置数据字典，返回空数组')
-    return new Promise((resolve) => {
-      onReady(dict, { data: [], dataMap: {} })
-      resolve([])
-    })
+    dict = {}
   }
 
   let url = dict.url
@@ -122,7 +118,7 @@ function onReady (dict, item) {
   dict.dataMap = item.dataMap
   if (dict.onReady != null) {
     setTimeout(() => {
-      dict.onReady(item.data, dict)
+      dict.onReady(dict.data, dict)
     }, 1)
   }
 }

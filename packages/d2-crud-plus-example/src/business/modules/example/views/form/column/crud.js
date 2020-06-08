@@ -1,3 +1,5 @@
+import request from '@/plugin/axios'
+
 export const crudOptions = {
   rowHandle: {
     // columnHeader: '操作',
@@ -16,6 +18,17 @@ export const crudOptions = {
   options: {
     highlightCurrentRow: true,
     rowKey: 'id',
+    lazy: true,
+    load: (tree, treeNode, resolve) => {
+      console.log('--------', tree, treeNode)
+      request({
+        url: '/column/children?id=' + tree.id,
+        method: 'get'
+      }).then(ret => {
+        console.log('懒加载数据', ret.data)
+        resolve(ret.data)
+      })
+    },
     showSummary: true,
     summaryMethod (param) {
       const { columns, data } = param

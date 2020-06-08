@@ -83,7 +83,19 @@ export default {
       return UpdateObj(row)
     },
     delRequest (row) {
-      return DelObj(row.id)
+      return DelObj(row.id).then(ret => {
+        // 手动更新加载项
+        let data = this.getD2Crud().$refs.elTable['store'].states.treeData
+        if (data != null) {
+          let item = data[row.parentId]
+          console.log('tree Data', data, item, row.id)
+          if (item != null) {
+            item.loaded = false
+            item.expanded = false
+          }
+        }
+        return ret
+      })
     },
     batchDelRequest (ids) {
       return BatchDel(ids)

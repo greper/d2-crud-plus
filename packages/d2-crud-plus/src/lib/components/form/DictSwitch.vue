@@ -1,18 +1,24 @@
 <template>
-  <el-radio-group class="dict_radio" :value="value" v-bind="_elProps"  @input="doInput" @change="doChange">
-    <el-radio v-for="option in _options"
-              :key="option[dict.value]"
-              :label="option[dict.value]"
-              v-bind="option"
-    >{{option[dict.label]}}</el-radio>
-  </el-radio-group>
+  <el-switch
+    :value="value"
+    v-bind="_elProps"
+    @input="doInput"
+    @change="doChange"
+    :active-color="_active[dict.color]"
+    :active-value="_active[dict.value]"
+    :active-text="_active[dict.label]"
+    :inactive-color="_inActive[dict.color]"
+    :inactive-value="_inActive[dict.value]"
+    :inactive-text="_inActive[dict.label]"
+  >
+  </el-switch>
 </template>
 
 <script>
 import dict from '../../utils/util.dicts'
 // 字典radio选择器
 export default {
-  name: 'dict-radio',
+  name: 'dict-switch',
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -60,6 +66,18 @@ export default {
         return this.dictOptions
       }
       return []
+    },
+    _active () {
+      if (this._options.length > 0) {
+        return this._options[0]
+      }
+      return {}
+    },
+    _inActive () {
+      if (this._options.length > 1) {
+        return this._options[1]
+      }
+      return {}
     }
   },
   created () {
@@ -83,14 +101,5 @@ export default {
 }
 </script>
 <style lang="scss">
-  .dict_radio{
-    width:100%
-  }
-  .dict_radio.el-radio-button__inner, .dict_radio.el-radio-group {
-      line-height: 40px;
-    .el-radio, .el-radio__input{
-      line-height: 40px;
-    }
-  }
 
 </style>

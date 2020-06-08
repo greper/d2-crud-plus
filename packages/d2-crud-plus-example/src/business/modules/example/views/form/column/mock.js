@@ -6,10 +6,26 @@ let options = {
 }
 const list = [
   {
-    data: 'data1',
+    data: '我会懒加载',
     time: '2020-01-01 11:11:11',
     province: 'wh',
-    amount: 100
+    amount: 100,
+    hasChildren: true,
+    loaded: false,
+    children: [
+      {
+        data: '懒加载的子数据',
+        province: ['sh', 'gz'],
+        time: '2020-01-01 11:11:11',
+        amount: 100
+      },
+      {
+        data: '懒加载的子数据2',
+        province: ['sh', 'sz'],
+        time: '2020-01-01 11:11:11',
+        amount: 100
+      }
+    ]
   },
   {
     data: 'data2',
@@ -62,4 +78,20 @@ const list = [
 ]
 options.list = list
 let mock = mockUtil.buildMock(options)
+
+mock.push({
+  path: '/api/column/children',
+  method: 'get',
+  handle (req) {
+    console.log('req', req)
+    let id = parseInt(req.params.id)
+    let item = mockUtil.findById(id, options.list)
+    console.log('children:', item.children)
+    return {
+      code: 0,
+      msg: 'success',
+      data: item.children
+    }
+  }
+})
 export default mock

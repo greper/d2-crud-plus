@@ -231,7 +231,7 @@
                 <el-input
                   v-else-if="(!handleFormTemplateMode(key).component) ||((!handleFormTemplateMode(key).component.name) && (!handleFormTemplateMode(key).component.render)) || handleFormTemplateMode(key).component.name === 'el-input'"
                   v-model="formData[key]"
-                  v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, handleFormTemplateMode(key).component) : handleFormTemplateMode(key).component"
+                  v-bind="(handleFormTemplateMode(key).component.props?handleFormTemplateMode(key).component.props:handleFormTemplateMode(key).component)"
                   @change="handleFormDataChange($event,key)"
                 >
                 </el-input>
@@ -329,6 +329,10 @@ export default {
     },
     handleFormCustomEvent (event, key) {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
+    },
+    handleDialogOpened (event) {
+      // TODO 暂时无效
+      this.$emit('form-dialog-opened', { event: event, form: this.formData })
     }
   }
 }

@@ -21,7 +21,9 @@
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
-        @form-data-change="handleFormDataChange">
+        @form-data-change="handleFormDataChange"
+        @form-dialog-opened="handleFormDialogOpened"
+    >
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer"
@@ -57,6 +59,12 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     }
+    // handleFormDialogOpened ({ event, form }) {
+    //   console.log('form dialog opened')
+    //   this.getEditFormTemplate('disableAll').valueChange('disableAll', form.disableAll, form)
+    //   this.getEditFormTemplate('checkbox').valueChange('checkbox', form.checkbox, form)
+    //   this.getEditFormTemplate('show').valueChange('show', form.show, form)
+    // }
   }
 }
 </script>

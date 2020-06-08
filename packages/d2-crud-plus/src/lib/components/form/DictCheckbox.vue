@@ -2,7 +2,9 @@
   <el-checkbox-group :value="selectValue" v-bind="_elProps" style="width:100%" @input="doInput"  @change="doChange">
     <el-checkbox v-for="option in _options"
                  :key="option[dict.value]"
-                 :label="option[dict.value]" >{{option[dict.label]}}</el-checkbox>
+                 :label="option[dict.value]"
+                 v-bind="option"
+    >{{option[dict.label]}}</el-checkbox>
   </el-checkbox-group>
 </template>
 

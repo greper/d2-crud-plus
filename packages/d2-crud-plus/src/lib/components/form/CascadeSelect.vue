@@ -1,5 +1,6 @@
 <template>
   <el-cascader
+    class="d2p-cascade"
     :value="selectValue"
     :options="_options"
     v-bind="_elProps"
@@ -111,3 +112,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.d2p-cascade {
+  /*兼容ie11*/
+  .el-cascader__tags .el-tag>span{
+    flex:auto
+  }
+}
+</style>

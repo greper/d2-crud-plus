@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.0...@d2-plus/d2-crud-plus-example@1.8.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* 指定corejs版本 ([619da4d](https://github.com/greper/d2-crud-plus/commit/619da4d6c2c7482d68989e6c378ebd29fc335d05))
+
+
+
+
+
 # [1.8.0](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.7.1...@d2-plus/d2-crud-plus-example@1.8.0) (2020-06-08)
 
 

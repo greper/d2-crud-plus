@@ -5,6 +5,7 @@ module.exports = {
       'targets': {
         'browsers': ['last 2 versions', 'ie >= 11']
       },
+      'corejs': '3',
       'useBuiltIns': 'usage'
     }]
   ],

@@ -3282,29 +3282,29 @@ cyclist@^1.0.1:
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.7.1.tgz#1c1a34c7b5c1e41d029ae9c32e29de4a699cd9f1"
-  integrity sha512-xuPhrqaDGOY/w1g0v0viBaMD7KjPqGluNFeZTwKvveRPpMdmeyptR19JC2mYyrtQ2eXWdouumpDfPqNGxawuMw==
+d2-crud-plus@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.8.0.tgz#f09f8cb6066117f99c95acdbb07f7b7c8b6b4831"
+  integrity sha512-4tFrrBmRldj6itWbrpYpFrW9ImZ82lPK0Ttpvi1m3szWhBLzvzfUiLv8ldd5xg8JTulnUzExUnP6de3d8vVsWQ==
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
     vue "^2.6.10"
 
-d2-crud-x@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.1.0.tgz#64f070f17813f5e19868dd0fd4013cb340035766"
-  integrity sha512-KJRkibinn8DPjLswX7YpKTkOlMl44oooE6ksY7avKg9WRbp9YxbU0/NJogwUmYjtMv9FFgUYOiX3sgs+kY/96w==
+d2-crud-x@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.2.0.tgz#b68ea3761bff6329f45349da5fd9eeba65f0333e"
+  integrity sha512-8Ua/PCZgGt1qwFf4pYFsoOhhrXxaXy9B4e716i4to6czmLmTCVyr/w6dRqEcjM4+EUikcFDaK9rkNJbTBr3TFQ==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.5.1.tgz#e34a068830265e9272d0ae2c29b6eccf59d0177e"
-  integrity sha512-SQK5cKmCawyYVS3FTmSQIsZE7PG4TQJb1UPPLRAWZH6/LMVRC7y7H+nQ+You2WSoRZu2j4PW8jj5SIfM16MMxA==
+d2p-extends@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.6.0.tgz#13f6ec8e70e717f0ab1c68a02f0ac10dc73776b0"
+  integrity sha512-IWtdGBUIh5etsyzkZIeafytiwq+/6l+8pDsL1rr4/Yfs4sCuKV9myz+Mvs5SkjT/HM6ntbMWg+QJDbKObSAf4A==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"

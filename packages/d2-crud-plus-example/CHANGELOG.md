@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.7.1...@d2-plus/d2-crud-plus-example@1.8.0) (2020-06-08)
+
+
+### Bug Fixes
+
+* 兼容ie11 ([bca62ee](https://github.com/greper/d2-crud-plus/commit/bca62eeb48ef53bd075028340f4634a341a88987))
+* 增加选项的禁用配置，增加dictSwitch,部分ie兼容性问题修复 ([c91a04b](https://github.com/greper/d2-crud-plus/commit/c91a04bbdd201d117953048c56cca53ae66dad0d))
+
+
+### Features
+
+* 组件ready事件 ([bfefdf3](https://github.com/greper/d2-crud-plus/commit/bfefdf31d03247a87d718114e30363801a98d96a))
+
+
+
+
+
 ## [1.7.1](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.7.0...@d2-plus/d2-crud-plus-example@1.7.1) (2020-06-04)
 
 

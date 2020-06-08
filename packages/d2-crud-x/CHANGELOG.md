@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.1.0...d2-crud-x@2.2.0) (2020-06-08)
+
+
+### Bug Fixes
+
+* 增加选项的禁用配置，增加dictSwitch,部分ie兼容性问题修复 ([c91a04b](https://github.com/greper/d2-crud/commit/c91a04bbdd201d117953048c56cca53ae66dad0d))
+
+
+### Features
+
+* 自定义事件监听支持 ([1f9fd39](https://github.com/greper/d2-crud/commit/1f9fd39316375c6102279e1a7a65b33ae16a4733))
+
+
+
+
+
 # [2.1.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.1.0-0...d2-crud-x@2.1.0) (2020-06-04)
 
 

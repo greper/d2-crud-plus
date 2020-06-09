@@ -4,8 +4,6 @@ import menuAside from '@/menu/aside'
 import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
 
-const _import = require('@/business/routers/util.import')
-
 /**
  * menuType 1=menu 2=btn 3=route
  * @param routers
@@ -15,11 +13,19 @@ const _import = require('@/business/routers/util.import')
 function formatRouter (routers, list) {
   list.forEach((item) => {
     if (item.type !== 2 && !StringUtils.isEmpty(item.path) && !StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置path，则不加入路由
+      // let com = null
+      // if (item.component.indexOf('permission') === 0) {
+      //   com = () => import('@/business/modules/permission' + item.component.replace('permission/', ''))
+      // } else if (item.component.indexOf('usersphere') === 0) {
+      //   com = () => import('@/business/modules/usersphere' + item.component.replace('usersphere/', ''))
+      // }
+
       routers.push({
         path: item.path,
         name: item.name,
         hidden: false,
-        component: _import(item.component),
+        // 动态路由支持懒加载
+        component: () => import('@/business/modules' + item.component),
         meta: {
           title: item.title,
           auth: true,

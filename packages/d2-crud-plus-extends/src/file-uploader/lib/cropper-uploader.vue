@@ -169,11 +169,13 @@ export default {
     },
     doUpload (option) {
       option.config = this.uploader
-      return this.getUploader().upload(option).then(ret => {
-        if (this.suffix != null) {
-          ret.url += this.suffix
-        }
-        return ret
+      return this.getUploader().then(uploader => {
+        return uploader.upload(option).then(ret => {
+          if (this.suffix != null) {
+            ret.url += this.suffix
+          }
+          return ret
+        })
       })
     },
     getUploader () {

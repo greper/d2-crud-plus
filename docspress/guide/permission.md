@@ -85,7 +85,7 @@ router.beforeEach(async (to, from, next) => {
   // 关闭搜索面板
   store.commit('d2admin/search/set', false)
 
-  // 添加根据菜单获取权限
+  // 远程获取权限与菜单
   if (RouterHook.beforeEach) {
     const hookRet = await RouterHook.beforeEach(to, from, next)
     if (hookRet) {
@@ -99,4 +99,26 @@ router.beforeEach(async (to, from, next) => {
     ...
   }
 }
+```
+  5. 在`/src/store/modules/d2admin/modules/account.js`中加入以下代码
+```js {12,14}
+    logout ({ commit, dispatch }, { confirm = false } = {}) {
+      /**
+       * @description 注销
+       */
+      async function logout () {
+        // 删除cookie
+        util.cookies.remove('token')
+        util.cookies.remove('uuid')
+        // 清空 vuex 用户信息
+        await dispatch('d2admin/user/set', {}, { root: true })
+
+        // 注销登录时清空permission信息
+        commit('permission/clear', true, { root: true })
+
+        // 跳转路由
+        router.push({
+          name: 'login'
+        })
+      }
 ```

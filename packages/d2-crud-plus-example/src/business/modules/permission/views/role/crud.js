@@ -84,7 +84,7 @@ export const crudOptions = (vm) => {
             form.component.disabled = true // 编辑时禁用控件，不允许编辑
           },
           valueChange (key, value) {
-            console.log('-----你选择了', value, vm.crud.columnsMap.platformId.dict.dataMap[value].name)
+            console.log('-----你选择了', value, vm.crud.columnsMap.platformId.component.props.dict.dataMap[value].name)
           }
         }, // 表单配置
         // disabled: false //是否隐藏列

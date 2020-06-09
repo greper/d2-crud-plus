@@ -1,6 +1,6 @@
 # d2p-tree-selector
 
-树形选择组件，需要import xx from 'd2p-extends/src'
+树形选择组件，需要import xx from 'd2p-extends'
 
 ## Props
 

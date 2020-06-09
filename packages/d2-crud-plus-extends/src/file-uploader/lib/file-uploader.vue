@@ -314,12 +314,14 @@ export default {
       if (!lodash.isEmpty(this.custom)) {
         config.custom = this.custom
       }
-      return this.getUploader().upload({
-        file: option.file,
-        fileName: option.file.name,
-        onProgress: option.onProgress,
-        onError: option.onError,
-        config: config
+      return this.getUploader().then(uploader => {
+        return uploader.upload({
+          file: option.file,
+          fileName: option.file.name,
+          onProgress: option.onProgress,
+          onError: option.onError,
+          config: config
+        })
       }).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix

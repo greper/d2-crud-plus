@@ -3,34 +3,35 @@ import config from './config'
 import lodash from 'lodash'
 function install (Vue, options) {
   lodash.merge(config, options)
+}
+function init (uploader, type) {
+  if (!uploader.inited) {
+    uploader.inited = true
+  }
   const buildKey = config.buildKey
-  options = {
+  let options = {
     alioss: config.alioss,
     cos: config.cos,
     form: config.form,
     qiniu: config.qiniu
   }
-
-  Object.keys(options).forEach(key => {
-    if (options[key].buildKey == null) {
-      options[key].buildKey = buildKey
-    }
-    choose.get(key).init(options[key])
-  })
+  if (options[type].buildKey == null) {
+    options[type].buildKey = buildKey
+  }
+  console.log('uploader [' + type + '] init ....')
+  uploader.init(options[type])
 }
 export default {
   install,
   choose,
   getUploader (type) {
-    let uploader = null
     if (type != null && type !== '') {
-      uploader = choose.get(type)
+      type = this.getDefaultType()
     }
-    if (uploader == null) {
-      uploader = config.defaultType
-    }
-    console.log('getUploader:', uploader)
-    return uploader
+    return choose.get(type).then(uploader => {
+      init(uploader, type)
+      return uploader
+    })
   },
   getConfig () {
     return config

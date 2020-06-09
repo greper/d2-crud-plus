@@ -5,7 +5,7 @@
 // 先引入d2-crud,d2-crud-plus
 // 参考 https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js
 // 然后引入树形组件
-import { D2pTreeSelector } from 'd2p-extends/src' // 源码方式引入，上传组件支持懒加载
+import { D2pTreeSelector } from 'd2p-extends' 
 Vue.use(D2pTreeSelector)
 ```
 ###  2. crud 

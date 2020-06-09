@@ -1,4 +1,4 @@
-const _import = require('@/business/routers/util.import')
+const _import = require('./util.import') // 页面懒加载的问题修复
 const viewsPrefix = 'example/views/'
 const aside = [
   { path: '/index', title: '首页', icon: 'home' },

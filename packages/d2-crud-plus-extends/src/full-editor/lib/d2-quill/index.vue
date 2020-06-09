@@ -168,7 +168,9 @@ export default {
     },
     doUpload (option) {
       option.config = this.uploader
-      return this.getUploader().upload(option)
+      return this.getUploader().then(uploader => {
+        return uploader.upload(option)
+      })
     },
     getUploader () {
       let type = this.type

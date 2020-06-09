@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-// 树形选择组件，需要import xx from 'd2p-extends/src'
+// 树形选择组件，需要import xx from 'd2p-extends'
 export default {
   name: 'd2p-tree-selector',
   props: {
@@ -110,7 +110,7 @@ export default {
 ### 4. 在项目中引入即可使用
 
 ```js
-import { D2pTreeSelector } from 'd2p-extends/src' // 源码方式引入，上传组件支持懒加载
+import { D2pTreeSelector } from 'd2p-extends' // 上传组件支持懒加载
 Vue.use(D2pTreeSelector)
 ```
 ### 5. 使用
@@ -137,6 +137,6 @@ export const crudOptions = {
 通过源码导入的方式即可实现组件懒加载
 内部采用()=>import()方式进行引用
 ```
-import {xxx} from 'd2p-extends/src'
+import {xxx} from 'd2p-extends'
 ```
 更多信息请参考此文章 <https://www.jianshu.com/p/306dee896428>

@@ -1,6 +1,8 @@
 export default {
   get (type) {
-    return require('./lib/' + type).default
-    // return map[type]
+    const uploader = () => import('./lib/' + type)
+    return uploader().then(ret => {
+      return ret.default
+    })
   }
 }

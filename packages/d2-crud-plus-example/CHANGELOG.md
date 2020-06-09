@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.1...@d2-plus/d2-crud-plus-example@1.8.2) (2020-06-09)
+
+
+### Bug Fixes
+
+* 切换用户不更新权限的bug ([5b73a90](https://github.com/greper/d2-crud-plus/commit/5b73a90b418927f5f9f4dca48094ab93457a3cbe))
+* 懒加载优化，减小首次访问体积 ([d210a54](https://github.com/greper/d2-crud-plus/commit/d210a544c890c35d3f41af5067f24f9a3d8d4587))
+
+
+
+
+
 ## [1.8.1](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.0...@d2-plus/d2-crud-plus-example@1.8.1) (2020-06-08)
 
 

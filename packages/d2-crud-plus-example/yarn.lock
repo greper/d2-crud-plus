@@ -3326,10 +3326,10 @@ d2-crud-x@^2.2.1:
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.6.1.tgz#66920b7ffe796d56fa9ab5ec092b907da54ce2ac"
-  integrity sha512-k+fIZibsX4fVQwhLJfi6FfyVXN58by8weS2080+UsfSn6mP+pk9PrZGSLQpvJNNJwrNjqk8odbKrAjJ/Ue7teg==
+d2p-extends@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.6.2.tgz#8289bc59ff565d0067eb6fdfbfc7268040d72a44"
+  integrity sha512-hQpekha6qrE+0nxEMFGFQZVhqdFFUSe/11/C17RDaV7iPQ6RutzxGhRgWIDnmZ6Z+98+3MrkyRV2VFlDn34RWw==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"

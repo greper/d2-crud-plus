@@ -22,7 +22,6 @@
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
-        @form-dialog-opened="handleFormDialogOpened"
     >
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>

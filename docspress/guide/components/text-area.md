@@ -10,6 +10,7 @@ text-area封装
 |value|值|`String`|`false`|-|
 |width|宽度，数字后面要带px|`String`|`false`|100%|
 |rows|行数|`Number`|`false`|3|
+|disabled|-|`Boolean`|`false`|-|
 
 <!-- @vuese:text-area:props:end -->
 

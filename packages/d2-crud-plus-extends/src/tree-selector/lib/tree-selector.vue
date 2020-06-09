@@ -54,7 +54,7 @@ export default {
   props: {
     // 值
     value: {
-      type: [Number, String, Array, Object]
+      type: [Number, String, Boolean, Array, Object]
     },
     // 过滤，value中的nodes过滤方法 参数为nodes
     filter: {
@@ -112,9 +112,14 @@ export default {
     initData () {
       d2CrudPlus.util.dict.get(this.dict).then(ret => {
         this.$set(this, 'data', ret)
-        if (this.value != null) {
+        let arrValue = this.value
+
+        if (arrValue != null) {
           let selected = []
-          for (let item of this.value) {
+          if (!(arrValue instanceof Array)) {
+            arrValue = [arrValue]
+          }
+          for (let item of arrValue) {
             let node = d2CrudPlus.util.dict.getByValue(item, ret, this.dict)
             if (node != null) {
               node.id = node[this.dict.value]

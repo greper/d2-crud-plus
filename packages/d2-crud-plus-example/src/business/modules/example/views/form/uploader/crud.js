@@ -20,6 +20,11 @@ export const crudOptions = (vm) => {
             console.log('avatar value Changed:', key, value, form)
           },
           helper: '上传后，右边将获取到头像大小和md5值，文件上传组件不支持裁剪，如需裁剪，请参考头像裁剪上传组件'
+        },
+        valueResolve (form) { // 将value解析成row的字段
+          if (form.avatar != null && form.avatar.url != null) {
+            form.avatar = form.avatar.url
+          }
         }
       },
       {

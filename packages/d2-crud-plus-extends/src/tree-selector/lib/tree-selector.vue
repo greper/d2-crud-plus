@@ -1,6 +1,6 @@
 <template>
   <div class="d2p-tree-selector">
-    <div  class="el-cascader el-cascader--default">
+    <div  class="el-cascader el-cascader--default" @click="openDialog">
       <div class="el-input el-input--default el-input--suffix">
         <el-input ref="reference" />
         <span class="el-input__suffix">
@@ -229,6 +229,11 @@ export default {
   }
 }
 </script>
-<style>
-
+<style lang="scss">
+.d2p-tree-selector{
+  width: 100%;
+  .el-cascader{
+    width: 100%;
+  }
+}
 </style>

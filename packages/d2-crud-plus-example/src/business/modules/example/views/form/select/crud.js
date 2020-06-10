@@ -239,7 +239,9 @@ export const crudOptions = (vm) => {
         disabled: true,
         form: {
           component: {
-            show: true,
+            show: () => {
+              return vm.show
+            },
             props: {
               disabled: false
             }

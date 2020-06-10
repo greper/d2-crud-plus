@@ -451,7 +451,7 @@ export default {
      * @param selection
      */
     handleSelectionChange (selection) {
-      console.log(selection)
+      // console.log('handleSelectionChange', selection)
       this.multipleSelection = selection
     },
     /**
@@ -460,7 +460,7 @@ export default {
      * @param oldCurrentRow
      */
     handleCurrentChange (currentRow, oldCurrentRow) {
-      console.log(currentRow)
+      console.log('handleCurrentChange事件', currentRow)
     },
     /**
      * 删除请求

@@ -7,6 +7,9 @@ export default {
       if (attribute === false || attribute === 0 || attribute === '') {
         return attribute
       }
+      if (attribute && attribute instanceof Function) {
+        return attribute()
+      }
       return attribute || defaultValue
     },
     /**

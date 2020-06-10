@@ -42,6 +42,11 @@ import { d2CrudPlus } from 'd2-crud-plus'
 export default {
   name: 'formSelect',
   mixins: [d2CrudPlus.crud],
+  data () {
+    return {
+      show: true
+    }
+  },
   methods: {
     getCrudOptions () {
       return crudOptions(this)

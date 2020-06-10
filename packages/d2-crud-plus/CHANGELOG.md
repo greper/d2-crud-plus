@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.1...d2-crud-plus@1.8.2) (2020-06-10)
+
+
+### Bug Fixes
+
+* 修复文本域无法输入的问题 ([bddee2d](https://github.com/greper/d2-crud-plus/commit/bddee2d2283014a94d136ad7659dbebf2a17e24b))
+
+
+
+
+
 ## [1.8.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.0...d2-crud-plus@1.8.1) (2020-06-08)
 
 **Note:** Version bump only for package d2-crud-plus

@@ -1,6 +1,7 @@
 <template>
 
   <el-input
+    class="d2p-textarea"
     type="textarea"
     :rows='rows'
     placeholder=""
@@ -58,16 +59,19 @@ export default {
       // this.$emit('input', !this.value)
     },
     doChange ($event) {
-      let val = $event.target.value
+      let val = $event
       this.$emit('change', val)
     },
     doInput ($event) {
-      let val = $event.target.value
+      let val = $event
       this.$emit('input', val)
     }
   }
 }
 </script>
 <style lang="scss">
-
+.d2p-textarea textarea{
+  font-size: 14px;
+  font-family: Arial,"Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",  sans-serif;
+}
 </style>

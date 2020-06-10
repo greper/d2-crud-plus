@@ -85,6 +85,17 @@ export const crudOptions = {
             },
             helper: '自定义获取省市区数据'
           }
+        }, {
+          title: '树形单选',
+          key: 'tree4',
+          type: 'tree-selector',
+          dict: { url: '/area/tree', isTree: true, value: 'id' },
+          form: {
+            component: {
+              span: 24,
+              props: { multiple: false }
+            }
+          }
         }
       ]
     }

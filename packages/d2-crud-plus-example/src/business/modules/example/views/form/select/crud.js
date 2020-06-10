@@ -262,6 +262,11 @@ export const crudOptions = (vm) => {
               onReady () {
                 disabledAllChanged(vm, 'disableAll', vm.getEditForm().disableAll, vm.getEditForm())
               }
+            },
+            events: {
+              blur: () => {
+                console.log('on blur')
+              }
             }
           },
           valueChange (key, value, form) {

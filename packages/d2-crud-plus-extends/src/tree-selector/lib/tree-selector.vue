@@ -30,10 +30,9 @@
       <div>
         <el-tree
           :data="data"
-          :props="_elProps.props"
-          show-checkbox
           @check-change="handleCheckChange"
-          :node-key = "_elProps.props.value"
+          @current-change="handleCurrentChange"
+          v-bind="_elProps"
           ref="elTree">
         </el-tree>
       </div>
@@ -60,6 +59,11 @@ export default {
     filter: {
       type: Function,
       require: false
+    },
+    // 是否多选，传入false为单选
+    multiple: {
+      type: Boolean,
+      default: true
     },
     // 是否忽略选中节点的子节点
     ignoreFullCheckedChildren: { type: Boolean, default: true },
@@ -91,7 +95,8 @@ export default {
   computed: {
     _elProps () {
       let defaultElProps = {
-        showCheckbox: true,
+        showCheckbox: this.multiple,
+        highlightCurrent: !this.multiple,
         props: {}
       }
       if (this.dict != null) {
@@ -99,6 +104,7 @@ export default {
         if (this.dict.value != null) { defaultElProps.props.value = this.dict.value }
         if (this.dict.children != null) { defaultElProps.props.children = this.dict.children }
       }
+      defaultElProps.nodeKey = defaultElProps.props.value
       lodash.merge(defaultElProps, this.elProps)
       return defaultElProps
     },
@@ -108,30 +114,45 @@ export default {
         : 'small'
     }
   },
+  watch: {
+    value (value) {
+      if (this.value === value) {
+        return
+      }
+      this.setValue(value)
+    }
+  },
   methods: {
     initData () {
       d2CrudPlus.util.dict.get(this.dict).then(ret => {
         this.$set(this, 'data', ret)
-        let arrValue = this.value
-
-        if (arrValue != null) {
-          let selected = []
-          if (!(arrValue instanceof Array)) {
-            arrValue = [arrValue]
-          }
-          for (let item of arrValue) {
-            let node = d2CrudPlus.util.dict.getByValue(item, ret, this.dict)
-            if (node != null) {
-              node.id = node[this.dict.value]
-              selected.push(node)
-            }
-          }
-          this.$set(this, 'selected', selected)
-          this.resetInputHeight()
-        }
+        this.setValue(this.value)
       })
     },
-    handleCheckChange () {
+    setValue (value) {
+      let arrValue = value
+      if (arrValue != null) {
+        let selected = []
+        if (!(arrValue instanceof Array)) {
+          arrValue = [arrValue]
+        }
+        for (let item of arrValue) {
+          let data = this.data
+          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
+          if (node != null) {
+            node.id = node[this.dict.value]
+            selected.push(node)
+          }
+        }
+        this.$set(this, 'selected', selected)
+        this.resetInputHeight()
+      }
+    },
+    handleCheckChange (event) {
+      this.$emit('check-change', event)
+    },
+    handleCurrentChange (event) {
+      this.$emit('current-change', event)
     },
     openDialog () {
       this.dialogVisible = true
@@ -171,11 +192,22 @@ export default {
       this.$emit('change', values)
     },
     refreshSelected () {
-      let nodes = this.$refs.elTree.getCheckedNodes(this.leafOnly, this.includeHalfChecked)
+      let nodes = null
+      if (this.multiple) {
+        nodes = this.$refs.elTree.getCheckedNodes(this.leafOnly, this.includeHalfChecked)
+      } else {
+        let node = this.$refs.elTree.getCurrentNode()
+        if (node == null) {
+          nodes = []
+        } else {
+          nodes = [node]
+        }
+      }
+      if (this.ignoreFullCheckedChildren) {
+        nodes = this.filterFullCheckedChildren(nodes)
+      }
       if (this.filter != null) {
         nodes = this.filter(nodes)
-      } else if (this.ignoreFullCheckedChildren) {
-        nodes = this.filterFullCheckedChildren(nodes)
       }
       this.$set(this, 'selected', nodes)
       return nodes

@@ -42,6 +42,9 @@ function formatRouter (routers, list) {
 }
 
 function formatMenu (menuTree) {
+  if (menuTree == null) {
+    menuTree = []
+  }
   let menus = []
   menuTree.forEach((item) => {
     if (item.type !== 1) { // 只有菜单类型才加入
@@ -64,6 +67,9 @@ function formatMenu (menuTree) {
 }
 
 function formatPermissions (menuTree, permissionList) {
+  if (menuTree == null) {
+    menuTree = []
+  }
   menuTree.forEach((item) => {
     if (item.permission != null && item.permission !== '') { // 权限为空
       permissionList.push(item.permission)

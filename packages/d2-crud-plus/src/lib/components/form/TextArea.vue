@@ -70,8 +70,9 @@ export default {
 }
 </script>
 <style lang="scss">
-.d2p-textarea textarea{
-  font-size: 14px;
-  font-family: Arial,"Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",  sans-serif;
-}
+  .d2p-textarea{
+    textarea{
+      font-family: Arial,"Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",  sans-serif;
+    }
+  }
 </style>

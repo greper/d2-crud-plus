@@ -7,7 +7,10 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
 
+
+
 ## 帮助文档 
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 > 
 >GitHub Pages   
 >https://greper.github.io/d2-crud-plus/
@@ -15,8 +18,7 @@
 >码云（国内访问推荐 ）  
 >http://greper.gitee.io/d2-crud-plus/   
 >
->
-
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## 特性
 以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可。   
@@ -252,6 +254,17 @@ export default {
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
+
+## 帮助文档 
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+> 
+>GitHub Pages   
+>https://greper.github.io/d2-crud-plus/
+>
+>码云（国内访问推荐 ）  
+>http://greper.gitee.io/d2-crud-plus/   
+>
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## 联系作者
 

@@ -87,3 +87,24 @@ let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
 ```js
 let value = this.getEditForm().columnKey;
 ```
+
+## 7. 后台page接口返回的数据跟组件要的不一样怎么办
+```js
+export function GetList (query) {
+  return request({
+    url: '/area/page',
+    method: 'get',
+    data: query
+  }).then(ret=>{
+    //在这里改造成组件所需要的结果
+  })
+}
+```
+或者
+```js
+pageRequest (query) {
+  return GetList(query).then(ret=>{
+    //在这里改造成组件所需要的结果
+  })
+}
+```

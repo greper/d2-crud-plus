@@ -2,11 +2,9 @@ import StringUtils from '../utils/util.string'
 import dayjs from 'dayjs'
 
 function daterangeFormatter (row, column, value, index) {
-  console.log('daterangeFormatter:', value)
   return dateFormatter(value, 'YYYY-MM-DD')
 }
 function datetimerangeFormatter (row, column, value, index) {
-  console.log('datetimerangeFormatter:', value)
   return dateFormatter(value, 'YYYY-MM-DD HH:mm:ss')
 }
 

@@ -1,4 +1,4 @@
-const _import = require('./util.import') // 页面懒加载的问题修复
+const _import = require('../../utils/util.import.' + process.env.NODE_ENV) // 页面懒加载的问题修复
 const viewsPrefix = 'example/views/'
 const aside = [
   { path: '/index', title: '首页', icon: 'home' },
@@ -20,7 +20,6 @@ const aside = [
       { path: '/form/column', title: '特殊列' },
       { path: '/form/fix', title: '固定列' },
       { path: '/form/editor', title: '富文本' }
-
     ]
   },
   {

@@ -559,11 +559,7 @@ export default {
      */
     handleFormDataChange ({ key, value, form }) {
       let column = this.crud.columnsMap[key]
-      let showValue = value
-      if (showValue.length > 50) {
-        showValue = showValue.substring(0, 50) + '【内容过长不予显示】'
-      }
-      console.log('FormDataChanged:', key)
+      console.debug('FormDataChanged:', key)
       if (column.form != null && column.form.valueChange != null) {
         column.form.valueChange(key, value, this.getEditForm())
       }

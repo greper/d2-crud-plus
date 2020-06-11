@@ -5,7 +5,11 @@ module.exports = [
   { name: 'vuex', library: 'Vuex', js: 'https://cdn.jsdelivr.net/npm/vuex@3.1.2/dist/vuex.js', css: '' },
   { name: 'axios', library: 'axios', js: 'https://cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js', css: '' },
   { name: 'better-scroll', library: 'BScroll', js: 'https://cdn.jsdelivr.net/npm/better-scroll@1.15.2/dist/bscroll.min.js', css: '' },
-  { name: 'element-ui', library: 'ELEMENT', js: 'https://cdn.jsdelivr.net/npm/element-ui@2.13.0/lib/index.js', css: 'https://cdn.jsdelivr.net/npm/element-ui@2.13.0/lib/theme-chalk/index.css' },
+  { name: 'element-ui',
+    library: 'ELEMENT',
+    js: 'https://cdn.jsdelivr.net/npm/element-ui@2.13.0/lib/index.js'
+    // , css: 'https://cdn.jsdelivr.net/npm/element-ui@2.13.0/lib/theme-chalk/index.css'
+  },
   // { name: 'mockjs', library: 'Mock', js: 'https://cdn.jsdelivr.net/npm/mockjs@1.1.0/dist/mock.min.js', css: '' },
   { name: 'lodash', library: '_', js: 'https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js', css: '' },
   { name: 'ua-parser-js', library: 'UAParser', js: 'https://cdn.jsdelivr.net/npm/ua-parser-js@0.7.20/dist/ua-parser.min.js', css: '' },
@@ -18,5 +22,5 @@ module.exports = [
   { name: 'lowdb', library: 'low', js: 'https://cdn.jsdelivr.net/npm/lowdb@1.0.0/dist/low.min.js', css: '' },
   { name: 'lowdb/adapters/LocalStorage', library: 'LocalStorage', js: 'https://cdn.jsdelivr.net/npm/lowdb@1.0.0/dist/LocalStorage.min.js', css: '' },
   { name: 'screenfull', library: 'screenfull', js: 'https://cdn.jsdelivr.net/npm/screenfull@5.0.0/dist/screenfull.min.js', css: '' },
-  { name: 'sortablejs', library: 'Sortable', js: 'https://cdn.jsdelivr.net/npm/sortablejs@1.10.1/Sortable.min.js', css: '' },
+  { name: 'sortablejs', library: 'Sortable', js: 'https://cdn.jsdelivr.net/npm/sortablejs@1.10.1/Sortable.min.js', css: '' }
 ]

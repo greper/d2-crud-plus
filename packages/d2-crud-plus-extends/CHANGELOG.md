@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.3...d2p-extends@1.6.4) (2020-06-12)
+
+
+### Bug Fixes
+
+* tree-selector 支持单选 ([a521ad7](https://github.com/greper/d2-crud-plus/commit/a521ad7882c0c019a51be97236de1c28e65b7114))
+* 修复懒加载之后上传组件没有动态切换的bug ([7fee033](https://github.com/greper/d2-crud-plus/commit/7fee03366753abbabee41fec40c38a840b00678f))
+
+
+
+
+
 ## [1.6.3](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.2...d2p-extends@1.6.3) (2020-06-10)
 
 **Note:** Version bump only for package d2p-extends

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.2...d2-crud-plus@1.8.3) (2020-06-12)
+
+**Note:** Version bump only for package d2-crud-plus
+
+
+
+
+
 ## [1.8.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.1...d2-crud-plus@1.8.2) (2020-06-10)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.5](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.4...@d2-plus/d2-crud-plus-example@1.8.5) (2020-06-12)
+
+
+### Bug Fixes
+
+* 增加自定义扩展组件demo ([33c02f0](https://github.com/greper/d2-crud-plus/commit/33c02f0baddbe5d93c41439387362972de46cac9))
+
+
+
+
+
 ## [1.8.4](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.3...@d2-plus/d2-crud-plus-example@1.8.4) (2020-06-12)
 
 

@@ -42,6 +42,7 @@ import { D2pDemoExtend } from 'd2p-extends'
 Vue.use(D2pDemoExtend)
 ```
 ### 6. 使用
+[查看效果](http://qiniu.veryreader.com/D2CrudPlusExample/index.html/#/form/slot) 
 ```js
 export const crudOptions = {
   columns: [
@@ -52,7 +53,6 @@ export const crudOptions = {
     }, 
   ]
 }
-
 ```
 
 ## d2p-extends（现有自定义扩展）

@@ -116,8 +116,8 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'component',
         'column-type',
         'types',
-        'extends',
         'slot',
+        'extends',
         'dict',
         'event'
       ]

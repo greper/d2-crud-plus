@@ -25,7 +25,7 @@ export default {
   install,
   choose,
   getUploader (type) {
-    if (type != null && type !== '') {
+    if (type == null || type === '') {
       type = this.getDefaultType()
     }
     return choose.get(type).then(uploader => {

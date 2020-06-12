@@ -71,6 +71,9 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             props: {
+              config: {
+                serverUrl: '/api/ueditor/'
+              }
             },
             show: false
           }

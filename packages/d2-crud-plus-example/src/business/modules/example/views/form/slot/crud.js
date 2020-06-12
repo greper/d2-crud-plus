@@ -29,6 +29,17 @@ export const crudOptions = {
       form: {
         slot: true
       }
+    },
+    {
+      title: '自定义扩展',
+      key: 'extends',
+      type: 'demo-extend',
+      form: {
+        helper: '自定义扩展演示(d2-crud-plus-extends/src/demo-extends)',
+        component: {
+          span: 24
+        }
+      }
     }
   ],
   formOptions: {

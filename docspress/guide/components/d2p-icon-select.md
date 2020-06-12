@@ -22,6 +22,7 @@ d2-icon-select
 <!-- @vuese:d2p-icon-select:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|change|-|-|
 |input|-|-|
 
 <!-- @vuese:d2p-icon-select:events:end -->

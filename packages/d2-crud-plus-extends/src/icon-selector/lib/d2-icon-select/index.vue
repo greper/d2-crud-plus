@@ -146,6 +146,10 @@ export default {
   },
   watch: {
     value (value) {
+      this.$emit('change', value)
+      if (this.currentValue === value) {
+        return
+      }
       this.currentValue = value
     }
   },

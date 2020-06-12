@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.4](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.3...@d2-plus/d2-crud-plus-example@1.8.4) (2020-06-12)
+
+
+### Bug Fixes
+
+* meneTree判空 ([8c4c939](https://github.com/greper/d2-crud-plus/commit/8c4c939d750939d4ec7e4da6a6d4abd855c7ba29))
+* tree-selector 支持单选 ([a521ad7](https://github.com/greper/d2-crud-plus/commit/a521ad7882c0c019a51be97236de1c28e65b7114))
+* 修复懒加载之后上传组件没有动态切换的bug ([7fee033](https://github.com/greper/d2-crud-plus/commit/7fee03366753abbabee41fec40c38a840b00678f))
+
+
+
+
+
+## [1.8.3](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.2...@d2-plus/d2-crud-plus-example@1.8.3) (2020-06-10)
+
+
+### Bug Fixes
+
+* 修复文本域无法输入的问题 ([bddee2d](https://github.com/greper/d2-crud-plus/commit/bddee2d2283014a94d136ad7659dbebf2a17e24b))
+
+
+
+
+
 ## [1.8.2](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.1...@d2-plus/d2-crud-plus-example@1.8.2) (2020-06-09)
 
 

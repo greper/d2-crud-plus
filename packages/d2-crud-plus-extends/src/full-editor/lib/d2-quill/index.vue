@@ -25,7 +25,7 @@ export default {
     uploader: {
       type: Object,
       default: () => {
-        return { type: 'cos' }
+        return {}
       }
     }
   },
@@ -177,7 +177,6 @@ export default {
       if (this.uploader != null && this.uploader.type != null) {
         type = this.uploader.type
       }
-      console.log('----type', type)
       return D2pUploader.getUploader(type)
     },
     beforeUpload (file) {

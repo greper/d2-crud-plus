@@ -8,7 +8,9 @@ const cache = new Map()
 function get (dict) {
   if (dict == null) {
     // 如果没有配置字典，直接返回空数组
-    dict = {}
+    return new Promise((resolve) => {
+      resolve(undefined)
+    })
   }
 
   let url = dict.url

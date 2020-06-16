@@ -19,7 +19,8 @@ const aside = [
       { path: '/form/header', title: '多级表头' },
       { path: '/form/column', title: '特殊列' },
       { path: '/form/fix', title: '固定列' },
-      { path: '/form/editor', title: '富文本' }
+      { path: '/form/editor', title: '富文本' },
+      { path: '/form/cell', title: '行编辑' }
     ]
   },
   {
@@ -190,6 +191,16 @@ const routers = {
         cache: true
       },
       component: _import(viewsPrefix + 'form/icon')
+    },
+    {
+      path: 'form/cell',
+      name: 'formCell',
+      meta: {
+        title: '行编辑',
+        auth: true,
+        cache: true
+      },
+      component: _import(viewsPrefix + 'form/cell')
     },
     //  酒店示例
     {

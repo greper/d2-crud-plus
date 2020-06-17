@@ -9,7 +9,7 @@ quill富文本编辑器
 |---|---|---|---|---|
 |value|-|`String`|`false`|-|
 |config|-|`Object`|`false`|-|
-|uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|{"type":"cos"}|
+|uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|{}|
 
 <!-- @vuese:d2p-quill:props:end -->
 

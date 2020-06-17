@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/greper/d2-crud/compare/d2-crud-x@2.2.3...d2-crud-x@2.2.4) (2020-06-17)
+
+
+### Performance Improvements
+
+* jsx示例 ([137f745](https://github.com/greper/d2-crud/commit/137f7458bdc37b36b18b9f60df67011fb4c9ab60))
+
+
+
+
+
+## [2.2.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.2.2...d2-crud-x@2.2.3) (2020-06-16)
+
+
+### Performance Improvements
+
+* 行编辑演示 ([aec224f](https://github.com/greper/d2-crud/commit/aec224f87f1a41811d48205280c84c48cb7044a2))
+
+
+
+
+
 ## [2.2.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.2.1...d2-crud-x@2.2.2) (2020-06-12)
 
 **Note:** Version bump only for package d2-crud-x

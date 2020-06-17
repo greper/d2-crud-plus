@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.6](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.5...d2p-extends@1.6.6) (2020-06-16)
+
+
+### Bug Fixes
+
+* 删除quill 上传参数的默认cos配置 ([1790a2a](https://github.com/greper/d2-crud-plus/commit/1790a2a528bec9b3f92b77e9621e5102fc289913))
+
+
+
+
+
 ## [1.6.5](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.4...d2p-extends@1.6.5) (2020-06-12)
 
 

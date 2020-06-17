@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.3...d2-crud-plus@1.8.4) (2020-06-16)
+
+
+### Bug Fixes
+
+* 修复dictSelect配置options无效的bug ([a39cde6](https://github.com/greper/d2-crud-plus/commit/a39cde632585232b675df65e45dfd4791f8602a8))
+
+
+
+
+
 ## [1.8.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.2...d2-crud-plus@1.8.3) (2020-06-12)
 
 **Note:** Version bump only for package d2-crud-plus

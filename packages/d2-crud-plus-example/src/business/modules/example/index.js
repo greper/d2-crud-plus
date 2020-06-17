@@ -8,7 +8,7 @@ const aside = [
     children: [
       { path: '/form/date', title: '日期时间' },
       { path: '/form/select', title: '选择组件' },
-      { path: '/form/slot', title: '插槽式自定义组件' },
+      { path: '/form/slot', title: '自定义组件' },
       { path: '/form/phone', title: '国际电话输入校验' },
       { path: '/form/uploader', title: '文件上传' },
       { path: '/form/cropper', title: '图片裁剪上传' },

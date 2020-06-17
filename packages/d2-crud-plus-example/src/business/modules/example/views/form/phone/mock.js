@@ -17,7 +17,7 @@ const list = [
 options.list = list
 let mock = mockUtil.buildMock(options)
 mock.push({
-  path: 'api/phone/getCustomName',
+  path: '/api/phone/customName',
   method: 'get',
   handle (req) {
     return {

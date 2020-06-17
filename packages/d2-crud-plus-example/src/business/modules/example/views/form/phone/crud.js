@@ -22,10 +22,10 @@ export const crudOptions = (vm) => {
           rules: [{ required: true, message: '请输入手机号' }, { validator: mobileValidator, message: '手机号不正确' }],
           helper: '手机号输入完成后，可以远程获取客户姓名',
           valueChange (key, value, form) {
-            console.log('valueResolve', value)
+            console.log('valueChange', value)
             if (form.phone == null || form.phone !== '') {
               GetCustomName(value.callingCode, value.phoneNumber).then(ret => {
-                if (ret.data != null && (form.phone == null || form.phone !== '')) {
+                if (ret.data != null) {
                   form.guestName = ret.data
                 }
               })

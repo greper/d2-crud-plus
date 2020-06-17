@@ -31,7 +31,7 @@ export function DelObj (id) {
 }
 export function GetCustomName (callingCode, mobile) {
   return request({
-    url: '/phone/getCustomName',
+    url: '/phone/customName',
     method: 'get',
     params: { callingCode, mobile }
   })

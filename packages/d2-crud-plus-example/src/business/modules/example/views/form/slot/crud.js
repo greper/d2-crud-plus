@@ -8,7 +8,7 @@ export const crudOptions = {
       width: 200
     },
     {
-      title: '插槽式',
+      title: 'slot自定义',
       key: 'slotExample',
       // type: 'slot-all', // slot-all等效
       sortable: true,
@@ -38,6 +38,24 @@ export const crudOptions = {
         helper: '自定义扩展演示(d2-crud-plus-extends/src/demo-extends)',
         component: {
           span: 24
+        }
+      }
+    },
+    {
+      title: 'jsx自定义',
+      key: 'render',
+      form: {
+        component: {
+          render: (h, scope) => {
+            console.log('scope', scope)
+            return (<div>表单render：{scope.value}</div>)
+          }
+        }
+      },
+      component: {
+        render: (h, scope) => {
+          console.log('scope', scope)
+          return (<div>行render：{scope.value}</div>)
         }
       }
     }

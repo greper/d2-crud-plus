@@ -80,7 +80,7 @@
               v-else-if="item.component && item.component.render"
               :render-function="item.component.render"
               @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-              :scope="scope"
+              :scope="{key:item.key,value:scope.row[item.key],row:scope.row}"
             >
             </render-component>
             <template v-else>{{item.formatter ? item.formatter(scope.row, scope.column, _get(scope.row, item.key), scope.$index) : _get(scope.row, item.key)}}</template>
@@ -110,7 +110,7 @@
                   v-else-if="item2.component && item2.component.render"
                   :render-function="item2.component.render"
                   @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item2.key, value: scope.row[item2.key], row: scope.row})"
-                  :scope="scope"
+                  :scope="{key:item2.key,value:scope.row[item2.key],row:scope}"
                 >
                 </render-component>
                 <template v-else>{{item2.formatter ? item2.formatter(scope.row, scope.column, _get(scope.row, item2.key), scope.$index) : _get(scope.row, item2.key)}}</template>
@@ -139,7 +139,7 @@
                       v-else-if="item3.component && item3.component.render"
                       :render-function="item3.component.render"
                       @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item3.key, value: scope.row[item3.key], row: scope.row})"
-                      :scope="scope"
+                      :scope="{key:item3.key,value:scope.row[item3.key],row:scope.row}"
                     >
                     </render-component>
                     <template v-else>{{item3.formatter ? item3.formatter(scope.row, scope.column, _get(scope.row, item3.key), scope.$index) : _get(scope.row, item3.key)}}</template>
@@ -181,7 +181,7 @@
                 v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
                 :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                 v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, item) : item"
-                @click="$emit(item.emit, {index: scope.$index, row: scope.row})"
+                @click="$emit(item.emit, {index: scope.$index, row: scope.row.row})"
               >
                 {{item.text}}
               </el-button>
@@ -249,7 +249,7 @@
                 <render-component
                   v-else-if="handleFormTemplateMode(key).component.render"
                   :render-function="handleFormTemplateMode(key).component.render"
-                  :scope="formData[key]"
+                  :scope="{key:key,value:formData[key],row:formData}"
                   @change="handleFormDataChange($event,key)"
                 >
                 </render-component>

@@ -1,7 +1,7 @@
 <template>
   <d2-container>
-    <template slot="header">插槽式自定义组件
-      <example-helper title="插槽式自定义组件帮助说明" >
+    <template slot="header">自定义组件
+      <example-helper title="自定义组件帮助说明" >
           <div>
             <link-button href="http://greper.gitee.io/d2-crud-plus/guide/slot.html">slot自定义</link-button>
 

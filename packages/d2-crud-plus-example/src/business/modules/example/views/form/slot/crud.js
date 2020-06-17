@@ -48,6 +48,7 @@ export const crudOptions = {
         component: {
           render: (h, scope) => {
             console.log('scope', scope)
+            // eslint-disable-next-line
             return (<div>表单render：{scope.value}</div>)
           }
         }
@@ -55,6 +56,7 @@ export const crudOptions = {
       component: {
         render: (h, scope) => {
           console.log('scope', scope)
+          // eslint-disable-next-line
           return (<div>行render：{scope.value}</div>)
         }
       }

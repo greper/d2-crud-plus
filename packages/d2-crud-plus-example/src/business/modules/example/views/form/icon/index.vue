@@ -11,6 +11,8 @@
           </ul>
         </div>
         <d2-highlight :code="helper.crud" lang="javascript"/>
+
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/icon-selector.html">更多帮助说明</link-button>
       </example-helper>
 
     </template>

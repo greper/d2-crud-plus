@@ -4,6 +4,8 @@
       <example-helper title="帮助说明" >
         <h4>crud配置</h4>
         <d2-highlight :code="helper.code"/>
+
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展</link-button>
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >

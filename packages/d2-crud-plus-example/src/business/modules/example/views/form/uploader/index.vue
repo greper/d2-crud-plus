@@ -9,7 +9,11 @@
                   <li>创建相应的bucket</li>
                   <li>生产环境还需配置获取相应的授权：腾讯云、阿里云的sts，七牛要获取token</li>
                   <li>后端实现请参考：https://github.com/greper/d2-crud-plus-server.git</li>
-                  <li>更多文档：https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends</li>
+                  <li>更多帮助说明：
+                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/file-uploader.html">文件上传</link-button>
+                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">裁剪上传</link-button>
+                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html">上传lib</link-button>
+                  </li>
               </ul>
           </div>
           <h4>2、引入</h4>
@@ -21,6 +25,7 @@
               </ul>
           </div>
           <d2-highlight :code="helper.crud" lang="javascript"/>
+
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>

@@ -2,9 +2,11 @@
   <d2-container>
     <template slot="header">插槽式自定义组件
       <example-helper title="插槽式自定义组件帮助说明" >
-          <span>自定义插槽需要<a href="https://github.com/greper/d2-crud" target="_blank">d2-crud的修改版</a>才能支持</span>
-          <d2-highlight :code="helper.crud"/>
-          <d2-highlight :code="helper.template"/>
+          <div>
+            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/slot.html">slot自定义</link-button>
+
+            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展组件说明</link-button>
+          </div>
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >

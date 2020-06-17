@@ -1,6 +1,10 @@
 <template>
   <d2-container>
-    <template slot="header">行编辑</template>
+    <template slot="header">行编辑
+      <example-helper title="帮助"  >
+        <h4>请点击右下角查看本页源码</h4>
+      </example-helper>
+    </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
     </crud-search>
     <d2-crud

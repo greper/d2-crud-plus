@@ -1,6 +1,12 @@
 <template>
     <d2-container>
-        <template slot="header">角色管理</template>
+        <template slot="header">角色管理
+          <example-helper title="权限管理帮助" >
+            <div>
+              <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
+            </div>
+          </example-helper>
+        </template>
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
         <d2-crud
                 ref="d2Crud"

@@ -5,7 +5,8 @@
         <h4>省市区选择组件</h4>
         <ul>
           <li>支持级联方式、树形方式选择</li>
-          <li> <a href="https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-extends/src/area-selector/README.md">更多文档</a></li>
+          <li>
+            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">更多帮助说明</link-button></li>
         </ul>
         <d2-highlight :code="helper.init"/>
         <d2-highlight :code="helper.crud"/>

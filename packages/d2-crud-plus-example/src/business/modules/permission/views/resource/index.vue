@@ -1,6 +1,12 @@
 <template>
     <d2-container>
-        <template slot="header">资源管理</template>
+        <template slot="header">资源管理
+          <example-helper title="权限管理帮助" >
+            <div>
+              <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
+            </div>
+          </example-helper>
+        </template>
         <div style="display: flex">
             <platform-selector size="small" @change="platformChanged" @init="platformChanged"></platform-selector>
             <el-button-group size="small" >

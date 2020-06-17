@@ -1,7 +1,10 @@
 <template>
   <d2-container>
     <template slot="header">图片裁剪上传
-      <el-link style="float:right" type="primary" href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html#头像裁剪上传" target="_blank">帮助</el-link>
+
+      <example-helper title="帮助说明" >
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">帮助说明</link-button>
+      </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud

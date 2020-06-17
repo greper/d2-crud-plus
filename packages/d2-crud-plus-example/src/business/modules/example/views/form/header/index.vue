@@ -1,6 +1,11 @@
 <template>
   <d2-container>
-    <template slot="header">多级表头</template>
+    <template slot="header">多级表头
+      <example-helper title="帮助"  >
+        <h4>请点击右下角查看本页源码</h4>
+        <div>注意：多级表头目前最多只支持3层</div>
+      </example-helper>
+    </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud
         ref="d2Crud"

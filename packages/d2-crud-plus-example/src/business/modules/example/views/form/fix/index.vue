@@ -1,8 +1,9 @@
 <template>
   <d2-container>
     <template slot="header">固定列
-<!--      <example-helper title="文件上传组件crud配置"  >-->
-<!--      </example-helper>-->
+      <example-helper title="帮助"  >
+        <h4>请点击右下角查看本页源码</h4>
+      </example-helper>
 
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >

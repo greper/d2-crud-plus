@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.7](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.6...@d2-plus/d2-crud-plus-example@1.8.7) (2020-06-17)
+
+
+### Bug Fixes
+
+* 修复手机号输入组件没有加载的bug ([d43313a](https://github.com/greper/d2-crud-plus/commit/d43313ac20d1b8fd65eeafa2714202494dad9fae))
+* 修复手机号输入组件没有加载的bug ([5ee4ea2](https://github.com/greper/d2-crud-plus/commit/5ee4ea2b280f4963ee18585850fb39b4af595669))
+
+
+### Performance Improvements
+
+* jsx示例 ([a4995c6](https://github.com/greper/d2-crud-plus/commit/a4995c6b366f105d8b93daac37f71186ebf0b011))
+* jsx示例 ([ed497e0](https://github.com/greper/d2-crud-plus/commit/ed497e0bde749661515de9824849f9516c06a184))
+* jsx示例 ([137f745](https://github.com/greper/d2-crud-plus/commit/137f7458bdc37b36b18b9f60df67011fb4c9ab60))
+* 优化日历显示 ([6274715](https://github.com/greper/d2-crud-plus/commit/62747159a3f7173ffdf4794261f39b4499b5b1aa))
+
+
+
+
+
 ## [1.8.6](https://github.com/greper/d2-crud-plus/compare/@d2-plus/d2-crud-plus-example@1.8.5...@d2-plus/d2-crud-plus-example@1.8.6) (2020-06-16)
 
 

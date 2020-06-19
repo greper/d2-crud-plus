@@ -1,15 +1,7 @@
 <template>
-  <div
-    class="panel-search"
-    flex="dir:top">
-    <div
-      class="panel-search__input-group"
-      flex-box="0"
-      flex="dir:top main:center cross:center"
-      @click.self="handlePanelClick">
-      <d2-icon-svg
-        class="panel-search__logo"
-        name="d2-admin-text"/>
+  <div class="panel-search" flex="dir:top">
+    <div class="panel-search__input-group" flex-box="0" flex="dir:top main:center cross:center" @click.self="handlePanelClick">
+      <d2-icon-svg class="panel-search__logo" name="d2-admin-text"/>
       <el-autocomplete
         class="panel-search__input"
         ref="input"
@@ -21,9 +13,7 @@
         :clearable="true"
         @keydown.esc.native="handleEsc"
         @select="handleSelect">
-        <d2-panel-search-item
-          slot-scope="{ item }"
-          :item="item"/>
+        <d2-panel-search-item slot-scope="{ item }" :item="item"/>
       </el-autocomplete>
       <div class="panel-search__tip">
         您可以使用快捷键
@@ -33,11 +23,8 @@
         关闭
       </div>
     </div>
-    <div
-      v-if="resultsList.length > 0"
-      class="panel-search__results-group"
-      flex-box="1">
-      <el-card>
+    <div v-if="resultsList.length > 0" class="panel-search__results-group" flex-box="1">
+      <el-card shadow="never">
         <div class="panel-search__results-group-inner">
           <d2-panel-search-item
             v-for="(item, index) in resultsList"
@@ -79,25 +66,10 @@ export default {
         value: e.fullTitle,
         ...e
       })) : this.results
-    }
-  },
-  methods: {
-    /**
-     * @description 过滤选项 这个方法在每次输入框的值发生变化时会触发
-     */
-    querySearch (queryString, callback) {
-      var pool = this.pool
-      const results = this.query(queryString ? pool : [], queryString)
-      this.results = results
-      callback(results)
     },
-    /**
-     * @description 指定的数据源中根据指定的查询字符串过滤数据
-     * @param {Object} pool 需要过滤的数据
-     * @param {String} queryString 查询字符串
-     */
-    query (pool, queryString) {
-      return new Fuse(pool, {
+    // 根据 pool 更新 fuse 实例
+    fuse () {
+      return new Fuse(this.pool, {
         shouldSort: true,
         tokenize: true,
         threshold: 0.6,
@@ -110,11 +82,16 @@ export default {
           'path'
         ]
       })
-        .search(queryString)
-        .map(e => ({
-          value: e.fullTitle,
-          ...e
-        }))
+    }
+  },
+  methods: {
+    /**
+     * @description 过滤选项 这个方法在每次输入框的值发生变化时会触发
+     */
+    querySearch (queryString, callback) {
+      const results = this.fuse.search(queryString).map(e => e.item)
+      this.results = results
+      callback(results)
     },
     /**
      * @description 聚焦输入框
@@ -145,16 +122,15 @@ export default {
     /**
      * @description 接收用户在下拉菜单中选中事件
      */
-    handleSelect ({ path }) {
+    async handleSelect ({ path }) {
       // 如果用户选择的就是当前页面 就直接关闭搜索面板
       if (path === this.$route.path) {
         this.handleEsc()
         return
       }
       // 用户选择的是其它页面
-      this.$nextTick(() => {
-        this.handleMenuSelect(path)
-      })
+      await this.$nextTick()
+      this.handleMenuSelect(path)
     },
     /**
      * @augments 关闭输入框的下拉菜单
@@ -174,11 +150,10 @@ export default {
     /**
      * @augments 接收用户触发的关闭
      */
-    handleEsc () {
+    async handleEsc () {
       this.closeSuggestion()
-      this.$nextTick(() => {
-        this.$emit('close')
-      })
+      await this.$nextTick()
+      this.$emit('close')
     }
   }
 }

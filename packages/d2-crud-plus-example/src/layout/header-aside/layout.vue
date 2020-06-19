@@ -1,21 +1,16 @@
 <template>
-  <div
-    class="d2-layout-header-aside-group"
-    :style="styleLayoutMainGroup"
-    :class="{grayMode: grayActive}">
+  <div class="d2-layout-header-aside-group" :style="styleLayoutMainGroup" :class="{grayMode: grayActive}">
     <!-- 半透明遮罩 -->
     <div class="d2-layout-header-aside-mask"></div>
     <!-- 主体内容 -->
     <div class="d2-layout-header-aside-content" flex="dir:top">
       <!-- 顶栏 -->
-      <div
-        class="d2-theme-header"
-        :style="{
-          opacity: this.searchActive ? 0.5 : 1
-        }"
-        flex-box="0"
-        flex>
-        <router-link to="/index" class="logo-group" :style="{width: asideCollapse ? asideWidthCollapse : asideWidth}" flex-box="0">
+      <div class="d2-theme-header" :style="{ opacity: this.searchActive ? 0.5 : 1 }" flex-box="0" flex>
+        <router-link
+          to="/index"
+          :class="{'logo-group': true, 'logo-transition': asideTransition}"
+          :style="{width: asideCollapse ? asideWidthCollapse : asideWidth}"
+          flex-box="0">
           <img v-if="asideCollapse" :src="`${$baseUrl}image/theme/${themeActiveSetting.name}/logo/icon-only.png`">
           <img v-else :src="`${$baseUrl}image/theme/${themeActiveSetting.name}/logo/all.png`">
         </router-link>
@@ -42,7 +37,7 @@
         <div
           flex-box="0"
           ref="aside"
-          class="d2-theme-container-aside"
+          :class="{'d2-theme-container-aside': true, 'd2-theme-container-transition': asideTransition}"
           :style="{
             width: asideCollapse ? asideWidthCollapse : asideWidth,
             opacity: this.searchActive ? 0.5 : 1
@@ -54,9 +49,7 @@
           <!-- 搜索 -->
           <transition name="fade-scale">
             <div v-if="searchActive" class="d2-theme-container-main-layer" flex>
-              <d2-panel-search
-                ref="panelSearch"
-                @close="searchPanelClose"/>
+              <d2-panel-search ref="panelSearch" @close="searchPanelClose"/>
             </div>
           </transition>
           <!-- 内容 -->
@@ -127,7 +120,8 @@ export default {
       keepAlive: state => state.page.keepAlive,
       grayActive: state => state.gray.active,
       transitionActive: state => state.transition.active,
-      asideCollapse: state => state.menu.asideCollapse
+      asideCollapse: state => state.menu.asideCollapse,
+      asideTransition: state => state.menu.asideTransition
     }),
     ...mapGetters('d2admin', {
       themeActiveSetting: 'theme/activeSetting'
@@ -136,11 +130,9 @@ export default {
      * @description 最外层容器的背景图片样式
      */
     styleLayoutMainGroup () {
-      return {
-        ...this.themeActiveSetting.backgroundImage ? {
-          backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')`
-        } : {}
-      }
+      return this.themeActiveSetting.backgroundImage
+        ? { backgroundImage: `url('${this.$baseUrl}${this.themeActiveSetting.backgroundImage}')` }
+        : {}
     }
   },
   methods: {

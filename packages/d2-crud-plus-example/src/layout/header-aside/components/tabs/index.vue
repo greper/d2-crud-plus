@@ -14,21 +14,19 @@
           class="d2-multiple-page-control d2-multiple-page-sort"
           :value="current"
           type="card"
-          :closable="true"
           @tab-click="handleClick"
-          @edit="handleTabsEdit"
+          @tab-remove="handleTabRemove"
           @contextmenu.native="handleContextmenu">
           <el-tab-pane
             v-for="page in opened"
             :key="page.fullPath"
             :label="page.meta.title || '未命名'"
-            :name="page.fullPath"/>
+            :name="page.fullPath"
+            :closable="isTabClosable(page)"/>
         </el-tabs>
       </div>
     </div>
-    <div
-      class="d2-multiple-page-control-btn"
-      flex-box="0">
+    <div class="d2-multiple-page-control-btn" flex-box="0">
       <el-dropdown
         size="default"
         split-button
@@ -61,6 +59,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import Sortable from 'sortablejs'
+
 export default {
   components: {
     D2Contextmenu: () => import('../contextmenu'),
@@ -99,11 +98,19 @@ export default {
       'openedSort'
     ]),
     /**
+     * @description 计算某个标签页是否可关闭
+     * @param {Object} page 其中一个标签页
+     */
+    isTabClosable (page) {
+      return page.name !== 'index'
+    },
+    /**
      * @description 右键菜单功能点击
+     * @param {Object} event 事件
      */
     handleContextmenu (event) {
       let target = event.target
-      // 解决 https://github.com/d2-projects/d2-admin/issues/54
+      // fix https://github.com/d2-projects/d2-admin/issues/54
       let flag = false
       if (target.className.indexOf('el-tabs__item') > -1) flag = true
       else if (target.parentNode.className.indexOf('el-tabs__item') > -1) {
@@ -120,59 +127,47 @@ export default {
       }
     },
     /**
-     * @description 右键菜单的row-click事件
+     * @description 右键菜单的 row-click 事件
+     * @param {String} command 事件类型
      */
     contextmenuClick (command) {
       this.handleControlItemClick(command, this.tagName)
     },
     /**
      * @description 接收点击关闭控制上选项的事件
+     * @param {String} command 事件类型
+     * @param {String} tagName tab 名称
      */
     handleControlItemClick (command, tagName = null) {
-      if (tagName) {
-        this.contextmenuFlag = false
-      }
-      const params = {
-        pageSelect: tagName
-      }
+      if (tagName) this.contextmenuFlag = false
+      const params = { pageSelect: tagName }
       switch (command) {
-        case 'left':
-          this.closeLeft(params)
-          break
-        case 'right':
-          this.closeRight(params)
-          break
-        case 'other':
-          this.closeOther(params)
-          break
-        case 'all':
-          this.closeAll()
-          break
-        default:
-          this.$message.error('无效的操作')
-          break
+        case 'left': this.closeLeft(params); break
+        case 'right': this.closeRight(params); break
+        case 'other': this.closeOther(params); break
+        case 'all': this.closeAll(); break
+        default: this.$message.error('无效的操作'); break
       }
     },
     /**
      * @description 接收点击 tab 标签的事件
+     * @param {object} tab 标签
+     * @param {object} event 事件
      */
     handleClick (tab, event) {
       // 找到点击的页面在 tag 列表里是哪个
       const page = this.opened.find(page => page.fullPath === tab.name)
-      const { name, params, query } = page
       if (page) {
+        const { name, params, query } = page
         this.$router.push({ name, params, query })
       }
     },
     /**
-     * @description 点击 tab 上的删除按钮触发这里 首页的删除按钮已经隐藏 因此这里不用判断是 index
+     * @description 点击 tab 上的删除按钮触发这里
+     * @param {String} tagName tab 名称
      */
-    handleTabsEdit (tagName, action) {
-      if (action === 'remove') {
-        this.close({
-          tagName
-        })
-      }
+    handleTabRemove (tagName) {
+      this.close({ tagName })
     }
   },
   mounted () {

@@ -26,7 +26,9 @@ yarn install  //或者npm install
 npm run dev
 ```
 
-## 准备开始
+## 集成到你的d2-admin项目中
+
+在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)
 
 ### 1.安装
 ```shell
@@ -243,7 +245,13 @@ export function DelObj (id) {
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
-### 3.4 看看效果    
+### 3.4  添加路由和菜单
+如果在示例中添加crud，则在如下文件中添加路由和菜单。   
+`packages/d2-crud-plus-example/src/business/modules/example/index.js`
+
+如果是你自己的d2-admin项目，这部分你应该相当清楚了
+
+### 3.5 看看效果    
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
 

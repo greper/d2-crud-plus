@@ -1,49 +1,57 @@
 import { throttle } from 'lodash'
 import { mapState } from 'vuex'
 import menuMixin from '../mixin/menu'
-import { elMenuItem, elSubmenu } from '../libs/util.menu'
+import { createMenu } from '../libs/util.menu'
 
 export default {
   name: 'd2-layout-header-aside-menu-header',
   mixins: [
     menuMixin
   ],
-  render (createElement) {
-    return createElement('div', {
-      attrs: { flex: 'cross:center' },
-      class: { 'd2-theme-header-menu': true, 'is-scrollable': this.isScroll },
-      ref: 'page'
-    }, [
-      createElement('div', {
-        attrs: { class: 'd2-theme-header-menu__content', flex: '', 'flex-box': '1' },
-        ref: 'content'
-      }, [
-        createElement('div', {
-          attrs: { class: 'd2-theme-header-menu__scroll', 'flex-box': '0' },
-          style: { transform: `translateX(${this.currentTranslateX}px)` },
-          ref: 'scroll'
-        }, [
-          createElement('el-menu', {
-            props: { mode: 'horizontal', defaultActive: this.active },
-            on: { select: this.handleMenuSelect }
-          }, this.header.map(menu => (menu.children === undefined ? elMenuItem : elSubmenu).call(this, createElement, menu)))
-        ])
-      ]),
-      ...this.isScroll ? [
-        createElement('div', {
-          attrs: { class: 'd2-theme-header-menu__prev', flex: 'main:center cross:center', 'flex-box': '0' },
-          on: { click: () => this.scroll('left') }
-        }, [
-          createElement('i', { attrs: { class: 'el-icon-arrow-left' } })
-        ]),
-        createElement('div', {
-          attrs: { class: 'd2-theme-header-menu__next', flex: 'main:center cross:center', 'flex-box': '0' },
-          on: { click: () => this.scroll('right') }
-        }, [
-          createElement('i', { attrs: { class: 'el-icon-arrow-right' } })
-        ])
-      ] : []
-    ])
+  render (h) {
+    return <div
+      flex="cross:center"
+      class={ { 'd2-theme-header-menu': true, 'is-scrollable': this.isScroll } }
+      ref="page">
+      <div
+        ref="content"
+        class="d2-theme-header-menu__content"
+        flex-box="1"
+        flex>
+        <div
+          class="d2-theme-header-menu__scroll"
+          flex-box="0"
+          style={ { transform: `translateX(${this.currentTranslateX}px)` } }
+          ref="scroll">
+          <el-menu
+            mode="horizontal"
+            defaultActive={ this.active }
+            onSelect={ this.handleMenuSelect }>
+            { this.header.map(menu => createMenu.call(this, h, menu)) }
+          </el-menu>
+        </div>
+      </div>
+      {
+        this.isScroll
+          ? [
+            <div
+              class="d2-theme-header-menu__prev"
+              flex="main:center cross:center"
+              flex-box="0"
+              onClick={ () => this.scroll('left') }>
+              <i class="el-icon-arrow-left"></i>
+            </div>,
+            <div
+              class="d2-theme-header-menu__next"
+              flex="main:center cross:center"
+              flex-box="0"
+              onClick={ () => this.scroll('right') }>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+          ]
+          : []
+      }
+    </div>
   },
   computed: {
     ...mapState('d2admin/menu', [

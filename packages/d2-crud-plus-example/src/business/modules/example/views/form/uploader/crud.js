@@ -80,7 +80,7 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             props: {
-              elProps: {// element upload组件的props
+              elProps: { // element upload组件的props
                 onPreview: (file) => { // 自定义点击事件
                   window.open(file.url)
                 },

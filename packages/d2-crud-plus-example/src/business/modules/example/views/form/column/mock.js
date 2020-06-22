@@ -1,6 +1,6 @@
-import mockUtil from '../../../../../mock/base'
+import mockUtil from '@/business/mock/base'
 
-let options = {
+const options = {
   name: 'column',
   idGenerator: 0
 }
@@ -33,13 +33,15 @@ const list = [
     time: '2020-01-01 11:11:11',
     amount: 100,
     children: [
-      { id: 999,
+      {
+        id: 999,
         data: 'data1_1',
         time: '2020-01-01 11:11:11',
         province: ['gz', 'sz'], // 可以逗号分隔的字符串 'gz,sz'
         amount: 100,
         children: [
-          { id: 1000,
+          {
+            id: 1000,
             data: 'data1_1_1',
             time: '2020-01-01 11:11:11',
             province: ['sz', 'gz'], // 可以逗号分隔的字符串 'gz,sz'
@@ -47,13 +49,15 @@ const list = [
           }
         ]
       },
-      { id: 888,
+      {
+        id: 888,
         data: 'data1_2',
         time: '2020-01-01 11:11:11',
         province: 'sh',
         amount: 100,
         children: [
-          { id: 889,
+          {
+            id: 889,
             data: 'data1_2_1',
             time: '2020-01-01 11:11:11',
             province: 'gz',
@@ -77,15 +81,15 @@ const list = [
   }
 ]
 options.list = list
-let mock = mockUtil.buildMock(options)
+const mock = mockUtil.buildMock(options)
 
 mock.push({
   path: '/api/column/children',
   method: 'get',
   handle (req) {
     console.log('req', req)
-    let id = parseInt(req.params.id)
-    let item = mockUtil.findById(id, options.list)
+    const id = parseInt(req.params.id)
+    const item = mockUtil.findById(id, options.list)
     console.log('children:', item.children)
     return {
       code: 0,

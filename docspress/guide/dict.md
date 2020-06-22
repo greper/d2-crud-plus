@@ -19,7 +19,7 @@ export const crudOptions = {
         }, 
         data: undefined, //[Array]，如果数据无需远程获取，可以直接将字典数组写在这里
         getData:(url,dict)=>{ //配置此参数会覆盖全局的getRemoteDictFunc
-          return request().then(ret=>{ret.data})
+          return request().then(ret=>{return ret.data})
         },
         value: 'value', // 数据字典中value字段的属性名
         label: 'label', // 数据字典中label字段的属性名

@@ -9,7 +9,7 @@ import { errorLog, errorCreate } from './tools'
  */
 function createService () {
   // 创建一个 axios 实例
-  const service = axios.create()
+  const service = axios.create({ baseURL: process.env.VUE_APP_API })
   // 请求拦截
   service.interceptors.request.use(
     config => config,
@@ -35,7 +35,8 @@ function createService () {
         switch (code) {
           case 0:
             // [ 示例 ] code === 0 代表没有错误
-            return dataAxios.data
+            // TODO 可能结果还需要code和msg进行后续处理，所以返回全部结果
+            return dataAxios
           case 'xxx':
             // [ 示例 ] 其它和后台约定的 code
             errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)

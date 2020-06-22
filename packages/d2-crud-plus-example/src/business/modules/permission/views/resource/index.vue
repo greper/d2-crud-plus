@@ -82,9 +82,9 @@
                         </el-form-item>
                         <el-form-item label="图标"
                                       prop="icon">
-                            <d2-icon-select v-model="form.icon"
+                            <d2p-icon-select v-model="form.icon"
                                             :disabled="formEdit"
-                                            placeholder="请输入图标" :user-input="true"></d2-icon-select>
+                                            placeholder="请输入图标" :user-input="true"></d2p-icon-select>
                         </el-form-item>
                         <el-form-item label="类型"
                                       prop="type">
@@ -144,6 +144,7 @@
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj, GetTree, GetObj } from './api'
 import PlatformSelector from '../../component/platform-selector'
+import { request } from '@/api/service'
 export default {
   name: 'Resource',
   components: { PlatformSelector },
@@ -159,7 +160,12 @@ export default {
       listQuery: {
         name: undefined
       },
-      resourceTypeDict: { url: '/base/dicts/ResourceTypeEnum' },
+      resourceTypeDict: {
+        url: '/base/dicts/ResourceTypeEnum',
+        getData: (url, dict) => { // 配置此参数会覆盖全局的getRemoteDictFunc
+          return request({ url: url }).then(ret => { return ret.data })
+        }
+      },
       treeData: [],
       oExpandedKey: {
         // key (from tree id) : expandedOrNot boolean
@@ -235,7 +241,7 @@ export default {
     },
 
     nodeExpand (data) {
-      let aChildren = data.children
+      const aChildren = data.children
       if (aChildren.length > 0) {
         this.oExpandedKey[data.id] = true
         this.oTreeNodeChildren[data.id] = aChildren
@@ -251,9 +257,9 @@ export default {
       this.setExpandedKeys()
     },
     setExpandedKeys () {
-      let oTemp = this.oExpandedKey
+      const oTemp = this.oExpandedKey
       this.aExpandedKeys = []
-      for (let sKey in oTemp) {
+      for (const sKey in oTemp) {
         if (oTemp[sKey]) {
           this.aExpandedKeys.push(parseInt(sKey))
         }
@@ -262,7 +268,7 @@ export default {
     treeRecursion (aChildren, fnCallback) {
       if (aChildren) {
         for (let i = 0; i < aChildren.length; ++i) {
-          let oNode = aChildren[i]
+          const oNode = aChildren[i]
           fnCallback && fnCallback(oNode)
           this.treeRecursion(oNode.children, fnCallback)
         }

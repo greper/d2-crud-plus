@@ -2,13 +2,17 @@ import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { D2pAreaSelector, D2pFileUploader, D2pIconSelector, D2pTreeSelector, D2pFullEditor, D2pUploader, D2pDemoExtend } from 'd2p-extends' // 源码方式引入，上传组件支持懒加载
-import request from '@/plugin/axios'
+
+// 模拟请求
+import { request, requestForMock } from '@/api/service'
+
 // 引入d2Crud
 Vue.use(d2Crud)
 // 引入d2CrudPlus
 Vue.use(d2CrudPlus, {
   getRemoteDictFunc (url, dict) {
-    return request({
+    // 此处配置你的字典http请求方法
+    return requestForMock({
       url: url,
       method: 'get'
     }).then(ret => {
@@ -90,7 +94,7 @@ Vue.use(D2pUploader, {
 
 //  自定义字段类型示例
 d2CrudPlus.util.columnResolve.addTypes({
-  'time2': {
+  time2: {
     form: { component: { name: 'el-date-picker', props: { type: 'datetime' } } }, // 编辑时支持日期时间
     search: { component: { props: { type: 'date' } } }, // 搜索时只支持日期
     formatter (row, column, value, index) {

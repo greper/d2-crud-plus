@@ -1,6 +1,6 @@
 function copyList (originList, newList, options, parentId) {
-  for (let item of originList) {
-    let newItem = { ...item, parentId }
+  for (const item of originList) {
+    const newItem = { ...item, parentId }
     newItem.id = ++options.idGenerator
     newList.push(newItem)
     if (item.children != null) {
@@ -12,7 +12,7 @@ function copyList (originList, newList, options, parentId) {
 
 function delById (req, list) {
   for (let i = 0; i < list.length; i++) {
-    let item = list[i]
+    const item = list[i]
     if ((item.id) === parseInt(req.params.id)) {
       console.log('remove i')
       list.splice(i, 1)
@@ -25,12 +25,12 @@ function delById (req, list) {
 }
 export default {
   findById (id, list) {
-    for (let item of list) {
+    for (const item of list) {
       if (item.id === id) {
         return item
       }
       if (item.children != null && item.children.length > 0) {
-        let sub = this.findById(id, item.children)
+        const sub = this.findById(id, item.children)
         if (sub != null) {
           return sub
         }
@@ -38,24 +38,24 @@ export default {
     }
   },
   buildMock (options) {
-    let name = options.name
+    const name = options.name
     if (options.copyTimes == null) {
       options.copyTimes = 30
     }
-    let list = []
+    const list = []
     for (let i = 0; i < options.copyTimes; i++) {
       copyList(options.list, list, options)
     }
     options.list = list
     return [
       {
-        path: 'api/' + name + '/page',
+        path: '/' + name + '/page',
         method: 'get',
         handle (req) {
           let data = list
           let size = 20
           let current = 1
-          for (let item of list) {
+          for (const item of list) {
             if (item.children != null && item.children.length === 0) {
               item.hasChildren = false
               item.lazy = false
@@ -73,8 +73,8 @@ export default {
             delete query.size
             if (Object.keys(query).length > 0) {
               data = list.filter(item => {
-                for (let key in query) {
-                  let value = query[key]
+                for (const key in query) {
+                  const value = query[key]
                   if (value == null) {
                     continue
                   }
@@ -83,9 +83,9 @@ export default {
                       continue
                     }
                     let found = false
-                    for (let i of value) {
+                    for (const i of value) {
                       if (item[key] instanceof Array) {
-                        for (let j of item[key]) {
+                        for (const j of item[key]) {
                           if (i === j) {
                             found = true
                             break
@@ -109,12 +109,12 @@ export default {
             }
           }
 
-          let start = size * (current - 1)
+          const start = size * (current - 1)
           let end = size * current
           if (data.length < end) {
             end = data.length
           }
-          let records = data.slice(start, end)
+          const records = data.slice(start, end)
           const maxPage = data.length % size === 0 ? data.length / size : Math.floor(data.length / size) + 1
           if (current > maxPage) {
             current = maxPage
@@ -134,14 +134,14 @@ export default {
         }
       },
       {
-        path: 'api/' + name + '/get',
+        path: '/' + name + '/get',
         method: 'get',
         handle (req) {
           let id = req.params.id
           id = parseInt(id)
           console.log('req', req, id, list)
           let current = null
-          for (let item of list) {
+          for (const item of list) {
             if (item.id === id) {
               current = item
               break
@@ -155,7 +155,7 @@ export default {
         }
       },
       {
-        path: 'api/' + name + '/add',
+        path: '/' + name + '/add',
         method: 'post',
         handle (req) {
           req.body.id = ++options.idGenerator
@@ -169,10 +169,10 @@ export default {
         }
       },
       {
-        path: 'api/' + name + '/update',
+        path: '/' + name + '/update',
         method: 'post',
         handle (req) {
-          for (let item of list) {
+          for (const item of list) {
             if (item.id === req.body.id) {
               Object.assign(item, req.body)
               break
@@ -187,7 +187,7 @@ export default {
         }
       },
       {
-        path: 'api/' + name + '/delete',
+        path: '/' + name + '/delete',
         method: 'post',
         handle (req) {
           delById(req, list)
@@ -200,13 +200,13 @@ export default {
         }
       },
       {
-        path: 'api/' + name + '/batchDelete',
+        path: '/' + name + '/batchDelete',
         method: 'post',
         handle (req) {
           console.log('req', req, list)
-          let ids = req.body.ids
+          const ids = req.body.ids
           for (let i = list.length - 1; i >= 0; i--) {
-            let item = list[i]
+            const item = list[i]
             if (ids.indexOf(item.id) >= 0) {
               list.splice(i, 1)
             }

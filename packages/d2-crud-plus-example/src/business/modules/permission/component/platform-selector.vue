@@ -11,6 +11,7 @@
 <script>
 
 import { d2CrudPlus } from 'd2-crud-plus'
+import { request } from '@/api/service'
 export default {
   name: 'platform-selector',
   props: {
@@ -22,7 +23,14 @@ export default {
       platformId: 1,
       platformName: '',
       platformList: [],
-      platformDict: { url: '/permission/manager/platform/list', value: 'id', label: 'name' }
+      platformDict: {
+        url: '/permission/manager/platform/list',
+        getData: (url, dict) => { // 配置此参数会覆盖全局的getRemoteDictFunc
+          return request({ url: url }).then(ret => { return ret.data })
+        },
+        value: 'id',
+        label: 'name'
+      }
     }
   },
   async created () {
@@ -30,7 +38,7 @@ export default {
       this.platformId = this.value
     }
     this.platformList = await d2CrudPlus.util.dict.get(this.platformDict)
-    let current = this.getById(this.platformId, true)
+    const current = this.getById(this.platformId, true)
     if (current != null) {
       this.platformId = current.id
       this.platformName = current.name
@@ -43,7 +51,7 @@ export default {
         return null
       }
       if (id != null) {
-        for (let item of this.platformList) {
+        for (const item of this.platformList) {
           if (item.id === id) {
             return item
           }
@@ -54,7 +62,7 @@ export default {
       }
     },
     platformChanged (id) {
-      let current = this.getById(id, false)
+      const current = this.getById(id, false)
       if (current != null) {
         this.platformId = current.id
         this.platformName = current.name

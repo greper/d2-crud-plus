@@ -27,7 +27,7 @@ export default {
       return UpdateObj(row)
     },
     beforeRequest (row) {
-      let checkInRange = row.checkInRange // 一个date数组
+      const checkInRange = row.checkInRange // 一个date数组
       if (checkInRange != null && checkInRange.length >= 2) {
         row.checkInTime = checkInRange[0].getTime()
         row.checkOutTime = checkInRange[1].getTime()

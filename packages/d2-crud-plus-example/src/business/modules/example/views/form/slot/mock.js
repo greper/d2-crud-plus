@@ -1,6 +1,6 @@
-import mockUtil from '../../../../../mock/base'
+import mockUtil from '@/business/mock/base'
 
-let options = {
+const options = {
   name: 'slot',
   idGenerator: 0
 }
@@ -9,7 +9,7 @@ const list = [
     createDate: new Date().getTime() - 900000,
     updateDate: new Date().getTime() - 10000,
     slotExample: '可以愉快的写filter啦',
-    topics: [ 'slot插槽自定义组件' ],
+    topics: ['slot插槽自定义组件'],
     render: 'jsx 方式render'
   },
   {
@@ -32,5 +32,5 @@ const list = [
   }
 ]
 options.list = list
-let mock = mockUtil.buildMock(options)
+const mock = mockUtil.buildMock(options)
 export default mock

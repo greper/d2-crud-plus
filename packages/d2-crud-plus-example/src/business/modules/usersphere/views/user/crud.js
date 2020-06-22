@@ -1,4 +1,5 @@
 import { mobileValidator } from 'el-phone-number-input'
+import { request } from '@/api/service'
 export const crudOptions = {
   rowHandle: {
     // columnHeader: '操作',
@@ -127,9 +128,11 @@ export const crudOptions = {
       key: 'gender',
       type: 'radio',
       width: 70,
-      dict: { data: [
-        { value: 1, label: '男' }, { value: 2, label: '女', color: 'danger' }
-      ] }, // 数据字典
+      dict: {
+        data: [
+          { value: 1, label: '男' }, { value: 2, label: '女', color: 'danger' }
+        ]
+      }, // 数据字典
       // search: { disabled: true}, // 开启查询
       // form: { disabled: true }, // 表单配置
       // disabled: false, // 是否隐藏列
@@ -153,7 +156,14 @@ export const crudOptions = {
       key: 'roles',
       type: 'select',
       width: 250,
-      dict: { url: '/permission/manager/role/list', value: 'id', label: 'name' }, // 数据字典
+      dict: {
+        url: '/permission/manager/role/list',
+        value: 'id',
+        label: 'name',
+        getData: (url, dict) => { // 配置此参数会覆盖全局的getRemoteDictFunc
+          return request({ url: url }).then(ret => { return ret.data })
+        }
+      }, // 数据字典
       search: { disabled: true }, // 开启查询
       // disabled: false, // 是否隐藏列
       form: { // 表单配置

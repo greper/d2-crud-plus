@@ -1,6 +1,6 @@
-import mockUtil from '../../../../../mock/base'
+import mockUtil from '@/business/mock/base'
 
-let options = {
+const options = {
   name: 'cell',
   idGenerator: 0
 }
@@ -240,7 +240,7 @@ const dictData = [
 
 options.list = list
 options.copyTimes = 1000
-let mock = mockUtil.buildMock(options)
+const mock = mockUtil.buildMock(options)
 mock.push({
   path: '/api/select/cascadeData',
   method: 'get',

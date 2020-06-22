@@ -1,4 +1,4 @@
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 const apiPrefix = '/permission/manager/platform'
 export function GetList (query) {
   return request({

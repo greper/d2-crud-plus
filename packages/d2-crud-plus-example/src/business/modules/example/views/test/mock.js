@@ -1,6 +1,5 @@
-import mockUtil from '../../../../mock/base'
-
-let options = {
+import mockUtil from '@/business/mock/base'
+const options = {
   name: 'test',
   idGenerator: 0
 }
@@ -27,5 +26,5 @@ const list = [
   }
 ]
 options.list = list
-let mock = mockUtil.buildMock(options)
+const mock = mockUtil.buildMock(options)
 export default mock

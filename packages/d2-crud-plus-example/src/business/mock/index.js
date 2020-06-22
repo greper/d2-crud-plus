@@ -1,18 +1,34 @@
-import d2Mock from '../../mock/d2-mock'
+import { mock } from '@/api/service'
+import * as tools from '@/api/tools'
 
 const req = context => context.keys().map(context)
-const options = req(require.context('./api/', true, /\.js$/))
+const apiList1 = req(require.context('./api/', true, /\.js$/))
   .filter(e => e.default)
   .map(e => e.default)
 
-options.forEach(option => {
-  d2Mock.load(option)
-})
-
-const options2 = req(require.context('../modules/', true, /mock\.js$/))
+// 模拟数据
+const apiList = req(require.context('../modules/', true, /mock\.js$/))
   .filter(e => e.default)
   .map(e => e.default)
 
-options2.forEach(option => {
-  d2Mock.load(option)
+apiList.push(...apiList1)
+
+apiList.forEach(apiFile => {
+  for (const item of apiFile) {
+    mock
+      .onAny(item.path)
+      .reply(config => {
+        console.log('fake config:', config)
+        const req = {
+          body: JSON.parse(config.data),
+          params: JSON.parse(config.data)
+        }
+        const ret = item.handle(req)
+        if (ret.code === 0) {
+          return tools.responseSuccess(ret.data, ret.msg)
+        } else {
+          return tools.responseError(ret.data, ret.msg, ret.code)
+        }
+      })
+  }
 })

@@ -1,4 +1,4 @@
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 export function getUserInfo () {
   return request({
     url: '/auth/user/info',

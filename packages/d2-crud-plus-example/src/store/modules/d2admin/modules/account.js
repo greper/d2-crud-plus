@@ -17,7 +17,7 @@ export default {
       username = '',
       password = ''
     } = {}) {
-      const res = await api.SYS_USER_LOGIN({ username, password })
+      let res = await api.SYS_USER_LOGIN({ username, password })
 
       res = res.data
       console.log('登录成功：', res)

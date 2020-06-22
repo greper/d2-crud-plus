@@ -1,4 +1,4 @@
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 const apiPrefix = '/usersphere/manager/user'
 export function GetList (query) {
   return request({

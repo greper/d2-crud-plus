@@ -9,11 +9,6 @@
     "type": "git",
     "url": "https://github.com/greper/d2-crud-plus.git"
   },
-  "browserslist": [
-    "last 2 version",
-    "ie >= 11",
-    "> 1%"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
@@ -28,7 +23,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@d2-projects/d2-crud": "^2.1.2",
+    "d2-crud-plus": "^1.8.4",
+    "d2-crud-x": "^2.2.4",
+    "d2p-extends": "^1.6.6",
     "@d2-projects/vue-table-export": "^1.0.1",
     "@d2-projects/vue-table-import": "^1.0.0",
     "autoprefixer": "^6.5.4",
@@ -38,10 +35,8 @@
     "clipboard-polyfill": "^2.8.6",
     "core-js": "^3.4.3",
     "cropperjs": "^1.5.6",
-    "d2-crud-plus": "^1.8.4",
-    "d2-crud-x": "^2.2.4",
-    "d2p-extends": "^1.6.6",
     "dayjs": "^1.8.17",
+    "faker": "^4.1.0",
     "el-phone-number-input": "^1.0.4",
     "element-ui": "^2.13.0",
     "flex.css": "^1.1.7",
@@ -64,7 +59,6 @@
     "simplemde": "^1.11.2",
     "sortablejs": "^1.10.1",
     "ua-parser-js": "^0.7.20",
-    "v-charts": "^1.19.0",
     "vue": "^2.6.11",
     "vue-grid-layout": "^2.3.7",
     "vue-i18n": "^8.15.1",

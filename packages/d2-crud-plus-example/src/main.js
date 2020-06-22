@@ -9,12 +9,11 @@ import store from '@/store/index'
 
 // 菜单和路由设置
 import router from './router'
-import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
+import { menuHeader } from '@/menu'
 import '@/business'
 // 核心插件
 Vue.use(d2Admin)
-
 new Vue({
   router,
   store,
@@ -25,6 +24,8 @@ new Vue({
     this.$store.commit('d2admin/page/init', frameInRoutes)
     // 设置顶栏菜单
     this.$store.commit('d2admin/menu/headerSet', menuHeader)
+    // // 设置侧边栏菜单
+    this.$store.commit('d2admin/menu/asideSet', menuHeader[2].children)
     // 初始化菜单搜索功能
     this.$store.commit('d2admin/search/init', menuHeader)
   },
@@ -43,8 +44,11 @@ new Vue({
     '$route.matched': {
       handler (matched) {
         if (matched.length > 0) {
-          const _side = menuAside.filter(menu => menu.path === matched[0].path)
-          this.$store.commit('d2admin/menu/asideSet', _side.length > 0 ? _side[0].children : [])
+          console.log('_side:', menuHeader, matched)
+          const _side = menuHeader.filter(menu => menu.path === matched[0].path)
+          if (_side.length > 0) {
+            this.$store.commit('d2admin/menu/asideSet', _side[0].children)
+          }
         }
       },
       immediate: true

@@ -188,7 +188,7 @@ export const crudOptions = {
         }
       },
       formatter (row, column, value, index) {
-        return dayjs(row['checkInTime']).format('YYYY-MM-DD HH:mm') + '至' + dayjs(row['checkOutTime']).format('YYYY-MM-DD HH:mm')
+        return dayjs(row.checkInTime).format('YYYY-MM-DD HH:mm') + '至' + dayjs(row.checkOutTime).format('YYYY-MM-DD HH:mm')
       }
     },
     {

@@ -31,7 +31,7 @@ const P = Day => {
 
 export function datelineFormat (time, format, showTime) {
   // time = +time * 1000
-  let date = dayjs(time)
+  const date = dayjs(time)
   const d = date.startOf('day')
   const now = dayjs().startOf('day')
 

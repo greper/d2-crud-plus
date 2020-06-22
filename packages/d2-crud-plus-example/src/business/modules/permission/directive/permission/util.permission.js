@@ -10,7 +10,7 @@ export default {
       need = need.concat(value)
     }
     if (need.length === 0) {
-      throw new Error(`need permissions! Like v-permission="usersphere:user:view" `)
+      throw new Error('need permissions! Like v-permission="usersphere:user:view" ')
     }
     const userPermissionList = store.getters['permission/permissions']
     return userPermissionList.some(permission => {

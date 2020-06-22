@@ -1,4 +1,4 @@
-import request from '@/plugin/axios'
+import request from '@/business/api/request.mock'
 export function GetList (query) {
   return request({
     url: '/date/page',

@@ -13,6 +13,14 @@ export default ({ service, request, serviceForMock, requestForMock, mock, faker,
    */
   SYS_USER_LOGIN (data = {}) {
     // 模拟数据
+    if (process.env.VUE_APP_PM_ENABLED === 'true') {
+      return request({
+        url: '/login',
+        method: 'post',
+        data
+      })
+    }
+
     mock
       .onAny('/login')
       .reply(config => {

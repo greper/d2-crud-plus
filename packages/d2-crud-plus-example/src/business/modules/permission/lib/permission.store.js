@@ -1,8 +1,7 @@
 import constantRoutes, { frameInRoutes } from '@/router/routes'
-import menuHeader from '@/menu/header'
-import menuAside from '@/menu/aside'
 import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
+import { menuHeader, supplementPath } from '@/menu'
 
 /**
  * menuType 1=menu 2=btn 3=route
@@ -10,35 +9,43 @@ import layoutHeaderAside from '@/layout/header-aside'
  * @param list
  * @returns {[]}
  */
-function formatRouter (routers, list) {
+function formatRouter (parent, list) {
+  if (parent == null) {
+    parent = { children: [] }
+  }
   list.forEach((item) => {
-    if (item.type !== 2 && !StringUtils.isEmpty(item.path) && !StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置path，则不加入路由
-      // let com = null
-      // if (item.component.indexOf('permission') === 0) {
-      //   com = () => import('@/business/modules/permission' + item.component.replace('permission/', ''))
-      // } else if (item.component.indexOf('usersphere') === 0) {
-      //   com = () => import('@/business/modules/usersphere' + item.component.replace('usersphere/', ''))
-      // }
-
-      routers.push({
+    let newRouter = parent
+    if (item.type !== 2 && !StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置component，则不加入路由
+      let component = null
+      if (item.component === 'layoutHeaderAside') {
+        component = layoutHeaderAside
+      } else {
+        component = () => import('@/business/modules' + item.component)
+      }
+      const children = parent.children
+      newRouter = {
         path: item.path,
         name: item.name,
         hidden: false,
         // 动态路由支持懒加载
-        component: () => import('@/business/modules' + item.component),
+        component: component,
         meta: {
           title: item.title,
           auth: true,
           cache: true
         }
-      })
+      }
+      children.push(newRouter)
     }
     if (item.children != null && item.children.length > 0) {
-      formatRouter(routers, item.children)
+      if (newRouter.children == null) {
+        newRouter.children = []
+      }
+      formatRouter(newRouter, item.children)
     }
   })
 
-  return routers
+  return parent.children
 }
 
 function formatMenu (menuTree) {
@@ -81,14 +88,14 @@ function formatPermissions (menuTree, permissionList) {
   return permissionList
 }
 
-export function buildRoutes (routes) {
-  return [{
-    path: '/',
-    redirect: { name: 'index' },
-    component: layoutHeaderAside,
-    children: routes
-  }]
-}
+// export function buildRoutes (routes) {
+//   return [{
+//     path: '/',
+//     redirect: { name: 'index' },
+//     component: layoutHeaderAside,
+//     children: routes
+//   }]
+// }
 
 const state = {
   routes: [],
@@ -115,30 +122,23 @@ const mutations = {
 const actions = {
   generateRoutes ({ commit }, { menuTree }) {
     return new Promise(resolve => {
-      let asyncRoutes = formatRouter([], menuTree)
-      let accessedRoutes = buildRoutes(asyncRoutes)
+      const accessedRoutes = formatRouter(null, menuTree)
       const permissions = formatPermissions(menuTree, [])
+      console.log('permission Routers', accessedRoutes)
       commit('SET_ROUTES', { accessedRoutes, permissions })
 
-      const menus = formatMenu(menuTree)
-      const accessMenus = {
-        aside: menus[0].children,
-        header: menus[1].children
-      }
-      const allMenuHeader = accessMenus.header != null ? menuHeader.concat(accessMenus.header) : menuHeader
-      const allMenuAside = accessMenus.aside != null ? menuAside.concat(accessMenus.aside) : menuAside
+      const menus = supplementPath(formatMenu(menuTree))
+      menuHeader.push(...menus)
       console.log('accessRouter:', accessedRoutes)
-      console.log('menuHeader:', allMenuHeader)
-      console.log('menuAside:', allMenuAside)
 
       // 处理路由 得到每一级的路由设置
       commit('d2admin/page/init', frameInRoutes.concat(accessedRoutes), { root: true })
       // 设置顶栏菜单
-      commit('d2admin/menu/headerSet', allMenuHeader, { root: true })
-      // 设置侧边栏菜单
-      commit('d2admin/menu/asideSet', allMenuAside, { root: true })
+      commit('d2admin/menu/headerSet', menuHeader, { root: true })
+      // // 设置侧边栏菜单
+      // commit('d2admin/menu/asideSet', allMenuAside, { root: true })
       // 初始化菜单搜索功能
-      commit('d2admin/search/init', allMenuHeader, { root: true })
+      commit('d2admin/search/init', menuHeader, { root: true })
 
       resolve(accessedRoutes)
     })

@@ -3,7 +3,7 @@ export default {
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { D2pAreaSelector,  D2pTreeSelector } from 'd2p-extends' // 上传组件支持懒加载
-import request from '@/plugin/axios'
+import request from '@/business/api/request.mock'
 // 引入d2Crud
 Vue.use(d2Crud)
 // 引入d2CrudPlus

@@ -5,7 +5,7 @@ function isEmpty (value) {
   return false
 }
 function isAllEmpty (...values) {
-  for (let value of values) {
+  for (const value of values) {
     if (value == null || value === '') {
     } else {
       return false
@@ -14,7 +14,7 @@ function isAllEmpty (...values) {
   return false
 }
 function hasEmpty (...values) {
-  for (let value of values) {
+  for (const value of values) {
     if (value == null || value === '') {
       return true
     }

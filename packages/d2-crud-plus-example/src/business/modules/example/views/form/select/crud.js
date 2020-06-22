@@ -1,12 +1,12 @@
-import request from '@/plugin/axios'
+import request from '@/business/api/request.mock'
 function radioOptionsChanged (vm, value) {
-  let checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
-  let checkedRadio = vm.getEditFormTemplate('checkedRadio')
+  const checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
+  const checkedRadio = vm.getEditFormTemplate('checkedRadio')
   if (checkedRadio == null || checkbox == null) {
     return
   }
   // 获取checkbox选中的选项
-  let options = checkbox.component.props.dict.data.filter(item => {
+  const options = checkbox.component.props.dict.data.filter(item => {
     return value.indexOf(item.value) >= 0
   })
   // 直接修改DictRadio的options 它的优先级比dict.data高
@@ -14,17 +14,17 @@ function radioOptionsChanged (vm, value) {
 
   // 注意：新版本已不支持 vm.crud.columnsMap[columnKey].dict 方式获取
   // eslint-disable-next-line no-unused-expressions
-  vm.crud.columnsMap['checkbox'].dict.data
+  vm.crud.columnsMap.checkbox.dict.data
   // eslint-disable-next-line no-unused-expressions
-  vm.crud.columnsMap['checkbox'].dict.dataMap
-  console.log('component.dict', vm.crud.columnsMap['checkbox'].component.props.dict.data)
+  vm.crud.columnsMap.checkbox.dict.dataMap
+  console.log('component.dict', vm.crud.columnsMap.checkbox.component.props.dict.data)
 }
 function disabledAllChanged (vm, key, value, form) {
-  for (let formKey in form) {
+  for (const formKey in form) {
     if (formKey === key) {
       continue
     }
-    let column = vm.getEditFormTemplate(formKey)
+    const column = vm.getEditFormTemplate(formKey)
     if (column && column.component.props) {
       column.component.props.disabled = value
       if (column.component.props.elProps) {
@@ -85,8 +85,9 @@ export const crudOptions = (vm) => {
           url: (dict) => {
             console.log('我是从自定义的getData方法中加载的数据字典', dict)
             return request({
-              url: '/dicts/OpenStatusEnum?a=2',
-              method: 'post'
+              url: '/dicts/OpenStatusEnum',
+              method: 'post',
+              params: { a: 1 }
             }).then(ret => {
               return ret.data
             })
@@ -221,7 +222,7 @@ export const crudOptions = (vm) => {
             props: {
               dict: {
                 onReady: (data, dict) => {
-                  let value = vm.getEditForm().show
+                  const value = vm.getEditForm().show
                   vm.getEditFormTemplate('show_ret').component.show = value
                 }
               }

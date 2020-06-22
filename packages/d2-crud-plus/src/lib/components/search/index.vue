@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { merge } from 'lodash'
+import lodash from 'lodash'
 export default {
   name: 'crud-search',
   components: { },
@@ -62,6 +62,7 @@ export default {
   },
   created () {
     if (this.options.form != null) {
+      console.log('setForm12111', this.options.form)
       this.setForm(this.options.form)
     }
   },
@@ -76,8 +77,9 @@ export default {
      * @param isMerge 是否与原有form值合并
      */
     setForm (form, isMerge = false) {
+      console.log('setForm12', form)
       if (isMerge) {
-        merge(this.form, form)
+        lodash.merge(this.form, form)
       } else {
         this.$set(this, 'form', form)
       }
@@ -88,7 +90,20 @@ export default {
     handleFormSubmit () {
       this.$refs.searchForm.validate((valid) => {
         if (valid) {
-          this.$emit('submit', this.form)
+          const params = {}
+          console.log('----1', this.form)
+          for (const key in this.form) {
+            console.log('----2', this.form[key])
+            let value = this.form[key]
+            if (value == null) {
+
+            } else {
+              console.log('----3', this.form[key])
+              params[key] = this.form[key]
+            }
+          }
+          console.log('----4', params)
+          this.$emit('submit', params)
         } else {
           this.$notify.error({
             title: '错误',

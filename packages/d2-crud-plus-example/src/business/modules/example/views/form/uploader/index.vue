@@ -53,8 +53,7 @@
 
       <template slot="fileHelperSlot" >
         <el-alert type="warning" style="line-height: 2">
-          注意：<el-tag size="mini">mock</el-tag>下的<el-tag size="mini">form</el-tag>方式没有进度条显示，请在.env.xxx中配置VUE_APP_BUILD_MODE=NOMOCK；<br/>
-          另外<el-tag size="mini">alioss</el-tag>方式暂不支持进度条，不支持中文等特殊字符文件名<br/>
+          <el-tag size="mini">alioss</el-tag>方式暂不支持进度条，不支持中文等特殊字符文件名<br/>
         </el-alert>
       </template>
     </d2-crud>

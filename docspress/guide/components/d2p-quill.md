@@ -1,15 +1,13 @@
 # d2p-quill
 
-quill富文本编辑器
-
 ## Props
 
 <!-- @vuese:d2p-quill:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|value|-|`String`|`false`|-|
+|value|-|`String`|`false`|''|
 |config|-|`Object`|`false`|-|
-|uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|{}|
+|uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|[object Object]|
 
 <!-- @vuese:d2p-quill:props:end -->
 

@@ -73,13 +73,6 @@ import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)
  ```
-### 3.去掉mock，连接真实后端【可选】
-运用到实际项目中需要去掉mock，某些情况下的http请求会有问题    
-
-修改.env.*的配置
-```
-VUE_APP_BUILD_MODE=nomock
-```
 
 ## 开发一个crud
 

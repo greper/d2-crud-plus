@@ -14,7 +14,7 @@ import Vue from 'vue'
 import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { D2pFileUploader } from 'd2p-extends'  //组件支持懒加载
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 // 引入d2Crud
 Vue.use(d2Crud)
 // 引入d2CrudPlus

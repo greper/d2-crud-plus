@@ -13,7 +13,7 @@
 ```javascript
 import Vue from 'vue'
 import { D2pUploader } from 'd2p-extends'  //组件将会懒加载
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 
 // 配置上传参数
 Vue.use(D2pUploader, {

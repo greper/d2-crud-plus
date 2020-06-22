@@ -48,7 +48,7 @@ npm i  d2-crud-x  -S
 import { d2CrudPlus } from 'd2-crud-plus'
 import d2Crud from '@d2-projects/d2-crud'
 import Vue from 'vue'
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 Vue.use(d2Crud)
 Vue.use(d2CrudPlus, {
   //获取数据字典的请求方法
@@ -205,7 +205,7 @@ export default {
 ### 3.3  api.js
 实现添删改查请求接口，通常复制，改一下url即可，你也可以自行增加方法，用于业务需求
 ```javascript
-import request from '@/plugin/axios'
+import { request } from '@/api/service'
 export function GetList (query) {
   return request({
     url: '/test/page',

@@ -3,7 +3,7 @@ import d2Crud from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { D2pAreaSelector, D2pFileUploader, D2pIconSelector, D2pTreeSelector, D2pFullEditor, D2pUploader, D2pDemoExtend } from 'd2p-extends' // 源码方式引入，上传组件支持懒加载
 
-// 模拟请求
+// http请求
 import { request, requestForMock } from '@/api/service'
 
 // 引入d2Crud
@@ -12,6 +12,7 @@ Vue.use(d2Crud)
 Vue.use(d2CrudPlus, {
   getRemoteDictFunc (url, dict) {
     // 此处配置你的字典http请求方法
+    // 实际使用请改成request
     return requestForMock({
       url: url,
       method: 'get'

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.4...d2-crud-plus@1.9.0) (2020-06-22)
+
+
+### Features
+
+* d2-admin 1.17版本同步 ([7037e4a](https://github.com/greper/d2-crud-plus/commit/7037e4ada20dd5b62c248349bd51f7014962877f))
+
+
+
+
+
+
 ## [1.8.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.3...d2-crud-plus@1.8.4) (2020-06-16)
 
 

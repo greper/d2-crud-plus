@@ -14,6 +14,11 @@ const list = [
     title: 'd2-crud-plus有什么优势？',
     text: '简单，方便',
     content: '简单方便'
+  },
+  {
+    title: '1111111',
+    text: '22222',
+    content: '3333'
   }
 ]
 options.list = list

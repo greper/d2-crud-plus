@@ -22,12 +22,6 @@ const list = [
     province: 'gz',
     time: '2020-01-01 11:11:11',
     amount: 100
-  },
-  {
-    data: 'data4',
-    province: 'sh',
-    time: '2020-01-01 11:11:11',
-    amount: 100
   }
 ]
 options.list = list

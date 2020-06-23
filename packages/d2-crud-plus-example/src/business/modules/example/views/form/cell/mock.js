@@ -29,15 +29,6 @@ const list = [
     mselect: 'gz',
     slotExample: 'slotExample',
     checkbox: '0'
-  },
-  {
-    date: '2016-05-03',
-    status: '2',
-    status_custom_1: '0',
-    status_custom_2: '0',
-    mselect: 'wh,gz',
-    slotExample: 'slotExample',
-    checkbox: '0'
   }
 ]
 

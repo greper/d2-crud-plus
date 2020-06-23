@@ -15,6 +15,11 @@ const list = [
     avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
     file: 'http://greper.veryreader.com/extends/avatar.jpg',
     image: 'http://greper.veryreader.com/extends/avatar.jpg'
+  },
+  {
+    avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
+    file: 'http://greper.veryreader.com/extends/avatar.jpg',
+    image: 'http://greper.veryreader.com/extends/avatar.jpg'
   }
 ]
 options.list = list

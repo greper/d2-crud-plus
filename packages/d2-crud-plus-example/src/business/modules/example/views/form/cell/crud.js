@@ -16,7 +16,7 @@ export const crudOptions = (vm) => {
         form: {
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
-            console.log('-----你选择了', value, vm.crud.columnsMap.status.dict.dataMap[value].label)
+            console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
           }
         },
         component: {

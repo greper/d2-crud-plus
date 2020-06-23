@@ -2,7 +2,8 @@ import request from '@/business/api/request.mock'
 export function GetList (query) {
   return request({
     url: '/upload/page',
-    method: 'get'
+    method: 'get',
+    data: query
   })
 }
 

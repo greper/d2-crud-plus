@@ -16,25 +16,17 @@ const list = [
   },
   {
     status: '1',
-    status_custom_1: '0',
-    status_custom_2: '0',
+    status_custom_1: '1',
+    status_custom_2: '2',
     mselect: 'sh,sz',
-    slotExample: 'slotExample',
-    checkbox: '0'
-  },
-  {
-    status: '1',
-    status_custom_1: '0',
-    status_custom_2: '0',
-    mselect: 'gz',
     slotExample: 'slotExample',
     checkbox: '0'
   },
   {
     date: '2016-05-03',
     status: '2',
-    status_custom_1: '0',
-    status_custom_2: '0',
+    status_custom_1: '2',
+    status_custom_2: '1',
     mselect: 'wh,gz',
     slotExample: 'slotExample',
     checkbox: '0'

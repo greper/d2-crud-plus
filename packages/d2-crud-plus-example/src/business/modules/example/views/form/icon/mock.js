@@ -8,6 +8,10 @@ const list = [
   {
     iconSelect: 'check',
     iconSelect2: 'check'
+  },
+  {
+    iconSelect: 'check',
+    iconSelect2: 'check'
   }
 ]
 options.list = list

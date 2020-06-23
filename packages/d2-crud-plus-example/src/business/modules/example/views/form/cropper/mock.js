@@ -16,6 +16,12 @@ const list = [
     avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
     multi: 'http://greper.veryreader.com/extends/avatar.jpg',
     aspectRatio: 'http://greper.veryreader.com/extends/avatar.jpg'
+  },
+  {
+    id: 2,
+    avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
+    multi: 'http://greper.veryreader.com/extends/avatar.jpg',
+    aspectRatio: 'http://greper.veryreader.com/extends/avatar.jpg'
   }
 ]
 options.list = list

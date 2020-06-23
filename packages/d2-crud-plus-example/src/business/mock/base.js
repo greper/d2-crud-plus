@@ -40,7 +40,7 @@ export default {
   buildMock (options) {
     const name = options.name
     if (options.copyTimes == null) {
-      options.copyTimes = 30
+      options.copyTimes = 29
     }
     const list = []
     for (let i = 0; i < options.copyTimes; i++) {

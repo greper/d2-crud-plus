@@ -22,12 +22,6 @@ const list = [
     status: '1',
     province: 'gz',
     date2: '2016-05-02'
-  },
-  {
-    date: '2016-05-03',
-    status: '2',
-    province: 'wh,gz',
-    date2: '2016-05-02'
   }
 ]
 options.list = list

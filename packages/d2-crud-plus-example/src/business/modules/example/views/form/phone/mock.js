@@ -12,6 +12,10 @@ const list = [
   {
     country: 'CN',
     phone: '18601010202'
+  },
+  {
+    country: 'CN',
+    phone: '18601010202'
   }
 ]
 options.list = list

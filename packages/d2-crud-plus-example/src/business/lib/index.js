@@ -22,6 +22,15 @@ Vue.use(d2CrudPlus, {
   },
   commonOption () { // 公共配置
     return {
+      format: {
+        page: { // page接口返回的数据结构配置，
+          current: 'current', // 当前页码 ret.data.current
+          size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
+          total: 'total', // 总记录数 ret.data.total
+          records: 'records' // 列表数组 ret.data.records
+          //
+        }
+      },
       options: {
         size: 'small'
       }

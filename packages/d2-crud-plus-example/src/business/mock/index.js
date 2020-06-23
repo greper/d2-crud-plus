@@ -18,12 +18,15 @@ apiList.forEach(apiFile => {
     mock
       .onAny(item.path)
       .reply(config => {
-        console.log('fake config:', config)
+        console.log('------------fake request start -------------')
+        console.log('request:', config)
         const req = {
           body: JSON.parse(config.data),
           params: JSON.parse(config.data)
         }
         const ret = item.handle(req)
+        console.log('response:', ret)
+        console.log('------------fake request end-------------')
         if (ret.code === 0) {
           return tools.responseSuccess(ret.data, ret.msg)
         } else {

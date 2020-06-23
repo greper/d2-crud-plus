@@ -31,7 +31,6 @@ export default {
         this.formData = this.editTemplate ? _clonedeep(this.editTemplate) : {}
         this.editTemplateStorage = this.editTemplate ? _clonedeep(this.editTemplate) : {}
       }
-
       this.fetchDetail(index, row).then(newRow => {
         _forEach(this.formData, (value, key) => {
           this.formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined

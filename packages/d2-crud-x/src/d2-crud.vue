@@ -203,15 +203,20 @@
     </div>
     <el-dialog
       v-if="isDialogShow"
-      :title="formMode === 'edit' ? editTitle : addTitle"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"
       v-bind="formOptions"
     >
+      <template slot="title">
+        {{formMode === 'edit' ? editTitle : addTitle}}
+        <slot name="dialogTitle" v-bind:mode="formMode" v-bind:form="formData" ></slot>
+        <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn" style="right:50px" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
+      </template>
       <el-form
         ref="form"
         :model="formData"
         :rules="handleFormRulesMode()"
+        :fullscreen="formOptions.fullscreen"
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions">

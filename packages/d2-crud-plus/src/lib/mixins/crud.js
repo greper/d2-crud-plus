@@ -8,6 +8,29 @@ export default {
   data () {
     return {
       crud: {
+        format: {
+          response (ret) {
+            return ret
+          },
+          doFormat: (data, name) => {
+            if (name instanceof Function) {
+              return name(data)
+            }
+            return data[name]
+          },
+          page: { // page接口返回的数据结构配置
+            request: {
+              current: 'current', // 目标页码
+              size: 'size' // 每页条数
+            },
+            response: {
+              current: 'current', // 当前页码
+              size: 'size', // 每页条数
+              total: 'total', // 总记录数
+              records: 'records' // 列表数据
+            }
+          }
+        },
         formOptions: {
           labelWidth: '100px',
           labelPosition: 'left',
@@ -304,17 +327,23 @@ export default {
       }
       this.crud.loading = true
       this.pageRequest(query).then(ret => {
+        const pageFormat = this.crud.format.page
+        const format = this.crud.format.doFormat
+        const records = format(ret.data, pageFormat.records)
+        const current = format(ret.data, pageFormat.current)
+        const size = format(ret.data, pageFormat.size)
+        const total = format(ret.data, pageFormat.total)
         for (const col of this.crud.columns) {
           if (col.valueBuilder) {
-            for (const row of ret.data.records) {
+            for (const row of records) {
               col.valueBuilder(row, col)
             }
           }
         }
-        this.crud.page.current = ret.data.current
-        this.crud.page.size = ret.data.size
-        this.crud.page.total = ret.data.total
-        this.$set(this.crud, 'list', ret.data.records)
+        this.crud.page.current = current
+        this.crud.page.size = size
+        this.crud.page.total = total
+        this.$set(this.crud, 'list', records)
       }).finally(() => {
         this.crud.loading = false
       })

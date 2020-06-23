@@ -2,14 +2,14 @@
   <span>
     <template v-if="multiple"  >
       <div v-for="(Labels,Index) in multipleLabels" :key="Index">
-        <span  v-for="(label,index) in Labels" :key="label">
+        <span  v-for="(label,index) in Labels" :key="index">
           <span  v-if="index!==0"> / </span>
           <span>{{label}}</span>
         </span>
       </div>
     </template>
     <template v-else >
-      <span v-for="(label,index) in labels"  :key="label">
+      <span v-for="(label,index) in labels"  :key="index">
         <span  v-if="index!==0"> / </span>
         <span  >{{label}}</span>
       </span>

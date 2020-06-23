@@ -35,7 +35,8 @@ export default {
           labelWidth: '100px',
           labelPosition: 'left',
           saveLoading: false,
-          gutter: 20
+          gutter: 20,
+          fullscreen: false
         },
         options: {
           rowKey: 'id',
@@ -321,19 +322,22 @@ export default {
     doRefresh () {
       let form = this.crud.searchOptions.form
       let query = {
-        size: this.crud.page.size,
-        current: this.crud.page.current,
         ...form
       }
+
+      query[this.crud.format.page.request.size] = this.crud.page.size
+      query[this.crud.format.page.request.current] = this.crud.page.current
+
       this.crud.loading = true
       this.pageRequest(query).then(ret => {
-        const pageFormat = this.crud.format.page
+        const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const records = format(ret.data, pageFormat.records)
         const current = format(ret.data, pageFormat.current)
         const size = format(ret.data, pageFormat.size)
         const total = format(ret.data, pageFormat.total)
-        for (const col of this.crud.columns) {
+        for (const key in this.crud.columnsMap) {
+          const col = this.crud.columnsMap[key]
           if (col.valueBuilder) {
             for (const row of records) {
               col.valueBuilder(row, col)
@@ -462,7 +466,8 @@ export default {
       if (row == null) {
         return
       }
-      for (const col of this.crud.columns) {
+      for (const key in this.crud.columnsMap) {
+        const col = this.crud.columnsMap[key]
         if (col.valueResolve) {
           col.valueResolve(row, col)
         }

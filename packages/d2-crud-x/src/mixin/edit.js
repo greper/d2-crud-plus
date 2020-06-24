@@ -43,7 +43,7 @@ export default {
         return this.options.fetchDetail(index, row)
       } else {
         return new Promise(resolve => {
-          resolve(row)
+          resolve(_clonedeep(row))
         })
       }
     }

@@ -7,10 +7,10 @@
     :element-loading-background="loadingOptions ? handleAttribute(loadingOptions.background, null) : null"
   >
     <div class="d2-crud-header" v-if="$slots.header">
-      <slot name="header"></slot>
+      <slot name="header"/>
     </div>
     <div class="d2-crud-body" v-if="options && options.hide === true">
-      <slot name="body"></slot>
+      <slot name="body"/>
     </div>
     <div class="d2-crud-body" v-else >
       <el-table
@@ -46,7 +46,7 @@
           v-bind="expandRow"
         >
           <template slot-scope="scope">
-            <slot :name="'expandSlot'" v-bind:row="scope.row"></slot>
+            <slot name="expandSlot" :row="scope.row"/>
           </template>
         </el-table-column>
         <el-table-column
@@ -65,25 +65,11 @@
           v-bind="item"
         >
           <template slot-scope="scope">
-            <template v-if="item.rowSlot === true">
-              <slot :name="item.key+'Slot'" v-bind:row="scope.row"/>
-            </template>
-            <render-custom-component
-              v-else-if="item.component && item.component.name"
-              v-model="scope.row[item.key]"
-              :component-name="item.component.name"
-              :props="item.component.props ? item.component.props : null"
-              @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-              :scope="scope">
-            </render-custom-component>
-            <render-component
-              v-else-if="item.component && item.component.render"
-              :render-function="item.component.render"
-              @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-              :scope="{key:item.key,value:scope.row[item.key],row:scope.row}"
-            >
-            </render-component>
-            <template v-else>{{item.formatter ? item.formatter(scope.row, scope.column, _get(scope.row, item.key), scope.$index) : _get(scope.row, item.key)}}</template>
+            <d2-cell :item="item" :scope="scope" @cell-data-change="handleCellDataChange">
+              <template slot-scope="scope" :slot="item.key+'Slot'">
+                <slot :name="item.key+'Slot'" :row="scope.row"/>
+              </template>
+            </d2-cell>
           </template>
 
           <template v-if="item.children">
@@ -95,25 +81,11 @@
               v-bind="item2"
             >
               <template slot-scope="scope">
-                <template v-if="item2.rowSlot === true">
-                  <slot :name="item2.key+'Slot'" v-bind:row="scope.row"></slot>
-                </template>
-                <render-custom-component
-                  v-else-if="item2.component && item2.component.name"
-                  v-model="scope.row[item2.key]"
-                  :component-name="item2.component.name"
-                  :props="item2.component.props ? item2.component.props : null"
-                  @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item2.key, value: scope.row[item2.key], row: scope.row})"
-                  :scope="scope">
-                </render-custom-component>
-                <render-component
-                  v-else-if="item2.component && item2.component.render"
-                  :render-function="item2.component.render"
-                  @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item2.key, value: scope.row[item2.key], row: scope.row})"
-                  :scope="{key:item2.key,value:scope.row[item2.key],row:scope}"
-                >
-                </render-component>
-                <template v-else>{{item2.formatter ? item2.formatter(scope.row, scope.column, _get(scope.row, item2.key), scope.$index) : _get(scope.row, item2.key)}}</template>
+                <d2-cell :item="item2" :scope="scope" @cell-data-change="handleCellDataChange">
+                  <template slot-scope="scope" :slot="item2.key+'Slot'">
+                    <slot :name="item2.key+'Slot'" :row="scope.row"/>
+                  </template>
+                </d2-cell>
               </template>
               <template v-if="item2.children">
                 <el-table-column
@@ -124,30 +96,14 @@
                   v-bind="item3"
                 >
                   <template slot-scope="scope">
-                    <template v-if="item3.rowSlot === true">
-                      <slot :name="item3.key+'Slot'" v-bind:row="scope.row"></slot>
-                    </template>
-                    <render-custom-component
-                      v-else-if="item3.component && item3.component.name"
-                      v-model="scope.row[item3.key]"
-                      :component-name="item3.component.name"
-                      :props="item3.component.props ? item3.component.props : null"
-                      @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item3.key, value: scope.row[item3.key], row: scope.row})"
-                      :scope="scope">
-                    </render-custom-component>
-                    <render-component
-                      v-else-if="item3.component && item3.component.render"
-                      :render-function="item3.component.render"
-                      @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item3.key, value: scope.row[item3.key], row: scope.row})"
-                      :scope="{key:item3.key,value:scope.row[item3.key],row:scope.row}"
-                    >
-                    </render-component>
-                    <template v-else>{{item3.formatter ? item3.formatter(scope.row, scope.column, _get(scope.row, item3.key), scope.$index) : _get(scope.row, item3.key)}}</template>
+                    <d2-cell :item="item3" :scope="scope" @cell-data-change="handleCellDataChange">
+                      <template slot-scope="scope" :slot="item3.key+'Slot'">
+                        <slot :name="item3.key+'Slot'" :row="scope.row"/>
+                      </template>
+                    </d2-cell>
                   </template>
-
                 </el-table-column>
               </template>
-
             </el-table-column>
           </template>
         </el-table-column>
@@ -298,6 +254,7 @@ import exposeMethods from './mixin/exposeMethods.js'
 import utils from './mixin/utils'
 import renderComponent from './components/renderComponent.vue'
 import renderCustomComponent from './components/renderCustomComponent.vue'
+import D2Cell from './components/d2-cell.vue'
 
 export default {
   name: 'd2-crud',
@@ -315,15 +272,15 @@ export default {
   ],
   components: {
     renderComponent,
-    renderCustomComponent
+    renderCustomComponent,
+    D2Cell
     // d2Column
   },
   methods: {
     handleFormDataChange (value, key) {
       this.$emit('form-data-change', { key: key, value: value, form: this.formData })
     },
-    handleCellDataChange (value, column) {
-      column.value = value
+    handleCellDataChange (column) {
       this.$emit('cell-data-change', column)
     },
     handleFormComponentReady (event, key) {
@@ -340,7 +297,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .d2-crud {
   .d2-crud-header {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.2);

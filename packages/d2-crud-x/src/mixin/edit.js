@@ -18,7 +18,6 @@ export default {
      */
     handleEdit (index, row, templage = null) {
       this.formMode = 'edit'
-      this.editDataStorage = _clonedeep(row)
       this.$emit('dialog-open', {
         mode: 'edit',
         row
@@ -32,6 +31,7 @@ export default {
         this.editTemplateStorage = this.editTemplate ? _clonedeep(this.editTemplate) : {}
       }
       this.fetchDetail(index, row).then(newRow => {
+        this.editDataStorage = newRow
         _forEach(this.formData, (value, key) => {
           this.formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
         })

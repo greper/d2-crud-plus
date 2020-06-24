@@ -39,6 +39,7 @@ export const crudOptions = {
               form.area = form.address[1]
               form.city = form.address[2]
             }
+            // 查询和提交的时候不需要这个字段，删除它
             delete form.address
           }
         }

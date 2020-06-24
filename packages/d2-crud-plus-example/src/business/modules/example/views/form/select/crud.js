@@ -46,6 +46,7 @@ export const crudOptions = (vm) => {
           url: '/dicts/OpenStatusEnum'
         },
         form: {
+          // value: '2', // 添加时的初始值
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
             console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
@@ -72,6 +73,7 @@ export const crudOptions = (vm) => {
           }
         },
         form: {
+          value: '2', // 添加时的初始值
           helper: 'dict.getData可以覆盖全局配置的getRemoteDictFunc'
         }
       },
@@ -94,6 +96,7 @@ export const crudOptions = (vm) => {
           }
         },
         form: {
+          value: '2', // 添加时的初始值
           helper: 'dict.url可以直接配置一个ajax请求获取数据字典'
         }
       },

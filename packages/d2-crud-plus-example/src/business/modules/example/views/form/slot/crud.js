@@ -17,6 +17,7 @@ export const crudOptions = {
         slot: true
       },
       form: {
+        rules: [{ required: true, message: '请输入内容' }],
         slot: true,
         helper: { slot: true }
       },

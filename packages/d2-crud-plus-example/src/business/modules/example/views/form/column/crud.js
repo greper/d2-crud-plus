@@ -20,10 +20,10 @@ export const crudOptions = {
     rowKey: 'id',
     lazy: true,
     load: (tree, treeNode, resolve) => {
-      console.log('--------', tree, treeNode)
       request({
-        url: '/column/children?id=' + tree.id,
-        method: 'get'
+        url: '/column/children',
+        method: 'get',
+        data: { id: tree.id }
       }).then(ret => {
         console.log('懒加载数据', ret.data)
         resolve(ret.data)

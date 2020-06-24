@@ -84,7 +84,7 @@ options.list = list
 const mock = mockUtil.buildMock(options)
 
 mock.push({
-  path: '/api/column/children',
+  path: '/column/children',
   method: 'get',
   handle (req) {
     console.log('req', req)

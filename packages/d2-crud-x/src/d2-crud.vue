@@ -57,56 +57,15 @@
         >
         </el-table-column>
         <!-- 暂不使用d2-column递归组件，有bug -->
-        <el-table-column
-          v-for="(item, index) in columns"
-          :key="index"
-          :label="handleAttribute(item.title, '')"
-          :prop="handleAttribute(item.key, null)"
-          v-bind="item"
-        >
-          <template slot-scope="scope">
-            <d2-cell :item="item" :scope="scope" @cell-data-change="handleCellDataChange">
-              <template slot-scope="scope" :slot="item.key+'Slot'">
-                <slot :name="item.key+'Slot'" :row="scope.row"/>
-              </template>
-            </d2-cell>
-          </template>
 
-          <template v-if="item.children">
-            <el-table-column
-              v-for="(item2, index2) in item.children"
-              :key="index2"
-              :label="handleAttribute(item2.title, '')"
-              :prop="handleAttribute(item2.key, null)"
-              v-bind="item2"
-            >
-              <template slot-scope="scope">
-                <d2-cell :item="item2" :scope="scope" @cell-data-change="handleCellDataChange">
-                  <template slot-scope="scope" :slot="item2.key+'Slot'">
-                    <slot :name="item2.key+'Slot'" :row="scope.row"/>
-                  </template>
-                </d2-cell>
-              </template>
-              <template v-if="item2.children">
-                <el-table-column
-                  v-for="(item3, index3) in item2.children"
-                  :key="index3"
-                  :label="handleAttribute(item3.title, '')"
-                  :prop="handleAttribute(item3.key, null)"
-                  v-bind="item3"
-                >
-                  <template slot-scope="scope">
-                    <d2-cell :item="item3" :scope="scope" @cell-data-change="handleCellDataChange">
-                      <template slot-scope="scope" :slot="item3.key+'Slot'">
-                        <slot :name="item3.key+'Slot'" :row="scope.row"/>
-                      </template>
-                    </d2-cell>
-                  </template>
-                </el-table-column>
-              </template>
-            </el-table-column>
+        <d2-column v-for="(item, index) in columns"
+                   :key="index"
+                   :item="item">
+          <template slot-scope="scope" :slot="item.key+'Slot'">
+            <slot :name="item.key+'Slot'" :row="scope.row"/>
           </template>
-        </el-table-column>
+        </d2-column>
+
         <el-table-column
           v-if="rowHandle"
           :label="handleAttribute(rowHandle.columnHeader, '操作')"
@@ -254,7 +213,7 @@ import exposeMethods from './mixin/exposeMethods.js'
 import utils from './mixin/utils'
 import renderComponent from './components/renderComponent.vue'
 import renderCustomComponent from './components/renderCustomComponent.vue'
-import D2Cell from './components/d2-cell.vue'
+import D2Column from './components/d2-column'
 
 export default {
   name: 'd2-crud',
@@ -271,10 +230,9 @@ export default {
     utils
   ],
   components: {
+    D2Column,
     renderComponent,
-    renderCustomComponent,
-    D2Cell
-    // d2Column
+    renderCustomComponent
   },
   methods: {
     handleFormDataChange (value, key) {

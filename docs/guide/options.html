@@ -53,7 +53,7 @@
         disabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">//是否禁用该字段的查询，默认false</span>
         component<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//查询框组件配置，默认根据form配置生成 </span>
         <span class="token comment">// 是否启用搜索框的slot插槽,需要d2-crud-x才支持</span>
-        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot</span>
+        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot</span>
         slot<span class="token punctuation">:</span><span class="token boolean">false</span> 
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       form<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">//添加和编辑表单配置</span>
@@ -88,7 +88,7 @@
             <span class="token comment">//或 form.component.props.disabled=true // 封装控件</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>     
         <span class="token comment">// 是否启用form编辑框的slot插槽,需要d2-crud-x才支持</span>
-        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot</span>
+        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot</span>
         slot<span class="token punctuation">:</span><span class="token boolean">false</span> 
         
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -96,7 +96,7 @@
         <span class="token comment">// 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入</span>
         <span class="token comment">// 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象</span>
         <span class="token comment">// 例如：国际手机号(mobileValue为此column的key) </span>
-        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/phone</span>
+        <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/phone</span>
         <span class="token comment">// row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token function">valueResolve</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span>key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
@@ -128,7 +128,7 @@
       <span class="token comment">//是否隐藏该列在列表中显示，不影响form表单中该字段的显示</span>
       disabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> 
       <span class="token comment">// 是否启用该cell的slot插槽,需要d2-crud-x才支持</span>
-      <span class="token comment">// 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot</span>
+      <span class="token comment">// 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot</span>
       rowSlot<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> 
       
       <span class="token function">formatter</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span> column<span class="token punctuation">,</span> value<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

@@ -87,7 +87,7 @@ export const crudOptions = (vm) => {
             return request({
               url: '/dicts/OpenStatusEnum',
               method: 'post',
-              params: { a: 1 }
+              data: { a: 1 }
             }).then(ret => {
               return ret.data
             })

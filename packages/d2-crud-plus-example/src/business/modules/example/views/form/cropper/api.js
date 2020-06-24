@@ -25,6 +25,6 @@ export function DelObj (id) {
   return request({
     url: '/cropper/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }

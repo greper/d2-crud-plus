@@ -26,7 +26,7 @@ export function DelObj (id) {
   return request({
     url: '/cell/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }
 export function GetCascadeData () {

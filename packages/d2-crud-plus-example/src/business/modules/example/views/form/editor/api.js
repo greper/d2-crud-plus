@@ -11,7 +11,7 @@ export function GetObj (id) {
   return request({
     url: '/editor/get',
     method: 'get',
-    params: { id }
+    data: { id }
   })
 }
 
@@ -34,6 +34,6 @@ export function DelObj (id) {
   return request({
     url: '/editor/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }

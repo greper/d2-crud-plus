@@ -88,7 +88,6 @@ export default {
         const data = this.getD2Crud().$refs.elTable.store.states.treeData
         if (data != null) {
           const item = data[row.parentId]
-          console.log('tree Data', data, item, row.id)
           if (item != null) {
             item.loaded = false
             item.expanded = false

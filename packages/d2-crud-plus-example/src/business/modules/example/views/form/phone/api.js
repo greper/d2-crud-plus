@@ -26,13 +26,13 @@ export function DelObj (id) {
   return request({
     url: '/phone/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }
 export function GetCustomName (callingCode, mobile) {
   return request({
     url: '/phone/customName',
     method: 'get',
-    params: { callingCode, mobile }
+    data: { callingCode, mobile }
   })
 }

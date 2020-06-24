@@ -181,7 +181,7 @@
                 v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
                 :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                 v-bind="$d2CrudSize ? Object.assign({ size: $d2CrudSize}, item) : item"
-                @click="$emit(item.emit, {index: scope.$index, row: scope.row.row})"
+                @click="$emit(item.emit, {index: scope.$index, row: scope.row})"
               >
                 {{item.text}}
               </el-button>

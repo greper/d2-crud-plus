@@ -36,6 +36,10 @@
         @custom-emit="customEmit">
       <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
 
+      <template slot="FormHeaderSlot">
+        <i class="el-icon-edit"></i>
+      </template>
+
       <template slot="createDateSlot" slot-scope="scope">
         创建时间：{{scope.row['createDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
         更新时间：{{scope.row['updateDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
@@ -91,7 +95,7 @@ export default {
   },
   computed: {
     helperHeight () {
-      let height = document.documentElement.clientHeight - 100
+      const height = document.documentElement.clientHeight - 100
       return height + 'px'
     }
   },
@@ -119,7 +123,7 @@ export default {
       this.$message('自定义按钮')
     },
     addTopic () {
-      let form = this.getEditForm()
+      const form = this.getEditForm()
       console.log('form:', form)
       if (form.topics == null || form.topics === '') {
         form.topics = []
@@ -127,7 +131,7 @@ export default {
       form.topics.push('')
     },
     removeTopic (index) {
-      let form = this.getEditForm()
+      const form = this.getEditForm()
       console.log('form:', form)
       form.topics.splice(index, 1)
     },

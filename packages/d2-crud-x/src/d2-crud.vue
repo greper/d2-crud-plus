@@ -209,7 +209,7 @@
     >
       <template slot="title">
         {{formMode === 'edit' ? editTitle : addTitle}}
-        <slot name="dialogTitle" v-bind:mode="formMode" v-bind:form="formData" ></slot>
+        <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" ></slot>
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn" style="right:50px" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
       </template>
       <el-form
@@ -270,10 +270,7 @@
         </el-row>
       </el-form>
       <div slot="footer">
-        <template v-if="formOptions && formOptions.footer && formOptions.footer.slot">
-          <slot name="FormFooterSlot" v-bind:data="formData" ></slot>
-        </template>
-
+          <slot name="FormFooterSlot" v-bind:mode="formMode" v-bind:data="formData" ></slot>
         <el-button
           :size="formOptions ? handleAttribute(formOptions.saveButtonSize, null) : null"
           :type="formOptions ? handleAttribute(formOptions.saveButtonType, null) : null"

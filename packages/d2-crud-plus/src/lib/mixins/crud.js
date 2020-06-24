@@ -297,7 +297,7 @@ export default {
      */
     handlePaginationChange (val) {
       this.crud.page = val
-      console.log('page changed:', val)
+      console.info('page changed:', val)
       this.doRefresh()
     },
     /**
@@ -305,7 +305,6 @@ export default {
      * @param form
      */
     handleSearch (form) {
-      console.log('do search , 查询参数:', form)
       for (let key in form) {
         if (form[key] === '') {
           delete form[key]
@@ -314,6 +313,7 @@ export default {
       this.crud.page.current = 1 // 点击查询后，从第一页开始
       this.crud.searchOptions.form = form
       this.doValueResolve(form)
+      console.log('do search , 查询参数:', form)
       this.doRefresh()
     },
     /**
@@ -593,7 +593,7 @@ export default {
      */
     handleFormDataChange ({ key, value, form }) {
       let column = this.crud.columnsMap[key]
-      console.debug('FormDataChanged:', key)
+      console.log('FormDataChanged:', key)
       if (column.form != null && column.form.valueChange != null) {
         column.form.valueChange(key, value, this.getEditForm())
       }
@@ -605,7 +605,6 @@ export default {
      * @param value
      */
     doFormDataChange ({ key, value, form }) {
-
     }
 
   }

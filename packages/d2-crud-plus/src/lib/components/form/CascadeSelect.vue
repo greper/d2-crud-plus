@@ -4,8 +4,7 @@
     :value="selectValue"
     :options="_options"
     v-bind="_elProps"
-    @input="doInput"
-    @change="doChange" style="width:100%"></el-cascader>
+    @input="doInput" ></el-cascader>
 </template>
 
 <script>
@@ -81,6 +80,7 @@ export default {
   },
   watch: {
     value: function (newVal, oldVal) {
+      this.$emit('change', newVal)
       if (this.selectValue === newVal) {
         return
       }
@@ -105,9 +105,6 @@ export default {
     },
     doInput ($event) {
       this.$emit('input', $event)
-    },
-    doChange ($event) {
-      this.$emit('change', $event)
     }
   }
 }
@@ -118,5 +115,6 @@ export default {
   .el-cascader__tags .el-tag>span{
     flex:auto
   }
+  width: 100%;
 }
 </style>

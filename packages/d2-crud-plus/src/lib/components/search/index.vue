@@ -30,16 +30,12 @@
         <d2-icon name="search"/>
         查询
       </el-button>
-    </el-form-item>
-
-    <el-form-item>
       <el-button
-          @click="handleFormReset">
+        @click="handleFormReset">
         <d2-icon name="refresh"/>
         重置
       </el-button>
     </el-form-item>
-
   </el-form>
 </template>
 
@@ -78,6 +74,7 @@ export default {
     setForm (form, isMerge = false) {
       if (isMerge) {
         lodash.merge(this.form, form)
+        this.$set(this, 'form', this.form)
       } else {
         this.$set(this, 'form', form)
       }

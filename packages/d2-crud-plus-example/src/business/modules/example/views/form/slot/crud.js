@@ -47,25 +47,18 @@ export const crudOptions = {
       form: {
         component: {
           render: (h, scope) => {
-            console.log('scope', scope)
-            // eslint-disable-next-line
             return (<div>表单render：{scope.value}</div>)
           }
         }
       },
       component: {
         render: (h, scope) => {
-          console.log('scope', scope)
-          // eslint-disable-next-line
           return (<div>行render：{scope.value}</div>)
         }
       }
     }
   ],
   formOptions: {
-    footer: {
-      slot: true // 自定义编辑框按钮slot ， slot名称为 FormFooterSlot
-    },
     center: true // 标题与按钮居中布局
   },
   rowHandle: {

@@ -10,7 +10,6 @@ export const crudOptions = {
           title: '级联式',
           key: 'pca',
           type: 'area-selector',
-          search: { disabled: false },
           form: {
             helper: '级联式，获取到的值为code,点击保存可看到请求的数据中发给服务器的数据为code'
           }
@@ -29,14 +28,18 @@ export const crudOptions = {
           key: 'address',
           type: 'area-selector',
           dict: { value: 'name' },
+          search: { disabled: false },
           valueBuilder (row, col) {
             row.address = [row.province, row.area, row.city]
           },
           valueResolve (form, col) {
-            console.log('--------valueResolve-----', form)
-            form.province = form.address[0]
-            form.area = form.address[1]
-            form.city = form.address[2]
+            console.log('--------valueResolve-----', form.address)
+            if (form.address && form.address.length >= 3) {
+              form.province = form.address[0]
+              form.area = form.address[1]
+              form.city = form.address[2]
+            }
+            delete form.address
           }
         }
       ]

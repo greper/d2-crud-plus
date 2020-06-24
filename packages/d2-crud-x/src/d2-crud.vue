@@ -56,11 +56,11 @@
           v-bind="indexRow"
         >
         </el-table-column>
-        <!-- 暂不使用d2-column递归组件，有bug -->
-
+        <!-- 使用d2-column递归组件 -->
         <d2-column v-for="(item, index) in columns"
                    :key="index"
-                   :item="item">
+                   :item="item"
+                   @cell-data-change="handleCellDataChange">
           <template slot-scope="scope" :slot="item.key+'Slot'">
             <slot :name="item.key+'Slot'" :row="scope.row"/>
           </template>

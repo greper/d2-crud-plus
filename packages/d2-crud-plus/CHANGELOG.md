@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.9.0...d2-crud-plus@1.10.0) (2020-06-24)
+
+
+### Features
+
+* 对话框增加自定义header slot ([0c25a93](https://github.com/greper/d2-crud-plus/commit/0c25a93e85f91b34c2cc2e6f5883e1ab284cbb0c))
+* 列表数据结构支持自定义 ([30fd7a3](https://github.com/greper/d2-crud-plus/commit/30fd7a3576cc7345ecd1433b1ca7f5013e4957cf))
+
+
+### Performance Improvements
+
+* 增加pageRequest返回参数的配置 ([033f127](https://github.com/greper/d2-crud-plus/commit/033f12746f26059f403f4d0ddaecf39adf3a57a6))
+
+
+
+
+
+
 # [1.9.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.8.4...d2-crud-plus@1.9.0) (2020-06-22)
 
 

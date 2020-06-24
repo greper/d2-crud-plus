@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.9.0...@d2-plus/d2-crud-plus-example@1.10.0) (2020-06-24)
+
+
+### Bug Fixes
+
+* 修复新的mock加载出错的问题 ([f16b557](https://github.com/d2-projects/d2-admin/commit/f16b557323d6ccf688890ae68571c8f936834e56))
+* 修复新的mock无法删除记录的bug ([cbb6594](https://github.com/d2-projects/d2-admin/commit/cbb65944e75136054d29dd70b9b37d5e43fc938b))
+* 修复自定义按钮获取不到行数据的bug ([ca5a82e](https://github.com/d2-projects/d2-admin/commit/ca5a82e2e79d14e13e45e8adafbdeed80a6533c5))
+
+
+### Features
+
+* 对话框增加自定义header slot ([0c25a93](https://github.com/d2-projects/d2-admin/commit/0c25a93e85f91b34c2cc2e6f5883e1ab284cbb0c))
+
+
+### Performance Improvements
+
+* 文档优化 ([1459201](https://github.com/d2-projects/d2-admin/commit/145920140d3396f995a2d8dc5d33796ac6c08dfc))
+* 优化示例 ([17cf04a](https://github.com/d2-projects/d2-admin/commit/17cf04ae6ac283fea7603c3ce695797712a4149a))
+* 优化示例展示效果，增加模拟请求延时 ([5eac157](https://github.com/d2-projects/d2-admin/commit/5eac1572836601b2ed6e4f2f4b5fdb3f3c884845))
+
+
+
+
+
+
 # [1.9.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.8.7...@d2-plus/d2-crud-plus-example@1.9.0) (2020-06-22)
 
 

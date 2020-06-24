@@ -1,14 +1,6 @@
 export const crudOptions = {
   columns: [
     {
-      title: '日期',
-      key: 'date',
-      sortable: true,
-      type: 'date',
-      search: { disabled: true },
-      form: { disabled: true }
-    },
-    {
       title: '状态',
       key: 'status',
       sortable: true,
@@ -36,5 +28,13 @@ export const crudOptions = {
         ]
       }
     }
-  ]
+  ],
+  group: {
+    type: 'collapse', // tab
+    groups: [
+      { title: '商品基础', children: ['title', 'code', 'image'] },
+      { title: '库存价格', children: ['store', 'price'] },
+      { title: '详情', children: ['intro', 'content'] }
+    ]
+  }
 }

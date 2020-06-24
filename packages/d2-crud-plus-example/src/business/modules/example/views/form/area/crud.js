@@ -83,7 +83,8 @@ export const crudOptions = {
             component: { span: 24 },
             helper: '树形，忽略完全选中节点的子节点，精简结果'
           }
-        }, {
+        },
+        {
           title: '树形选择2',
           key: 'pcaTree2',
           type: 'area-tree-selector',
@@ -94,7 +95,8 @@ export const crudOptions = {
             },
             helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
           }
-        }, {
+        },
+        {
           title: '树形选择3',
           key: 'tree3',
           type: 'tree-selector',
@@ -106,7 +108,8 @@ export const crudOptions = {
             },
             helper: '自定义获取省市区数据'
           }
-        }, {
+        },
+        {
           title: '树形单选',
           key: 'tree4',
           type: 'tree-selector',

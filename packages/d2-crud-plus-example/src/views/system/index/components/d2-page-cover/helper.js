@@ -9,7 +9,7 @@ export default {
       title: '状态',
       key: 'status',
       type: 'select', //选择框，默认单选
-      dict: { url: '/api/dicts/OpenStatusEnum' }//远程数据字典
+      dict: { url: '/dicts/OpenStatusEnum' }//远程数据字典
     },
     {
       title: '地区',

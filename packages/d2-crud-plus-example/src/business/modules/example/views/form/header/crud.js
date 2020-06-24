@@ -31,7 +31,7 @@ export const crudOptions = {
           search: { key: 'status', disabled: false },
           type: 'select',
           form: { rules: [{ required: true, message: '请选择状态' }] },
-          dict: { url: '/api/dicts/OpenStatusEnum' }
+          dict: { url: '/dicts/OpenStatusEnum' }
         }
       ]
     },

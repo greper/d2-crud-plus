@@ -172,5 +172,5 @@ module.exports = {
       enableInSFC: true
     }
   },
-  transpileDependencies:[ 'd2p-extends']
+  transpileDependencies: ['d2p-extends']
 }

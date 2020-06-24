@@ -10,6 +10,7 @@ export const crudOptions = {
           title: '级联式',
           key: 'pca',
           type: 'area-selector',
+          search: { disabled: false },
           form: {
             helper: '级联式，获取到的值为code,点击保存可看到请求的数据中发给服务器的数据为code'
           }
@@ -21,6 +22,21 @@ export const crudOptions = {
           dict: { value: 'name' },
           form: {
             helper: '级联式，获取到的值为name'
+          }
+        },
+        {
+          title: '后台返回三个字段',
+          key: 'address',
+          type: 'area-selector',
+          dict: { value: 'name' },
+          valueBuilder (row, col) {
+            row.address = [row.province, row.area, row.city]
+          },
+          valueResolve (form, col) {
+            console.log('--------valueResolve-----', form)
+            form.province = form.address[0]
+            form.area = form.address[1]
+            form.city = form.address[2]
           }
         }
       ]
@@ -34,7 +50,8 @@ export const crudOptions = {
         component: { span: 24 },
         helper: '级联式多选，精简结果，collapse-tags'
       }
-    }, {
+    },
+    {
       title: '多选',
       key: 'pca4',
       type: 'area-multi-selector',

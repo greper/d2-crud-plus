@@ -28,12 +28,12 @@ npm run dev
 
 ## 集成到你的d2-admin项目中
 
-在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)
+在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)试试
 
 ### 1.安装
 ```shell
 使用npm
-npm i  @d2-project/d2-crud  -S //官方d2-crud此方式安装会报错，可以使用yarn安装，或者使用d2-crud-x
+npm i  @d2-project/d2-crud  -S //如果官方d2-crud此方式安装报错，可以使用yarn安装，或者使用d2-crud-x
 npm i  d2-crud-plus  -S
 
 使用yarn
@@ -73,6 +73,33 @@ import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)
  ```
+
+### 3. 修改http响应拦截的返回结果
+```js {9,10,11}
+  // 响应拦截
+  service.interceptors.response.use(
+    response => {
+        ...
+        // 有 code 代表这是一个后端接口 可以进行进一步的判断
+        switch (code) {
+          case 0:
+            // [ 示例 ] code === 0 代表没有错误
+            // 某些情况下返回结果还需要code和msg进行后续处理,去掉.data,返回{code:xx,data:xx,msg:xx}
+            // return dataAxios.data
+            return dataAxios
+          case 'xxx':
+            // [ 示例 ] 其它和后台约定的 code
+            errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
+            break
+          default:
+            // 不是正确的 code
+            errorCreate(`${dataAxios.msg}: ${response.config.url}`)
+            break
+        }
+      }
+    },
+```
+
 
 ## 开发一个crud
 

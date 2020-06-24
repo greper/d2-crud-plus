@@ -27,7 +27,7 @@ export const crudOptions = {
         disabled: false, //是否禁用该字段的查询，默认false
         component:{}, //查询框组件配置，默认根据form配置生成 
         // 是否启用搜索框的slot插槽,需要d2-crud-x才支持
-        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
         slot:false 
       },
       form: { //添加和编辑表单配置
@@ -62,7 +62,7 @@ export const crudOptions = {
             //或 form.component.props.disabled=true // 封装控件
         },     
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
-        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
         slot:false 
         
       },
@@ -70,7 +70,7 @@ export const crudOptions = {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
         // 例如：国际手机号(mobileValue为此column的key) 
-        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/phone
+        // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/phone
         // row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
       },
       valueResolve (row,key) { 
@@ -102,7 +102,7 @@ export const crudOptions = {
       //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
       disabled: false, 
       // 是否启用该cell的slot插槽,需要d2-crud-x才支持
-      // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/form/slot
+      // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
       rowSlot: false, 
       
       formatter (row, column, value, index) {

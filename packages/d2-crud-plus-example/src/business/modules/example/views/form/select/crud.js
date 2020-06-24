@@ -43,15 +43,14 @@ export const crudOptions = (vm) => {
         search: {},
         type: 'select',
         dict: {
-          url: '/dicts/OpenStatusEnum',
-          data: undefined
+          url: '/dicts/OpenStatusEnum'
         },
         form: {
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
             console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
           },
-          helper: 'rule校验，我是必填项'
+          helper: '如果这里没有显示label而是只显示value，请检查value值类型是否一致，int和string类型是不相等的'
         }
       },
       {
@@ -96,6 +95,18 @@ export const crudOptions = (vm) => {
         },
         form: {
           helper: 'dict.url可以直接配置一个ajax请求获取数据字典'
+        }
+      },
+      {
+        title: '单选，本地',
+        key: 'select_local',
+        sortable: true,
+        search: {
+          disabled: true
+        },
+        type: 'select',
+        dict: {
+          data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
         }
       },
       {

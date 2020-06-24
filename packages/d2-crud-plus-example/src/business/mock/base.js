@@ -139,7 +139,6 @@ export default {
         handle (req) {
           let id = req.params.id
           id = parseInt(id)
-          console.log('req', req, id, list)
           let current = null
           for (const item of list) {
             if (item.id === id) {
@@ -160,7 +159,6 @@ export default {
         handle (req) {
           req.body.id = ++options.idGenerator
           list.unshift(req.body)
-          console.log('req', req, list)
           return {
             code: 0,
             msg: 'success',
@@ -178,7 +176,6 @@ export default {
               break
             }
           }
-          console.log('req', req, list)
           return {
             code: 0,
             msg: 'success',
@@ -191,7 +188,6 @@ export default {
         method: 'post',
         handle (req) {
           delById(req, list)
-          console.log('req', req, list)
           return {
             code: 0,
             msg: 'success',
@@ -203,7 +199,6 @@ export default {
         path: '/' + name + '/batchDelete',
         method: 'post',
         handle (req) {
-          console.log('req', req, list)
           const ids = req.body.ids
           for (let i = list.length - 1; i >= 0; i--) {
             const item = list[i]
@@ -211,7 +206,6 @@ export default {
               list.splice(i, 1)
             }
           }
-          console.log('req', req, list)
           return {
             code: 0,
             msg: 'success',

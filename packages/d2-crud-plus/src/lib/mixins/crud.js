@@ -10,9 +10,10 @@ export default {
       crud: {
         format: {
           response (ret) {
-            return ret
+            return ret.data
           },
-          doFormat: (data, name) => {
+          doFormat: (ret, name) => {
+            const data = this.response(ret)
             if (name instanceof Function) {
               return name(data)
             }
@@ -332,10 +333,10 @@ export default {
       this.pageRequest(query).then(ret => {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
-        const records = format(ret.data, pageFormat.records)
-        const current = format(ret.data, pageFormat.current)
-        const size = format(ret.data, pageFormat.size)
-        const total = format(ret.data, pageFormat.total)
+        const records = format(ret, pageFormat.records)
+        const current = format(ret, pageFormat.current)
+        const size = format(ret, pageFormat.size)
+        const total = format(ret, pageFormat.total)
         for (const key in this.crud.columnsMap) {
           const col = this.crud.columnsMap[key]
           if (col.valueBuilder) {

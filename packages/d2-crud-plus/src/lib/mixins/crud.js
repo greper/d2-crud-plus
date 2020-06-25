@@ -9,11 +9,15 @@ export default {
     return {
       crud: {
         format: {
+          ref: {
+            d2Crud: 'd2Crud',
+            search: 'search',
+            footer: 'footer'
+          },
           response (ret) {
             return ret.data
           },
-          doFormat: (ret, name) => {
-            const data = this.response(ret)
+          doFormat: function (data, name) {
             if (name instanceof Function) {
               return name(data)
             }
@@ -107,7 +111,7 @@ export default {
      * @returns
      */
     getD2Crud () {
-      return this.$refs.d2Crud
+      return this.$refs[this.crud.format.ref.d2Crud]
     },
     /**
      * 获取编辑框的formData
@@ -333,10 +337,11 @@ export default {
       this.pageRequest(query).then(ret => {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
-        const records = format(ret, pageFormat.records)
-        const current = format(ret, pageFormat.current)
-        const size = format(ret, pageFormat.size)
-        const total = format(ret, pageFormat.total)
+        const data = this.crud.format.response(ret)
+        const records = format(data, pageFormat.records)
+        const current = format(data, pageFormat.current)
+        const size = format(data, pageFormat.size)
+        const total = format(data, pageFormat.total)
         for (const key in this.crud.columnsMap) {
           const col = this.crud.columnsMap[key]
           if (col.valueBuilder) {
@@ -365,7 +370,7 @@ export default {
      * @returns {*}
      */
     getSearch () {
-      return this.$refs.search
+      return this.$refs[this.crud.format.ref.search]
     },
     /**
      * 编辑对话框打开前要做的操作
@@ -378,7 +383,7 @@ export default {
      * 点击添加按钮
      */
     addRow () {
-      this.$refs.d2Crud.showDialog({
+      this.getD2Crud().showDialog({
         mode: 'add'
       })
     },

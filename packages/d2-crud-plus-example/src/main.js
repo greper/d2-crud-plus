@@ -44,7 +44,6 @@ new Vue({
     '$route.matched': {
       handler (matched) {
         if (matched.length > 0) {
-          console.log('_side:', menuHeader, matched)
           const _side = menuHeader.filter(menu => menu.path === matched[0].path)
           if (_side.length > 0) {
             this.$store.commit('d2admin/menu/asideSet', _side[0].children)

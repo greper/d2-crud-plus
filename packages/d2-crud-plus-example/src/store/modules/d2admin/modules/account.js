@@ -18,7 +18,6 @@ export default {
       password = ''
     } = {}) {
       let res = await api.SYS_USER_LOGIN({ username, password })
-
       res = res.data
       console.log('登录成功：', res)
       // 设置 cookie 一定要存 uuid 和 token 两个 cookie

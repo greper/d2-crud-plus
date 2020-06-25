@@ -14,11 +14,9 @@ export default {
    * @returns {Promise<unknown>}
    */
   upload ({ file, fileName, onProgress, onError, config }) {
-    console.log('------upload options', config, this.options)
     let options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
-    console.log('------upload merge', config)
     let option = {
       file,
       onProgress,

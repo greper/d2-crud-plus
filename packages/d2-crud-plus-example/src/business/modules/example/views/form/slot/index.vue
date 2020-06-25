@@ -34,7 +34,7 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
         @custom-emit="customEmit">
-      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
 
       <template slot="FormHeaderSlot">
         <i class="el-icon-edit"></i>

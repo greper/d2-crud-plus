@@ -30,7 +30,7 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
         >
-      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
 
       <template slot="fileHelperSlot" >
         <el-alert type="warning" style="line-height: 2">

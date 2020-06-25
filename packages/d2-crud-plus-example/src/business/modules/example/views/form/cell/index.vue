@@ -28,7 +28,7 @@
         @form-data-change="handleFormDataChange"
         @cell-data-change="handleCellDataChange"
     >
-      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
     </d2-crud>
     <crud-footer ref="footer"
                   :current="crud.page.current"

@@ -34,7 +34,7 @@
         @selection-change="handleSelectionChange"
         @customHandleBtn="customHandleBtnHandle"
     >
-      <el-button-group slot="header" style="margin-bottom: 5px">
+      <el-button-group slot="header" class="d2-mb-5">
         <el-button   size="small" type="primary" @click="addRow"><i class="el-icon-plus"></i> 新增</el-button>
         <el-button   size="small" type="danger" @click="batchDelete"><i class="el-icon-delete"></i> 批量删除</el-button>
       </el-button-group>

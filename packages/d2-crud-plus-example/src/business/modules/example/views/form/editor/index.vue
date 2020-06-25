@@ -32,7 +32,7 @@
         @form-data-change="handleFormDataChange"
         @form-component-ready="handleFormComponentReady"
     >
-      <el-button slot="header" style="margin-bottom: 5px" size="small" type="primary" @click="addRow">新增</el-button>
+      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
 
       <template slot="expandSlot" slot-scope="scope">
         这里显示行展开数据:{{scope.row.data}}

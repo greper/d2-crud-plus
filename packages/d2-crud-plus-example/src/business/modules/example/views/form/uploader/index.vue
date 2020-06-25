@@ -1,31 +1,12 @@
 <template>
   <d2-container>
     <template slot="header">文件上传
-      <example-helper title="文件上传组件crud配置" >
-          <h4>目前支持腾讯云cos、七牛、阿里云oss等三种对象存储的web端直传</h4>
-          <h4>1、准备</h4>
-          <div>
-              <ul>
-                  <li>创建相应的bucket</li>
-                  <li>生产环境还需配置获取相应的授权：腾讯云、阿里云的sts，七牛要获取token</li>
-                  <li>后端实现请参考：https://github.com/greper/d2-crud-plus-server.git</li>
-                  <li>更多帮助说明：
-                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/file-uploader.html">文件上传</link-button>
-                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">裁剪上传</link-button>
-                    <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html">上传lib</link-button>
-                  </li>
-              </ul>
-          </div>
-          <h4>2、引入</h4>
-          <d2-highlight :code="helper.init" lang="javascript"/>
-          <h4>3、使用：crud配置</h4>
-          <div>
-              <ul>
-                  <li>给column配置type即可，可选值：[avatar-uploader，image-uploader，file-uploader]</li>
-              </ul>
-          </div>
-          <d2-highlight :code="helper.crud" lang="javascript"/>
-
+      <example-helper title="帮助" >
+        <div>
+          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/file-uploader.html">文件上传</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">裁剪上传</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html">上传lib</link-button>
+        </div>
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
@@ -72,7 +53,6 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import helper from './helper'
 
 export default {
   name: 'formUploader',
@@ -80,7 +60,6 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      helper: helper
     }
   },
   computed: {

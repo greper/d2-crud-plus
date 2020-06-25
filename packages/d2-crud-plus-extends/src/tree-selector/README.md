@@ -1,5 +1,5 @@
 ## 树形选择组件
-示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area
+示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area
 ###  1. 引入   
 ```javascript
 // 先引入d2-crud,d2-crud-plus
@@ -22,6 +22,6 @@ export const crudOptions = {
 }
 ```
 ###  3. 效果
- http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area
+ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area
  
 

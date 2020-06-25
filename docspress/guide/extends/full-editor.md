@@ -1,5 +1,5 @@
 ## 富文本
-示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/editor
+示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/editor
 
 ###  1. 引入   
 ```javascript
@@ -63,7 +63,7 @@ export const crudOptions = {
 }
 ```
 ###  3. 效果
- http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/editor
+ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/editor
  
 
 

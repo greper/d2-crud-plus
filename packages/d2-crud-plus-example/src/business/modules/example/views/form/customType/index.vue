@@ -2,9 +2,7 @@
   <d2-container>
     <template slot="header">自定义字段类型
       <example-helper title="帮助说明" >
-        <h4>crud配置</h4>
-        <d2-highlight :code="helper.code"/>
-
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/column-type.html#自定义字段类型">自定义字段类型</link-button>
         <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展</link-button>
       </example-helper>
     </template>
@@ -45,14 +43,12 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import helper from './helper'
 export default {
   name: 'formCustomType',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      helper: helper
     }
   },
   computed: {

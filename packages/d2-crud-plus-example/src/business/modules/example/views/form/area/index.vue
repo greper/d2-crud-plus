@@ -2,14 +2,9 @@
   <d2-container>
     <template slot="header">地区选择
       <example-helper title="帮助说明" >
-        <h4>省市区选择组件</h4>
-        <ul>
-          <li>支持级联方式、树形方式选择</li>
-          <li>
-            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">更多帮助说明</link-button></li>
-        </ul>
-        <d2-highlight :code="helper.init"/>
-        <d2-highlight :code="helper.crud"/>
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">省市区选择组件</link-button>
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/tree-selector.html">树形选择组件</link-button>
+
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
@@ -49,13 +44,11 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import helper from './helper'
 export default {
   name: 'formArea',
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      helper: helper
     }
   },
   methods: {

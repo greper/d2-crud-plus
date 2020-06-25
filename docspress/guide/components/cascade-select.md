@@ -19,8 +19,8 @@
 <!-- @vuese:cascade-select:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
-|input|-|-|
 |change|-|-|
+|input|-|-|
 
 <!-- @vuese:cascade-select:events:end -->
 

@@ -7,6 +7,8 @@ packages
    |-- d2-crud-plus-extends       //扩展组件，目前包含文件上传组件、地区选择组件、树形选择组件
 ```
 ## 运行示例
+
+### 基本示例运行
 执行如下命令即可运行示例项目
 ```shell script
 git clone https://github.com/greper/d2-crud-plus.git
@@ -14,6 +16,15 @@ cd d2-crud-plus/packages/d2-crud-plus-example
 yarn install  //或者npm install
 npm run dev
 ```
+
+### 权限管理示例运行
+如果想要运行权限管理示例，执行如下命令
+```js
+npm run dev:pm
+```
+注意：权限管理需要先运行后台，请查看[权限管理帮助文档](./permission.md)获取更多信息
+
+### 代码贡献者运行
 如果想要修改d2-crud-plus或者d2-crud-plus-extends后在示例中热加载  
 需要安装lerna，执行如下命令
 ```shell script
@@ -73,9 +84,33 @@ import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 Vue.use(d2Crud)
  ```
+### 3. 安装扩展插件
+如果你还需要文件上传、图片裁剪、富文本、地区选择器、树形选择器、图标选择器等组件   
+那么你还需要安装对应的扩展插件。   
+```js
+import { D2pAreaSelector, D2pFileUploader, D2pIconSelector, D2pTreeSelector, D2pFullEditor, D2pUploader, D2pDemoExtend } from 'd2p-extends' // 组件支持懒加载
 
-### 3. 修改http响应拦截的返回结果
-```js {9,10,11}
+// 安装扩展插件
+Vue.use(D2pTreeSelector)
+Vue.use(D2pAreaSelector)
+Vue.use(D2pIconSelector)
+Vue.use(D2pFullEditor)
+Vue.use(D2pFileUploader)
+Vue.use(D2pDemoExtend)
+Vue.use(D2pUploader, {
+    ... //文件上传有额外配置
+  }
+}
+```
+新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js)
+获取更多信息。
+### 4. 修改http响应拦截的返回结果
+d2-admin中响应拦截器中成功的返回结果是`dataAxios.data`，code和msg是不会丢给下层处理的   
+然而有些时候我们需要拿到`code`和`msg`做进一步判断和处理。   
+比如直接把msg弹出显示给用户看。   
+所以建议按如下修改响应拦截的返回结果，去掉`dataAxios.data`的`.data`，将`dataAxios`完整传递下去。
+
+```js {9,10}
   // 响应拦截
   service.interceptors.response.use(
     response => {
@@ -84,9 +119,8 @@ Vue.use(d2Crud)
         switch (code) {
           case 0:
             // [ 示例 ] code === 0 代表没有错误
-            // 某些情况下返回结果还需要code和msg进行后续处理,去掉.data,返回{code:xx,data:xx,msg:xx}
-            // return dataAxios.data
-            return dataAxios
+            // return dataAxios.data  //d2-admin的默认返回
+            return dataAxios // 去掉.data
           case 'xxx':
             // [ 示例 ] 其它和后台约定的 code
             errorCreate(`[ code: xxx ] ${dataAxios.msg}: ${response.config.url}`)
@@ -99,14 +133,44 @@ Vue.use(d2Crud)
       }
     },
 ```
+#### 4.1. 我已经改了
+::: warning   
 
+修改之后，登录就会出问题，需要在`account.js`中增加如下代码 
+:::
+```js {3}
+   // src/store/modules/d2admin/modules/account.js
+   let res = await api.SYS_USER_LOGIN({ username, password })
+   res = res.data //增加这一句
+``` 
+
+#### 4.2. 我不想改
+当然，如果你不想动这块代码，你也可以在安装d2-crud-plus的时候增加如下配置即可正常使用d2-crud-plus   
+```js
+Vue.use(d2CrudPlus, {
+    ...
+  commonOption(){ //d2-crud option 全局设置
+    return {
+      format: {
+        response (ret) {
+          // 这里默认配置是  return ret.data
+          return ret
+        }
+      }
+    }
+  }
+})
+```
+::: warning   
+示例中所有的请求响应处理均基于`return dataAxios`的修改，当你复制示例中的响应处理代码时，需要记得将`ret.data`改成`ret`。   
+:::
 
 ## 开发一个crud
 
-更多示例代码   
-https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views   
-通常在其中找一个合适的复制，再根据需求修改即可    
-也可以根据数据库表以及模版自动生成
+
+通常在[示例代码](https://gitee.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/modules/example/views/form)
+中找一个合适的复制，再根据需求修改即可    
+也可以根据数据库表以及模版[自动生成](./generate.md)
 
 ### 3.1 crud.js
 ```js

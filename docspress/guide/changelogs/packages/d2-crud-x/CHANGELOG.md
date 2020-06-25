@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.3.0...d2-crud-x@2.3.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* 删除无用的$d2CrudSize配置 ([8de9ef8](https://github.com/greper/d2-crud/commit/8de9ef83c3997442faacf0dcf9327be10357454e))
+* 支持自定义d2-crud的标签名称 ([2e61b53](https://github.com/greper/d2-crud/commit/2e61b53d746cda80fc7ed1d63db5c1921b599bb2))
+
+
+
+
+
+
 # [2.3.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.2.4...d2-crud-x@2.3.0) (2020-06-24)
 
 

@@ -74,7 +74,21 @@ Vue.use(d2CrudPlus, {
   },
   commonOption(){ //d2-crud option 全局设置
     return {
-      options: {size:'mini'} //全局配置表格大小
+       format: {
+        page: { // page接口返回的数据结构配置，
+          request: { // 请求参数
+            current: 'current', //当前
+            size: 'size'
+          },
+          response: { //返回结果
+            current: 'current', // 当前页码 ret.data.current
+            size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
+            total: 'total', // 总记录数 ret.data.total
+            records: 'records' // 列表数组 ret.data.records
+          }
+        }
+      },
+      options: {size:'mini'} //全局配置element组件大小
     }
   }
 })

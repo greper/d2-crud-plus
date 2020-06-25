@@ -148,6 +148,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       collapsable: false,
       sidebarDepth: 0,
       children: [
+        ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
         ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],
         ['./changelogs/packages/d2-crud-plus-extends/CHANGELOG','d2-crud-plus-extends'],
         ['./changelogs/packages/d2-crud-plus-example/CHANGELOG','d2-crud-plus-example'],

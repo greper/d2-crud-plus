@@ -38,9 +38,6 @@ Vue.use(d2CrudPlus, {
       },
       options: {
         size: 'small'
-      },
-      formOptions: {
-        isFullscreen: true
       }
     }
   }

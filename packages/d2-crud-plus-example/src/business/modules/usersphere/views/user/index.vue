@@ -98,7 +98,7 @@ export default {
     authzHandle (event) {
       console.log('authz', event)
       GetRoleList().then(ret => {
-        let roleList = ret.data
+        const roleList = ret.data
         let userRoles = event.row.roles
         if (userRoles == null) {
           userRoles = []
@@ -116,7 +116,7 @@ export default {
     },
     updatePermession (userId) {
       let checked = []
-      for (let item of this.roleList) {
+      for (const item of this.roleList) {
         checked = checked.concat(item.checked)
       }
       DoAuthz(userId, checked).then(ret => {

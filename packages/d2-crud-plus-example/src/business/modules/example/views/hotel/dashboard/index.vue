@@ -105,7 +105,7 @@ export default {
     })
     d2CrudPlus.util.dict.get(this.roomStatusDict).then((data) => {
       console.log('roomStatusDict:', data)
-      for (let item of data) {
+      for (const item of data) {
         this.roomStatuses[item.value] = item
       }
       this.$set(this.roomStatusDict, 'data', data)
@@ -123,8 +123,8 @@ export default {
     },
     loadData () {
       GetRoomList(this.currentType).then((ret) => {
-        for (let item of ret.data) {
-          let status = this.roomStatuses[item.status]
+        for (const item of ret.data) {
+          const status = this.roomStatuses[item.status]
           if (status != null) {
             item.statusColor = status.color
           } else {

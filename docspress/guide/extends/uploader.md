@@ -51,7 +51,7 @@ Vue.use(D2pUploader, {
         url: '/upload/alioss/getAuthorization',
         method: 'get'
       }).then(ret => {
-       // ret.data:{
+       // ret.data={
        //   securityToken,
        //   accessKeySecret,
        //   accessKeyId,
@@ -68,7 +68,7 @@ Vue.use(D2pUploader, {
         url: '/upload/qiniu/getToken',
         method: 'get'
       }).then(ret => {
-        return ret.data // {token:xxx,expires:xxx}
+        return ret.data // 返回格式：{token:xxx,expires:xxx}
       })
     },
     domain: 'http://pzrsldiu3.bkt.clouddn.com'
@@ -77,7 +77,10 @@ Vue.use(D2pUploader, {
     action: '', //上传url
     name:'file', //上传时文件的参数名
     data:{}, //上传附加参数
-    headers:{} //上传请求头
+    headers:{}, //上传请求头
+    successHandle (res) { // 上传成功后，后台返回结果处理
+      return { url: res.data }  // data是该文件的url
+    },
   }
    // ,buildKey(){} //key生成规则方法
 })
@@ -128,8 +131,8 @@ export const crudOptions = {
             keepName: true
          }
     },
-    form:{...}
-    qiniu:{...}
+    form:{同上}
+    qiniu:{同上}
 }
 ```
 

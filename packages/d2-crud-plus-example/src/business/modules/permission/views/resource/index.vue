@@ -145,6 +145,8 @@ import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj, GetTree, GetObj } from './api'
 import PlatformSelector from '../../component/platform-selector'
 import { request } from '@/api/service'
+//大佬这种方式更加简单，不用请求后端的接口
+import merge from "element-ui/src/utils/merge";
 export default {
   name: 'Resource',
   components: { PlatformSelector },
@@ -215,7 +217,6 @@ export default {
         this.treeData = ret.data
       })
     },
-
     pageRequest (query) {
       return GetList(query)
     },
@@ -239,7 +240,6 @@ export default {
       if (!value) return true
       return data.label.indexOf(value) !== -1
     },
-
     nodeExpand (data) {
       const aChildren = data.children
       if (aChildren.length > 0) {
@@ -274,14 +274,14 @@ export default {
         }
       }
     },
-
     getNodeData (data) {
       if (!this.formEdit) {
         this.formStatus = 'update'
       }
-      GetObj(data.id).then(response => {
-        this.form = response.data
-      })
+      this.form = merge({}, data);
+      // GetObj(data.id).then(response => {
+      //   this.form = response.data
+      // })
       this.currentId = data.id
       this.showElement = true
     },

@@ -70,7 +70,7 @@ export default {
 ```
 
 ## 3 权限模块如何接入到你的d2-admin项目中
- 1. `.env`中配置`VUE_APP_PM_ENABLED = true`
+ 1. 在`.env`中配置`VUE_APP_PM_ENABLED = true`
  2. 复制example中 `src/business/modules/permission` 到你的d2-admin项目中
  3. 引入`permission`模块
 ```js

@@ -144,17 +144,6 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: componentDocs
     },
     {
-      title: 'ChangeLog',
-      collapsable: false,
-      sidebarDepth: 0,
-      children: [
-        ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
-        ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],
-        ['./changelogs/packages/d2-crud-plus-extends/CHANGELOG','d2-crud-plus-extends'],
-        ['./changelogs/packages/d2-crud-plus-example/CHANGELOG','d2-crud-plus-example'],
-      ]
-    },
-    {
       title: '其他帮助',
       collapsable: false,
       sidebarDepth: 0,
@@ -164,10 +153,19 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'contact'
       ]
     },
+    {
+      title: 'ChangeLog',
+      collapsable: true,
+      sidebarDepth: 0,
+      children: [
+        ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
+        ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],
+        ['./changelogs/packages/d2-crud-plus-extends/CHANGELOG','d2-crud-plus-extends'],
+        ['./changelogs/packages/d2-crud-plus-example/CHANGELOG','d2-crud-plus-example']
+      ]
+    }
   ]
 }
-
-
 //
 // function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
 //   return [

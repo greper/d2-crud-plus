@@ -186,7 +186,7 @@ Vue.use(d2CrudPlus, {
 中找一个合适的复制，再根据需求修改即可    
 也可以根据数据库表以及模版[自动生成](./generate.md)
 
-### 3.1 crud.js
+### 1. crud.js
 ```js
 export const crudOptions = {
   columns: [
@@ -243,7 +243,7 @@ export const crudOptions = {
   ]
 }
 ``` 
-### 3.2 page.vue
+### 2. page.vue
 大部分页面都一样，通常直接复制即可    
 ::: warning 
 请不要修改ref的值
@@ -304,7 +304,7 @@ export default {
 }
 </script>
 ``` 
-### 3.3  api.js
+### 3.  api.js
 实现添删改查请求接口，通常复制，改一下url即可，你也可以自行增加方法，用于业务需求
 ```javascript
 import { request } from '@/api/service'
@@ -347,19 +347,19 @@ export function DelObj (id) {
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
-### 3.4  添加路由和菜单
+### 4.  添加路由和菜单
 如果在示例中添加crud，则在如下文件中添加路由和菜单。   
 `packages/d2-crud-plus-example/src/business/modules/example/index.js`
 
 如果是你自己的d2-admin项目，这部分你应该相当清楚了
 
-### 3.5 看看效果    
+### 5. 看看效果    
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
+![](https://gitee.com/greper/d2-crud-plus/raw/master/packages/d2-crud-plus/doc/image/list.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/add.png)
+![](https://gitee.com/greper/d2-crud-plus/raw/master/packages/d2-crud-plus/doc/image/add.png)
 
-![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
+![](https://gitee.com/greper/d2-crud-plus/raw/master/packages/d2-crud-plus/doc/image/edit.png)
 
 
 

@@ -159,6 +159,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       collapsable: false,
       sidebarDepth: 0,
       children: [
+        'upgrade',
         'questions',
         'contact'
       ]

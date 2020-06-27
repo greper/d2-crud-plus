@@ -2,7 +2,7 @@ import constantRoutes, { frameInRoutes } from '@/router/routes'
 import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
 import { menuHeader, supplementPath } from '@/menu'
-const StatciMenuHeader = [...menuHeader]
+const StaticMenuHeader = [...menuHeader] // 静态菜单缓存
 /**
  * menuType 1=menu 2=btn 3=route
  * @param routers
@@ -129,7 +129,7 @@ const actions = {
 
       const menus = supplementPath(formatMenu(menuTree))
       menuHeader.splice(0, menuHeader.length)
-      menuHeader.push(...StatciMenuHeader)
+      menuHeader.push(...StaticMenuHeader)
       menuHeader.push(...menus)
       console.log('accessRouter:', accessedRoutes)
 

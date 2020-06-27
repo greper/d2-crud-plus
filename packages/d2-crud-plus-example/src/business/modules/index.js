@@ -1,5 +1,6 @@
-import exampleModule from './example/index'
 import './permission' // 加载permission
+
+import exampleModule from './example/index'
 import { frameInRoutes } from '@/router/routes'
 import { menuHeader, menuAside, supplementPath } from '@/menu/index'
 import router from '@/router'

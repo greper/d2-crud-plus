@@ -70,10 +70,15 @@ export default {
 ```
 
 ## 3 权限模块如何接入到你的d2-admin项目中
- 1. 复制example中 `src/business/modules/permission` 到你的d2-admin项目中
- 2. 复制`src/router/router.hook.js` 
- 3. 配置`VUE_APP_PM_ENABLED = true`
- 4. 在`src/router/index.js` 的`beforeEach` 中加入以下代码
+ 1. `.env`中配置`VUE_APP_PM_ENABLED = true`
+ 2. 复制example中 `src/business/modules/permission` 到你的d2-admin项目中
+ 3. 引入`permission`模块
+```js
+// src/business/modules/index.js 也可以在main.js中加入
+import '@/business/modules/permission' // 加载permission
+```
+ 4. 复制`src/router/router.hook.js` 
+ 5. 在`src/router/index.js` 的`beforeEach` 中加入以下代码
 ```js {12-17}
 router.beforeEach(async (to, from, next) => {
   // 确认已经加载多标签页数据 https://github.com/d2-projects/d2-admin/issues/201
@@ -100,8 +105,8 @@ router.beforeEach(async (to, from, next) => {
   }
 }
 ```
-  5. 在`/src/store/modules/d2admin/modules/account.js`中加入以下代码
-```js {12,14}
+  6. 在`/src/store/modules/d2admin/modules/account.js`中加入以下代码
+```js {12-14}
     logout ({ commit, dispatch }, { confirm = false } = {}) {
       /**
        * @description 注销

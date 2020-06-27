@@ -11,12 +11,14 @@ const isEnabled = process.env.VUE_APP_PM_ENABLED === 'true'
 const platformCode = process.env.VUE_APP_PM_PLATFORM ? process.env.VUE_APP_PM_PLATFORM : 'admin'
 function isInited () {
   if (!isEnabled) {
+    console.warn('PM is disabled')
     return true
   }
   return store.getters['permission/inited']
 }
 async function loadRemoteRoute () {
   const menuTreeRes = await getPermissions(platformCode)
+  console.log('Menu Tree api  response:', menuTreeRes)
   const menuTree = menuTreeRes.data
   // generate accessible routes map based on roles
   const accessRoutes = await store.dispatch('permission/generateRoutes', { menuTree })

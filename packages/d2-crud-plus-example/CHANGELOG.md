@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.10.1...@d2-plus/d2-crud-plus-example@1.10.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* 修复多次登录后顶部菜单重复出现的bug ([fba5843](https://github.com/d2-projects/d2-admin/commit/fba58434d5e0abec8d903f36909a349d71b4afb3))
+* 修复静态菜单不显示的问题 ([09bd7bb](https://github.com/d2-projects/d2-admin/commit/09bd7bb5991403d60c8703c37cb4876415c6b54c))
+
+
+### Performance Improvements
+
+* 云文件上传增加私有bucket上传支持 ([be33142](https://github.com/d2-projects/d2-admin/commit/be33142c77faaec2a188af41d5ca5150a7e58a29))
+
+
+
+
+
+
 ## [1.10.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.10.0...@d2-plus/d2-crud-plus-example@1.10.1) (2020-06-25)
 
 **Note:** Version bump only for package @d2-plus/d2-crud-plus-example

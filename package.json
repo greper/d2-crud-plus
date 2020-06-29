@@ -23,14 +23,10 @@
     "docs:dev": "npm run copylogs && vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": "npm run copylogs && vuese gen  && vuepress build docspress",
     "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/",
-    "gitacp": "git add -A . &&  git commit -m 'publish' && git push",
+    "gitacp": "git add -A . &&  git commit -m publish && git push",
     "publish": "npm run prePublish && npm run lerna:publish && npm run afterPublish"
   },
   "version": "1.1.0",
   "dependencies": {
-    "copyfiles": "^2.3.0",
-    "global": "^4.4.0",
-    "rimraf": "^3.0.2",
-    "vuese": "^1.4.7"
   }
 }

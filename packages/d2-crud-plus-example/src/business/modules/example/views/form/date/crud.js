@@ -101,6 +101,23 @@ export const crudOptions = {
       type: 'date'
     },
     {
+      title: '禁用日期',
+      key: 'date2',
+      sortable: true,
+      type: 'date',
+      form: {
+        component: {
+          props: {
+            'picker-options': {
+              disabledDate (time) {
+                return time.getTime() < Date.now()
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       title: '时间',
       key: 'time',
       sortable: true,
@@ -113,8 +130,10 @@ export const crudOptions = {
       type: 'daterange',
       form: {
         component: {
-          'time-arrow-control': false,
-          'picker-options': { shortcuts: shortcuts }
+          props: {
+            'time-arrow-control': false,
+            'picker-options': { shortcuts: shortcuts }
+          }
         }
       },
       valueBuilder (row, key) {
@@ -140,9 +159,11 @@ export const crudOptions = {
       width: 300,
       form: {
         component: {
-          'time-arrow-control': true,
-          'default-time': ['12:00:00', '12:00:00'],
-          'picker-options': { shortcuts: shortcuts }
+          props: {
+            'time-arrow-control': true,
+            'default-time': ['12:00:00', '12:00:00'],
+            'picker-options': { shortcuts: shortcuts }
+          }
         }
       },
       valueBuilder (row, key) {

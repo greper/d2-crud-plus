@@ -62,11 +62,11 @@ export const crudOptions = (vm) => {
         form:{
           component:{
             props:{
-               pickerOptions:{
-                 disabledDate: time => {
-                    return time.getTime() > Date.now()
-                 }
-               }
+              pickerOptions:{
+                disabledDate: time => {
+                  return time.getTime() < Date.now()
+                }
+              }
             }
           }
         }

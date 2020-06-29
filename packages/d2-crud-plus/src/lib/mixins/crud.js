@@ -241,22 +241,22 @@ export default {
       // 放到map里面方便快速查找
       this.crud.columnsMap[key] = item
 
-      if (item.dict != null) {
-        Object.defineProperty(item.dict, 'data', {
-          get: function () {
-            console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.data,请使用vm.getEditFormTemplate(key).component.props.dict.data 或 this.crud.columnsMap[columnKey].component.props.dict')
-            return undefined
-          },
-          configurable: true
-        })
-        Object.defineProperty(item.dict, 'dataMap', {
-          get: function () {
-            console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.dataMap,请使用vm.getEditFormTemplate(key).component.props.dict.dataMap 或 this.crud.columnsMap[columnKey].component.props.dict')
-            return undefined
-          },
-          configurable: true
-        })
-      }
+      // if (item.dict != null) {
+      //   Object.defineProperty(item.dict, 'data', {
+      //     get: function () {
+      //       console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.data,请使用vm.getEditFormTemplate(key).component.props.dict.data 或 this.crud.columnsMap[columnKey].component.props.dict')
+      //       return undefined
+      //     },
+      //     configurable: true
+      //   })
+      //   Object.defineProperty(item.dict, 'dataMap', {
+      //     get: function () {
+      //       console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.dataMap,请使用vm.getEditFormTemplate(key).component.props.dict.dataMap 或 this.crud.columnsMap[columnKey].component.props.dict')
+      //       return undefined
+      //     },
+      //     configurable: true
+      //   })
+      // }
     },
     /**
      * 初始化结束后调用方法

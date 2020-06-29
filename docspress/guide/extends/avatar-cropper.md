@@ -5,6 +5,30 @@
 ## 准备
 本扩展依赖d2p-uploader文件上传库   
 请务必先安装配置好[d2p-uploader](./uploader.md)
+
+## 引入
+```javascript
+import Vue from 'vue'
+import d2Crud from 'd2-crud-x'
+import { d2CrudPlus } from 'd2-crud-plus'
+import { D2pFileUploader, D2pUploader } from 'd2p-extends'  //上传组件将会懒加载
+// 引入d2Crud
+Vue.use(d2Crud)
+// 引入d2CrudPlus
+Vue.use(d2CrudPlus)
+
+// 安装文件上传lib，  
+Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader]
+        form:{},
+        alioss:{},
+        cos:{},
+        qiniu:{}
+    }) 
+// 安装本扩展
+Vue.use(D2pFileUploader, { d2CrudPlus })
+
+```
+
 ## 使用
 配置column.type=avatar-cropper 即可   
 

@@ -40,8 +40,8 @@ export default {
     }
   },
   form: {
-    successHandle (res) { // 需要将res.url 设置为url
-      return { url: res.data }
+    successHandle (ret) { // 需要将res.url 设置为url
+      return { url: ret.data }
     },
     action: undefined,
     name: 'file',

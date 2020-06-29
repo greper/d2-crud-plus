@@ -33,8 +33,11 @@ export default {
       return uploader
     })
   },
-  getConfig () {
-    return config
+  getConfig (type) {
+    if (type == null) {
+      return config
+    }
+    return config[type]
   },
   getDefaultType () {
     return config.defaultType ? config.defaultType : 'cos'

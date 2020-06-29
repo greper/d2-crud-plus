@@ -77,7 +77,7 @@ export default {
           reject(err)
         },
         complete (res) {
-          resolve({ url: config.domain + '/' + key })
+          resolve({ url: config.domain + '/' + key, key: key })
         }
       }) // 上传开始
       // subscription.unsubscribe() // 上传取消

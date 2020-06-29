@@ -66,7 +66,6 @@ export default {
         Key: key,
         Body: file,
         onProgress (progressEvent) {
-          console.log('progressEvent', progressEvent)
           let e = progressEvent
           if (e.total > 0) {
             e.percent = e.loaded / e.total * 100
@@ -74,14 +73,13 @@ export default {
           onProgress(e)
         }
       }, function (err, data) {
-        console.log(err || data)
         if (err != null) {
           onError(err)
           console.log(err)
           reject(err)
         } else {
           console.log('上传成功', data)
-          let result = { url: config.domain + '/' + key }
+          let result = { url: config.domain + '/' + key, key: key }
           resolve(result)
         }
       })

@@ -85,8 +85,8 @@ export default {
       })
     }
     return client.put(key, file).then((ret) => {
-      console.log('alioss success', ret)
-      let result = { url: config.domain + '/' + key }
+      let result = { url: config.domain + '/' + key, key: key }
+      console.log('alioss success', result)
       return result
     }).catch(err => {
       onError(err)

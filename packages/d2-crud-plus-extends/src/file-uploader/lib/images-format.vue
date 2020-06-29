@@ -30,6 +30,13 @@ export default {
     },
     fit: {
       default: 'contain'
+    },
+    // 构建下载url方法
+    buildUrl: {
+      type: Function,
+      default: function (value, item) {
+        return value
+      }
     }
   },
   data () {
@@ -56,7 +63,11 @@ export default {
       } else {
         urls.push(this.value.url)
       }
-      return urls
+      const arr = []
+      for (let url of urls) {
+        arr.push(this.buildUrl(url))
+      }
+      return arr
     },
     imgHeight () {
       if (typeof (this.height) === 'number') {

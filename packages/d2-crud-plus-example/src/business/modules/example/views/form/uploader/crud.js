@@ -1,8 +1,16 @@
+import util from '@/libs/util'
+
 export const crudOptions = (vm) => {
   return {
     columns: [
       {
         title: '头像',
+        key: 'avatar1',
+        type: 'avatar-uploader',
+        width: 120
+      },
+      {
+        title: '获取md5',
         key: 'avatar',
         type: 'avatar-uploader',
         width: 120,
@@ -42,6 +50,7 @@ export const crudOptions = (vm) => {
         key: 'image',
         type: 'image-uploader',
         width: 150,
+        align: 'left',
         form: {
           component: {
             props: {
@@ -50,8 +59,10 @@ export const crudOptions = (vm) => {
                 limit: 5 // 限制5个文件
               },
               sizeLimit: 50 * 1024 // 不能超过限制
-            }
+            },
+            span: 24
           },
+
           helper: '默认腾讯云cos上传,限制文件大小不能超过50k'
         }
       },
@@ -60,6 +71,7 @@ export const crudOptions = (vm) => {
         key: 'image2',
         type: 'image-uploader',
         width: 150,
+        align: 'left',
         form: {
           component: {
             props: {
@@ -70,6 +82,13 @@ export const crudOptions = (vm) => {
               }
             }
           }
+        },
+        component: {
+          props: {
+            buildUrl: function (url) {
+              return url + '?token=' + util.cookies.get('token')
+            }
+          }
         }
       },
       {
@@ -77,6 +96,7 @@ export const crudOptions = (vm) => {
         key: 'file',
         sortable: true,
         type: 'file-uploader',
+        align: 'left',
         form: {
           component: {
             props: {

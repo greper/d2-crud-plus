@@ -1,12 +1,11 @@
 import mockUtil from '@/business/mock/base'
 
 const options = {
-  name: 'upload',
+  name: 'upload/alioss',
   idGenerator: 0
 }
 const list = [
   {
-    avatar1: 'http://greper.veryreader.com/extends/avatar.jpg',
     avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
     file: ['http://greper.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],
     image: ['http://greper.veryreader.com/extends/avatar.jpg', 'https://www.baidu.com/img/bd_logo1.png'],

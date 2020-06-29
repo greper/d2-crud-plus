@@ -30,6 +30,13 @@ export default {
     // 展示类型【text, tag】
     type: {
       default: 'tag' // 可选【text,tag】
+    },
+    // 构建下载url方法
+    buildUrl: {
+      type: Function,
+      default: function (value, item) {
+        return value
+      }
     }
   },
   data () {
@@ -65,7 +72,8 @@ export default {
     },
     getItem (value) {
       return {
-        url: value,
+        url: this.buildUrl(value),
+        value: value,
         name: this.getFileName(value),
         color: this.color
       }

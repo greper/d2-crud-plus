@@ -10,7 +10,7 @@
              v-bind="_elProps"
   >
     <el-button :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
-    <i class="el-icon-plus avatar-uploader-icon" v-else-if="this._elProps.listType === 'picture-card'"></i>
+    <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" ></i></div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
         <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
@@ -60,7 +60,7 @@ export default {
       type: String,
       required: false
     },
-    // 返回类型: url=仅返回链接, object=包含md5和size
+    // 返回类型: url=仅返回链接, object=包含md5和size , key=仅返回文件key
     returnType: {
       type: String,
       default: 'url'
@@ -78,6 +78,13 @@ export default {
     // 如果传入{limit,tip(fileSize,limit){vm.$message('可以自定义提示')}}
     sizeLimit: {
       type: Number, Object
+    },
+    // 构建下载url方法
+    buildUrl: {
+      type: Function,
+      default: function (value, item) {
+        return value
+      }
     },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
@@ -110,7 +117,7 @@ export default {
       if (this.fileList.length === arr.length) {
         for (let i = 0; i < arr.length; i++) {
           let cur = this.fileList[i]
-          if (arr[i] !== cur.url) {
+          if (arr[i].url !== cur.url) {
             changed = true
             break
           }
@@ -211,14 +218,14 @@ export default {
       } else if (typeof (value) === 'string') {
         if (value !== '') {
           let fileName = value.substring(value.lastIndexOf('/') + 1)
-          fileList = [{ url: value, name: fileName }]
+          fileList = [{ value: value, name: fileName }]
         }
       } else if (value instanceof Array) {
         if (value.length > 0 && typeof (value[0]) === 'string') {
           let tmp = []
           value.forEach(item => {
             let fileName = item.substring(item.lastIndexOf('/') + 1)
-            tmp.push({ url: item, name: fileName })
+            tmp.push({ value: item, name: fileName })
           })
           fileList = tmp
         } else {
@@ -226,6 +233,12 @@ export default {
         }
       } else if (value instanceof Object) {
         fileList = [value]
+      }
+      for (let item of fileList) {
+        if (item.value == null) {
+          item.value = item.url
+        }
+        item.url = this.buildUrl(item.value, item)
       }
       this.resetFileList(fileList)
     },
@@ -246,9 +259,10 @@ export default {
     handleUploadFileSuccess (res, file, fileList) {
       res.size = res.size != null ? res.size : file.size
       res.name = res.name != null ? res.name : file.name
-      file.url = res.url
-      this.$emit('success', res, file)
+      const url = this.buildUrl(res.value, res)
+      file.url = res.url = url
       this.resetFileList(fileList)
+      this.$emit('success', res, file)
       let list = []
       for (let item of fileList) {
         if (item.response != null && item.response.url != null) {
@@ -258,30 +272,38 @@ export default {
         }
       }
       console.log('handleUploadFileSuccess list', list, res)
+      this.emit(res, list)
+    },
+    handleUploadFileRemove (file, fileList) {
+      this.fileList = fileList
+      this.emitList(fileList)
+    },
+    emit (res, list) {
       if (this._elProps.limit === 1) {
-        if (this.returnType === 'url') {
-          res = res.url
-        }
+        res = this.getReturnValue(res)
         this.$emit('input', res)
         this.$emit('change', res)
       } else {
         this.emitList(list)
       }
     },
-    handleUploadFileRemove (file, fileList) {
-      this.fileList = fileList
-      this.emitList(fileList)
-    },
     emitList (list) {
-      if (this.returnType === 'url') {
-        const tmp = []
-        list.forEach(item => {
-          tmp.push(item.url)
-        })
-        list = tmp
-      }
+      const tmp = []
+      list.forEach(item => {
+        tmp.push(item)
+      })
+      list = tmp
       this.$emit('input', list)
       this.$emit('change', list)
+    },
+    getReturnValue (item) {
+      if (this.returnType === 'url') {
+        return item.url
+      } else if (this.returnType === 'key') {
+        return item.key
+      }
+
+      return item
     },
     httpRequest (option) {
       Promise.all([
@@ -326,6 +348,12 @@ export default {
         if (this.suffix != null) {
           ret.url += this.suffix
         }
+        if (this.returnType === 'object') {
+          ret.value = ret.url
+          return ret
+        }
+        const value = this.getReturnValue(ret)
+        ret.value = value
         return ret
       })
     },
@@ -395,6 +423,7 @@ export default {
 <style lang="scss">
   .d2p-file-uploader{
     .avatar-uploader{
+      display: flex;
       .el-upload{
         width: 100px;
         height: 100px;

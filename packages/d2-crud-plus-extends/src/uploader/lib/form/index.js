@@ -5,7 +5,6 @@ export default {
   options: undefined,
   init (options) {
     this.options = options
-    console.log('------init options', options)
   },
   /**
    *

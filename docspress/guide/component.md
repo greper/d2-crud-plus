@@ -59,13 +59,15 @@ export const crudOptions = (vm) => {
         title: '日期',
         key: 'date',
         type:'date',
-        component:{
-          props:{
-             pickerOptions:{
-               disabledDate: time => {
-                  return time.getTime() > Date.now()
+        form:{
+          component:{
+            props:{
+               pickerOptions:{
+                 disabledDate: time => {
+                    return time.getTime() > Date.now()
+                 }
                }
-             }
+            }
           }
         }
       }

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.10](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.9...d2p-extends@1.6.10) (2020-06-29)
+
+
+### Performance Improvements
+
+* 云文件上传增加私有bucket上传支持 ([be33142](https://github.com/greper/d2-crud-plus/commit/be33142c77faaec2a188af41d5ca5150a7e58a29))
+
+
+
+
+
+
 ## [1.6.9](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.8...d2p-extends@1.6.9) (2020-06-25)
 
 **Note:** Version bump only for package d2p-extends

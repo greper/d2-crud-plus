@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.10.1...d2-crud-plus@1.10.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* 删除旧版本兼容性提示 ([5a7aac1](https://github.com/greper/d2-crud-plus/commit/5a7aac14515b0a6a2d3e6f2f86770ae4a917396c))
+
+
+
+
+
+
 ## [1.10.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.10.0...d2-crud-plus@1.10.1) (2020-06-25)
 
 

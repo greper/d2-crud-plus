@@ -22,7 +22,8 @@
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
     "docs:dev": "npm run copylogs && vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": "npm run copylogs && vuese gen  && vuepress build docspress",
-    "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/"
+    "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/",
+    "publish": "npm run prePublish && npm run lerna:publish && npm run afterPublish"
   },
   "version": "1.1.0",
   "dependencies": {

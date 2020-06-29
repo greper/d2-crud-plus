@@ -44,8 +44,8 @@ column:[
         form.province = form.pac[0]
         form.area=form.pac[1]
         form.city=form.pac[2]
-        delete form.pac
       }
+      delete form.pac
     } 
   }
 ]

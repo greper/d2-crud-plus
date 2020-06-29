@@ -160,16 +160,13 @@ type = icon-selector
 以下字段类型对应的组件为ElementUI的相应组件   
 直接在component.props中配置ElementUI组件的属性即可实现定制化
 
-### 日期选择
-* type = datetime | date | daterange | datetimerange
+### 日期时间选择
+* type = datetime | date | time | daterange | datetimerange
+
+<<<@/packages/d2-crud-plus/src/lib/types/list/date.js
+
 * 相关组件：
     * [el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)  
-    * [date-format](./components/date-format)
-* 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/date>
-### 时间选择
-* type = time
-* 相关组件：
     * [el-time-picker](https://element.eleme.cn/#/zh-CN/component/time-picker)  
     * [date-format](./components/date-format)
 * 示例：

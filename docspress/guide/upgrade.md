@@ -1,22 +1,25 @@
 # 版本升级
 ## 依赖包升级
-如果你没有使用example作为启动项目的  
-修改package.json中依赖包的版本即可   
+如果你是使用d2-admin项目集成的d2-crud-plus    
+修改package.json中依赖包的为最新版本  
+然后执行`npm install` 或`yarn install` 即可   
 * d2-crud-plus:xxx
 * d2-crud-x:xxx
 * d2p-extends:xxx
 
 ### changelog
 
-* [d2-crud-x](./changelogs/packages/d2-crud-x/CHANGELOG)
-* [d2-crud-plus](./changelogs/packages/d2-crud-plus/CHANGELOG)
-* [d2-crud-extends](./changelogs/packages/d2-crud-extends/CHANGELOG)
-* [d2-crud-plus-example](./changelogs/packages/d2-crud-plus-example/CHANGELOG)
+* [d2-crud-x](./changelogs/packages/d2-crud-x/CHANGELOG.md)
+* [d2-crud-plus](./changelogs/packages/d2-crud-plus/CHANGELOG.md)
+* [d2-crud-extends](./changelogs/packages/d2-crud-extends/CHANGELOG.md)
+* [d2-crud-plus-example](./changelogs/packages/d2-crud-plus-example/CHANGELOG.md)
 
 
 ## 以example作为启动项目如何升级
-如果你是直接使用d2-crud-plus-example作为你的启动项目的。   
-需要在项目开始之前就做好准备，请按如下步骤进行。
+如果你是直接使用d2-crud-plus-example作为你的启动项目的    
+并且想要同步example内的改动（比如权限模块）。
+
+你需要在项目开始之前就做好准备，请按如下步骤进行。
 
 1. 将d2-crud-plus-example复制出来，作为你的启动项目
 2. 在开始任何改动之前，提交一次，然后打个分支，你可以命名叫:官方版，push到服务器。
@@ -31,6 +34,10 @@
 
 当然以d2-admin项目作为启动项目时也可以按照此思想进行升级操作    
 
+::: warning   
+只有当你要同步example里的新改动（比如权限模块）的时候才需要如此升级    
+如果只是想获得d2-crud-plus、d2-crud-x、d2p-extends的新功能时，那么只需要修改package.json的依赖版本即可。   
+:::
 
 ## 使用了权限模块如何升级
 思路跟example升级一样。只是把要升级的部分换成了permission模块。   

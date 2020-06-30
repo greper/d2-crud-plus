@@ -1,40 +1,62 @@
 export const crudOptions = {
   columns: [
     {
-      title: '状态',
-      key: 'status',
-      sortable: true,
-      search: { key: 'status', disabled: false },
-      type: 'select',
-      form: { rules: [{ required: true, message: '请选择状态' }] },
-      dict: { url: '/dicts/OpenStatusEnum' }
+      title: '商品标题',
+      key: 'title',
+      sortable: true
     },
     {
-      title: '地区',
-      key: 'province',
+      title: '商品代码',
+      key: 'code',
+      sortable: true
+    },
+    {
+      title: '图片',
+      key: 'images',
       sortable: true,
-      search: { key: 'province', disabled: false },
-      type: 'select',
-      form: {
-        rules: [{ required: true, message: '请选择地区' }],
-        component: { props: { filterable: true, multiple: true, clearable: true } }
-      },
-      dict: {
-        data: [
-          { value: 'sz', label: '深圳' },
-          { value: 'gz', label: '广州' },
-          { value: 'wh', label: '武汉' },
-          { value: 'sh', label: '上海' }
-        ]
-      }
+      type: 'image-uploader'
+    },
+    {
+      title: '价格',
+      key: 'price',
+      sortable: true
+    },
+    {
+      title: '库存',
+      key: 'store',
+      sortable: true
+    },
+    {
+      title: '简介',
+      key: 'intro',
+      sortable: true,
+      type: 'text-area'
+    },
+    {
+      title: '详情',
+      key: 'content',
+      sortable: true,
+      type: 'editor-quill',
+      disabled: true
     }
   ],
-  group: {
+  formGroup: {
     type: 'collapse', // tab
-    groups: [
-      { title: '商品基础', children: ['title', 'code', 'image'] },
-      { title: '库存价格', children: ['store', 'price'] },
-      { title: '详情', children: ['intro', 'content'] }
-    ]
+    accordion: false,
+    groups: {
+      base: {
+        title: '商品基础',
+        icon: 'el-icon-goods',
+        columns: ['title', 'code', 'images']
+      },
+      price: {
+        title: '库存价格',
+        columns: ['store', 'price']
+      },
+      info: {
+        title: '详情',
+        columns: ['intro', 'content']
+      }
+    }
   }
 }

@@ -14,7 +14,7 @@ export default {
     },
     getFormTemplate (key) {
       if (key != null) {
-        return this.formTemplateStorage[key]
+        return this.handleFormTemplateMode(key)
       }
       return this.formTemplateStorage
     },
@@ -45,6 +45,13 @@ export default {
 
     getFormComponentAttr (key, attr, defaultValue) {
       let component = this.getFormTemplate(key).component
+      if (component) {
+        return this.handleAttribute(component[attr], defaultValue)
+      }
+      return defaultValue
+    },
+    getFormTemplateComponentAttr (template, attr, defaultValue) {
+      let component = template.component
       if (component) {
         return this.handleAttribute(component[attr], defaultValue)
       }

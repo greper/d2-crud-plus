@@ -141,12 +141,12 @@
         :fullscreen="formOptions.fullscreen"
         v-bind="formOptions"
       >
-        <el-row v-bind="formOptions">
+        <el-row v-bind="formOptions" >
           <template v-for="(item,key, index) in formTemplateStorage" >
             <el-col :key="index"
-              v-if="getFormComponentAttr(key,'show', true)"
-              :span="getFormComponentAttr(key,'span', 24)"
-              :offset="getFormComponentAttr(key,'offset', 0)"
+              v-if="getFormTemplateComponentAttr(item,'show', true)"
+              :span="getFormTemplateComponentAttr(item,'span', 24)"
+              :offset="getFormTemplateComponentAttr(item,'offset', 0)"
             >
               <d2-form-item
                 :template="item"
@@ -166,9 +166,46 @@
             </el-col>
           </template>
         </el-row>
+
+        <el-collapse v-model="formGroupsActive"   >
+          <el-collapse-item v-for="(group,groupKey) in formTemplateGroupStorage.groups" :name="groupKey" :key="groupKey" >
+            <template slot="title">
+              <el-tag >{{group.title}} <i v-if="group.icon" class="header-icon" :class="group.icon"/> </el-tag>
+            </template>
+
+            <el-row v-bind="formOptions">
+              <template v-for="(item,key, index) in group.columns" >
+                <el-col :key="index"
+                        v-if="getFormTemplateComponentAttr(item,'show', true)"
+                        :span="getFormTemplateComponentAttr(item,'span', 24)"
+                        :offset="getFormTemplateComponentAttr(item,'offset', 0)"
+                >
+                  <d2-form-item
+                    :template="item"
+                    :colKey="key"
+                    :formData="formData"
+                    @form-data-change="handleFormDataChange"
+                    @form-component-ready="handleFormComponentReady"
+                    @form-component-custom-event="handleFormComponentCustomEvent"
+                  >
+                    <template :slot="key+'FormSlot'">
+                      <slot :name="key+'FormSlot'" :form="formData"/>
+                    </template>
+                    <template :slot="key+'HelperSlot'">
+                      <slot :name="key+'HelperSlot'" :form="formData"/>
+                    </template>
+                  </d2-form-item>
+                </el-col>
+              </template>
+            </el-row>
+
+          </el-collapse-item>
+        </el-collapse>
+
+        <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
       </el-form>
       <div slot="footer">
-          <slot name="FormFooterSlot" v-bind:mode="formMode" v-bind:data="formData" ></slot>
+          <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
         <el-button
           :size="formOptions ? handleAttribute(formOptions.saveButtonSize, null) : null"
           :type="formOptions ? handleAttribute(formOptions.saveButtonType, null) : null"

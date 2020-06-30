@@ -7,31 +7,31 @@
       <slot :name="colKey+'FormSlot'" :form="formData" />
     </template>
     <el-input
-      v-else-if="(!template.component) ||((!template.component.name) && (!template.component.render)) || template.component.name === 'el-input'"
+      v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"
       v-model="formData[colKey]"
-      :disabled="getFormComponentAttr(colKey,'disabled', false)"
-      :readonly="getFormComponentAttr(colKey,'readonly', false)"
-      v-bind="(template.component.props?template.component.props:template.component)"
+      :disabled="getFormComponentAttr('disabled', false)"
+      :readonly="getFormComponentAttr('readonly', false)"
+      v-bind="(getFormComponent().props?getFormComponent().props:getFormComponent())"
       @change="handleFormDataChange($event,colKey)"
     >
     </el-input>
     <render-custom-component
-      v-else-if="template.component.name"
+      v-else-if="getFormComponent().name"
       v-model="formData[colKey]"
-      :component-name="template.component.name"
-      :disabled="getFormComponentAttr(colKey,'disabled', false)"
-      :readonly="getFormComponentAttr(colKey,'readonly', false)"
-      :props="template.component.props"
-      :events="template.component.events"
-      :slots="template.component.slots"
+      :component-name="getFormComponent().name"
+      :disabled="getFormComponentAttr('disabled', false)"
+      :readonly="getFormComponentAttr('readonly', false)"
+      :props="getFormComponent().props"
+      :events="getFormComponent().events"
+      :slots="getFormComponent().slots"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
       @custom="handleFormComponentCustomEvent($event,colKey)"
     >
     </render-custom-component>
     <render-component
-      v-else-if="template.component.render"
-      :render-function="template.component.render"
+      v-else-if="getFormComponent().render"
+      :render-function="getFormComponent().render"
       :scope="{key: colKey, value: formData[colKey], row: formData}"
       @change="handleFormDataChange($event,colKey)"
     >
@@ -77,7 +77,6 @@ export default {
      * @description lodash.get
      */
     _get,
-
     handleFormDataChange (value, key) {
       this.$emit('form-data-change', { key: key, value: value, form: this.formData })
     },
@@ -87,7 +86,14 @@ export default {
     handleFormComponentCustomEvent (event, key) {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     },
-    getFormComponentAttr (key, attr, defaultValue) {
+    getFormComponent () {
+      let component = this.template.component
+      if (component) {
+        return component
+      }
+      return {}
+    },
+    getFormComponentAttr (attr, defaultValue) {
       let component = this.template.component
       if (component) {
         return this.handleAttribute(component[attr], defaultValue)

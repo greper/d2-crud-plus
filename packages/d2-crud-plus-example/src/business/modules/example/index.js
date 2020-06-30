@@ -37,6 +37,7 @@ const aside = [
           { path: '/demo/form/editor', title: '富文本' },
           { path: '/demo/form/cell', title: '行编辑' },
           { path: '/demo/form/validation', title: '表单校验' },
+          { path: '/demo/form/group', title: '表单分组' },
           {
             title: '显隐与禁用',
             children: [
@@ -112,6 +113,16 @@ const routers = {
             cache: true
           },
           component: _import(viewsPrefix + 'form/validation')
+        },
+        {
+          path: 'form/group',
+          name: 'formGroup',
+          meta: {
+            title: '表单分组',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/group')
         },
         {
           path: 'form/editor',

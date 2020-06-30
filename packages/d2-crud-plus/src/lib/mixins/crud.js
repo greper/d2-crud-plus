@@ -1,5 +1,5 @@
 import HeightUtil from '../utils/util.height'
-import { cloneDeep, merge } from 'lodash'
+import { cloneDeep, merge, forEach } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
@@ -139,14 +139,42 @@ export default {
       merge(crudOptions, commonOptions)
       let columns = crudOptions.columns
       merge(this.crud, crudOptions)
-      this.crud.columns = []
-      this.crud.searchOptions.columns = []
-      this.crud.columnsMap = {}
+      const crud = this.crud
+      crud.columns = []
+      crud.searchOptions.columns = []
+      crud.columnsMap = {}
       for (let item of columns) {
-        this.initColumnItem(this.crud.columns, item)
+        this.initColumnItem(crud.columns, item)
       }
+
+      // 配置group
+      if (crud.formGroup) {
+        const addGroup = crud.addTemplate.__group__ = cloneDeep(crud.formGroup)
+        const editGroup = crud.editTemplate.__group__ = cloneDeep(crud.formGroup)
+        forEach(crud.formGroup.groups, (group, groupKey) => {
+          const addColumns = {}
+          addGroup.groups[groupKey].columns = addColumns
+          const editColumns = {}
+          editGroup.groups[groupKey].columns = editColumns
+
+          forEach(group.columns, (key) => {
+            const addTemplate = crud.addTemplate[key]
+            if (addTemplate) {
+              addColumns[key] = (addTemplate)
+              delete crud.addTemplate[key]
+            }
+
+            const editTemplate = crud.editTemplate[key]
+            if (editTemplate) {
+              editColumns[key] = (editTemplate)
+              delete crud.editTemplate[key]
+            }
+          })
+        })
+      }
+
       this.initAfter()
-      console.log('crud inited:', this.crud)
+      console.log('crud inited:', crud)
     },
     userConfigCover (userConfig, defaultConfig) {
       let target = cloneDeep(defaultConfig)
@@ -240,23 +268,6 @@ export default {
       }
       // 放到map里面方便快速查找
       this.crud.columnsMap[key] = item
-
-      // if (item.dict != null) {
-      //   Object.defineProperty(item.dict, 'data', {
-      //     get: function () {
-      //       console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.data,请使用vm.getEditFormTemplate(key).component.props.dict.data 或 this.crud.columnsMap[columnKey].component.props.dict')
-      //       return undefined
-      //     },
-      //     configurable: true
-      //   })
-      //   Object.defineProperty(item.dict, 'dataMap', {
-      //     get: function () {
-      //       console.warn('新版本已不支持this.crud.columnsMap[columnKey].dict.dataMap,请使用vm.getEditFormTemplate(key).component.props.dict.dataMap 或 this.crud.columnsMap[columnKey].component.props.dict')
-      //       return undefined
-      //     },
-      //     configurable: true
-      //   })
-      // }
     },
     /**
      * 初始化结束后调用方法

@@ -26,14 +26,31 @@ export default {
       if (!templage) {
         templage = this.editTemplate
       }
+      this.openDialog(index, row, templage)
+    },
+    openDialog (index, row, templage) {
       const formData = {}
       this.formTemplateStorage = templage ? _clonedeep(templage) : {}
+      delete this.formTemplateStorage.__group__
+      this.formTemplateGroupStorage = templage.__group__ ? _clonedeep(templage.__group__) : {}
+
+      const tempGroups = {
+        'default': { columns: this.formTemplateStorage },
+        ...this.formTemplateGroupStorage.groups
+      }
+
       this.fetchDetail(index, row).then(newRow => {
         this.formDataStorage = newRow
-        _forEach(this.formTemplateStorage, (value, key) => {
-          formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
+        let formGroupsActive = []
+        _forEach(tempGroups, (group, groupKey) => {
+          formGroupsActive.push(groupKey)
+          _forEach(group.columns, (value, key) => {
+            formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
+          })
         })
+        this.$set(this, 'formGroupsActive', formGroupsActive)
         this.$set(this, 'formData', formData)
+        console.log('edit:', this.formTemplateStorage, this.formTemplateGroupStorage, this.formData, this.formDataStorage)
         this.isDialogShow = true
       })
     },
@@ -42,7 +59,11 @@ export default {
         return this.options.fetchDetail(index, row)
       } else {
         return new Promise(resolve => {
-          resolve(_clonedeep(row))
+          if (row != null) {
+            resolve(_clonedeep(row))
+            return
+          }
+          resolve(undefined)
         })
       }
     }

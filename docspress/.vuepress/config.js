@@ -113,6 +113,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: [
         'mixins',
         'options',
+        'structure',
         'component',
         'column-type',
         'types',

@@ -112,60 +112,38 @@ let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
 let value = this.getEditForm().columnKey;
 ```
 
-## 7. 后台page接口返回的数据跟组件要的不一样怎么办
-
-方案一：
-在公共配置里面配置返回参数
+## 7. 操作列的按钮怎么隐藏？
+隐藏按钮
 ```js
-// crud.js
-Vue.use(d2CrudPlus, {
-  ...
-  commonOption () { // 公共配置
-    return {
-      format: {
-        page: { // page接口返回的数据结构配置
-          request:{
-            current:'current',
-            size: 'size'
-          },
-          response:{
-            current: 'current', // 当前页码 ret.data.current
-            size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
-            total: 'total', // 总记录数 ret.data.total
-            records: 'records' // 列表数组 ret.data.records
-          }
-        }
-      },
-```
-
-方案二：
-所有的http请求，你都是可以自己修改的
-```js
-export function GetList (query) {
-  // 这里修改你的
-  query[你的每页条数参数] = query.size
-  query[你的页码参数] = query.current
-  return request({
-    url: '/area/page',
-    method: 'get',
-    data: query
-  }).then(ret=>{
-    //在这里改造成组件所需要的结果
-    ret.data.current = ret.data[你的当前页码属性]
-    ret.data.size = ret.data[你的当前每页条数属性]
-    ret.data.totla = ret.data[你的总记录数属性]
-    ret.data.records = ret.data[你的列表数据属性]
-  })
+export const crudOptions = {
+  rowHandle: {
+    remove: false,
+    edit: {
+      show(index,row){
+        return false
+      }   
+    }
+  }
 }
 ```
-方案三：
+禁用按钮
 ```js
-pageRequest (query) {
-  //修改请求参数，同上
-  return GetList(query).then(ret=>{
-    //在这里改造成组件所需要的结果,同上
-  })
+export const crudOptions = {
+  rowHandle: {
+    remove: {
+      disabled: true
+    },
+    edit: {
+      disabled(index,row){
+        return true
+      }
+    },
+  }
 }
 ```
-
-其他如add、update、delete等请求同上
+隐藏操作列
+```js
+export const crudOptions = {
+  rowHandle: false
+}
+```

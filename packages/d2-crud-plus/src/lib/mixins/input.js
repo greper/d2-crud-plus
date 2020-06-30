@@ -1,29 +1,6 @@
+import inputBase from './input-base'
 export default {
-  props: {
-    // 值
-    value: {
-      required: false
-    },
-    // 禁用
-    disabled: {
-      type: [Boolean, Function],
-      required: false,
-      default: false
-    },
-    // 只读
-    readonly: {
-      type: [Boolean, Function],
-      required: false,
-      default: false
-    }
-  },
-  data () {
-    return {
-      // 本组件的实际value值
-      // 由于value值是props参数，是不允许修改的，需要用别的值存起来
-      currentValue: undefined
-    }
-  },
+  mixins: [inputBase],
   watch: {
     value (value) {
       // 父组件收到input事件后会通过v-model改变value参数的值
@@ -40,23 +17,5 @@ export default {
   created () {
     // 给currentValue设置初始值
     this.setValue(this.value)
-  },
-  mounted () {
-    this.$emit('ready')
-  },
-  methods: {
-    isValueChanged (value) {
-      return this.selectValue === value
-    },
-    setValue (value) {
-      // 在这里对 传入的value值做处理
-      this.currentValue = value
-    },
-    onInput (value) {
-      this.$emit('input', value)
-    },
-    onChange (value) {
-      this.$emit('change', value)
-    }
   }
 }

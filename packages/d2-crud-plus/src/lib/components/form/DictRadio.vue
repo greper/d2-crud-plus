@@ -10,11 +10,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
-import input from '../../mixins/input'
+import inputBase from '../../mixins/input-base'
 // 字典radio选择器
 export default {
   name: 'dict-radio',
-  mixins: [input],
+  mixins: [inputBase],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -63,8 +63,6 @@ export default {
       return []
     }
   },
-  created () {
-  },
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'dictOptions', data)
@@ -74,9 +72,6 @@ export default {
     })
   },
   methods: {
-    setValue (value) {
-      // 置空
-    }
   }
 }
 </script>

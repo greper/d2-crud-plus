@@ -1,45 +1,45 @@
 <template>
   <el-form-item
     :label="template.title"
-    :prop="key"
+    :prop="colKey"
   >
     <template v-if="template.slot === true">
-      <slot :name="key+'FormSlot'" v-bind:form="formData" />
+      <slot :name="colKey+'FormSlot'" :form="formData" />
     </template>
     <el-input
       v-else-if="(!template.component) ||((!template.component.name) && (!template.component.render)) || template.component.name === 'el-input'"
-      v-model="value"
-      :disabled="handleFormComponentAttr(key,'disabled', false)"
-      :readonly="handleFormComponentAttr(key,'readonly', false)"
+      v-model="formData[colKey]"
+      :disabled="handleFormComponentAttr(colKey,'disabled', false)"
+      :readonly="handleFormComponentAttr(colKey,'readonly', false)"
       v-bind="(template.component.props?template.component.props:template.component)"
-      @change="handleFormDataChange($event,key)"
+      @change="handleFormDataChange($event,colKey)"
     >
     </el-input>
     <render-custom-component
       v-else-if="template.component.name"
-      v-model="value"
+      v-model="formData[colKey]"
       :component-name="template.component.name"
-      :disabled="handleFormComponentAttr(key,'disabled', false)"
-      :readonly="handleFormComponentAttr(key,'readonly', false)"
+      :disabled="handleFormComponentAttr(colKey,'disabled', false)"
+      :readonly="handleFormComponentAttr(colKey,'readonly', false)"
       :props="template.component.props"
       :events="template.component.events"
       :slots="template.component.slots"
-      @change="handleFormDataChange($event,key)"
-      @ready="handleFormComponentReady($event,key)"
-      @custom="handleFormComponentCustomEvent($event,key)"
+      @change="handleFormDataChange($event,colKey)"
+      @ready="handleFormComponentReady($event,colKey)"
+      @custom="handleFormComponentCustomEvent($event,colKey)"
     >
     </render-custom-component>
     <render-component
       v-else-if="template.component.render"
       :render-function="template.component.render"
-      :scope="{key:key,value:value,row:formData}"
-      @change="handleFormDataChange($event,key)"
+      :scope="{key: colKey, value: formData[colKey], row: formData}"
+      @change="handleFormDataChange($event,colKey)"
     >
     </render-component>
     <template v-if="template.helper">
       <div class="form-item-helper" v-if=" typeof  template.helper === 'string'">{{template.helper}}</div>
       <div class="form-item-helper"  v-else-if="template.helper.slot === true">
-        <slot :name="key+'HelperSlot'" v-bind:form="formData" />
+        <slot :name="colKey+'HelperSlot'" :form="formData" />
       </div>
     </template>
   </el-form-item>
@@ -63,30 +63,29 @@ export default {
       type: Object,
       required: true
     },
-    key: {
-      type: String,
-      required: true
+    formData: {
+      type: Object
     },
-    value: {
-      default: undefined
+    colKey: {
+      type: String
     }
+  },
+  computed: {
   },
   methods: {
     /**
      * @description lodash.get
      */
     _get,
-    handleFormDataChange (value, column) {
-      column.value = value
-      this.$emit('cell-data-change', column)
+
+    handleFormDataChange (value, key) {
+      this.$emit('form-data-change', { key: key, value: value, form: this.formData })
     },
-    handleFormComponentReady (value, column) {
-      column.value = value
-      this.$emit('cell-data-change', column)
+    handleFormComponentReady (event, key) {
+      this.$emit('form-component-ready', { event: event, key: key, form: this.formData })
     },
-    handleFormComponentCustomEvent (value, column) {
-      column.value = value
-      this.$emit('cell-data-change', column)
+    handleFormComponentCustomEvent (event, key) {
+      this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     },
     handleFormComponentAttr (key, attr, defaultValue) {
       let component = this.template.component

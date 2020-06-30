@@ -121,6 +121,8 @@
       >
       </el-pagination>
     </div>
+
+    <!-- 表单对话框 -->
     <el-dialog
       v-if="isDialogShow"
       :visible.sync="isDialogShow"
@@ -129,7 +131,7 @@
     >
       <template slot="title">
         {{formMode === 'edit' ? editTitle : addTitle}}
-        <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" ></slot>
+        <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" />
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn" style="right:50px" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
       </template>
       <el-form
@@ -140,56 +142,27 @@
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions">
-          <template v-for="(value,key, index) in getFormTemplate()" >
+          <template v-for="(item,key, index) in formTemplateStorage" >
             <el-col :key="index"
               v-if="handleFormComponentAttr(key,'show', true)"
               :span="handleFormComponentAttr(key,'span', 24)"
               :offset="handleFormComponentAttr(key,'offset', 0)"
             >
-              <el-form-item
-                :label="handleFormTemplateMode(key).title"
-                :prop="key"
+              <d2-form-item
+                :template="item"
+                :colKey="key"
+                :formData="formData"
+                @form-data-change="handleFormDataChange"
+                @form-component-ready="handleFormComponentReady"
+                @form-component-custom-event="handleFormComponentCustomEvent"
               >
-                <template v-if="handleFormTemplateMode(key).slot === true">
-                  <slot :name="key+'FormSlot'" v-bind:form="formData" />
+                <template :slot="key+'FormSlot'">
+                    <slot :name="key+'FormSlot'" :form="formData"/>
                 </template>
-                <el-input
-                  v-else-if="(!handleFormTemplateMode(key).component) ||((!handleFormTemplateMode(key).component.name) && (!handleFormTemplateMode(key).component.render)) || handleFormTemplateMode(key).component.name === 'el-input'"
-                  v-model="formData[key]"
-                  :disabled="handleFormComponentAttr(key,'disabled', false)"
-                  :readonly="handleFormComponentAttr(key,'readonly', false)"
-                  v-bind="(handleFormTemplateMode(key).component.props?handleFormTemplateMode(key).component.props:handleFormTemplateMode(key).component)"
-                  @change="handleFormDataChange($event,key)"
-                >
-                </el-input>
-                <render-custom-component
-                  v-else-if="handleFormTemplateMode(key).component.name"
-                  v-model="formData[key]"
-                  :component-name="handleFormTemplateMode(key).component.name"
-                  :disabled="handleFormComponentAttr(key,'disabled', false)"
-                  :readonly="handleFormComponentAttr(key,'readonly', false)"
-                  :props="handleFormTemplateMode(key).component.props"
-                  :events="handleFormTemplateMode(key).component.events"
-                  :slots="handleFormTemplateMode(key).component.slots"
-                  @change="handleFormDataChange($event,key)"
-                  @ready="handleFormComponentReady($event,key)"
-                  @custom="handleFormComponentCustomEvent($event,key)"
-                >
-                </render-custom-component>
-                <render-component
-                  v-else-if="handleFormTemplateMode(key).component.render"
-                  :render-function="handleFormTemplateMode(key).component.render"
-                  :scope="{key:key,value:formData[key],row:formData}"
-                  @change="handleFormDataChange($event,key)"
-                >
-                </render-component>
-                <template v-if="handleFormTemplateMode(key).helper">
-                  <div class="form-item-helper" v-if=" typeof  handleFormTemplateMode(key).helper === 'string'">{{handleFormTemplateMode(key).helper}}</div>
-                  <div class="form-item-helper"  v-else-if="handleFormTemplateMode(key).helper.slot === true">
-                    <slot :name="key+'HelperSlot'" v-bind:form="formData" />
-                  </div>
+                <template :slot="key+'HelperSlot'">
+                    <slot :name="key+'HelperSlot'" :form="formData"/>
                 </template>
-              </el-form-item>
+              </d2-form-item>
             </el-col>
           </template>
         </el-row>
@@ -221,9 +194,8 @@ import dialog from './mixin/dialog'
 import pagination from './mixin/pagination'
 import exposeMethods from './mixin/exposeMethods.js'
 import utils from './mixin/utils'
-import renderComponent from './components/renderComponent.vue'
-import renderCustomComponent from './components/renderCustomComponent.vue'
 import D2Column from './components/d2-column'
+import D2FormItem from './components/d2-form-item'
 
 export default {
   name: 'd2-crud',
@@ -240,19 +212,18 @@ export default {
     utils
   ],
   components: {
-    D2Column,
-    renderComponent,
-    renderCustomComponent
+    D2FormItem,
+    D2Column
   },
   methods: {
-    handleFormDataChange (value, key) {
-      this.$emit('form-data-change', { key: key, value: value, form: this.formData })
+    handleFormDataChange (event) {
+      this.$emit('form-data-change', event)
     },
-    handleFormComponentReady (event, key) {
-      this.$emit('form-component-ready', { event: event, key: key, form: this.formData })
+    handleFormComponentReady (event) {
+      this.$emit('form-component-ready', event)
     },
-    handleFormComponentCustomEvent (event, key) {
-      this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
+    handleFormComponentCustomEvent (event) {
+      this.$emit('form-component-custom-event', event)
     },
     handleCellDataChange (column) {
       this.$emit('cell-data-change', column)

@@ -19,12 +19,12 @@
       </render-custom-component>
       <render-component
         v-else-if="item.component && item.component.render"
-        :scope="item.component"
+        :scope="{rowIndex: rowIndex, key: item.key, value: row[item.key], row: row}"
         :render-function="item.component.render"
         @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
       >
       </render-component>
-      <template v-else>{{item.formatter ? item.formatter(row, column, _get(row, item.key), rowIndex) : _get(row, item.key)}}</template>
+      <template v-else>{{item.formatter ? item.formatter(row, item, _get(row, item.key), rowIndex) : _get(row, item.key)}}</template>
   </span>
 </template>
 

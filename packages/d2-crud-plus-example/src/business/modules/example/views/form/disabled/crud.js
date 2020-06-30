@@ -2,6 +2,20 @@ export const crudOptions = (vm) => {
   return {
     columns: [
       {
+        title: '禁用全部',
+        key: 'disable',
+        sortable: true,
+        search: { disabled: false },
+        type: 'dict-switch',
+        dict: { data: [{ value: true, label: '禁用' }, { value: false, label: '启用' }] },
+        form: {
+          component: {
+            span: 24
+          },
+          helper: '点我禁用和启用以下组件'
+        }
+      },
+      {
         title: '选择',
         key: 'status',
         sortable: true,
@@ -162,19 +176,6 @@ export const crudOptions = (vm) => {
             disabled: () => {
               return vm.getEditForm().disable
             }
-          }
-        }
-      },
-      {
-        title: '禁用全部',
-        key: 'disable',
-        sortable: true,
-        search: { disabled: false },
-        type: 'dict-switch',
-        dict: { data: [{ value: true, label: '禁用' }, { value: false, label: '启用' }] },
-        form: {
-          component: {
-            span: 24
           }
         }
       },

@@ -117,7 +117,6 @@ export default {
         arr = val
       }
       let changed = false
-      debugger
       if (this.fileList.length === arr.length) {
         for (let i = 0; i < arr.length; i++) {
           let curUrl = this.fileList[i].url

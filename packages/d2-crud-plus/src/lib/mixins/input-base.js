@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted () {
-    this.$emit('ready')
+    // this.$emit('ready')
   },
   methods: {
     isValueChanged (value) {

@@ -1,6 +1,3 @@
-import _forEach from 'lodash.foreach'
-import _clonedeep from 'lodash.clonedeep'
-
 export default {
   methods: {
     /**
@@ -14,14 +11,15 @@ export default {
       if (!templage) {
         templage = this.addTemplate
       }
-      const formData = {}
-      this.formTemplateStorage = templage ? _clonedeep(templage) : {}
+      this.openDialog(undefined, undefined, templage)
 
-      _forEach(this.formTemplateStorage, (value, key) => {
-        formData[key] = this.formTemplateStorage[key].value
-      })
-      this.$set(this, 'formData', formData)
-      this.isDialogShow = true
+      // const formData = {}
+      // this.formTemplateStorage = templage ? _clonedeep(templage) : {}
+      // _forEach(this.formTemplateStorage, (value, key) => {
+      //   formData[key] = this.formTemplateStorage[key].value
+      // })
+      // this.$set(this, 'formData', formData)
+      // this.isDialogShow = true
     }
   }
 }

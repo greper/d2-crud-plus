@@ -167,7 +167,7 @@
           </template>
         </el-row>
 
-        <el-collapse v-model="formGroupsActive"   >
+        <el-collapse v-if="formTemplateGroupStorage" v-model="formGroupsActive"   >
           <el-collapse-item v-for="(group,groupKey) in formTemplateGroupStorage.groups" :name="groupKey" :key="groupKey" >
             <template slot="title">
               <el-tag >{{group.title}} <i v-if="group.icon" class="header-icon" :class="group.icon"/> </el-tag>

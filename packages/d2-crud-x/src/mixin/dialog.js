@@ -81,6 +81,54 @@ export default {
     }
   },
   methods: {
+
+    openDialog (index, row, templage) {
+      const formData = {}
+      this.formTemplateStorage = templage ? _clonedeep(templage) : {}
+      delete this.formTemplateStorage.__group__
+      this.formTemplateGroupStorage = templage.__group__ ? _clonedeep(templage.__group__) : undefined
+
+      const tempGroups = {
+        'default': { columns: this.formTemplateStorage }
+      }
+      if (this.formTemplateGroupStorage) {
+        _forEach(this.formTemplateGroupStorage.groups, (value, key) => {
+          tempGroups[key] = value
+        })
+      }
+
+      this.fetchDetail(index, row).then(newRow => {
+        this.formDataStorage = newRow
+        let formGroupsActive = []
+        _forEach(tempGroups, (group, groupKey) => {
+          formGroupsActive.push(groupKey)
+          _forEach(group.columns, (template, key) => {
+            if (this.formMode === 'add') {
+              formData[key] = template.value
+            } else {
+              formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
+            }
+          })
+        })
+        this.$set(this, 'formGroupsActive', formGroupsActive)
+        this.$set(this, 'formData', formData)
+        this.isDialogShow = true
+      })
+    },
+    fetchDetail (index, row) {
+      if (this.options.fetchDetail != null) {
+        return this.options.fetchDetail(index, row)
+      } else {
+        return new Promise(resolve => {
+          if (row != null) {
+            resolve(_clonedeep(row))
+            return
+          }
+          resolve(undefined)
+        })
+      }
+    },
+
     /**
      * @description 保存行数据
      */

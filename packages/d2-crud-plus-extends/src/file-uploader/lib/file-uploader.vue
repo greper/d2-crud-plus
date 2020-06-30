@@ -35,7 +35,7 @@ import { d2CrudPlus } from 'd2-crud-plus'
 // 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',
-  mixins: [d2CrudPlus.input],
+  mixins: [d2CrudPlus.inputBase],
   props: {
     // 选择文件按钮的大小
     btnSize: { default: 'small' },
@@ -86,7 +86,7 @@ export default {
     buildUrl: {
       type: Function,
       default: function (value, item) {
-        return value
+        return (typeof value === 'object') ? item.url : value
       }
     },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
@@ -117,10 +117,13 @@ export default {
         arr = val
       }
       let changed = false
+      debugger
       if (this.fileList.length === arr.length) {
         for (let i = 0; i < arr.length; i++) {
-          let cur = this.fileList[i]
-          if (arr[i].url !== cur.url) {
+          let curUrl = this.fileList[i].url
+          let curValue = this.fileList[i].response ? this.fileList[i].response.value : this.fileList[i].value
+          let newUrl = typeof arr[i] === 'string' ? arr[i] : arr[i].url
+          if (newUrl !== curUrl && newUrl !== curValue) {
             changed = true
             break
           }
@@ -262,7 +265,9 @@ export default {
     handleUploadFileSuccess (res, file, fileList) {
       res.size = res.size != null ? res.size : file.size
       res.name = res.name != null ? res.name : file.name
-      const url = this.buildUrl(res.value, res)
+      res.value = this.getReturnValue(res)
+      let value = this.returnType === 'object' ? res.url : res.value
+      const url = this.buildUrl(value, res)
       file.url = res.url = url
       this.resetFileList(fileList)
       this.$emit('success', res, file)
@@ -283,9 +288,8 @@ export default {
     },
     emit (res, list) {
       if (this._elProps.limit === 1) {
-        res = this.getReturnValue(res)
-        this.$emit('input', res)
-        this.$emit('change', res)
+        this.$emit('input', res.value)
+        this.$emit('change', res.value)
       } else {
         this.emitList(list)
       }
@@ -293,19 +297,17 @@ export default {
     emitList (list) {
       const tmp = []
       list.forEach(item => {
-        tmp.push(item)
+        tmp.push(item.value)
       })
       list = tmp
       this.$emit('input', list)
       this.$emit('change', list)
     },
     getReturnValue (item) {
-      if (this.returnType === 'url') {
-        return item.url
-      } else if (this.returnType === 'key') {
-        return item.key
+      const value = item[this.returnType]
+      if (value != null) {
+        return value
       }
-
       return item
     },
     httpRequest (option) {
@@ -351,12 +353,6 @@ export default {
         if (this.suffix != null) {
           ret.url += this.suffix
         }
-        if (this.returnType === 'object') {
-          ret.value = ret.url
-          return ret
-        }
-        const value = this.getReturnValue(ret)
-        ret.value = value
         return ret
       })
     },

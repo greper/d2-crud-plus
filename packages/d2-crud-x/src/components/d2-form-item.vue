@@ -9,8 +9,8 @@
     <el-input
       v-else-if="(!template.component) ||((!template.component.name) && (!template.component.render)) || template.component.name === 'el-input'"
       v-model="formData[colKey]"
-      :disabled="handleFormComponentAttr(colKey,'disabled', false)"
-      :readonly="handleFormComponentAttr(colKey,'readonly', false)"
+      :disabled="getFormComponentAttr(colKey,'disabled', false)"
+      :readonly="getFormComponentAttr(colKey,'readonly', false)"
       v-bind="(template.component.props?template.component.props:template.component)"
       @change="handleFormDataChange($event,colKey)"
     >
@@ -19,8 +19,8 @@
       v-else-if="template.component.name"
       v-model="formData[colKey]"
       :component-name="template.component.name"
-      :disabled="handleFormComponentAttr(colKey,'disabled', false)"
-      :readonly="handleFormComponentAttr(colKey,'readonly', false)"
+      :disabled="getFormComponentAttr(colKey,'disabled', false)"
+      :readonly="getFormComponentAttr(colKey,'readonly', false)"
       :props="template.component.props"
       :events="template.component.events"
       :slots="template.component.slots"
@@ -87,7 +87,7 @@ export default {
     handleFormComponentCustomEvent (event, key) {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     },
-    handleFormComponentAttr (key, attr, defaultValue) {
+    getFormComponentAttr (key, attr, defaultValue) {
       let component = this.template.component
       if (component) {
         return this.handleAttribute(component[attr], defaultValue)

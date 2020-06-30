@@ -12,7 +12,10 @@ export default {
       }
       return attribute || defaultValue
     },
-    getFormTemplate () {
+    getFormTemplate (key) {
+      if (key != null) {
+        return this.formTemplateStorage[key]
+      }
       return this.formTemplateStorage
     },
     /**
@@ -32,22 +35,22 @@ export default {
       }
     },
 
-    handleFormComponentProp (key, prop, defaultValue) {
-      let component = this.handleFormTemplateMode(key).component
+    getFormComponentProp (key, prop, defaultValue) {
+      let component = this.getFormTemplate(key).component
       if (component && component.props) {
         return this.handleAttribute(component.props[prop], defaultValue)
       }
       return defaultValue
     },
 
-    handleFormComponentAttr (key, attr, defaultValue) {
-      let component = this.handleFormTemplateMode(key).component
+    getFormComponentAttr (key, attr, defaultValue) {
+      let component = this.getFormTemplate(key).component
       if (component) {
         return this.handleAttribute(component[attr], defaultValue)
       }
       return defaultValue
     },
-    handleComponentProp (item, key, prop, defaultValue) {
+    getComponentProp (item, key, prop, defaultValue) {
       if (!item) {
         return defaultValue
       }

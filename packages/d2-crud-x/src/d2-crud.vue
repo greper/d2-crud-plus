@@ -144,9 +144,9 @@
         <el-row v-bind="formOptions">
           <template v-for="(item,key, index) in formTemplateStorage" >
             <el-col :key="index"
-              v-if="handleFormComponentAttr(key,'show', true)"
-              :span="handleFormComponentAttr(key,'span', 24)"
-              :offset="handleFormComponentAttr(key,'offset', 0)"
+              v-if="getFormComponentAttr(key,'show', true)"
+              :span="getFormComponentAttr(key,'span', 24)"
+              :offset="getFormComponentAttr(key,'offset', 0)"
             >
               <d2-form-item
                 :template="item"

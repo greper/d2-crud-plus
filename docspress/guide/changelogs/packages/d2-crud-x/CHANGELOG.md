@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.3.1...d2-crud-x@2.4.0) (2020-06-30)
+
+
+### Features
+
+* 表单支持分组 ([96f1b54](https://github.com/greper/d2-crud/commit/96f1b54ff480b95461ac37556eeef66fd925a158))
+* 更简单方便易用的组件禁用方式（disabled） ([b194ac1](https://github.com/greper/d2-crud/commit/b194ac1f62d88ffd7d887cb8a56e55a4b5cf2511))
+
+
+### Performance Improvements
+
+* 优化方法名 ([84766ac](https://github.com/greper/d2-crud/commit/84766acd8799f1238689ab707955eafa3b397ab8))
+* 优化列表展示性能 ([96dd2bf](https://github.com/greper/d2-crud/commit/96dd2bff511a704fc29f12d4ed342566396014bf))
+* d2-form-item抽取重构 ([aaf3564](https://github.com/greper/d2-crud/commit/aaf35642dcb5ce568a8b8e6fc2bac378bda112de))
+
+
+
+
+
+
 ## [2.3.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.3.0...d2-crud-x@2.3.1) (2020-06-25)
 
 

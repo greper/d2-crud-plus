@@ -14,14 +14,3 @@
 <!-- @vuese:cascade-select:props:end -->
 
 
-## Events
-
-<!-- @vuese:cascade-select:events:start -->
-|Event Name|Description|Parameters|
-|---|---|---|
-|change|-|-|
-|input|-|-|
-
-<!-- @vuese:cascade-select:events:end -->
-
-

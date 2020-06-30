@@ -6,6 +6,8 @@
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |value|值|`String`|`false`|-|
+|disabled|禁用|`Boolean`|`false`|false|
+|readonly|只读|`Boolean`|`false`|false|
 |color|你可以定义一些参数，通过component.props传进来|—|`false`|-|
 
 <!-- @vuese:d2p-form-input:props:end -->

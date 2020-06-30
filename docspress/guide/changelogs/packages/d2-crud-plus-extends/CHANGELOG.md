@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.10...d2p-extends@1.7.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* 修复图片上传某些情况下闪烁的问题 ([e8781c8](https://github.com/greper/d2-crud-plus/commit/e8781c84e13407f04e00c9dada8715ddcabdcbf6))
+
+
+### Features
+
+* 更简单方便易用的组件禁用方式（disabled） ([b194ac1](https://github.com/greper/d2-crud-plus/commit/b194ac1f62d88ffd7d887cb8a56e55a4b5cf2511))
+
+
+
+
+
 ## [1.6.10](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.9...d2p-extends@1.6.10) (2020-06-29)
 
 

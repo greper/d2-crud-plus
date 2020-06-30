@@ -5,7 +5,7 @@
 <!-- @vuese:d2p-icon:props:start -->
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
-|value|icon名称|`String`|`false`|'font-awesome'|
+|value|icon名称|`String`|`false`|''|
 
 <!-- @vuese:d2p-icon:props:end -->
 

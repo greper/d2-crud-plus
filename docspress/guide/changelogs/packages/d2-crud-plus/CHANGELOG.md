@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.10.2...d2-crud-plus@1.11.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* 修复多次触发formdatechange的bug ([0dadab9](https://github.com/greper/d2-crud-plus/commit/0dadab9973aeffc378f9b9cd762f78ae1ab4fd38))
+
+
+### Features
+
+* 表单支持分组 ([96f1b54](https://github.com/greper/d2-crud-plus/commit/96f1b54ff480b95461ac37556eeef66fd925a158))
+* 更简单方便易用的组件禁用方式（disabled） ([b194ac1](https://github.com/greper/d2-crud-plus/commit/b194ac1f62d88ffd7d887cb8a56e55a4b5cf2511))
+* 支持配置默认表单span ([9268d4a](https://github.com/greper/d2-crud-plus/commit/9268d4a1c19dcdf549deab965a07fa9904c4a010))
+
+
+
+
+
 ## [1.10.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.10.1...d2-crud-plus@1.10.2) (2020-06-29)
 
 

@@ -14,14 +14,3 @@
 <!-- @vuese:dict-switch:props:end -->
 
 
-## Events
-
-<!-- @vuese:dict-switch:events:start -->
-|Event Name|Description|Parameters|
-|---|---|---|
-|input|-|-|
-|change|-|-|
-
-<!-- @vuese:dict-switch:events:end -->
-
-

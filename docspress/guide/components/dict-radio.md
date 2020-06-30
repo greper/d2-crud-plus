@@ -14,14 +14,3 @@
 <!-- @vuese:dict-radio:props:end -->
 
 
-## Events
-
-<!-- @vuese:dict-radio:events:start -->
-|Event Name|Description|Parameters|
-|---|---|---|
-|input|-|-|
-|change|-|-|
-
-<!-- @vuese:dict-radio:events:end -->
-
-

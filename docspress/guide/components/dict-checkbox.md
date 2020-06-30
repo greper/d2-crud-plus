@@ -15,14 +15,3 @@
 <!-- @vuese:dict-checkbox:props:end -->
 
 
-## Events
-
-<!-- @vuese:dict-checkbox:events:start -->
-|Event Name|Description|Parameters|
-|---|---|---|
-|input|-|-|
-|change|-|-|
-
-<!-- @vuese:dict-checkbox:events:end -->
-
-

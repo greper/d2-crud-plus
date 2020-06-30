@@ -1,30 +1,30 @@
 <template>
   <span>
       <template v-if="item.rowSlot === true">
-        <slot :name="item.key+'Slot'" :row="scope.row"/>
+        <slot :name="item.key+'Slot'" :row="row"/>
       </template>
       <render-custom-component
         v-else-if="item.component && item.component.name"
-        v-model="scope.row[item.key]"
+        v-model="row[item.key]"
         :component-name="item.component.name"
         :disabled="handleComponentProp(item,item.key,'disabled', false)"
         :readonly="handleComponentProp(item,item.key,'readonly', false)"
         :props="item.component.props ? item.component.props : null"
-        @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
         :events="item.component.events"
         :slots="item.component.slots"
-        @ready="handleCellComponentReady($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-        @custom="handleCellComponentCustomEvent($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-        :scope="scope">
+        @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
+        @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
+        @custom="handleCellComponentCustomEvent($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
+        >
       </render-custom-component>
       <render-component
         v-else-if="item.component && item.component.render"
+        :scope="item.component"
         :render-function="item.component.render"
-        @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
-        :scope="{key:item.key,value:scope.row[item.key],row:scope.row}"
+        @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
       >
       </render-component>
-      <template v-else>{{item.formatter ? item.formatter(scope.row, scope.column, _get(scope.row, item.key), scope.$index) : _get(scope.row, item.key)}}</template>
+      <template v-else>{{item.formatter ? item.formatter(row, column, _get(row, item.key), rowIndex) : _get(row, item.key)}}</template>
   </span>
 </template>
 
@@ -46,9 +46,12 @@ export default {
       type: Object,
       required: true
     },
-    scope: {
+    row: {
       type: Object,
       required: true
+    },
+    rowIndex: {
+      required: false
     }
   },
   methods: {

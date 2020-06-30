@@ -15,10 +15,10 @@ export default {
         templage = this.addTemplate
       }
       const formData = {}
-      this.addTemplateStorage = templage ? _clonedeep(templage) : {}
+      this.formTemplateStorage = templage ? _clonedeep(templage) : {}
 
-      _forEach(this.addTemplateStorage, (value, key) => {
-        formData[key] = this.addTemplateStorage[key].value
+      _forEach(this.formTemplateStorage, (value, key) => {
+        formData[key] = this.formTemplateStorage[key].value
       })
       this.$set(this, 'formData', formData)
       this.isDialogShow = true

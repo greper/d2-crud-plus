@@ -27,10 +27,10 @@ export default {
         templage = this.editTemplate
       }
       const formData = {}
-      this.editTemplateStorage = templage ? _clonedeep(templage) : {}
+      this.formTemplateStorage = templage ? _clonedeep(templage) : {}
       this.fetchDetail(index, row).then(newRow => {
-        this.editDataStorage = newRow
-        _forEach(templage, (value, key) => {
+        this.formDataStorage = newRow
+        _forEach(this.formTemplateStorage, (value, key) => {
           formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
         })
         this.$set(this, 'formData', formData)

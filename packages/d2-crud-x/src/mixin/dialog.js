@@ -68,17 +68,13 @@ export default {
        */
       formMode: 'edit',
       /**
-       * @description 编辑暂存数据，用于储存不在editTemplate中的数据
+       * @description 暂存数据，用于储存不在editTemplate中的数据
        */
-      editDataStorage: {},
+      formDataStorage: {},
       /**
-       * @description 新增表单模板暂存
+       * @description 表单模板暂存
        */
-      addTemplateStorage: {},
-      /**
-       * @description 修改表单模板暂存
-       */
-      editTemplateStorage: {}
+      formTemplateStorage: {}
     }
   },
   methods: {
@@ -92,7 +88,7 @@ export default {
         }
         let rowData = {}
         if (this.formMode === 'edit') {
-          rowData = _clonedeep(this.editDataStorage)
+          rowData = _clonedeep(this.formDataStorage)
           _forEach(this.formData, (value, key) => {
             this._set(rowData, key, value)
           })
@@ -138,7 +134,7 @@ export default {
     handleDialogSaveDone (rowData) {
       if (this.formMode === 'edit') {
         this.handleUpdateRow(this.editIndex, rowData)
-        this.editDataStorage = {}
+        this.formDataStorage = {}
       } else if (this.formMode === 'add') {
         this.handleAddRow(rowData)
       }

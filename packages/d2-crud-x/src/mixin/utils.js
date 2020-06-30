@@ -13,21 +13,13 @@ export default {
       return attribute || defaultValue
     },
     getFormTemplate () {
-      if (this.formMode === 'edit') {
-        return this.editTemplateStorage
-      } else if (this.formMode === 'add') {
-        return this.addTemplateStorage
-      }
+      return this.formTemplateStorage
     },
     /**
      * @description 根据dialog模式渲染不同表单
      */
     handleFormTemplateMode (key) {
-      if (this.formMode === 'edit') {
-        return this.editTemplateStorage[key]
-      } else if (this.formMode === 'add') {
-        return this.addTemplateStorage[key]
-      }
+      return this.formTemplateStorage[key]
     },
     /**
      * @description 根据dialog模式渲染不同表单校验规则

@@ -4,7 +4,7 @@
   :prop="handleAttribute(item.key, null)"
   v-bind="item">
   <template slot-scope="scope">
-    <d2-cell :item="item" :scope="scope"
+    <d2-cell :item="item" :row="scope.row" :rowIndex="scope.$index"
              @cell-data-change="handleCellDataChange"
              @cell-component-ready="handleCellComponentReady"
              @cell-component-custom-event="handleCellComponentCustomEvent"

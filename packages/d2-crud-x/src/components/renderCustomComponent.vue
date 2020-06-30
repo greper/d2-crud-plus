@@ -21,12 +21,6 @@ export default {
       default: undefined
     },
     /**
-     * @description 传入的行数据
-     */
-    scope: {
-      default: undefined
-    },
-    /**
      * 监听组件事件
      */
     events: {
@@ -86,7 +80,6 @@ export default {
       scopedSlots: slots,
       props: {
         value: self.value,
-        scope: self.scope,
         disabled: disabled,
         readonly: readonly,
         ...self.props

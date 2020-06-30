@@ -1,6 +1,9 @@
 import request from '@/business/api/request.mock'
 export const crudOptions = (vm) => {
   return {
+    formOptions: {
+      defaultSpan: 12 // 默认的表单 span
+    },
     columns: [
       {
         title: '单选远程',

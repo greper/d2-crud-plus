@@ -38,6 +38,9 @@ Vue.use(d2CrudPlus, {
       },
       options: {
         size: 'small'
+      },
+      formOptions: {
+        defaultSpan: 12 // 默认的表单 span
       }
     }
   }

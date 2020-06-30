@@ -49,7 +49,8 @@ export const crudOptions = {
         component: {
           render: (h, scope) => {
             return (<div>表单render：{scope.value}</div>)
-          }
+          },
+          span: 24
         }
       },
       component: {
@@ -60,6 +61,7 @@ export const crudOptions = {
     }
   ],
   formOptions: {
+    defaultSpan: 12,
     center: true // 标题与按钮居中布局
   },
   rowHandle: {

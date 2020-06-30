@@ -44,20 +44,26 @@ npm run dev
 ### 1.安装
 ```shell
 使用npm
-npm i  @d2-project/d2-crud  -S //如果官方d2-crud此方式安装报错，可以使用yarn安装，或者使用d2-crud-x
+// npm i  @d2-project/d2-crud  -S
+//【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
+// 使用d2-crud-x替换d2-crud【在官方基础上修复了bug，功能更强大】
+npm i  d2-crud-x  -S
+
 npm i  d2-crud-plus  -S
 
 使用yarn
-yarn add @d2-projects/d2-crud 
+// yarn add @d2-projects/d2-crud 
+yarn add d2-crud-x
 yarn add d2-crud-plus 
 
-如果需要slot功能，需要用d2-crud-x替换d2-crud【推荐使用d2-crud-x，在官方基础上修复了bug】
-npm i  d2-crud-x  -S
+
 ```
 ### 2.引入
  ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
-import d2Crud from '@d2-projects/d2-crud'
+// import d2Crud from '@d2-projects/d2-crud'【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
+// 推荐将d2-crud替换为d2-crud-x【使用方式基本与d2-crud一致，推荐】
+import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 import { request } from '@/api/service'
 Vue.use(d2Crud)
@@ -88,15 +94,15 @@ Vue.use(d2CrudPlus, {
           }
         }
       },
+      formOptions: {
+        defaultSpan: 12 // 默认的表单 span
+      },
       options: {size:'mini'} //全局配置element组件大小
     }
   }
 })
 
-// 如果需要slot等增强功能，要将d2-crud替换为d2-crud-x【其他与d2-crud一致，推荐】
-import d2Crud from 'd2-crud-x'
-import Vue from 'vue'
-Vue.use(d2Crud)
+
  ```
 ### 3. 安装扩展插件
 如果你还需要文件上传、图片裁剪、富文本、地区选择器、树形选择器、图标选择器等组件   

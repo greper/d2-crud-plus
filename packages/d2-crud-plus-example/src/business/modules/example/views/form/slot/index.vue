@@ -58,14 +58,18 @@
 
       <template slot="topicsFormSlot" slot-scope="scope">
         <el-input class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >
-          <el-button slot="append" icon="el-icon-remove-outline" v-on:click="removeTopic(index)"></el-button>
+          <el-button slot="append" icon="el-icon-remove-outline" @click="removeTopic(index)"/>
         </el-input>
-        <el-button v-on:click="addTopic">添加主题</el-button>
+        <el-button @click="addTopic">添加主题</el-button>
+      </template>
+
+      <template slot="FormBodyAppendSlot" slot-scope="scope">
+        <el-button @click="addColumn(scope)">动态添加字段</el-button>
       </template>
 
       <template slot="FormFooterSlot" slot-scope="scope">
         <el-button type="success" @click="customBtn()">我是自定义按钮</el-button>
-        <el-button v-on:click="saveDraft(scope)">保存草稿</el-button>
+        <el-button @click="saveDraft(scope)">保存草稿</el-button>
       </template>
 
     </d2-crud>
@@ -142,6 +146,23 @@ export default {
     },
     customBtn () {
       this.$message('我是自定义按钮')
+    },
+    addColumn (scope) {
+      const key = 'add' + Math.floor(Math.random() * 1000)
+      const column = {
+        title: '动态添加',
+        ket: key,
+        component: {
+          name: 'dict-select',
+          props: {
+            dict: { url: '/dicts/OpenStatusEnum' }
+          },
+          span: 12
+        }
+      }
+      this.$set(this.getEditFormTemplate(), key, column)
+      this.$set(this.getEditForm(), key, undefined)
+      console.log('add', this.getEditFormTemplate(), this.getEditForm())
     }
   }
 }

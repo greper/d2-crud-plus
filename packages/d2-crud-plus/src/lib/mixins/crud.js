@@ -125,7 +125,7 @@ export default {
      * @returns
      */
     getEditFormTemplate (key) {
-      return this.getD2Crud().handleFormTemplateMode(key)
+      return this.getD2Crud().getFormTemplate(key)
     },
     /**
      * 初始化column配置
@@ -202,6 +202,9 @@ export default {
       item = newItem
       if (item._handle != null) {
         item._handle(item)
+      }
+      if (item.form && item.form.component && item.form.component.span == null) {
+        item.form.component.span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
       }
       if (item.dict != null) {
         DictUtil.mergeDefault(item.dict)

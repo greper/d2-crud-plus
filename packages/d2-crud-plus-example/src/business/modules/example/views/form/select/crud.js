@@ -37,7 +37,7 @@ export const crudOptions = (vm) => {
   return {
     columns: [
       {
-        title: '单选，远程',
+        title: '单选远程',
         key: 'status',
         sortable: true,
         search: {},
@@ -46,12 +46,18 @@ export const crudOptions = (vm) => {
           url: '/dicts/OpenStatusEnum'
         },
         form: {
+          component: {
+            events: {
+              ready: () => {
+                console.log('status1, ready...')
+              }
+            }
+          },
           // value: '2', // 添加时的初始值
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
             console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
-          },
-          helper: '如果这里没有显示label而是只显示value，请检查value值类型是否一致，int和string类型是不相等的'
+          }
         }
       },
       {

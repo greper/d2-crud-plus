@@ -1,6 +1,6 @@
 <template>
-  <el-radio-group class="dict_radio" :value="value" v-bind="_elProps"  @input="doInput" @change="doChange">
-    <el-radio v-for="option in _options"
+  <el-radio-group class="dict_radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange">
+    <el-radio :disabled="disabled" :readonly="readonly" v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]"
               v-bind="option"
@@ -10,9 +10,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+import input from '../../mixins/input'
 // 字典radio选择器
 export default {
   name: 'dict-radio',
+  mixins: [input],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -42,8 +44,7 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined,
-      selectValue: ''
+      dictOptions: undefined
     }
   },
   computed: {
@@ -73,11 +74,8 @@ export default {
     })
   },
   methods: {
-    doInput ($event) {
-      this.$emit('input', $event)
-    },
-    doChange ($event) {
-      this.$emit('change', $event)
+    setValue (value) {
+      // 置空
     }
   }
 }

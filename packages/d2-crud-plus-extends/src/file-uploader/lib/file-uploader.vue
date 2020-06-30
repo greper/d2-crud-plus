@@ -1,7 +1,8 @@
 <template>
-  <div class="d2p-file-uploader">
+  <div class="d2p-file-uploader" :class="{'is-disabled':disabled}">
   <el-upload :class="uploadClass"
              :file-list="fileList"
+             :disabled="disabled"
              :http-request="httpRequest"
              :on-exceed="onExceed"
              :on-remove="handleUploadFileRemove"
@@ -9,7 +10,7 @@
              ref="fileUploader"
              v-bind="_elProps"
   >
-    <el-button :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
+    <el-button :disabled="disabled" :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
     <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" ></i></div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
@@ -30,9 +31,11 @@
 import SparkMD5 from 'spark-md5'
 import D2pUploader from '../../uploader'
 import lodash from 'lodash'
+import { d2CrudPlus } from 'd2-crud-plus'
 // 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',
+  mixins: [d2CrudPlus.input],
   props: {
     // 选择文件按钮的大小
     btnSize: { default: 'small' },
@@ -422,6 +425,20 @@ export default {
 </script>
 <style lang="scss">
   .d2p-file-uploader{
+    &.is-disabled{
+      .avatar-item-wrapper{
+        background-color: #F5F7FA;
+        border-color: #E4E7ED;
+        color: #C0C4CC;
+        cursor: not-allowed
+      }
+      li{
+        cursor: not-allowed
+      }
+      .el-upload-list__item-actions{
+        cursor: not-allowed
+      }
+    }
     .avatar-uploader{
       display: flex;
       .el-upload{

@@ -17,6 +17,7 @@
         </el-button>
       </el-row>
       <el-input
+        :disabled="disabled"
         v-model="searchText"
         :clearable="true"
         placeholder="搜索 比如 'plus'"
@@ -44,6 +45,7 @@
     </el-popover>
     <!-- 允许用户输入 -->
     <el-input
+      :disabled="disabled"
       v-if="userInput"
       v-model="currentValue"
       v-bind="bind"
@@ -56,7 +58,7 @@
       </el-button>
     </el-input>
     <!-- 不允许用户输入 -->
-    <el-button v-popover:pop v-if="!userInput">
+    <el-button :disabled="disabled" v-popover:pop v-if="!userInput">
       <template v-if="value">
         <i :class="'fa fa-' + value"></i>
       </template>
@@ -67,9 +69,11 @@
 
 <script>
 import icon from './data'
+import { d2CrudPlus } from 'd2-crud-plus'
 // d2-icon-select
 export default {
   name: 'd2p-icon-select',
+  mixins: [d2CrudPlus.input],
   props: {
     // 值
     value: {

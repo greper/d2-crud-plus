@@ -1,8 +1,8 @@
 <template>
   <div class="d2p-tree-selector">
-    <div  class="el-cascader el-cascader--default" @click="openDialog">
-      <div class="el-input el-input--default el-input--suffix">
-        <el-input ref="reference" />
+    <div  class="el-cascader el-cascader--default" :class="{'is-disabled':disabled}" @click="openDialog">
+      <div class="el-input el-input--default el-input--suffix" :class="{'is-disabled':disabled}" >
+        <el-input ref="reference" :disabled="disabled" />
         <span class="el-input__suffix">
           <span class="el-input__suffix-inner"><i class="el-input__icon el-icon-arrow-down" @click="openDialog"></i>
         </span>
@@ -50,6 +50,7 @@ import { d2CrudPlus } from 'd2-crud-plus'
 // 树形选择组件，需要import xx from 'd2p-extends'
 export default {
   name: 'd2p-tree-selector',
+  mixins: [d2CrudPlus.input],
   props: {
     // 值
     value: {
@@ -155,6 +156,9 @@ export default {
       this.$emit('current-change', event)
     },
     openDialog () {
+      if (this.disabled) {
+        return
+      }
       this.dialogVisible = true
       this.$nextTick(() => {
         if (this.value != null) {

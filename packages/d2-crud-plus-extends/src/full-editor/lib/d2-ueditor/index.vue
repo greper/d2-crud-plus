@@ -1,17 +1,19 @@
 <template>
-  <div class="d2p_ueditor">
+  <div class="d2p-ueditor">
     <script ref="script" :name="name" type="text/plain"></script>
   </div>
 </template>
 
 <script>
 import LoadEvent from './utils/Event'
+import { d2CrudPlus } from 'd2-crud-plus'
 
 /**
  * ueditor富文本编辑器包装，支持v-model绑定
  */
 export default {
   name: 'd2p-ueditor',
+  mixins: [d2CrudPlus.input],
   props: {
     // 富文本
     value: {
@@ -52,6 +54,11 @@ export default {
     }
   },
   watch: {
+    disabled (value) {
+      if (this.editor) {
+        value ? this.editor.setDisabled() : this.editor.setEnabled()
+      }
+    },
     // 对外提供 v-model
     value (value) {
       this.$emit('change', value)
@@ -187,7 +194,7 @@ export default {
 }
 </script>
 <style lang="scss">
-  .d2p_ueditor{
+  .d2p-ueditor{
     .edui-default .edui-toolbar .edui-button, .edui-default .edui-toolbar .edui-splitbutton, .edui-default .edui-toolbar .edui-menubutton, .edui-default .edui-toolbar .edui-combox {
       line-height: normal;
     }

@@ -18,24 +18,39 @@ export default {
      * @description 传入的自定义参数
      */
     props: {
-      default: null
+      default: undefined
     },
     /**
      * @description 传入的行数据
      */
     scope: {
-      default: null
+      default: undefined
     },
     /**
      * 监听组件事件
      */
     events: {
-      default: null
+      default: undefined
+    },
+    /**
+     * 插槽
+     */
+    slots: {
+      default: undefined
+    },
+    /**
+     *
+     */
+    disabled: {
+      default: undefined
+    },
+    readonly: {
+      default: undefined
     }
   },
   render (h) {
-    let self = this
-    let events = {}
+    const self = this
+    const events = {}
     if (self.events) {
       for (let key in self.events) {
         events[key] = (event) => {
@@ -45,12 +60,17 @@ export default {
         }
       }
     }
+    const slots = {}
+    if (self.slots) {
+      for (let key in self.slots) {
+        slots[key] = (scope) => {
+          return self.slots[key](h, scope)
+        }
+      }
+    }
+    let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
+    let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
-      props: {
-        value: self.value,
-        scope: self.scope,
-        ...self.props
-      },
       on: {
         input: function (event) {
           self.$emit('input', event)
@@ -62,6 +82,14 @@ export default {
           self.$emit('ready', event)
         },
         ...events
+      },
+      scopedSlots: slots,
+      props: {
+        value: self.value,
+        scope: self.scope,
+        disabled: disabled,
+        readonly: readonly,
+        ...self.props
       }
     })
   }

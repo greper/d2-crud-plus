@@ -60,10 +60,15 @@
         <d2-column v-for="(item, index) in columns"
                    :key="index"
                    :item="item"
-                   @cell-data-change="handleCellDataChange">
-          <template slot-scope="scope" :slot="item.key+'Slot'">
-            <slot :name="item.key+'Slot'" :row="scope.row"/>
-          </template>
+                   @cell-data-change="handleCellDataChange"
+                   @cell-component-ready="handleCellComponentReady"
+                   @cell-component-custom-event="handleCellComponentCustomEvent"
+        >
+            <template slot-scope="scope" :slot="item.key+'Slot'">
+              <template v-if="item.rowSlot">
+                <slot :name="item.key+'Slot'" :row="scope.row"/>
+              </template>
+            </template>
         </d2-column>
 
         <el-table-column
@@ -135,22 +140,24 @@
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions">
-          <template v-for="(value, key, index) in formData" >
+          <template v-for="(value,key, index) in getFormTemplate()" >
             <el-col :key="index"
-              v-if="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.show, true) : true"
-              :span="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.span, 24) : 24"
-              :offset="handleFormTemplateMode(key).component ? handleAttribute(handleFormTemplateMode(key).component.offset, 0) : 0"
+              v-if="handleFormComponentAttr(key,'show', true)"
+              :span="handleFormComponentAttr(key,'span', 24)"
+              :offset="handleFormComponentAttr(key,'offset', 0)"
             >
               <el-form-item
                 :label="handleFormTemplateMode(key).title"
                 :prop="key"
               >
                 <template v-if="handleFormTemplateMode(key).slot === true">
-                  <slot :name="key+'FormSlot'" v-bind:form="formData" ></slot>
+                  <slot :name="key+'FormSlot'" v-bind:form="formData" />
                 </template>
                 <el-input
                   v-else-if="(!handleFormTemplateMode(key).component) ||((!handleFormTemplateMode(key).component.name) && (!handleFormTemplateMode(key).component.render)) || handleFormTemplateMode(key).component.name === 'el-input'"
                   v-model="formData[key]"
+                  :disabled="handleFormComponentAttr(key,'disabled', false)"
+                  :readonly="handleFormComponentAttr(key,'readonly', false)"
                   v-bind="(handleFormTemplateMode(key).component.props?handleFormTemplateMode(key).component.props:handleFormTemplateMode(key).component)"
                   @change="handleFormDataChange($event,key)"
                 >
@@ -159,11 +166,14 @@
                   v-else-if="handleFormTemplateMode(key).component.name"
                   v-model="formData[key]"
                   :component-name="handleFormTemplateMode(key).component.name"
+                  :disabled="handleFormComponentAttr(key,'disabled', false)"
+                  :readonly="handleFormComponentAttr(key,'readonly', false)"
                   :props="handleFormTemplateMode(key).component.props"
                   :events="handleFormTemplateMode(key).component.events"
+                  :slots="handleFormTemplateMode(key).component.slots"
                   @change="handleFormDataChange($event,key)"
                   @ready="handleFormComponentReady($event,key)"
-                  @custom="handleFormCustomEvent($event,key)"
+                  @custom="handleFormComponentCustomEvent($event,key)"
                 >
                 </render-custom-component>
                 <render-component
@@ -176,7 +186,7 @@
                 <template v-if="handleFormTemplateMode(key).helper">
                   <div class="form-item-helper" v-if=" typeof  handleFormTemplateMode(key).helper === 'string'">{{handleFormTemplateMode(key).helper}}</div>
                   <div class="form-item-helper"  v-else-if="handleFormTemplateMode(key).helper.slot === true">
-                    <slot :name="key+'HelperSlot'" v-bind:form="formData" ></slot>
+                    <slot :name="key+'HelperSlot'" v-bind:form="formData" />
                   </div>
                 </template>
               </el-form-item>
@@ -238,14 +248,20 @@ export default {
     handleFormDataChange (value, key) {
       this.$emit('form-data-change', { key: key, value: value, form: this.formData })
     },
-    handleCellDataChange (column) {
-      this.$emit('cell-data-change', column)
-    },
     handleFormComponentReady (event, key) {
       this.$emit('form-component-ready', { event: event, key: key, form: this.formData })
     },
-    handleFormCustomEvent (event, key) {
+    handleFormComponentCustomEvent (event, key) {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
+    },
+    handleCellDataChange (column) {
+      this.$emit('cell-data-change', column)
+    },
+    handleCellComponentReady (column) {
+      this.$emit('cell-component-ready', column)
+    },
+    handleCellComponentCustomEvent (column) {
+      this.$emit('cell-component-custom-event', column)
     },
     handleDialogOpened (event) {
       // TODO 暂时无效

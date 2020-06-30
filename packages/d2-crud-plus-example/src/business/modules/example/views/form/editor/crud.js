@@ -26,6 +26,19 @@ export const crudOptions = (vm) => {
         type: 'text-area'
       },
       {
+        title: '禁用启用',
+        key: 'disable',
+        sortable: true,
+        search: { disabled: false },
+        type: 'dict-switch',
+        dict: { data: [{ value: true, label: '禁用' }, { value: false, label: '启用' }] },
+        form: {
+          component: {
+            span: 24
+          }
+        }
+      },
+      {
         title: '切换编辑器',
         key: 'change',
         sortable: false,
@@ -47,6 +60,9 @@ export const crudOptions = (vm) => {
         disabled: true, // 设置true可以在行展示中隐藏
         form: {
           component: {
+            disabled: () => {
+              return vm.getEditForm().disable
+            },
             props: {
               uploader: {
                 type: 'form' // 上传后端类型【cos,aliyun,oss,form】
@@ -70,6 +86,9 @@ export const crudOptions = (vm) => {
         disabled: true, // 设置true可以在行展示中隐藏
         form: {
           component: {
+            disabled: () => {
+              return vm.getEditForm().disable
+            },
             props: {
               config: {
                 serverUrl: '/api/ueditor/'

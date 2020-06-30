@@ -5,10 +5,12 @@
     type="textarea"
     :rows='rows'
     placeholder=""
-    :value="text"
+    :value="currentValue"
     :style="{width:width}"
-    @change="doChange"
-    @input="doInput"
+    :disabled="disabled"
+    :readonly="readonly"
+    @change="onChange"
+    @input="onInput"
     v-bind="_elProps"
   >
   </el-input>
@@ -16,21 +18,20 @@
 
 <script>
 // text-area封装
+import input from '../../mixins/input'
+
 export default {
   name: 'text-area',
+  mixins: [input],
   props: {
-    // 值
-    value: { type: String, require: false },
     // 宽度，数字后面要带px
     width: { type: String, require: false, default: '100%' },
     // 行数
-    rows: { type: Number, require: false, default: 3 },
-    disabled: { type: Boolean, require: false, default: false }
+    rows: { type: Number, require: false, default: 3 }
   },
 
   data () {
     return {
-      text: ''
     }
   },
   computed: {
@@ -40,32 +41,7 @@ export default {
       }
     }
   },
-  mounted () {
-    this.setValue(this.value)
-  },
-  watch: {
-    value: function (newVal, oldVal) {
-      if (this.selectValue === newVal) {
-        return
-      }
-      this.setValue(newVal)
-    }
-  },
   methods: {
-    setValue (newVal) {
-      this.text = newVal
-    },
-    handleClick () {
-      // this.$emit('input', !this.value)
-    },
-    doChange ($event) {
-      let val = $event
-      this.$emit('change', val)
-    },
-    doInput ($event) {
-      let val = $event
-      this.$emit('input', val)
-    }
   }
 }
 </script>

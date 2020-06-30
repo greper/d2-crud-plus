@@ -1,6 +1,6 @@
 <template>
-  <el-checkbox-group :value="selectValue" v-bind="_elProps" style="width:100%" @input="doInput"  @change="doChange">
-    <el-checkbox v-for="option in _options"
+  <el-checkbox-group :value="selectValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
+    <el-checkbox :disabled="disabled" :readonly="readonly" v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]"
                  v-bind="option"
@@ -10,9 +10,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+import input from '../../mixins/input'
 // 字典radio选择器
 export default {
   name: 'dict-checkbox',
+  mixins: [input],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -77,11 +79,6 @@ export default {
       }
     })
   },
-  watch: {
-    value: function (newVal, oldVal) {
-      this.setValue(newVal)
-    }
-  },
   methods: {
     setValue (newVal) {
       if (newVal === this.selectValue) {
@@ -96,12 +93,6 @@ export default {
         return
       }
       this.selectValue = newVal
-    },
-    doInput ($event) {
-      this.$emit('input', $event)
-    },
-    doChange ($event) {
-      this.$emit('change', $event)
     }
   }
 }

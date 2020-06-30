@@ -23,18 +23,17 @@ export default {
         row
       })
       this.editIndex = index
-      if (templage) {
-        this.formData = _clonedeep(templage)
-        this.editTemplateStorage = _clonedeep(templage)
-      } else {
-        this.formData = this.editTemplate ? _clonedeep(this.editTemplate) : {}
-        this.editTemplateStorage = this.editTemplate ? _clonedeep(this.editTemplate) : {}
+      if (!templage) {
+        templage = this.editTemplate
       }
+      const formData = {}
+      this.editTemplateStorage = templage ? _clonedeep(templage) : {}
       this.fetchDetail(index, row).then(newRow => {
         this.editDataStorage = newRow
-        _forEach(this.formData, (value, key) => {
-          this.formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
+        _forEach(templage, (value, key) => {
+          formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
         })
+        this.$set(this, 'formData', formData)
         this.isDialogShow = true
       })
     },

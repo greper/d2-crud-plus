@@ -1,8 +1,8 @@
 <template>
   <span>
     <el-tag :type="color" >您点击了:  {{currentValue}}</el-tag>
-    <el-button class="d2-ml-5" @click="doClick('1')">点击1</el-button>
-    <el-button @click="doClick('2')">点击2</el-button>
+    <el-button :diabled="disabled || readonly" class="d2-ml-5" @click="doClick('1')">点击1</el-button>
+    <el-button :diabled="disabled || readonly" @click="doClick('2')">点击2</el-button>
   </span>
 </template>
 
@@ -17,6 +17,18 @@ export default {
     value: {
       type: String,
       required: false
+    },
+    // 禁用
+    disabled: {
+      type: [Boolean],
+      required: false,
+      default: false
+    },
+    // 只读
+    readonly: {
+      type: [Boolean],
+      required: false,
+      default: false
     },
     // 你可以定义一些参数，通过component.props传进来
     color: {

@@ -1,18 +1,22 @@
 <template>
   <el-cascader
     class="d2p-cascade"
-    :value="selectValue"
+    :value="currentValue"
     :options="_options"
+    :disabled="disabled" :readonly="readonly"
     v-bind="_elProps"
-    @input="doInput" ></el-cascader>
+    @input="onInput" ></el-cascader>
 </template>
 
 <script>
 import { merge } from 'lodash'
 import dict from '../../utils/util.dicts'
+import input from '../../mixins/input'
+
 // 级联选择器
 export default {
   name: 'cascade-select',
+  mixins: [input],
   props: {
     // 数据字典<br/>
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -41,8 +45,7 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined,
-      selectValue: undefined
+      dictOptions: undefined
     }
   },
   computed: {
@@ -68,7 +71,6 @@ export default {
     }
   },
   created () {
-    this.setValue(this.value)
   },
   mounted () {
     dict.get(this.dict).then((data) => {
@@ -78,33 +80,21 @@ export default {
       }
     })
   },
-  watch: {
-    value: function (newVal, oldVal) {
-      this.$emit('change', newVal)
-      if (this.selectValue === newVal) {
-        return
-      }
-      this.setValue(newVal)
-    }
-  },
   methods: {
     setValue (value) {
       if (value == null) {
-        this.selectValue = []
+        this.currentValue = []
         return
       }
       if (typeof this.value === 'string') {
-        this.selectValue = value.split(',')
+        this.currentValue = value.split(',')
         return
       }
       if (value instanceof Array) {
-        this.selectValue = value
+        this.currentValue = value
         return
       }
-      this.selectValue = []
-    },
-    doInput ($event) {
-      this.$emit('input', $event)
+      this.currentValue = []
     }
   }
 }

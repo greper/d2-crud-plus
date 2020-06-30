@@ -2,8 +2,9 @@
     <el-select
         :value="selectValue"
         :value-key="dict.value"
-        @input="doInput"
-        @change="doChange"
+        @input="onInput"
+        :disabled="disabled"
+        :readonly="readonly"
         style="width:100%"
         v-bind="_elProps"
     >
@@ -20,9 +21,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+import input from '../../mixins/input'
 // 字典选择器
 export default {
   name: 'dict-select',
+  mixins: [input],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -99,14 +102,6 @@ export default {
       }
     })
   },
-  watch: {
-    value: function (newVal, oldVal) {
-      if (this.selectValue === newVal) {
-        return
-      }
-      this.setValue(newVal)
-    }
-  },
   methods: {
     setValue (newVal) {
       if (!this._elProps.multiple) {
@@ -129,16 +124,8 @@ export default {
         return
       }
       this.selectValue = newVal
-    },
-    handleClick () {
-      // this.$emit('input', !this.value)
-    },
-    doInput ($event) {
-      this.$emit('input', $event)
-    },
-    doChange ($event) {
-      this.$emit('change', $event)
     }
+
   }
 }
 </script>

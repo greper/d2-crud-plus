@@ -2,8 +2,10 @@
   <el-switch
     :value="value"
     v-bind="_elProps"
-    @input="doInput"
-    @change="doChange"
+    @input="onInput"
+    @change="onChange"
+    :disabled="disabled"
+    :readonly="readonly"
     :active-color="_active[dict.color]"
     :active-value="_active[dict.value]"
     :active-text="_active[dict.label]"
@@ -16,9 +18,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
+import input from '../../mixins/input'
 // 字典radio选择器
 export default {
   name: 'dict-switch',
+  mixins: [input],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -48,8 +52,7 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined,
-      selectValue: ''
+      dictOptions: undefined
     }
   },
   computed: {
@@ -91,12 +94,10 @@ export default {
     })
   },
   methods: {
-    doInput ($event) {
-      this.$emit('input', $event)
-    },
-    doChange ($event) {
-      this.$emit('change', $event)
+    setValue () {
+      // 置空
     }
+
   }
 }
 </script>

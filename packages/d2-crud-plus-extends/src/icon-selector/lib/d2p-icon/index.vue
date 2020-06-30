@@ -11,7 +11,7 @@ export default {
     value: {
       type: String,
       required: false,
-      default: 'font-awesome'
+      default: ''
     }
   }
 }

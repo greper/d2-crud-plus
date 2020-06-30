@@ -1,6 +1,7 @@
 import components from './components'
 
 import crud from './mixins/crud'
+import input from './mixins/input'
 import dict from './utils/util.dicts'
 import height from './utils/util.height'
 import columnResolve from './utils/util.column.resolve'
@@ -38,5 +39,6 @@ const install = (Vue, options) => {
 // }
 export default { install,
   util,
-  crud
+  crud,
+  input
 }

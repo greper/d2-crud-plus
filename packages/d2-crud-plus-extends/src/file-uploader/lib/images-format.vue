@@ -1,9 +1,20 @@
 <template>
-  <span>
+  <span class="d2p-image-format">
      <el-image
        :style="{width:imgWidth,height:imgHeight,'margin-right':'10px',border:'1px solid #eee'}"
        v-for="url in urls"  :key="url" :src="url"
-       :preview-src-list="urls"  fit="contain"/>
+       :preview-src-list="urls"  fit="contain">
+       <template v-if="error==='slot'">
+         <div slot="error" class="image-slot">
+            <slot name="error"/>
+         </div>
+       </template>
+       <template v-else-if="error">
+         <div slot="error" class="image-slot">
+            <img :src="error" width="50%"/>
+         </div>
+       </template>
+     </el-image>
   </span>
 </template>
 
@@ -31,6 +42,13 @@ export default {
     fit: {
       default: 'contain'
     },
+    // 内部封装[el-image](https://element.eleme.cn/#/zh-CN/component/image)组件的属性参数<br/>
+    elProps: {
+      type: Object
+    },
+    error: {
+      default: undefined
+    },
     // 构建下载url方法
     buildUrl: {
       type: Function,
@@ -41,7 +59,6 @@ export default {
   },
   data () {
     return {
-      dictData: []
     }
   },
   computed: {
@@ -80,6 +97,11 @@ export default {
         return this.width + 'px'
       }
       return this.width
+    },
+    _elProps () {
+      let defaultElProps = {}
+      Object.assign(defaultElProps, this.elProps)
+      return defaultElProps
     }
   },
   mounted () {
@@ -92,4 +114,16 @@ export default {
 }
 </script>
 <style lang="scss">
+.d2p-image-format{
+  .image-slot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .el-image-viewer__close {
+    color: #fff;
+  }
+}
+
 </style>

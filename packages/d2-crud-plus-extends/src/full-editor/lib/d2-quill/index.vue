@@ -1,5 +1,5 @@
 <template>
-  <div ref="editor" class="ql-editor" style="width:100%;min-height: 300px;"></div>
+  <div ref="editor"  class="ql-editor d2p-quill" :class="{'is-disabled':'disabled'}" style="width:100%;min-height: 300px;"></div>
 </template>
 
 <script>
@@ -9,9 +9,11 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
 import lodash from 'lodash'
+import { d2CrudPlus } from 'd2-crud-plus'
 // quill富文本编辑器
 export default {
   name: 'd2p-quill',
+  mixins: [d2CrudPlus.input],
   props: {
     value: {
       type: String,
@@ -60,6 +62,11 @@ export default {
     }
   },
   watch: {
+    disabled (value) {
+      if (this.Quill) {
+        this.Quill.enable(!value)
+      }
+    },
     value: {
       handler (val) {
         // 确认是新的值
@@ -185,9 +192,15 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="scss">
   .ql-toolbar{
     line-height: 24px;
+  }
+  .ql-disabled{
+    cursor: not-allowed;
+    .ql-editor{
+      cursor: not-allowed;
+    }
   }
 
 </style>

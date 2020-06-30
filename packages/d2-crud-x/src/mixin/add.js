@@ -11,17 +11,17 @@ export default {
       this.$emit('dialog-open', {
         mode: 'add'
       })
-      this.isDialogShow = true
-      if (templage) {
-        this.formData = _clonedeep(templage)
-        this.addTemplateStorage = _clonedeep(templage)
-      } else {
-        this.formData = this.addTemplate ? _clonedeep(this.addTemplate) : {}
-        this.addTemplateStorage = this.addTemplate ? _clonedeep(this.addTemplate) : {}
+      if (!templage) {
+        templage = this.addTemplate
       }
-      _forEach(this.formData, (value, key) => {
-        this.formData[key] = this.addTemplateStorage[key].value
+      const formData = {}
+      this.addTemplateStorage = templage ? _clonedeep(templage) : {}
+
+      _forEach(this.addTemplateStorage, (value, key) => {
+        formData[key] = this.addTemplateStorage[key].value
       })
+      this.$set(this, 'formData', formData)
+      this.isDialogShow = true
     }
   }
 }

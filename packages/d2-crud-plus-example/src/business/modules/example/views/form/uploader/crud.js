@@ -7,7 +7,40 @@ export const crudOptions = (vm) => {
         title: '头像',
         key: 'avatar1',
         type: 'avatar-uploader',
-        width: 120
+        width: 120,
+        component: {
+          props: {
+            error: false
+          }
+        }
+      },
+      {
+        title: '加载失败url',
+        key: 'avatar_error1',
+        type: 'avatar-uploader',
+        width: 120,
+        component: {
+          props: {
+            error: 'http://greper.veryreader.com/extends/error.jpg'
+          }
+        }
+      },
+      {
+        title: '加载失败slot',
+        key: 'avatar_error2',
+        type: 'avatar-uploader',
+        width: 120,
+        component: {
+          props: {
+            error: 'slot'
+          },
+          slots: {
+            // jsx 自定义错误展示
+            error: (h, scope) => {
+              return (<i class="el-icon-picture-outline" style='font-size:20px'/>)
+            }
+          }
+        }
       },
       {
         title: '获取md5',
@@ -118,59 +151,6 @@ export const crudOptions = (vm) => {
           helper: {
             slot: true
           }
-        }
-      },
-      {
-        title: '七牛',
-        key: 'qiniuAvatar',
-        sortable: true,
-        type: 'avatar-uploader',
-        width: 100,
-        form: {
-          component: {
-            props: {
-              type: 'qiniu'
-            }
-          },
-          helper: '这里演示的是七牛文件上传'
-        }
-      },
-      {
-        title: '阿里云',
-        key: 'aliossAvatar',
-        sortable: true,
-        type: 'avatar-uploader',
-        width: 100,
-        form: {
-          component: {
-            props: {
-              type: 'alioss',
-              suffix: '!200_200'
-            },
-            span: 24
-          },
-          helper: '这里演示的是阿里云文件上传,配置样式，居中裁剪成200x200方形图片'
-        }
-      },
-      {
-        title: '本地服务器',
-        key: 'formAvatar',
-        sortable: true,
-        type: 'avatar-uploader',
-        width: 130,
-        form: {
-          component: {
-            props: {
-              uploader: {
-                type: 'form',
-                custom: {
-                  keepName: false
-                }
-              }
-            },
-            span: 24
-          },
-          helper: 'form表单上传'
         }
       }
     ]

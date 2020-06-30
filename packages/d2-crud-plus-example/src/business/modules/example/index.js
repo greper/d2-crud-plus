@@ -35,7 +35,15 @@ const aside = [
           { path: '/demo/form/column', title: '特殊列' },
           { path: '/demo/form/fix', title: '固定列' },
           { path: '/demo/form/editor', title: '富文本' },
-          { path: '/demo/form/cell', title: '行编辑' }
+          { path: '/demo/form/cell', title: '行编辑' },
+          { path: '/demo/form/validation', title: '表单校验' },
+          {
+            title: '显隐与禁用',
+            children: [
+              { path: '/demo/form/show', title: '显隐只读' },
+              { path: '/demo/form/disabled', title: '禁用启用' }
+            ]
+          }
         ]
       },
       {
@@ -96,6 +104,16 @@ const routers = {
           component: _import(viewsPrefix + 'form/fix')
         },
         {
+          path: 'form/validation',
+          name: 'formValidation',
+          meta: {
+            title: '表单校验',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/validation')
+        },
+        {
           path: 'form/editor',
           name: 'formEditor',
           meta: {
@@ -144,6 +162,26 @@ const routers = {
             cache: true
           },
           component: _import(viewsPrefix + 'form/select')
+        },
+        {
+          path: 'form/show',
+          name: 'formShow',
+          meta: {
+            title: '动态显隐',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/show')
+        },
+        {
+          path: 'form/disabled',
+          name: 'formDisabled',
+          meta: {
+            title: '禁用启用',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/disabled')
         },
         {
           path: 'form/slot',

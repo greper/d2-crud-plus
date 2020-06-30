@@ -7,8 +7,14 @@
         v-else-if="item.component && item.component.name"
         v-model="scope.row[item.key]"
         :component-name="item.component.name"
+        :disabled="handleComponentProp(item,item.key,'disabled', false)"
+        :readonly="handleComponentProp(item,item.key,'readonly', false)"
         :props="item.component.props ? item.component.props : null"
         @change="handleCellDataChange($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
+        :events="item.component.events"
+        :slots="item.component.slots"
+        @ready="handleCellComponentReady($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
+        @custom="handleCellComponentCustomEvent($event, {rowIndex: scope.$index, key: item.key, value: scope.row[item.key], row: scope.row})"
         :scope="scope">
       </render-custom-component>
       <render-component
@@ -53,6 +59,14 @@ export default {
     handleCellDataChange (value, column) {
       column.value = value
       this.$emit('cell-data-change', column)
+    },
+    handleCellComponentReady ($event, column) {
+      column.event = $event
+      this.$emit('cell-component-ready', column)
+    },
+    handleCellComponentCustomEvent ($event, column) {
+      column.event = $event
+      this.$emit('cell-component-custom-event', column)
     }
   }
 }

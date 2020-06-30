@@ -27,8 +27,8 @@ component:{
 下面以`日期选择器禁用今天之前的日期`这个需求为例
 ### 1. 查看type对应使用的什么组件
 日期选择器我们配置的 `type=date`    
-所以先去[字段类型列表](/types.html)，查找`type=date`里面用的是什么组件   
-在[日期时间选择](/types.html#日期时间选择)这一条中我们找到了`type=date`的配置
+所以先去[字段类型列表](./types.html)，查找`type=date`里面用的是什么组件   
+在[日期时间选择](./types.html#日期时间选择)这一条中我们找到了`type=date`的配置
 ```js
 date: {
     form: { component: { name: 'el-date-picker' } },
@@ -38,7 +38,7 @@ date: {
 从这里知道`type=date`使用的`el-date-picker`组件
 
 ### 2.查找该组件的文档，确定参数
-在[日期时间选择](/types.html#日期时间选择) 拉到下方   
+在[日期时间选择](./types.html#日期时间选择) 拉到下方   
 可以看到相关组件的文档链接（如果没有文档链接，请告诉我，我会尽快加上的）
  
 ![](./images/type-date-picker.jpg)  

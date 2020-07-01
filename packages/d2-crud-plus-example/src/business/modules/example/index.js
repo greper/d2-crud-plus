@@ -13,8 +13,7 @@ const aside = [
         children: [
           { path: '/demo/form/date', title: '日期时间' },
           { path: '/demo/form/select', title: '选择组件' },
-          { path: '/demo/form/slot', title: '自定义组件' },
-          { path: '/demo/form/phone', title: '国际电话输入校验' },
+          { path: '/demo/form/phone', title: '国际电话输入框' },
           {
             title: '文件上传',
             children: [
@@ -26,26 +25,28 @@ const aside = [
               { path: '/demo/form/uploader/qiniu', title: '七牛上传' }
             ]
           },
-
-          { path: '/demo/form/customType', title: '自定义字段类型' },
           { path: '/demo/form/el', title: 'EL表单组件' },
           { path: '/demo/form/area', title: '省市区选择组件' },
           { path: '/demo/form/icon', title: '图标选择' },
+          { path: '/demo/form/editor', title: '富文本' }
+
+        ]
+      },
+      {
+        title: 'CRUD增强功能',
+        icon: 'folder-o',
+        children: [
+          { path: '/demo/form/slot', title: '自定义组件' },
+          { path: '/demo/form/customType', title: '自定义字段类型' },
           { path: '/demo/form/header', title: '多级表头' },
           { path: '/demo/form/column', title: '特殊列' },
           { path: '/demo/form/fix', title: '固定列' },
-          { path: '/demo/form/editor', title: '富文本' },
           { path: '/demo/form/cell', title: '行编辑' },
           { path: '/demo/form/validation', title: '表单校验' },
           { path: '/demo/form/group', title: '表单分组' },
           { path: '/demo/form/addi', title: '动态添加表单字段' },
-          {
-            title: '显隐与禁用',
-            children: [
-              { path: '/demo/form/show', title: '显隐只读' },
-              { path: '/demo/form/disabled', title: '禁用启用' }
-            ]
-          }
+          { path: '/demo/form/show', title: '显隐只读' },
+          { path: '/demo/form/disabled', title: '禁用启用' }
         ]
       },
       {

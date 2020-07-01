@@ -160,11 +160,12 @@ export default {
         return
       }
       this.dialogVisible = true
-      this.$nextTick(() => {
-        if (this.value != null) {
-          this.$refs.elTree.setCheckedKeys(this.value, this.leafOnly)
+      setTimeout(() => {
+        if (this.selected != null) {
+          console.log('this.value', this.selected)
+          this.$refs.elTree.setCheckedKeys(this.selected, this.leafOnly)
         }
-      })
+      }, 1)
     },
     getValueKey (item) {
       if (this._elProps.props.value != null) {

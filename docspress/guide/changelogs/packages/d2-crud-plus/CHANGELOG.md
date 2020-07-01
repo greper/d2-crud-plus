@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.11.1...d2-crud-plus@1.11.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* 修复删除最后一页的最后一条数据后列表不刷新的bug ([a77e673](https://github.com/greper/d2-crud-plus/commit/a77e6731afc94ebe0914b8cbfbc4f51ec67f537c))
+
+
+### Performance Improvements
+
+* 手动调用addRow方法可以传入默认值 ([59b7a6f](https://github.com/greper/d2-crud-plus/commit/59b7a6f0f33d6cab9fafb3ab7bf02a47007d172c))
+
+
+
+
+
 ## [1.11.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.11.0...d2-crud-plus@1.11.1) (2020-07-01)
 
 

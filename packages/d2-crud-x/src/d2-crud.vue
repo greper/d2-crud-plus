@@ -305,8 +305,5 @@ export default {
     padding-left:30px;
     padding-right:30px;
   }
-  .el-dialog__body {
-    padding: 10px 20px;
-  }
 }
 </style>

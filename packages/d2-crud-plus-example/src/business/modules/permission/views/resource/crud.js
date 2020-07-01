@@ -33,6 +33,13 @@ export const crudOptions = (vm) => {
         title: '资源名称',
         key: 'title',
         sortable: true,
+        form: {
+          component: {
+            props: {
+              placeholder: '菜单名称'
+            }
+          }
+        },
         width: 200
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -53,6 +60,13 @@ export const crudOptions = (vm) => {
         title: '资源代码',
         key: 'name',
         sortable: true,
+        form: {
+          component: {
+            props: {
+              placeholder: '路由的name'
+            }
+          }
+        },
         width: 170
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -63,6 +77,13 @@ export const crudOptions = (vm) => {
         title: '权限代码',
         key: 'permission',
         sortable: true,
+        form: {
+          component: {
+            props: {
+              placeholder: 'aaa:bbb:ccc'
+            }
+          }
+        },
         width: 170
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -73,6 +94,13 @@ export const crudOptions = (vm) => {
         title: '路由地址',
         key: 'path',
         sortable: true,
+        form: {
+          component: {
+            props: {
+              placeholder: 'permission/resource'
+            }
+          }
+        },
         width: 180
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -83,6 +111,14 @@ export const crudOptions = (vm) => {
         title: '路由组件',
         key: 'component',
         sortable: true,
+        form: {
+          component: {
+            props: {
+              placeholder: ''
+            }
+          },
+          helper: 'layoutHeaderAside或/permission/views/resource'
+        },
         width: 180
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -128,7 +164,29 @@ export const crudOptions = (vm) => {
         title: '父节点',
         key: 'parentId',
         sortable: true,
-        width: 90
+        width: 90,
+        type: 'tree-selector',
+        dict: {
+          url: '/permission/manager/resource/tree',
+          isTree: true,
+          value: 'id',
+          label: 'title',
+          getData: (url, dict) => { // 配置此参数会覆盖全局的getRemoteDictFunc
+            return request({ url: url }).then(ret => {
+              return [{ id: 0, title: '根节点', children: ret.data }]
+            })
+          }
+        },
+        form: {
+          component: {
+            props: {
+              multiple: false,
+              elProps: {
+                defaultExpandAll: true
+              }
+            }
+          }
+        }
 
         // type: 'select',
         // search: { disabled: true }, //开启查询

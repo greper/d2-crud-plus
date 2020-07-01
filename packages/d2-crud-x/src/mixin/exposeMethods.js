@@ -36,7 +36,6 @@ export default {
       template = null,
       addData = null
     }) {
-      console.log('addData11', addData)
       if (mode === 'edit') {
         this.handleEdit(rowIndex, this.d2CrudData[rowIndex], template)
       } else if (mode === 'add') {

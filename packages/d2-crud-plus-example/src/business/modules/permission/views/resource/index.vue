@@ -73,13 +73,19 @@ export default {
         return ret
       })
     },
+    clearResourceTreeDictCache () {
+      d2CrudPlus.util.dict.clear('/permission/manager/resource/tree')
+    },
     addRequest (row) {
+      this.clearResourceTreeDictCache()
       return AddObj(row)
     },
     updateRequest (row) {
+      this.clearResourceTreeDictCache()
       return UpdateObj(row)
     },
     delRequest (row) {
+      this.clearResourceTreeDictCache()
       return DelObj(row.id)
     },
     infoRequest (row) {

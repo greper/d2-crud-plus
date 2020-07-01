@@ -198,6 +198,6 @@ export default {
     .edui-default .edui-toolbar .edui-button, .edui-default .edui-toolbar .edui-splitbutton, .edui-default .edui-toolbar .edui-menubutton, .edui-default .edui-toolbar .edui-combox {
       line-height: normal;
     }
-    .edui-editor{line-height: normal}
+    .edui-editor{line-height: normal;box-sizing: border-box;}
   }
 </style>

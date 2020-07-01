@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.11.0...@d2-plus/d2-crud-plus-example@1.11.1) (2020-07-01)
+
+
+### Performance Improvements
+
+* 动态添加分组示例 ([3bc9ccc](https://github.com/d2-projects/d2-admin/commit/3bc9ccc03d2a75eeec9f9fb0e3623a7a4000025a))
+* 增加动态添加表单字段示例 ([d931710](https://github.com/d2-projects/d2-admin/commit/d9317107e916f1014b8e0f21ad7648786d7f782f))
+
+
+
+
+
 # [1.11.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.10.2...@d2-plus/d2-crud-plus-example@1.11.0) (2020-06-30)
 
 

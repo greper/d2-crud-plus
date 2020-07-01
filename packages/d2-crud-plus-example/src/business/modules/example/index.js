@@ -38,6 +38,7 @@ const aside = [
           { path: '/demo/form/cell', title: '行编辑' },
           { path: '/demo/form/validation', title: '表单校验' },
           { path: '/demo/form/group', title: '表单分组' },
+          { path: '/demo/form/addi', title: '动态添加表单字段' },
           {
             title: '显隐与禁用',
             children: [
@@ -198,11 +199,21 @@ const routers = {
           path: 'form/slot',
           name: 'formSlot',
           meta: {
-            title: '插槽式自定义组件',
+            title: '自定义组件',
             auth: true,
             cache: true
           },
           component: _import(viewsPrefix + 'form/slot')
+        },
+        {
+          path: 'form/addi',
+          name: 'formAddi',
+          meta: {
+            title: '动态添加表单字段',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/addi')
         },
         {
           path: 'form/phone',

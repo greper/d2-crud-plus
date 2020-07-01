@@ -33,12 +33,14 @@ export default {
     showDialog ({
       mode,
       rowIndex = 0,
-      template = null
+      template = null,
+      addData = null
     }) {
+      console.log('addData11', addData)
       if (mode === 'edit') {
         this.handleEdit(rowIndex, this.d2CrudData[rowIndex], template)
       } else if (mode === 'add') {
-        this.handleAdd(template)
+        this.handleAdd(template, addData)
       }
     },
     /**

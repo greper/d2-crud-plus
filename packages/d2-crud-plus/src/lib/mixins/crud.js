@@ -403,9 +403,10 @@ export default {
     /**
      * 点击添加按钮
      */
-    addRow () {
+    addRow (addData) {
       this.getD2Crud().showDialog({
-        mode: 'add'
+        mode: 'add',
+        addData: addData
       })
     },
     /**

@@ -97,18 +97,15 @@ export default {
           tempGroups[key] = value
         })
       }
-
       this.fetchDetail(index, row).then(newRow => {
         this.formDataStorage = newRow
         let formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {
-          formGroupsActive.push(groupKey)
+          if (!group.collapsed) {
+            formGroupsActive.push(groupKey)
+          }
           _forEach(group.columns, (template, key) => {
-            if (this.formMode === 'add') {
-              formData[key] = template.value
-            } else {
-              formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : undefined
-            }
+            formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : template.value
           })
         })
         this.$set(this, 'formGroupsActive', formGroupsActive)

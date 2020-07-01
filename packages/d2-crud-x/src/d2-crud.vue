@@ -167,7 +167,7 @@
           </template>
         </el-row>
 
-        <el-collapse v-if="formTemplateGroupStorage" v-model="formGroupsActive"    >
+        <el-collapse v-if="formTemplateGroupStorage" v-model="formGroupsActive" :accordion="formTemplateGroupStorage.accordion"    >
           <el-collapse-item v-for="(group,groupKey) in formTemplateGroupStorage.groups" :name="groupKey" :key="groupKey" :disabled="group.disabled" >
             <template slot="title" >
               <h3 v-if="!$scopedSlots[groupKey+'GroupTitleSlot']" class="group-title" ><i v-if="group.icon" class="header-icon" :class="group.icon"/> {{group.title}}</h3>
@@ -198,7 +198,6 @@
                 </el-col>
               </template>
             </el-row>
-
           </el-collapse-item>
         </el-collapse>
 

@@ -117,7 +117,14 @@ export default {
     },
     fetchDetail (index, row) {
       if (this.options.fetchDetail != null) {
-        return this.options.fetchDetail(index, row)
+        const ret = this.options.fetchDetail(index, row)
+        if (ret instanceof Promise) {
+          return ret
+        } else {
+          return new Promise(resolve => {
+            resolve(ret)
+          })
+        }
       } else {
         return new Promise(resolve => {
           if (row != null) {

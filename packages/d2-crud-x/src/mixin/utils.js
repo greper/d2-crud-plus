@@ -1,3 +1,4 @@
+import _forEach from 'lodash.foreach'
 export default {
   methods: {
     /**
@@ -12,11 +13,66 @@ export default {
       }
       return attribute || defaultValue
     },
-    getFormTemplate (key) {
-      if (key != null) {
-        return this.handleFormTemplateMode(key)
+    /**
+     * 查找字段配置
+     * @param key
+     * @param groupKey
+     * @returns {{}|{}|*}
+     */
+    getFormTemplate (key, groupKey = undefined) {
+      if (groupKey == null) {
+        if (key != null) {
+          // 未分组的字段
+          let column = this.formTemplateStorage[key]
+          if (column != null) {
+            return column
+          }
+          if (this.formTemplateGroupStorage) {
+            _forEach(this.formTemplateGroupStorage.groups, (value, groupKey) => {
+              if (value && value.colmuns[key]) {
+                return value.colmuns[key]
+              }
+            })
+          }
+          console.warn('formTemplate not found:key=', key, this.formTemplateStorage, this.formTemplateGroupStorage)
+          return null
+        }
+        return this.formTemplateStorage
       }
-      return this.formTemplateStorage
+
+      return this.getFormTemplateGroup(key, groupKey)
+    },
+    /**
+     * 查找分组下的字段配置
+     * @param groupKey 分组key
+     * @param key 不传获取分组下的字段列表
+     * @returns {{}|*}
+     */
+    getFormTemplateGroup (groupKey, key) {
+      if (!this.formTemplateGroupStorage) {
+        console.warn('formTemplateGroup not defined')
+        return null
+      }
+      if (groupKey == null) {
+        return this.formTemplateGroupStorage.groups
+      }
+      const group = this.formTemplateGroupStorage.groups[groupKey]
+      if (key != null) {
+        // 分组的字段
+        if (group && group.columns) {
+          if (group.columns[key]) {
+            return group.columns[key]
+          }
+        }
+        console.warn('formTemplate not found:group=', groupKey, 'key=', key)
+        return null
+      }
+      if (group) {
+        return group.columns
+      } else {
+        console.warn('formTemplateGroup not found:group=', groupKey)
+        return null
+      }
     },
     /**
      * @description 根据dialog模式渲染不同表单
@@ -36,24 +92,23 @@ export default {
     },
 
     getFormComponentProp (key, prop, defaultValue) {
-      let component = this.getFormTemplate(key).component
-      if (component && component.props) {
-        return this.handleAttribute(component.props[prop], defaultValue)
+      const template = this.getFormTemplate(key)
+      if (template && template.component && template.component.props) {
+        return this.handleAttribute(template.component.props[prop], defaultValue)
       }
       return defaultValue
     },
 
     getFormComponentAttr (key, attr, defaultValue) {
-      let component = this.getFormTemplate(key).component
-      if (component) {
-        return this.handleAttribute(component[attr], defaultValue)
+      const template = this.getFormTemplate(key)
+      if (template && template.component) {
+        return this.handleAttribute(template.component[attr], defaultValue)
       }
       return defaultValue
     },
-    getFormTemplateComponentAttr (template, attr, defaultValue) {
-      let component = template.component
-      if (component) {
-        return this.handleAttribute(component[attr], defaultValue)
+    getTemplateComponentAttr (template, attr, defaultValue) {
+      if (template && template.component) {
+        return this.handleAttribute(template.component[attr], defaultValue)
       }
       return defaultValue
     },

@@ -124,8 +124,15 @@ export default {
      * 获取编辑框的组件参数配置
      * @returns
      */
-    getEditFormTemplate (key) {
-      return this.getD2Crud().getFormTemplate(key)
+    getEditFormTemplate (key, groupKey = undefined) {
+      return this.getD2Crud().getFormTemplate(key, groupKey)
+    },
+    /**
+     * 获取编辑框的分组组件参数配置
+     * @returns
+     */
+    getEditFormTemplateGroup (groupKey, key) {
+      return this.getD2Crud().getFormTemplateGroup(groupKey, key)
     },
     /**
      * 初始化column配置
@@ -614,7 +621,7 @@ export default {
     handleFormDataChange ({ key, value, form }) {
       let column = this.crud.columnsMap[key]
       console.log('FormDataChanged:', key)
-      if (column.form != null && column.form.valueChange != null) {
+      if (column && column.form && column.form.valueChange) {
         column.form.valueChange(key, value, this.getEditForm())
       }
       this.doFormDataChange({ key, value })

@@ -25,6 +25,11 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange">
       <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+
+      <div slot="priceGroupTitleSlot" slot-scope="scope">
+        <h3 style="display: inline;" class="group-title"> <i class="header-icon" :class="scope.group.icon"/> {{scope.group.title}}</h3>
+        <span style="margin-left:10px">（我是自定义标题）</span>
+      </div>
     </d2-crud>
     <crud-footer ref="footer"
                   :current="crud.page.current"
@@ -62,3 +67,6 @@ export default {
   }
 }
 </script>
+<style>
+  .d2-crud .group-title{color:#67c23a}
+</style>

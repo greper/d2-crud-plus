@@ -75,10 +75,11 @@ export default {
        * @description 表单模板暂存
        */
       formTemplateStorage: {},
-
       formTemplateGroupStorage: {},
       formGroupsActive: []
     }
+  },
+  computed: {
   },
   methods: {
 

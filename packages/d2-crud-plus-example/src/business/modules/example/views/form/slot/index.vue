@@ -64,7 +64,11 @@
       </template>
 
       <template slot="FormBodyAppendSlot" slot-scope="scope">
-        <el-button @click="addColumn(scope)">动态添加字段</el-button>
+        <div class="d2-mt-10">
+        <el-button @click="addColumn(scope)">添加未分组字段</el-button>
+        <el-button @click="addGroup(scope)">添加分组</el-button>
+        <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
+        </div>
       </template>
 
       <template slot="FormFooterSlot" slot-scope="scope">
@@ -161,6 +165,48 @@ export default {
         }
       }
       this.$set(this.getEditFormTemplate(), key, column)
+      this.$set(this.getEditForm(), key, undefined)
+      console.log('add', this.getEditFormTemplate(), this.getEditForm())
+    },
+    addGroup (scope) {
+      const key = 'add' + Math.floor(Math.random() * 1000)
+      const groupKey = 'group' + Math.floor(Math.random() * 1000)
+      const group = {
+        title: '动态添加分组',
+        columns: {}
+      }
+      group.columns[groupKey] = {
+        title: '动态添加',
+        ket: key,
+        component: {
+          name: 'dict-select',
+          props: {
+            dict: { url: '/dicts/OpenStatusEnum' }
+          },
+          span: 12
+        }
+      }
+      const groups = this.getEditFormTemplateGroup()
+      this.$set(groups, groupKey, group)
+      this.$set(this.getEditForm(), key, undefined)
+      this.getD2Crud().formGroupsActive.push(groupKey)
+      console.log('add group:', this.getEditFormTemplateGroup(), this.getEditForm())
+    },
+    addGroupColumn (scope) {
+      const key = 'add' + Math.floor(Math.random() * 1000)
+      const column = {
+        title: '动态添加',
+        ket: key,
+        component: {
+          name: 'dict-select',
+          props: {
+            dict: { url: '/dicts/OpenStatusEnum' }
+          },
+          span: 12
+        }
+      }
+      const groupColumns = this.getEditFormTemplateGroup('jsx')
+      this.$set(groupColumns, key, column)
       this.$set(this.getEditForm(), key, undefined)
       console.log('add', this.getEditFormTemplate(), this.getEditForm())
     }

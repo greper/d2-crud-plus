@@ -8,6 +8,7 @@ export const crudOptions = {
     {
       title: '商品代码',
       key: 'code',
+      search: { disabled: false },
       sortable: true
     },
     {
@@ -52,10 +53,12 @@ export const crudOptions = {
       },
       price: {
         title: '库存价格',
+        icon: 'el-icon-price-tag',
         columns: ['store', 'price']
       },
       info: {
         title: '详情',
+        icon: 'el-icon-warning-outline',
         columns: ['intro', 'content']
       }
     }

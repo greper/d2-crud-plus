@@ -144,9 +144,9 @@
         <el-row v-bind="formOptions" >
           <template v-for="(item,key, index) in formTemplateStorage" >
             <el-col :key="index"
-              v-if="getFormTemplateComponentAttr(item,'show', true)"
-              :span="getFormTemplateComponentAttr(item,'span', 24)"
-              :offset="getFormTemplateComponentAttr(item,'offset', 0)"
+              v-if="getTemplateComponentAttr(item,'show', true)"
+              :span="getTemplateComponentAttr(item,'span', 24)"
+              :offset="getTemplateComponentAttr(item,'offset', 0)"
             >
               <d2-form-item
                 :template="item"
@@ -167,18 +167,18 @@
           </template>
         </el-row>
 
-        <el-collapse v-if="formTemplateGroupStorage" v-model="formGroupsActive"   >
-          <el-collapse-item v-for="(group,groupKey) in formTemplateGroupStorage.groups" :name="groupKey" :key="groupKey" >
-            <template slot="title">
-              <el-tag >{{group.title}} <i v-if="group.icon" class="header-icon" :class="group.icon"/> </el-tag>
+        <el-collapse v-if="formTemplateGroupStorage" v-model="formGroupsActive"    >
+          <el-collapse-item v-for="(group,groupKey) in formTemplateGroupStorage.groups" :name="groupKey" :key="groupKey" :disabled="group.disabled" >
+            <template slot="title" >
+              <h3 v-if="!$scopedSlots[groupKey+'GroupTitleSlot']" class="group-title" ><i v-if="group.icon" class="header-icon" :class="group.icon"/> {{group.title}}</h3>
+              <slot :name="groupKey+'GroupTitleSlot'" :groupKey="groupKey" :group="group"/>
             </template>
-
             <el-row v-bind="formOptions">
               <template v-for="(item,key, index) in group.columns" >
                 <el-col :key="index"
-                        v-if="getFormTemplateComponentAttr(item,'show', true)"
-                        :span="getFormTemplateComponentAttr(item,'span', 24)"
-                        :offset="getFormTemplateComponentAttr(item,'offset', 0)"
+                        v-if="getTemplateComponentAttr(item,'show', true)"
+                        :span="getTemplateComponentAttr(item,'span', 24)"
+                        :offset="getTemplateComponentAttr(item,'offset', 0)"
                 >
                   <d2-form-item
                     :template="item"
@@ -297,6 +297,16 @@ export default {
     margin-bottom: 5px;
     color: #737373;
     line-height: normal;
+  }
+  .el-collapse-item__wrap {
+    padding-top: 7px;
+  }
+  .el-collapse-item__content{
+    padding-left:30px;
+    padding-right:30px;
+  }
+  .el-dialog__body {
+    padding: 10px 20px;
   }
 }
 </style>

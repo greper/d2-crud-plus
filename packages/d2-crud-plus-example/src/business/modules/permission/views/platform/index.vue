@@ -1,6 +1,6 @@
 <template>
     <d2-container>
-        <template slot="header"></template>
+      <template slot="header">平台管理</template>
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
         <d2-crud
                 ref="d2Crud"

@@ -58,6 +58,7 @@ export const crudOptions = {
       },
       info: {
         title: '详情',
+        collapsed: true,
         icon: 'el-icon-warning-outline',
         columns: ['intro', 'content']
       }

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.1...d2p-extends@1.7.2) (2020-07-01)
+
+
+### Bug Fixes
+
+* 修复tree-selector 设置默认值时报错的bug ([f79594c](https://github.com/greper/d2-crud-plus/commit/f79594c7d4c6859f869ca19248492ba9d8cd1e9b))
+
+
+
+
+
 ## [1.7.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.0...d2p-extends@1.7.1) (2020-07-01)
 
 

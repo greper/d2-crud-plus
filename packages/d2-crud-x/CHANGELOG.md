@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.1...d2-crud-x@2.4.2) (2020-07-01)
+
+
+### Performance Improvements
+
+* 手动调用addRow方法可以传入默认值 ([59b7a6f](https://github.com/greper/d2-crud/commit/59b7a6f0f33d6cab9fafb3ab7bf02a47007d172c))
+
+
+
+
+
 ## [2.4.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.0...d2-crud-x@2.4.1) (2020-07-01)
 
 

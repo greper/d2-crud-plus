@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.11.1...@d2-plus/d2-crud-plus-example@1.11.2) (2020-07-01)
+
+
+### Performance Improvements
+
+* 权限菜单管理改造成el-table的树形管理 ([b4120af](https://github.com/d2-projects/d2-admin/commit/b4120afd1af8db669524d7e8d2dde0a63accb994))
+
+
+
+
+
 ## [1.11.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.11.0...@d2-plus/d2-crud-plus-example@1.11.1) (2020-07-01)
 
 

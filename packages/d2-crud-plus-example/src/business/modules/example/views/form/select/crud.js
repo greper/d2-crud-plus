@@ -1,4 +1,24 @@
 import request from '@/business/api/request.mock'
+function radioOptionsChanged (vm, value) {
+  const checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
+  const checkedRadio = vm.getEditFormTemplate('checkedRadio')
+  if (checkedRadio == null || checkbox == null) {
+    return
+  }
+  // 获取checkbox选中的选项
+  const options = checkbox.component.props.dict.data.filter(item => {
+    return value.indexOf(item.value) >= 0
+  })
+  // 直接修改DictRadio的options 它的优先级比dict.data高
+  checkedRadio.component.props.options = options
+
+  // 注意：新版本已不支持 vm.crud.columnsMap[columnKey].dict 方式获取
+  // eslint-disable-next-line no-unused-expressions
+  vm.crud.columnsMap.checkbox.dict.data
+  // eslint-disable-next-line no-unused-expressions
+  vm.crud.columnsMap.checkbox.dict.dataMap
+  console.log('component.dict', vm.crud.columnsMap.checkbox.component.props.dict.data)
+}
 export const crudOptions = (vm) => {
   return {
     formOptions: {
@@ -159,11 +179,21 @@ export const crudOptions = (vm) => {
         form: {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
+            radioOptionsChanged(vm, value)
+            // form.checkedRadio = '1'
+            // form.status = '2'
           },
           component: {
             props: {
               dict: {
-                url: '/dicts/OpenStatusEnum'
+                url: '/dicts/OpenStatusEnum',
+                onReady: (data, dict) => {
+                  let value = vm.getEditForm().checkbox
+                  if (value == null) {
+                    value = []
+                  }
+                  radioOptionsChanged(vm, value)
+                }
               }
             }
           },

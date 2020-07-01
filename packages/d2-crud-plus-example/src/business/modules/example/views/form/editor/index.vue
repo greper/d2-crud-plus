@@ -89,6 +89,10 @@ export default {
     },
     // 编辑对话框打开前获取详情
     fetchDetail (index, row) {
+      if (row == null) {
+        // 添加
+        return {}
+      }
       return GetObj(row.id).then(res => {
         this.changeEditor(res.data.change)
         return res.data

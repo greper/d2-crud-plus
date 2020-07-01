@@ -24,7 +24,8 @@ export const crudOptions = {
     {
       title: '库存',
       key: 'store',
-      sortable: true
+      sortable: true,
+      type: 'number'
     },
     {
       title: '简介',
@@ -36,7 +37,7 @@ export const crudOptions = {
       title: '详情',
       key: 'content',
       sortable: true,
-      type: 'editor-quill',
+      type: 'editor-ueditor',
       disabled: true
     }
   ],

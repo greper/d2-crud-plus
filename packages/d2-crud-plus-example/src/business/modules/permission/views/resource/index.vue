@@ -69,7 +69,6 @@ export default {
               }
             })
           }
-          console.log('this', data, this.getD2Crud().$refs.elTable.store.states)
         }, 1)
         return ret
       })

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.0...d2-crud-x@2.4.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* 修复fetchDetail在添加时异常问题 ([18899a4](https://github.com/greper/d2-crud/commit/18899a4760420e0d254f261938cda9c21adc6d99))
+
+
+### Performance Improvements
+
+* 动态添加分组示例 ([3bc9ccc](https://github.com/greper/d2-crud/commit/3bc9ccc03d2a75eeec9f9fb0e3623a7a4000025a))
+
+
+
+
+
 # [2.4.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.3.1...d2-crud-x@2.4.0) (2020-06-30)
 
 

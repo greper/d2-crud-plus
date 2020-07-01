@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.0...d2p-extends@1.7.1) (2020-07-01)
+
+
+### Bug Fixes
+
+* 修复树形选择器触发多次change事件的问题 ([2f38688](https://github.com/greper/d2-crud-plus/commit/2f38688e91757390d45ed7298664461559c4f8f8))
+* 修复ueditor在表单分组下宽度异常问题 ([dd2c3f9](https://github.com/greper/d2-crud-plus/commit/dd2c3f93c84b029a5e036fdfa2e08c37632c4811))
+
+
+
+
+
 # [1.7.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.6.10...d2p-extends@1.7.0) (2020-06-30)
 
 

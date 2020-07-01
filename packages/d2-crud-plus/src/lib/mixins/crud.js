@@ -354,6 +354,8 @@ export default {
       query[this.crud.format.page.request.size] = this.crud.page.size
       query[this.crud.format.page.request.current] = this.crud.page.current
 
+      const requestCurrent = this.crud.page.current
+
       this.crud.loading = true
       this.pageRequest(query).then(ret => {
         const pageFormat = this.crud.format.page.response
@@ -375,6 +377,11 @@ export default {
         this.crud.page.size = size
         this.crud.page.total = total
         this.$set(this.crud, 'list', records)
+
+        if (requestCurrent > 1 && records && records.length === 0) {
+          this.crud.page.current = requestCurrent - 1
+          this.doRefresh()
+        }
       }).finally(() => {
         this.crud.loading = false
       })

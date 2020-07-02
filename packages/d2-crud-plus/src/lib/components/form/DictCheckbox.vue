@@ -1,5 +1,5 @@
 <template>
-  <el-checkbox-group :value="selectValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
+  <el-checkbox-group :value="currentValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
     <el-checkbox :disabled="disabled" :readonly="readonly" v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]"
@@ -48,8 +48,7 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined,
-      selectValue: ''
+      dictOptions: undefined
     }
   },
   computed: {
@@ -68,9 +67,6 @@ export default {
       return []
     }
   },
-  created () {
-    this.setValue(this.value)
-  },
   mounted () {
     dict.get(this.dict).then((data) => {
       this.$set(this, 'dictOptions', data)
@@ -81,18 +77,18 @@ export default {
   },
   methods: {
     setValue (newVal) {
-      if (newVal === this.selectValue) {
+      if (newVal === this.currentValue) {
         return
       }
       if (newVal == null) {
-        this.selectValue = []
+        this.currentValue = []
         return
       }
       if (typeof newVal === 'string' && this.separator != null && this.separator !== '') {
-        this.selectValue = newVal.split(this.separator)
+        this.currentValue = newVal.split(this.separator)
         return
       }
-      this.selectValue = newVal
+      this.currentValue = newVal
     }
   }
 }

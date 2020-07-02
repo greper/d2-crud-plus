@@ -26,15 +26,15 @@
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
-        @form-data-change="handleFormDataChange"
-        @custom-emit="customEmit">
+        @form-data-change="handleFormDataChange">
       <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
 
       <template slot="FormBodyAppendSlot" slot-scope="scope">
         <div class="d2-mt-10">
-        <el-button @click="addColumn(scope)">添加未分组字段</el-button>
+          <el-button @click="addColumn(scope)">添加未分组字段</el-button>
           <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
           <el-button @click="addGroup(scope)">添加分组</el-button>
+          <el-button @click="configText(scope)">修改字段配置</el-button>
         </div>
       </template>
 
@@ -131,10 +131,20 @@ export default {
           span: 12
         }
       }
-      const groupColumns = this.getEditFormTemplateGroup('jsx')
+      const groupColumns = this.getEditFormTemplateGroup('test')
       this.$set(groupColumns, key, column)
       this.$set(this.getEditForm(), key, undefined)
       console.log('add', this.getEditFormTemplate(), this.getEditForm())
+    },
+    configText (scope) {
+      const template = this.getEditFormTemplate('text')
+      template.component = {
+        name: 'dict-select',
+        props: {
+          dict: { value: 'value', label: 'label', data: [{ value: '1', label: '打开' }, { value: '0', label: '关闭' }] }
+        },
+        span: 12
+      }
     }
   }
 }

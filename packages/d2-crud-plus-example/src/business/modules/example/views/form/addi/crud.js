@@ -13,8 +13,9 @@ export const crudOptions = {
   ],
   formGroup: {
     groups: {
-      jsx: {
+      test: {
         title: '分组',
+        icon: 'el-icon-star-off',
         columns: ['text']
       }
     }

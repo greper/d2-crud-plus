@@ -7,21 +7,33 @@
 
     <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.label" :prop="item.key"  >
       <template v-if="item.slot === true">
-        <slot :name="item.key+'SearchSlot'" v-bind:form="form" ></slot>
+        <slot :name="item.key+'SearchSlot'" :form="form" />
       </template>
       <el-input
-          v-else-if="item.component == null || item.component.name == null ||  item.component.name === 'el-input'"
-          v-model="form[item.key]"
-          :placeholder="item.label"
-          :style="{width:(item.width?item.width:150+'px')}"/>
+        v-else-if="isInput(item)"
+        v-model="form[item.key]"
+        :placeholder="item.label"
+        v-bind="getComponentProps(item)"
+        :style="{width:(item.width?item.width:150+'px')}"
+      >
+      </el-input>
       <render-custom-component
-          v-else-if="item.component && item.component.name"
-          :component-name="item.component.name"
-          v-model="form[item.key]"
-          :props="item.component.props ? item.component.props : null"
-          :style="{width:(item.width?item.width:150+'px')}"
+        v-else-if="item.component && item.component.name"
+        v-model="form[item.key]"
+        :component-name="item.component.name"
+        :props="getComponentProps(item)"
+        :style="{width:(item.width?item.width:150+'px')}"
+        @change="handleChanged"
       >
       </render-custom-component>
+      <render-component
+        v-else-if="item.component && item.component.render"
+        :render-function="item.component.render"
+        :scope="{key: item.key, value: form[item.key], row: form}"
+        :style="{width:(item.width?item.width:150+'px')}"
+      >
+      </render-component>
+
     </el-form-item>
     <el-form-item>
       <el-button
@@ -43,7 +55,6 @@
 import lodash from 'lodash'
 export default {
   name: 'crud-search',
-  components: { },
   props: {
     // 查询参数，options.form为表单初始值
     options: {
@@ -52,14 +63,21 @@ export default {
   },
   data () {
     return {
-      form: {
-      }
+      reset: undefined,
+      form: {}
     }
   },
   created () {
-    if (this.options.form != null) {
-      this.setForm(this.options.form)
+    let form = {}
+    for (let item of this.options.columns) {
+      form[item.key] = item.component ? item.component.value : undefined
     }
+    let reset = {}
+    if (this.options.form) {
+      reset = lodash.cloneDeep(this.options.form)
+    }
+    lodash.merge(form, reset)
+    this.$set(this, 'form', form)
   },
   methods: {
     // 获取查询form表单值
@@ -96,7 +114,20 @@ export default {
       })
     },
     handleFormReset () {
+      console.log('reset from ')
       this.$refs.searchForm.resetFields()
+    },
+    isInput (item) {
+      return !item.component || (!item.component.name && !item.component.render) || item.component.name === 'el-input'
+    },
+    getComponentProps (item) {
+      if (item.component && item.component.props) {
+        return item.component.props
+      }
+      return {}
+    },
+    handleChanged (event) {
+      console.log('search changed:', event)
     }
   }
 }

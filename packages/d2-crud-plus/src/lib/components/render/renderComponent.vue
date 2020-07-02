@@ -17,15 +17,10 @@ export default {
     }
   },
   render (h) {
-    return this.handleRender(h, this.scope)
+    return this.renderFunction(h, this.scope)
   },
   methods: {
-    handleRender (h, scope) {
-      if (typeof scope === 'string') {
-        return this.renderFunction(h, scope)
-      }
-      return this.renderFunction(h, scope.row, scope.column, scope.$index)
-    }
+
   }
 }
 </script>

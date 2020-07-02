@@ -1,22 +1,20 @@
 <template>
-    <el-select
-        :value="selectValue"
-        :value-key="dict.value"
-        @input="onInput"
-        :disabled="disabled"
-        :readonly="readonly"
-        style="width:100%"
-        v-bind="_elProps"
+  <el-select
+    :value="currentValue"
+    v-bind="_elProps"
+    :value-key="dict.value"
+    :disabled="disabled" :readonly="readonly"
+    @input="onInput"
+    style="width:100%"
+  >
+    <el-option
+      v-for="option in _options"
+      :key="option[dict.value]"
+      :value="option[dict.value]"
+      :label="option[dict.label]"
     >
-      <el-option
-          v-for="option in _options"
-          :key="option[dict.value]"
-          :value="option[dict.value]"
-          :label="option[dict.label]"
-          v-bind="option"
-      >
-      </el-option>
-    </el-select>
+    </el-option>
+  </el-select>
 </template>
 
 <script>
@@ -67,8 +65,7 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined,
-      selectValue: undefined
+      dictOptions: undefined
     }
   },
   computed: {
@@ -92,7 +89,6 @@ export default {
     }
   },
   created () {
-    this.setValue(this.value)
   },
   mounted () {
     dict.get(this.dict).then((data) => {
@@ -104,28 +100,36 @@ export default {
   },
   methods: {
     setValue (newVal) {
+      console.log('set value', newVal, newVal instanceof Array)
       if (!this._elProps.multiple) {
-        if (newVal === this.selectValue) {
+        // 单选
+        if (newVal === this.currentValue) {
           return
         }
-        this.selectValue = newVal
+        this.currentValue = newVal
         return
       }
+      // 多选
       if (newVal == null) {
-        this.selectValue = []
+        this.currentValue = []
         return
       }
       if (typeof newVal === 'string' && this.separator != null && this.separator !== '') {
-        this.selectValue = newVal.split(this.separator)
+        this.currentValue = newVal.split(this.separator)
         return
       }
       if (!(newVal instanceof Array)) {
-        this.selectValue = [newVal]
+        this.currentValue = [newVal]
         return
       }
-      this.selectValue = newVal
+      const val = []
+      for (let item of newVal) {
+        if (item != null) {
+          val.push(item)
+        }
+      }
+      this.currentValue = val
     }
-
   }
 }
 </script>

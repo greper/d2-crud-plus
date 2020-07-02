@@ -14,7 +14,7 @@ export const crudOptions = {
         // 这里配置远程获取字典数据的请求地址
         url:'remote/dict/url', 
         // 或者配置一个返回promise的请求，覆盖全局的getRemoteDictFunc
-        url: (dict)=>{
+        url: (dict)=>{ //此方式不会缓存字典数据
           return request().then(ret=>{ret.data})
         }, 
         data: undefined, //[Array]，如果数据无需远程获取，可以直接将字典数组写在这里
@@ -33,11 +33,17 @@ export const crudOptions = {
 ]}
 ```
 注意：dict会以url作为缓存key，使得该字典只会远程获取一次。
+```js
+dict:{
+    cache:false //可以禁用缓存
+}
+```
     
-`url:(dict)=>{}` ,`getData:(url,dict)=>{}` 这两者都会覆盖全局的getRemoteDictFunc
+注意： `url()` ,`getData()` 这两者都会覆盖全局的getRemoteDictFunc   
 区别是：
-* 相同的url，即便getData不一样，还是会获取到相同的字典数据，可以通过url单独清理缓存   
-* 使用`url:(dict)=>{}`就没有上面的问题，只是不好单独清理缓存
+* `getData()` ：如果配置相同的url，即便getData不一样，还是会获取到相同的字典数据，可以通过url单独清理缓存   
+* `url()`： 将不会进行缓存
+
 
 ## 外部使用数据字典
 ```javascript

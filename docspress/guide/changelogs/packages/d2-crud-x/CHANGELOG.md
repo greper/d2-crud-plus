@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.2...d2-crud-x@2.4.3) (2020-07-02)
+
+
+### Bug Fixes
+
+* 修复获取不到分组中的字段配置的问题 ([2a29a25](https://github.com/greper/d2-crud/commit/2a29a25111252e2a406da6ae97220cb65bea66f5))
+
+
+
+
+
 ## [2.4.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.1...d2-crud-x@2.4.2) (2020-07-01)
 
 

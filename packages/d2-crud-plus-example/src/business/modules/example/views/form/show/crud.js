@@ -21,6 +21,7 @@ export const crudOptions = (vm) => {
         disabled: true,
         form: {
           component: {
+            // 也可以直接配置 show:false 进行隐藏
             show: () => {
               return vm.getEditForm().show
             }

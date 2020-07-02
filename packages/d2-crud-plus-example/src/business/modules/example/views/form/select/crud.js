@@ -190,19 +190,15 @@ export const crudOptions = (vm) => {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
             radioOptionsChanged(vm, value)
-            // form.checkedRadio = '1'
-            // form.status = '2'
           },
           component: {
             props: {
               dict: {
                 url: '/dicts/OpenStatusEnum',
                 onReady: (data, dict) => {
-                  let value = vm.getEditForm().checkbox
-                  if (value == null) {
-                    value = []
-                  }
-                  radioOptionsChanged(vm, value)
+                  // 在字典加载完成后触发修改联动radio的选项。
+                  const value = vm.getEditForm().checkbox
+                  radioOptionsChanged(vm, value || [])
                 }
               }
             }

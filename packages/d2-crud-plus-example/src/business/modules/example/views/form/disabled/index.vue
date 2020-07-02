@@ -23,6 +23,7 @@
         :options="crud.options"
         :loading="crud.loading"
         @dialog-open="handleDialogOpen"
+        @dialog-opened="handleDialogOpened"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
@@ -68,13 +69,19 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    /**
+     * 编辑对话框打开之后的事件，需要配置 @dialog-opened
+     * @param mode 模式 edit / add
+     * @param row 行数据
+     * @param form 表单数据
+     * @param template 字段配置
+     * @param groupTemplate 字段分组配置
+     */
+    handleDialogOpened ({ mode, row, form, template, groupTemplate }) {
+      // 在对话框打开的时候，调用一下disableText3 的valueChange方法，使禁用效果一致
+      this.getEditFormTemplate('disableText3').valueChange('disableText3', form.disableText3, form)
     }
-    // handleFormDialogOpened ({ event, form }) {
-    //   console.log('form dialog opened')
-    //   this.getEditFormTemplate('disableAll').valueChange('disableAll', form.disableAll, form)
-    //   this.getEditFormTemplate('checkbox').valueChange('checkbox', form.checkbox, form)
-    //   this.getEditFormTemplate('show').valueChange('show', form.show, form)
-    // }
   }
 }
 </script>

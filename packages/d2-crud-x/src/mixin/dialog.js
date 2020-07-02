@@ -111,6 +111,13 @@ export default {
         this.$set(this, 'formGroupsActive', formGroupsActive)
         this.$set(this, 'formData', formData)
         this.isDialogShow = true
+
+        this.$emit('dialog-opened', {
+          mode: this.formMode,
+          form: formData,
+          template: this.formTemplateStorage,
+          groupTemplate: this.formTemplateGroupStorage
+        })
       })
     },
     fetchDetail (index, row) {

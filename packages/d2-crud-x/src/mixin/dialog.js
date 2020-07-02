@@ -97,7 +97,7 @@ export default {
           tempGroups[key] = value
         })
       }
-      this.fetchDetail(index, row).then(newRow => {
+      return this.fetchDetail(index, row).then(newRow => {
         this.formDataStorage = newRow
         let formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {

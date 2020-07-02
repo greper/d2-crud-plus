@@ -28,6 +28,7 @@
         :options="crud.options"
         :loading="crud.loading"
         @dialog-open="handleDialogOpen"
+        @dialog-opened="handleDialogOpened"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
@@ -142,6 +143,9 @@ export default {
     },
     customBtn () {
       this.$message('我是自定义按钮')
+    },
+    handleDialogOpened ({ mode, form, template, groupTemplate }) {
+      console.log('dialog opened:mode=', mode, 'form=', form, 'template=', template, 'group=', groupTemplate)
     }
 
   }

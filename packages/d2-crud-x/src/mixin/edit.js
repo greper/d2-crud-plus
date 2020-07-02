@@ -23,7 +23,7 @@ export default {
       if (!templage) {
         templage = this.editTemplate
       }
-      this.openDialog(index, row, templage)
+      return this.openDialog(index, row, templage)
     }
 
   }

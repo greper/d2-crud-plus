@@ -12,7 +12,7 @@ export default {
         templage = this.addTemplate
       }
 
-      this.openDialog(undefined, addData, templage)
+      return this.openDialog(undefined, addData, templage)
 
       // const formData = {}
       // this.formTemplateStorage = templage ? _clonedeep(templage) : {}

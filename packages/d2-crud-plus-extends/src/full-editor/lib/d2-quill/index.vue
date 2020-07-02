@@ -62,10 +62,13 @@ export default {
     }
   },
   watch: {
-    disabled (value) {
-      if (this.Quill) {
-        this.Quill.enable(!value)
-      }
+    disabled: {
+      handler (value) {
+        if (this.Quill) {
+          this.Quill.enable(!value)
+        }
+      },
+      immediate: true
     },
     value: {
       handler (val) {
@@ -100,9 +103,12 @@ export default {
       // 默认值
       this.Quill.enable(false)
       this.Quill.pasteHTML(this.currentValue)
-      this.$nextTick(() => {
-        this.Quill.enable(true)
-      })
+      if (!this.disabled) {
+        this.$nextTick(() => {
+          this.Quill.enable(true)
+        })
+      }
+
       // 绑定事件
       this.Quill.on('text-change', (delta, oldDelta, source) => {
         const html = this.$refs.editor.children[0].innerHTML

@@ -98,9 +98,11 @@ export default {
           this.status = 2
           this.$emit('ready', { vm: this, editor: this.editor })
           if (this.initValue) {
-            console.log('initvalue ', this.initValue)
             this.editor.setContent(this.initValue)
           }
+        }
+        if (this.editor) {
+          this.disabled ? this.editor.setDisabled() : this.editor.setEnabled()
         }
 
         this.editor.addListener('contentChange', this.contentChangeHandler)

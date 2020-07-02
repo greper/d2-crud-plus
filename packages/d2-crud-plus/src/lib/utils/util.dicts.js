@@ -31,16 +31,18 @@ function get (dict) {
     })
   }
   let cacheKey = url
-  if (url == null) {
-    cacheKey = dict.getData
+  if (dict.cache === false || cacheKey instanceof Function) {
+    cacheKey = null
   }
   // 远程获取
-  let item = cache.get(cacheKey)
+  let item = cacheKey != null ? cache.get(cacheKey) : null
   if (item == null || item.error === true) {
     // 还没加载过
     if (item == null) {
       item = { loading: true, callbacks: [] }
-      cache.set(cacheKey, item)
+      if (cacheKey != null) {
+        cache.set(cacheKey, item)
+      }
     }
 
     item.loading = true
@@ -160,7 +162,10 @@ function mergeDefault (dict) {
   }
 }
 function getCache (key) {
-  return cache.get(key)
+  if (key != null) {
+    return cache.get(key)
+  }
+  return cache
 }
 function putCache (key, value) {
   console.log('set cache:', key)

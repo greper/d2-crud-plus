@@ -100,7 +100,6 @@ export default {
   },
   methods: {
     setValue (newVal) {
-      console.log('set value', newVal, newVal instanceof Array)
       if (!this._elProps.multiple) {
         // 单选
         if (newVal === this.currentValue) {

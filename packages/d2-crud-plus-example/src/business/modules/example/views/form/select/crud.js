@@ -50,8 +50,8 @@ export const crudOptions = (vm) => {
         search: {},
         type: 'select',
         dict: {
-          url: '/dicts/OpenStatusEnum',
-          getData (url, dict) {
+          url: '/dicts/OpenStatusEnum2', // 配置url，可以缓存字典数据
+          getData (url, dict) { // 覆盖全局获取字典请求配置
             console.log('我是从自定义的getData方法中加载的数据字典', dict)
             return request({
               url: url,
@@ -72,9 +72,10 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: {},
         type: 'select',
+        disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
         dict: {
-          url: (dict) => {
-            console.log('我是从自定义的getData方法中加载的数据字典', dict)
+          url: (dict) => { // 此方式无法缓存数据
+            console.log('我是从自定义的url方法中加载的数据字典', dict)
             return request({
               url: '/dicts/OpenStatusEnum',
               method: 'post',
@@ -87,6 +88,21 @@ export const crudOptions = (vm) => {
         form: {
           value: '2', // 添加时的初始值
           helper: 'dict.url可以直接配置一个ajax请求获取数据字典'
+        }
+      },
+      {
+        title: '禁用字典缓存',
+        key: 'disableCache',
+        sortable: true,
+        search: {},
+        type: 'select',
+        disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
+        dict: {
+          url: '/dicts/OpenStatusEnum2',
+          cache: false
+        },
+        form: {
+          helper: '禁用字典缓存，每次打开对话框都会发出字典请求'
         }
       },
       {

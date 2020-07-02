@@ -77,6 +77,17 @@ export default [
         data: openStatus
       }
     }
+  },
+  {
+    path: '/dicts/OpenStatusEnum2',
+    method: 'get',
+    handle ({ body }) {
+      return {
+        code: 0,
+        msg: 'success',
+        data: openStatus
+      }
+    }
   }
 
 ]

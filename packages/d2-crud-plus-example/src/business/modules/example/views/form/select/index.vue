@@ -54,6 +54,9 @@ export default {
       show: true
     }
   },
+  mounted () {
+    console.log('dict cache：', d2CrudPlus.util.dict.getCache())
+  },
   methods: {
     getCrudOptions () {
       return crudOptions(this)

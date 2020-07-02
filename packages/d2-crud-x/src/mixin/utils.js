@@ -1,4 +1,3 @@
-import _forEach from 'lodash.foreach'
 export default {
   methods: {
     /**
@@ -27,14 +26,16 @@ export default {
           if (column != null) {
             return column
           }
-          if (this.formTemplateGroupStorage) {
-            _forEach(this.formTemplateGroupStorage.groups, (value, groupKey) => {
-              if (value && value.colmuns[key]) {
-                return value.colmuns[key]
+          if (this.formTemplateGroupStorage && this.formTemplateGroupStorage.groups) {
+            for (let groupsKey in this.formTemplateGroupStorage.groups) {
+              const group = this.formTemplateGroupStorage.groups[groupsKey]
+              if (group && group.columns && group.columns[key]) {
+                console.log('columns:', group.columns[key])
+                return group.columns[key]
               }
-            })
+            }
           }
-          console.warn('formTemplate not found:key=', key, this.formTemplateStorage, this.formTemplateGroupStorage)
+          console.warn('formTemplate not found:key=', key, 'defaultStorage:', this.formTemplateStorage, 'groupStorage:', this.formTemplateGroupStorage)
           return null
         }
         return this.formTemplateStorage

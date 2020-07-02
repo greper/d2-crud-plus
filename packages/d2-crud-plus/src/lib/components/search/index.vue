@@ -114,7 +114,6 @@ export default {
       })
     },
     handleFormReset () {
-      console.log('reset from ')
       this.$refs.searchForm.resetFields()
     },
     isInput (item) {
@@ -127,7 +126,6 @@ export default {
       return {}
     },
     handleChanged (event) {
-      console.log('search changed:', event)
     }
   }
 }

@@ -77,9 +77,6 @@ export default {
   },
   methods: {
     setValue (newVal) {
-      if (newVal === this.currentValue) {
-        return
-      }
       if (newVal == null) {
         this.currentValue = []
         return

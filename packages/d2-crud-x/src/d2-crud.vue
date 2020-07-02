@@ -2,9 +2,9 @@
   <div
     class="d2-crud"
     v-loading="loading"
-    :element-loading-text="loadingOptions ? handleAttribute(loadingOptions.text, null) : null"
-    :element-loading-spinner="loadingOptions ? handleAttribute(loadingOptions.spinner, null) : null"
-    :element-loading-background="loadingOptions ? handleAttribute(loadingOptions.background, null) : null"
+    :element-loading-text="getAttribute(loadingOptions,'text', null)"
+    :element-loading-spinner="getAttribute(loadingOptions,'spinner', null)"
+    :element-loading-background="getAttribute(loadingOptions,'background', null)"
   >
     <div class="d2-crud-header" v-if="$slots.header">
       <slot name="header"/>
@@ -205,14 +205,15 @@
       </el-form>
       <div slot="footer">
           <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
-        <el-button
-          :size="formOptions ? handleAttribute(formOptions.saveButtonSize, null) : null"
-          :type="formOptions ? handleAttribute(formOptions.saveButtonType, null) : null"
-          :icon="formOptions ? handleAttribute(formOptions.saveButtonIcon, null) : null"
-          :loading="formOptions ? handleAttribute(formOptions.saveLoading, false) : false"
+        <el-button v-if="getAttribute(formOptions,'saveButtonShow', true)"
+          :size="getAttribute(formOptions,'saveButtonSize', null)"
+          :type="getAttribute(formOptions,'saveButtonType' ,null)"
+          :icon="getAttribute(formOptions,'saveButtonIcon', null)"
+          :disabld="getAttribute(formOptions,'saveButtonDisabled', false)"
+          :loading="getAttribute(formOptions,'saveLoading', false)"
           @click="handleDialogSave"
         >
-        {{formOptions ? handleAttribute(formOptions.saveButtonText, '确定') : '确定'}}
+        {{ getAttribute(formOptions,'saveButtonText', '确定')}}
         </el-button>
       </div>
     </el-dialog>

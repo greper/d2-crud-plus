@@ -114,6 +114,7 @@ export default {
 
         this.$emit('dialog-opened', {
           mode: this.formMode,
+          row: newRow,
           form: formData,
           template: this.formTemplateStorage,
           groupTemplate: this.formTemplateGroupStorage

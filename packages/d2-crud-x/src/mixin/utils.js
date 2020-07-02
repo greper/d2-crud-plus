@@ -113,6 +113,12 @@ export default {
       }
       return defaultValue
     },
+    getAttribute (obj, attr, defaultValue) {
+      if (obj) {
+        return this.handleAttribute(obj[attr], defaultValue)
+      }
+      return defaultValue
+    },
     getComponentProp (item, key, prop, defaultValue) {
       if (!item) {
         return defaultValue

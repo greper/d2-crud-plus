@@ -122,6 +122,8 @@ export default {
         this.currentValue = [newVal]
         return
       }
+
+      // TODO 重置表单时，多选的value会重置为[null]
       const val = []
       for (let item of newVal) {
         if (item != null) {
@@ -129,6 +131,10 @@ export default {
         }
       }
       this.currentValue = val
+
+      if (newVal.length === 1 && newVal[0] == null) {
+        this.onInput(val)
+      }
     }
   }
 }

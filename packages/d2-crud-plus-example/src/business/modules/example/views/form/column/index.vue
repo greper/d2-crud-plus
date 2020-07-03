@@ -23,6 +23,7 @@
         :loading="crud.loading"
         :indexRow="crud.indexRow"
         :selectionRow="crud.selectionRow"
+        :expandRow="crud.expandRow"
         @dialog-open="handleDialogOpen"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"

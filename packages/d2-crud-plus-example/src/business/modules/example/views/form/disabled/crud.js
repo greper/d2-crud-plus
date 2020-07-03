@@ -18,7 +18,7 @@ export const crudOptions = (vm) => {
       {
         title: '选择',
         key: 'status',
-        sortable: true,
+        sortable: false,
         search: {},
         type: 'select',
         dict: {
@@ -35,7 +35,7 @@ export const crudOptions = (vm) => {
       {
         title: '文本',
         key: 'text',
-        sortable: true,
+        sortable: false,
         form: {
           component: {
             disabled: () => {
@@ -47,7 +47,7 @@ export const crudOptions = (vm) => {
       {
         title: 'radio',
         key: 'radio1',
-        sortable: true,
+        sortable: false,
         search: { disabled: false },
         type: 'radio',
         dict: {
@@ -64,7 +64,7 @@ export const crudOptions = (vm) => {
       {
         title: 'checkbox',
         key: 'checkbox',
-        sortable: true,
+        sortable: false,
         search: { disabled: false },
         type: 'checkbox',
         dict: {
@@ -81,7 +81,7 @@ export const crudOptions = (vm) => {
       {
         title: 'switch',
         key: 'switch',
-        sortable: true,
+        sortable: false,
         search: { disabled: false },
         type: 'dict-switch',
         dict: { data: [{ value: true, label: '是' }, { value: false, label: '否' }] },
@@ -168,7 +168,7 @@ export const crudOptions = (vm) => {
       {
         title: 'textarea',
         key: 'text2',
-        sortable: true,
+        sortable: false,
         search: { disabled: true },
         type: 'text-area',
         form: {
@@ -182,7 +182,7 @@ export const crudOptions = (vm) => {
       {
         title: '普通禁用',
         key: 'text3',
-        sortable: true,
+        sortable: false,
         form: {
           component: {
             disabled: true
@@ -192,7 +192,7 @@ export const crudOptions = (vm) => {
       {
         title: '普通禁用动态',
         key: 'disableText3',
-        sortable: true,
+        sortable: false,
         search: { disabled: false },
         type: 'dict-switch',
         dict: { data: [{ value: true, label: '禁用' }, { value: false, label: '启用' }] },

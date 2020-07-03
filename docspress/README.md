@@ -1,7 +1,7 @@
 ---
 home: true
 tagline: 简化crud配置，快速开发crud功能
-heroImage: /icon-only.png
+heroImage: /icon-only1.png
 actionText: 快速上手 →
 actionLink: /guide/
 features:

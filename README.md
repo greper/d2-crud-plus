@@ -1,3 +1,7 @@
+
+![](http://greper.veryreader.com/extends/banner1.png)
+
+
 # d2-crud-plus
 基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。   
 附带常用组件、权限管理以及前后端代码生成等。   

@@ -88,7 +88,6 @@ export default {
       this.formTemplateStorage = templage ? _clonedeep(templage) : {}
       delete this.formTemplateStorage.__group__
       this.formTemplateGroupStorage = templage.__group__ ? _clonedeep(templage.__group__) : undefined
-
       const tempGroups = {
         'default': { columns: this.formTemplateStorage }
       }
@@ -196,12 +195,14 @@ export default {
      * @description 保存完成
      */
     handleDialogSaveDone (rowData) {
-      if (this.formMode === 'edit') {
-        this.handleUpdateRow(this.editIndex, rowData)
-        this.formDataStorage = {}
-      } else if (this.formMode === 'add') {
-        this.handleAddRow(rowData)
+      if (this.formOptions.updateTableDataAfterEdit !== false) {
+        if (this.formMode === 'edit') {
+          this.handleUpdateRow(this.editIndex, rowData)
+        } else if (this.formMode === 'add') {
+          this.handleAddRow(rowData)
+        }
       }
+      this.formDataStorage = {}
       this.handleCloseDialog()
     },
     /**

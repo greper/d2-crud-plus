@@ -41,7 +41,8 @@ export default {
           labelPosition: 'left',
           saveLoading: false,
           gutter: 20,
-          fullscreen: false
+          fullscreen: false,
+          updateTableDataAfterEdit: false
         },
         options: {
           rowKey: 'id',

@@ -123,7 +123,9 @@ export const crudOptions = {
     labelWidth: '100px',
     labelPosition: 'left',
     saveLoading: false,
-    gutter: 20
+    gutter: 20,
+    defaultSpan: 12, // 默认表单字段所占宽度
+    updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
   searchOptions: {
     disabled: false //是否禁用搜索工具条

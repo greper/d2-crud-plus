@@ -33,6 +33,7 @@ export const crudOptions = (vm) => {
         title: '资源名称',
         key: 'title',
         sortable: true,
+        search: {},
         form: {
           component: {
             props: {
@@ -60,6 +61,7 @@ export const crudOptions = (vm) => {
         title: '资源代码',
         key: 'name',
         sortable: true,
+        search: {},
         form: {
           component: {
             props: {
@@ -77,6 +79,7 @@ export const crudOptions = (vm) => {
         title: '权限代码',
         key: 'permission',
         sortable: true,
+        search: {},
         form: {
           component: {
             props: {
@@ -94,6 +97,7 @@ export const crudOptions = (vm) => {
         title: '路由地址',
         key: 'path',
         sortable: true,
+        search: {},
         form: {
           component: {
             props: {
@@ -111,6 +115,7 @@ export const crudOptions = (vm) => {
         title: '路由组件',
         key: 'component',
         sortable: true,
+        search: {},
         form: {
           component: {
             props: {
@@ -140,6 +145,7 @@ export const crudOptions = (vm) => {
         type: 'select',
         align: 'center',
         width: 100,
+        search: {},
         dict: {
           url: '/base/dicts/ResourceTypeEnum',
           getData: (url, dict) => { // 配置此参数会覆盖全局的getRemoteDictFunc
@@ -165,7 +171,6 @@ export const crudOptions = (vm) => {
         key: 'parentId',
         sortable: true,
         width: 90,
-        search: {},
         type: 'tree-selector',
         dict: {
           url: '/permission/manager/resource/tree',
@@ -193,6 +198,25 @@ export const crudOptions = (vm) => {
         // search: { disabled: true }, //开启查询
         // form: { disabled: true } //表单配置
         // disabled: false //是否隐藏列
+      },
+      {
+        title: '所属平台',
+        key: 'platformId',
+        type: 'select',
+        disabled: true,
+        search: { disabled: true }, // 开启查询
+        dict: { url: '/permission/manager/platform/list', value: 'id', label: 'name' },
+        addForm: { // 添加时可以修改
+          component: { disabled: false }
+        },
+        form: {
+          component: { disabled: true }, // 编辑时不允许修改
+          valueChange (key, value) {
+            console.log('-----你选择了', value, vm.crud.columnsMap.platformId.component.props.dict.dataMap[value].name)
+          }
+        }, // 表单配置
+        // disabled: false //是否隐藏列
+        sortable: true
       }
     ]
   }

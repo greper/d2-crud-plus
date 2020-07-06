@@ -858,10 +858,10 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@d2-projects/d2-crud@^2.0.5":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@d2-projects/d2-crud/-/d2-crud-2.1.2.tgz#516e61b51f0b017d5807668a9f56d730afb6015e"
-  integrity sha512-7TUNLsu67EAJsknvyURQD/FzAVo64uruVIatROYogCtq6vfmNxba+x7U+RYMAmWgOSx82zNbQheGXBaY3KkxHA==
+"@d2-projects/d2-crud@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@d2-projects/d2-crud/-/d2-crud-2.0.5.tgz#8c4bba8736275ceee2e21eae7cc9a350132eaa1b"
+  integrity sha512-OAqnZKWcDdnkjeMNgBXMgCt5gWeSjHQQLr1IrYcAhyiGP6gbDOxyaDtX8mrYiQuN4axA7Rr6ZFlW2Ho7GC7GCg==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"

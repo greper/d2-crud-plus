@@ -1,6 +1,6 @@
 <template>
   <d2-container>
-    <template slot="header">d2crud共存
+    <template slot="header">d2crud官方原版
       <example-helper title="d2crud共存" >
           <div>
            同一个项目里面可以d2-crud-x 与 d2-crud共存
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)

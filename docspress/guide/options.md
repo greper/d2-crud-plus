@@ -66,6 +66,14 @@ export const crudOptions = {
         slot:false 
         
       },
+      addForm:{
+         //与addTemplateHandle作用相似 
+         //添加的特别配置，当添加和修改的配置有差异时，可以在此配置
+      },
+      editForm:{
+         //与editTemplateHandle作用相似 
+         //修改的特别配置，当添加和修改的配置有差异时，可以在此配置
+      },
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
@@ -132,13 +140,16 @@ export const crudOptions = {
   editRules: {},//根据form配置自动生成
   list: [], //数据列表
   loading: false, //当前是否loading
-  page: {
+  page: { //翻页配置
     current: 1,
     size: 20,
     total: 1
   },
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
+    edit:{},
+    remove:{},
+    custom:[]
   }
 }
 

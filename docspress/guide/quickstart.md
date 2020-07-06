@@ -42,7 +42,7 @@ npm run dev
 在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)试试
 
 ### 1.安装
-```shell
+```js
 使用npm
 // npm i  @d2-project/d2-crud  -S
 //【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
@@ -55,13 +55,13 @@ npm i  d2-crud-plus  -S
 yarn add d2-crud-x
 yarn add d2-crud-plus 
 
-
 ```
+
 ### 2.引入
  ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
-// import d2Crud from '@d2-projects/d2-crud'【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
-// 推荐将d2-crud替换为d2-crud-x【使用方式基本与d2-crud一致，推荐】
+// import d2Crud from '@d2-projects/d2-crud' 【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
+// 推荐将d2-crud替换为d2-crud-x【使用方式基本与d2-crud一致】
 import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 import { request } from '@/api/service'
@@ -78,7 +78,7 @@ Vue.use(d2CrudPlus, {
       return ret.data  //返回字典数组
     })  
   },
-  commonOption(){ //d2-crud option 全局设置
+  commonOption(){ //d2-crud option 全局设置，可以不用配置
     return {
        format: {
         page: { // page接口返回的数据结构配置，
@@ -88,7 +88,8 @@ Vue.use(d2CrudPlus, {
           },
           response: { //返回结果
             current: 'current', // 当前页码 ret.data.current
-            size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
+            size: 'size', // 每页条数，ret.data.size, 
+            //size: (data) => { return data.size }, //你也可以配置一个方法，自定义返回
             total: 'total', // 总记录数 ret.data.total
             records: 'records' // 列表数组 ret.data.records
           }
@@ -102,13 +103,13 @@ Vue.use(d2CrudPlus, {
   }
 })
 
-
  ```
+[更多关于后台返回数据结构的配置说明](/guide/structure.md)
 
-
-::: TIP   
-如果你的项目之前用的d2Crud，不想破坏以前的功能   
-可以按如下方式使官方版与加强版共存
+#### d2-crud-x与d2-crud共同使用
+::: tip  
+如果你的项目之前已经使用了`官方版d2-crud`，不想破坏以前的功能   
+可以按如下方式使`d2-crud`与`d2-crud-x`共存
 :::
 
 ```js

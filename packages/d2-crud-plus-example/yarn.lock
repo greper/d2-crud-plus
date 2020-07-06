@@ -858,6 +858,17 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
+"@d2-projects/d2-crud@^2.0.5":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@d2-projects/d2-crud/-/d2-crud-2.1.2.tgz#516e61b51f0b017d5807668a9f56d730afb6015e"
+  integrity sha512-7TUNLsu67EAJsknvyURQD/FzAVo64uruVIatROYogCtq6vfmNxba+x7U+RYMAmWgOSx82zNbQheGXBaY3KkxHA==
+  dependencies:
+    lodash.clonedeep "^4.5.0"
+    lodash.foreach "^4.5.0"
+    lodash.get "^4.4.2"
+    lodash.set "^4.3.2"
+    vue "^2.5.19"
+
 "@d2-projects/vue-filename-injector@^1.1.0":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@d2-projects/vue-filename-injector/-/vue-filename-injector-1.1.1.tgz#699ce81a17d6b3b2fbacf62fa76d37f57f939f89"
@@ -3585,29 +3596,29 @@ cz-conventional-changelog@3.2.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.10.2.tgz#79643f5bc4b2adf340fbfb503a971ee68897e2b6"
-  integrity sha512-UKdFCEz7BHpBuxV3d+Kk9jsRTEAfxXL7gPigPjUnHM8EcXIEojy9xW2uHm06JdOfgkB0CvNiThJvcz5an96u8A==
+d2-crud-plus@^1.11.3:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.11.3.tgz#74e7f68cf85186371b5bc1f64a21624dd2a5208b"
+  integrity sha512-viMf/Zp6JVbitYSJpcVCNovYbnkk3kNN56E0sudvmwTTI9ygyW6siH1AxyB+TsDo2QwULIwlr06wPWZVqisGdg==
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
     vue "^2.6.10"
 
-d2-crud-x@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.3.1.tgz#08c2f2ab90da7ac073d5735163a5219f5ee6fc09"
-  integrity sha512-9yBrSz/cfhZgj80sKPuaU5dh0SqUPpalMWsrDVgh2n09Spq0dsFtgVrKTl3bgrkBdtb4BpcSJIYsfIY1qnZOsw==
+d2-crud-x@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.4.4.tgz#50dd37ce7ca99f8169867bbfc1edebc45e9975cb"
+  integrity sha512-YwKWjE3mjU/CrXIY3+VhwDDyBSBzYDj/AvusTqywPYVGUR7ZIKpy+HnnrUWRx+mNeuWgL+z34XX1PWbOsUjV1w==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
     lodash.get "^4.4.2"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.6.10:
-  version "1.6.10"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.6.10.tgz#5b7029f55db43989ceca5da170b26f1f86e3abc0"
-  integrity sha512-t8YL2uKq2lHiaJCIqjWyslvy8ndhUMzZ7djy/A86fT3sKUOrvYwmw0YBkNzzv0kfAToD65M2DNPONUk+1UkPcQ==
+d2p-extends@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.7.3.tgz#35b967d5e0d6a09643d8572b4618b2ddde5f0cae"
+  integrity sha512-BpaJXraYijYgzqh2QLgW8A0mq7VSSKMr4u5qOGiZZQn7UfyF9poo9MIL+2S7gX/3+NhIMXapjBxuXW28ktlSWw==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
@@ -10832,7 +10843,7 @@ vue-ueditor-wrap@^2.4.1:
   resolved "https://registry.yarnpkg.com/vue-ueditor-wrap/-/vue-ueditor-wrap-2.4.3.tgz#b41e1482fb05a075303168b7cf5369d3ac404b79"
   integrity sha512-7oMUQ1f+m5k0SWE1ndVQ4RY8JI7LX5T6DO3uDvfZqefrp1hzL5VUE1eEhtxS9PbdNIx9QuOatbNW9yAGp8NxLw==
 
-vue@^2.5.11, vue@^2.5.16, vue@^2.6.10, vue@^2.6.11:
+vue@^2.5.11, vue@^2.5.16, vue@^2.5.19, vue@^2.6.10, vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==

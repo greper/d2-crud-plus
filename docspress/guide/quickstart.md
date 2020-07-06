@@ -48,7 +48,6 @@ npm run dev
 //【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
 // 使用d2-crud-x替换d2-crud【在官方基础上修复了bug，功能更强大】
 npm i  d2-crud-x  -S
-
 npm i  d2-crud-plus  -S
 
 使用yarn
@@ -67,6 +66,7 @@ import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
 import { request } from '@/api/service'
 Vue.use(d2Crud)
+
 Vue.use(d2CrudPlus, {
   //获取数据字典的请求方法
   //可在dict中配置getData方法覆盖此全局方法
@@ -104,6 +104,34 @@ Vue.use(d2CrudPlus, {
 
 
  ```
+
+
+::: TIP   
+如果你的项目之前用的d2Crud，不想破坏以前的功能   
+可以按如下方式使官方版与加强版共存
+:::
+
+```js
+ import d2Crud from '@d2-projects/d2-crud'
+ import d2CrudX from 'd2-crud-x'
+ Vue.use(d2Crud)
+ Vue.use(d2CrudX,{name:'d2-crud-x'})
+
+```
+
+```html
+<template>
+  <d2-container>
+    <!-- 使用d2CrudX加强版 -->
+    <d2-crud-x ref="d2Crud"></d2-crud-x>
+    
+    <!-- 使用官方"弱鸡版" -->
+    <d2-crud ref="d2Crud"></d2-crud>
+  </d2-container>
+</template>
+```
+
+
 ### 3. 安装扩展插件
 如果你还需要文件上传、图片裁剪、富文本、地区选择器、树形选择器、图标选择器等组件   
 那么你还需要安装对应的扩展插件。   

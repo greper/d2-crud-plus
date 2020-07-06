@@ -36,6 +36,7 @@ const aside = [
         title: 'CRUD增强功能',
         icon: 'folder-o',
         children: [
+          { path: '/demo/form/d2crud', title: 'd2Crud原版' },
           { path: '/demo/form/slot', title: '自定义组件' },
           { path: '/demo/form/customType', title: '自定义字段类型' },
           { path: '/demo/form/header', title: '多级表头' },
@@ -315,6 +316,16 @@ const routers = {
             cache: true
           },
           component: _import(viewsPrefix + 'form/cell')
+        },
+        {
+          path: 'form/d2crud',
+          name: 'formD2crud',
+          meta: {
+            title: 'd2Crud原版',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/d2crud')
         },
         //  酒店示例
         {

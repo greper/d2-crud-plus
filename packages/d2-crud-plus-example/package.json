@@ -22,6 +22,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@d2-projects/d2-crud": "^2.0.5",
     "@d2-projects/vue-table-export": "^1.0.1",
     "@d2-projects/vue-table-import": "^1.0.0",
     "autoprefixer": "^6.5.4",

@@ -8,6 +8,10 @@ import { request, requestForMock } from '@/api/service'
 
 // 引入d2Crud
 Vue.use(d2Crud)
+
+// 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x /> = 使用加强版，标签用<d2-crud/> = 使用官方版
+// Vue.use(d2Crud,{name:'d2-crud-x'})
+
 // 引入d2CrudPlus
 Vue.use(d2CrudPlus, {
   getRemoteDictFunc (url, dict) {

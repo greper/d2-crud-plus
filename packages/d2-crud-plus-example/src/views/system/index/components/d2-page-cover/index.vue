@@ -1,6 +1,7 @@
 <template>
   <div class="d2-page-cover">
-    <p class="d2-page-cover__title" @click="$open('https://github.com/greper/d2-crud-plus')"><d2-icon-svg class="logo" name="d2-admin"/> d2-crud-plus {{$version}}</p>
+    <p class="d2-page-cover__title" @click="$open('https://github.com/greper/d2-crud-plus')">
+      <d2-icon-svg class="logo" name="d2-admin"/> d2-crud-plus {{$version}}</p>
     <p class="d2-page-cover__sub-title">d2-crud加强版，简化d2-crud配置，定义字段类型，快速开发crud功能</p>
     <div class="exampleBox">
       <div class="left">

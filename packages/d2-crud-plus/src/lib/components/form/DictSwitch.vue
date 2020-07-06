@@ -18,11 +18,11 @@
 
 <script>
 import dict from '../../utils/util.dicts'
-import input from '../../mixins/input'
+import inputBase from '../../mixins/input-base'
 // 字典radio选择器
 export default {
   name: 'dict-switch',
-  mixins: [input],
+  mixins: [inputBase],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -101,6 +101,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-
-</style>

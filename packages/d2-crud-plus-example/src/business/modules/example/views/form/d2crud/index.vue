@@ -1,10 +1,14 @@
 <template>
   <d2-container>
     <template slot="header">d2crud官方原版
+      <span style="color:gray;font-size: 12px">【官方版已久不维护，建议使用d2-crud-x】</span>
       <example-helper title="d2crud共存" >
           <div>
-           同一个项目里面可以d2-crud-x 与 d2-crud共存
+           同一个项目里面可以d2-crud-x 与 d2-crud共存。
           </div>
+        <div>
+          给使用d2Crud开发完成一些功能的项目的使用d2cCrudPlus的解决方案
+        </div>
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />

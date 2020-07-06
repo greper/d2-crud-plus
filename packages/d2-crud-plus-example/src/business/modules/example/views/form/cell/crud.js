@@ -26,6 +26,19 @@ export const crudOptions = (vm) => {
       {
         title: 'blank',
         key: 'blank'
+      },
+      {
+        title: '开关',
+        key: 'switch',
+        sortable: true,
+        search: {},
+        type: 'switch',
+        width: '150px',
+        form: {
+          valueChange (key, value) {
+            console.log('-----你选择了', value, vm.crud.columnsMap.switch.component.props.dict.dataMap[value].label)
+          }
+        }
       }
     ]
   }

@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "d2-crud-plus": "^1.11.3",
-    "d2-crud-x": "^2.4.4",
+    "d2-crud-x": "^2.4.5",
     "d2p-extends": "^1.7.3",
     "@d2-projects/d2-crud": "2.0.5",
     "@d2-projects/vue-table-export": "^1.0.1",

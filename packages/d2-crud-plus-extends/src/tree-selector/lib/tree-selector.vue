@@ -193,6 +193,9 @@ export default {
       let values = this.formatValue(nodes)
       this.dialogVisible = false
       this.resetInputHeight()
+      if (!this.multiple) {
+        values = values && values.length > 0 ? values[0] : undefined
+      }
       this.$emit('input', values)
       this.$emit('change', values)
     },

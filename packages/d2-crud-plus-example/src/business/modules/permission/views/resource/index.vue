@@ -7,7 +7,7 @@
         </div>
       </example-helper>
     </template>
-<!--    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>-->
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud
       ref="d2Crud"
       :columns="crud.columns"
@@ -29,6 +29,7 @@
       @form-data-change="handleFormDataChange"
       @add-sub-resource="handleAddSubResource"
     >
+      <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
       <el-button slot="header" class="d2-mb-5" v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow">新增</el-button>
     </d2-crud>
   </d2-container>
@@ -39,14 +40,29 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetTree, AddObj, UpdateObj, DelObj, GetObj } from './api'
 import foreach from 'lodash.foreach'
+import PlatformSelector from '../../component/platform-selector'
 export default {
   name: 'Resource',
   mixins: [d2CrudPlus.crud],
+  components: { PlatformSelector },
   data () {
     return {
+      platformId: 1
     }
   },
   methods: {
+    doLoad () {
+      // 打开页面不加载，等平台列表加载完了再刷新列表
+    },
+    // 由平台选择组件触发列表查询
+    platformInit (platformId) {
+      this.platformId = platformId
+      this.getSearch().setForm({ platformId }, true)
+      this.getSearch().doSearch()
+    },
+    platformChanged (platformId) {
+      this.platformInit(platformId)
+    },
     getCrudOptions () {
       return crudOptions(this)
     },
@@ -92,10 +108,10 @@ export default {
       return GetObj(row.id)
     },
     handleAddSubResource ({ index, row }) {
-      this.addRow({ parentId: row.id })
+      this.addRow({ parentId: row.id, platformId: row.platformId })
     },
     addRootRow () {
-      this.addRow({ parentId: 0 })
+      this.addRow({ parentId: 0, platformId: this.platformId })
     }
 
   }

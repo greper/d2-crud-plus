@@ -165,6 +165,7 @@ export const crudOptions = (vm) => {
         key: 'parentId',
         sortable: true,
         width: 90,
+        search: {},
         type: 'tree-selector',
         dict: {
           url: '/permission/manager/resource/tree',

@@ -13,7 +13,7 @@ import { d2CrudPlus } from 'd2-crud-plus'
  */
 export default {
   name: 'd2p-ueditor',
-  mixins: [d2CrudPlus.input],
+  mixins: [d2CrudPlus.inputBase],
   props: {
     // 富文本
     value: {

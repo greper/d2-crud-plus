@@ -13,7 +13,7 @@ import { d2CrudPlus } from 'd2-crud-plus'
 // quill富文本编辑器
 export default {
   name: 'd2p-quill',
-  mixins: [d2CrudPlus.input],
+  mixins: [d2CrudPlus.inputBase],
   props: {
     value: {
       type: String,

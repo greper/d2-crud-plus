@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.6](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.3...d2-crud-x@2.4.6) (2020-07-07)
+
+
+### Bug Fixes
+
+* 增加配置项updateTableDataAfterEdit，保存对话框后不插入数据到table中，通过刷新列表更新数据 ([6ee6f07](https://github.com/greper/d2-crud/commit/6ee6f079f202a0ff053d318c251139d2aa1f0312))
+
+
+### Performance Improvements
+
+* 对话框确定按钮增加禁用和显示配置 ([eff0736](https://github.com/greper/d2-crud/commit/eff0736a491e6d6bbf4e2ef32e343db82c630674))
+* crud-x 打开编辑对话框后发送 dialog-opened事件 ([2d6a4c2](https://github.com/greper/d2-crud/commit/2d6a4c2d1956305b10fe6eac16f9644c4fe31549))
+* crud-x 打开编辑对话框后发送 dialog-opened事件 ([eeb12df](https://github.com/greper/d2-crud/commit/eeb12df19a3aa1c031c6196fb4c41cdc65d2ac16))
+
+
+
+
+
 ## [2.4.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.2...d2-crud-x@2.4.3) (2020-07-02)
 
 

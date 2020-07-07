@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.11.3...@d2-plus/d2-crud-plus-example@1.11.4) (2020-07-07)
+
+
+### Bug Fixes
+
+* 修复树形选择器，单选返回值为数组的bug ([1b79cf7](https://github.com/d2-projects/d2-admin/commit/1b79cf7a71cb1ce9b1e2351abd7535adfc5fecab))
+* 修复dictRadio valuechange触发两次的问题 ([36d5325](https://github.com/d2-projects/d2-admin/commit/36d53251f73a7be1d06a84785d25f6903aff6bb7))
+* 增加配置项updateTableDataAfterEdit，保存对话框后不插入数据到table中，通过刷新列表更新数据 ([6ee6f07](https://github.com/d2-projects/d2-admin/commit/6ee6f079f202a0ff053d318c251139d2aa1f0312))
+
+
+### Performance Improvements
+
+* 新增d2crud共存 ([e2d1d8c](https://github.com/d2-projects/d2-admin/commit/e2d1d8c60ef235719233ad16520f581ac6e44041))
+* 增加手动选择示例 ([be9b649](https://github.com/d2-projects/d2-admin/commit/be9b649c50ed091314e4a442be718ca2ec0008dc))
+* 字典增加禁止缓存功能，url()方式取消字典缓存 ([ae5dce1](https://github.com/d2-projects/d2-admin/commit/ae5dce1a19e607ef0c294414518293a1685e6983))
+* crud-x 打开编辑对话框后发送 dialog-opened事件 ([2d6a4c2](https://github.com/d2-projects/d2-admin/commit/2d6a4c2d1956305b10fe6eac16f9644c4fe31549))
+* search 增加事件监听 ([28450de](https://github.com/d2-projects/d2-admin/commit/28450def69ffae2695c02acacb2ece804dd1e44d))
+
+
+
+
+
 ## [1.11.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.11.2...@d2-plus/d2-crud-plus-example@1.11.3) (2020-07-02)
 
 **Note:** Version bump only for package @d2-plus/d2-crud-plus-example

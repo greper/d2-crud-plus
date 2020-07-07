@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.3...d2p-extends@1.7.4) (2020-07-07)
+
+
+### Bug Fixes
+
+* 修复富文本编辑器在初始化之后没有disabled的bug ([1075e83](https://github.com/greper/d2-crud-plus/commit/1075e83ec6ecb8265f084b145fc7c97989837f33))
+* 修复树形选择器，单选返回值为数组的bug ([1b79cf7](https://github.com/greper/d2-crud-plus/commit/1b79cf7a71cb1ce9b1e2351abd7535adfc5fecab))
+
+
+
+
+
 ## [1.7.3](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.2...d2p-extends@1.7.3) (2020-07-02)
 
 **Note:** Version bump only for package d2p-extends

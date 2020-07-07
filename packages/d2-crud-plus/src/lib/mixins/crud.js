@@ -521,7 +521,7 @@ export default {
      * @param selection
      */
     handleSelectionChange (selection) {
-      // console.log('handleSelectionChange', selection)
+      console.log('handleSelectionChange', selection)
       this.multipleSelection = selection
     },
     /**

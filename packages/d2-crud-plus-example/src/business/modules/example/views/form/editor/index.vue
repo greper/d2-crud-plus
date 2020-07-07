@@ -89,7 +89,7 @@ export default {
     },
     // 编辑对话框打开前获取详情
     fetchDetail (index, row) {
-      if (row == null) {
+      if (index == null) {
         // 添加
         return {}
       }

@@ -37,7 +37,10 @@
       <el-button-group slot="header" class="d2-mb-5">
         <el-button   size="small" type="primary" @click="addRow"><i class="el-icon-plus"></i> 新增</el-button>
         <el-button   size="small" type="danger" @click="batchDelete"><i class="el-icon-delete"></i> 批量删除</el-button>
+        <el-button   size="small" type="primary" @click="checkSecond">选中第一、二行</el-button>
+
       </el-button-group>
+
       <template slot="expandSlot" slot-scope="scope">
         这里显示行展开数据:{{scope.row.data}}
       </template>
@@ -104,6 +107,10 @@ export default {
     },
     customHandleBtnHandle ({ index, row }) {
       this.$message('自定义操作按钮：' + row.data)
+    },
+    checkSecond () {
+      this.getD2Crud().$refs.elTable.toggleRowSelection(this.getD2Crud().d2CrudData[0])
+      this.getD2Crud().$refs.elTable.toggleRowSelection(this.getD2Crud().d2CrudData[1])
     }
   }
 }

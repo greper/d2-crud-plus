@@ -20,6 +20,8 @@
         :form-options="crud.formOptions"
         :options="crud.options"
         :loading="crud.loading"
+        :selectionRow="crud.selectionRow"
+        @selection-change="handleSelectionChange"
         @dialog-open="handleDialogOpen"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"

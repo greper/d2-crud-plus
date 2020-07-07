@@ -1,6 +1,10 @@
 
 export const crudOptions = (vm) => {
   return {
+    selectionRow: {
+      align: 'center',
+      width: 100
+    },
     columns: [
       {
         title: '行编辑',

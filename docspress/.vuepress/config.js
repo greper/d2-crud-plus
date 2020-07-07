@@ -132,6 +132,14 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'generate'
       ]
     },
+    // {
+    //   title: 'd2-crud-x',
+    //   collapsable: false,
+    //   sidebarDepth: 3,
+    //   children: [
+    //     'd2crudx'
+    //   ]
+    // },
     {
       title: 'd2p-extends文档',
       collapsable: false,

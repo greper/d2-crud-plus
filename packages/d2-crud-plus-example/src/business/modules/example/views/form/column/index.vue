@@ -109,7 +109,7 @@ export default {
       this.$message('自定义操作按钮：' + row.data)
     },
     checkSecond () {
-      this.getD2Crud().$refs.elTable.toggleRowSelection(this.getD2Crud().d2CrudData[0])
+      this.getD2CrudTable().toggleRowSelection(this.getD2CrudTableData()[0]) // 跟下面等效
       this.getD2Crud().$refs.elTable.toggleRowSelection(this.getD2Crud().d2CrudData[1])
     }
   }

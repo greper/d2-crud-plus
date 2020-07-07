@@ -22,8 +22,11 @@
         v-model="form[item.key]"
         :component-name="item.component.name"
         :props="getComponentProps(item)"
+        :events="getComponentAttr(item,'events')"
         :style="{width:(item.width?item.width:150+'px')}"
-        @change="handleChanged"
+        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
+        @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
+        @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
       >
       </render-custom-component>
       <render-component
@@ -119,13 +122,30 @@ export default {
     isInput (item) {
       return !item.component || (!item.component.name && !item.component.render) || item.component.name === 'el-input'
     },
+    getComponentAttr (item, attr, defVal) {
+      if (item && item.component && item.component[attr]) {
+        return item.component[attr]
+      }
+      return defVal
+    },
     getComponentProps (item) {
-      if (item.component && item.component.props) {
+      if (item && item.component && item.component.props) {
         return item.component.props
       }
       return {}
     },
-    handleChanged (event) {
+    handleSearchDataChange (value, column) {
+      column.value = value
+      console.log('search data  change :', column)
+      this.$emit('search-data-change', column)
+    },
+    handleSearchComponentReady (value, column) {
+      column.event = value
+      this.$emit('search-component-ready', column)
+    },
+    handleSearchComponentCustomEvent (value, column) {
+      column.event = value
+      this.$emit('search-component-custom-event', column)
     }
   }
 }

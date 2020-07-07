@@ -23,5 +23,8 @@ export default {
   'transfer': {
     form: { component: { name: 'el-transfer', props: { } } },
     align: 'center'
+  },
+  'autocomplete': {
+    form: { component: { name: 'el-autocomplete', props: { } } }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <d2-container>
     <template slot="header">其他elementUI组件</template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
+    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  @search-data-change="handleSearchDataChange" >
     </crud-search>
     <d2-crud
         ref="d2Crud"
@@ -56,6 +56,9 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    handleSearchDataChange (event) {
+      console.log('search data change:', event)
     }
   }
 }

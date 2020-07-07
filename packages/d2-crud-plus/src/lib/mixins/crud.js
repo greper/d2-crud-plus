@@ -115,6 +115,20 @@ export default {
       return this.$refs[this.crud.format.ref.d2Crud]
     },
     /**
+     *  获取 el-table实例
+     * @returns {*}
+     */
+    getD2CrudTable () {
+      return this.getD2Crud().$refs.elTable
+    },
+    /**
+     * 获取当前列表数据
+     * @returns
+     */
+    getD2CrudTableData () {
+      return this.getD2Crud().d2CrudData
+    },
+    /**
      * 获取编辑框的formData
      * @returns
      */
@@ -358,7 +372,7 @@ export default {
       const requestCurrent = this.crud.page.current
 
       this.crud.loading = true
-      this.pageRequest(query).then(ret => {
+      return this.pageRequest(query).then(ret => {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
@@ -392,7 +406,7 @@ export default {
      * 页面初始化后触发的方法
      */
     doLoad () {
-      this.doRefresh()
+      return this.doRefresh()
     },
     /**
      * 获取search组件

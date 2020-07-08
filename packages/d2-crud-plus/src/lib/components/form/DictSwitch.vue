@@ -1,7 +1,6 @@
 <template>
   <el-switch
     :value="value"
-    v-bind="_elProps"
     @input="onInput"
     @change="onChange"
     :disabled="disabled"
@@ -12,6 +11,7 @@
     :inactive-color="_inActive[dict.color]"
     :inactive-value="_inActive[dict.value]"
     :inactive-text="_inActive[dict.label]"
+    v-bind="_elProps"
   >
   </el-switch>
 </template>

@@ -92,7 +92,21 @@ export const crudOptions = {
       title: '日期时间',
       key: 'datetime',
       sortable: true,
-      type: 'datetime'
+      type: 'datetime',
+      form: {
+        component: {
+          props: {
+            format: 'yyyy-MM-dd HH:mm',
+            valueFormat: 'yyyy-MM-dd HH:mm'
+          }
+        }
+      },
+      component: {
+        props: {
+          // 行展示组件使用的dayjs，格式化标准与el-datepicker不一样
+          format: 'YYYY-MM-DD HH:mm'
+        }
+      }
     },
     {
       title: '日期',

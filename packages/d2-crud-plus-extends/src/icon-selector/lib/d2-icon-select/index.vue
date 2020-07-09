@@ -172,6 +172,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.d2-mb-10{margin-bottom: 10px}
 .d2-icon-select--group {
   max-height: 400px;
   overflow-x: hidden;

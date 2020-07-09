@@ -37,7 +37,7 @@ yarn install  //或者npm install
 npm run dev
 ```
 
-## 集成到你的d2-admin项目中
+## 集成到你的项目中
 
 在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)试试
 
@@ -64,14 +64,14 @@ import { d2CrudPlus } from 'd2-crud-plus'
 // 推荐将d2-crud替换为d2-crud-x【使用方式基本与d2-crud一致】
 import d2Crud from 'd2-crud-x'
 import Vue from 'vue'
-import { request } from '@/api/service'
+import { request } from '@/api/service'  //你项目http请求用的什么就引入什么
 Vue.use(d2Crud)
 
 Vue.use(d2CrudPlus, {
   //获取数据字典的请求方法
   //可在dict中配置getData方法覆盖此全局方法
   getRemoteDictFunc (url,dict) { 
-    return request({
+    return request({ // 用你项目中的http请求
       url: url,
       method: 'get'
     }).then(ret=>{
@@ -116,7 +116,7 @@ Vue.use(d2CrudPlus, {
  import d2Crud from '@d2-projects/d2-crud'
  import d2CrudX from 'd2-crud-x'
  Vue.use(d2Crud)
- Vue.use(d2CrudX,{name:'d2-crud-x'})
+ Vue.use(d2CrudX,{name:'d2-crud-x'}) //修改d2CrudX的标签名称
 
 ```
 
@@ -154,7 +154,7 @@ Vue.use(D2pUploader, {
 新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js)
 获取更多信息。
 ### 4. 修改http响应拦截的返回结果
-d2-admin中响应拦截器中成功的返回结果是`dataAxios.data`，code和msg是不会丢给下层处理的   
+如果你是集成到d2-admin，d2-admin中响应拦截器中成功的返回结果是`dataAxios.data`，code和msg是不会丢给下层处理的   
 然而有些时候我们需要拿到`code`和`msg`做进一步判断和处理。   
 比如直接把msg弹出显示给用户看。   
 所以建议按如下修改响应拦截的返回结果，去掉`dataAxios.data`的`.data`，将`dataAxios`完整传递下去。

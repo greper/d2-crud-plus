@@ -4,7 +4,7 @@ export default {
      * @description 默认排序
      */
     rowHandle: {
-      type: Object,
+      type: [Boolean, Object],
       default: null
     }
   },

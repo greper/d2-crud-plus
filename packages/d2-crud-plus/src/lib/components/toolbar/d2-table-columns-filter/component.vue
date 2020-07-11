@@ -13,7 +13,6 @@
 
     .component--list {
       margin: -20px;
-      background-color: $color-border-3;
 
       .title{
         font-size: 14px;
@@ -23,7 +22,6 @@
         background-color: #FFF;
         margin-bottom: 1px;
         &.ghost {
-          background-color: $color-border-3;
           opacity: .5;
         }
         &:last-child {
@@ -32,19 +30,10 @@
         .component--list-item-handle {
           margin: -10px;
           padding: 10px;
-          color: $color-text-placehoder;
-          @extend %unable-select;
           cursor: move;
           &.disabled {
             opacity: .3;
             cursor: pointer;
-          }
-        }
-        &:hover {
-          .component--list-item-handle {
-            &:not(.disabled) {
-              color: $color-text-normal;
-            }
           }
         }
       }

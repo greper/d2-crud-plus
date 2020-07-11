@@ -26,7 +26,7 @@ const aside = [
             ]
           },
           { path: '/demo/form/el', title: 'EL表单组件' },
-          { path: '/demo/form/area', title: '省市区选择组件' },
+          { path: '/demo/form/area', title: '省市区选择组件', badge: 'bugfix' },
           { path: '/demo/form/icon', title: '图标选择' },
           { path: '/demo/form/editor', title: '富文本' }
 

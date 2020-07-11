@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.6...d2-crud-x@2.5.0) (2020-07-11)
+
+
+### Bug Fixes
+
+* 修复rowHandle=false时报警告的问题 ([31730c2](https://github.com/greper/d2-crud/commit/31730c2bb4f163b0d7702b7c695e97a480b8ae0e))
+
+
+### Features
+
+* 新增工具条功能：刷新，查询展开，页面紧凑切换，列设置。内置分页组件可以启用 ([980ff30](https://github.com/greper/d2-crud/commit/980ff30154453c8b1cd77f19f9efe6f7a20f9bef))
+
+
+
+
+
 ## [2.4.6](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.3...d2-crud-x@2.4.6) (2020-07-07)
 
 

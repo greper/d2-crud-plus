@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.5](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.4...d2p-extends@1.7.5) (2020-07-11)
+
+
+### Bug Fixes
+
+* 修复富文本触发两次data-change事件的bug ([9d24a9a](https://github.com/greper/d2-crud-plus/commit/9d24a9aee5a6d895b1c02e2d5fd633c10d5960ea))
+* 修复树形组件无法默认选中的bug ([2b45b91](https://github.com/greper/d2-crud-plus/commit/2b45b91f43595e0ae9b0b83b1625959cd6d98621))
+
+
+
+
+
 ## [1.7.4](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.3...d2p-extends@1.7.4) (2020-07-07)
 
 

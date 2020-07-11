@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.11.4...d2-crud-plus@1.12.0) (2020-07-11)
+
+
+### Features
+
+* 新增工具条功能：刷新，查询展开，页面紧凑切换，列设置。内置分页组件可以启用 ([980ff30](https://github.com/greper/d2-crud-plus/commit/980ff30154453c8b1cd77f19f9efe6f7a20f9bef))
+
+
+### Performance Improvements
+
+* 日期format示例 ([03955b5](https://github.com/greper/d2-crud-plus/commit/03955b51113cf9f287e8d0ae8a5d165bee9da53b))
+
+
+
+
+
 ## [1.11.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.11.3...d2-crud-plus@1.11.4) (2020-07-07)
 
 

@@ -45,7 +45,7 @@ const aside = [
           { path: '/demo/form/fix', title: '固定列' },
           { path: '/demo/form/cell', title: '行编辑' },
           { path: '/demo/form/validation', title: '表单校验' },
-          { path: '/demo/form/group', title: '表单分组' },
+          { path: '/demo/form/group', title: '表单分组', badge: 'new' },
           { path: '/demo/form/addi', title: '动态添加表单字段' },
           { path: '/demo/form/show', title: '显隐只读' },
           { path: '/demo/form/disabled', title: '禁用启用' }

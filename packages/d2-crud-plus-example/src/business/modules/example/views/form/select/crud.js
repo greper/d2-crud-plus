@@ -15,6 +15,12 @@ function radioOptionsChanged (vm, value) {
 }
 export const crudOptions = (vm) => {
   return {
+    pageOptions: {
+      compact: true
+    },
+    options: {
+      height: '100%'
+    },
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
@@ -155,7 +161,7 @@ export const crudOptions = (vm) => {
         key: 'mcascader',
         sortable: true,
         search: {
-          disabled: false
+          disabled: true
         },
         type: 'cascader-multi',
         dict: {

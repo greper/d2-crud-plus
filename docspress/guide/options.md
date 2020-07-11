@@ -99,6 +99,7 @@ export const crudOptions = {
         // 若data为空，则通过http请求获取远程数据字典
         // 也可以传入一个异步请求来自定义请求方式
         url:'/dict/get', 
+        // cache: true, //是否启用cache，默认开启
         // value:'value', value的属性名
         // label:'label', label的属性名
         // children:'children', children的属性名
@@ -119,6 +120,9 @@ export const crudOptions = {
     }
   ],
   // 下方的配置都是可选的
+  pageOptions:{
+    compact: false //是否紧凑页面模式
+  },
   formOptions: { // 与d2-crud一致
     labelWidth: '100px',
     labelPosition: 'left',
@@ -127,13 +131,15 @@ export const crudOptions = {
     defaultSpan: 12, // 默认表单字段所占宽度
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
-  searchOptions: {
+  searchOptions: { //crud-search的配置参数
+    form:{},//默认搜索参数
+    show: true,//是否显示搜索工具条
     disabled: false //是否禁用搜索工具条
   },
-  options: { // 与官d2-crud一致
+  options: { // el-table的配置参数
     stripe: true,
     border: true,
-    highlightCurrentRow: false,
+    highlightCurrentRow: false, //是否高亮选中行
     size: 'mini'
   },
   addTemplate: {}, //根据form配置自动生成
@@ -141,17 +147,28 @@ export const crudOptions = {
   addRules: {}, //根据form配置自动生成
   editRules: {},//根据form配置自动生成
   list: [], //数据列表
-  loading: false, //当前是否loading
-  page: { //翻页配置
-    current: 1,
-    size: 20,
+  loading: false, //当前是否正在loading
+  pagination: { //翻页配置
+    currentPage: 1,
+    pageSize: 20,
     total: 1
   },
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
-    edit:{},
-    remove:{},
-    custom:[]
+    edit:{}, //编辑按钮
+    remove:{}, //删除按钮
+    custom:[] //自定义按钮
+  },
+  formGroup: {  //表单分组
+    type: 'collapse', // tab暂未实现
+    accordion: false,
+    groups: { //分组
+      base: { //分组key
+        title: '商品基础', //分组标题
+        icon: 'el-icon-goods', //分组标题前的图标
+        columns: ['title', 'code', 'images'] //该组内包含的字段列表
+      }
+    }
   }
 }
 

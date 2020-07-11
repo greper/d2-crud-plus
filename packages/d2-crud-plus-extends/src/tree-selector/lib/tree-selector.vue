@@ -47,7 +47,7 @@
 <script>
 import lodash from 'lodash'
 import { d2CrudPlus } from 'd2-crud-plus'
-// 树形选择组件，需要import xx from 'd2p-extends'
+// 树形选择组件，需要import {D2pTreeSelector} from 'd2p-extends'
 export default {
   name: 'd2p-tree-selector',
   mixins: [d2CrudPlus.inputBase],
@@ -107,6 +107,7 @@ export default {
       }
       defaultElProps.nodeKey = defaultElProps.props.value
       lodash.merge(defaultElProps, this.elProps)
+      console.log('elProps:', defaultElProps)
       return defaultElProps
     },
     collapseTagSize () {
@@ -145,6 +146,7 @@ export default {
             selected.push(node)
           }
         }
+        console.log('selected:', selected)
         this.$set(this, 'selected', selected)
         this.resetInputHeight()
       }
@@ -160,12 +162,31 @@ export default {
         return
       }
       this.dialogVisible = true
+      console.log('this.value1', this.selected)
       setTimeout(() => {
         if (this.selected != null) {
-          console.log('this.value', this.selected)
-          this.$refs.elTree.setCheckedKeys(this.selected, this.leafOnly)
+          console.log('this.value2', this.selected)
+          let ids = this.selected.map(item => item[this._elProps.props.value])
+
+          ids.forEach(id => {
+            const current = this.$refs.elTree.store.nodesMap[id]
+            this.doExpandParent(current)
+          })
+          this.$nextTick(() => {
+            if (this.multiple) {
+              this.$refs.elTree.setCheckedKeys(ids, this.leafOnly)
+            } else if (ids.length > 0) {
+              this.$refs.elTree.setCurrentKey(ids[0])
+            }
+          })
         }
       }, 1)
+    },
+    doExpandParent (node) {
+      if (node.parent != null) {
+        this.doExpandParent(node.parent)
+      }
+      node.expanded = true
     },
     getValueKey (item) {
       if (this._elProps.props.value != null) {
@@ -217,6 +238,7 @@ export default {
       if (this.filter != null) {
         nodes = this.filter(nodes)
       }
+      console.log('selected', this.selected)
       this.$set(this, 'selected', nodes)
       return nodes
     },

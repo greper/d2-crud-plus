@@ -1,5 +1,7 @@
 <template>
+  <el-collapse-transition>
   <el-form
+      v-if="options && !options.disabled && options.show"
       :inline="true"
       :model="form"
       ref="searchForm"
@@ -52,6 +54,7 @@
       </el-button>
     </el-form-item>
   </el-form>
+  </el-collapse-transition>
 </template>
 
 <script>

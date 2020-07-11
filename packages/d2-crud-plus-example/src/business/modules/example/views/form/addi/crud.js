@@ -1,4 +1,8 @@
 export const crudOptions = {
+  options: {
+    height: '100%',
+    maxHeight: 'auto'
+  },
   columns: [
     {
       title: '创建时间',

@@ -13,6 +13,7 @@ import DictRadio from './form/DictRadio'
 import DictCheckbox from './form/DictCheckbox'
 import TextArea from './form/TextArea'
 import DictSwitch from './form/DictSwitch'
+import Toolbar from './toolbar'
 
 export default {
   DictSelect,
@@ -27,5 +28,6 @@ export default {
   TextArea,
   DictSwitch,
   renderComponent,
-  renderCustomComponent
+  renderCustomComponent,
+  Toolbar
 }

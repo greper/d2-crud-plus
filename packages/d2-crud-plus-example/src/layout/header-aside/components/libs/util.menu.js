@@ -12,7 +12,8 @@ export function elMenuItem (h, menu) {
     key={ menu.path }
     index={ menu.path }>
     { icon }
-    <span slot="title">{ menu.title || '未命名菜单' }</span>
+    { menu.badge ? <el-badge value={menu.badge}>{ menu.title || '未命名菜单' }</el-badge> : menu.title || '未命名菜单'}
+
   </el-menu-item>
 }
 

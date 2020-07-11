@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     isValueChanged (value) {
-      return this.selectValue === value
+      return this.currentValue !== value
     },
     setValue (value) {
       // 在这里对 传入的value值做处理

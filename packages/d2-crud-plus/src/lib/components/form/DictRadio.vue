@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group class="dict_radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange">
+  <el-radio-group class="d2p-dict-radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange">
     <el-radio :disabled="disabled" :readonly="readonly" v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]"
@@ -76,10 +76,10 @@ export default {
 }
 </script>
 <style lang="scss">
-  .dict_radio{
+  .d2p-dict-radio{
     width:100%
   }
-  .dict_radio.el-radio-button__inner, .dict_radio.el-radio-group {
+  .d2p-dict-radio.el-radio-button__inner, .d2p-dict-radio.el-radio-group {
       line-height: 40px;
     .el-radio, .el-radio__input{
       line-height: 40px;

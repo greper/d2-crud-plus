@@ -7,7 +7,7 @@ export default {
       // 然后此处会watch到value的改变，发出change事件
       // change事件放在此处发射的好处是，当外部修改value值时，也能够触发form-data-change事件
       this.onChange(value)
-      if (this.isValueChanged(value)) {
+      if (!this.isValueChanged(value)) {
         return
       }
       // 如果值是被外部改变的，则修改本组件的currentValue

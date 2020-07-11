@@ -8,6 +8,9 @@ export default {
   data () {
     return {
       crud: {
+        pageOptions: {
+          compact: undefined
+        },
         format: {
           ref: {
             d2Crud: 'd2Crud',
@@ -57,9 +60,14 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false, form: {} },
+        searchOptions: { disabled: false, show: true, form: {} },
         list: [],
         loading: false,
+        pagination: {
+          pageSize: 20,
+          pageSizes: [5, 10, 20, 30, 40, 50, 100],
+          layout: 'total, sizes, prev, pager, next, jumper'
+        },
         page: {
           current: 1,
           size: 20,
@@ -102,9 +110,7 @@ export default {
     this.doLoad()
   },
   mounted () {
-    this.$nextTick(() => {
-      this.crud.options.maxHeight = this.computeCrudHeight()
-    })
+    this.reComputeCrudHeight()
   },
   methods: {
     /**
@@ -210,7 +216,7 @@ export default {
       if (item.children != null && item.children.length > 0) {
         // 复杂表头
         let children = []
-        parantColumns.push({ title: item.title, children: children })
+        parantColumns.push({ ...item, children: children })
         for (let subItem of item.children) {
           this.initColumnItem(children, subItem)
         }
@@ -300,6 +306,14 @@ export default {
     initAfter () {
 
     },
+    reComputeCrudHeight () {
+      if (this.crud && this.crud.options && this.crud.options.height === '100%') {
+        return
+      }
+      this.$nextTick(() => {
+        this.crud.options.maxHeight = this.computeCrudHeight()
+      })
+    },
     /**
      * 动态计算crud表格高度，当表格数据大于一屏的时候不会撑开，给翻页组件留出空间
      * crud表格高度 = 可视窗口高度 - crud表头的top位置 - adjust高度
@@ -337,9 +351,25 @@ export default {
      * @param val
      */
     handlePaginationChange (val) {
-      this.crud.page = val
+      this.doPaginationMerge(val)
       console.info('page changed:', val)
       this.doRefresh()
+    },
+    doPaginationMerge (page) {
+      const current = page.current != null ? page.current : page.currentPage
+      const size = page.size != null ? page.size : page.pageSize
+      const total = page.total
+
+      if (this.crud.page) {
+        this.crud.page.current = current
+        this.crud.page.size = size
+        this.crud.page.total = total
+      }
+      if (this.crud.pagination) {
+        this.crud.pagination.pageSize = size
+        this.crud.pagination.currentPage = current
+        this.crud.pagination.total = total
+      }
     },
     /**
      * 查询按钮点击
@@ -351,11 +381,19 @@ export default {
           delete form[key]
         }
       }
-      this.crud.page.current = 1 // 点击查询后，从第一页开始
+      this.doPageTurn(1)
       this.crud.searchOptions.form = form
       this.doValueResolve(form)
       console.log('do search , 查询参数:', form)
       this.doRefresh()
+    },
+    doPageTurn (no) {
+      if (this.crud.page) {
+        this.crud.page.current = no // 点击查询后，从第一页开始
+      }
+      if (this.crud.pagination) {
+        this.crud.pagination.pageCurrent = no
+      }
     },
     /**
      * 表格刷新，重新拉取数据
@@ -365,11 +403,10 @@ export default {
       let query = {
         ...form
       }
-
-      query[this.crud.format.page.request.size] = this.crud.page.size
-      query[this.crud.format.page.request.current] = this.crud.page.current
-
-      const requestCurrent = this.crud.page.current
+      const requestCurrent = this.crud.page ? this.crud.page.current : this.crud.page.currentPage
+      const requestPageSize = this.crud.page ? this.crud.page.size : this.crud.page.pageSize
+      query[this.crud.format.page.request.size] = requestPageSize
+      query[this.crud.format.page.request.current] = requestCurrent
 
       this.crud.loading = true
       return this.pageRequest(query).then(ret => {
@@ -388,13 +425,11 @@ export default {
             }
           }
         }
-        this.crud.page.current = current
-        this.crud.page.size = size
-        this.crud.page.total = total
+        this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })
         this.$set(this.crud, 'list', records)
 
         if (requestCurrent > 1 && records && records.length === 0) {
-          this.crud.page.current = requestCurrent - 1
+          this.doPageTurn(requestCurrent - 1)
           this.doRefresh()
         }
       }).finally(() => {
@@ -655,6 +690,13 @@ export default {
      * @param value
      */
     doFormDataChange ({ key, value, form }) {
+    },
+    /**
+     * columns filter 用户配置修改
+     * @param columns
+     */
+    handleColumnsFilterChanged (columns) {
+      this.$set(this.crud, 'columns', columns)
     }
 
   }

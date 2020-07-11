@@ -1,5 +1,5 @@
 <template>
-  <div  style="margin-left: 16px;float:right;height: 20px">
+  <div class="d2p-example-helper">
     <el-button @click="drawer = true" size="mini" type="primary">
       帮助
     </el-button>
@@ -52,6 +52,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+  .d2p-example-helper{
+    margin-left: 16px;
+    float:right;
+    height: 20px;
+    :focus {
+      outline: 0;
+    }
+  }
 
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div
     class="d2-crud"
+    :class="{'d2-crud-height100':options.height==='100%'}"
     v-loading="loading"
     :element-loading-text="getAttribute(loadingOptions,'text', null)"
     :element-loading-spinner="getAttribute(loadingOptions,'spinner', null)"
@@ -77,35 +78,33 @@
           v-bind="rowHandle"
         >
           <template slot-scope="scope">
-            <el-button
+            <d2-button
               v-if="rowHandle.edit && handleRowHandleButtonShow(rowHandle.edit.show, scope.$index, scope.row)"
               :disabled="handleRowHandleButtonDisabled(rowHandle.edit.disabled, scope.$index, scope.row)"
               v-bind="rowHandle.edit"
               @click="handleEdit(scope.$index, scope.row)"
+              :label="rowHandle.edit.text==null?undefined: handleAttribute(rowHandle.edit.text, '编辑')"
+            />
+            <template
+              v-for="(item, index) in handleAttribute(rowHandle.custom, [])"
             >
-              {{handleAttribute(rowHandle.edit.text, '编辑')}}
-            </el-button>
-            <el-button
+              <d2-button :key="index"
+                         v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
+                         :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
+                         v-bind="item"
+                         @click="$emit(item.emit, {index: scope.$index, row: scope.row})"
+                         :label="handleAttribute(item.text)"
+              />
+            </template>
+            <d2-button
               v-if="rowHandle.remove && handleRowHandleButtonShow(rowHandle.remove.show, scope.$index, scope.row)"
               :type="handleAttribute(rowHandle.remove.type, 'danger')"
               :disabled="handleRowHandleButtonDisabled(rowHandle.remove.disabled, scope.$index, scope.row)"
-              v-bind="rowHandle.remove"
               @click="handleRemove(scope.$index, scope.row)"
-            >
-              {{handleAttribute(rowHandle.remove.text, '删除')}}
-            </el-button>
-            <template
-              v-for="(item, index) in handleAttribute(rowHandle.custom, [])"
-              >
-              <el-button :key="index"
-                v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
-                :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
-                v-bind="item"
-                @click="$emit(item.emit, {index: scope.$index, row: scope.row})"
-              >
-                {{item.text}}
-              </el-button>
-            </template>
+              :label="rowHandle.remove.text==null?undefined: handleAttribute(rowHandle.remove.text, '删除')"
+              v-bind="rowHandle.remove"
+            />
+
           </template>
 
         </el-table-column>
@@ -233,6 +232,7 @@ import exposeMethods from './mixin/exposeMethods.js'
 import utils from './mixin/utils'
 import D2Column from './components/d2-column'
 import D2FormItem from './components/d2-form-item'
+import D2Button from './components/d2-button/component'
 
 export default {
   name: 'd2-crud',
@@ -250,7 +250,8 @@ export default {
   ],
   components: {
     D2FormItem,
-    D2Column
+    D2Column,
+    D2Button
   },
   methods: {
     handleFormDataChange (event) {
@@ -281,12 +282,15 @@ export default {
 
 <style lang="scss">
 .d2-crud {
+  display: flex;
+  flex-direction: column;
   .d2-crud-header {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
   }
   .d2-crud-body {
     padding: 15px 0;
     overflow: hidden;
+    flex-grow: 1;
   }
   .d2-crud-pagination {
     padding: 15px 0;
@@ -305,5 +309,44 @@ export default {
     padding-left:30px;
     padding-right:30px;
   }
+  &.d2-crud-height100{
+    height:100%;
+    .d2-crud-body{
+      height: 100%;
+    }
+  }
+
+  .d2-button{
+    &.is-thin{
+      &.el-button--small, &.el-button--small.is-round {
+        padding: 9px 9px;
+      }
+      &.el-button--mini, &.el-button--mini.is-round {
+        padding: 7px 7px;
+      }
+    }
+  }
 }
+
+.page-compact{
+  .d2-container-full__body{
+    padding:0px !important
+  }
+  .d2-crud-header{
+    padding:10px;
+    border-bottom:0px
+  }
+  .d2-crud .d2-crud-body{
+    padding:0px;
+  }
+  .d2-crud-pagination{
+    padding:10px 0;
+  }
+}
+
+.d2-mb-2{margin-bottom: 2px}
+.d2-mt-2{margin-top: 2px;}
+.d2-mr-5{margin-right: 5px}
+.d2-mr-10{margin-right: 10px}
+
 </style>

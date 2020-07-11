@@ -37,6 +37,7 @@ const aside = [
         icon: 'folder-o',
         children: [
           { path: '/demo/form/d2crud', title: 'd2Crud原版' },
+          { path: '/demo/form/toolbar', title: '工具条', badge: 'new' },
           { path: '/demo/form/slot', title: '自定义组件' },
           { path: '/demo/form/customType', title: '自定义字段类型' },
           { path: '/demo/form/header', title: '多级表头' },
@@ -96,6 +97,16 @@ const routers = {
             cache: true
           },
           component: _import(viewsPrefix + 'form/column')
+        },
+        {
+          path: 'form/toolbar',
+          name: 'formToolbar',
+          meta: {
+            title: '工具条',
+            auth: true,
+            cache: true
+          },
+          component: _import(viewsPrefix + 'form/toolbar')
         },
         {
           path: 'form/fix',

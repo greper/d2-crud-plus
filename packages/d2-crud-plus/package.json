@@ -28,7 +28,8 @@
   "dependencies": {
     "dayjs": "^1.8.16",
     "lodash": "^4.17.11",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuedraggable": "^2.23.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

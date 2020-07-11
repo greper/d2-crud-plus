@@ -1,13 +1,13 @@
 <template>
   <d2-container>
-    <template slot="header">动态添加表单字段
+    <template slot="header">
+      <div>动态添加表单字段</div>
       <example-helper title="自定义组件帮助说明" >
           <div>
            右下角查看源码
           </div>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
     <d2-crud
         ref="d2Crud"
         :columns="crud.columns"
@@ -27,7 +27,17 @@
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange">
-      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+
+      <div slot="header">
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+        <el-button  class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+        <crud-toolbar
+                      :search.sync="crud.searchOptions.disabled"
+                      :columns="crud.columns"
+                      @refresh="doRefresh()"
+                      @columns-filter-changed="handleColumnsFilterChanged"
+        />
+      </div>
 
       <template slot="FormBodyAppendSlot" slot-scope="scope">
         <div class="d2-mt-10">
@@ -39,7 +49,7 @@
       </template>
 
     </d2-crud>
-    <crud-footer ref="footer"
+    <crud-footer ref="footer" slot="footer"
                   :current="crud.page.current"
                   :size="crud.page.size"
                   :total="crud.page.total"
@@ -62,6 +72,9 @@ export default {
     }
   },
   methods: {
+    reComputeCrudHeight () {
+
+    },
     getCrudOptions () {
       return crudOptions
     },
@@ -149,3 +162,12 @@ export default {
   }
 }
 </script>
+<style>
+.d2-crud{
+  height:100%;
+}
+.d2-crud .d2-crud-body{
+    height:100%;
+    padding:0px
+  }
+</style>

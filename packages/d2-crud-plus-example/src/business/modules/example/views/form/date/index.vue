@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <d2-container >
     <template slot="header">日期选择</template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud

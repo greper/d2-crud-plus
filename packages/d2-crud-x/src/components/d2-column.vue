@@ -1,5 +1,6 @@
 <template>
   <el-table-column
+    v-if="item.show!==false"
   :label="handleAttribute(item.title, '')"
   :prop="handleAttribute(item.key, null)"
   v-bind="item">

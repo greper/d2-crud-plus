@@ -5,7 +5,7 @@
     :options="_options"
     :disabled="disabled" :readonly="readonly"
     v-bind="_elProps"
-    @input="onInput" ></el-cascader>
+    @input="onInput" />
 </template>
 
 <script>
@@ -28,7 +28,10 @@ export default {
       }
     },
     // 值
-    value: { require: false },
+    value: { default: () => {
+      return []
+    },
+    require: false },
     // el-cascader的属性,[el-cascader](https://element.eleme.cn/#/zh-CN/component/cascader)
     elProps: {
       type: Object

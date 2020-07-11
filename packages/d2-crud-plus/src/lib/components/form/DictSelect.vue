@@ -1,5 +1,6 @@
 <template>
   <el-select
+    class="d2p-dict-select"
     :value="currentValue"
     v-bind="_elProps"
     :value-key="dict.value"

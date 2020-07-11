@@ -123,7 +123,7 @@ export const crudOptions = {
   pageOptions:{
     compact: false //是否紧凑页面模式
   },
-  formOptions: { // 与d2-crud一致
+  formOptions: { // 编辑对话框及el-form的配置
     labelWidth: '100px',
     labelPosition: 'left',
     saveLoading: false,
@@ -131,12 +131,12 @@ export const crudOptions = {
     defaultSpan: 12, // 默认表单字段所占宽度
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
-  searchOptions: { //crud-search的配置参数
+  searchOptions: { //查询配置参数
     form:{},//默认搜索参数
     show: true,//是否显示搜索工具条
     disabled: false //是否禁用搜索工具条
   },
-  options: { // el-table的配置参数
+  options: { // d2-crud及el-table的配置参数
     stripe: true,
     border: true,
     highlightCurrentRow: false, //是否高亮选中行

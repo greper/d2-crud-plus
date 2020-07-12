@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.0...d2-crud-x@2.5.1) (2020-07-12)
+
+
+### Performance Improvements
+
+* 示例全部改成新版带toolbar界面 ([6770fc9](https://github.com/greper/d2-crud/commit/6770fc9980ba17083ffb414309ad8f6e15d6dbe1))
+* 优化列过滤器 ([3775371](https://github.com/greper/d2-crud/commit/37753713a135d4f019717f14f016c1a12c5990a0))
+* 自定义操作按钮还是放到后面来 ([ac6847e](https://github.com/greper/d2-crud/commit/ac6847e4065b9af1d7e01f11aa62e8c545ad95ff))
+* extends解除d2crudplus依赖 ([66c5c70](https://github.com/greper/d2-crud/commit/66c5c70bbf505e76296257c56debef0d5855b843))
+
+
+
+
+
 # [2.5.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.4.6...d2-crud-x@2.5.0) (2020-07-11)
 
 

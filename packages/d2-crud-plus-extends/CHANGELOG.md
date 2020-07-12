@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.5...d2p-extends@1.7.6) (2020-07-12)
+
+
+### Performance Improvements
+
+* extends解除d2crudplus依赖 ([66c5c70](https://github.com/greper/d2-crud-plus/commit/66c5c70bbf505e76296257c56debef0d5855b843))
+
+
+
+
+
 ## [1.7.5](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.4...d2p-extends@1.7.5) (2020-07-11)
 
 

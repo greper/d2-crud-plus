@@ -1,18 +1,4 @@
 import request from '@/business/api/request.mock'
-function radioOptionsChanged (vm, value) {
-  const checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
-  const checkedRadio = vm.getEditFormTemplate('checkedRadio')
-  if (checkedRadio == null || checkbox == null) {
-    return
-  }
-  console.log('component.dict', checkbox)
-  // 获取checkbox选中的选项
-  const options = checkbox.component.props.dict.data.filter(item => {
-    return value.indexOf(item.value) >= 0
-  })
-  // 直接修改DictRadio的options 它的优先级比dict.data高
-  checkedRadio.component.props.options = options
-}
 export const crudOptions = (vm) => {
   return {
     pageOptions: {
@@ -200,16 +186,27 @@ export const crudOptions = (vm) => {
         form: {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
-            radioOptionsChanged(vm, value)
+            const checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
+            const checkedRadio = vm.getEditFormTemplate('checkedRadio')
+            if (checkedRadio == null || checkbox == null) {
+              return
+            }
+            console.log('component.dict', checkbox)
+            // 获取checkbox选中的选项
+            const options = checkbox.component.props.dict.data.filter(item => {
+              return value.indexOf(item.value) >= 0
+            })
+            // 直接修改DictRadio的options 它的优先级比dict.data高
+            checkedRadio.component.props.options = options
           },
           component: {
             props: {
               dict: {
                 url: '/dicts/OpenStatusEnum',
                 onReady: (data, dict) => {
-                  // 在字典加载完成后触发修改联动radio的选项。
                   const value = vm.getEditForm().checkbox
-                  radioOptionsChanged(vm, value || [])
+                  // 在字典加载完成后触发一次valueChange
+                  vm.crud.columnsMap.checkbox.form.valueChange('checkbox', value, vm.getEditForm())
                 }
               }
             }

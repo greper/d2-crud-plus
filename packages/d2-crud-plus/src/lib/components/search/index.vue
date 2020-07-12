@@ -84,8 +84,10 @@ export default {
       reset = lodash.cloneDeep(this.options.form)
     }
     lodash.merge(form, reset)
+    // 合并默认查询formdata
     this.$set(this, 'form', form)
 
+    // 构建防抖查询函数
     if (this.options.debounce !== false) {
       let wait = null
       if (this.options.debounce) {

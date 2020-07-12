@@ -73,12 +73,15 @@ export default {
             delete query.size
             if (Object.keys(query).length > 0) {
               data = list.filter(item => {
+                let allFound = true // 是否所有条件都符合
                 for (const key in query) {
+                  // 判定某一个条件
                   const value = query[key]
                   if (value == null) {
                     continue
                   }
                   if (value instanceof Array) {
+                    // 如果条件中的value是数组的话，只要查到一个就行
                     if (value.length === 0) {
                       continue
                     }
@@ -91,20 +94,25 @@ export default {
                             break
                           }
                         }
-                      } else {
-                        if (item[key] === i) {
-                          found = true
+                        if (found) {
                           break
                         }
+                      } else if (item[key] === i || ((typeof item[key]) === 'string' && item[key].indexOf(i + '') >= 0)) {
+                        found = true
+                        break
+                      }
+                      if (found) {
+                        break
                       }
                     }
-                    return found
-                  }
-                  if (item[key] !== value) {
-                    return false
+                    if (!found) {
+                      allFound = false
+                    }
+                  } else if (item[key] !== value) {
+                    allFound = false
                   }
                 }
-                return true
+                return allFound
               })
             }
           }

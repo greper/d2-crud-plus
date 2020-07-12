@@ -5,7 +5,11 @@
     <el-button v-if="compact!=null" :type="compact?'primary':''"  size="small" icon="el-icon-rank" circle title="紧凑型页面" @click="doCompact"/>
     <el-button v-if="columns!=null" type="success" size="small" icon="el-icon-set-up" circle title="列设置"  @click="doColumnsFilter"/>
 
-    <d2-table-columns-filter v-if="columns!=null" ref="columnsSetup" v-model="columnsFilter.value" :options="columnsFilter.options" @change="handleColumnsFilterChanged"/>
+    <d2-table-columns-filter v-if="columns!=null" ref="columnsSetup"
+                             v-model="columnsFilter.value"
+                             :options="columnsFilter.options"
+                             :storage="storage"
+                             @change="handleColumnsFilterChanged"/>
 
   </span>
 </template>
@@ -32,6 +36,10 @@ export default {
     columns: {
       type: Array,
       default: undefined
+    },
+    storage: {
+      type: Boolean,
+      default: true
     }
   },
   data () {

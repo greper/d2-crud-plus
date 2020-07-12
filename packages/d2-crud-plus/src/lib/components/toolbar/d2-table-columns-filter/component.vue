@@ -140,6 +140,11 @@ export default {
       type: Array,
       default: () => [],
       required: false
+    },
+    storage: {
+      type: Boolean,
+      default: true,
+      required: false
     }
   },
   data () {
@@ -175,7 +180,20 @@ export default {
     }
   },
   created () {
+    let storedOptions = this.getOptionsFromStorage()
+    if (storedOptions) {
+      const storeHash = this.getColumnsHash(storedOptions)
+      const optionHash = this.getColumnsHash(this.options)
+      if (optionHash !== storeHash) {
+        // 如果字段列有过修改，则不使用本地设置
+        storedOptions = null
+      }
+    }
+    this.storedOptions = storedOptions
     this.refresh()
+    if (storedOptions) {
+      this.submit()
+    }
   },
   methods: {
     // fixed 变化时触发
@@ -198,21 +216,31 @@ export default {
     refresh () {
       const options = lodash.cloneDeep(this.options)
       const value = lodash.cloneDeep(this.value)
-      const currentValueOld = lodash.cloneDeep(this.currentValue)
       let currentValue = []
       let checkAll = true
       // 设置比较源
       let compareSource = options
-      if (currentValueOld.length > 0 && currentValueOld.length === options.length) {
-        compareSource = currentValueOld
+      if (this.storedOptions != null) {
+        compareSource = this.storedOptions
       }
       // 计算
       compareSource.forEach(option => {
         // 在 value 尝试找到这个项目
         // 没有的话使用 option 中的默认值
+        let storeItem = null
+        if (this.storedOptions != null) {
+          storeItem = option
+          option = options.find(column => column.key === option.key)
+        }
         let item = value.find(column => column.key === option.key)
-        const show = item != null && item.show !== false
+        let show = item != null && item.show !== false
         item = item || option
+
+        if (storeItem) {
+          // 使用本地保存的设置
+          show = storeItem.show
+          item.fixed = storeItem.fixed
+        }
         item.show = show
         if (!show) checkAll = false
         currentValue.push(item)
@@ -235,15 +263,85 @@ export default {
       this.currentValue.forEach((item, index) => {
         result.push(item)
       })
+      this.saveOptionsToStorage(result)
+      this.emit(result)
+      this.active = false
+    },
+    emit (result) {
       this.$emit('input', [])
       this.$emit('change', [])
       // TODO 如果只触发一次，有底部滚动条时，原本被遮住的列显示后，固定操作列会显示错乱
       this.$nextTick(() => {
-        console.log('result', result)
         this.$emit('input', result)
         this.$emit('change', result)
       })
-      this.active = false
+    },
+    saveOptionsToStorage (value) {
+      if (!this.storage) {
+        return
+      }
+      let key = this.getStorageKey()
+      let saved = this.getStorageTable()
+      if (!saved) {
+        saved = {}
+      }
+      const storedOptions = []
+      for (let i = 0; i < value.length; i++) {
+        const item = value[i]
+        const target = {
+          key: item.key,
+          show: item.show != null ? item.show : true,
+          fixed: item.fixed
+        }
+        storedOptions.push(target)
+      }
+      this.storedOptions = storedOptions
+      saved[key] = storedOptions
+      this.saveStorageTable(saved)
+    },
+    getOptionsFromStorage () {
+      if (!this.storage) {
+        return
+      }
+      const json = this.getStorageTable()
+      if (json) {
+        const key = this.getStorageKey()
+        return json[key]
+      }
+    },
+    getStorageKey () {
+      let key = location.href
+      if (this.$route) {
+        key = this.$route.path
+      }
+      return key
+    },
+    getStorageName () {
+      return 'd2CrudPlus.columnsFilter'
+    },
+    getStorageTable () {
+      const name = this.getStorageName()
+      const saved = localStorage.getItem(name)
+      if (saved == null) {
+        return
+      }
+      return JSON.parse(saved)
+    },
+    saveStorageTable (saved) {
+      const name = this.getStorageName()
+      localStorage.setItem(name, JSON.stringify(saved))
+    },
+    getColumnsHash (columns) {
+      const keys = []
+      for (let item of columns) {
+        keys.push(item)
+      }
+      keys.sort()
+      let hash = ''
+      for (let key of keys) {
+        hash += key
+      }
+      return hash
     }
   }
 }

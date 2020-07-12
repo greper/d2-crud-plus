@@ -38,8 +38,9 @@ export const crudOptions = (vm) => {
         minWidth: 200
       },
       {
-        title: 'text1',
+        title: '默认隐藏',
         key: 'text1',
+        show: false,
         sortable: true,
         minWidth: 200
       },

@@ -211,7 +211,7 @@ export default {
         // 在 value 尝试找到这个项目
         // 没有的话使用 option 中的默认值
         let item = value.find(column => column.key === option.key)
-        const show = !!item
+        const show = item != null && item.show !== false
         item = item || option
         item.show = show
         if (!show) checkAll = false
@@ -233,14 +233,13 @@ export default {
     submit () {
       const result = []
       this.currentValue.forEach((item, index) => {
-        if (item.show !== false) {
-          result.push(item)
-        }
+        result.push(item)
       })
       this.$emit('input', [])
       this.$emit('change', [])
       // TODO 如果只触发一次，有底部滚动条时，原本被遮住的列显示后，固定操作列会显示错乱
       this.$nextTick(() => {
+        console.log('result', result)
         this.$emit('input', result)
         this.$emit('change', result)
       })

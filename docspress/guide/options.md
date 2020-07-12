@@ -134,7 +134,11 @@ export const crudOptions = {
   searchOptions: { //查询配置参数
     form:{},//默认搜索参数
     show: true,//是否显示搜索工具条
-    disabled: false //是否禁用搜索工具条
+    disabled: false, //是否禁用搜索工具条
+    debounce:{ //自动查询防抖,debounce:false关闭自动查询
+      wait: 500 //延迟500毫秒
+      ... //options : https://www.lodashjs.com/docs/lodash.debounce
+    }   
   },
   options: { // d2-crud及el-table的配置参数
     stripe: true,

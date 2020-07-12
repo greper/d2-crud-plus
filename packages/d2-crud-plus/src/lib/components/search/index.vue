@@ -153,7 +153,7 @@ export default {
     },
     handleSearchDataChange (value, column) {
       column.value = value
-      console.log('search data  change :', column)
+      console.log('search value change :', column)
       this.$emit('search-data-change', column)
 
       if (this.searchDebounce) {

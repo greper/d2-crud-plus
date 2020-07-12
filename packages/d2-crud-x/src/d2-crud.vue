@@ -342,6 +342,9 @@ export default {
   .d2-crud-pagination{
     padding:10px 0;
   }
+  .el-table--border {
+    border-left: none;
+  }
 }
 
 .d2-mb-2{margin-bottom: 2px}

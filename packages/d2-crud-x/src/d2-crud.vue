@@ -85,6 +85,14 @@
               @click="handleEdit(scope.$index, scope.row)"
               :label="rowHandle.edit.text==null?undefined: handleAttribute(rowHandle.edit.text, '编辑')"
             />
+            <d2-button
+              v-if="rowHandle.remove && handleRowHandleButtonShow(rowHandle.remove.show, scope.$index, scope.row)"
+              :type="handleAttribute(rowHandle.remove.type, 'danger')"
+              :disabled="handleRowHandleButtonDisabled(rowHandle.remove.disabled, scope.$index, scope.row)"
+              @click="handleRemove(scope.$index, scope.row)"
+              :label="rowHandle.remove.text==null?undefined: handleAttribute(rowHandle.remove.text, '删除')"
+              v-bind="rowHandle.remove"
+            />
             <template
               v-for="(item, index) in handleAttribute(rowHandle.custom, [])"
             >
@@ -96,14 +104,6 @@
                          :label="handleAttribute(item.text)"
               />
             </template>
-            <d2-button
-              v-if="rowHandle.remove && handleRowHandleButtonShow(rowHandle.remove.show, scope.$index, scope.row)"
-              :type="handleAttribute(rowHandle.remove.type, 'danger')"
-              :disabled="handleRowHandleButtonDisabled(rowHandle.remove.disabled, scope.$index, scope.row)"
-              @click="handleRemove(scope.$index, scope.row)"
-              :label="rowHandle.remove.text==null?undefined: handleAttribute(rowHandle.remove.text, '删除')"
-              v-bind="rowHandle.remove"
-            />
 
           </template>
 

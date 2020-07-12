@@ -40,6 +40,9 @@ Vue.use(d2CrudPlus, {
           }
         }
       },
+      pageOptions: {
+        compact: true
+      },
       options: {
         size: 'small'
       },

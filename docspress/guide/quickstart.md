@@ -319,7 +319,7 @@ export const crudOptions = (vm)=>{ // vm即this
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-        <el-button  class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+        <el-button size="small" type="primary"  @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"

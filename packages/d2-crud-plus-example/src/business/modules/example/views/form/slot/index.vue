@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">自定义组件
       <example-helper title="自定义组件帮助说明" >
           <div>
@@ -9,11 +9,7 @@
           </div>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
-      <template slot="slotExampleSearchSlot" slot-scope="scope">
-        <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"></el-input>
-      </template>
-    </crud-search>
+
     <d2-crud
         ref="d2Crud"
         :columns="crud.columns"
@@ -27,6 +23,8 @@
         :form-options="crud.formOptions"
         :options="crud.options"
         :loading="crud.loading"
+        :pagination="crud.pagination"
+        @pagination-change="handlePaginationChange"
         @dialog-open="handleDialogOpen"
         @dialog-opened="handleDialogOpened"
         @row-edit="handleRowEdit"
@@ -35,7 +33,20 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
         @custom-emit="customEmit">
-      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+
+      <div slot="header">
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
+          <template slot="slotExampleSearchSlot" slot-scope="scope">
+            <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"/>
+          </template>
+        </crud-search>
+        <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+        <crud-toolbar :search.sync="crud.searchOptions.show"
+                      :compact.sync="crud.pageOptions.compact"
+                      :columns="crud.columns"
+                      @refresh="doRefresh()"
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
+      </div>
 
       <template slot="FormHeaderSlot">
         <i class="el-icon-edit"></i>
@@ -71,13 +82,6 @@
 
     </d2-crud>
 
-    <crud-footer ref="footer"
-                  :current="crud.page.current"
-                  :size="crud.page.size"
-                  :total="crud.page.total"
-                  @change="handlePaginationChange"
-    >
-    </crud-footer>
   </d2-container>
 </template>
 

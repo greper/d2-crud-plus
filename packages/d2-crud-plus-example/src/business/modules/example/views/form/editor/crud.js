@@ -4,6 +4,9 @@ export const crudOptions = (vm) => {
       title: '序号',
       align: 'center'
     },
+    options: {
+      height: '100%' // 表格高度100%, 使用toolbar必须设置
+    },
     columns: [
       {
         title: 'id',

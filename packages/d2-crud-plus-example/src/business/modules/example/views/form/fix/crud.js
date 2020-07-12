@@ -14,7 +14,11 @@ export const crudOptions = {
     fixed: 'right' // 右边固定列
   },
   options: {
+    height: '100%', // 表格高度100%, 使用toolbar必须设置
     rowKey: 'id'
+  },
+  pageOptions: {
+    compact: true // 是否紧凑型页面
   },
   columns: [
     {

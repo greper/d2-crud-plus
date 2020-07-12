@@ -285,7 +285,7 @@ export default {
   display: flex;
   flex-direction: column;
   .d2-crud-header {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+    /*border-bottom: 1px dotted rgba(0, 0, 0, 0.2);*/
   }
   .d2-crud-body {
     padding: 15px 0;
@@ -325,6 +325,9 @@ export default {
         padding: 7px 7px;
       }
     }
+  }
+  .d2-crud-pagination{
+    padding:0px 0;
   }
 }
 

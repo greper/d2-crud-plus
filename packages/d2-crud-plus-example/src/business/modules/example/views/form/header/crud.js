@@ -1,7 +1,11 @@
 export const crudOptions = {
+  options: {
+    height: '100%' // 表格高度100%, 使用toolbar必须设置
+  },
   columns: [
     {
       title: '多级表头',
+      key: 'multi_header',
       children: [
         {
           title: '时间',

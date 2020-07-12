@@ -1,7 +1,7 @@
 <template>
-  <d2-container>
+  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
-      <div>动态添加表单字段</div>
+      动态添加表单字段
       <example-helper title="自定义组件帮助说明" >
           <div>
            右下角查看源码
@@ -21,6 +21,8 @@
         :form-options="crud.formOptions"
         :options="crud.options"
         :loading="crud.loading"
+        :pagination="crud.pagination"
+        @pagination-change="handlePaginationChange"
         @dialog-open="handleDialogOpen"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
@@ -30,13 +32,12 @@
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-        <el-button  class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
-        <crud-toolbar
-                      :search.sync="crud.searchOptions.disabled"
+        <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+        <crud-toolbar :search.sync="crud.searchOptions.show"
+                      :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"
-        />
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
 
       <template slot="FormBodyAppendSlot" slot-scope="scope">
@@ -49,13 +50,6 @@
       </template>
 
     </d2-crud>
-    <crud-footer ref="footer" slot="footer"
-                  :current="crud.page.current"
-                  :size="crud.page.size"
-                  :total="crud.page.total"
-                  @change="handlePaginationChange"
-    >
-    </crud-footer>
   </d2-container>
 </template>
 

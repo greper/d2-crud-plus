@@ -255,15 +255,18 @@ export default {
     // 还原
     reset () {
       this.currentValue = lodash.cloneDeep(this.options)
-      this.submit()
+      this.submit(true)
+      this.clearThisStorage()
     },
     // 确认
-    submit () {
+    submit (noSave) {
       const result = []
       this.currentValue.forEach((item, index) => {
         result.push(item)
       })
-      this.saveOptionsToStorage(result)
+      if (!noSave) {
+        this.saveOptionsToStorage(result)
+      }
       this.emit(result)
       this.active = false
     },
@@ -308,6 +311,12 @@ export default {
         const key = this.getStorageKey()
         return json[key]
       }
+    },
+    clearThisStorage () {
+      const key = this.getStorageKey()
+      const storageTable = this.getStorageTable()
+      delete storageTable[key]
+      this.saveStorageTable(storageTable)
     },
     getStorageKey () {
       let key = location.href

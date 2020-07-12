@@ -15,7 +15,11 @@ export const crudOptions = {
     ],
     fixed: 'right'
   },
+  pageOptions: {
+    compact: true // 是否紧凑型页面
+  },
   options: {
+    height: '100%', // 表格高度100%, 使用toolbar必须设置
     highlightCurrentRow: true,
     rowKey: 'id',
     lazy: true,

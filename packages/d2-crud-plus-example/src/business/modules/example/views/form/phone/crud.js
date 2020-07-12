@@ -2,6 +2,9 @@ import { mobileValidator } from 'el-phone-number-input'
 import { GetCustomName } from './api'
 export const crudOptions = (vm) => {
   return {
+    options: {
+      height: '100%' // 表格高度100%, 使用toolbar必须设置
+    },
     columns: [
       {
         title: '手机号',

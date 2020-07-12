@@ -1,6 +1,6 @@
 export const crudOptions = {
   options: {
-    maxHeightAdjust: 42
+    height: '100%'
   },
   columns: [
     {

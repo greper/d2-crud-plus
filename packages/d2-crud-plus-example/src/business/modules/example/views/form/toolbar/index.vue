@@ -11,6 +11,7 @@
             <li>删除'&lt; crud-footer /&gt;翻页组件，采用d2-crud内置pagination</li>
             <li>&lt;d2-crud&gt;增加属性 :pagination="crud.pagination"</li>
             <li>&lt;d2-crud&gt;增加事件@pagination-change="handlePaginationChange"</li>
+            <li>&lt;d2-container :class="{'page-compact':crud.pageOptions.compact}"&gt;</li>
           </ul>
         </div>
       </example-helper>
@@ -29,23 +30,23 @@
         :options="crud.options"
         :loading="crud.loading"
         :pagination="crud.pagination"
+        @pagination-change="handlePaginationChange"
         @dialog-open="handleDialogOpen"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
-        @pagination-change="handlePaginationChange">
+        >
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-        <el-button  class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+        <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"
-        />
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
     </d2-crud>
   </d2-container>

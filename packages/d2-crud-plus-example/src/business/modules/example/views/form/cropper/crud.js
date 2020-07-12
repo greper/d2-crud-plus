@@ -1,4 +1,11 @@
 export const crudOptions = {
+  options: {
+    height: '100%' // 表格高度100%, 使用toolbar必须设置
+  },
+  searchOptions: {
+    disabled: true,
+    show: null
+  },
   columns: [
     {
       title: '头像裁剪',

@@ -80,6 +80,9 @@ export const crudOptions = {
   formOptions: {
     width: '60%'
   },
+  options: {
+    height: '100%' // 表格高度100%, 使用toolbar必须设置
+  },
   columns: [
     {
       title: '时间戳',

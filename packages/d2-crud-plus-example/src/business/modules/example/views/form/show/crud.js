@@ -1,5 +1,8 @@
 export const crudOptions = (vm) => {
   return {
+    options: {
+      height: '100%'
+    },
     columns: [
       {
         title: '动态显隐',

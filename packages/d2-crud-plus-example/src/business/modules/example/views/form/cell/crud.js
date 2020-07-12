@@ -1,6 +1,9 @@
 
 export const crudOptions = (vm) => {
   return {
+    options: {
+      height: '100%'
+    },
     selectionRow: {
       align: 'center',
       width: 100

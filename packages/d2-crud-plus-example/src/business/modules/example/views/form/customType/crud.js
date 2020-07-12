@@ -1,4 +1,7 @@
 export const crudOptions = {
+  options: {
+    height: '100%' // 表格高度100%, 使用toolbar必须设置
+  },
   columns: [
     {
       title: '字段类型',

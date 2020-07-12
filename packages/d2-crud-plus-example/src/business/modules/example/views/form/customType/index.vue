@@ -1,13 +1,11 @@
 <template>
-  <d2-container>
+  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">自定义字段类型
       <example-helper title="帮助说明" >
         <link-button href="http://greper.gitee.io/d2-crud-plus/guide/column-type.html#自定义字段类型">自定义字段类型</link-button>
         <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展</link-button>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
-    </crud-search>
     <d2-crud
         ref="d2Crud"
         :columns="crud.columns"
@@ -21,6 +19,8 @@
         :form-options="crud.formOptions"
         :options="crud.options"
         :loading="crud.loading"
+        :pagination="crud.pagination"
+        @pagination-change="handlePaginationChange"
         @dialog-open="handleDialogOpen"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
@@ -28,14 +28,17 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange"
     >
-      <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+      <div slot="header">
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+        <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+        <crud-toolbar :search.sync="crud.searchOptions.show"
+                      :compact.sync="crud.pageOptions.compact"
+                      :columns="crud.columns"
+                      @refresh="doRefresh()"
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
+      </div>
+
     </d2-crud>
-    <crud-footer ref="footer" :current="crud.page.current"
-                  :size="crud.page.size"
-                  :total="crud.page.total"
-                  @change="handlePaginationChange"
-    >
-    </crud-footer>
   </d2-container>
 </template>
 

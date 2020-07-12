@@ -137,6 +137,10 @@ export default {
     },
     handleFormReset () {
       this.$refs.searchForm.resetFields()
+      if (this.searchDebounce) {
+        // 防抖查询
+        this.searchDebounce()
+      }
     },
     isInput (item) {
       return !item.component || (!item.component.name && !item.component.render) || item.component.name === 'el-input'

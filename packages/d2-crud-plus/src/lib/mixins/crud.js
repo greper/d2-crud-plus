@@ -429,7 +429,8 @@ export default {
         this.$set(this.crud, 'list', records)
 
         if (requestCurrent > 1 && records && records.length === 0) {
-          this.doPageTurn(requestCurrent - 1)
+          const pageTotal = total % size === 0 ? total / size : total / size + 1
+          this.doPageTurn(pageTotal)
           this.doRefresh()
         }
       }).finally(() => {

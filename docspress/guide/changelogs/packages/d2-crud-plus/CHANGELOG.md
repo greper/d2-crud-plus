@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.12.0...d2-crud-plus@1.12.1) (2020-07-12)
+
+
+### Bug Fixes
+
+* 修复翻到最后一页，切换每页条数时，查询空白的问题 ([6e5300a](https://github.com/greper/d2-crud-plus/commit/6e5300a081b45053e53f945246014b599aea784d))
+
+
+### Performance Improvements
+
+* 查询表单重置按钮增加防抖自动查询 ([d03fd7b](https://github.com/greper/d2-crud-plus/commit/d03fd7be722c4c9927a25a86f5c42aaa13541cac))
+* 查询示例优化 ([e39c043](https://github.com/greper/d2-crud-plus/commit/e39c0430062a7e3f65b4666b9d39961875e0c299))
+* 查询增加防抖自动查询功能 ([e8430d3](https://github.com/greper/d2-crud-plus/commit/e8430d38ae74440229d31ba9ad5e6c7cbaae3e99))
+* 列设置保存到本地 ([b482052](https://github.com/greper/d2-crud-plus/commit/b482052c9665987dca3f699c2b317e7707a24b1d))
+* 示例全部改成新版带toolbar界面 ([6770fc9](https://github.com/greper/d2-crud-plus/commit/6770fc9980ba17083ffb414309ad8f6e15d6dbe1))
+* 优化列过滤器 ([3775371](https://github.com/greper/d2-crud-plus/commit/37753713a135d4f019717f14f016c1a12c5990a0))
+* extends解除d2crudplus依赖 ([66c5c70](https://github.com/greper/d2-crud-plus/commit/66c5c70bbf505e76296257c56debef0d5855b843))
+
+
+
+
+
 # [1.12.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.11.4...d2-crud-plus@1.12.0) (2020-07-11)
 
 

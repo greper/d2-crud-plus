@@ -24,3 +24,13 @@
 <!-- @vuese:d2p-form-input:events:end -->
 
 
+## Slots
+
+<!-- @vuese:d2p-form-input:slots:start -->
+|Name|Description|Default Slot Content|
+|---|---|---|
+|test1|-|-|
+
+<!-- @vuese:d2p-form-input:slots:end -->
+
+

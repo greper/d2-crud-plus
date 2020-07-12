@@ -35,7 +35,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '自动补全',
+      title: '输入建议（autocomplete）',
       key: 'autocomplete',
       search: {},
       type: 'autocomplete',
@@ -53,6 +53,20 @@ export const crudOptions = {
           events: {
             select (event) {
               console.log('autocomplete select:', event)
+            }
+          },
+          slots: {
+            suffix: (h) => {
+              return (<i class="el-icon-edit el-input__icon"/>)
+            }
+          },
+          scopedSlots: {
+            // 自定义列表项
+            default: (h, scope) => {
+              return (<div class='form-el-autocomplete'><div class="name">{scope.item.value}</div><span class="addr">{scope.item.address}</span></div>)
+            },
+            suffix: () => {
+              return (<i class="el-icon-edit el-input__icon"/>)
             }
           },
           span: 24

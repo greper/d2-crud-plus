@@ -243,7 +243,6 @@ export default {
         this.$emit('input', result)
         this.$emit('change', result)
       })
-
       this.active = false
     }
   }

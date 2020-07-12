@@ -31,7 +31,7 @@
 import SparkMD5 from 'spark-md5'
 import D2pUploader from '../../uploader'
 import lodash from 'lodash'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../../utils/d2-crud-plus'
 // 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',

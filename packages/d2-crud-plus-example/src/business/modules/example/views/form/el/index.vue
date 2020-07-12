@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <d2-container class="formEl">
     <template slot="header">其他elementUI组件</template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  @search-data-change="handleSearchDataChange" >
     </crud-search>
@@ -63,3 +63,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .form-el-autocomplete{
+    line-height: 20px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    .addr{
+      font-size: 12px;
+      color:gray
+    }
+  }
+</style>

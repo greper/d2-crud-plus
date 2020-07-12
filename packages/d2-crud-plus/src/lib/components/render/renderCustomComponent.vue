@@ -32,6 +32,9 @@ export default {
     slots: {
       default: undefined
     },
+    scopedSlots: {
+      default: undefined
+    },
     /**
      *
      */
@@ -54,14 +57,22 @@ export default {
         }
       }
     }
-    const slots = {}
+    const scopedSlots = {}
+    if (self.scopedSlots) {
+      for (let key in self.scopedSlots) {
+        scopedSlots[key] = (scope) => {
+          return self.scopedSlots[key](h, scope)
+        }
+      }
+    }
     if (self.slots) {
       for (let key in self.slots) {
-        slots[key] = (scope) => {
+        scopedSlots[key] = (scope) => {
           return self.slots[key](h, scope)
         }
       }
     }
+
     let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
     let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
@@ -77,7 +88,7 @@ export default {
         },
         ...events
       },
-      scopedSlots: slots,
+      scopedSlots: scopedSlots,
       props: {
         value: self.value,
         disabled: disabled,

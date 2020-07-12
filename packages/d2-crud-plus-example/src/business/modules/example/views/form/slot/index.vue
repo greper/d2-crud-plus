@@ -70,6 +70,7 @@
       </template>
 
     </d2-crud>
+
     <crud-footer ref="footer"
                   :current="crud.page.current"
                   :size="crud.page.size"

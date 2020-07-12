@@ -25,6 +25,8 @@
         v-model="form[item.key]"
         :component-name="item.component.name"
         :props="getComponentProps(item)"
+        :slots="getComponentAttr(item,'slots')"
+        :scoped-slots="getComponentAttr(item,'scopedSlots')"
         :events="getComponentAttr(item,'events')"
         :style="{width:(item.width?item.width:150+'px')}"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"

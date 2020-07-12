@@ -69,7 +69,7 @@
 
 <script>
 import icon from './data'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../../../utils/d2-crud-plus'
 // d2-icon-select
 export default {
   name: 'd2p-icon-select',

@@ -6,7 +6,7 @@
 
 <script>
 import LoadEvent from './utils/Event'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../../../utils/d2-crud-plus'
 
 /**
  * ueditor富文本编辑器包装，支持v-model绑定

@@ -46,7 +46,7 @@
 
 <script>
 import lodash from 'lodash'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../../utils/d2-crud-plus'
 // 树形选择组件，需要import {D2pTreeSelector} from 'd2p-extends'
 export default {
   name: 'd2p-tree-selector',

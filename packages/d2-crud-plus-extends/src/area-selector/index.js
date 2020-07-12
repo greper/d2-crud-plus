@@ -1,4 +1,4 @@
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../utils/d2-crud-plus'
 import types from './types'
 
 function install (Vue) {

@@ -1,6 +1,6 @@
 import D2pImagesFormat from './lib/images-format'
 import D2pFilesFormat from './lib/files-format'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../utils/d2-crud-plus'
 import 'cropperjs/dist/cropper.css'
 import D2pUploader from '../uploader'
 import types from './types'

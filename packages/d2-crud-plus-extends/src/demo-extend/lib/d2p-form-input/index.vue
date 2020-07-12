@@ -3,6 +3,7 @@
     <el-tag :type="color" >您点击了:  {{currentValue}}</el-tag>
     <el-button :diabled="disabled || readonly" class="d2-ml-5" @click="doClick('1')">点击1</el-button>
     <el-button :diabled="disabled || readonly" @click="doClick('2')">点击2</el-button>
+    插槽：<slot name="test1" :value="1"/>
   </span>
 </template>
 
@@ -64,6 +65,9 @@ export default {
   created () {
     // 给currentValue设置初始值
     this.setValue(this.value)
+  },
+  mounted () {
+    console.log('demo-input', this, this.$slots)
   },
   methods: {
     setValue (value) {

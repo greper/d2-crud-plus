@@ -12,6 +12,7 @@
         :props="item.component.props ? item.component.props : null"
         :events="item.component.events"
         :slots="item.component.slots"
+        :scoped-slots="item.component.scopedSlots"
         @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @custom="handleCellComponentCustomEvent($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"

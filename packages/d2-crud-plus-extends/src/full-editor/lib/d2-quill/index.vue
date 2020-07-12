@@ -9,7 +9,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
 import lodash from 'lodash'
-import { d2CrudPlus } from 'd2-crud-plus'
+import { d2CrudPlus } from '../../../utils/d2-crud-plus'
 // quill富文本编辑器
 export default {
   name: 'd2p-quill',

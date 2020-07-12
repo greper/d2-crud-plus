@@ -24,6 +24,7 @@
       :props="getFormComponent().props"
       :events="getFormComponent().events"
       :slots="getFormComponent().slots"
+      :scoped-slots="getFormComponent().scopedSlots"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
       @custom="handleFormComponentCustomEvent($event,colKey)"

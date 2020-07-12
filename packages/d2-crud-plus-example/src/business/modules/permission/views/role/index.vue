@@ -1,5 +1,5 @@
 <template>
-    <d2-container>
+    <d2-container :class="{'page-compact':crud.pageOptions.compact}">
         <template slot="header">角色管理
           <example-helper title="权限管理帮助" >
             <div>
@@ -7,7 +7,6 @@
             </div>
           </example-helper>
         </template>
-        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
         <d2-crud
                 ref="d2Crud"
                 size="mini"
@@ -22,6 +21,7 @@
                 :form-options="crud.formOptions"
                 :options="crud.options"
                 :pagination="crud.pagination"
+                @pagination-change="handlePaginationChange"
                 @dialog-open="handleDialogOpen"
                 @row-edit="handleRowEdit"
                 @row-add="handleRowAdd"
@@ -31,18 +31,23 @@
                 @authz="authzHandle"
         >
             <div slot="header" class="d2-mb-5">
-                <platform-selector size="small" @change="platformChanged" @init="platformInit"></platform-selector>
-                <el-button v-permission="'permission:role:add'" size="small" type="primary" @click="addRow">新增</el-button>
+
             </div>
 
+          <div slot="header">
+            <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+
+            <platform-selector size="small" @change="platformChanged" @init="platformInit"></platform-selector>
+            <el-button v-permission="'permission:role:add'" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+
+            <crud-toolbar :search.sync="crud.searchOptions.show"
+                          :compact.sync="crud.pageOptions.compact"
+                          :columns="crud.columns"
+                          @refresh="doRefresh()"
+                          @columns-filter-changed="handleColumnsFilterChanged"/>
+          </div>
+
         </d2-crud>
-        <crud-footer ref="footer"
-                     :current="crud.page.current"
-                     :size="crud.page.size"
-                     :total="crud.page.total"
-                     @change="handlePaginationChange"
-        >
-        </crud-footer>
 
         <el-dialog title="分配权限"
                    :visible.sync="dialogPermissionVisible">

@@ -25,6 +25,7 @@ export const crudOptions = (vm) => {
       fixed: 'right'
     },
     options: {
+      height: '100%', // 表格高度100%, 使用toolbar必须设置
       highlightCurrentRow: true,
       rowKey: 'id'
     },

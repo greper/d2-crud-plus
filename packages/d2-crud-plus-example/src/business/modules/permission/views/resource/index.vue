@@ -1,5 +1,5 @@
 <template>
-  <d2-container>
+  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">资源管理
       <example-helper title="权限管理帮助" >
         <div>
@@ -7,7 +7,6 @@
         </div>
       </example-helper>
     </template>
-    <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
     <d2-crud
       ref="d2Crud"
       :columns="crud.columns"
@@ -29,8 +28,20 @@
       @form-data-change="handleFormDataChange"
       @add-sub-resource="handleAddSubResource"
     >
-      <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
-      <el-button slot="header" class="d2-mb-5" v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow">新增</el-button>
+
+      <div slot="header">
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+
+        <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
+        <el-button slot="header" class="d2-mb-5" v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow"><i class="el-icon-plus"/> 新增</el-button>
+
+        <crud-toolbar :search.sync="crud.searchOptions.show"
+                      :compact.sync="crud.pageOptions.compact"
+                      :columns="crud.columns"
+                      @refresh="doRefresh()"
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
+      </div>
+
     </d2-crud>
   </d2-container>
 </template>

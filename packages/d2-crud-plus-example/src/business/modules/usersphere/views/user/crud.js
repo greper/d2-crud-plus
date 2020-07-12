@@ -1,6 +1,9 @@
 import { mobileValidator } from 'el-phone-number-input'
 import { request } from '@/api/service'
 export const crudOptions = {
+  options: {
+    height: '100%' // 表格高度100%, 使用toolbar必须设置
+  },
   rowHandle: {
     // columnHeader: '操作',
     width: 300,

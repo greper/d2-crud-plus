@@ -17,6 +17,7 @@
         :placeholder="item.label"
         v-bind="getComponentProps(item)"
         :style="{width:(item.width?item.width:150+'px')}"
+        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
       >
       </el-input>
       <render-custom-component
@@ -84,6 +85,17 @@ export default {
     }
     lodash.merge(form, reset)
     this.$set(this, 'form', form)
+
+    if (this.options.debounce !== false) {
+      let wait = null
+      if (this.options.debounce) {
+        wait = this.options.debounce.wait
+      }
+      if (wait == null) {
+        wait = 500
+      }
+      this.searchDebounce = lodash.debounce(this.handleFormSubmit, wait, this.options.debounce)
+    }
   },
   methods: {
     // 获取查询form表单值
@@ -141,6 +153,11 @@ export default {
       column.value = value
       console.log('search data  change :', column)
       this.$emit('search-data-change', column)
+
+      if (this.searchDebounce) {
+        // 防抖查询
+        this.searchDebounce()
+      }
     },
     handleSearchComponentReady (value, column) {
       column.event = value

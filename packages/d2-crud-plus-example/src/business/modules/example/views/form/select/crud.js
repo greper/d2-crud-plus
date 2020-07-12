@@ -24,6 +24,11 @@ export const crudOptions = (vm) => {
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
+    searchOptions: {
+      form: {
+        cascader: [] // 设置默认查询值，解决查询表单重置后，cascade组件值为[null]的bug
+      }
+    },
     columns: [
       {
         title: '单选远程',

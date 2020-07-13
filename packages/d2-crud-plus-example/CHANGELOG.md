@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.1...@d2-plus/d2-crud-plus-example@1.12.2) (2020-07-13)
+
+
+### Bug Fixes
+
+* 修复首次加载表尾合计行无法显示的bug ([d4e1d4e](https://github.com/d2-projects/d2-admin/commit/d4e1d4e49ccbc92f5a00f8802c8075fb27b38431))
+
+
+
+
+
 ## [1.12.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.0...@d2-plus/d2-crud-plus-example@1.12.1) (2020-07-12)
 
 

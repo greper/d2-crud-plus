@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d2-crud"
+    class="d2-crud d2-crud-x"
     :class="{'d2-crud-height100':options.height==='100%'}"
     v-loading="loading"
     :element-loading-text="getAttribute(loadingOptions,'text', null)"
@@ -281,7 +281,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d2-crud {
+.d2-crud-x {
   display: flex;
   flex-direction: column;
   .d2-crud-header {

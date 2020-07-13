@@ -77,6 +77,12 @@ export default {
   },
   computed: {
   },
+  mounted () {
+    // 修复首次加载表尾合计行无法显示的bug
+    setTimeout(() => {
+      this.getD2CrudTable().store.scheduleLayout()
+    }, 1)
+  },
   methods: {
     getCrudOptions () {
       return crudOptions

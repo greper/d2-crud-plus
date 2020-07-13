@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.2...@d2-plus/d2-crud-plus-example@1.12.3) (2020-07-13)
+
+
+### Bug Fixes
+
+* 修复d2Crud与d2CrudX样式冲突的问题 ([b6593ac](https://github.com/d2-projects/d2-admin/commit/b6593ac6f88d65e706f90530438fbe6abe536ec8))
+* 修复d2Crud与d2CrudX样式冲突的问题 ([2fbcd29](https://github.com/d2-projects/d2-admin/commit/2fbcd29290845928480a9de8fff78bad1e816c71))
+
+
+
+
+
 ## [1.12.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.1...@d2-plus/d2-crud-plus-example@1.12.2) (2020-07-13)
 
 

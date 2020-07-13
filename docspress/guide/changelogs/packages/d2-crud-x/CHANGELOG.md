@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.4](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.2...d2-crud-x@2.5.4) (2020-07-13)
+
+
+### Bug Fixes
+
+* 修复d2Crud与d2CrudX样式冲突的问题 ([b6593ac](https://github.com/greper/d2-crud/commit/b6593ac6f88d65e706f90530438fbe6abe536ec8))
+* 修复d2Crud与d2CrudX样式冲突的问题 ([781649e](https://github.com/greper/d2-crud/commit/781649e818607033b61e2fcf522b2311ad6737db))
+
+
+
+
+
 ## [2.5.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.1...d2-crud-x@2.5.2) (2020-07-13)
 
 

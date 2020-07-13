@@ -25,14 +25,14 @@ let crudOption={
 2. d2-crud 下写你的slot template，slot名称为 `column.key+'FormSlot'`
 ```html {3}
 <template>
-    <d2-crud>
+    <d2-crud-x>
         <template slot="topicsFormSlot" slot-scope="scope">
           <el-input class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >
             <el-button slot="append" icon="el-icon-remove-outline" v-on:click="removeTopic(index)"></el-button>
           </el-input>
           <el-button v-on:click="addTopic">添加主题</el-button>
         </template>
-    </d2-crud>
+    </d2-crud-x>
 </template>
 <script>
 export default {
@@ -72,12 +72,12 @@ let crudOption={
 ```
 2. d2-crud 下写你的slot template ,slot名称为 `column.key+'Slot'`
 ```html {2}
-<d2-crud>
+<d2-crud-x>
     <template slot="createDateSlot" slot-scope="scope">
         创建时间：{{scope.row['createDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
         更新时间：{{scope.row['updateDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
     </template>
-</d2-crud>
+</d2-crud-x>
 ```
 
 ## search表单组件slot自定义

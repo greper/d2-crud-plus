@@ -11,9 +11,9 @@
 
 ```js
 配置options.hide=true
-<d2-crud  ...>
+<d2-crud-x  ...>
   <template slot="body">自定义列表</template>
-</d2-crud>
+</d2-crud-x>
 ```
 ### 支持字段组件通过插槽自定义【slot】  
 [示例](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/slot) 

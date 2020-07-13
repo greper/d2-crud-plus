@@ -66,7 +66,7 @@ import d2CrudX from 'd2-crud-x'
 import Vue from 'vue'
 import { request } from '@/api/service'  //你项目http请求用的什么就引入什么
 
-Vue.use(d2CrudX,{name:'d2-crud-x'})
+Vue.use(d2CrudX,{name:'d2-crud-x'}) //注册名称为d2-crud-x ，不传name则使用d2-crud作为标签名称
 
 Vue.use(d2CrudPlus, {
   //获取数据字典的请求方法

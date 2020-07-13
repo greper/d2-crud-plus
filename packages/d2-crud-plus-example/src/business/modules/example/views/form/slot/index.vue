@@ -40,7 +40,7 @@
             <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"/>
           </template>
         </crud-search>
-        <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
+        <el-button slot="header"  size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
@@ -49,7 +49,7 @@
       </div>
 
       <template slot="FormHeaderSlot">
-        <i class="el-icon-edit"></i>
+        <i class="el-icon-edit"/>
       </template>
 
       <template slot="createDateSlot" slot-scope="scope">

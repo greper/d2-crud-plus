@@ -12,7 +12,7 @@
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-    <d2-crud-o
+    <d2-crud
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -42,7 +42,7 @@
         </div>
       </template>
 
-    </d2-crud-o>
+    </d2-crud>
     <crud-footer ref="footer"
                   :current="crud.page.current"
                   :size="crud.page.size"
@@ -57,10 +57,8 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import d2Crud from '@d2-projects/d2-crud'
 export default {
-  name: 'formAddi',
-  components: { 'd2-crud-o': d2Crud },
+  name: 'formD2crud',
   mixins: [d2CrudPlus.crud],
   data () {
     return {

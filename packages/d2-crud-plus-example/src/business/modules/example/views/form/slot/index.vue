@@ -10,7 +10,7 @@
       </example-helper>
     </template>
 
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -80,7 +80,7 @@
         <el-button @click="saveDraft(scope)">保存草稿</el-button>
       </template>
 
-    </d2-crud>
+    </d2-crud-x>
 
   </d2-container>
 </template>

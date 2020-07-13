@@ -3,9 +3,9 @@
 ### 1.支持隐藏表格，自定义列表展示方式
 ```
 配置options.hide=true
-<d2-crud  ...>
+<d2-crud-x  ...>
   <template slot="body">自定义列表</template>
-</d2-crud>
+</d2-crud-x>
 ```
 ### 2.支持字段组件通过插槽自定义【slot】   
 * #### crud配置
@@ -62,14 +62,14 @@ export const crudOptions = {
         <el-input v-model="scope.form['slotExample']" placeholder="这是写在slot上的"></el-input>
       </template>
     </crud-search>
-    <d2-crud ...>
+    <d2-crud-x ...>
       <template slot="slotExampleSlot" slot-scope="scope">
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
         <el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的"></el-input>
       </template>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 ```

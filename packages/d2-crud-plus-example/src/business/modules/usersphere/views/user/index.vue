@@ -8,7 +8,7 @@
             </div>
           </example-helper>
         </template>
-        <d2-crud
+        <d2-crud-x
                 ref="d2Crud"
                 :columns="crud.columns"
                 :data="crud.list"
@@ -41,7 +41,7 @@
                           @columns-filter-changed="handleColumnsFilterChanged"/>
           </div>
 
-        </d2-crud>
+        </d2-crud-x>
         <el-dialog title="授予角色"
                    :visible.sync="dialogPermissionVisible">
 

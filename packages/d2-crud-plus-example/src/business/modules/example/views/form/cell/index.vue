@@ -5,7 +5,7 @@
         <h4>请点击右下角查看本页源码</h4>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -40,7 +40,7 @@
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
 
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

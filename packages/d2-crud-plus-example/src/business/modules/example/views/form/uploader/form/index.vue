@@ -10,7 +10,7 @@
       </example-helper>
     </template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -42,7 +42,7 @@
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
 
-    </d2-crud>
+    </d2-crud-x>
 
   </d2-container>
 </template>

@@ -7,7 +7,7 @@
         </div>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -23,7 +23,6 @@
         :pagination="crud.pagination"
         @pagination-change="handlePaginationChange"
         @dialog-open="handleDialogOpen"
-        @dialog-opened="handleDialogOpened"
         @row-edit="handleRowEdit"
         @row-add="handleRowAdd"
         @row-remove="handleRowRemove"
@@ -39,7 +38,7 @@
                       @refresh="doRefresh()"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

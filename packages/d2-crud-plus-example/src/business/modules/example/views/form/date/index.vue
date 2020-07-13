@@ -1,7 +1,7 @@
 <template>
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">日期选择</template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -34,7 +34,7 @@
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
 
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

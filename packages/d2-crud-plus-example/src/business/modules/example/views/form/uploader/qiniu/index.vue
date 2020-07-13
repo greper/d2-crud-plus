@@ -9,7 +9,7 @@
         </div>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -46,7 +46,7 @@
           <el-tag size="mini">alioss</el-tag>方式暂不支持进度条，不支持中文等特殊字符文件名<br/>
         </el-alert>
       </template>
-    </d2-crud>
+    </d2-crud-x>
 
   </d2-container>
 </template>

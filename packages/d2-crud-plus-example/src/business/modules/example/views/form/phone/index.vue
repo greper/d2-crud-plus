@@ -10,7 +10,7 @@
         <link-button href="http://greper.gitee.io/d2-crud-plus/guide/types.html#国际电话">更多帮助说明</link-button>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -41,7 +41,7 @@
                       @refresh="doRefresh()"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

@@ -62,10 +62,11 @@ yarn add d2-crud-plus
 import { d2CrudPlus } from 'd2-crud-plus'
 // import d2Crud from '@d2-projects/d2-crud' 【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
 // 推荐将d2-crud替换为d2-crud-x【使用方式基本与d2-crud一致】
-import d2Crud from 'd2-crud-x'
+import d2CrudX from 'd2-crud-x'
 import Vue from 'vue'
 import { request } from '@/api/service'  //你项目http请求用的什么就引入什么
-Vue.use(d2Crud)
+
+Vue.use(d2CrudX,{name:'d2-crud-x'})
 
 Vue.use(d2CrudPlus, {
   //获取数据字典的请求方法
@@ -112,17 +113,12 @@ Vue.use(d2CrudPlus, {
 [更多关于后台返回数据结构的配置说明](/guide/structure.md)
 
 #### d2-crud-x与d2-crud共同使用
-::: tip  
-如果你的项目之前已经使用了`官方版d2-crud`，不想破坏以前的功能   
-可以按如下方式使`d2-crud`与`d2-crud-x`共存
-:::
-
+如果你的项目之前已经使用了`官方版d2-crud`，你可以直接在此基础上使用d2-crud-x,并不会破坏以前的功能
 ```js
  import d2Crud from '@d2-projects/d2-crud'
  import d2CrudX from 'd2-crud-x'
  Vue.use(d2Crud)
  Vue.use(d2CrudX,{name:'d2-crud-x'}) //修改d2CrudX的标签名称
-
 ```
 
 ```html
@@ -294,7 +290,7 @@ export const crudOptions = (vm)=>{ // vm即this
 <template>
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">测试页面</template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         edit-title="修改"
         :columns="crud.columns"
@@ -327,7 +323,7 @@ export const crudOptions = (vm)=>{ // vm即this
                       @columns-filter-changed="handleColumnsFilterChanged"
         />
       </div>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

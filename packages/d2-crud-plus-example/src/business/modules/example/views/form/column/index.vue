@@ -6,7 +6,7 @@
       </example-helper>
 
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -56,7 +56,7 @@
         这里显示行展开数据:{{scope.row.data}}
       </template>
 
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

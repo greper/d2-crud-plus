@@ -7,7 +7,7 @@
             </div>
           </example-helper>
         </template>
-        <d2-crud
+        <d2-crud-x
                 ref="d2Crud"
                 size="mini"
                 :columns="crud.columns"
@@ -47,7 +47,7 @@
                           @columns-filter-changed="handleColumnsFilterChanged"/>
           </div>
 
-        </d2-crud>
+        </d2-crud-x>
 
         <el-dialog title="分配权限"
                    :visible.sync="dialogPermissionVisible">

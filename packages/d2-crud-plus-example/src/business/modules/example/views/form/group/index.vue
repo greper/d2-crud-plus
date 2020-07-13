@@ -5,7 +5,7 @@
         <h4>请点击右下角查看本页源码</h4>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -38,7 +38,7 @@
         <h3 style="display: inline;" class="group-title"> <i class="header-icon" :class="scope.group.icon"/> {{scope.group.title}}</h3>
         <span style="margin-left:10px">（我是自定义标题）</span>
       </div>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

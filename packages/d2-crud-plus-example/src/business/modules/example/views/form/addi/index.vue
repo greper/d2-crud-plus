@@ -8,7 +8,7 @@
           </div>
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -49,7 +49,7 @@
         </div>
       </template>
 
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

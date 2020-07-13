@@ -10,7 +10,7 @@
       <el-tag class="d2-ml-10" v-for="item in roomStatusDict.data" :key="item.value" :type="item.color">{{item.label}}</el-tag>
       </div>
     </div>
-    <d2-crud
+    <d2-crud-x
             ref="d2Crud"
             :columns="crud.columns"
             :data="crud.list"
@@ -72,7 +72,7 @@
           </el-row>
         </div>
       </template>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

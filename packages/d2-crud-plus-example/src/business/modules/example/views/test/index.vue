@@ -2,7 +2,7 @@
   <d2-container>
     <template slot="header">测试页面</template>
     <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  ></crud-search>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -21,7 +21,7 @@
         @dialog-cancel="handleDialogCancel"
         @form-data-change="handleFormDataChange">
       <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
-    </d2-crud>
+    </d2-crud-x>
     <crud-footer ref="footer"
                   :current="crud.page.current"
                   :size="crud.page.size"

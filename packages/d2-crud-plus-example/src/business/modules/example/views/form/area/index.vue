@@ -7,7 +7,7 @@
 
       </example-helper>
     </template>
-    <d2-crud
+    <d2-crud-x
         ref="d2Crud"
         :columns="crud.columns"
         :data="crud.list"
@@ -37,7 +37,7 @@
                       @refresh="doRefresh()"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
 

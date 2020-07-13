@@ -1,16 +1,17 @@
 import Vue from 'vue'
-import d2Crud from 'd2-crud-x'
+import d2Crud from '@d2-projects/d2-crud'
+import d2CrudX from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { D2pAreaSelector, D2pFileUploader, D2pIconSelector, D2pTreeSelector, D2pFullEditor, D2pUploader, D2pDemoExtend } from 'd2p-extends' // 源码方式引入，上传组件支持懒加载
 
 // http请求
 import { request, requestForMock } from '@/api/service'
 
-// 引入d2Crud
-Vue.use(d2Crud)
-
 // 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x /> = 使用加强版，标签用<d2-crud/> = 使用官方版
-// Vue.use(d2Crud,{name:'d2-crud-x'})
+Vue.use(d2CrudX, { name: 'd2-crud-x' })
+
+// 官方版【此处为演示与官方版共存而引入，实际项目中可以用d2-crud-x完全替代官方版】
+Vue.use(d2Crud)
 
 // 引入d2CrudPlus
 Vue.use(d2CrudPlus, {

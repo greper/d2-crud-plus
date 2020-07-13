@@ -40,14 +40,14 @@ export default {
         <el-input v-model="scope.form['slotExample']" placeholder="这是写在slot上的" @blur="inputBlur('search')"></el-input>
       </template>
     </crud-search>
-    <d2-crud ...>
+    <d2-crud-x ...>
       <template slot="slotExampleSlot" slot-scope="scope">
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
         <el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" @blur="inputBlur('form')"></el-input>
       </template>
-    </d2-crud>
+    </d2-crud-x>
   </d2-container>
 </template>
   `

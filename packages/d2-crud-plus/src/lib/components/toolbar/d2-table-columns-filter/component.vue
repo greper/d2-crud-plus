@@ -326,7 +326,11 @@ export default {
       return key
     },
     getStorageName () {
-      return 'd2CrudPlus.columnsFilter'
+      const prefix = 'd2CrudPlus.columnsFilter'
+      if ((typeof this.storage) === 'string') {
+        return prefix + '.' + this.storage
+      }
+      return prefix
     },
     getStorageTable () {
       const name = this.getStorageName()

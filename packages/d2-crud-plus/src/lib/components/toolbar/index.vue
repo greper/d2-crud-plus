@@ -21,24 +21,41 @@ export default {
   name: 'crud-toolbar',
   components: { D2TableColumnsFilter },
   props: {
+    /**
+     * 是否显示查询
+     * 传null，则不显示按钮
+     */
     search: {
       type: Boolean,
       default: undefined
     },
+    /**
+     * 是否显示刷新
+     */
     refresh: {
       type: Boolean,
       default: true
     },
+    /**
+     * 是否显示紧凑模式
+     */
     compact: {
       type: Boolean,
       default: undefined
     },
+    /**
+     * 列配置
+     */
     columns: {
       type: Array,
       default: undefined
     },
+    /**
+     * 是否缓存
+     * 传string则表示传入缓存的主key
+     */
     storage: {
-      type: Boolean,
+      type: [Boolean, String],
       default: true
     }
   },

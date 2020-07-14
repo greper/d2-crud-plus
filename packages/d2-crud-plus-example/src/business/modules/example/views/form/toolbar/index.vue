@@ -3,6 +3,8 @@
     <template slot="header">
       右上角工具条
       <example-helper title="帮助说明" >
+        <div>本次升级，兼容旧版本。旧版本不做任何更改可以继续使用</div>
+        <br/>
         <div>
           从旧版本升级，请按如下修改：
           <ul>

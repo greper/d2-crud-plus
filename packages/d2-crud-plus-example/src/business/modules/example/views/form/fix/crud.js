@@ -66,7 +66,10 @@ export const crudOptions = {
       title: '我把行宽度撑开，以展示固定列',
       key: 'bigWidth',
       sortable: true,
-      width: 1000
+      width: 1000,
+      form: {
+        title: '撑开'
+      }
     }
   ]
 }

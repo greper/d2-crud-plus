@@ -119,10 +119,12 @@ export const crudOptions = (vm) => {
         key: 'mselect',
         sortable: true,
         search: {
-          disabled: false
+          disabled: false,
+          title: '多选1'
         },
         type: 'select',
         form: {
+          title: '多选2',
           component: {
             props: {
               filterable: true,

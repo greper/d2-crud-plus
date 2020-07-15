@@ -36,7 +36,7 @@
     "d2-crud-x": "^2.5.4",
     "d2p-extends": "^1.7.8",
     "dayjs": "^1.8.17",
-    "el-phone-number-input": "^1.0.4",
+    "el-phone-number-input": "^1.1.1",
     "element-ui": "^2.13.0",
     "faker": "^4.1.0",
     "flex.css": "^1.1.7",

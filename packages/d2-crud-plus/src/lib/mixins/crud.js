@@ -259,9 +259,9 @@ export default {
       // }
       let form = item.form
       if (item.search != null && item.search.disabled !== true) {
-        let component = item.form != null ? cloneDeep(item.form.component) : {}
+        let component = item.form ? cloneDeep(item.form.component) : {}
         let search = {
-          label: item.title,
+          title: item.title,
           key: item.key,
           dict: item.dict,
           component: component

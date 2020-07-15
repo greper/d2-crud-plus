@@ -5,9 +5,10 @@
       :inline="true"
       :model="form"
       ref="searchForm"
+      v-bind="options"
       size="small" class="d2p-search-form" >
 
-    <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.label" :prop="item.key"  >
+    <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
       <template v-if="item.slot === true">
         <slot :name="item.key+'SearchSlot'" :form="form" />
       </template>
@@ -137,6 +138,10 @@ export default {
     },
     handleFormReset () {
       this.$refs.searchForm.resetFields()
+
+      if (this.options && this.options.reset) {
+        this.options.reset({ form: this.form })
+      }
       if (this.searchDebounce) {
         // 防抖查询
         this.searchDebounce()

@@ -42,6 +42,9 @@
       <div class="form-item-helper"  v-else-if="template.helper.slot === true">
         <slot :name="colKey+'HelperSlot'" :form="formData" />
       </div>
+      <div class="form-item-helper"  v-else-if="template.helper.render">
+        <render-component :render-function="template.helper.render"/>
+      </div>
     </template>
   </el-form-item>
 </template>

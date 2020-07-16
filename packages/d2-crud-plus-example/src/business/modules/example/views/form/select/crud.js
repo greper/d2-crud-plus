@@ -31,12 +31,18 @@ export const crudOptions = (vm) => {
               ready: () => {
                 console.log('status1, ready...')
               }
-            }
+            },
+            span: 18
           },
           // value: '2', // 添加时的初始值
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange (key, value) {
             console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
+          },
+          helper: {
+            render (h) {
+              return (<el-alert title="当此处显示的value而不是label时，请检查value的类型是否一致，string和int是不相等的" type="warning"></el-alert>)
+            }
           }
         }
       },
@@ -188,6 +194,9 @@ export const crudOptions = (vm) => {
         form: {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
+            if (value == null) {
+              return
+            }
             const checkbox = vm.getEditFormTemplate('checkbox')// 相当于 vm.$refs.d2Crud.handleFormTemplateMode('checkedRadio')
             const checkedRadio = vm.getEditFormTemplate('checkedRadio')
             if (checkedRadio == null || checkbox == null) {

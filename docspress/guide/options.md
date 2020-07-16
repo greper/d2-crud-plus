@@ -177,7 +177,7 @@ export const crudOptions = {
   addRules: {}, //根据form配置自动生成,请不要配置
   editRules: {},//根据form配置自动生成,请不要配置
   list: [], //数据列表，跟pageRequest从后端获取数据
-  loading: false, //当前是否正在loading,请不要配置
+  loading: false //当前是否正在loading,请不要配置
 }
 
 ```

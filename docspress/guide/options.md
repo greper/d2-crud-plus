@@ -148,12 +148,6 @@ export const crudOptions = {
     highlightCurrentRow: false, //是否高亮选中行
     size: 'mini'
   },
-  addTemplate: {}, //根据form配置自动生成,请不要配置
-  editTemplate: {}, //根据form配置自动生成,请不要配置
-  addRules: {}, //根据form配置自动生成,请不要配置
-  editRules: {},//根据form配置自动生成,请不要配置
-  list: [], //数据列表，跟pageRequest从后端获取数据
-  loading: false, //当前是否正在loading
   pagination: { //翻页配置
     currentPage: 1,
     pageSize: 20,
@@ -177,7 +171,13 @@ export const crudOptions = {
         columns: ['title', 'code', 'images'] //该组内包含的字段列表
       }
     }
-  }
+  },
+  addTemplate: {}, //根据form配置自动生成,请不要配置
+  editTemplate: {}, //根据form配置自动生成,请不要配置
+  addRules: {}, //根据form配置自动生成,请不要配置
+  editRules: {},//根据form配置自动生成,请不要配置
+  list: [], //数据列表，跟pageRequest从后端获取数据
+  loading: false, //当前是否正在loading,请不要配置
 }
 
 ```

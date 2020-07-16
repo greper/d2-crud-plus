@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.3...@d2-plus/d2-crud-plus-example@1.12.4) (2020-07-16)
+
+
+### Performance Improvements
+
+* 查询的title可配置，升级phonenumberinput ([eacb97c](https://github.com/d2-projects/d2-admin/commit/eacb97c7f17a2fef13de3c5dddf0923448a4408e))
+* 增加旧版示例 ([8bbe208](https://github.com/d2-projects/d2-admin/commit/8bbe2084b5ce7247ae6dc745b5e29042a792cec1))
+* helper增加render方式 ([56a2c14](https://github.com/d2-projects/d2-admin/commit/56a2c14f69ab600f8c1ad310e7e6dc4d96ea2618))
+
+
+
+
+
 ## [1.12.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.2...@d2-plus/d2-crud-plus-example@1.12.3) (2020-07-13)
 
 

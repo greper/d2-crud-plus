@@ -72,6 +72,7 @@
             </template>
         </d2-column>
 
+        <span>
         <el-table-column
           v-if="rowHandle"
           :label="handleAttribute(rowHandle.columnHeader, '操作')"
@@ -108,6 +109,7 @@
           </template>
 
         </el-table-column>
+          </span>
       </el-table>
     </div>
     <div class="d2-crud-pagination" v-if="pagination">
@@ -126,6 +128,7 @@
       v-if="isDialogShow"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"
+      v-el-drag-dialog="handleAttribute(formOptions.draggable,true)"
       v-bind="formOptions"
     >
       <template slot="title">

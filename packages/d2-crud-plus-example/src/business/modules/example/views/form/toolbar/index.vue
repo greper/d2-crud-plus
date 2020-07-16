@@ -2,6 +2,7 @@
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       右上角工具条
+      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何从旧版页面升级】</span>
       <example-helper title="帮助说明" >
         <div>本次升级，兼容旧版本。旧版本不做任何更改可以继续使用</div>
         <br/>

@@ -2,7 +2,7 @@
   <d2-container >
     <template slot="header">
       旧版页面
-      <span style="color:gray;font-size: 12px">【完全兼容，旧版页面不做任何更改可以继续使用】</span>
+      <span style="color:gray;font-size: 12px">【完全兼容，旧版页面不做任何更改可以继续使用】如何升级请看“工具条”页面的帮助</span>
       <example-helper title="帮助说明" >
         <div>旧版本页面不做任何更改可以继续使用</div>
       </example-helper>

@@ -41,7 +41,7 @@ export const crudOptions = (vm) => {
           },
           helper: {
             render (h) {
-              return (<el-alert title="当此处显示的value而不是label时，请检查value的类型是否一致，string和int是不相等的" type="warning"></el-alert>)
+              return (<el-alert title="当此处显示的是value而不是label时，请检查value的类型是否一致，string和int是不相等的" type="warning"/>)
             }
           }
         }

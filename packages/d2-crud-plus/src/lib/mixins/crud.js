@@ -698,6 +698,9 @@ export default {
      */
     handleColumnsFilterChanged (columns) {
       this.$set(this.crud, 'columns', columns)
+      this.$nextTick(() => {
+        this.getD2CrudTable().doLayout()
+      })
     }
 
   }

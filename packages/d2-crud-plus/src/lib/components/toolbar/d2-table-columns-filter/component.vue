@@ -271,13 +271,8 @@ export default {
       this.active = false
     },
     emit (result) {
-      this.$emit('input', [])
-      this.$emit('change', [])
-      // TODO 如果只触发一次，有底部滚动条时，原本被遮住的列显示后，固定操作列会显示错乱
-      this.$nextTick(() => {
-        this.$emit('input', result)
-        this.$emit('change', result)
-      })
+      this.$emit('input', result)
+      this.$emit('change', result)
     },
     saveOptionsToStorage (value) {
       if (!this.storage) {
@@ -326,7 +321,7 @@ export default {
       return key
     },
     getStorageName () {
-      const prefix = 'd2CrudPlus.columnsFilter'
+      let prefix = 'd2CrudPlus.columnsFilter'
       if ((typeof this.storage) === 'string') {
         return prefix + '.' + this.storage
       }

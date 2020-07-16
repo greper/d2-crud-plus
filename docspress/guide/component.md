@@ -13,7 +13,7 @@
 使用相关组件前，需要通过`Vue.use` 或 `Vue.component`引入组件
 ```js
 component:{ 
-    name: 'dict-select',//组件的名称
+    name: 'dict-select',//组件的名称,支持所有v-model组件
     props: { // 组件的配置，具体有哪些参数请查看相关组件的说明文档
        multiple: true,
        elProps: {...}, // 如果该组件封装了element组件，则此属性下面配置封装组件的配置

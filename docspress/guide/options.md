@@ -25,7 +25,9 @@ export const crudOptions = {
       sortable: true, //是否支持排序
       search: {
         disabled: false, //是否禁用该字段的查询，默认false
-        component:{}, //查询框组件配置，默认根据form配置生成 
+        component:{ //查询框组件配置，默认根据form配置生成 
+           name:'dict-select' //支持任何v-model组件
+        },
         // 是否启用搜索框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
         slot:false 
@@ -34,45 +36,45 @@ export const crudOptions = {
         rules: [ // 表单校验规则
           { required: true, message: '请选择地区' }
         ],
-        disabled:false, //是否禁用该字段的添加与修改
-        addDisabled: false, //是否在添加时在编辑框中隐藏该字段
-        editDisabled: false, //是否在修改时在编辑框中隐藏该字段
         component: { //添加和修改时form表单的组件
-          name: 'dict-select', //表单组件名称
-          props: { //表单组件的参数，其他组件的参数请查看相应的组件文档
-            separator:",",
-            elProps:{ //el-select的参数，dict-select内部封装了el-select
-              filterable: true, //可过滤选择项[不同组件参数不同]
-              multiple: true, //支持多选[不同组件参数不同]
-              clearable: true, //可清除[不同组件参数不同]
+          title:'表单字段显示的名称' //默认使用column的title
+          name: 'dict-select', //表单组件名称，支持任何v-model组件
+          props: { //表单组件的参数，具体参数请查看对应的组件文档
+            separator:",",//dict-select的组件参数，[不同组件参数不同]
+            elProps:{ //dict-select内部封装了el-select
+              filterable: true, //可过滤选择项
+              multiple: true, //支持多选
+              clearable: true, //可清除
             } 
           },
-          span:12 //该字段占据多宽，24为占满一行
+          disabled: false, //是否在表单中禁用组件，也可以配置为方法：disabled(){return false}
+          readonly: false, //表单组件是否是只读，也可以配置为方法：readonly(){return false}
+          events:{ //除input change事件外，更多组件事件监听
+            select(event){console.log(event)} //监听表单组件的select事件
+          },
+          scopedSlots:{ //插槽渲染
+             default:(h,scope)=>{ //默认插槽
+                return (<div>{scope.data}</div>)
+             }
+          }
+          span: 12 //该字段占据多宽，24为占满一行
         },
+        disabled:false, //完全关闭该字段在表单中显示
+        addDisabled: false, //是否仅在添加编辑框中关闭该字段
+        editDisabled: false, //是否仅在修改编辑框中关闭该字段
         valueChange(key ,value ,form){
             // form表单数据change事件，表单某项有改动将触发此事件
         },
-        addTemplateHandle(formTemplate){
-            //对添加的form配置做单独处理
-        },  
-        editTemplateHandle(formTemplate){
-            //对编辑的form配置做单独处理
-            //比如，某些字段在添加时需要输入，而编辑时要禁用控件，可以做如下处理
-            //form.component.disabled=true // element原生控件
-            //或 form.component.props.disabled=true // 封装控件
-        },     
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
-        slot:false 
-        
+        slot:false,
+        show: true, //是否显示该字段，也可以配置为方法：show(){return false}
       },
       addForm:{
-         //与addTemplateHandle作用相似 
-         //添加的特别配置，当添加和修改的配置有差异时，可以在此配置
+         //添加对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
       editForm:{
-         //与editTemplateHandle作用相似 
-         //修改的特别配置，当添加和修改的配置有差异时，可以在此配置
+         //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
@@ -146,11 +148,11 @@ export const crudOptions = {
     highlightCurrentRow: false, //是否高亮选中行
     size: 'mini'
   },
-  addTemplate: {}, //根据form配置自动生成
-  editTemplate: {}, //根据form配置自动生成
-  addRules: {}, //根据form配置自动生成
-  editRules: {},//根据form配置自动生成
-  list: [], //数据列表
+  addTemplate: {}, //根据form配置自动生成,请不要配置
+  editTemplate: {}, //根据form配置自动生成,请不要配置
+  addRules: {}, //根据form配置自动生成,请不要配置
+  editRules: {},//根据form配置自动生成,请不要配置
+  list: [], //数据列表，跟pageRequest从后端获取数据
   loading: false, //当前是否正在loading
   pagination: { //翻页配置
     currentPage: 1,
@@ -159,9 +161,11 @@ export const crudOptions = {
   },
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
-    edit:{}, //编辑按钮
+    edit:{//编辑按钮
+    }, 
     remove:{}, //删除按钮
-    custom:[] //自定义按钮
+    custom:[//自定义按钮
+    ] 
   },
   formGroup: {  //表单分组
     type: 'collapse', // tab暂未实现

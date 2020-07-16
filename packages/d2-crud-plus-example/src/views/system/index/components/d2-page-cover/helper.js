@@ -15,8 +15,10 @@ export default {
       title: '地区',
       key: 'province',
       type: 'select', //选择框
-      form: { //表单组件配置，此处配置选择框为多选
-        component: { props: { filterable: true, multiple: true, clearable: true } }
+      form: { //表单组件自定义配置，此处配置选择框为多选
+        component: { //支持任何v-model组件
+          props: { filterable: true, multiple: true, clearable: true }
+        }
       },
       dict: {
         data: [ //本地数据字典

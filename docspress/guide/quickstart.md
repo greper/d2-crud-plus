@@ -260,7 +260,7 @@ export const crudOptions = (vm)=>{ // vm即this
          type: 'select', //字段类型为选择框
          form: {
            rules: [{ required: true, message: '请选择地区' }],
-           component: { //添加和修改时form表单的组件
+           component: { //添加和修改时form表单的组件，支持任何v-model组件
              props: { //配置自定义组件的属性
                filterable: true, //可过滤选择项
                multiple: true, //支持多选

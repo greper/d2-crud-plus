@@ -128,7 +128,7 @@
       v-if="isDialogShow"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"
-      v-el-drag-dialog="handleAttribute(formOptions.draggable,true)"
+      v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
       v-bind="formOptions"
     >
       <template slot="title">

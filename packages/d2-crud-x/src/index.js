@@ -6,7 +6,7 @@ const install = (Vue, options) => {
     name = options.name
   }
   Vue.component(name, d2Crud)
-  Vue.directive('el-drag-dialog', drag)
+  Vue.directive('d2p-drag-dialog', drag)
 }
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)

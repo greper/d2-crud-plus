@@ -1,34 +1,6 @@
 # 常见问题
 
-## 1. 表单组件返回的数据是数组或Object类型，提交到后台之前怎么处理？
-可以配置valueResolve(form, col)
-```js
-column:[
-  {
-    key:'xxx',
-    valueResolve(form, col){
-      row.xxx = JSON.stringify(form.xxx) //修改form表单数据
-    } 
-  }
-]
-```
-或者重写`this.editBefore(row)`、`this.addBefore(row)` 这两个方法，修改row数据
-
-
-反过来，后台获取到的数据是json字符串，组件是数组，可以配置valueBuilder(row, col)
-```js
-column:[
-  {
-    key:'xxx',
-    valueBuilder(row, col){
-      row.xxx = JSON.parse(row.xxx) //修改行数据，用于行展示组件显示
-    } 
-  }
-]
-```
-
-## 2. 省市区选择组件value是数组，后台返回的是省市区三个字段怎么办？
-与上一个问题类似
+## 1. 省市区选择组件value是数组，后台返回的是省市区三个字段怎么办？
 假设后台返回的是三个字段，province、area、city
 ```js
 column:[
@@ -36,9 +8,11 @@ column:[
     title:'省市区',
     key:'pac',
     type:'area-selector',
+    // 后端获取到数据后，将调用valueBuilder构建pac的value为area-selector组件所需要的格式
     valueBuilder(row, col){
       row.pac=[row.province,row.area,row.city]
     },
+    // 点击确认对话框后，将调用valueResolve解析组件的value值为后端所需要的省市区字段
     valueResolve(form, col){
       if(form.pac && form.pac.length>=2){
         form.province = form.pac[0]
@@ -51,7 +25,7 @@ column:[
 ]
 ```
 
-## 3. 如何在crud.js中拿到this？
+## 2. 如何在crud.js中拿到this？
 修改两处地方即可
 ```js
 // crud.js
@@ -81,14 +55,14 @@ export default {
 ```
 示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select
 
-## 4. 怎么动态获取表单组件的配置
+## 3. 怎么动态获取表单组件的配置
 ```js
 let template = this.getEditFormTemplate(columnKey) //获取组件配置
 template.component.props.options = [] //动态将选项置空
 ```
-示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select
+示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/addi
 
-## 5. 怎么获取某个字段的数据字典的选项列表？
+## 4. 怎么获取某个字段的数据字典的选项列表？
 ```js
 //获取form表单组件中的字典选项列表
 let columnKey = '你的字段key'
@@ -107,12 +81,12 @@ let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
 ```
 示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select
 
-## 6. 怎么获取表单各个字段的值？
+## 5. 怎么获取表单各个字段的值？
 ```js
 let value = this.getEditForm().columnKey;
 ```
 
-## 7. 操作列的按钮怎么隐藏？
+## 6. 操作列的按钮怎么隐藏？
 隐藏按钮
 ```js
 export const crudOptions = {

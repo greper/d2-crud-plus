@@ -132,6 +132,17 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'generate'
       ]
     },
+    {
+      title: '更多帮助',
+      collapsable: false,
+      sidebarDepth: 0,
+      children: [
+        'upgrade',
+        'breakingchange',
+        'questions',
+        'contact'
+      ]
+    },
     // {
     //   title: 'd2-crud-x',
     //   collapsable: false,
@@ -141,26 +152,16 @@ function getGuideSidebar (groupA, groupB,groupC) {
     //   ]
     // },
     {
-      title: 'd2p-extends文档',
+      title: 'extends文档',
       collapsable: false,
       sidebarDepth: 0,
       children: extendsDocs
     },
     {
       title: '组件文档',
-      collapsable: false,
+      collapsable: true,
       sidebarDepth: 0,
       children: componentDocs
-    },
-    {
-      title: '其他帮助',
-      collapsable: false,
-      sidebarDepth: 0,
-      children: [
-        'upgrade',
-        'questions',
-        'contact'
-      ]
     },
     {
       title: 'ChangeLog',

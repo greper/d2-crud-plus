@@ -72,7 +72,6 @@
             </template>
         </d2-column>
 
-        <span>
         <el-table-column
           v-if="rowHandle"
           :label="handleAttribute(rowHandle.columnHeader, '操作')"
@@ -109,7 +108,6 @@
           </template>
 
         </el-table-column>
-          </span>
       </el-table>
     </div>
     <div class="d2-crud-pagination" v-if="pagination">

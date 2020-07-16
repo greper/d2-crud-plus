@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.12.3...d2-crud-plus@1.12.4) (2020-07-16)
+
+
+### Bug Fixes
+
+* 列设置本地缓存可以设置key键值名称 ([c8665fa](https://github.com/greper/d2-crud-plus/commit/c8665fa76b62b1571645e1259b8a06183b9b28c1))
+
+
+### Performance Improvements
+
+* 查询的title可配置 ([4c3739a](https://github.com/greper/d2-crud-plus/commit/4c3739aefa18037332b5bc86c3743f4b63d76758))
+* 优化列过滤的emit两次的问题 ([dd4506f](https://github.com/greper/d2-crud-plus/commit/dd4506fdbd3d0a488c776c8c57fc5afad08e26d6))
+
+
+
+
+
 ## [1.12.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.12.2...d2-crud-plus@1.12.3) (2020-07-13)
 
 **Note:** Version bump only for package d2-crud-plus

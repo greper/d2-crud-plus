@@ -97,7 +97,8 @@ export default {
         })
       }
       return this.fetchDetail(index, row).then(newRow => {
-        this.formDataStorage = newRow || {}
+        newRow = newRow || {}
+        this.formDataStorage = newRow
         let formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {
           if (!group.collapsed) {

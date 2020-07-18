@@ -111,14 +111,15 @@
       </el-table>
     </div>
     <div class="d2-crud-pagination" v-if="pagination">
+       <slot name="PaginationPrefixSlot" />
       <el-pagination
         v-bind="pagination"
         @size-change="handlePaginationSizeChange"
         @current-change="handlePaginationCurrentChange"
         @prev-click="handlePaginationPrevClick"
         @next-click="handlePaginationNextClick"
-      >
-      </el-pagination>
+      />
+      <slot name="PaginationSuffixSlot" />
     </div>
 
     <!-- 表单对话框 -->
@@ -329,6 +330,20 @@ export default {
   }
   .d2-crud-pagination{
     padding:0px 0;
+    display: flex;
+    align-items: center;
+    .el-pagination{
+      grow:1
+    }
+    >.prefix{
+      padding:0 5px;
+      >*{
+        margin:0 5px;
+      }
+      button.square{
+        padding: 7px 8px
+      }
+    }
   }
 }
 

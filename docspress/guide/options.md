@@ -63,7 +63,7 @@ export const crudOptions = {
         addDisabled: false, //是否仅在添加编辑框中关闭该字段
         editDisabled: false, //是否仅在修改编辑框中关闭该字段
         valueChange(key ,value ,form){
-            // form表单数据change事件，表单某项有改动将触发此事件
+            // form表单数据change事件，表单值有改动将触发此事件
         },
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
@@ -131,6 +131,12 @@ export const crudOptions = {
     saveLoading: false,
     gutter: 20,
     defaultSpan: 12, // 默认表单字段所占宽度
+    draggable:true, //是否支持表单对话框拖拽和拉伸
+    // draggable:{ //拖拽详细配置
+    //  drag:true, //启用拖拽
+    //  stretch: true, //启用拉伸
+    //  minWidth: 100 //横向拉伸时的最小宽度
+    // },
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
   searchOptions: { //查询配置参数

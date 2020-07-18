@@ -37,7 +37,7 @@
           <div slot="header">
             <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
 
-            <platform-selector size="small" @change="platformChanged" @init="platformInit"></platform-selector>
+            <platform-selector size="small" @change="platformChanged" @init="platformInit"/>
             <el-button v-permission="'permission:role:add'" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
 
             <crud-toolbar :search.sync="crud.searchOptions.show"
@@ -101,19 +101,6 @@ export default {
   },
   methods: {
     initAfter () {
-      // 检查权限
-      if (!this.hasPermissions('permission:role:edit')) {
-        this.crud.rowHandle.edit.disabled = true
-        //  delete this.crud.rowHandle.edit  // 也可以隐藏不显示
-      }
-      if (!this.hasPermissions('permission:role:del')) {
-        this.crud.rowHandle.remove.disabled = true
-        //  delete this.crud.rowHandle.remove  // 也可以隐藏不显示
-      }
-      if (!this.hasPermissions('permission:role:authz')) {
-        this.crud.rowHandle.custom[0].disabled = true
-        // delete this.crud.rowHandle.custom // 也可以隐藏不显示
-      }
     },
     doLoad () {
     // 打开页面不加载，等平台列表加载完了再刷新列表

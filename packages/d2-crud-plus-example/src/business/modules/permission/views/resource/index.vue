@@ -33,7 +33,7 @@
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
 
         <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
-        <el-button slot="header" class="d2-mb-5" v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow"><i class="el-icon-plus"/> 新增</el-button>
+        <el-button slot="header"  v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow"><i class="el-icon-plus"/> 新增</el-button>
 
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"

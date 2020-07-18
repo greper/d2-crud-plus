@@ -6,13 +6,26 @@ export const crudOptions = (vm) => {
     rowHandle: {
       // columnHeader: '操作',
       width: 300,
+      edit: {
+        disabled () {
+          return !vm.hasPermissions('permission:role:edit')
+        }
+      },
+      remove: {
+        disabled () {
+          return !vm.hasPermissions('permission:role:del')
+        }
+      },
       custom: [
         {
           text: ' 授权',
           type: 'warning',
           size: 'small',
           emit: 'authz',
-          icon: 'el-icon-s-flag'
+          icon: 'el-icon-s-flag',
+          disabled () {
+            return !vm.hasPermissions('permission:role:authz')
+          }
         }
       ]
     },

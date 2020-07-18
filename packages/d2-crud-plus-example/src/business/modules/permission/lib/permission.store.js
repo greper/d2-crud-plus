@@ -2,8 +2,9 @@ import constantRoutes, { frameInRoutes } from '@/router/routes'
 import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
 import { menuHeader, supplementPath } from '@/menu'
-const StaticMenuHeader = [...menuHeader] // 静态菜单缓存
+const StaticMenuHeader = [...menuHeader] // 静态菜单暂存，重新登录后，需要重新加载动态菜单与此处的静态菜单合并
 /**
+ * 构建路由列表
  * menuType 1=menu 2=btn 3=route
  * @param routers
  * @param list
@@ -48,6 +49,11 @@ function formatRouter (parent, list) {
   return parent.children
 }
 
+/**
+ * 构建菜单
+ * @param menuTree
+ * @returns {[]}
+ */
 function formatMenu (menuTree) {
   if (menuTree == null) {
     menuTree = []
@@ -73,6 +79,12 @@ function formatMenu (menuTree) {
   return menus
 }
 
+/**
+ * 构建权限码列表
+ * @param menuTree
+ * @param permissionList
+ * @returns {*}
+ */
 function formatPermissions (menuTree, permissionList) {
   if (menuTree == null) {
     menuTree = []
@@ -87,15 +99,6 @@ function formatPermissions (menuTree, permissionList) {
   })
   return permissionList
 }
-
-// export function buildRoutes (routes) {
-//   return [{
-//     path: '/',
-//     redirect: { name: 'index' },
-//     component: layoutHeaderAside,
-//     children: routes
-//   }]
-// }
 
 const state = {
   routes: [],
@@ -120,25 +123,31 @@ const mutations = {
 }
 
 const actions = {
-  generateRoutes ({ commit }, { menuTree }) {
+  generateRoutes ({ rootState, state, commit }, { menuTree }) {
     return new Promise(resolve => {
       const accessedRoutes = formatRouter(null, menuTree)
       const permissions = formatPermissions(menuTree, [])
-      console.log('permission Routers', accessedRoutes)
       commit('SET_ROUTES', { accessedRoutes, permissions })
 
       const menus = supplementPath(formatMenu(menuTree))
       menuHeader.splice(0, menuHeader.length)
       menuHeader.push(...StaticMenuHeader)
       menuHeader.push(...menus)
-      console.log('accessRouter:', accessedRoutes)
 
       // 处理路由 得到每一级的路由设置
       commit('d2admin/page/init', frameInRoutes.concat(accessedRoutes), { root: true })
       // 设置顶栏菜单
       commit('d2admin/menu/headerSet', menuHeader, { root: true })
-      // // 设置侧边栏菜单
-      // commit('d2admin/menu/asideSet', allMenuAside, { root: true })
+      // 设置侧边栏菜单
+      if (rootState.d2admin.menu.asideSet == null) {
+        const defaultMenuIndex = parseInt(process.env.VUE_APP_D2P_MENU_DEFAULT)
+        if (defaultMenuIndex >= 0) {
+          console.log('加载默认左侧菜单：VUE_APP_D2P_MENU_DEFAULT=', defaultMenuIndex)
+          commit('d2admin/menu/asideSet', menuHeader[defaultMenuIndex].children, { root: true })
+        } else {
+          console.warn('默认左侧菜单未配置：VUE_APP_D2P_MENU_DEFAULT=', process.env.VUE_APP_D2P_MENU_DEFAULT)
+        }
+      }
       // 初始化菜单搜索功能
       commit('d2admin/search/init', menuHeader, { root: true })
 

@@ -18,11 +18,10 @@ function isInited () {
 }
 async function loadRemoteRoute () {
   const menuTreeRes = await getPermissions(platformCode)
-  console.log('Menu Tree api  response:', menuTreeRes)
   const menuTree = menuTreeRes.data
   // generate accessible routes map based on roles
   const accessRoutes = await store.dispatch('permission/generateRoutes', { menuTree })
-  console.log('accesssRouters', accessRoutes, menuTree)
+  console.log('accesssRouters:', accessRoutes, 'menuTree:', menuTree)
   // dynamically add accessible routes
   router.addRoutes(accessRoutes)
 }

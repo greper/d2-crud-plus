@@ -5,8 +5,8 @@ export default class TableStore {
   }
   getTableId (name) {
     let storeName = 'd2CrudPlus'
-    if (process.env.VUE_D2P_STORE_NAME) {
-      storeName = process.env.VUE_D2P_STORE_NAME
+    if (process.env.VUE_APP_D2P_STORE_NAME) {
+      storeName = process.env.VUE_APP_D2P_STORE_NAME
     }
     let prefix = process.env.NODE_ENV + '.' + storeName
     if (name && (typeof name) === 'string') {

@@ -4,12 +4,12 @@ export const crudOptions = (vm) => {
     rowHandle: {
       edit: {
         disabled: () => {
-          return !vm.hasPermissions('permission:platform:edit')
+          return !vm.hasPermissions('permission:resource:edit')
         }
       },
       remove: {
         disabled: () => {
-          return !vm.hasPermissions('permission:platform:del')
+          return !vm.hasPermissions('permission:resource:del')
         }
       },
       custom: [
@@ -18,7 +18,10 @@ export const crudOptions = (vm) => {
           type: 'primary',
           size: 'small',
           emit: 'add-sub-resource',
-          icon: 'el-icon-plus'
+          icon: 'el-icon-plus',
+          disabled: () => {
+            return !vm.hasPermissions('permission:resource:add')
+          }
         }
       ],
       width: 280,

@@ -66,7 +66,7 @@ export default {
         pagination: {
           pageSize: 20,
           pageSizes: [5, 10, 20, 30, 40, 50, 100],
-          layout: 'total, sizes, prev, pager, next, jumper'
+          layout: 'slot, total, sizes, prev, pager, next, jumper'
         },
         page: {
           current: 1,
@@ -482,18 +482,20 @@ export default {
       for (let row of this.multipleSelection) {
         ids.push(row[this.crud.options.rowKey])
       }
-      this.$confirm('确定要批量删除这' + ids.length + '条数据吗?', '提示', {
+      return this.$confirm('确定要批量删除这' + ids.length + '条数据吗?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        return this.batchDelRequest(ids)
-      }).then(() => {
-        this.delAfter()
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        return this.batchDelRequest(ids).then(() => {
+          this.delAfter()
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          })
         })
+      }).catch(() => {
+        // console.log('取消删除', err)
       })
     },
 
@@ -571,7 +573,6 @@ export default {
      * @param selection
      */
     handleSelectionChange (selection) {
-      console.log('handleSelectionChange', selection)
       this.multipleSelection = selection
     },
     /**

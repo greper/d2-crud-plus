@@ -61,9 +61,13 @@ Vue.use(d2CrudPlus, {
 Vue.use(D2pTreeSelector)
 Vue.use(D2pAreaSelector)
 Vue.use(D2pIconSelector)
-Vue.use(D2pFullEditor)
-Vue.use(D2pFileUploader)
+Vue.use(D2pFullEditor, {
+  ueditor: {
+    serverUrl: '/api/ueditor/'
+  }
+})
 Vue.use(D2pDemoExtend)
+Vue.use(D2pFileUploader)
 Vue.use(D2pUploader, {
   defaultType: 'cos',
   cos: {

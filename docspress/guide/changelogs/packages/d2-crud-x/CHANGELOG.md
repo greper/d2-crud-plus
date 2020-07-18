@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.7](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.5...d2-crud-x@2.5.7) (2020-07-18)
+
+
+### Bug Fixes
+
+* 修复空指针异常 ([35e1b7b](https://github.com/greper/d2-crud/commit/35e1b7b71c32fe6c8e5cf3447d366ad7b4a9306b))
+
+
+### Performance Improvements
+
+* 翻页前后增加插槽 ([c132789](https://github.com/greper/d2-crud/commit/c132789bada13e1d47e0423571fbb58d83c9a9bb))
+* 优化对话框拖拽体验 ([fc8132b](https://github.com/greper/d2-crud/commit/fc8132bee2bb43e700d16a69a0074802884dad04))
+
+
+
+
+
 ## [2.5.5](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.4...d2-crud-x@2.5.5) (2020-07-16)
 
 

@@ -1,7 +1,7 @@
 <template>
   <span class="d2p-toolbar" >
     <el-button v-if="refresh!=null"  size="small" icon="el-icon-refresh" circle title="刷新列表" @click="doRefresh"/>
-    <el-button v-if="search!=null" :type="search?'primary':''"  size="small" icon="el-icon-search" circle title="显示/隐藏查询工具条" @click="doSearch"/>
+    <el-button v-if="search!=null" :type="search?'primary':''"  size="small" icon="el-icon-search" circle title="显示/隐藏查询" @click="doSearch"/>
     <el-button v-if="compact!=null" :type="compact?'primary':''"  size="small" icon="el-icon-rank" circle title="紧凑型页面" @click="doCompact"/>
     <el-button v-if="columns!=null" type="success" size="small" icon="el-icon-set-up" circle title="列设置"  @click="doColumnsFilter"/>
 
@@ -51,7 +51,7 @@ export default {
       default: undefined
     },
     /**
-     * 是否缓存
+     * 是否保存用户列设置
      * 传string则表示传入缓存的主key
      */
     storage: {

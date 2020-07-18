@@ -154,10 +154,12 @@ export const crudOptions = {
     highlightCurrentRow: false, //是否高亮选中行
     size: 'mini'
   },
-  pagination: { //翻页配置
+  pagination: { //翻页配置,更多配置参考el-pagination
     currentPage: 1,
     pageSize: 20,
-    total: 1
+    total: 1,
+    storage:true //本地保存用户每页条数修改，刷新不会丢失该修改
+    // storage:'keysuffix'// 传入字符串，将会给保存的key增加一个后缀，用于区分同一个页面下多个crud
   },
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除

@@ -110,7 +110,7 @@
             icon="el-icon-check"
             label="确定"
             block
-            @click="submit"/>
+            @click="submit()"/>
         </el-col>
       </el-row>
     </div>
@@ -122,6 +122,7 @@ import draggable from 'vuedraggable'
 import lodash from 'lodash'
 import d2Button from '../d2-button/component'
 import D2TableColumnsFixedController from '../d2-table-columns-fixed-controller/component'
+import TableStore from '../../../utils/util.store'
 // 输入 全部分表格列设置
 // 输出 要显示的表格列 + 每列的设置
 
@@ -264,7 +265,7 @@ export default {
       this.currentValue.forEach((item, index) => {
         result.push(item)
       })
-      if (!noSave) {
+      if (noSave !== true) {
         this.saveOptionsToStorage(result)
       }
       this.emit(result)
@@ -275,14 +276,10 @@ export default {
       this.$emit('change', result)
     },
     saveOptionsToStorage (value) {
-      if (!this.storage) {
+      if (this.storage === false) {
         return
       }
-      let key = this.getStorageKey()
-      let saved = this.getStorageTable()
-      if (!saved) {
-        saved = {}
-      }
+
       const storedOptions = []
       for (let i = 0; i < value.length; i++) {
         const item = value[i]
@@ -294,50 +291,22 @@ export default {
         storedOptions.push(target)
       }
       this.storedOptions = storedOptions
-      saved[key] = storedOptions
-      this.saveStorageTable(saved)
+      this.getStorageTable().updateTableValue(storedOptions)
     },
     getOptionsFromStorage () {
-      if (!this.storage) {
+      if (this.storage === false) {
         return
       }
-      const json = this.getStorageTable()
-      if (json) {
-        const key = this.getStorageKey()
-        return json[key]
-      }
+      return this.getStorageTable().getTableValue()
     },
     clearThisStorage () {
-      const key = this.getStorageKey()
-      const storageTable = this.getStorageTable()
-      delete storageTable[key]
-      this.saveStorageTable(storageTable)
-    },
-    getStorageKey () {
-      let key = location.href
-      if (this.$route) {
-        key = this.$route.path
-      }
-      return key
-    },
-    getStorageName () {
-      let prefix = 'd2CrudPlus.columnsFilter'
-      if ((typeof this.storage) === 'string') {
-        return prefix + '.' + this.storage
-      }
-      return prefix
+      this.getStorageTable().clearTableValue()
     },
     getStorageTable () {
-      const name = this.getStorageName()
-      const saved = localStorage.getItem(name)
-      if (saved == null) {
-        return
+      if (this.StorageTableStore == null) {
+        this.StorageTableStore = new TableStore({ $router: this.$route, tableName: 'columnsFilter', keyType: this.storage })
       }
-      return JSON.parse(saved)
-    },
-    saveStorageTable (saved) {
-      const name = this.getStorageName()
-      localStorage.setItem(name, JSON.stringify(saved))
+      return this.StorageTableStore
     },
     getColumnsHash (columns) {
       const keys = []

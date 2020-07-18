@@ -3,6 +3,8 @@ import { cloneDeep, merge, forEach } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
+import TableStore from '../utils/util.store'
+
 export default {
   components: {},
   data () {
@@ -201,6 +203,7 @@ export default {
         })
       }
 
+      this.getPageSizeFromStorage()
       this.initAfter()
       console.log('crud inited:', crud)
     },
@@ -352,7 +355,6 @@ export default {
      */
     handlePaginationChange (val) {
       this.doPaginationMerge(val)
-      console.info('page changed:', val)
       this.doRefresh()
     },
     doPaginationMerge (page) {
@@ -366,9 +368,36 @@ export default {
         this.crud.page.total = total
       }
       if (this.crud.pagination) {
+        if (this.crud.pagination.pageSize !== size) {
+          this.savePageSizeToStorage(size)
+        }
         this.crud.pagination.pageSize = size
         this.crud.pagination.currentPage = current
         this.crud.pagination.total = total
+      }
+    },
+    getPageSizeTableStore () {
+      if (this.pageSizeTableStore == null) {
+        this.pageSizeTableStore = new TableStore({ $router: this.$route, tableName: 'pageSize', keyType: this.crud.pagination.storage })
+      }
+      return this.pageSizeTableStore
+    },
+    savePageSizeToStorage (size) {
+      if (this.crud.pagination && this.crud.pagination.storage === false) {
+        return
+      }
+      this.getPageSizeTableStore().updateTableValue(size)
+    },
+    getPageSizeFromStorage () {
+      if (this.crud.pagination && this.crud.pagination.storage === false) {
+        return
+      }
+      const size = this.getPageSizeTableStore().getTableValue()
+      if (size != null) {
+        this.crud.pagination.pageSize = size
+        if (this.crud.page) {
+          this.crud.page.size = size
+        }
       }
     },
     /**
@@ -403,8 +432,8 @@ export default {
       let query = {
         ...form
       }
-      const requestCurrent = this.crud.page ? this.crud.page.current : this.crud.page.currentPage
-      const requestPageSize = this.crud.page ? this.crud.page.size : this.crud.page.pageSize
+      const requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage // 兼容旧版本
+      const requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
       query[this.crud.format.page.request.size] = requestPageSize
       query[this.crud.format.page.request.current] = requestCurrent
 

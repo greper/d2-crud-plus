@@ -41,7 +41,9 @@
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"/>
+                      @columns-filter-changed="handleColumnsFilterChanged"
+                      :storage="true"
+        />
       </div>
 
       <span slot="PaginationPrefixSlot" class="prefix" >

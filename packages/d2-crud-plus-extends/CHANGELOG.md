@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.10](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.9...d2p-extends@1.7.10) (2020-07-18)
+
+
+### Performance Improvements
+
+* ueditor支持全局配置 ([3880215](https://github.com/greper/d2-crud-plus/commit/3880215328957763f90df3d139d602c875ebce2f))
+
+
+
+
+
 ## [1.7.9](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.8...d2p-extends@1.7.9) (2020-07-16)
 
 **Note:** Version bump only for package d2p-extends

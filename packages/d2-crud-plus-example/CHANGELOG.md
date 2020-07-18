@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.5](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.4...@d2-plus/d2-crud-plus-example@1.12.5) (2020-07-18)
+
+
+### Performance Improvements
+
+* 每页条数设置增加本地保存 ([f687297](https://github.com/d2-projects/d2-admin/commit/f687297ace1d70b9d406cb59f06fa78be2aa8263))
+* 增加批量删除示例 ([2907848](https://github.com/d2-projects/d2-admin/commit/290784891a55b898c5c90fe36eb5e44d31e1c138))
+* ueditor支持全局配置 ([3880215](https://github.com/d2-projects/d2-admin/commit/3880215328957763f90df3d139d602c875ebce2f))
+
+
+
+
+
 ## [1.12.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.3...@d2-plus/d2-crud-plus-example@1.12.4) (2020-07-16)
 
 

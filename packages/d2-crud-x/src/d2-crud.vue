@@ -124,16 +124,18 @@
 
     <!-- 表单对话框 -->
     <el-dialog
+      class="d2-crud-dialog"
       v-if="isDialogShow"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
+      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true)}"
       v-bind="formOptions"
     >
       <template slot="title">
         {{formMode === 'edit' ? editTitle : addTitle}}
         <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" />
-        <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn" style="right:50px" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
+        <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
       </template>
       <el-form
         ref="form"
@@ -346,7 +348,24 @@ export default {
     }
   }
 }
-
+.d2-crud-dialog{
+  .el-dialog__headerbtn{
+    padding:10px;
+    top:12px;
+    &.fullscreen {
+      right:55px;
+    }
+  }
+  &.d2p-drag-dialog{
+    .is-fullscreen{
+      left:0px !important;
+      top:0px !important;
+      .el-dialog__header{
+        cursor: auto !important;
+      }
+    }
+  }
+}
 .page-compact{
   .d2-container-full__body{
     padding:0px !important

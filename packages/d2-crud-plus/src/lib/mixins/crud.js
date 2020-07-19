@@ -114,6 +114,49 @@ export default {
   mounted () {
     this.reComputeCrudHeight()
   },
+  computed: {
+    crudProps () {
+      const props = {
+        editTitle: '修改',
+        columns: this.crud.columns,
+        data: this.crud.list,
+        rowHandle: this.crud.rowHandle,
+        addTemplate: this.crud.addTemplate,
+        addRules: this.crud.addRules,
+        editTemplate: this.crud.editTemplate,
+        editRules: this.crud.editRules,
+        formOptions: this.crud.formOptions,
+        options: this.crud.options,
+        loading: this.crud.loading
+      }
+      if (this.crud.indexRow) {
+        props.indexRow = this.crud.indexRow
+      }
+      if (this.crud.selectionRow) {
+        props.selectionRow = this.crud.selectionRow
+      }
+      if (this.crud.expandRow) {
+        props.expandRow = this.crud.expandRow
+      }
+      if (this.crud.pagination) {
+        props.pagination = this.crud.pagination
+      }
+      return props
+    },
+    crudListeners () {
+      return {
+        'pagination-change': this.handlePaginationChange,
+        'dialog-open': this.handleDialogOpen,
+        'row-edit': this.handleRowEdit,
+        'row-add': this.handleRowAdd,
+        'row-remove': this.handleRowRemove,
+        'dialog-cancel': this.handleDialogCancel,
+        'form-data-change': this.handleFormDataChange,
+        'current-change': this.handleCurrentChange,
+        'selection-change': this.handleSelectionChange
+      }
+    }
+  },
   methods: {
     /**
      * 获取编辑框的formData
@@ -297,6 +340,9 @@ export default {
         }
       }
       delete item.type
+      if (item.columnType) {
+        item.type = item.columnType
+      }
       if (!item.disabled) { // 如果该列没有禁用显示
         parantColumns.push(item)
       }
@@ -508,8 +554,12 @@ export default {
         return
       }
       let ids = []
+      let rowKey = this.crud.options.rowKey
+      if (this.isVxeTable()) {
+        rowKey = this.crud.options.rowId
+      }
       for (let row of this.multipleSelection) {
-        ids.push(row[this.crud.options.rowKey])
+        ids.push(row[rowKey])
       }
       return this.$confirm('确定要批量删除这' + ids.length + '条数据吗?', '提示', {
         confirmButtonText: '确定',
@@ -601,7 +651,12 @@ export default {
      * 多条勾选选中
      * @param selection
      */
-    handleSelectionChange (selection) {
+    handleSelectionChange (event) {
+      let selection = event
+      if (this.isVxeTable()) {
+        selection = selection.records
+      }
+      console.log('selection', selection)
       this.multipleSelection = selection
     },
     /**
@@ -728,9 +783,17 @@ export default {
      */
     handleColumnsFilterChanged (columns) {
       this.$set(this.crud, 'columns', columns)
-      this.$nextTick(() => {
-        this.getD2CrudTable().doLayout()
-      })
+      if (!this.isVxeTable()) {
+        this.$nextTick(() => {
+          this.getD2CrudTable().doLayout()
+        })
+      }
+    },
+    isVxeTable () {
+      if (this.crud.options.tableType === 'vxe-table') {
+        return true
+      }
+      return false
     }
 
   }

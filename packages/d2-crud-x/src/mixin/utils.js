@@ -128,6 +128,30 @@ export default {
         return this.handleAttribute(component.props[prop], defaultValue)
       }
       return defaultValue
+    },
+    getTableImpl (tableType) {
+      if (!tableType && this.options) {
+        tableType = this.options.tableType
+      }
+      if (tableType) {
+        return tableType
+      }
+      return 'el-table'
+    },
+    getTableColumnImpl (tableType) {
+      const table = this.getTableImpl(tableType)
+      if (table === 'vxe-table') {
+        return 'vxe-table-column'
+      } else {
+        return 'el-table-column'
+      }
+    },
+    isVxeTable (tableType) {
+      const table = this.getTableImpl(tableType)
+      if (table === 'vxe-table') {
+        return true
+      }
+      return false
     }
   }
 }

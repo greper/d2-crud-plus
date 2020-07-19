@@ -39,6 +39,9 @@ addFunction(enhanceMenus, 'form/addi', '动态添加表单字段')
 addFunction(enhanceMenus, 'form/show', '显隐只读')
 addFunction(enhanceMenus, 'form/disabled', '禁用启用')
 
+const vxeMenus = []
+addFunction(vxeMenus, 'vxe/column', 'vxe-table', 'beta')
+
 const hotelMenus = []
 addFunction(hotelMenus, 'hotel/dashboard', '工作台')
 addFunction(hotelMenus, 'hotel/room/list', '房间管理')
@@ -97,6 +100,11 @@ const aside = [
         title: 'CRUD增强功能',
         icon: 'folder-o',
         children: enhanceMenus
+      },
+      {
+        title: 'vxe-table',
+        icon: 'folder-o',
+        children: vxeMenus
       },
       {
         title: '酒店示例',

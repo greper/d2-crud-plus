@@ -14,14 +14,12 @@
       <slot name="body"/>
     </div>
     <div class="d2-crud-body" v-else >
-      <el-table
+      <component
+        :is="getTableImpl(options.tableType)"
         ref="elTable"
         :data="d2CrudData"
         v-bind="options"
-        @current-change="handleCurrentChange"
         @select="handleSelect"
-        @select-all="handleSelectAll"
-        @selection-change="handleSelectionChange"
         @sort-change="handleSortChange"
         @cell-mouse-enter="handleCellMouseEnter"
         @cell-mouse-leave="handleCellMouseLeave"
@@ -32,35 +30,46 @@
         @row-dblclick="handleRowDblclick"
         @header-click="handleHeaderClick"
         @header-contextmenu="handleHeaderContextmenu"
+        @current-change="handleCurrentChange"
+        v-on="tableListeners"
       >
-        <el-table-column
+        <component
+          :is="getTableColumnImpl()"
           v-if="selectionRow || selectionRow === ''"
           type="selection"
           :label="handleAttribute(selectionRow.title, '')"
           v-bind="selectionRow"
         >
-        </el-table-column>
-        <el-table-column
+        </component>
+        <component
+          :is="getTableColumnImpl()"
           v-if="expandRow || expandRow === ''"
           type="expand"
+          :title="handleAttribute(expandRow.title, '')"
           :label="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >
-          <template slot-scope="scope">
+          <template v-if="isVxeTable()" slot="content" slot-scope="scope">
             <slot name="expandSlot" :row="scope.row"/>
           </template>
-        </el-table-column>
-        <el-table-column
+          <template v-else slot-scope="scope">
+            <slot name="expandSlot" :row="scope.row"/>
+          </template>
+        </component>
+        <component
+          :is="getTableColumnImpl()"
           v-if="indexRow || indexRow === ''"
-          type="index"
+          :type="getTableImpl(options.tableType)==='el-table'?'index':'seq'"
+          :title="handleAttribute(indexRow.title, '')"
           :label="handleAttribute(indexRow.title, '')"
           v-bind="indexRow"
         >
-        </el-table-column>
+        </component>
         <!-- 使用d2-column递归组件 -->
         <d2-column v-for="(item, index) in columns"
                    :key="index"
                    :item="item"
+                   :tableType="options.tableType"
                    @cell-data-change="handleCellDataChange"
                    @cell-component-ready="handleCellComponentReady"
                    @cell-component-custom-event="handleCellComponentCustomEvent"
@@ -72,8 +81,10 @@
             </template>
         </d2-column>
 
-        <el-table-column
+        <component
+          :is="getTableColumnImpl(options.tableType)"
           v-if="rowHandle"
+          :title="handleAttribute(rowHandle.columnHeader, '操作')"
           :label="handleAttribute(rowHandle.columnHeader, '操作')"
           v-bind="rowHandle"
         >
@@ -107,8 +118,8 @@
 
           </template>
 
-        </el-table-column>
-      </el-table>
+        </component>
+      </component>
     </div>
     <div class="d2-crud-pagination" v-if="pagination">
        <slot name="PaginationPrefixSlot" />
@@ -256,6 +267,21 @@ export default {
     D2FormItem,
     D2Column,
     D2Button
+  },
+  computed: {
+    tableListeners () {
+      if (this.isVxeTable()) {
+        return {
+          'checkbox-all': this.handleSelectAll,
+          'checkbox-change': this.handleSelectionChange
+        }
+      } else {
+        return {
+          'select-all': this.handleSelectAll,
+          'selection-change': this.handleSelectionChange
+        }
+      }
+    }
   },
   methods: {
     handleFormDataChange (event) {

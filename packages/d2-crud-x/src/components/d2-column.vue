@@ -1,15 +1,17 @@
 <template>
-  <el-table-column
+  <component
+    :is="getTableColumnImpl(tableType)"
     v-if="item.show!==false"
-  :label="handleAttribute(item.title, '')"
-  :prop="handleAttribute(item.key, null)"
-  v-bind="item">
+    :title="handleAttribute(item.title, '')"
+    :field="handleAttribute(item.key, null)"
+    :label="handleAttribute(item.title, '')"
+    :prop="handleAttribute(item.key, null)"
+    v-bind="item">
   <template slot-scope="scope">
     <d2-cell :item="item" :row="scope.row" :rowIndex="scope.$index"
              @cell-data-change="handleCellDataChange"
              @cell-component-ready="handleCellComponentReady"
              @cell-component-custom-event="handleCellComponentCustomEvent"
-
     >
       <template slot-scope="scope" :slot="item.key+'Slot'">
         <template v-if="item.rowSlot">
@@ -31,12 +33,13 @@
         </template>
       </d2-column>
     </template>
-</el-table-column>
+</component>
 </template>
 
 <script>
 import utils from '../mixin/utils'
 import D2Cell from './d2-cell'
+import RenderComponent from './renderComponent'
 
 export default {
   name: 'd2-column',
@@ -44,12 +47,17 @@ export default {
     utils
   ],
   components: {
+    RenderComponent,
     D2Cell
   },
   props: {
     item: {
       type: Object,
       required: true
+    },
+    tableType: {
+      type: String,
+      required: false
     }
   },
   methods: {

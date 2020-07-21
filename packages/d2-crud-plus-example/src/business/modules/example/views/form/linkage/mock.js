@@ -63,7 +63,7 @@ options.copyTimes = 1000
 const mock = mockUtil.buildMock(options)
 
 mock.push({
-  path: '/api/linkage/province',
+  path: '/linkage/province',
   method: 'get',
   handle (req) {
     return {
@@ -75,7 +75,7 @@ mock.push({
 })
 
 mock.push({
-  path: '/api/linkage/city',
+  path: '/linkage/city',
   method: 'get',
   handle (req) {
     console.log('xxx', req)
@@ -93,7 +93,7 @@ mock.push({
 })
 
 mock.push({
-  path: '/api/linkage/county',
+  path: '/linkage/county',
   method: 'get',
   handle (req) {
     const province = parseInt(req.params.province)

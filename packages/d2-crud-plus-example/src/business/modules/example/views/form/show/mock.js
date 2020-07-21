@@ -234,7 +234,7 @@ options.list = list
 options.copyTimes = 1000
 const mock = mockUtil.buildMock(options)
 mock.push({
-  path: '/api/select/cascadeData',
+  path: '/select/cascadeData',
   method: 'get',
   handle (req) {
     return {

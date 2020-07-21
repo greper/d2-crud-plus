@@ -165,7 +165,7 @@ const roomList = [
 
 export default [
   {
-    path: '/api/dashboard/rooms',
+    path: '/dashboard/rooms',
     method: 'get',
     handle ({ body, query, params }) {
       return {

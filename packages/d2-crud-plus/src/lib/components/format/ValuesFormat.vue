@@ -32,7 +32,9 @@ export default {
     dict: {
       type: Object,
       require: false,
-      default () { return {} }
+      default: () => {
+        return {}
+      }
     },
     // 颜色，【primary, success, warning, danger ,info】
     color: {

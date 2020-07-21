@@ -10,8 +10,8 @@
     </template>
     <d2-crud-x
         ref="d2Crud"
-        v-bind="crudProps"
-        v-on="crudListeners"
+        v-bind="_crudProps"
+        v-on="_crudListeners"
     >
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />

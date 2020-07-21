@@ -115,7 +115,7 @@ export default {
     this.reComputeCrudHeight()
   },
   computed: {
-    crudProps () {
+    _crudProps () {
       const props = {
         editTitle: '修改',
         columns: this.crud.columns,
@@ -143,7 +143,7 @@ export default {
       }
       return props
     },
-    crudListeners () {
+    _crudListeners () {
       return {
         'row-edit': this.handleRowEdit,
         'row-add': this.handleRowAdd,

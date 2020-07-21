@@ -13,6 +13,7 @@
 }|
 |color|颜色，【primary, success, warning, danger ,info】|—|`false`|'primary'|
 |type|展示类型【text, tag】|—|`false`|'tag'|
+|changeReload|valuechange 是否reload|—|`false`|true|
 
 <!-- @vuese:values-format:props:end -->
 

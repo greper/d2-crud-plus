@@ -306,26 +306,8 @@ export const crudOptions = (vm)=>{ // vm即this
     <template slot="header">测试页面</template>
     <d2-crud-x
         ref="d2Crud"
-        edit-title="修改"
-        :columns="crud.columns"
-        :data="crud.list"
-        :rowHandle="crud.rowHandle"
-        :add-template="crud.addTemplate"
-        :add-rules="crud.addRules"
-        :edit-template="crud.editTemplate"
-        :edit-rules="crud.editRules"
-        :form-options="crud.formOptions"
-        :options="crud.options"
-        :loading="crud.loading"
-        :pagination="crud.pagination"
-        @pagination-change="handlePaginationChange"
-        @dialog-open="handleDialogOpen"
-        @row-edit="handleRowEdit"
-        @row-add="handleRowAdd"
-        @row-remove="handleRowRemove"
-        @dialog-cancel="handleDialogCancel"
-        @form-data-change="handleFormDataChange"
-       >
+        v-bind="_crudProps"
+        v-on="_crudListeners">
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
@@ -334,9 +316,9 @@ export const crudOptions = (vm)=>{ // vm即this
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"
-        />
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
+
     </d2-crud-x>
   </d2-container>
 </template>

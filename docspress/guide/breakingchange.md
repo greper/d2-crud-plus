@@ -66,6 +66,15 @@ const crudOptions = {
 <crud-toolbar :storage='true'/>
 ```
 
+7. <d2-crud-x> 属性和事件配置简化
+```js
+<d2-crud-x
+    ref="d2Crud"
+    v-bind="_crudProps"
+    v-on="_crudListeners"
+></d2-crud-x>
+```
+
 ## 1.12.x 新版页面（带toolbar）
 * "d2-crud-plus": "^1.12.x"
 * "d2-crud-x": "^2.5.x"

@@ -9,7 +9,7 @@
 |value|值|—|`false`|-|
 |elProps|el-radio的配置，[el-radio](https://element.eleme.cn/#/zh-CN/component/radio#radio-attributes)|`Object`|`false`|-|
 |options|选项列表，优先级比dict高|`Array`|`false`|-|
-|onReady|-|`Function`|`false`|-|
+|onReady|字典加载完成|`Function`|`false`|-|
 
 <!-- @vuese:dict-radio:props:end -->
 

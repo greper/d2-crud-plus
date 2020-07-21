@@ -13,8 +13,8 @@
     </template>
     <d2-crud-x
         ref="d2Crud"
-        v-bind="crudProps"
-        v-on="crudListeners"
+        v-bind="_crudProps"
+        v-on="_crudListeners"
         @customHandleBtn="customHandleBtnHandle"
     >
 

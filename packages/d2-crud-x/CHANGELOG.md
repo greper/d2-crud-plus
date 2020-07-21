@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.7...d2-crud-x@2.6.0) (2020-07-21)
+
+
+### Bug Fixes
+
+* 修复vxe-table的一些bug ([0a8a52f](https://github.com/greper/d2-crud/commit/0a8a52fd6d40e47f41502fbe050f8348e30e3377))
+
+
+### Features
+
+* 实验性支持vxe-table ([9b518c4](https://github.com/greper/d2-crud/commit/9b518c46091a76a3bfc96d9c79ee763a26be9fa2))
+* 重大优化 ([9b1009a](https://github.com/greper/d2-crud/commit/9b1009a62383db653ac25f7f83b048dad0a40448))
+
+
+
+
+
 ## [2.5.7](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.5...d2-crud-x@2.5.7) (2020-07-18)
 
 

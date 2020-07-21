@@ -139,7 +139,7 @@ export default {
     handleFormSubmit () {
       this.$refs.searchForm.validate((valid) => {
         if (valid) {
-          this.$emit('submit', this.form)
+          this.$emit('submit', lodash.cloneDeep(this.form))
         } else {
           this.$notify.error({
             title: '错误',
@@ -192,7 +192,7 @@ export default {
           })
         }
       }
-      console.log('search value change :', column, this.options)
+      console.log('search value change:', column.key)
       this.$emit('search-data-change', column)
 
       if (this.searchDebounce) {

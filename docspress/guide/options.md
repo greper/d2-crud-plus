@@ -45,7 +45,7 @@ export const crudOptions = {
               filterable: true, //可过滤选择项
               multiple: true, //支持多选
               clearable: true, //可清除
-            } 
+            }
           },
           disabled: false, //是否在表单中禁用组件，也可以配置为方法：disabled(){return false}
           readonly: false, //表单组件是否是只读，也可以配置为方法：readonly(){return false}
@@ -62,9 +62,19 @@ export const crudOptions = {
         disabled:false, //完全关闭该字段在表单中显示
         addDisabled: false, //是否仅在添加编辑框中关闭该字段
         editDisabled: false, //是否仅在修改编辑框中关闭该字段
-        valueChange(key ,value ,form){
+        /**
+           * @param value 当前选择的值
+           * @param form 当前表单
+           * @param getColumn 获取字段配置的方法，getColumn(keyName) 返回keyName的字段配置，可以动态修改组件配置
+           * @param mode 当前模式:【add、edit、search】
+           * @param component 当前组件的ref
+           * @param immediate 是否是对话框打开后立即触发的
+           * @param getComponent 获取组件Ref的方法， getComponent(keyName), 返回组件ref，可以动态调用该组件的方法
+        **/
+        valueChange(key ,value ,form, {getColumn, mode, component, immediate, getComponent }){
             // form表单数据change事件，表单值有改动将触发此事件
         },
+        valueChangeImmediate:false, //是否在打开对话框后触发一次valueChange事件
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
         slot:false,
@@ -94,19 +104,20 @@ export const crudOptions = {
       dict: { // 数据字典配置， 供select等组件通过value匹配label
         data: [ // 本地数据字典
           { value: 'sz', label: '深圳' },
-           { value: 'gz', label: '广州' }, 
-           { value: 'wh', label: '武汉' }, 
-           { value: 'sh', label: '上海' }
+          { value: 'gz', label: '广州' }, 
+          { value: 'wh', label: '武汉' }, 
+          { value: 'sh', label: '上海' }
         ],
         // 若data为空，则通过http请求获取远程数据字典
         // 也可以传入一个异步请求来自定义请求方式
         url:'/dict/get', 
-        // cache: true, //是否启用cache，默认开启
-        // value:'value', value的属性名
-        // label:'label', label的属性名
-        // children:'children', children的属性名
-        // isTree: false //是否是树形结构
-        // getData: (url,dict)=>{} 覆盖全局getRemoteDictData方法
+        // url(dict,{form,component}){return '/dict/newUrl'} // 如果url是一个方法，则表示是动态构建url
+        cache: true, //是否启用cache，默认开启
+        value:'value', // value的属性名
+        label:'label', // label的属性名
+        children:'children', // children的属性名
+        isTree: false //是否是树形结构
+        getData: (url,dict,{form,component})=>{return Promise<[dictData]>} // 覆盖全局getRemoteDictData方法
       },
       //行内单元格显示组件
       component:{ name:'dict-select', props:{...}},
@@ -158,7 +169,7 @@ export const crudOptions = {
     currentPage: 1,
     pageSize: 20,
     total: 1,
-    storage:true //本地保存用户每页条数修改，刷新不会丢失该修改
+    storage:true //本地保存用户每页条数修改，刷新不会丢失该修改，false=关闭
     // storage:'keysuffix'// 传入字符串，将会给保存的key增加一个后缀，用于区分同一个页面下多个crud
   },
   rowHandle: { 

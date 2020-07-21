@@ -28,7 +28,7 @@ export const crudOptions = {
           key: 'address',
           type: 'area-selector',
           dict: { value: 'name' },
-          search: { disabled: false },
+          search: { disabled: false, component: { value: [] } },
           valueBuilder (row, col) {
             row.address = [row.province, row.area, row.city]
           },
@@ -38,8 +38,11 @@ export const crudOptions = {
               form.province = form.address[0]
               form.area = form.address[1]
               form.city = form.address[2]
+            } else {
+              form.province = undefined
+              form.area = undefined
+              form.city = undefined
             }
-            // 查询和提交的时候不需要这个字段，删除它
             delete form.address
           }
         }

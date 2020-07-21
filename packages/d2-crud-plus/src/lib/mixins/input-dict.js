@@ -16,7 +16,7 @@ export default {
       type: Array,
       require: false
     },
-    // 选项数据ready
+    // 字典数据ready
     onReady: {
       type: Function,
       require: false
@@ -73,6 +73,9 @@ export default {
         // 重新加载
         this.loadDict()
       }
+    },
+    getDictData () {
+      return this.dictOptions
     },
     loadDict () {
       const options = {}

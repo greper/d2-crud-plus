@@ -10,11 +10,6 @@ export const crudOptions = (vm) => {
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
-    searchOptions: {
-      form: {
-        cascader: [] // 设置默认查询值，解决查询表单重置后，cascade组件值为[null]的bug
-      }
-    },
     columns: [
       {
         title: '单选远程',
@@ -190,13 +185,13 @@ export const crudOptions = (vm) => {
         title: 'checkbox',
         key: 'checkbox',
         sortable: true,
-        search: { disabled: false },
+        search: { disabled: false, component: { props: { dict: { onReady () {} } } } }, // 查询的时候触发一个空方法
         type: 'checkbox',
         dict: {
           url: '/dicts/OpenStatusEnum'
         },
         form: {
-          valueChange (key, value, form, { getColumn, mode, getComponent }) {
+          valueChange (key, value, form, { getColumn, mode, getComponent, component }) {
             console.log('您选中了：', value)
             if (value == null) {
               return
@@ -218,10 +213,10 @@ export const crudOptions = (vm) => {
             props: {
               dict: {
                 url: '/dicts/OpenStatusEnum',
-                onReady: (data, dict) => {
+                onReady: (data, dict, { component }) => {
                   const value = vm.getEditForm().checkbox
                   // 在字典加载完成后触发一次valueChange
-                  vm.crud.columnsMap.checkbox.form.valueChange('checkbox', value, vm.getEditForm())
+                  component.onChange(value)
                 }
               }
             }

@@ -107,7 +107,6 @@ export default {
       }
       defaultElProps.nodeKey = defaultElProps.props.value
       lodash.merge(defaultElProps, this.elProps)
-      console.log('elProps:', defaultElProps)
       return defaultElProps
     },
     collapseTagSize () {

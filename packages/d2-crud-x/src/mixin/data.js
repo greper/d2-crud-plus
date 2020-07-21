@@ -54,9 +54,11 @@ export default {
      * @description 排序时数据变化
      */
     handleSortDataChange () {
-      this.$nextTick(() => {
-        this.d2CrudData = this.$refs.elTable.store.states.data
-      })
+      if (!this.isVxeTable()) {
+        this.$nextTick(() => {
+          this.d2CrudData = this.$refs.elTable.store.states.data
+        })
+      }
     },
     /**
      * @description 排序状态

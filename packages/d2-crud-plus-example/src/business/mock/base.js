@@ -126,7 +126,8 @@ export default {
           const maxPage = data.length % size === 0 ? data.length / size : Math.floor(data.length / size) + 1
           if (current > maxPage) {
             current = maxPage
-          } else if (current < 1) {
+          }
+          if (current < 1) {
             current = 1
           }
           return {

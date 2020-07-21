@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import dict from '../../utils/util.dicts'
 import inputBase from '../../mixins/input-base'
+import inputDict from '../../mixins/input-dict'
 // 字典radio选择器
 export default {
   name: 'dict-switch',
-  mixins: [inputBase],
+  mixins: [inputBase, inputDict],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -52,7 +52,6 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined
     }
   },
   computed: {
@@ -60,15 +59,6 @@ export default {
       return {
         ...this.elProps
       }
-    },
-    _options () {
-      if (this.options != null) {
-        return this.options
-      }
-      if (this.dictOptions != null) {
-        return this.dictOptions
-      }
-      return []
     },
     _active () {
       if (this._options.length > 0) {
@@ -84,14 +74,6 @@ export default {
     }
   },
   created () {
-  },
-  mounted () {
-    dict.get(this.dict).then((data) => {
-      this.$set(this, 'dictOptions', data)
-      if (this.onReady != null) {
-        this.onReady(this)
-      }
-    })
   },
   methods: {
     setValue () {

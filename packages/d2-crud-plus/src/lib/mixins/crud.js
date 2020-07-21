@@ -273,6 +273,7 @@ export default {
       let key = item.key
       let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
       let newItem = cloneDeep(defaultColumn)
+
       // 用户配置覆盖默认配置
       merge(newItem, item)
       item = newItem

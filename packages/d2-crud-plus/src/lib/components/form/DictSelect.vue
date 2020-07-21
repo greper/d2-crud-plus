@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     doChange (value) {
-      console.log('changed', value)
+      // console.log('changed', value)
     },
     setValue (newVal) {
       if (!this._elProps.multiple) {

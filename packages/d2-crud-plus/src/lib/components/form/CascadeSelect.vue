@@ -10,13 +10,13 @@
 
 <script>
 import { merge } from 'lodash'
-import dict from '../../utils/util.dicts'
 import input from '../../mixins/input'
+import inputDict from '../../mixins/input-dict'
 
 // 级联选择器
 export default {
   name: 'cascade-select',
-  mixins: [input],
+  mixins: [input, inputDict],
   props: {
     // 数据字典<br/>
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -48,40 +48,24 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined
     }
   },
   computed: {
     _elProps () {
       let defaultElProps = { props: {} }
-      if (this.dict != null && this.dict.label != null) {
+      if (this.dict && this.dict.label) {
         defaultElProps.props.label = this.dict.label
       }
-      if (this.dict != null && this.dict.value != null) {
+      if (this.dict && this.dict.value) {
         defaultElProps.props.value = this.dict.value
       }
       merge(defaultElProps, this.elProps)
+      console.log('cascade:', defaultElProps, this.elProps)
       return defaultElProps
-    },
-    _options () {
-      if (this.options != null) {
-        return this.options
-      }
-      if (this.dictOptions != null) {
-        return this.dictOptions
-      }
-      return []
     }
+
   },
   created () {
-  },
-  mounted () {
-    dict.get(this.dict).then((data) => {
-      this.$set(this, 'dictOptions', data)
-      if (this.onReady != null) {
-        this.onReady(this)
-      }
-    })
   },
   methods: {
     setValue (value) {

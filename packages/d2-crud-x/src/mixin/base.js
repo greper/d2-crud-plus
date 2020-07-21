@@ -65,6 +65,9 @@ export default {
      */
     handleSelectAll (selection) {
       this.$emit('select-all', selection)
+      if (this.isVxeTable()) {
+        this.$emit('selection-change', selection)
+      }
     },
     /**
      * @description 复选框选择项发生变化时触发的事件

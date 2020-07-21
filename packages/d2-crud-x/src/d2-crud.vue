@@ -31,12 +31,12 @@
         @header-click="handleHeaderClick"
         @header-contextmenu="handleHeaderContextmenu"
         @current-change="handleCurrentChange"
-        v-on="tableListeners"
+        v-on="_tableListeners"
       >
         <component
           :is="getTableColumnImpl()"
           v-if="selectionRow || selectionRow === ''"
-          type="selection"
+          :type="isVxeTable()?'checkbox':'selection'"
           :label="handleAttribute(selectionRow.title, '')"
           v-bind="selectionRow"
         >
@@ -271,7 +271,7 @@ export default {
     D2Button
   },
   computed: {
-    tableListeners () {
+    _tableListeners () {
       if (this.isVxeTable()) {
         return {
           'checkbox-all': this.handleSelectAll,

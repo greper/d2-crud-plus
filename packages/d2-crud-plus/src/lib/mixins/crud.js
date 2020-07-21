@@ -154,7 +154,8 @@ export default {
         'pagination-change': this.handlePaginationChange,
         'dialog-open': this.handleDialogOpen,
         'dialog-opened': this.handleDialogOpened,
-        'dialog-cancel': this.handleDialogCancel
+        'dialog-cancel': this.handleDialogCancel,
+        'select-all': this.handleSelectAll
       }
     }
   },
@@ -693,6 +694,12 @@ export default {
      */
     handleCurrentChange (currentRow, oldCurrentRow) {
       console.log('handleCurrentChange事件', currentRow)
+    },
+    /**
+     * 全选选中
+     */
+    handleSelectAll (event) {
+      console.log('select all:', event)
     },
     /**
      * 删除请求

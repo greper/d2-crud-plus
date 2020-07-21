@@ -7,8 +7,6 @@ Github: <https://github.com/greper/d2-crud-plus>
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
 
-
-
 ## 特性
 ### 1. 简化配置 
 * addTemplate、editTemplate、addRules、editRules根据column配置自动生成   

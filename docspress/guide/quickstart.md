@@ -1,11 +1,24 @@
 # 快速上手
+
+## 关系
+* `d2-crud` : 官方的一个crud框架，使用起来相对繁琐，且已久不维护
+* `d2-crud-x` ：fork`d2-crud`改造而来，威力加强版（修复bug，增强功能）
+* `d2-crud-plus`: 辅助`d2-crud-x`或`d2-crud`，让它们使用起来更简单
+* `d2-crud-plus-example`: 以`d2-admin`为基础的示例工程，可以单独复制此项目作为你的启动项目
+* `d2-crud-plus-extends`: 实用的扩展组件（文件上传组件、地区选择组件、树形选择组件等）
+
+理论上可以脱离d2-admin使用在其他项目中
+
 ## 目录结构
 ```
-packages    
-   |-- d2-crud-plus               //基础工程
-   |-- d2-crud-plus-example       //示例工程，进入到该目录下，npm run dev 即可运行示例
-   |-- d2-crud-plus-extends       //扩展组件，目前包含文件上传组件、地区选择组件、树形选择组件
+src
+  |--packages    
+    |-- d2-crud-plus               //基础工程
+    |-- d2-crud-plus-example       //示例工程，进入到该目录下，npm run dev 即可运行示例
+    |-- d2-crud-plus-extends       //扩展组件，觉得好用的话，也可以在其他项目中使用
+    |-- d2-crud-x                  //d2-crud的修改加强版
 ```
+
 ## 运行示例
 
 ### 基本示例运行
@@ -24,9 +37,9 @@ npm run dev:pm
 ```
 注意：权限管理需要先运行后台，请查看[权限管理帮助文档](./permission.md)获取更多信息
 
-### 代码贡献者运行
-如果想要修改d2-crud-plus或者d2-crud-plus-extends后在示例中热加载  
-需要安装lerna，执行如下命令
+### 调试运行
+如果想要修改`d2-crud-plus`或者`d2-crud-plus-extends`代码后在示例中热加载  
+需要安装`lerna`，执行如下命令
 ```shell script
 npm install lerna -g
 git clone https://github.com/greper/d2-crud-plus.git
@@ -43,17 +56,17 @@ npm run dev
 
 ### 1.安装
 ```js
-使用npm
-// npm i  @d2-project/d2-crud  -S
-//【d2-crud官方已停止维护，推荐使用增强版d2-crud-x】
+//使用npm
+// npm i @d2-project/d2-crud:2.0.5  -S 
+// 【d2-crud官方已停止维护，推荐使用加强版d2-crud-x】
 // 使用d2-crud-x替换d2-crud【在官方基础上修复了bug，功能更强大】
-npm i  d2-crud-x  -S
-npm i  d2-crud-plus  -S
+npm i  d2-crud-x  d2-crud-plus d2p-extends -S
 
-使用yarn
-// yarn add @d2-projects/d2-crud 
-yarn add d2-crud-x
-yarn add d2-crud-plus 
+//使用yarn
+yarn add d2-crud-x d2-crud-plus d2p-extends 
+
+//使用cnpm
+cnpm i  d2-crud-x  d2-crud-plus d2p-extends -S
 
 ```
 
@@ -113,7 +126,8 @@ Vue.use(d2CrudPlus, {
 [更多关于后台返回数据结构的配置说明](/guide/structure.md)
 
 #### d2-crud-x与d2-crud共同使用
-如果你的项目之前已经使用了`官方版d2-crud`，你可以直接在此基础上使用d2-crud-x,并不会破坏以前的功能
+如果你的项目之前已经使用了`官方版d2-crud`  
+你可以直接在此基础上使用`d2-crud-x`,并不会破坏以前的功能    
 ```js
  import d2Crud from '@d2-projects/d2-crud'
  import d2CrudX from 'd2-crud-x'
@@ -148,7 +162,7 @@ Vue.use(D2pFullEditor)
 Vue.use(D2pFileUploader)
 Vue.use(D2pDemoExtend)
 Vue.use(D2pUploader, {
-    ... //文件上传有额外配置
+    ... //文件上传有额外配置,请看下方链接
   }
 }
 ```

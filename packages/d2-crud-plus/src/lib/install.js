@@ -3,6 +3,8 @@ import components from './components'
 import crud from './mixins/crud'
 import input from './mixins/input'
 import inputBase from './mixins/input-base'
+import inputDict from './mixins/input-dict'
+
 import dict from './utils/util.dicts'
 import height from './utils/util.height'
 import columnResolve from './utils/util.column.resolve'
@@ -42,5 +44,6 @@ export default { install,
   util,
   crud,
   input,
-  inputBase
+  inputBase,
+  inputDict
 }

@@ -86,7 +86,7 @@ export default {
           total: 100,
           records: list
         }
-        setTimeout(() => {
+        setTimeout(() => { // 注意：有风险，当后台返回数据很快，并且列表复杂渲染速度很慢，this.getD2Crud().$refs.elTable会报空指针异常
           const data = this.getD2Crud().$refs.elTable.store.states.treeData
           if (data != null) {
             foreach(data, (value, key) => {

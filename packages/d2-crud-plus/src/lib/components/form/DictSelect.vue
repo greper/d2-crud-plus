@@ -6,6 +6,7 @@
     :value-key="dict.value"
     :disabled="disabled" :readonly="readonly"
     @input="onInput"
+    @change="doChange"
     style="width:100%"
   >
     <el-option
@@ -19,22 +20,14 @@
 </template>
 
 <script>
-import dict from '../../utils/util.dicts'
 import input from '../../mixins/input'
+import inputDict from '../../mixins/input-dict'
+
 // 字典选择器
 export default {
   name: 'dict-select',
-  mixins: [input],
+  mixins: [input, inputDict],
   props: {
-    // 数据字典
-    // {url:'xxx',data:[],value:'',label:'',children:''}
-    dict: {
-      type: Object,
-      require: false,
-      default: () => {
-        return { data: undefined }
-      }
-    },
     // 值
     value: { type: [Number, String, Boolean, Array], require: false },
     // value的分隔符<br/>
@@ -54,11 +47,21 @@ export default {
       type: Object,
       require: false
     },
+    // 数据字典配置
+    // {url:'xxx',data:[],value:'',label:'',children:''}
+    dict: {
+      type: Object,
+      require: false,
+      default: () => {
+        return { data: undefined }
+      }
+    },
     // 选项列表，优先级比dict高
     options: {
       type: Array,
       require: false
     },
+    // 选项数据ready
     onReady: {
       type: Function,
       require: false
@@ -66,7 +69,6 @@ export default {
   },
   data () {
     return {
-      dictOptions: undefined
     }
   },
   computed: {
@@ -78,28 +80,14 @@ export default {
         multiple: this.multiple,
         ...this.elProps
       }
-    },
-    _options () {
-      if (this.options != null) {
-        return this.options
-      }
-      if (this.dictOptions != null) {
-        return this.dictOptions
-      }
-      return []
     }
   },
   created () {
   },
-  mounted () {
-    dict.get(this.dict).then((data) => {
-      this.$set(this, 'dictOptions', data)
-      if (this.onReady != null) {
-        this.onReady(this)
-      }
-    })
-  },
   methods: {
+    doChange (value) {
+      console.log('changed', value)
+    },
     setValue (newVal) {
       if (!this._elProps.multiple) {
         // 单选
@@ -123,7 +111,7 @@ export default {
         return
       }
 
-      // TODO 重置表单时，多选的value会重置为[null]
+      //  TODO 重置表单时，多选的value会重置为[null]
       const val = []
       for (let item of newVal) {
         if (item != null) {

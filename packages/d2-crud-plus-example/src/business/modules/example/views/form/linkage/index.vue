@@ -1,6 +1,6 @@
 <template>
   <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
-    <template slot="header">选择组件
+    <template slot="header">选择联动
       <example-helper title="select" >
         <div>
           <link-button type="text" target="_blank" href="http://greper.gitee.io/d2-crud-plus/guide/types.html#选择框">选择组件类型</link-button>
@@ -14,7 +14,7 @@
         v-on="crudListeners"
     >
       <div slot="header">
-        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
@@ -31,7 +31,7 @@ import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
-  name: 'formSelect',
+  name: 'formLinkage',
   mixins: [d2CrudPlus.crud],
   data () {
     return {

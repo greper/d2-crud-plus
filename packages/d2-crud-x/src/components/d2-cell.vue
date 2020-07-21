@@ -6,6 +6,7 @@
       <render-custom-component
         v-else-if="item.component && item.component.name"
         v-model="row[item.key]"
+        :_form="row"
         :component-name="item.component.name"
         :disabled="getComponentProp(item,item.key,'disabled', false)"
         :readonly="getComponentProp(item,item.key,'readonly', false)"
@@ -13,6 +14,8 @@
         :events="item.component.events"
         :slots="item.component.slots"
         :scoped-slots="item.component.scopedSlots"
+        :on="item.component.on"
+        :children="item.component.children"
         @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @custom="handleCellComponentCustomEvent($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"

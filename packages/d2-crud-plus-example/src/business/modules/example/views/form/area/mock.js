@@ -49,7 +49,7 @@ options.list = list
 
 const mock = mockUtil.buildMock(options)
 mock.push({
-  path: 'api/area/tree',
+  path: '/area/tree',
   method: 'get',
   handle (req) {
     const tree = [

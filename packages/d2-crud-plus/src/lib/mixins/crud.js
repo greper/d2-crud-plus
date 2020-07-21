@@ -145,15 +145,16 @@ export default {
     },
     crudListeners () {
       return {
-        'pagination-change': this.handlePaginationChange,
-        'dialog-open': this.handleDialogOpen,
         'row-edit': this.handleRowEdit,
         'row-add': this.handleRowAdd,
         'row-remove': this.handleRowRemove,
-        'dialog-cancel': this.handleDialogCancel,
         'form-data-change': this.handleFormDataChange,
         'current-change': this.handleCurrentChange,
-        'selection-change': this.handleSelectionChange
+        'selection-change': this.handleSelectionChange,
+        'pagination-change': this.handlePaginationChange,
+        'dialog-open': this.handleDialogOpen,
+        'dialog-opened': this.handleDialogOpened,
+        'dialog-cancel': this.handleDialogCancel
       }
     }
   },
@@ -209,7 +210,8 @@ export default {
     initColumns () {
       let crudOptions = this.getCrudOptions()
       let commonOptions = CommonOptionsUtil.create()
-      merge(crudOptions, commonOptions)
+      merge(commonOptions, crudOptions)
+      crudOptions = commonOptions
       let columns = crudOptions.columns
       merge(this.crud, crudOptions)
       const crud = this.crud
@@ -309,8 +311,8 @@ export default {
         let search = {
           title: item.title,
           key: item.key,
-          dict: item.dict,
-          component: component
+          component: component,
+          valueChange: form.valueChange
         }
         merge(search, item.search)
         this.crud.searchOptions.columns.push(search)
@@ -532,6 +534,30 @@ export default {
      * @param row
      */
     handleDialogOpen ({ mode, row }) {
+
+    },
+    /**
+     * 编辑对话框打开后要做的操作
+     * @param mode
+     * @param row
+     */
+    handleDialogOpened ({ mode, form }) {
+      console.log('handleDialogOpened:', mode, form)
+      for (let key in this.crud.columnsMap) {
+        let column = this.crud.columnsMap[key]
+        if (column && column.form && column.form.valueChange && column.form.valueChangeImmediate) {
+          column.form.valueChange(key, form[key], this.getEditForm(), {
+            getColumn: this.getEditFormTemplate,
+            mode: this.getD2Crud().formMode,
+            immediate: true
+          })
+        }
+      }
+
+      this.doDialogOpened({ mode, form })
+    },
+    doDialogOpened ({ mode, form }) {
+
     },
     /**
      * 点击添加按钮
@@ -762,13 +788,18 @@ export default {
     /**
      * 编辑框表单改变事件
      */
-    handleFormDataChange ({ key, value, form }) {
+    handleFormDataChange ({ key, value, form, component, getComponent }) {
       let column = this.crud.columnsMap[key]
       console.log('FormDataChanged:', key)
       if (column && column.form && column.form.valueChange) {
-        column.form.valueChange(key, value, this.getEditForm())
+        column.form.valueChange(key, value, this.getEditForm(), {
+          getColumn: this.getEditFormTemplate,
+          mode: this.getD2Crud().formMode,
+          component: component,
+          getComponent: getComponent
+        })
       }
-      this.doFormDataChange({ key, value })
+      this.doFormDataChange({ key, value, form, getColumn: this.getEditFormTemplate, mode: this.getD2Crud().formMode, component })
     },
     /**
      * 用户可覆盖的编辑框表单改变事件
@@ -788,6 +819,15 @@ export default {
           this.getD2CrudTable().doLayout()
         })
       }
+    },
+    /**
+     * 搜索表单值change触发
+     * @param key
+     * @param value
+     * @param component
+     * @param form
+     */
+    handleSearchDataChange ({ key, value, component, form }) {
     },
     isVxeTable () {
       if (this.crud.options.tableType === 'vxe-table') {

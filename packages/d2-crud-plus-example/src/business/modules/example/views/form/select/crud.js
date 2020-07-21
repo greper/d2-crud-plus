@@ -57,7 +57,7 @@ export const crudOptions = (vm) => {
         search: {},
         type: 'select',
         dict: {
-          url: '/dicts/OpenStatusEnum2', // 配置url，可以缓存字典数据
+          url: '/dicts/OpenStatusEnum', // 配置url，可以缓存字典数据
           getData (url, dict) { // 覆盖全局获取字典请求配置
             console.log('我是从自定义的getData方法中加载的数据字典', dict)
             return request({
@@ -79,17 +79,10 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: {},
         type: 'select',
-        disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
+        disabled: true, // url()方式不会缓存字典数据，不建议在列表中使用，会有性能问题（除非自行处理缓存）
         dict: {
-          url: (dict) => { // 此方式无法缓存数据
-            console.log('我是从自定义的url方法中加载的数据字典', dict)
-            return request({
-              url: '/dicts/OpenStatusEnum',
-              method: 'post',
-              data: { a: 1 }
-            }).then(ret => {
-              return ret.data
-            })
+          url: (dict) => { // 此方式不会缓存数据
+            return '/dicts/OpenStatusEnum?a=0'
           }
         },
         form: {
@@ -103,12 +96,19 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: {},
         type: 'select',
-        disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
+        disabled: false,
         dict: {
-          url: '/dicts/OpenStatusEnum2',
-          cache: false
+          url: '/dicts/OpenStatusEnum',
+          cache: true // 列表中展示建议启用缓存，否则会每一行都请求一次
         },
         form: {
+          component: {
+            props: {
+              dict: {
+                cache: false // 表单的dict可以禁用缓存
+              }
+            }
+          },
           helper: '禁用字典缓存，每次打开对话框都会发出字典请求'
         }
       },
@@ -175,7 +175,7 @@ export const crudOptions = (vm) => {
         title: 'radio',
         key: 'status2',
         sortable: true,
-        search: { disabled: false },
+        search: { disabled: true },
         type: 'radio',
         dict: {
           url: '/dicts/OpenStatusEnum'
@@ -196,7 +196,7 @@ export const crudOptions = (vm) => {
           url: '/dicts/OpenStatusEnum'
         },
         form: {
-          valueChange (key, value, form) {
+          valueChange (key, value, form, { getColumn, mode, getComponent }) {
             console.log('您选中了：', value)
             if (value == null) {
               return

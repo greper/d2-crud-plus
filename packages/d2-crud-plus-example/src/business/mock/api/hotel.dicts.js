@@ -79,7 +79,7 @@ export default [
     }
   },
   {
-    path: '/dicts/OpenStatusEnum2',
+    path: '/dicts/_OpenStatusEnum',
     method: 'get',
     handle ({ body }) {
       return {

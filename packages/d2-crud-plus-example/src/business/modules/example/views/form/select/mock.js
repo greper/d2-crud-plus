@@ -12,7 +12,8 @@ const list = [
     checkbox: '0',
     status_custom_1: '0',
     status_custom_2: '0',
-    checkedRadio: '1'
+    checkedRadio: '1',
+    mcascader: [['zhinan', 'shejiyuanze', 'yizhi']]
   },
   {
     status: '1',

@@ -16,13 +16,25 @@ apiList.push(...apiList1)
 apiList.forEach(apiFile => {
   for (const item of apiFile) {
     mock
-      .onAny(item.path)
+      .onAny(new RegExp('^' + item.path))
       .reply(config => {
         console.log('------------fake request start -------------')
         console.log('request:', config)
+        const data = config.data ? JSON.parse(config.data) : {}
+        const query = config.url.indexOf('?') >= 0 ? config.url.substring(config.url.indexOf('?') + 1) : undefined
+        let params = {}
+        if (query) {
+          const arr = query.split('&')
+          for (const item of arr) {
+            const kv = item.split('=')
+            params[kv[0]] = kv[1]
+          }
+        } else {
+          params = data
+        }
         const req = {
-          body: JSON.parse(config.data),
-          params: JSON.parse(config.data)
+          body: data,
+          params: params
         }
         const ret = item.handle(req)
         console.log('response:', ret)

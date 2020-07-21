@@ -166,6 +166,7 @@
                 :template="item"
                 :colKey="key"
                 :formData="formData"
+                :ref="'form_item_'+key"
                 @form-data-change="handleFormDataChange"
                 @form-component-ready="handleFormComponentReady"
                 @form-component-custom-event="handleFormComponentCustomEvent"
@@ -198,6 +199,7 @@
                     :template="item"
                     :colKey="key"
                     :formData="formData"
+                    :ref="'form_item_'+key"
                     @form-data-change="handleFormDataChange"
                     @form-component-ready="handleFormComponentReady"
                     @form-component-custom-event="handleFormComponentCustomEvent"
@@ -285,7 +287,7 @@ export default {
   },
   methods: {
     handleFormDataChange (event) {
-      this.$emit('form-data-change', event)
+      this.$emit('form-data-change', { getComponent: this.getFormComponentRef, ...event })
     },
     handleFormComponentReady (event) {
       this.$emit('form-component-ready', event)
@@ -305,6 +307,9 @@ export default {
     handleDialogOpened (event) {
       // TODO 暂时无效
       this.$emit('form-dialog-opened', { event: event, form: this.formData })
+    },
+    getFormComponentRef (key) {
+      return this.$refs['form_item_' + key][0].getComponentRef()
     }
   }
 }

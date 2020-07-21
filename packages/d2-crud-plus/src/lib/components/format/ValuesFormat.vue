@@ -12,14 +12,15 @@
 </template>
 
 <script>
-import dict from '../../utils/util.dicts'
+import formatDict from '../../mixins/format-dict'
 // value格式化展示组件
 export default {
   name: 'values-format',
+  mixins: [formatDict],
   props: {
     // 值
     value: {
-      require: true
+      require: false
     },
     // 是否多选
     multiple: { default: true, require: false },
@@ -44,11 +45,21 @@ export default {
     // 展示类型【text, tag】
     type: {
       default: 'tag' // 可选【text,tag】
+    },
+    // valuechange 是否reload
+    changeReload: {
+      default: true
     }
   },
   data () {
     return {
-      dictDataMap: {}
+    }
+  },
+  watch: {
+    value (value) {
+      if (this.changeReload === true) {
+        this.loadDict()
+      }
     }
   },
   computed: {
@@ -97,10 +108,6 @@ export default {
     }
   },
   created () {
-    dict.get(this.dict).then((data) => {
-      let dataMap = this.dict.dataMap
-      this.$set(this, 'dictDataMap', dataMap)
-    })
   },
   methods: {
     putAll (map, list, isTree) {

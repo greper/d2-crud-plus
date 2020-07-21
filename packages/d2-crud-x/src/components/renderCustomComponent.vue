@@ -26,21 +26,33 @@ export default {
     events: {
       default: undefined
     },
-    /**
-     * 插槽
-     */
-    slots: {
+    on: {
       default: undefined
     },
+    /**
+     * scoped插槽
+     */
     scopedSlots: {
       default: undefined
     },
+    slots: {
+      default: undefined
+    },
     /**
-     *
+     *  子元素，静态插槽
+     **/
+    children: {
+      default: undefined
+    },
+    /**
+     * 禁用组件
      */
     disabled: {
       default: undefined
     },
+    /**
+     * 组件只读
+     */
     readonly: {
       default: undefined
     }
@@ -53,6 +65,15 @@ export default {
         events[key] = (event) => {
           if (self.events[key]) {
             self.events[key]({ vm: self._self, event: event, props: this.props })
+          }
+        }
+      }
+    }
+    if (self.on) {
+      for (let key in self.on) {
+        events[key] = (event) => {
+          if (self.on[key]) {
+            self.on[key]({ vm: self._self, event: event, props: this.props })
           }
         }
       }
@@ -72,6 +93,12 @@ export default {
         }
       }
     }
+    const children = []
+    if (self.children) {
+      for (let func of self.children) {
+        children.push(func(h))
+      }
+    }
 
     let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
     let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
@@ -81,21 +108,23 @@ export default {
           self.$emit('input', event)
         },
         change: function (event) {
-          self.$emit('change', event)
+          self.$emit('change', { value: event, component: self._self.$refs.target })
         },
         ready: function (event) {
-          self.$emit('ready', event)
+          self.$emit('ready', { value: event, component: self._self.$refs.target })
         },
         ...events
       },
+      attrs: self.$attrs,
       scopedSlots: scopedSlots,
       props: {
         value: self.value,
         disabled: disabled,
         readonly: readonly,
         ...self.props
-      }
-    })
+      },
+      ref: 'target'
+    }, children)
   }
 }
 </script>

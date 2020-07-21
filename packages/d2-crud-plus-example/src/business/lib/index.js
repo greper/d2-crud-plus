@@ -12,10 +12,11 @@ import 'vxe-table/lib/index.css'
 
 Vue.use(VXETable)
 
-// 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x /> = 使用加强版，标签用<d2-crud/> = 使用官方版
+// 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x />使用加强版
+// 不传name，则d2CrudX的标签仍为<d2-crud>,不可与官方版共存
 Vue.use(d2CrudX, { name: 'd2-crud-x' })
 
-// 官方版【此处为演示与官方版共存而引入，实际项目中可以用d2-crud-x完全替代官方版】
+// 官方版【此处为演示与官方版共存而引入，全新项目中可以用d2-crud-x完全替代官方版】
 Vue.use(d2Crud)
 
 // 引入d2CrudPlus
@@ -25,6 +26,7 @@ Vue.use(d2CrudPlus, {
     // 实际使用请改成request
     return requestForMock({
       url: url,
+      data: dict.body,
       method: 'get'
     }).then(ret => {
       return ret.data

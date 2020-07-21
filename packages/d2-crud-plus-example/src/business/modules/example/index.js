@@ -26,18 +26,19 @@ const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
 addFunction(enhanceMenus, 'form/toolbar', '工具条', 'new')
 addFunction(enhanceMenus, 'form/old', '旧版页面', '兼容')
+addFunction(enhanceMenus, 'form/linkage', '选择联动', 'new')
+addFunction(enhanceMenus, 'form/batchDel', '批量删除', 'new')
+addFunction(enhanceMenus, 'form/group', '表单分组', 'new')
+addFunction(enhanceMenus, 'form/show', '显隐只读')
+addFunction(enhanceMenus, 'form/disabled', '禁用启用')
 addFunction(enhanceMenus, 'form/slot', '自定义组件')
 addFunction(enhanceMenus, 'form/customType', '自定义字段类型')
 addFunction(enhanceMenus, 'form/header', '多级表头')
 addFunction(enhanceMenus, 'form/column', '特殊列')
-addFunction(enhanceMenus, 'form/batchDel', '批量删除', 'new')
 addFunction(enhanceMenus, 'form/fix', '固定列')
 addFunction(enhanceMenus, 'form/cell', '行编辑')
 addFunction(enhanceMenus, 'form/validation', '表单校验')
-addFunction(enhanceMenus, 'form/group', '表单分组', 'new')
 addFunction(enhanceMenus, 'form/addi', '动态添加表单字段')
-addFunction(enhanceMenus, 'form/show', '显隐只读')
-addFunction(enhanceMenus, 'form/disabled', '禁用启用')
 
 const vxeMenus = []
 addFunction(vxeMenus, 'vxe/column', 'vxe-table', 'beta')
@@ -69,7 +70,15 @@ function addFunction (menuGroup, path, title, badge) {
     menu.badge = badge
   }
   const arr = path.split('/')
-  const name = arr[0] + arr[1].charAt(0).toUpperCase() + arr[1].substring(1)
+  let name = ''
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      name += arr[i]
+    } else {
+      name += arr[i].charAt(0).toUpperCase()
+      name += arr[i].substring(1)
+    }
+  }
 
   menuGroup.push(menu)
   demoRouters.push({

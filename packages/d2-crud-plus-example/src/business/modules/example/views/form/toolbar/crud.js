@@ -52,7 +52,7 @@ export const crudOptions = (vm) => {
         type: 'select',
         disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
         dict: {
-          url: '/dicts/OpenStatusEnum2',
+          url: '/dicts/_OpenStatusEnum',
           cache: false
         },
         form: {

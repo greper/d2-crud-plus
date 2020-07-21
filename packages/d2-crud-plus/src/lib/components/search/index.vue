@@ -8,7 +8,7 @@
       v-bind="options"
       size="small" class="d2p-search-form" >
 
-    <el-form-item v-for="(item) in options.columns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
+    <el-form-item v-for="(item) in currentColumns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
       <template v-if="item.slot === true">
         <slot :name="item.key+'SearchSlot'" :form="form" />
       </template>
@@ -24,11 +24,15 @@
       <render-custom-component
         v-else-if="item.component && item.component.name"
         v-model="form[item.key]"
+        :_form="form"
+        :ref="'form_item_'+item.key"
         :component-name="item.component.name"
         :props="getComponentProps(item)"
         :slots="getComponentAttr(item,'slots')"
         :scoped-slots="getComponentAttr(item,'scopedSlots')"
         :events="getComponentAttr(item,'events')"
+        :on="getComponentAttr(item,'on')"
+        :children="getComponentAttr(item,'children')"
         :style="{width:(item.width?item.width:150+'px')}"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
         @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
@@ -74,22 +78,17 @@ export default {
   data () {
     return {
       reset: undefined,
-      form: {}
+      form: {},
+      currentColumns: undefined
+    }
+  },
+  watch: {
+    'options.columns': (value) => {
+      this.setColumns(value)
     }
   },
   created () {
-    let form = {}
-    for (let item of this.options.columns) {
-      form[item.key] = item.component ? item.component.value : undefined
-    }
-    let reset = {}
-    if (this.options.form) {
-      reset = lodash.cloneDeep(this.options.form)
-    }
-    lodash.merge(form, reset)
-    // 合并默认查询formdata
-    this.$set(this, 'form', form)
-
+    this.setColumns(this.options.columns)
     // 构建防抖查询函数
     if (this.options.debounce !== false) {
       let wait = null
@@ -103,6 +102,20 @@ export default {
     }
   },
   methods: {
+    setColumns (columns) {
+      this.currentColumns = lodash.cloneDeep(columns)
+      let form = {}
+      for (let item of this.currentColumns) {
+        form[item.key] = item.component ? item.component.value : undefined
+      }
+      let reset = {}
+      if (this.options.form) {
+        reset = lodash.cloneDeep(this.options.form)
+      }
+      lodash.merge(form, reset)
+      // 合并默认查询formdata
+      this.$set(this, 'form', form)
+    },
     // 获取查询form表单值
     getForm () {
       return this.form
@@ -162,9 +175,24 @@ export default {
       }
       return {}
     },
-    handleSearchDataChange (value, column) {
+    handleSearchDataChange ({ value, component }, column) {
       column.value = value
-      console.log('search value change :', column)
+      column.component = component
+      column.getColumn = this.getColumnTemplate
+
+      if (this.options.valueChange) {
+        let target = this.getColumnTemplate(column.key)
+        if (target && target.valueChange) {
+          target.valueChange(column.key, value, this.form, {
+            getColumn: this.getColumnTemplate,
+            mode: 'search',
+            component: component,
+            refs: this.$refs,
+            getComponent: this.getComponentRef
+          })
+        }
+      }
+      console.log('search value change :', column, this.options)
       this.$emit('search-data-change', column)
 
       if (this.searchDebounce) {
@@ -172,13 +200,25 @@ export default {
         this.searchDebounce()
       }
     },
-    handleSearchComponentReady (value, column) {
+    handleSearchComponentReady ({ value, component }, column) {
       column.event = value
+      column.component = component
       this.$emit('search-component-ready', column)
     },
     handleSearchComponentCustomEvent (value, column) {
       column.event = value
       this.$emit('search-component-custom-event', column)
+    },
+    getColumnTemplate (key) {
+      console.log('getColumn', this.currentColumns)
+      for (let item of this.currentColumns) {
+        if (item.key === key) {
+          return item
+        }
+      }
+    },
+    getComponentRef (key) {
+      return this.$refs['form_item_' + key][0].$refs.target
     }
   }
 }

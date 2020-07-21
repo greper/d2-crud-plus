@@ -6,11 +6,14 @@
       <example-helper title="帮助说明" >
         <div>本次升级，兼容旧版本。旧版本不做任何更改可以继续使用</div>
         <br/>
+        <div>支持版本：d2-crud-x:1.12.x，d2-crud-x:2.5.x 及以上</div>
+        <br/>
         <div>
           从旧版本升级，请按如下修改：
           <ul>
+            <li>引入方式：Vue.use(d2CrudX, { name: 'd2-crud-x' })</li>
             <li>【必须配置】crud.options.height:'100%' </li>
-            <li>'&lt;crud-search /&gt;'组件放到d2-crud的header里面去</li>
+            <li>&lt;crud-search /&gt;组件放到d2-crud的header里面去</li>
             <li>删除'&lt; crud-footer /&gt;翻页组件，采用d2-crud内置pagination</li>
             <li>&lt;d2-crud&gt;增加属性 :pagination="crud.pagination"</li>
             <li>&lt;d2-crud&gt;增加事件@pagination-change="handlePaginationChange"</li>

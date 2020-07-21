@@ -18,6 +18,8 @@
     <render-custom-component
       v-else-if="getFormComponent().name"
       v-model="formData[colKey]"
+      :_form="formData"
+      ref="targetWrapper"
       :component-name="getFormComponent().name"
       :disabled="getFormComponentAttr('disabled', false)"
       :readonly="getFormComponentAttr('readonly', false)"
@@ -25,6 +27,8 @@
       :events="getFormComponent().events"
       :slots="getFormComponent().slots"
       :scoped-slots="getFormComponent().scopedSlots"
+      :on="getFormComponent().on"
+      :children="getFormComponent().children"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
       @custom="handleFormComponentCustomEvent($event,colKey)"
@@ -81,11 +85,11 @@ export default {
      * @description lodash.get
      */
     _get,
-    handleFormDataChange (value, key) {
-      this.$emit('form-data-change', { key: key, value: value, form: this.formData })
+    handleFormDataChange ({ value, component }, key) {
+      this.$emit('form-data-change', { key: key, value: value, form: this.formData, component: component })
     },
-    handleFormComponentReady (event, key) {
-      this.$emit('form-component-ready', { event: event, key: key, form: this.formData })
+    handleFormComponentReady ({ value, component }, key) {
+      this.$emit('form-component-ready', { event: value, key: key, form: this.formData, component: component })
     },
     handleFormComponentCustomEvent (event, key) {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
@@ -103,6 +107,9 @@ export default {
         return this.handleAttribute(component[attr], defaultValue)
       }
       return defaultValue
+    },
+    getComponentRef () {
+      return this.$refs.targetWrapper.$refs.target
     }
   }
 }

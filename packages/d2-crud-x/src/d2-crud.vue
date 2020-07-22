@@ -121,16 +121,18 @@
         </component>
       </component>
     </div>
-    <div class="d2-crud-pagination" v-if="pagination">
-
-      <el-pagination
-        v-bind="pagination"
-        @size-change="handlePaginationSizeChange"
-        @current-change="handlePaginationCurrentChange"
-        @prev-click="handlePaginationPrevClick"
-        @next-click="handlePaginationNextClick"
-      ><slot name="PaginationPrefixSlot" />
-      </el-pagination>
+    <div class="d2-crud-footer">
+      <div class="d2-crud-pagination" v-if="pagination">
+        <el-pagination
+          v-bind="pagination"
+          @size-change="handlePaginationSizeChange"
+          @current-change="handlePaginationCurrentChange"
+          @prev-click="handlePaginationPrevClick"
+          @next-click="handlePaginationNextClick"
+        ><slot name="PaginationPrefixSlot" />
+        </el-pagination>
+      </div>
+      <slot name="footer"/>
     </div>
 
     <!-- 表单对话框 -->
@@ -370,23 +372,15 @@ export default {
         .prefix{
           button{
             background-color: #f4f4f5;
-            .square{
-              padding: 7px 8px;
-              min-width: 28px;
-            }
           }
         }
       }
-    }
+      .prefix{
+        button.square{
+          min-width: 30px;
+        }
+      }
 
-    >.prefix{
-      padding:0 5px;
-      >*{
-        margin:0 5px;
-      }
-      button.square{
-        padding: 7px 8px
-      }
     }
   }
 }

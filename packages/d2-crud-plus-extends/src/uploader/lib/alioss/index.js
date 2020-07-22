@@ -74,14 +74,16 @@ export default {
         accessKeyId: sts.accessKeyId,
         accessKeySecret: sts.accessKeySecret,
         stsToken: sts.securityToken,
-        bucket: config.bucket
+        bucket: config.bucket,
+        ...config.sdkOpts
       })
     } else {
       client = new OSS({
         region: config.region,
         accessKeyId: config.accessKeyId,
         accessKeySecret: config.accessKeySecret,
-        bucket: config.bucket
+        bucket: config.bucket,
+        ...config.sdkOpts
       })
     }
     return client.put(key, file).then((ret) => {

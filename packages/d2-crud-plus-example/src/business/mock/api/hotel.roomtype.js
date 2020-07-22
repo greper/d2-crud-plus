@@ -25,7 +25,7 @@ const roomtypePage = {
 
 export default [
   {
-    path: 'api/hotel/roomtype/page',
+    path: '/hotel/roomtype/page',
     method: 'get',
     handle (req) {
       return {
@@ -36,7 +36,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/roomtype/add',
+    path: '/hotel/roomtype/add',
     method: 'post',
     handle (req) {
       return {
@@ -47,7 +47,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/roomtype/update',
+    path: '/hotel/roomtype/update',
     method: 'post',
     handle (req) {
       return {
@@ -58,7 +58,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/roomtype/delete',
+    path: '/hotel/roomtype/delete',
     method: 'post',
     handle (req) {
       return {

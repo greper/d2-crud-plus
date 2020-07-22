@@ -106,7 +106,7 @@ const roomPage = {
 
 export default [
   {
-    path: 'api/hotel/room/page',
+    path: '/hotel/room/page',
     method: 'get',
     handle (req) {
       return {
@@ -117,7 +117,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/room/add',
+    path: '/hotel/room/add',
     method: 'post',
     handle (req) {
       return {
@@ -128,7 +128,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/room/update',
+    path: '/hotel/room/update',
     method: 'post',
     handle (req) {
       return {
@@ -139,7 +139,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/room/delete',
+    path: '/hotel/room/delete',
     method: 'post',
     handle (req) {
       return {

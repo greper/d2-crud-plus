@@ -163,7 +163,7 @@ const checkinPage = {
 
 export default [
   {
-    path: 'api/hotel/checkin/page',
+    path: '/hotel/checkin/page',
     method: 'get',
     handle (req) {
       return {
@@ -174,7 +174,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/checkin/add',
+    path: '/hotel/checkin/add',
     method: 'post',
     handle (req) {
       return {
@@ -185,7 +185,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/checkin/update',
+    path: '/hotel/checkin/update',
     method: 'post',
     handle (req) {
       return {
@@ -196,7 +196,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/checkin/delete',
+    path: '/hotel/checkin/delete',
     method: 'post',
     handle (req) {
       return {
@@ -207,7 +207,7 @@ export default [
     }
   },
   {
-    path: 'api/hotel/checkin/checkout',
+    path: '/hotel/checkin/checkout',
     method: 'post',
     handle (req) {
       return {

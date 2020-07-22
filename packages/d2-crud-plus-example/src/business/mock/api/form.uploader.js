@@ -1,7 +1,7 @@
 
 export default [
   {
-    path: 'api/test/getUploadUrl',
+    path: '/test/getUploadUrl',
     method: 'get',
     handle (req) {
       return {

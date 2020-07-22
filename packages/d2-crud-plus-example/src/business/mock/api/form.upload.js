@@ -1,7 +1,7 @@
 
 export default [
   {
-    path: 'api/test/add',
+    path: '/test/add',
     method: 'post',
     handle (req) {
       return {
@@ -12,7 +12,7 @@ export default [
     }
   },
   {
-    path: 'api/test/update',
+    path: '/test/update',
     method: 'post',
     handle (req) {
       return {
@@ -23,7 +23,7 @@ export default [
     }
   },
   {
-    path: 'api/test/delete',
+    path: '/test/delete',
     method: 'post',
     handle (req) {
       return {

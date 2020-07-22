@@ -18,10 +18,11 @@
 </template>
 
 <script>
-import dict from '../../utils/util.dicts'
+import formatDict from '../../mixins/format-dict'
 // 级联数据格式化组件
 export default {
   name: 'cascade-format',
+  mixins: [formatDict],
   props: {
     // 值<br/>
     // 单选时 '1,2,3' 或 [1,2,3]<br/>
@@ -45,13 +46,8 @@ export default {
   },
   data () {
     return {
-      options: []
+      returnType: 'data'
     }
-  },
-  mounted () {
-    dict.get(this.dict).then((data) => {
-      this.$set(this, 'options', data)
-    })
   },
   computed: {
     labels () {
@@ -103,8 +99,8 @@ export default {
         childrenName = this.dict.children
       }
       let labelArr = []
-      if (this.options != null) {
-        let dict = this.options
+      if (this.data != null) {
+        let dict = this.data
         for (let value of arr) {
           if (dict != null) {
             let dictItem = this.getDictItem(value, dict)

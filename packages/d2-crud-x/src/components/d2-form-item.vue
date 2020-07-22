@@ -18,7 +18,6 @@
     <render-custom-component
       v-else-if="getFormComponent().name"
       v-model="formData[colKey]"
-      :_form="formData"
       ref="targetWrapper"
       :component-name="getFormComponent().name"
       :disabled="getFormComponentAttr('disabled', false)"

@@ -82,7 +82,9 @@ export default {
   computed: {
   },
   methods: {
-
+    getFormData () {
+      return this.formData
+    },
     openDialog (index, row, templage) {
       const formData = {}
       this.formTemplateStorage = templage ? _clonedeep(templage) : {}

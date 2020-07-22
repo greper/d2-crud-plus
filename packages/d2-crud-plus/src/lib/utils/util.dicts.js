@@ -39,6 +39,7 @@ function get (dict, options) {
   }
   // 远程获取
   let item = cacheKey != null ? cache.get(cacheKey) : null
+  console.log('11111111111111111', dict, item, cacheKey)
   if (item == null || item.error === true) {
     // 还没加载过
     if (item == null) {

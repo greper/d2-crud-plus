@@ -1,6 +1,7 @@
 import dict from '../utils/util.dicts'
 
 export default {
+  inject: ['d2CrudContext'],
   props: {
     // 数据字典配置
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -14,11 +15,10 @@ export default {
   },
   data () {
     return {
-      dictDataMap: {}
+      dataMap: {},
+      data: [],
+      returnType: 'dataMap'
     }
-  },
-  mounted () {
-
   },
   created () {
     if (this.dict) {
@@ -29,8 +29,12 @@ export default {
   },
   methods: {
     loadDict () {
-      dict.get(this.dict, { returnType: 'dataMap', component: this, form: this.$attrs._form }).then((dataMap) => {
-        this.$set(this, 'dictDataMap', dataMap)
+      const options = { component: this, returnType: this.returnType }
+      if (this.d2CrudContext) {
+        options.form = this.d2CrudContext.getForm()
+      }
+      dict.get(this.dict, options).then((dataMap) => {
+        this.$set(this, this.returnType, dataMap)
       })
     }
   }

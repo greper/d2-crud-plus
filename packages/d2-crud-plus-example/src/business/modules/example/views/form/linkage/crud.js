@@ -10,6 +10,7 @@ export const crudOptions = (vm) => {
       defaultSpan: 24 // 默认的表单 span
     },
     searchOptions: {
+      // debounce: false, //关闭防抖
       valueChange: true // 搜索框开启valueChange
     },
     columns: [

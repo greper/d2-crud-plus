@@ -129,7 +129,8 @@
           @current-change="handlePaginationCurrentChange"
           @prev-click="handlePaginationPrevClick"
           @next-click="handlePaginationNextClick"
-        ><slot name="PaginationPrefixSlot" />
+        >
+          <slot name="PaginationPrefixSlot" />
         </el-pagination>
       </div>
       <slot name="footer"/>
@@ -222,7 +223,7 @@
         <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
       </el-form>
       <div slot="footer">
-          <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
+        <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
         <el-button v-if="getAttribute(formOptions,'saveButtonShow', true)"
           :size="getAttribute(formOptions,'saveButtonSize', null)"
           :type="getAttribute(formOptions,'saveButtonType' ,null)"
@@ -255,6 +256,13 @@ import D2Button from './components/d2-button/component'
 
 export default {
   name: 'd2-crud',
+  provide: function () {
+    return {
+      d2CrudContext: {
+        getForm: this.getFormData
+      }
+    }
+  },
   mixins: [
     base,
     data,

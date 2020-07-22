@@ -112,6 +112,9 @@ Vue.use(D2pUploader, {
       }).then(ret => {
         return ret.data
       })
+    },
+    sdkOpts: { // sdk配置
+      secure: true // 默认为非https上传,为了安全，设置为true
     }
   },
   qiniu: {

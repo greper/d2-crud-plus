@@ -6,7 +6,6 @@
       <render-custom-component
         v-else-if="item.component && item.component.name"
         v-model="row[item.key]"
-        :_form="row"
         :component-name="item.component.name"
         :disabled="getComponentProp(item,item.key,'disabled', false)"
         :readonly="getComponentProp(item,item.key,'readonly', false)"
@@ -39,6 +38,13 @@ import renderCustomComponent from '../components/renderCustomComponent.vue'
 import _get from 'lodash.get'
 export default {
   name: 'd2-cell',
+  provide: function () {
+    return {
+      d2CrudContext: {
+        getForm: this.getRow
+      }
+    }
+  },
   mixins: [
     utils
   ],
@@ -63,6 +69,9 @@ export default {
      * @description lodash.get
      */
     _get,
+    getRow () {
+      return this.row
+    },
     handleCellDataChange (value, column) {
       column.value = value
       this.$emit('cell-data-change', column)

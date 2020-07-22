@@ -61,6 +61,9 @@ export default {
     }
   },
   methods: {
+    getRow () {
+      return this.scope.row
+    },
     handleCellDataChange (column) {
       this.$emit('cell-data-change', column)
     },

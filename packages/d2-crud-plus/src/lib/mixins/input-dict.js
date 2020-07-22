@@ -1,6 +1,7 @@
 import dict from '../utils/util.dicts'
 
 export default {
+  inject: ['d2CrudContext'],
   props: {
     // 数据字典配置
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -78,11 +79,12 @@ export default {
       return this.dictOptions
     },
     loadDict () {
-      const options = {}
-      if (this.$attrs && this.$attrs._form) {
-        options.form = this.$attrs._form
+      const options = { component: this }
+      if (this.d2CrudContext) {
+        options.form = this.d2CrudContext.getForm()
       }
-      dict.get(this.dict, { form: this.$attrs._form, component: this }).then((data) => {
+      console.log('context--------------', this.d2CrudContext, options)
+      dict.get(this.dict, options).then((data) => {
         this.$set(this, 'dictOptions', data)
         if (this.onReady != null) {
           this.onReady(this)

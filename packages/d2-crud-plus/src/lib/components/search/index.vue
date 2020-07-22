@@ -24,7 +24,6 @@
       <render-custom-component
         v-else-if="item.component && item.component.name"
         v-model="form[item.key]"
-        :_form="form"
         :ref="'form_item_'+item.key"
         :component-name="item.component.name"
         :props="getComponentProps(item)"
@@ -69,6 +68,13 @@
 import lodash from 'lodash'
 export default {
   name: 'crud-search',
+  provide: function () {
+    return {
+      d2CrudContext: {
+        getForm: this.getForm
+      }
+    }
+  },
   props: {
     // 查询参数，options.form为表单初始值
     options: {

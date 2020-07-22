@@ -66,7 +66,7 @@ export default {
       if (this.value == null || this.value === '') {
         return []
       }
-      let dictDataMap = this.dictDataMap
+      let dictDataMap = this[this.returnType]
       let valueArr = []
       let options = []
       if (typeof (this.value) === 'string' && this.multiple && this.separator != null && this.separator !== '') {

@@ -27,7 +27,7 @@ export default {
       keepName: false // 阿里云的精简oss有点问题，中文文件名的文件无法上传
     },
     sdkOpts: { // sdk配置
-      // secure: true //默认为非https上传,为了安全，你可以设置为true
+      // secure: false // 默认为非https上传,为了安全，你可以设置为true
     }
   },
   qiniu: {

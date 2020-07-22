@@ -49,12 +49,18 @@
           :label="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >
-          <template v-if="isVxeTable()" slot="content" slot-scope="scope">
-            <slot name="expandSlot" :row="scope.row"/>
+          <template v-if="isVxeTable()">
+            <template  slot="content" slot-scope="scope">
+              <slot name="expandSlot" :row="scope.row"/>
+            </template>
           </template>
-          <template v-else slot-scope="scope">
-            <slot name="expandSlot" :row="scope.row"/>
+
+          <template v-else>
+            <template  slot-scope="scope">
+              <slot name="expandSlot" :row="scope.row"/>
+            </template>
           </template>
+
         </component>
         <component
           :is="getTableColumnImpl()"

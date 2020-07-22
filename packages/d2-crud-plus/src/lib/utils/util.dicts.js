@@ -16,13 +16,16 @@ function get (dict, options) {
   this.mergeDefault(dict)
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
-    return buildResultPromise(dict, { data: dictData, dataMap: getDataMap(dict, dictData) }, options)
+    if (dict && !dict.dataMap) {
+      dict.dataMap = getDataMap(dict, dictData)
+    }
+    return buildResultPromise(dict, { data: dictData, dataMap: dict.dataMap }, options)
   }
 
   if (url && url instanceof Function) {
     url = url(dict, options)
     if (url instanceof Promise) {
-      console.warn('新版本已不支持url()直接返回字典数据，url()应该返回一个字典请求url')
+      console.warn('新版本已不支持url()返回字典数据，url()应该返回一个字典请求url')
     }
   }
 
@@ -39,7 +42,6 @@ function get (dict, options) {
   }
   // 远程获取
   let item = cacheKey != null ? cache.get(cacheKey) : null
-  console.log('11111111111111111', dict, item, cacheKey)
   if (item == null || item.error === true) {
     // 还没加载过
     if (item == null) {

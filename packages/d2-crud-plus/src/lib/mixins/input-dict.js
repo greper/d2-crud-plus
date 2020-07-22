@@ -1,7 +1,13 @@
 import dict from '../utils/util.dicts'
 
 export default {
-  inject: ['d2CrudContext'],
+  inject: {
+    d2CrudContext: {
+      default () {
+        return undefined
+      }
+    }
+  },
   props: {
     // 数据字典配置
     // {url:'xxx',data:[],value:'',label:'',children:''}

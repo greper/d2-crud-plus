@@ -1,5 +1,5 @@
 <template>
-  <span class="d2p-values-format">
+  <span  class="d2p-values-format">
     <template v-if="type === 'text'">
       <span v-for="(item) in _items" :key="item[dict.value]">{{item[dict.label]}}</span>
     </template>
@@ -47,18 +47,12 @@ export default {
     },
     // valuechange 是否reload
     changeReload: {
-      default: true
+      default: undefined
     }
+
   },
   data () {
     return {
-    }
-  },
-  watch: {
-    value (value) {
-      if (this.changeReload === true) {
-        this.loadDict()
-      }
     }
   },
   computed: {
@@ -109,17 +103,7 @@ export default {
   created () {
   },
   methods: {
-    putAll (map, list, isTree) {
-      let valueName = this.dict.value
-      let childrenName = this.dict.children
-      for (let item of list) {
-        map[item[valueName]] = item
-        // console.log('isTree', isTree, item[childrenName], childrenName, item, this.dict)
-        if (isTree && item[childrenName] != null) {
-          this.putAll(map, item[childrenName], isTree)
-        }
-      }
-    }
+
   }
 }
 </script>

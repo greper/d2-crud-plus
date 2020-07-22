@@ -103,6 +103,7 @@ export default {
     let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
     let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
+      functional: true,
       on: {
         input: function (event) {
           self.$emit('input', event)

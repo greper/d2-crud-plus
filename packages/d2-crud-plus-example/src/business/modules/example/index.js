@@ -47,7 +47,7 @@ const hotelMenus = []
 addFunction(hotelMenus, 'hotel/dashboard', '工作台')
 addFunction(hotelMenus, 'hotel/room/list', '房间管理')
 addFunction(hotelMenus, 'hotel/room/checkin', '入住管理')
-addFunction(hotelMenus, 'hotel/room/type', '房间类型管理')
+addFunction(hotelMenus, 'hotel/room/roomtype', '房间类型管理')
 
 function addFunction (menuGroup, path, title, badge) {
   if (path == null) {

@@ -32,5 +32,8 @@ export const crudOptions = {
   },
   formOptions: {
     defaultSpan: 12
+  },
+  pagination: {
+    layout: 'prev, pager , next , jumper , -> , total '
   }
 }

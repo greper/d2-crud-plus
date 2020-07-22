@@ -7,6 +7,9 @@ export const crudOptions = {
     align: 'center',
     width: 46
   },
+  pagination: {
+    layout: 'slot, prev, pager , next , jumper , -> , total '
+  },
   columns: [
     {
       title: '创建时间',

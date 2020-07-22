@@ -122,15 +122,15 @@
       </component>
     </div>
     <div class="d2-crud-pagination" v-if="pagination">
-       <slot name="PaginationPrefixSlot" />
+
       <el-pagination
         v-bind="pagination"
         @size-change="handlePaginationSizeChange"
         @current-change="handlePaginationCurrentChange"
         @prev-click="handlePaginationPrevClick"
         @next-click="handlePaginationNextClick"
-      />
-      <slot name="PaginationSuffixSlot" />
+      ><slot name="PaginationPrefixSlot" />
+      </el-pagination>
     </div>
 
     <!-- 表单对话框 -->
@@ -362,12 +362,23 @@ export default {
     }
   }
   .d2-crud-pagination{
-    padding:0px 0;
-    display: flex;
-    align-items: center;
+    /*padding:0px 0;*/
+    /*display: flex;*/
+    /*align-items: center;*/
     .el-pagination{
-      grow:1
+      &.is-background{
+        .prefix{
+          button{
+            background-color: #f4f4f5;
+            .square{
+              padding: 7px 8px;
+              min-width: 28px;
+            }
+          }
+        }
+      }
     }
+
     >.prefix{
       padding:0 5px;
       >*{

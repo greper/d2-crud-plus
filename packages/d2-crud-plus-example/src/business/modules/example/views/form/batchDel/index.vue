@@ -46,7 +46,6 @@
       </div>
 
       <span slot="PaginationPrefixSlot" class="prefix" >
-
         <el-button class="square" size="mini" title="批量删除"   @click="batchDelete" icon="el-icon-delete" :disabled="!multipleSelection || multipleSelection.length==0"  />
       </span>
 

@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus",
   "description": "d2-admin的d2-crud的扩展 ",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,

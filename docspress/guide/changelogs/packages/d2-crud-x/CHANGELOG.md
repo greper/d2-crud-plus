@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.6.0...d2-crud-x@2.6.1) (2020-07-23)
+
+
+### Bug Fixes
+
+* paginationPrefix还是不能改成flex ([9379761](https://github.com/greper/d2-crud/commit/9379761bfb27ae3f213a310be25f04becf1b347b))
+
+
+### Performance Improvements
+
+* 增加footer插槽 ([04db82c](https://github.com/greper/d2-crud/commit/04db82c4e6a9a400e54014e4175fc09b3256d272))
+* form传递方式改为provide/inject方式 ([158a225](https://github.com/greper/d2-crud/commit/158a225be45aabd5a29de812ea1f00320212a26f))
+
+
+
+
+
 # [2.6.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.5.7...d2-crud-x@2.6.0) (2020-07-21)
 
 

@@ -11,7 +11,7 @@
 |dict|数据字典|`Object`|`false`|[object Object]|
 |color|颜色，【primary, success, warning, danger ,info】|—|`false`|'primary'|
 |type|展示类型【text, tag】|—|`false`|'tag'|
-|changeReload|valuechange 是否reload|—|`false`|true|
+|changeReload|valuechange 是否reload|—|`false`|undefined|
 
 <!-- @vuese:values-format:props:end -->
 

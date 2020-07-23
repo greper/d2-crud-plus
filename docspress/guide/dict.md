@@ -13,14 +13,15 @@ export const crudOptions = {
       dict:{
         // 这里配置远程获取字典数据的请求地址
         url:'remote/dict/url', 
-        // 或者配置一个返回promise的请求，覆盖全局的getRemoteDictFunc
-        url: (dict)=>{ //此方式不会缓存字典数据
-          return request().then(ret=>{ret.data})
+        // 或者配置一个方法，动态构建url
+        url: (dict,{form,component})=>{ 
+          return 'newUrl'
         }, 
         data: undefined, //[Array]，如果数据无需远程获取，可以直接将字典数组写在这里
-        getData:(url,dict)=>{ //配置此参数会覆盖全局的getRemoteDictFunc
+        getData:(url,dict,{form,component})=>{ //配置此参数会覆盖全局的getRemoteDictFunc
           return request().then(ret=>{return ret.data})
         },
+        cache:true, //默认开启缓存
         value: 'value', // 数据字典中value字段的属性名
         label: 'label', // 数据字典中label字段的属性名
         children: 'children', // 数据字典中children字段的属性名
@@ -56,7 +57,7 @@ export default {
     }
   },
   created () {
-    d2CrudPlus.util.dict.get(this.dict).then((data) => {
+    d2CrudPlus.util.dict.get(this.dict,options).then((data) => {
         this.dictData = data
     })
   }
@@ -75,7 +76,7 @@ d2CrudPlus.util.dict.clear(url) //清空单个字典缓存
 当dict获取到远程数据之后，会触发onReady事件
 ```js
 dict:{
-  onReady: (data, dict) => {
+  onReady: (data, dict,{form,component}) => {
       let value = vm.getEditForm().checkbox
       if (value == null) {
         value = []

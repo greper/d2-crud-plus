@@ -6,6 +6,11 @@ export const crudOptions = (vm) => {
     rowHandle: {
       // columnHeader: '操作',
       width: 300,
+      view: {
+        disabled () {
+          return !vm.hasPermissions('permission:role:view')
+        }
+      },
       edit: {
         disabled () {
           return !vm.hasPermissions('permission:role:edit')

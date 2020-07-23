@@ -1,35 +1,18 @@
 export const crudOptions = (vm) => {
   return {
     pageOptions: {
-      compact: true // 是否紧凑型页面
+      compact: true
     },
     options: {
+      height: '100%'
     },
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
-    viewOptions: {
-      disabled: true
-    },
-    rowHandle: {
-      fixed: 'right',
-      view: {
-        thin: true,
-        text: null
-      },
-      edit: {
-        thin: true,
-        type: 'primary',
-        // circle: true,
-        text: null,
-        title: '编辑'
-      },
-      remove: {
-        thin: true,
-        text: null,
-        title: '删除'
-      },
-      width: 140
+    viewOptions: { // view 配置
+      componentType: 'form', // 查看时使用哪种组件展示【form=使用表单组件,row=使用行展示组件】
+      disabled: false // 开启view
+      // defaultRender:(h,scope)=>{return (<span>{scope.value}</span>)} //没有配置组件的，默认渲染render
     },
     columns: [
       {
@@ -41,30 +24,9 @@ export const crudOptions = (vm) => {
         dict: {
           url: '/dicts/OpenStatusEnum'
         },
-        minWidth: 200
-      },
-      {
-        title: '默认隐藏',
-        key: 'text1',
-        show: false,
-        sortable: true,
-        minWidth: 200
-      },
-      {
-        title: '禁用字典缓存',
-        key: 'disableCache',
-        sortable: true,
-        search: {},
-        type: 'select',
-        disabled: true, // url()方式无法缓存字典数据，不建议在列表中展示，会有性能问题（除非自行处理缓存）
-        dict: {
-          url: '/dicts/_OpenStatusEnum',
-          cache: false
-        },
-        form: {
-          helper: '禁用字典缓存，每次打开对话框都会发出字典请求'
-        },
-        minWidth: 200
+        view: { // 查看时的该字段单独配置
+          component: { span: 18 }
+        }
       },
       {
         title: '单选，本地',
@@ -76,18 +38,19 @@ export const crudOptions = (vm) => {
         type: 'select',
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        },
-        minWidth: 200
+        }
       },
       {
         title: '多选,本地',
         key: 'mselect',
         sortable: true,
         search: {
-          disabled: false
+          disabled: false,
+          title: '多选1'
         },
         type: 'select',
         form: {
+          title: '多选2',
           component: {
             props: {
               filterable: true,
@@ -98,12 +61,11 @@ export const crudOptions = (vm) => {
         },
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        },
-        minWidth: 200
+        }
       },
       {
-        title: '级联单选',
-        key: 'cascader1',
+        title: '级联',
+        key: 'cascader',
         sortable: true,
         search: {
           disabled: false
@@ -112,7 +74,9 @@ export const crudOptions = (vm) => {
         dict: {
           url: '/select/cascadeData'
         },
-        minWidth: 200
+        form: {
+          component: { props: { elProps: { props: { checkStrictly: true } } } } // 可以不需要选到最后一级
+        }
       },
       {
         title: '级联多选',
@@ -124,24 +88,30 @@ export const crudOptions = (vm) => {
         type: 'cascader-multi',
         dict: {
           url: '/select/cascadeData'
-        },
-        minWidth: 200
+        }
       },
       {
         title: 'radio',
         key: 'status2',
         sortable: true,
-        search: { disabled: false },
+        search: { disabled: true },
         type: 'radio',
         dict: {
           url: '/dicts/OpenStatusEnum'
         },
         form: {
-          rules: [{ required: true, message: '请选择一个选项' }],
-          component: { span: 24 },
-          helper: 'rule校验，我是必填项'
-        },
-        minWidth: 200
+          component: { span: 24 }
+        }
+      },
+      {
+        title: 'checkbox',
+        key: 'checkbox',
+        sortable: true,
+        search: { disabled: false, component: { props: { dict: { onReady () {} } } } }, // 查询的时候触发一个空方法
+        type: 'checkbox',
+        dict: {
+          url: '/dicts/OpenStatusEnum'
+        }
       },
       {
         title: '开关组件',
@@ -162,8 +132,7 @@ export const crudOptions = (vm) => {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
           }
-        },
-        minWidth: 200
+        }
       }
     ]
   }

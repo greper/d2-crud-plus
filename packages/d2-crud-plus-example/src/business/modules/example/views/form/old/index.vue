@@ -19,6 +19,7 @@
       :add-rules="crud.addRules"
       :edit-template="crud.editTemplate"
       :edit-rules="crud.editRules"
+      :view-template="crud.viewTemplate"
       :form-options="crud.formOptions"
       :options="crud.options"
       :loading="crud.loading"
@@ -29,16 +30,6 @@
       @dialog-cancel="handleDialogCancel"
       @form-data-change="handleFormDataChange">
       <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>
-
-      <template slot="FormBodyAppendSlot" slot-scope="scope">
-        <div class="d2-mt-10">
-          <el-button @click="addColumn(scope)">添加未分组字段</el-button>
-          <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
-          <el-button @click="addGroup(scope)">添加分组</el-button>
-          <el-button @click="configText(scope)">修改字段配置</el-button>
-        </div>
-      </template>
-
     </d2-crud-x>
     <crud-footer ref="footer"
                  :current="crud.page.current"

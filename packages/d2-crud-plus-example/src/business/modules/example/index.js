@@ -24,6 +24,7 @@ addFunction(formMenus, 'form/editor', '富文本')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
+addFunction(enhanceMenus, 'form/view', '查看', 'new')
 addFunction(enhanceMenus, 'form/linkage', '选择联动', 'new')
 addFunction(enhanceMenus, 'form/toolbar', '工具条', 'new')
 addFunction(enhanceMenus, 'form/old', '旧版页面', '兼容')

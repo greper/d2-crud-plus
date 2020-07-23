@@ -1,11 +1,16 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
+  <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
-      批量删除
-      <example-helper title="自定义组件帮助说明" >
-          <div>
-           右下角查看源码
-          </div>
+      查看按钮
+      <example-helper  >
+        <h3>开启查看按钮步骤</h3>
+        <div>
+          <ul>
+            <li>1、crudOptions:{viewOptions:{disabled:false}}</li>
+            <li>2、crudOptions:{viewOptions:{componentType:'form'}} ，配置组件按哪种方式显示【form=表单组件，row=行展示组件】</li>
+            <li>3、column:{view:{}}，字段单独配置</li>
+          </ul>
+        </div>
       </example-helper>
     </template>
     <d2-crud-x
@@ -13,7 +18,6 @@
         v-bind="_crudProps"
         v-on="_crudListeners"
     >
-
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
@@ -21,60 +25,43 @@
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"
-                      :storage="true"
-        />
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
-
-      <span slot="PaginationPrefixSlot" class="prefix" >
-        <el-button class="square" size="mini" title="批量删除"   @click="batchDelete" icon="el-icon-delete" :disabled="!multipleSelection || multipleSelection.length==0"  />
-      </span>
-
     </d2-crud-x>
   </d2-container>
 </template>
 
 <script>
-import * as api from './api'
+import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
-  name: 'formBatchDel',
-  components: {},
+  name: 'formView',
   mixins: [d2CrudPlus.crud],
   data () {
     return {
+      show: true
     }
+  },
+  mounted () {
+    console.log('dict cache：', d2CrudPlus.util.dict.getCache())
   },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
-      return api.GetList(query)
+      return GetList(query)
     },
     addRequest (row) {
-      return api.AddObj(row)
+      return AddObj(row)
     },
     updateRequest (row) {
-      return api.UpdateObj(row)
+      return UpdateObj(row)
     },
     delRequest (row) {
-      return api.DelObj(row.id)
-    },
-    batchDelRequest (ids) {
-      return api.BatchDel(ids)
+      return DelObj(row.id)
     }
-
   }
 }
 </script>
-<style>
-.d2-crud{
-  height:100%;
-}
-.d2-crud .d2-crud-body{
-    height:100%;
-    padding:0px
-  }
-</style>

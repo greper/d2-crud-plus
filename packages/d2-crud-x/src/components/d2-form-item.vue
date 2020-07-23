@@ -6,6 +6,7 @@
     <template v-if="template.slot === true">
       <slot :name="colKey+'FormSlot'" :form="formData" />
     </template>
+    <template  v-else-if="template.formatter">{{template.formatter(formData, template,formData[colKey])}}</template>
     <el-input
       v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"
       v-model="formData[colKey]"

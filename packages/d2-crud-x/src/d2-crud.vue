@@ -266,6 +266,7 @@ import utils from './mixin/utils'
 import D2Column from './components/d2-column'
 import D2FormItem from './components/d2-form-item'
 import D2Button from './components/d2-button/component'
+import view from './mixin/view'
 
 export default {
   name: 'd2-crud',
@@ -282,6 +283,7 @@ export default {
     handleRow,
     edit,
     add,
+    view,
     remove,
     dialog,
     pagination,
@@ -389,19 +391,12 @@ export default {
     /*display: flex;*/
     /*align-items: center;*/
     .el-pagination{
-      &.is-background{
-        .prefix{
-          button{
-            background-color: #f4f4f5;
-          }
-        }
-      }
       .prefix{
-        button.square{
+        button{
+          background-color: #f4f4f5;
           min-width: 30px;
         }
       }
-
     }
   }
 }

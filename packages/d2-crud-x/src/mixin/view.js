@@ -8,17 +8,14 @@ export default {
       default: null
     }
   },
-  data () {
-
-  },
   methods: {
     /**
-     * @description 编辑行数据
+     * @description 展示行数据
      * @param {Number} index 行所在索引
      * @param {Object} row 行数据
      * @param templage
      */
-    handleEdit (index, row, templage = null) {
+    handleView (index, row, templage = null) {
       this.formMode = 'view'
       this.$emit('dialog-open', {
         mode: 'view',

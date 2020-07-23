@@ -12,26 +12,8 @@
 
     <d2-crud-x
         ref="d2Crud"
-        :columns="crud.columns"
-        :data="crud.list"
-        :rowHandle="crud.rowHandle"
-        edit-title="修改"
-        :add-template="crud.addTemplate"
-        :add-rules="crud.addRules"
-        :edit-template="crud.editTemplate"
-        :edit-rules="crud.editRules"
-        :form-options="crud.formOptions"
-        :options="crud.options"
-        :loading="crud.loading"
-        :pagination="crud.pagination"
-        @pagination-change="handlePaginationChange"
-        @dialog-open="handleDialogOpen"
-        @dialog-opened="handleDialogOpened"
-        @row-edit="handleRowEdit"
-        @row-add="handleRowAdd"
-        @row-remove="handleRowRemove"
-        @dialog-cancel="handleDialogCancel"
-        @form-data-change="handleFormDataChange"
+        v-bind="_crudProps"
+        v-on="_crudListeners"
         @custom-emit="customEmit">
 
       <div slot="header">

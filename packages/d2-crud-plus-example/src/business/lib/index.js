@@ -57,8 +57,18 @@ Vue.use(d2CrudPlus, {
       formOptions: {
         defaultSpan: 12 // 默认的表单 span
       },
-      pagination: {
-        background: true
+      viewOptions: {
+        disabled: false,
+        componentType: 'row' // 【form,row】 表单组件 或 行组件展示
+      },
+      rowHandle: {
+        width: 260,
+        view: {
+          show: true
+        },
+        edit: {
+          type: 'primary'
+        }
       }
     }
   }

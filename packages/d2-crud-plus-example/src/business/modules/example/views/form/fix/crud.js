@@ -1,7 +1,7 @@
 export const crudOptions = {
   rowHandle: {
     columnHeader: '操作列固定',
-    width: 300,
+    width: 370,
     custom: [
       {
         text: ' 自定义',

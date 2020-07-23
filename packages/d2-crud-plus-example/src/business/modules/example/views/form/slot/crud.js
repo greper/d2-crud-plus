@@ -2,6 +2,9 @@ export const crudOptions = {
   options: {
     height: '100%'
   },
+  viewOptions: {
+    componentType: 'form'
+  },
   columns: [
     {
       title: '创建时间',
@@ -9,6 +12,14 @@ export const crudOptions = {
       type: 'datetime',
       rowSlot: true,
       width: 200
+    },
+    {
+      title: '更新时间',
+      key: 'updateDate',
+      type: 'datetime',
+      rowSlot: true,
+      width: 200,
+      disabled: true
     },
     {
       title: 'slot自定义',

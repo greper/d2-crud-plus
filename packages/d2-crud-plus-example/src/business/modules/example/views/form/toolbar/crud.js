@@ -11,19 +11,21 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       fixed: 'right',
+      view: {
+        thin: true,
+        text: null
+      },
       edit: {
         thin: true,
         type: 'primary',
         // circle: true,
-        text: null,
-        title: '编辑'
+        text: null
       },
       remove: {
         thin: true,
-        text: null,
-        title: '删除'
+        text: null
       },
-      width: 100
+      width: 140
     },
     columns: [
       {

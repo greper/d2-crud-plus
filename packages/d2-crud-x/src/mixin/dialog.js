@@ -15,7 +15,7 @@ export default {
      */
     viewTitle: {
       type: String,
-      default: '添加'
+      default: '查看'
     },
     /**
      * @description dialog新增标题
@@ -104,6 +104,10 @@ export default {
       return this.formData
     },
     openDialog (index, row, templage) {
+      if (templage == null) {
+        console.warn('template为空,mode:', this.formMode)
+        templage = {}
+      }
       const formData = {}
       this.formTemplateStorage = templage ? _clonedeep(templage) : {}
       delete this.formTemplateStorage.__group__
@@ -116,7 +120,7 @@ export default {
           tempGroups[key] = value
         })
       }
-      return this.fetchDetail(index, row).then(newRow => {
+      return this.fetchDetail(index, row, this.formMode).then(newRow => {
         newRow = newRow || {}
         this.formDataStorage = newRow
         let formGroupsActive = []
@@ -203,6 +207,8 @@ export default {
               ...param
             })
           })
+        } else if (this.formMode === 'view') {
+          this.handleDialogSaveDone(rowData)
         }
       })
     },

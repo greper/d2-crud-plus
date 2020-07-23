@@ -8,6 +8,11 @@ export const crudOptions = (vm) => {
     rowHandle: {
       // columnHeader: '操作',
       width: 300,
+      view: {
+        disabled () {
+          return !vm.hasPermissions('permission:user:view')
+        }
+      },
       edit: {
         disabled () {
           return !vm.hasPermissions('usersphere:user:edit')

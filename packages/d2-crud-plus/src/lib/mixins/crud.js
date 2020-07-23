@@ -41,6 +41,13 @@ export default {
             }
           }
         },
+        viewOptions: {
+          disabled: true,
+          componentType: 'form',
+          defaultRender: (h, scope) => {
+            return (scope.value ? <el-tag>{scope.value}</el-tag> : undefined)
+          }
+        },
         formOptions: {
           labelWidth: '100px',
           labelPosition: 'left',
@@ -68,7 +75,10 @@ export default {
         pagination: {
           pageSize: 20,
           pageSizes: [5, 10, 20, 30, 40, 50, 100],
-          layout: 'slot, total, sizes, prev, pager, next, jumper'
+          layout: 'slot, total, sizes, prev, pager, next, jumper',
+          background: true,
+          currentPage: 1,
+          total: 1
         },
         page: {
           current: 1,
@@ -78,16 +88,19 @@ export default {
         rowHandle: {
           // columnHeader: '操作',
           width: 200,
+          view: {
+            icon: 'el-icon-view',
+            text: '查看',
+            size: 'small',
+            show: false,
+            disabled: false
+          },
           edit: {
             icon: 'el-icon-edit',
             text: '编辑',
             size: 'small',
-            show (index, row) {
-              return true
-            },
-            disabled (index, row) {
-              return false
-            }
+            show: true,
+            disabled: false
           },
           remove: {
             icon: 'el-icon-delete',
@@ -95,12 +108,8 @@ export default {
             size: 'small',
             fixed: 'right',
             confirm: true,
-            show (index, row) {
-              return true
-            },
-            disabled (index, row) {
-              return false
-            }
+            show: true,
+            disabled: false
           }
         }
       },
@@ -117,10 +126,10 @@ export default {
   computed: {
     _crudProps () {
       const props = {
-        editTitle: '修改',
         columns: this.crud.columns,
         data: this.crud.list,
         rowHandle: this.crud.rowHandle,
+        viewTemplate: this.crud.viewTemplate,
         addTemplate: this.crud.addTemplate,
         addRules: this.crud.addRules,
         editTemplate: this.crud.editTemplate,
@@ -222,36 +231,35 @@ export default {
       for (let item of columns) {
         this.initColumnItem(crud.columns, item)
       }
-
-      // 配置group
-      if (crud.formGroup) {
-        const addGroup = crud.addTemplate.__group__ = cloneDeep(crud.formGroup)
-        const editGroup = crud.editTemplate.__group__ = cloneDeep(crud.formGroup)
-        forEach(crud.formGroup.groups, (group, groupKey) => {
-          const addColumns = {}
-          addGroup.groups[groupKey].columns = addColumns
-          const editColumns = {}
-          editGroup.groups[groupKey].columns = editColumns
-
-          forEach(group.columns, (key) => {
-            const addTemplate = crud.addTemplate[key]
-            if (addTemplate) {
-              addColumns[key] = (addTemplate)
-              delete crud.addTemplate[key]
-            }
-
-            const editTemplate = crud.editTemplate[key]
-            if (editTemplate) {
-              editColumns[key] = (editTemplate)
-              delete crud.editTemplate[key]
-            }
-          })
-        })
+      if (crud.viewOptions && crud.viewOptions.disabled) {
+        crud.rowHandle.view.show = false
       }
+      // 配置group
+      this.initColumnsGroup('add', crud)
+      this.initColumnsGroup('edit', crud)
+      this.initColumnsGroup('view', crud)
 
       this.getPageSizeFromStorage()
       this.initAfter()
       console.log('crud inited:', crud)
+    },
+    initColumnsGroup (mode, crud) {
+      const templateKey = mode + 'Template'
+      if (crud.formGroup && crud[templateKey]) {
+        const Group = crud[templateKey].__group__ = cloneDeep(crud.formGroup)
+        forEach(crud.formGroup.groups, (group, groupKey) => {
+          const groupColumns = {}
+          Group.groups[groupKey].columns = groupColumns
+
+          forEach(group.columns, (key) => {
+            const columnTemplate = crud[templateKey][key]
+            if (columnTemplate) { // 将字段挪到分组里面去
+              groupColumns[key] = columnTemplate
+              delete crud[templateKey][key] // 未分组的字段
+            }
+          })
+        })
+      }
     },
     userConfigCover (userConfig, defaultConfig) {
       let target = cloneDeep(defaultConfig)
@@ -284,6 +292,8 @@ export default {
       if (item.form && item.form.component && item.form.component.span == null) {
         item.form.component.span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
       }
+
+      // 字典配置
       if (item.dict != null) {
         DictUtil.mergeDefault(item.dict)
         if (item.form && item.form.component && item.form.component.props) {
@@ -300,13 +310,7 @@ export default {
         }
       }
 
-      // 不再统一component的props
-      // if (item.form != null && item.form.component != null) {
-      //   let props = item.form.component.props
-      //   for (let key in props) {
-      //     item.form.component[key] = props[key]
-      //   }
-      // }
+      // search配置
       let form = item.form
       if (item.search != null && item.search.disabled !== true) {
         let component = item.form ? cloneDeep(item.form.component) : {}
@@ -319,6 +323,36 @@ export default {
         merge(search, item.search)
         this.crud.searchOptions.columns.push(search)
       }
+
+      // viewTemplate
+      if (!(item.view && item.view.disabled === false)) {
+        let span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
+        let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
+        let targetComponent = isFormComponent ? item.form.component : item.component
+        let component = item.component ? cloneDeep(targetComponent) : {}
+
+        component.disabled = true // 禁用组件
+        if (!component.span) {
+          component.span = span
+        }
+        if (!component.name && !component.render && !item.formatter && !isFormComponent) {
+          component.render = this.crud.viewOptions.defaultRender
+        }
+        let view = {
+          title: item.title,
+          key: item.key,
+          component: component,
+          formatter: item.formatter,
+          slot: isFormComponent ? item.form.slot : false
+        }
+        merge(view, item.view)
+        if (!this.crud.viewTemplate) {
+          this.crud.viewTemplate = {}
+        }
+        this.crud.viewTemplate[item.key] = view
+      }
+
+      // add 和 edit配置
       if (form.disabled !== true) {
         const template = {
           title: item.title,
@@ -343,6 +377,7 @@ export default {
           this.crud.editRules[key] = form.rules
         }
       }
+
       delete item.type
       if (item.columnType) {
         item.type = item.columnType
@@ -405,7 +440,7 @@ export default {
      */
     handlePaginationChange (val) {
       this.doPaginationMerge(val)
-      this.doRefresh()
+      this.doRefresh({ from: 'pagination' })
     },
     doPaginationMerge (page) {
       const current = page.current != null ? page.current : page.currentPage
@@ -464,7 +499,7 @@ export default {
       this.crud.searchOptions.form = form
       this.doValueResolve(form)
       console.log('do search , 查询参数:', form)
-      this.doRefresh()
+      this.doRefresh({ from: 'search' })
     },
     doPageTurn (no) {
       if (this.crud.page) {
@@ -477,18 +512,18 @@ export default {
     /**
      * 表格刷新，重新拉取数据
      */
-    doRefresh () {
+    doRefresh (options) {
       let form = this.crud.searchOptions.form
       let query = {
         ...form
       }
-      const requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage // 兼容旧版本
-      const requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
+      let requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage
+      let requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
       query[this.crud.format.page.request.size] = requestPageSize
       query[this.crud.format.page.request.current] = requestCurrent
 
       this.crud.loading = true
-      return this.pageRequest(query).then(ret => {
+      return this.pageRequest(query, options).then(ret => {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
@@ -510,7 +545,7 @@ export default {
         if (requestCurrent > 1 && records && records.length === 0) {
           const pageTotal = total % size === 0 ? total / size : total / size + 1
           this.doPageTurn(pageTotal)
-          this.doRefresh()
+          this.doRefresh(options)
         }
       }).finally(() => {
         this.crud.loading = false
@@ -521,7 +556,7 @@ export default {
      * 页面初始化后触发的方法
      */
     doLoad () {
-      return this.doRefresh()
+      return this.doRefresh({ form: 'load' })
     },
     /**
      * 获取search组件
@@ -791,7 +826,7 @@ export default {
      * @param row
      */
     doAfterRowChange (row) {
-      this.doRefresh()
+      this.doRefresh({ from: 'afterRowChange' })
     },
     /**
      * 编辑框表单改变事件

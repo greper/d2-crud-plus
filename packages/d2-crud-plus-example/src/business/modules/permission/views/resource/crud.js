@@ -2,6 +2,11 @@ import { request } from '@/api/service'
 export const crudOptions = (vm) => {
   return {
     rowHandle: {
+      view: {
+        disabled () {
+          return !vm.hasPermissions('permission:resource:view')
+        }
+      },
       edit: {
         disabled: () => {
           return !vm.hasPermissions('permission:resource:edit')

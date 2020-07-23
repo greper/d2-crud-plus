@@ -4,6 +4,11 @@ export const crudOptions = (vm) => {
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
     rowHandle: {
+      view: {
+        disabled () {
+          return !vm.hasPermissions('permission:platform:view')
+        }
+      },
       edit: {
         disabled: () => {
           return !vm.hasPermissions('permission:platform:edit')

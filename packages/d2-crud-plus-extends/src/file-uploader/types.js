@@ -3,7 +3,7 @@ export default {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { listType: 'picture-card', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif' } } } },
     component: { name: 'd2p-images-format' },
     view: {
-      component: { props: { height: 100 } }
+      component: { props: { height: 100, width: 100 } }
     },
     align: 'center'
   },
@@ -11,7 +11,7 @@ export default {
     form: { component: { name: 'd2p-file-uploader', props: { elProps: { limit: 1, listType: 'avatar', accept: '.png,.jpeg,.jpg,.ico,.bmp,.gif', showFileList: false } } } },
     component: { name: 'd2p-images-format' },
     view: {
-      component: { props: { height: 100 } }
+      component: { props: { height: 100, width: 100 } }
     },
     align: 'center',
     valueResolve (row, col) {
@@ -34,7 +34,7 @@ export default {
     component: { name: 'd2p-images-format' },
     align: 'center',
     view: {
-      component: { props: { height: 100 } }
+      component: { props: { height: 100, width: 100 } }
     }
   }
 }

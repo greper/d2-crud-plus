@@ -2,13 +2,15 @@
   <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       查看按钮
+      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何从开启查看按钮】</span>
       <example-helper  >
         <h3>开启查看按钮步骤</h3>
         <div>
           <ul>
-            <li>1、crudOptions:{viewOptions:{disabled:false}}</li>
+            <li>1、crudOptions:{viewOptions:{disabled:false}}，开启查看按钮</li>
             <li>2、crudOptions:{viewOptions:{componentType:'form'}} ，配置组件按哪种方式显示【form=表单组件，row=行展示组件】</li>
-            <li>3、column:{view:{}}，字段单独配置</li>
+            <li>3、crudOptions:{rowHandle:{view:{}}}，查看按钮样式配置</li>
+            <li>4、column:{view:{}}，字段单独配置</li>
           </ul>
         </div>
       </example-helper>

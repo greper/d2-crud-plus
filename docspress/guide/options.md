@@ -86,6 +86,7 @@ export const crudOptions = {
       editForm:{
          //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
+      view:{}, // 查看按钮的单独配置
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
@@ -133,6 +134,11 @@ export const crudOptions = {
     }
   ],
   // 下方的配置都是可选的
+  viewOptions:{
+    disabled: false, // 开启view
+    componentType: 'form', // 查看时使用哪种组件展示【form=使用表单组件,row=使用行展示组件】
+    defaultRender:(h,scope)=>{return (<span>{scope.value}</span>)} //没有配置组件的，默认渲染render
+  },
   pageOptions:{
     compact: false //是否紧凑页面模式
   },
@@ -174,10 +180,21 @@ export const crudOptions = {
   },
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
-    edit:{//编辑按钮
+    view:{//查看按钮
+        thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
+        text: '查看', //按钮文字， 传null 取消文字
+        type: 'warning', // 按钮类型
+        icon:'el-view', //按钮图标
+        size: 'small', // 按钮大小
+        circle: false,//圆形按钮 ，需要thin=true,且text=true
     }, 
-    remove:{}, //删除按钮
+    edit:{}, //编辑按钮,配置同上
+    remove:{}, //删除按钮,配置同上
     custom:[//自定义按钮
+      {
+         //配置同上
+         emit: 'custom-emit' //点击事件
+      }
     ] 
   },
   formGroup: {  //表单分组

@@ -6,9 +6,6 @@ export const crudOptions = (vm) => {
     options: {
       height: '100%'
     },
-    formOptions: {
-      defaultSpan: 12 // 默认的表单 span
-    },
     viewOptions: { // view 配置
       componentType: 'form', // 查看时使用哪种组件展示【form=使用表单组件,row=使用行展示组件】
       disabled: false // 开启view

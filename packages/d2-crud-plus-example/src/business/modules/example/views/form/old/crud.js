@@ -20,7 +20,7 @@ export const crudOptions = (vm) => {
       edit: {
         thin: true,
         type: 'primary',
-        // circle: true,
+        circle: true,
         text: null,
         title: '编辑'
       },

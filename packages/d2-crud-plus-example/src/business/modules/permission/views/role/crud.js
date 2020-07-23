@@ -5,25 +5,32 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       // columnHeader: '操作',
-      width: 300,
+      width: 180,
       view: {
+        thin: true,
+        text: null,
         disabled () {
           return !vm.hasPermissions('permission:role:view')
         }
       },
       edit: {
+        thin: true,
+        text: null,
         disabled () {
           return !vm.hasPermissions('permission:role:edit')
         }
       },
       remove: {
+        thin: true,
+        text: null,
         disabled () {
           return !vm.hasPermissions('permission:role:del')
         }
       },
       custom: [
         {
-          text: ' 授权',
+          thin: true,
+          text: null,
           type: 'warning',
           size: 'small',
           emit: 'authz',

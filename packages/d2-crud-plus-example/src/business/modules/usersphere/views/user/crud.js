@@ -7,31 +7,38 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       // columnHeader: '操作',
-      width: 300,
+      width: 180,
       view: {
+        thin: true,
+        text: null,
         disabled () {
           return !vm.hasPermissions('permission:user:view')
         }
       },
       edit: {
+        thin: true,
+        text: null,
         disabled () {
-          return !vm.hasPermissions('usersphere:user:edit')
+          return !vm.hasPermissions('permission:user:view')
         }
       },
       remove: {
+        thin: true,
+        text: null,
         disabled () {
-          return !vm.hasPermissions('usersphere:user:del')
+          return !vm.hasPermissions('permission:user:view')
         }
       },
       custom: [
         {
-          text: ' 授权',
+          thin: true,
+          text: null,
           type: 'warning',
           size: 'small',
           emit: 'authz',
           icon: 'el-icon-s-flag',
           disabled () {
-            return !vm.hasPermissions('usersphere:user:del')
+            return !vm.hasPermissions('permission:user:view')
           }
         }
       ]

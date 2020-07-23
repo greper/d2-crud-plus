@@ -3,23 +3,30 @@ export const crudOptions = (vm) => {
   return {
     rowHandle: {
       view: {
+        thin: true,
+        text: null,
         disabled () {
           return !vm.hasPermissions('permission:resource:view')
         }
       },
       edit: {
+        thin: true,
+        text: null,
         disabled: () => {
           return !vm.hasPermissions('permission:resource:edit')
         }
       },
       remove: {
+        thin: true,
+        text: null,
         disabled: () => {
           return !vm.hasPermissions('permission:resource:del')
         }
       },
       custom: [
         {
-          text: '添加',
+          thin: true,
+          text: null,
           type: 'primary',
           size: 'small',
           emit: 'add-sub-resource',
@@ -29,7 +36,7 @@ export const crudOptions = (vm) => {
           }
         }
       ],
-      width: 280,
+      width: 180,
       fixed: 'right'
     },
     options: {

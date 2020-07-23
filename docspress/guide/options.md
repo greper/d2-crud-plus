@@ -86,7 +86,7 @@ export const crudOptions = {
       editForm:{
          //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
-      view:{}, // 查看按钮的单独配置
+      view:{}, // 查看按钮组件的单独配置
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象

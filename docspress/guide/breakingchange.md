@@ -1,6 +1,27 @@
 # 版本变更说明
 
-
+## 1.14.x  查看按钮
+* "d2-crud-plus": "^1.14.x"
+* "d2-crud-x": "^2.7.x"
+### 查看按钮
+```js
+crudOptions={
+    viewOptions:{
+        disabled: false, // 开启view按钮
+        componentType: 'form' // 使用哪种组件展示【form=使用表单组件,row=使用行展示组件】
+    },
+    rowHandle:{
+        view:{} //查看按钮样式配置
+    },
+    columns:[
+       {
+         key:'xx',
+         title:'xx',
+         view:{} //view组件单独配置
+       }
+    ]
+}
+```
 
 ## 1.13.x  联动功能优化
 * "d2-crud-plus": "^1.13.x"

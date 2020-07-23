@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.13.0...@d2-plus/d2-crud-plus-example@1.13.1) (2020-07-23)
+
+
+### Bug Fixes
+
+* paginationPrefix还是不能改成flex ([9379761](https://github.com/d2-projects/d2-admin/commit/9379761bfb27ae3f213a310be25f04becf1b347b))
+
+
+### Performance Improvements
+
+* form传递方式改为provide/inject方式 ([158a225](https://github.com/d2-projects/d2-admin/commit/158a225be45aabd5a29de812ea1f00320212a26f))
+
+
+
+
+
 # [1.13.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.12.5...@d2-plus/d2-crud-plus-example@1.13.0) (2020-07-21)
 
 

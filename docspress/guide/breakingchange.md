@@ -3,12 +3,13 @@
 ## 1.14.x  查看按钮
 * "d2-crud-plus": "^1.14.x"
 * "d2-crud-x": "^2.7.x"
+
 ### 查看按钮
 ```js
 crudOptions={
     viewOptions:{
-        disabled: false, // 开启view按钮
-        componentType: 'form' // 使用哪种组件展示【form=使用表单组件,row=使用行展示组件】
+        disabled: false, // 开启view按钮，默认关闭
+        componentType: 'form' //使用哪种组件展示【form=使用表单组件（默认）,row=使用行展示组件】
     },
     rowHandle:{
         view:{} //查看按钮样式配置

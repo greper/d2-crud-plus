@@ -152,6 +152,9 @@ export const crudOptions = (vm) => {
         type: 'cascader',
         dict: {
           url: '/select/cascadeData'
+        },
+        form: {
+          component: { props: { elProps: { props: { checkStrictly: true } } } } // 可以不需要选到最后一级
         }
       },
       {

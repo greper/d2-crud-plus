@@ -89,7 +89,26 @@ export const crudOptions = {
       key: 'timestamp',
       sortable: true,
       type: 'datetime',
-      search: { width: 185 }
+      search: { width: 185 },
+      component: {
+        props: {
+          elProps: {
+            clearable: true
+          }
+        }
+      }
+    },
+    {
+      title: '清空时间戳',
+      key: 'clear',
+      sortable: true,
+      type: 'button',
+      form: {
+        valueChange (key, value, form, others) {
+          form.timestamp = ''
+        },
+        helper: '仅做valueChange的演示，实际清空输入框有更好的方式'
+      }
     },
     {
       title: '日期时间',

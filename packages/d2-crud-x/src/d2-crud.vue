@@ -96,6 +96,13 @@
         >
           <template slot-scope="scope">
             <d2-button
+              v-if="rowHandle.view && handleRowHandleButtonShow(rowHandle.view.show, scope.$index, scope.row)"
+              :disabled="handleRowHandleButtonDisabled(rowHandle.view.disabled, scope.$index, scope.row)"
+              v-bind="rowHandle.view"
+              @click="handleView(scope.$index, scope.row)"
+              :label="rowHandle.view.text==null?undefined: handleAttribute(rowHandle.view.text, '查看')"
+            />
+            <d2-button
               v-if="rowHandle.edit && handleRowHandleButtonShow(rowHandle.edit.show, scope.$index, scope.row)"
               :disabled="handleRowHandleButtonDisabled(rowHandle.edit.disabled, scope.$index, scope.row)"
               v-bind="rowHandle.edit"
@@ -153,7 +160,7 @@
       v-bind="formOptions"
     >
       <template slot="title">
-        {{formMode === 'edit' ? editTitle : addTitle}}
+        {{getFormTitle()}}
         <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" />
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"></i></button>
       </template>

@@ -1,4 +1,8 @@
 export default {
+  'button': {
+    form: { component: { name: 'd2p-button-input' } },
+    disabled: true
+  },
   'number': {
     form: { component: { name: 'el-input-number', props: { } } },
     align: 'center'

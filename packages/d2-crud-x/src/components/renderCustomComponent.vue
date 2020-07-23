@@ -64,7 +64,7 @@ export default {
       for (let key in self.events) {
         events[key] = (event) => {
           if (self.events[key]) {
-            self.events[key]({ vm: self._self, event: event, props: this.props })
+            self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
           }
         }
       }
@@ -73,7 +73,7 @@ export default {
       for (let key in self.on) {
         events[key] = (event) => {
           if (self.on[key]) {
-            self.on[key]({ vm: self._self, event: event, props: this.props })
+            self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
           }
         }
       }
@@ -103,7 +103,6 @@ export default {
     let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
     let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
-      functional: true,
       on: {
         input: function (event) {
           self.$emit('input', event)

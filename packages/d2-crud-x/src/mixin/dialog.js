@@ -11,6 +11,13 @@ export default {
       default: null
     },
     /**
+     * @description dialog查看标题
+     */
+    viewTitle: {
+      type: String,
+      default: '添加'
+    },
+    /**
      * @description dialog新增标题
      */
     addTitle: {
@@ -82,6 +89,17 @@ export default {
   computed: {
   },
   methods: {
+    getFormTitle () {
+      if (this.formMode === 'add') {
+        return this.addTitle
+      } else if (this.formMode === 'edit') {
+        return this.editTitle
+      } else if (this.formMode === 'view') {
+        return this.viewTitle
+      } else {
+        return this.editTitle
+      }
+    },
     getFormData () {
       return this.formData
     },

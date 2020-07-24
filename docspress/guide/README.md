@@ -5,7 +5,7 @@ Github: <https://github.com/greper/d2-crud-plus>
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-<a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/FairyEver/d2-admin/master/doc/image/d2-admin@2x.png" width="200"></a>
+<a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
 ## 特性
 ### 1. 简化配置 
@@ -23,13 +23,6 @@ Github: <https://github.com/greper/d2-crud-plus>
 
 ### 4. 扩展组件  
 通过扩展自定义组件，扩展自定义类型
-* [详细说明](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-extends)     
-
-目前支持的扩展组件：  
-* [国际手机号输入框及校验](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/phone)
-* [对象存储文件上传组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/uploader)  
-* [地区选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area)
-* [树形选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area)  
 
 ### 5. d2-crud-x
 基于d2-crud的修改版，功能与官方d2-crud一致   

@@ -118,6 +118,9 @@ Vue.use(d2CrudPlus, {
       pageOptions: {
         compact: true // 是否紧凑型页面
       },
+      viewOptions:{
+        disabled: false // 开启查看按钮
+      }
     }
   }
 })

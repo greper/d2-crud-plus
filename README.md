@@ -2,10 +2,8 @@
 ![](http://greper.veryreader.com/extends/banner1.png)
 
 
-# d2-crud-plus
+# 【d2-crud-plus】面向配置的crud编程
 基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。   
-附带常用组件、权限管理以及前后端代码生成等。   
-示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/index   
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
@@ -22,6 +20,9 @@
 >码云（国内访问推荐 ）  
 >http://greper.gitee.io/d2-crud-plus/   
 >
+>示例演示   
+>http://qiniu.veryreader.com/D2CrudPlusExample/index.html
+>
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## 关系
@@ -31,47 +32,12 @@
 * `d2-crud-plus-example`: 以`d2-admin`为基础的示例工程，可以单独复制此项目作为你的启动项目
 * `d2-crud-plus-extends`: 实用的扩展组件（文件上传组件、地区选择组件、树形选择组件等）
 
-## 特性
-以约定优于配置原则简化d2-crud繁琐的配置，只需要配置column即可。   
 
-### 1. 简化配置 
-* addTemplate、editTemplate根据column配置自动生成   
-* column用type字段来自动配置component    
-* 同时也支持自定义字段类型 
- 
-### 2. 根据column配置自动生成查询配置
-* column中可以配置各个字段是否开启search
-
-### 3. 数据字典功能  
-* 支持本地和远程获取
-* 配合select，轻松实现数据存的是value值，需要对应字典的label来展示的需求
-### 4. 扩展组件  
-通过扩展自定义字段类型，支持扩展组件
-
-目前支持的扩展组件：  
-* [国际手机号输入框及校验](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/phone)
-* [对象存储文件上传组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader)  
-* [地区选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)
-* [树形选择组件](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/area)  
-
-
-
-### 5. d2-crud-x,基于d2-crud的修改版
-功能与官方d2-crud基本一致  
-* 支持隐藏表格，自定义列表展示方式【配置options.hide=true】   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard
-* 支持slot编写各个字段的form表单   
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/slot
-* 自定义组件支持form-data-change事件  
-http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader  
-例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
-
-
-## crud开发示例
+## 面向配置的crud编程
 
 更详细的文档：[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
 
-### 1. 面向配置的crud编程
+### 1. crud
  
 通常在[示例项目](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views)
 中找一个合适的复制，再根据实际需求修改即可    
@@ -156,6 +122,9 @@ export const crudOptions = (vm)=>{ // vm即this
 >
 >码云（国内访问推荐 ）  
 >http://greper.gitee.io/d2-crud-plus/   
+>
+>示例演示   
+>http://qiniu.veryreader.com/D2CrudPlusExample/index.html
 >
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

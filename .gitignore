@@ -19,6 +19,7 @@ yarn-error.log*
 *.sln
 *.sw*
 
+d2-crud-plus.iml
 
 
 lerna-debug.log

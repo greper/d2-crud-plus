@@ -140,7 +140,12 @@ export const crudOptions = (vm)=>{ // vm即this
 
 ### 2. 看效果   
 
-![](http://greper.gitee.io/d2-crud-plus/gif.webp)
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
+
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/add.png)
+
+![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
+
 
 
 ## 帮助文档 

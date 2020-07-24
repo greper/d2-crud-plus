@@ -71,7 +71,7 @@ http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/form/uploader
 
 更详细的文档：[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
 
-### 1. curd
+### 1. 面向配置的crud编程
  
 通常在[示例项目](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views)
 中找一个合适的复制，再根据实际需求修改即可    

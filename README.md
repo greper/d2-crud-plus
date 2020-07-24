@@ -9,27 +9,6 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
-## 帮助文档 
-%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-> 
->GitHub Pages   
->https://greper.github.io/d2-crud-plus/
->
->码云（国内访问推荐 ）  
->http://greper.gitee.io/d2-crud-plus/   
->
->示例演示   
->http://qiniu.veryreader.com/D2CrudPlusExample/index.html
->
-%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-## 关系
-* `d2-crud` : 官方的一个crud框架，使用起来相对繁琐，且已久不维护
-* `d2-crud-x` ：fork`d2-crud`改造而来，威力加强版（修复bug，增强功能）
-* `d2-crud-plus`: 辅助`d2-crud-x`或`d2-crud`，让它们使用起来更简单
-* `d2-crud-plus-example`: 以`d2-admin`为基础的示例工程，可以单独复制此项目作为你的启动项目
-* `d2-crud-plus-extends`: 实用的扩展组件（文件上传组件、地区选择组件、树形选择组件等）
-
 
 ## 面向配置的crud编程
  

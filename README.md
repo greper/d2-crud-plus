@@ -33,14 +33,8 @@
 
 ## 面向配置的crud编程
  
-### 1. crud.js
-开发过程中主要对crud.js进行代码编写  
-通常在[示例项目](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views)
-中找一个合适的复制，再根据实际需求修改即可    
-也可以根据数据库表以及模版自动生成
-
-更详细的文档：[开发一个crud](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html#开发一个crud)
- 
+### 1. 简单的crud配置
+开发过程中主要对crud.js进行代码编写 
 ```js
 export const crudOptions = (vm)=>{ // vm即this
    return {
@@ -48,7 +42,6 @@ export const crudOptions = (vm)=>{ // vm即this
        {
          title: '日期',
          key: 'createDate',
-         sortable: true, 
          type: 'date', //字段类型为时间选择器datepicker,根据类型可自动生成默认配置
          search: {//查询配置，默认启用查询
            disabled: true //【可选】true禁止查询,默认为false
@@ -99,11 +92,7 @@ export const crudOptions = (vm)=>{ // vm即this
    }
 }
 ``` 
-
-更详细的文档：[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
-
-
-### 2. 看效果   
+### 2. 一个完全体crud就出来了   
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/list.png)
 
@@ -111,6 +100,9 @@ export const crudOptions = (vm)=>{ // vm即this
 
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
+### 3. 现在就去开始吧
+
+[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
 
 
 ## 帮助文档 

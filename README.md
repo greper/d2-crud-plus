@@ -9,6 +9,19 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
+## 帮助文档 
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+> 
+>GitHub Pages   
+>https://greper.github.io/d2-crud-plus/
+>
+>码云（国内访问推荐 ）  
+>http://greper.gitee.io/d2-crud-plus/   
+>
+>示例演示   
+>http://qiniu.veryreader.com/D2CrudPlusExample/index.html
+>
+%%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ## 面向配置的crud编程
  
@@ -80,8 +93,9 @@ export const crudOptions = (vm)=>{ // vm即this
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
 ### 3. 现在就去开始吧
+* [帮助指南](http://greper.gitee.io/d2-crud-plus/guide/)
 
-[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
+* [快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
 
 
 ## 帮助文档 

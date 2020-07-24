@@ -1,6 +1,6 @@
 ---
 home: true
-tagline: 简化crud配置，快速开发crud功能
+tagline: 面向配置的crud编程，快速开发crud功能
 heroImage: /icon-only1.png
 actionText: 快速上手 →
 actionLink: /guide/
@@ -17,7 +17,7 @@ features:
   details: RBAC权限管理示例。
 - title: 代码生成
   details: 根据数据表生成前后端代码，一气呵成。  
-footer: MIT Licensed | Copyright © 2018-present Greper
+footer: MIT Licensed | Copyright © 2019-2020 present Greper
 ---
 
 简单的字段配置

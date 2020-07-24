@@ -9,8 +9,6 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
-
-
 ## 帮助文档 
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 > 
@@ -34,11 +32,9 @@
 
 
 ## 面向配置的crud编程
-
-更详细的文档：[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
-
-### 1. crud
  
+### 1. crud.js
+开发过程中主要对crud.js进行代码编写  
 通常在[示例项目](https://github.com/greper/d2-crud-plus/tree/master/packages/d2-crud-plus-example/src/business/views)
 中找一个合适的复制，再根据实际需求修改即可    
 也可以根据数据库表以及模版自动生成
@@ -103,6 +99,9 @@ export const crudOptions = (vm)=>{ // vm即this
    }
 }
 ``` 
+
+更详细的文档：[快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
+
 
 ### 2. 看效果   
 

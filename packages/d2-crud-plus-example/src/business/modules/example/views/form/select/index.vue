@@ -21,8 +21,10 @@
                       :columns="crud.columns"
                       @refresh="doRefresh()"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
+
       </div>
     </d2-crud-x>
+
   </d2-container>
 </template>
 

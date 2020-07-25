@@ -8,6 +8,7 @@
         <div>
           <ul>
             <li>1、crudOptions:{viewOptions:{disabled:false}}，开启查看按钮</li>
+            <li>1.1、如果d2-crud-x的属性配置没有使用v-bind="_crudProps"方式，那么还需要配置:viewTemplate="crud.viewTemplate"</li>
             <li>2、crudOptions:{viewOptions:{componentType:'form'}} ，配置组件按哪种方式显示【form=表单组件，row=行展示组件】</li>
             <li>3、crudOptions:{rowHandle:{view:{}}}，查看按钮样式配置</li>
             <li>4、column:{view:{}}，字段单独配置</li>

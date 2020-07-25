@@ -89,7 +89,6 @@ export default {
       if (this.d2CrudContext) {
         options.form = this.d2CrudContext.getForm()
       }
-      console.log('context--------------', this.d2CrudContext, options)
       dict.get(this.dict, options).then((data) => {
         this.$set(this, 'dictOptions', data)
         if (this.onReady != null) {

@@ -121,3 +121,12 @@ export const crudOptions = {
   rowHandle: false
 }
 ```
+
+## 7. 怎么手动打开编辑框？
+```js
+this.getD2Crud().showDialog({
+    mode: 'edit',
+    rowIndex:xxx
+})
+```
+更多[d2-crud-x外部暴露的方法](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-x/src/mixin/exposeMethods.js)

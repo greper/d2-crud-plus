@@ -23,6 +23,17 @@ crudOptions={
     ]
 }
 ```
+传入参数配置
+```html
+<d2-crud-x ref="d2Crud"
+           v-bind="_crudProps"
+           v-on="_crudListeners"/>
+
+<!-- 或者旧版基础上增加参数 -->
+<d2-crud-x :viewTemplate="crud.viewTemplate" /> 
+
+
+```
 
 ## 1.13.x  联动功能优化
 * "d2-crud-plus": "^1.13.x"

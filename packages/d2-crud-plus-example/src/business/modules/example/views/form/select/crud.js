@@ -154,7 +154,17 @@ export const crudOptions = (vm) => {
           url: '/select/cascadeData'
         },
         form: {
-          component: { props: { elProps: { props: { checkStrictly: true } } } } // 可以不需要选到最后一级
+          component: {
+            props: {
+              elProps: {
+                showAllLevels: false, // 仅显示最后一级
+                props: {
+                  checkStrictly: true, // 可以不需要选到最后一级
+                  emitPath: false
+                }
+              }
+            }
+          }
         }
       },
       {

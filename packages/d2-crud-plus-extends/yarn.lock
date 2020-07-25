@@ -2395,10 +2395,10 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-cos-js-sdk-v5@^0.5.20:
-  version "0.5.24"
-  resolved "https://registry.yarnpkg.com/cos-js-sdk-v5/-/cos-js-sdk-v5-0.5.24.tgz#440a85d6cd31e02fb9c9b2b3b25ccd7907a907b4"
-  integrity sha512-WsCvlVPoczLPV4mFa8R0TulNK8uEsFFPzQbD0F08Pa15yMl0PiSMAa9mviMsrbSgUxwzo88PiOrbfcgBi+4yXQ==
+cos-js-sdk-v5@^0.5.27:
+  version "0.5.27"
+  resolved "https://registry.yarnpkg.com/cos-js-sdk-v5/-/cos-js-sdk-v5-0.5.27.tgz#22759bc32b3f0c63caf3328400140f97f50fe6b3"
+  integrity sha512-kq5363l1TpU26AHRZTcWCibPfM5ykQ2zHsdpnP/Ax8SMuYQDNIP/BVWaA55Ks2r5JsELjqXLF516FeXQz3jEZw==
   dependencies:
     xmldom "^0.1.27"
 
@@ -2675,14 +2675,15 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.10.0.tgz#d4404f4b6ae0ae98e076e35865efdd3a1c72407d"
-  integrity sha512-0NgqyC/JRpl5nJan8gv4J3o9fNsm1kt4p/5/gDGlOkp8qrkUPgub8Y/d1RirnYG93Qwk6kuV+9yzdqgtjl09bw==
+d2-crud-plus@^1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.14.0.tgz#6d58a580fecedd1a7a0cf9c199bbe3a9c90edf6b"
+  integrity sha512-AKI1KfemuWE16IbxLM05obRbbDLho8trjpM1S9HkIXcuB0C8vVIz7uQunP4eYXjlGRn5r2NtyMoO5RlbO72SLA==
   dependencies:
     dayjs "^1.8.16"
     lodash "^4.17.11"
     vue "^2.6.10"
+    vuedraggable "^2.23.2"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -7407,6 +7408,11 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+sortablejs@^1.10.1:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.10.2.tgz#6e40364d913f98b85a14f6678f92b5c1221f5290"
+  integrity sha512-YkPGufevysvfwn5rfdlGyrGjt7/CRHwvRPogD/lC+TnvcN29jDpCifKP+rBqf+LRldfXSTh+0CGLcSg0VIxq3A==
+
 source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
@@ -8334,6 +8340,13 @@ vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
+
+vuedraggable@^2.23.2:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/vuedraggable/-/vuedraggable-2.24.0.tgz#1ee069eeb91f61fcb540faf20f1c6b2d4d990a26"
+  integrity sha512-IlslPpc+iZ2zPNSJbydFZIDrE+don5u+Nc/bjT2YaF+Azidc+wxxJKfKT0NwE68AKk0syb0YbZneAcnynqREZQ==
+  dependencies:
+    sortablejs "^1.10.1"
 
 watchpack@^1.6.0:
   version "1.6.1"

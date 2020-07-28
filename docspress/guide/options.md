@@ -37,7 +37,7 @@ export const crudOptions = {
           { required: true, message: '请选择地区' }
         ],
         component: { //添加和修改时form表单的组件
-          title:'表单字段显示的名称' //默认使用column的title
+          title:'表单字段显示的名称', //默认使用column的title
           name: 'dict-select', //表单组件名称，支持任何v-model组件
           props: { //表单组件的参数，具体参数请查看对应的组件文档
             separator:",",//dict-select的组件参数，[不同组件参数不同]
@@ -49,6 +49,7 @@ export const crudOptions = {
           },
           disabled: false, //是否在表单中禁用组件，也可以配置为方法：disabled(){return false}
           readonly: false, //表单组件是否是只读，也可以配置为方法：readonly(){return false}
+          show: true, //是否显示该字段，也可以配置为方法：show(){return false}          
           events:{ //除input change事件外，更多组件事件监听
             select(event){console.log(event)} //监听表单组件的select事件
           },
@@ -56,7 +57,7 @@ export const crudOptions = {
              default:(h,scope)=>{ //默认插槽
                 return (<div>{scope.data}</div>)
              }
-          }
+          },
           span: 12 //该字段占据多宽，24为占满一行
         },
         disabled:false, //完全关闭该字段在表单中显示
@@ -77,8 +78,7 @@ export const crudOptions = {
         valueChangeImmediate:false, //是否在打开对话框后触发一次valueChange事件
         // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
-        slot:false,
-        show: true, //是否显示该字段，也可以配置为方法：show(){return false}
+        slot:false
       },
       addForm:{
          //添加对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
@@ -117,13 +117,14 @@ export const crudOptions = {
         value:'value', // value的属性名
         label:'label', // label的属性名
         children:'children', // children的属性名
-        isTree: false //是否是树形结构
-        getData: (url,dict,{form,component})=>{return Promise<[dictData]>} // 覆盖全局getRemoteDictData方法
+        isTree: false, //是否是树形结构
+        getData: (url,dict,{form,component})=>{return Promise} //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
       },
       //行内单元格显示组件
       component:{ name:'dict-select', props:{...}},
       //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
       disabled: false, 
+      show: true, //是否显示单元格内容
       // 是否启用该cell的slot插槽,需要d2-crud-x才支持
       // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
       rowSlot: false, 
@@ -161,7 +162,7 @@ export const crudOptions = {
     show: true,//是否显示搜索工具条
     disabled: false, //是否禁用搜索工具条
     debounce:{ //自动查询防抖,debounce:false关闭自动查询
-      wait: 500 //延迟500毫秒
+      wait: 500, //延迟500毫秒
       ... //options : https://www.lodashjs.com/docs/lodash.debounce
     }   
   },

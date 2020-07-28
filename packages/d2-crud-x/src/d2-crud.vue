@@ -46,7 +46,6 @@
           :is="getTableColumnImpl()"
           type="expand"
           :title="handleAttribute(expandRow.title, '')"
-          :label="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >
           <template   slot="content" slot-scope="scope">
@@ -57,7 +56,6 @@
           v-if="(expandRow || expandRow === '') && !isVxeTable()"
           :is="getTableColumnImpl()"
           type="expand"
-          :title="handleAttribute(expandRow.title, '')"
           :label="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >

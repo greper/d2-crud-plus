@@ -68,6 +68,11 @@ yarn add d2-crud-x d2-crud-plus d2p-extends
 //使用cnpm
 cnpm i  d2-crud-x  d2-crud-plus d2p-extends -S
 
+// 如果你已设置默认淘宝仓库，可能更新不及时
+// 如下配置临时切换npmjs仓库，可安装最新版本
+npm i  d2-crud-x  d2-crud-plus d2p-extends -S  --registry  http://registry.npmjs.org
+yarn add d2-crud-x d2-crud-plus d2p-extends  --registry  http://registry.npmjs.org
+
 ```
 
 ### 2.引入

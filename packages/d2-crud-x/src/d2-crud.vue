@@ -42,25 +42,28 @@
         >
         </component>
         <component
+          v-if="(expandRow || expandRow === '') && isVxeTable()"
           :is="getTableColumnImpl()"
-          v-if="expandRow || expandRow === ''"
           type="expand"
           :title="handleAttribute(expandRow.title, '')"
           :label="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >
-          <template v-if="isVxeTable()">
-            <template  slot="content" slot-scope="scope">
-              <slot name="expandSlot" :row="scope.row"/>
-            </template>
+          <template   slot="content" slot-scope="scope">
+            <slot name="expandSlot" :row="scope.row"/>
           </template>
-
-          <template v-else>
-            <template  slot-scope="scope">
-              <slot name="expandSlot" :row="scope.row"/>
-            </template>
+        </component>
+        <component
+          v-if="(expandRow || expandRow === '') && !isVxeTable()"
+          :is="getTableColumnImpl()"
+          type="expand"
+          :title="handleAttribute(expandRow.title, '')"
+          :label="handleAttribute(expandRow.title, '')"
+          v-bind="expandRow"
+        >
+          <template  slot-scope="scope">
+            <slot name="expandSlot" :row="scope.row"/>
           </template>
-
         </component>
         <component
           :is="getTableColumnImpl()"

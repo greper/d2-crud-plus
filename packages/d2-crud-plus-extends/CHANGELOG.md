@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.8.0...d2p-extends@1.8.1) (2020-07-30)
+
+
+### Bug Fixes
+
+* 升级cos-js-sdk-v5版本，解决windows杀软报毒的问题 ([b2a0139](https://github.com/greper/d2-crud-plus/commit/b2a0139))
+* 解决tree-selector单独使用时无法触发值更新的问题 ([02a37da](https://github.com/greper/d2-crud-plus/commit/02a37da))
+
+
+### Performance Improvements
+
+* 组件独立使用示例 ([5de8d79](https://github.com/greper/d2-crud-plus/commit/5de8d79))
+
+
+
+
+
+
 # [1.8.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.7.13...d2p-extends@1.8.0) (2020-07-23)
 
 

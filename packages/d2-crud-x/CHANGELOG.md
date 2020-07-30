@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.7.0...d2-crud-x@2.7.2) (2020-07-30)
+
+
+### Bug Fixes
+
+* 修复expand不显示的bug ([072928e](https://github.com/greper/d2-crud/commit/072928e))
+* 修复expand不显示的bug ([ba26c48](https://github.com/greper/d2-crud/commit/ba26c48))
+* 取消横向拉伸功能，解决对话框文本无法选择的bug ([44ec7d7](https://github.com/greper/d2-crud/commit/44ec7d7))
+
+
+### Performance Improvements
+
+* 组件独立使用示例 ([5de8d79](https://github.com/greper/d2-crud/commit/5de8d79))
+
+
+
+
+
+
 # [2.7.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.6.1...d2-crud-x@2.7.0) (2020-07-23)
 
 

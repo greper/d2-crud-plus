@@ -149,12 +149,7 @@ export const crudOptions = {
     saveLoading: false,
     gutter: 20,
     defaultSpan: 12, // 默认表单字段所占宽度
-    draggable:true, //是否支持表单对话框拖拽和拉伸
-    // draggable:{ //拖拽详细配置
-    //  drag:true, //启用拖拽
-    //  stretch: true, //启用拉伸
-    //  minWidth: 100 //横向拉伸时的最小宽度
-    // },
+    draggable:true, //是否支持表单对话框拖拽
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
   searchOptions: { //查询配置参数

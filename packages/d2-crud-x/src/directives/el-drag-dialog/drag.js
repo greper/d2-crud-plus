@@ -101,7 +101,8 @@ export default {
     }
 
     // 横向拉伸
-    if (stretch) {
+    if (stretch && minWidth) {
+      /*
       dragDom.onmousemove = function (e) {
         if (e.clientX > dragDom.offsetLeft + dragDom.clientWidth - 10 || dragDom.offsetLeft + 10 > e.clientX) {
           dragDom.style.cursor = 'w-resize'
@@ -166,6 +167,7 @@ export default {
           }
         }
       }
+       */
     }
   }
 }

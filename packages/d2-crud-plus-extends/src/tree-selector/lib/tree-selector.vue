@@ -91,6 +91,9 @@ export default {
     }
   },
   created () {
+    if (this.dict) {
+      this.dictInstance = d2CrudPlus.util.dict.mergeDefault(this.dict, true)
+    }
     this.initData()
   },
   computed: {
@@ -100,10 +103,10 @@ export default {
         highlightCurrent: !this.multiple,
         props: {}
       }
-      if (this.dict != null) {
-        if (this.dict.label != null) { defaultElProps.props.label = this.dict.label }
-        if (this.dict.value != null) { defaultElProps.props.value = this.dict.value }
-        if (this.dict.children != null) { defaultElProps.props.children = this.dict.children }
+      if (this.dictInstance != null) {
+        if (this.dictInstance.label != null) { defaultElProps.props.label = this.dictInstance.label }
+        if (this.dictInstance.value != null) { defaultElProps.props.value = this.dictInstance.value }
+        if (this.dictInstance.children != null) { defaultElProps.props.children = this.dictInstance.children }
       }
       defaultElProps.nodeKey = defaultElProps.props.value
       lodash.merge(defaultElProps, this.elProps)
@@ -117,38 +120,36 @@ export default {
   },
   watch: {
     value (value) {
-      if (this.value === value) {
-        return
-      }
       this.setValue(value)
     }
   },
   methods: {
     initData () {
-      d2CrudPlus.util.dict.get(this.dict).then(ret => {
+      d2CrudPlus.util.dict.get(this.dictInstance).then(ret => {
         this.$set(this, 'data', ret)
         this.setValue(this.value)
       })
     },
     setValue (value) {
       let arrValue = value
+      let selected = []
       if (arrValue != null) {
-        let selected = []
         if (!(arrValue instanceof Array)) {
           arrValue = [arrValue]
         }
         for (let item of arrValue) {
           let data = this.data
-          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
+          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dictInstance)
           if (node != null) {
             node.id = node[this.dict.value]
             selected.push(node)
           }
         }
-        console.log('selected:', selected)
-        this.$set(this, 'selected', selected)
-        this.resetInputHeight()
       }
+      console.log('selected:', selected)
+      this.$set(this, 'selected', selected)
+      this.resetInputHeight()
+      this.$emit('change', value)
     },
     handleCheckChange (event) {
       this.$emit('check-change', event)
@@ -164,12 +165,13 @@ export default {
       console.log('this.value1', this.selected)
       setTimeout(() => {
         if (this.selected != null) {
-          console.log('this.value2', this.selected)
           let ids = this.selected.map(item => item[this._elProps.props.value])
-
+          console.log('this.value2', this.selected, ids)
           ids.forEach(id => {
             const current = this.$refs.elTree.store.nodesMap[id]
-            this.doExpandParent(current)
+            if (current != null) {
+              this.doExpandParent(current)
+            }
           })
           this.$nextTick(() => {
             if (this.multiple) {
@@ -217,7 +219,6 @@ export default {
         values = values && values.length > 0 ? values[0] : undefined
       }
       this.$emit('input', values)
-      this.$emit('change', values)
     },
     refreshSelected () {
       let nodes = null

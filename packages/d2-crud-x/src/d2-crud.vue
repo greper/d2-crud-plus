@@ -48,7 +48,7 @@
           :title="handleAttribute(expandRow.title, '')"
           v-bind="expandRow"
         >
-          <template   slot="content" slot-scope="scope">
+          <template slot="content" slot-scope="scope">
             <slot name="expandSlot" :row="scope.row"/>
           </template>
         </component>

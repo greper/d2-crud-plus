@@ -10399,11 +10399,6 @@ vuepress@^1.5.2:
     opencollective-postinstall "^2.0.2"
     update-notifier "^4.0.0"
 
-vxe-table@^2.9.15:
-  version "2.9.15"
-  resolved "https://registry.yarnpkg.com/vxe-table/-/vxe-table-2.9.15.tgz#8533cf57be343b2172b9dcb24eb29ddb81695215"
-  integrity sha512-le+zGlB68fhxmfPfKuQ1XJdJsxp679U/6xOoLafO9poyU94X7WoUf+uYZzHbmRtlJyYZ3KcKnMRypMsEeULmaw==
-
 watchpack@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
@@ -10721,11 +10716,6 @@ xdg-basedir@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
-
-xe-utils@^2.6.5:
-  version "2.6.5"
-  resolved "https://registry.yarnpkg.com/xe-utils/-/xe-utils-2.6.5.tgz#05175b734cde34bc1bca58206dd0faad38140893"
-  integrity sha512-7xWIo0HEMVq/3ZIkMpCrCFCqGb0xvDH/Q4qituvu/MaOSFeTj22wOeoxdVtlz0f/qUAbRBDRE9/0i6C1tDc+Rw==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"

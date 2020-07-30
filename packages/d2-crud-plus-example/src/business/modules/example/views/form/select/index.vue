@@ -54,6 +54,7 @@ export default {
       return AddObj(row)
     },
     updateRequest (row) {
+      console.log('----', row)
       return UpdateObj(row)
     },
     delRequest (row) {

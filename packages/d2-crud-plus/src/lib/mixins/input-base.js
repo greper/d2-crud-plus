@@ -34,6 +34,7 @@ export default {
     setValue (value) {
       // 在这里对 传入的value值做处理
       this.currentValue = value
+      this.onInput(value)
     },
     onInput (value) {
       this.$emit('input', value)

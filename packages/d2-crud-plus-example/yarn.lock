@@ -3606,10 +3606,10 @@ d2-crud-plus@^1.14.0:
     vue "^2.6.10"
     vuedraggable "^2.23.2"
 
-d2-crud-x@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.7.0.tgz#e61388739ecfbb72d4011fd3b8b1d07f2c7bc6e7"
-  integrity sha512-By+8beId2GFDNZKakw7rzjShrx67r0sSJxtBCKEoun0MX9gV+8YJoYa1zlO1uxiMdiKJaiXVgfDzD+JywIkiqw==
+d2-crud-x@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.7.1.tgz#dff20799f1eb73b9bccd99318aa00d58da39a885"
+  integrity sha512-Pt5fLkCpkrUUzv680xpqIWWEK1iqUEOX/FTl+1yzwvZpfm1It4Pl6Aiu7BZGUBaQ+hLzp0l9n8eBcAmWcHYOxA==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"

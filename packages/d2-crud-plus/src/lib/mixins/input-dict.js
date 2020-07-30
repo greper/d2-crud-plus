@@ -36,7 +36,6 @@ export default {
   },
   mounted () {
     if (this.dict) {
-      dict.mergeDefault(this.dict)
       if (this.dict.immediate !== false) {
         this.loadDict()
       }

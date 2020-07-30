@@ -100,7 +100,8 @@ export default {
       }
     }
 
-    // 横向拉伸
+    // 横向拉伸,
+    // TODO 暂时取消横向拉伸功能，文本无法选中
     if (stretch && minWidth) {
       /*
       dragDom.onmousemove = function (e) {

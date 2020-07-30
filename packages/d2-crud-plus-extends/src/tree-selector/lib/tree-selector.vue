@@ -4,7 +4,7 @@
       <div class="el-input el-input--default el-input--suffix" :class="{'is-disabled':disabled}" >
         <el-input ref="reference" :disabled="disabled" />
         <span class="el-input__suffix">
-          <span class="el-input__suffix-inner"><i class="el-input__icon el-icon-arrow-down" @click="openDialog"></i>
+          <span class="el-input__suffix-inner"><i class="el-input__icon el-icon-arrow-down" @click="openDialog"/>
         </span>
         </span>
       </div>
@@ -91,9 +91,9 @@ export default {
     }
   },
   created () {
-    if (this.dict) {
-      this.dictInstance = d2CrudPlus.util.dict.mergeDefault(this.dict, true)
-    }
+    // if (this.dict) {
+    //   this.dict = d2CrudPlus.util.dict.mergeDefault(this.dict, true)
+    // }
     this.initData()
   },
   computed: {
@@ -103,10 +103,10 @@ export default {
         highlightCurrent: !this.multiple,
         props: {}
       }
-      if (this.dictInstance != null) {
-        if (this.dictInstance.label != null) { defaultElProps.props.label = this.dictInstance.label }
-        if (this.dictInstance.value != null) { defaultElProps.props.value = this.dictInstance.value }
-        if (this.dictInstance.children != null) { defaultElProps.props.children = this.dictInstance.children }
+      if (this.dict != null) {
+        if (this.dict.label != null) { defaultElProps.props.label = this.dict.label }
+        if (this.dict.value != null) { defaultElProps.props.value = this.dict.value }
+        if (this.dict.children != null) { defaultElProps.props.children = this.dict.children }
       }
       defaultElProps.nodeKey = defaultElProps.props.value
       lodash.merge(defaultElProps, this.elProps)
@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     initData () {
-      d2CrudPlus.util.dict.get(this.dictInstance).then(ret => {
+      d2CrudPlus.util.dict.get(this.dict).then(ret => {
         this.$set(this, 'data', ret)
         this.setValue(this.value)
       })
@@ -139,7 +139,7 @@ export default {
         }
         for (let item of arrValue) {
           let data = this.data
-          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dictInstance)
+          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
           if (node != null) {
             node.id = node[this.dict.value]
             selected.push(node)

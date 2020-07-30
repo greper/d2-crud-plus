@@ -206,9 +206,12 @@ const defaultDict = {
   data: undefined,
   dataMap: undefined
 }
-function mergeDefault (dict) {
+function mergeDefault (dict, clone = false) {
   if (dict == null) {
     throw new Error('dict 不能为空')
+  }
+  if (clone) {
+    dict = { ...dict }
   }
   for (let key in defaultDict) {
     if (key === 'data') {
@@ -218,6 +221,7 @@ function mergeDefault (dict) {
       dict[key] = defaultDict[key]
     }
   }
+  return dict
 }
 function getCache (key) {
   if (key != null) {

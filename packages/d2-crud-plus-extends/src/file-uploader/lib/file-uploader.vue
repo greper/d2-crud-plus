@@ -11,15 +11,15 @@
              v-bind="_elProps"
   >
     <el-button :disabled="disabled" :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
-    <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" ></i></div>
+    <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" /></div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
         <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
-        <i class="el-icon-plus avatar-uploader-icon" v-else></i>
+        <i class="el-icon-plus avatar-uploader-icon" v-else/>
       </div>
     </template>
   </el-upload>
-    <el-dialog :visible.sync="dialogVisible" append-to-body >
+    <el-dialog :visible.sync="dialogVisible"  v-bind="preview" append-to-body >
       <div style="text-align: center">
         <img  style="max-width: 100%;" :src="dialogImageUrl" alt="">
       </div>
@@ -75,6 +75,10 @@ export default {
     // 内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数<br/>
     // 注意，form方式上传的action、name、headers等参数不在此设置
     elProps: {
+      type: Object
+    },
+    // 预览对话框的配置
+    preview: {
       type: Object
     },
     // 文件大小限制 <br/>

@@ -21,6 +21,7 @@ addFunction(formMenus, 'form/el', 'EL表单组件')
 addFunction(formMenus, 'form/area', '省市区选择组件')
 addFunction(formMenus, 'form/icon', '图标选择')
 addFunction(formMenus, 'form/editor', '富文本')
+addFunction(formMenus, 'form/independent', '组件独立使用')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')

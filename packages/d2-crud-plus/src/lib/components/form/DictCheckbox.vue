@@ -1,5 +1,5 @@
 <template>
-  <el-checkbox-group :value="currentValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
+  <el-checkbox-group class="d2p-dict-checkbox" :value="currentValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
     <el-checkbox :disabled="disabled" :readonly="readonly" v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]"
@@ -72,3 +72,12 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+  .d2p-dict-checkbox{
+    width:100%;
+    &.el-checkbox-group {
+      line-height: 40px;
+    }
+  }
+
+</style>

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.14.0...@d2-plus/d2-crud-plus-example@1.14.1) (2020-07-30)
+
+
+### Performance Improvements
+
+* 树形组件单独示例 ([8a16ef9](https://github.com/d2-projects/d2-admin/commit/8a16ef9))
+* 组件独立使用示例 ([5de8d79](https://github.com/d2-projects/d2-admin/commit/5de8d79))
+
+
+
+
+
+
 # [1.14.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.13.1...@d2-plus/d2-crud-plus-example@1.14.0) (2020-07-23)
 
 

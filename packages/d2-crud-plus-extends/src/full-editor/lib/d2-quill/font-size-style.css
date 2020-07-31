@@ -1,0 +1,59 @@
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='10px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='10px']::before {
+  content: '10px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='12px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='12px']::before {
+  content: '12px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='14px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='14px']::before {
+  content: '14px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='16px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='16px']::before {
+  content: '16px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='18px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='18px']::before {
+  content: '18px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='20px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='20px']::before {
+  content: '20px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='22px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='22px']::before {
+  content: '22px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='24px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='24px']::before {
+  content: '24px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='26px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='26px']::before {
+  content: '26px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='28px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='28px']::before {
+  content: '28px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='30px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='30px']::before {
+  content: '30px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='32px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='32px']::before {
+  content: '32px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='34px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='34px']::before {
+  content: '34px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='36px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='36px']::before {
+  content: '36px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='38px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='38px']::before {
+  content: '38px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='40px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='40px']::before {
+  content: '40px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='45px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='45px']::before {
+  content: '45px';
+}
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='50px']::before, .ql-snow .ql-picker.ql-size .ql-picker-item[data-value='50px']::before {
+  content: '50px';
+}
+/**设置默认字体显示
+**/
+.ql-container {
+  font-size:16px;
+}

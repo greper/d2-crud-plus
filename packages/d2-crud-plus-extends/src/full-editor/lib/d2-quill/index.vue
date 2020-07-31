@@ -10,6 +10,11 @@ import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
 import lodash from 'lodash'
 import { d2CrudPlus } from '../../../utils/d2-crud-plus'
+
+let fontSizeStyle = Quill.import('attributors/style/size')
+fontSizeStyle.whitelist = ['10px', '14px', '16px', '18px', '22px', '26px', '30px', '34px', '38px', '45px']
+Quill.register(fontSizeStyle, true)
+
 // quill富文本编辑器
 export default {
   name: 'd2p-quill',
@@ -47,7 +52,8 @@ export default {
             [{ 'script': 'sub' }, { 'script': 'super' }],
             [{ 'indent': '-1' }, { 'indent': '+1' }],
             [{ 'direction': 'rtl' }],
-            [{ size: ['small', false, 'large', 'huge'] }],
+            [{ size: fontSizeStyle.whitelist }], // 解决字体大小 normal太小的问题
+            // [{ size: ['small', false, 'large', 'huge'] }],
             [{ header: [1, 2, 3, 4, 5, 6, false] }],
             [{ color: [] }, { background: [] }],
             [{ 'font': ['Microsoft-YaHei', 'SimSun', 'SimHei', 'KaiTi', 'Arial', 'Times-New-Roman'] }],

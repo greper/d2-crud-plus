@@ -25,8 +25,9 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             // 也可以直接配置 show:false 进行隐藏
-            show: () => {
-              return vm.getEditForm().show
+            show: ({ key, value, form }) => {
+              console.log('show:', key, value, form)
+              return form.show
             }
           }
         }
@@ -37,9 +38,9 @@ export const crudOptions = (vm) => {
         sortable: true,
         form: {
           component: {
-            readonly: () => {
-              console.log('text2', vm.getEditForm().readonly1)
-              return vm.getEditForm().readonly1
+            readonly: (context) => {
+              console.log('text2 readonly context:', context)
+              return context.form.readonly1
             },
             span: 24
           }
@@ -53,7 +54,8 @@ export const crudOptions = (vm) => {
         type: 'text-area',
         form: {
           component: {
-            readonly: () => {
+            readonly: ({ key, value, form }) => {
+              console.log('text-area readonly', key, value, form)
               return vm.getEditForm().readonly1
             }
           }

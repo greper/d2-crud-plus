@@ -29,8 +29,9 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ key, value, form }) => {
+              console.log('select disabled:', key, value, form)
+              return form.disable
             }
           }
         }

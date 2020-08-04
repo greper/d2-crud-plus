@@ -1,15 +1,25 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
-    <template slot="header">表单分组
-      <example-helper title="帮助"  >
-        <h4>请点击右下角查看本页源码</h4>
+  <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
+    <template slot="header">
+      多级数据
+      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何支持多级数据（嵌套object）】</span>
+      <example-helper  >
+        <h3>如何支持多级数据嵌套object</h3>
+        <div>
+          <ul>
+            <li>1、crud:{format:{flatData:true}}，配置开启拍平数据</li>
+            <li>3、columns:[{key:'user#gender'}]，key需要配置成‘#’号连接样式</li>
+            <li>2、pageRequest之后会将嵌套数据{user:{gender:0}} 拍平成{'user#gender':0}"</li>
+            <li>4、在addRequest、updateRequest会自动恢复成嵌套结构</li>
+          </ul>
+        </div>
       </example-helper>
     </template>
     <d2-crud-x
         ref="d2Crud"
         v-bind="_crudProps"
         v-on="_crudListeners"
-        >
+    >
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
@@ -19,29 +29,28 @@
                       @refresh="doRefresh()"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
-      <div slot="priceGroupTitleSlot" slot-scope="scope">
-        <h3 style="display: inline;" class="group-title"> <i class="header-icon" :class="scope.group.icon"/> {{scope.group.title}}</h3>
-        <span style="margin-left:10px">（我是自定义标题）</span>
-      </div>
-
-      <div slot="customFormSlot" >
-        <span >自定义选项</span>
-      </div>
-
     </d2-crud-x>
   </d2-container>
 </template>
 
 <script>
+import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { GetList, AddObj, UpdateObj, DelObj } from './api'
 export default {
-  name: 'formGroup',
+  name: 'formView',
   mixins: [d2CrudPlus.crud],
+  data () {
+    return {
+      show: true
+    }
+  },
+  mounted () {
+    console.log('dict cache：', d2CrudPlus.util.dict.getCache())
+  },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)
@@ -58,6 +67,3 @@ export default {
   }
 }
 </script>
-<style>
-  .d2-crud .group-title{color:#67c23a}
-</style>

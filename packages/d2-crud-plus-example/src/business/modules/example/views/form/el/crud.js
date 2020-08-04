@@ -59,11 +59,6 @@ export const crudOptions = {
             }
           },
           slots: {
-            suffix: (h) => {
-              return (<i class="el-icon-edit el-input__icon"/>)
-            }
-          },
-          scopedSlots: {
             // 自定义列表项
             default: (h, scope) => {
               return (<div class='form-el-autocomplete'><div class="name">{scope.item.value}</div><span class="addr">{scope.item.address}</span></div>)

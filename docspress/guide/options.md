@@ -204,6 +204,25 @@ export const crudOptions = {
       }
     }
   },
+  format: {
+    //是否需要拍平数据，当返回数据中有嵌套对象时使用
+    //dataRow = {user:{gender:0,name:'greper'}}
+    //columns:[{key:'user#gender'},{key:'user#name'}] //key的配置需要用#号连接
+    flatData:false, 
+    page: { // page接口返回的数据结构配置，
+      request: { // 请求参数
+        current: 'current', //当前页码
+        size: 'size' //当前每页条数
+      },
+      response: { //返回结果
+        current: 'current', // 当前页码 ret.data.current
+        size: 'size', // 每页条数，ret.data.size, 
+        //size: (data) => { return data.size }, //你也可以配置一个方法，自定义返回
+        total: 'total', // 总记录数 ret.data.total
+        records: 'records' // 列表数组 ret.data.records
+      }
+    }
+  },
   addTemplate: {}, //根据form配置自动生成,请不要配置
   editTemplate: {}, //根据form配置自动生成,请不要配置
   addRules: {}, //根据form配置自动生成,请不要配置

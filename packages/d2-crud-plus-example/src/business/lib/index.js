@@ -59,7 +59,7 @@ Vue.use(d2CrudPlus, {
       },
       viewOptions: {
         disabled: false,
-        componentType: 'row' // 【form,row】 表单组件 或 行组件展示
+        componentType: 'form' // 【form,row】 表单组件 或 行组件展示
       },
       rowHandle: {
         width: 260,

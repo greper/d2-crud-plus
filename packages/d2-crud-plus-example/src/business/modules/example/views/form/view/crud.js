@@ -104,10 +104,18 @@ export const crudOptions = (vm) => {
         title: 'checkbox',
         key: 'checkbox',
         sortable: true,
-        search: { disabled: false, component: { props: { dict: { onReady () {} } } } }, // 查询的时候触发一个空方法
+        search: { disabled: false },
         type: 'checkbox',
         dict: {
           url: '/dicts/OpenStatusEnum'
+        },
+        view: { // 查看里面隐藏
+          component: {
+            show (context) {
+              console.log('show context', context)
+              return false
+            }
+          }
         }
       },
       {

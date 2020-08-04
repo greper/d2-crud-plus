@@ -46,6 +46,28 @@ export const crudOptions = {
       sortable: true,
       type: 'editor-ueditor',
       disabled: true
+    },
+    {
+      title: '自定义',
+      key: 'custom',
+      sortable: true,
+      form: {
+        component: {
+          span: 24
+        },
+        slot: true
+      }
+    },
+    {
+      title: '自定义2',
+      key: 'custom2',
+      sortable: true,
+      form: {
+        component: {
+          span: 24
+        },
+        slot: true
+      }
     }
   ],
   formGroup: {
@@ -67,6 +89,17 @@ export const crudOptions = {
         collapsed: true,
         icon: 'el-icon-warning-outline',
         columns: ['intro', 'content']
+      },
+      custom: {
+        title: '自定义',
+        collapsed: false,
+        show (context) {
+          console.log('custom context', context)
+          return context.mode === 'view'
+        },
+        disabled: false,
+        icon: 'el-icon-warning-outline',
+        columns: ['custom', 'custom2']
       }
     }
   }

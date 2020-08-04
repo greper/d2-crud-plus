@@ -80,7 +80,6 @@ export const crudOptions = {
     }
   ],
   formOptions: {
-    defaultSpan: 12,
     center: true // 标题与按钮居中布局
   },
   rowHandle: {

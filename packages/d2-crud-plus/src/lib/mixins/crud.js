@@ -324,43 +324,11 @@ export default {
         this.crud.searchOptions.columns.push(search)
       }
 
-      // viewTemplate
-      let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
-      let viewDisabled = isFormComponent ? (form && form.disabled) : false
-      if (item.view && item.view.disabled != null) {
-        viewDisabled = item.view.disabled
-      }
-      if (!viewDisabled) {
-        let span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
-        let targetComponent = isFormComponent ? item.form.component : item.component
-        let component = targetComponent ? cloneDeep(targetComponent) : {}
-
-        component.disabled = true // 禁用组件
-        if (!component.span) {
-          component.span = span
-        }
-        if (!component.name && !component.render && !item.formatter && !isFormComponent) {
-          component.render = this.crud.viewOptions.defaultRender
-        }
-        let view = {
-          title: item.title,
-          key: item.key,
-          component: component,
-          formatter: item.formatter,
-          helper: form.helper,
-          slot: isFormComponent ? item.form.slot : false
-        }
-        merge(view, item.view)
-        if (!this.crud.viewTemplate) {
-          this.crud.viewTemplate = {}
-        }
-        this.crud.viewTemplate[item.key] = view
-      }
-
       // add 和 edit配置
       if (form.disabled !== true) {
         const template = {
           title: item.title,
+          key: item.key,
           ...form
         }
         delete template.addTemplateHandle
@@ -381,6 +349,42 @@ export default {
           }
           this.crud.editRules[key] = form.rules
         }
+      }
+
+      // viewTemplate
+      if (!(item.view && item.view.disabled === true)) {
+        let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
+        let view = null
+        if (isFormComponent) {
+          // 如果是使用form的展示方式，复制form的配置
+          view = {
+            title: item.title,
+            key: item.key,
+            ...cloneDeep(form)
+          }
+        } else {
+          let component = cloneDeep(item.component ? item.component : {})
+          view = {
+            title: item.title,
+            key: item.key,
+            component: component,
+            slot: false
+          }
+          if (!component.name && !component.render && !item.formatter) {
+            component.render = this.crud.viewOptions.defaultRender
+          }
+          if (!component.span) {
+            component.span = this.crud.formOptions.defaultSpan
+          }
+        }
+
+        merge(view, item.view)
+        // 禁用，然后添加到viewTemplateList
+        view.component.disabled = true
+        if (!this.crud.viewTemplate) {
+          this.crud.viewTemplate = {}
+        }
+        this.crud.viewTemplate[item.key] = view
       }
 
       delete item.type
@@ -532,7 +536,7 @@ export default {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
-        const records = format(data, pageFormat.records)
+        let records = format(data, pageFormat.records)
         const current = format(data, pageFormat.current)
         const size = format(data, pageFormat.size)
         const total = format(data, pageFormat.total)
@@ -549,6 +553,10 @@ export default {
           console.warn('请确保format配置或ret的格式正确:', ret)
         }
         this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })
+
+        // 拍平数据
+        records = this._flatData(records)
+
         this.$set(this.crud, 'list', records)
 
         if (requestCurrent > 1 && records && records.length === 0) {
@@ -559,6 +567,64 @@ export default {
       }).finally(() => {
         this.crud.loading = false
       })
+    },
+    /**
+     * 拍平数据
+     * @param records
+     * @param unFlat
+     * @private
+     */
+    _flatData (records) {
+      if (records == null || this.crud.format == null || this.crud.format.flatData !== true) {
+        return records
+      }
+      let newList = []
+      for (let row of records) {
+        let newRow = {}
+        newList.push(newRow)
+        this._flatObject(newRow, undefined, row)
+      }
+      console.log('flat data complete:', newList)
+      return newList
+    },
+    _flatObject (row, parentKey, object) {
+      forEach(object, (value, key) => {
+        const currentKey = (parentKey ? parentKey + '#' : '') + key
+        if (value instanceof Object && !(value instanceof Array)) {
+          this._flatObject(row, currentKey, value)
+        } else {
+          row[currentKey] = value
+        }
+      })
+    },
+    _unFlatData (row) {
+      if (row == null || this.crud.format == null || this.crud.format.flatData !== true) {
+        return row
+      }
+      let newRow = {}
+      forEach(row, (value, key) => {
+        this._unFlatObject(newRow, key, value)
+      })
+
+      console.log('unFlat row complete:', newRow)
+      return newRow
+    },
+    _unFlatObject (object, key, value) {
+      if (object == null || this.crud.format == null || this.crud.format.flatData !== true) {
+        return object
+      }
+      let firstSymbol = key.indexOf('#')
+      if (firstSymbol !== -1) {
+        let currentKey = key.substring(0, firstSymbol)
+        let keyRight = key.substring(firstSymbol + 1)
+        let subObject = object[currentKey]
+        if (subObject == null) {
+          subObject = object[currentKey] = {}
+        }
+        this._unFlatObject(subObject, keyRight, value)
+      } else {
+        object[key] = value
+      }
     },
     /**
      * 加载数据
@@ -657,6 +723,7 @@ export default {
      */
     handleRowAdd (row, done) {
       this.crud.formOptions.saveLoading = true
+      row = this._unFlatData(row)
       if (this.addBefore != null) {
         this.addBefore(row)
       }
@@ -680,6 +747,7 @@ export default {
      */
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
+      row = this._unFlatData(row)
       if (this.editBefore != null) {
         this.editBefore(row)
       }

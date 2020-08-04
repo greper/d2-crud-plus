@@ -27,6 +27,7 @@ addFunction(formMenus, 'form/independent', '组件独立使用')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
+addFunction(enhanceMenus, 'form/deepData', '多级数据', 'new')
 addFunction(enhanceMenus, 'form/view', '查看', 'new')
 addFunction(enhanceMenus, 'form/linkage', '选择联动', 'new')
 addFunction(enhanceMenus, 'form/toolbar', '工具条', 'new')

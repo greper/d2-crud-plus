@@ -333,7 +333,7 @@ export default {
       if (!viewDisabled) {
         let span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
         let targetComponent = isFormComponent ? item.form.component : item.component
-        let component = item.component ? cloneDeep(targetComponent) : {}
+        let component = targetComponent ? cloneDeep(targetComponent) : {}
 
         component.disabled = true // 禁用组件
         if (!component.span) {
@@ -347,6 +347,7 @@ export default {
           key: item.key,
           component: component,
           formatter: item.formatter,
+          helper: form.helper,
           slot: isFormComponent ? item.form.slot : false
         }
         merge(view, item.view)

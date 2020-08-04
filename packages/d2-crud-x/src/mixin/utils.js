@@ -3,12 +3,12 @@ export default {
     /**
      * @description 组件属性默认值
      */
-    handleAttribute (attribute, defaultValue) {
+    handleAttribute (attribute, defaultValue, params) {
       if (attribute === false || attribute === 0 || attribute === '') {
         return attribute
       }
       if (attribute && attribute instanceof Function) {
-        return attribute()
+        return attribute(params)
       }
       return attribute || defaultValue
     },
@@ -30,7 +30,6 @@ export default {
             for (let groupsKey in this.formTemplateGroupStorage.groups) {
               const group = this.formTemplateGroupStorage.groups[groupsKey]
               if (group && group.columns && group.columns[key]) {
-                console.log('columns:', group.columns[key])
                 return group.columns[key]
               }
             }
@@ -109,13 +108,13 @@ export default {
     },
     getTemplateComponentAttr (template, attr, defaultValue) {
       if (template && template.component) {
-        return this.handleAttribute(template.component[attr], defaultValue)
+        return this.handleAttribute(template.component[attr], defaultValue, { mode: this.formMode, key: template.key, value: this.formData[template.key], form: this.formData })
       }
       return defaultValue
     },
-    getAttribute (obj, attr, defaultValue) {
+    getAttribute (obj, attr, defaultValue, params) {
       if (obj) {
-        return this.handleAttribute(obj[attr], defaultValue)
+        return this.handleAttribute(obj[attr], defaultValue, params)
       }
       return defaultValue
     },

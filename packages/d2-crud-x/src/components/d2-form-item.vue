@@ -10,6 +10,7 @@
     <el-input
       v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"
       v-model="formData[colKey]"
+      ref="targetInput"
       :disabled="getFormComponentAttr('disabled', false)"
       :readonly="getFormComponentAttr('readonly', false)"
       v-bind="(getFormComponent().props?getFormComponent().props:getFormComponent())"
@@ -58,6 +59,8 @@ import utils from '../mixin/utils'
 import renderComponent from '../components/renderComponent.vue'
 import renderCustomComponent from '../components/renderCustomComponent.vue'
 import _get from 'lodash.get'
+import _merge from 'lodash.merge'
+import _cloneDeep from 'lodash.clonedeep'
 export default {
   name: 'd2-form-item',
   mixins: [
@@ -79,6 +82,20 @@ export default {
     }
   },
   computed: {
+    _component () {
+      let component = this.template.component
+      if (component == null) {
+        component = {}
+      }
+      if (this.template.scopedComponent) {
+        let cover = this.template.scopedComponent(this.getContext())
+        if (cover) {
+          component = _cloneDeep(component)
+          _merge(component, cover)
+        }
+      }
+      return component
+    }
   },
   methods: {
     /**
@@ -95,21 +112,37 @@ export default {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     },
     getFormComponent () {
-      let component = this.template.component
+      let component = this._component
       if (component) {
         return component
       }
       return {}
     },
     getFormComponentAttr (attr, defaultValue) {
-      let component = this.template.component
+      let component = this._component
       if (component) {
-        return this.handleAttribute(component[attr], defaultValue)
+        return this.handleAttribute(component[attr], defaultValue, this.getContext())
       }
       return defaultValue
     },
     getComponentRef () {
-      return this.$refs.targetWrapper.$refs.target
+      if (this.$refs && this.$refs.targetWrapper && this.$refs.targetWrapper.$refs) {
+        return this.$refs.targetWrapper.$refs.target
+      } else if (this.$refs && this.$refs.targetInput) {
+        return this.$refs.targetInput
+      }
+    },
+    getContext () {
+      let context = {
+        mode: this.$attrs.formMode,
+        key: this.colKey,
+        value: this.formData[this.colKey],
+        form: this.formData,
+        component: this.getComponentRef(),
+        column: this.template,
+        getColumn: this.$attrs.getColumn
+      }
+      return context
     }
   }
 }

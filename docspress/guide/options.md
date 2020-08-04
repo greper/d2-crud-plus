@@ -213,6 +213,7 @@ export const crudOptions = {
       request: { // 请求参数
         current: 'current', //当前页码
         size: 'size' //当前每页条数
+        // size(page,size){page[xxx]=size}//你还可以配置为一个方法，自定义操作请求参数
       },
       response: { //返回结果
         current: 'current', // 当前页码 ret.data.current

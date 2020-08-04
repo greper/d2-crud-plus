@@ -528,8 +528,16 @@ export default {
       }
       let requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage
       let requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
-      query[this.crud.format.page.request.size] = requestPageSize
-      query[this.crud.format.page.request.current] = requestCurrent
+      if (this.crud.format.page.request.size instanceof Function) {
+        this.crud.format.page.request.size(query, requestPageSize)
+      } else {
+        query[this.crud.format.page.request.size] = requestPageSize
+      }
+      if (this.crud.format.page.request.current instanceof Function) {
+        this.crud.format.page.request.current(query, requestCurrent)
+      } else {
+        query[this.crud.format.page.request.current] = requestCurrent
+      }
 
       this.crud.loading = true
       return this.pageRequest(query, options).then(ret => {

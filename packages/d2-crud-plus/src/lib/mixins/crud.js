@@ -325,9 +325,13 @@ export default {
       }
 
       // viewTemplate
-      if (!(item.view && item.view.disabled === false)) {
+      let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
+      let viewDisabled = isFormComponent ? (form && form.disabled) : false
+      if (item.view && item.view.disabled != null) {
+        viewDisabled = item.view.disabled
+      }
+      if (!viewDisabled) {
         let span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
-        let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
         let targetComponent = isFormComponent ? item.form.component : item.component
         let component = item.component ? cloneDeep(targetComponent) : {}
 

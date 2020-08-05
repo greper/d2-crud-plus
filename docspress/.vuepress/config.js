@@ -120,7 +120,8 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'slot',
         'extends',
         'dict',
-        'event'
+        'event',
+        'flat-data'
       ]
     },
     {

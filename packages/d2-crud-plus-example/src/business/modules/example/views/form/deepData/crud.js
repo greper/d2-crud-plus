@@ -1,7 +1,7 @@
 export const crudOptions = (vm) => {
   return {
     format: {
-      flatData: true // 拍平数据
+      flatData: { disabled: false } // 启用数据扁平化
     },
     pageOptions: {
       compact: true
@@ -33,21 +33,14 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '状态1',
-        key: 'status#custom_1',
+        title: '部门',
+        key: 'dept#name',
         sortable: true,
-        search: { disabled: true },
-        type: 'radio',
-        dict: {
-          url: '/dicts/OpenStatusEnum'
-        },
-        form: {
-          component: { span: 24 }
-        }
+        search: { disabled: true }
       },
       {
-        title: '状态2',
-        key: 'status#custom_2',
+        title: '部门状态',
+        key: 'dept#status',
         sortable: true,
         search: { disabled: true },
         type: 'radio',

@@ -1,5 +1,5 @@
 import HeightUtil from '../utils/util.height'
-import { cloneDeep, merge, forEach } from 'lodash'
+import { cloneDeep, merge, forEach, get, set } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
@@ -14,6 +14,11 @@ export default {
           compact: undefined
         },
         format: {
+          flatData: { // 是否支持数据扁平化，将数据中的嵌套object拍平
+            disabled: true, // 默认禁用
+            symbol: '#', // key分隔符
+            deleteOnUnFlat: true// 是否在反扁平化后清理扁平痕迹
+          },
           ref: {
             d2Crud: 'd2Crud',
             search: 'search',
@@ -583,56 +588,34 @@ export default {
      * @private
      */
     _flatData (records) {
-      if (records == null || this.crud.format == null || this.crud.format.flatData !== true) {
+      if (!records || !this.crud.format || !this.crud.format.flatData || this.crud.format.flatData.disabled === true) {
         return records
       }
-      let newList = []
       for (let row of records) {
-        let newRow = {}
-        newList.push(newRow)
-        this._flatObject(newRow, undefined, row)
+        let symbol = get(this.crud, 'format.flatData.symbol', '#')
+        forEach(this.crud.columns, item => {
+          let key = item.key
+          row[key] = get(row, key.replace(symbol, '.'))
+        })
       }
-      console.log('flat data complete:', newList)
-      return newList
-    },
-    _flatObject (row, parentKey, object) {
-      forEach(object, (value, key) => {
-        const currentKey = (parentKey ? parentKey + '#' : '') + key
-        if (value instanceof Object && !(value instanceof Array)) {
-          this._flatObject(row, currentKey, value)
-        } else {
-          row[currentKey] = value
-        }
-      })
+      console.log('flat data complete:', records)
+      return records
     },
     _unFlatData (row) {
-      if (row == null || this.crud.format == null || this.crud.format.flatData !== true) {
+      if (!row || !this.crud.format || !this.crud.format.flatData || this.crud.format.flatData.disabled === true) {
         return row
       }
-      let newRow = {}
-      forEach(row, (value, key) => {
-        this._unFlatObject(newRow, key, value)
-      })
-
-      console.log('unFlat row complete:', newRow)
-      return newRow
-    },
-    _unFlatObject (object, key, value) {
-      if (object == null || this.crud.format == null || this.crud.format.flatData !== true) {
-        return object
-      }
-      let firstSymbol = key.indexOf('#')
-      if (firstSymbol !== -1) {
-        let currentKey = key.substring(0, firstSymbol)
-        let keyRight = key.substring(firstSymbol + 1)
-        let subObject = object[currentKey]
-        if (subObject == null) {
-          subObject = object[currentKey] = {}
+      let symbol = get(this.crud, 'format.flatData.symbol', '#')
+      const deleteOnUnFlat = get(this.crud, 'format.flatData.deleteOnUnFlat', true)
+      forEach(this.crud.columns, item => {
+        let key = item.key
+        row[key] = set(row, key.replace(symbol, '.'), row[key])
+        if (deleteOnUnFlat) {
+          delete row[key]
         }
-        this._unFlatObject(subObject, keyRight, value)
-      } else {
-        object[key] = value
-      }
+      })
+      console.log('unFlat row complete:', row)
+      return row
     },
     /**
      * 加载数据

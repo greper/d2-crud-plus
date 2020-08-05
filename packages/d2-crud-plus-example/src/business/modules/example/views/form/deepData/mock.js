@@ -10,21 +10,22 @@ const list = [
       name: 'greper',
       gender: 1
     },
-    status: {
-      custom_1: '0',
-      custom_2: '0'
+    dept: {
+      name: '研发部',
+      status: '0'
     },
     checkbox: '0',
-    checkedRadio: '1'
+    checkedRadio: '1',
+    role: [{ name: '管理员', code: 'admin' }]
   },
   {
     user: {
       name: '小明',
       gender: 1
     },
-    status: {
-      custom_1: '1',
-      custom_2: '0'
+    dept: {
+      name: '研发部',
+      status: '0'
     },
     checkbox: '0',
     checkedRadio: '1'
@@ -34,9 +35,9 @@ const list = [
       name: '小红',
       gender: 2
     },
-    status: {
-      custom_1: '0',
-      custom_2: '1'
+    dept: {
+      name: '测试部',
+      status: '0'
     },
     checkbox: '0',
     checkedRadio: '1'

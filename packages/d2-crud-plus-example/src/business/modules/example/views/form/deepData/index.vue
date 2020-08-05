@@ -7,7 +7,7 @@
         <h3>如何支持多级数据嵌套object</h3>
         <div>
           <ul>
-            <li>1、crud:{format:{flatData:true}}，配置开启拍平数据</li>
+            <li>1、crud:{format:{flatData:{disabled:false}}}，配置开启数据扁平化</li>
             <li>3、columns:[{key:'user#gender'}]，key需要配置成‘#’号连接样式</li>
             <li>2、pageRequest之后会将嵌套数据{user:{gender:0}} 拍平成{'user#gender':0}"</li>
             <li>4、在addRequest、updateRequest会自动恢复成嵌套结构</li>

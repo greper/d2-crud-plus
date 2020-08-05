@@ -127,7 +127,7 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             props: {
-              onReady (component, { data, setDictData }) {
+              onReady ({ component, data, setDictData }) {
                 console.log('字典请求ready', data, component)
                 data[0].disabled = true // 禁用某个选项， 还可以自己修改选项
 

@@ -89,11 +89,14 @@ export default {
         options.form = this.d2CrudContext.getForm()
       }
       dict.get(this.dict, options).then((data) => {
-        this.$set(this, 'dictOptions', data)
+        this.setDictData(data)
         if (this.onReady != null) {
-          this.onReady(this)
+          this.onReady(this, { data: data, setDictData: this.setDictData })
         }
       })
+    },
+    setDictData (data) {
+      this.$set(this, 'dictOptions', data)
     }
   }
 }

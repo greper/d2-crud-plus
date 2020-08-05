@@ -1,5 +1,33 @@
 # 版本变更说明
 
+## 1.14.x  多级数据支持
+* "d2-crud-plus": "^1.14.2"
+* "d2-crud-x": "^2.7.3"
+* "d2p-extends": "^1.8.2"
+
+### 多级数据支持
+[数据扁平化配置](./flat-data.md)
+```js
+records=[{
+  user:{name:'小明',gender:1}
+}]
+```
+### show disabled readonly 方法参数
+组件的show disabled readonly 属性传入方法时，支持获取form等上下文参数
+```js
+columns=[
+    {
+      component:{
+        disabled(context){
+          return context.form.xxx===0
+        }
+      }
+    }
+]
+```
+
+
+
 ## 1.14.x  查看按钮
 * "d2-crud-plus": "^1.14.x"
 * "d2-crud-x": "^2.7.x"

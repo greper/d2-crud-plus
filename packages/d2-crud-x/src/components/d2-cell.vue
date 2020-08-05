@@ -7,8 +7,8 @@
         v-else-if="item.component && item.component.name"
         v-model="row[item.key]"
         :component-name="item.component.name"
-        :disabled="getComponentProp(item,item.key,'disabled', false)"
-        :readonly="getComponentProp(item,item.key,'readonly', false)"
+        :disabled="getTemplateComponentAttr(item,'disabled', false,getContext(item.key))"
+        :readonly="getTemplateComponentAttr(item,'readonly', false,getContext(item.key))"
         :props="item.component.props ? item.component.props : null"
         :events="item.component.events"
         :slots="item.component.slots"
@@ -83,6 +83,16 @@ export default {
     handleCellComponentCustomEvent ($event, column) {
       column.event = $event
       this.$emit('cell-component-custom-event', column)
+    },
+    getContext (key) {
+      let context = {
+        mode: 'row',
+        key: key,
+        value: this.row[key],
+        form: this.row,
+        column: this.item
+      }
+      return context
     }
   }
 }

@@ -224,7 +224,27 @@ export default {
       }
     },
     getComponentRef (key) {
-      return this.$refs['form_item_' + key][0].$refs.target
+      if (this.$refs) {
+        const wrapper = this.$refs['form_item_' + key]
+        if (wrapper && wrapper.length > 0 && wrapper[0]) {
+          return wrapper[0].getComponentRef()
+        }
+      }
+    },
+    getContext (key) {
+      let context = {
+        mode: 'search',
+        key: key,
+        value: this.form[key],
+        form: this.form,
+        component: this.getComponentRef(key),
+        column: this.getColumn(key),
+        getColumn: this.getColumn
+      }
+      return context
+    },
+    getColumn (key) {
+      return this.currentColumns[key]
     }
   }
 }

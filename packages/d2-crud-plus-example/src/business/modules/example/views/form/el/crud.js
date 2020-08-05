@@ -12,7 +12,30 @@ export const crudOptions = {
     {
       title: '开关',
       key: 'switch',
-      type: 'switch'
+      type: 'switch',
+      search: {
+        disabled: false,
+        component: {
+          show (context) {
+            console.log('switch search show:', context)
+            return true
+          }
+        }
+      },
+      form: {
+        component: {
+          show (context) {
+            console.log('switch form show:', context)
+            return true
+          }
+        }
+      },
+      component: {
+        disabled (context) {
+          console.log('switch row disabled:', context)
+          return !context.form.number
+        }
+      }
     },
     {
       title: '滑块',

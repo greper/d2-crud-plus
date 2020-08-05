@@ -175,7 +175,7 @@
         <el-row v-bind="formOptions" >
           <template v-for="(item,key, index) in formTemplateStorage" >
             <el-col :key="index"
-              v-if="getTemplateComponentAttr(item,'show', true)"
+              v-if="getTemplateComponentAttr(item,'show', true,getContext(key))"
               :span="getTemplateComponentAttr(item,'span', 24)"
               :offset="getTemplateComponentAttr(item,'offset', 0)"
             >
@@ -211,7 +211,7 @@
               <el-row v-bind="formOptions">
                 <template v-for="(item,key, index) in group.columns" >
                   <el-col :key="index"
-                          v-if="getTemplateComponentAttr(item,'show', true)"
+                          v-if="getTemplateComponentAttr(item,'show', true,getContext(key))"
                           :span="getTemplateComponentAttr(item,'span', 24)"
                           :offset="getTemplateComponentAttr(item,'offset', 0)"
                   >
@@ -345,6 +345,14 @@ export default {
         if (wrapper && wrapper.length > 0 && wrapper[0]) {
           return wrapper[0].getComponentRef()
         }
+      }
+    },
+    getContext (key) {
+      return {
+        mode: this.formMode,
+        key: key,
+        value: this.formData[key],
+        form: this.formData
       }
     }
   }

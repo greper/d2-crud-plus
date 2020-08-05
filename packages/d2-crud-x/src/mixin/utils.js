@@ -106,9 +106,9 @@ export default {
       }
       return defaultValue
     },
-    getTemplateComponentAttr (template, attr, defaultValue) {
+    getTemplateComponentAttr (template, attr, defaultValue, params) {
       if (template && template.component) {
-        return this.handleAttribute(template.component[attr], defaultValue, { mode: this.formMode, key: template.key, value: this.formData[template.key], form: this.formData })
+        return this.handleAttribute(template.component[attr], defaultValue, params)
       }
       return defaultValue
     },
@@ -118,13 +118,13 @@ export default {
       }
       return defaultValue
     },
-    getComponentProp (item, key, prop, defaultValue) {
+    getComponentProp (item, key, prop, defaultValue, params) {
       if (!item) {
         return defaultValue
       }
       let component = item.component
       if (component && component.props) {
-        return this.handleAttribute(component.props[prop], defaultValue)
+        return this.handleAttribute(component.props[prop], defaultValue, params)
       }
       return defaultValue
     },

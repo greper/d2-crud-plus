@@ -91,7 +91,7 @@ export default {
       dict.get(this.dict, options).then((data) => {
         this.setDictData(data)
         if (this.onReady != null) {
-          this.onReady({ component: this, data: data, setDictData: this.setDictData })
+          this.onReady({ component: this, data: data, setDictData: this.setDictData, form: options.form })
         }
       })
     },

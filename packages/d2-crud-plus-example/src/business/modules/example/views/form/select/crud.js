@@ -108,11 +108,6 @@ export const crudOptions = (vm) => {
             props: {
               dict: {
                 cache: false // 表单的dict可以禁用缓存
-              },
-              onReady (component, { data, setDictData }) {
-                console.log('字典请求ready', data, component)
-                data[0].disabled = true // 禁用某个选项
-                setDictData(data)
               }
             }
           },

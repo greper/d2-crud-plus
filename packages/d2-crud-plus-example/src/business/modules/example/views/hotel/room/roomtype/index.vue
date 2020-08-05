@@ -4,6 +4,7 @@
         <crud-search v-if="!crud.searchOptions.disabled" ref="search" :options="crud.searchOptions" @submit="handleSearch" ></crud-search>
         <d2-crud-x
                 ref="d2Crud"
+                :pagination="null"
                 v-bind="_crudProps"
                 v-on="_crudListeners">
             <el-button slot="header" class="d2-mb-5" size="small" type="primary" @click="addRow">新增</el-button>

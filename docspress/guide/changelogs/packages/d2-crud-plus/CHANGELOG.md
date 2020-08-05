@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.14.2...d2-crud-plus@1.15.0) (2020-08-05)
+
+
+### Features
+
+* 发布 ([37af76c](https://github.com/greper/d2-crud-plus/commit/37af76c91d205e772118aee50f87766b25804274))
+
+
+
+
+
+## [1.14.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.14.1...d2-crud-plus@1.14.2) (2020-08-05)
+
+
+### Bug Fixes
+
+* break change dict-xxx的onReady方法参数的component改为{component:xx,data,setDictData} ([6489e34](https://github.com/greper/d2-crud-plus/commit/6489e3478304cf715c9c4dc5c216fbf7e5863e9d))
+* 修复view.disabled取反的bug ([21dcbde](https://github.com/greper/d2-crud-plus/commit/21dcbde09381180bb0c83885cd5941ab705d3421))
+* 修复分组下，查看span配置无效的bug ([765fc76](https://github.com/greper/d2-crud-plus/commit/765fc76b3b98c1f1b09ce660c8e23ec4589c783f))
+
+
+### Performance Improvements
+
+* dict onready事件支持修改过滤data ([bd5907d](https://github.com/greper/d2-crud-plus/commit/bd5907de509b84c6423673d42dc20cc24116de7d))
+* dict onready事件支持修改过滤data ([661131b](https://github.com/greper/d2-crud-plus/commit/661131b5ccc9e32339a799665519d94c790a3b5b))
+* format.page.request支持方法自定义 ([95dc6f2](https://github.com/greper/d2-crud-plus/commit/95dc6f2f2883113b6f2dbc74a7df5cfa43bb9ce5))
+* onready增加form参数 ([f31c788](https://github.com/greper/d2-crud-plus/commit/f31c788a17a77257241a5db829380cc32abe69b8))
+* valuesformat增加点击事件 ([d3d6cb7](https://github.com/greper/d2-crud-plus/commit/d3d6cb7c363fd54e839f6e4fe001c906ee3b17df))
+* 数据支持嵌套对象 ([0bbe21f](https://github.com/greper/d2-crud-plus/commit/0bbe21fbc6c3ca4b88c8dc0e0a3e8b0258bb4b91))
+* 数据支持嵌套对象 ([aaec065](https://github.com/greper/d2-crud-plus/commit/aaec0653bafb10d9845616763f7940c07050610f))
+* 查看按钮优化为默认显示 ([07b1112](https://github.com/greper/d2-crud-plus/commit/07b11123f98a86a0441a2642538bc14429ba96bc))
+* 行组件disabled方法支持传参 ([1de28b0](https://github.com/greper/d2-crud-plus/commit/1de28b0d9fc426a2483b890ed922890bfcc6179a))
+
+
+
+
+
 ## [1.14.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.14.0...d2-crud-plus@1.14.1) (2020-07-30)
 
 

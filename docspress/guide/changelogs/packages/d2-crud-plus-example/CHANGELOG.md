@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.14.2...@d2-plus/d2-crud-plus-example@1.15.0) (2020-08-05)
+
+
+### Features
+
+* 发布 ([37af76c](https://github.com/d2-projects/d2-admin/commit/37af76c91d205e772118aee50f87766b25804274))
+
+
+
+
+
+## [1.14.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.14.1...@d2-plus/d2-crud-plus-example@1.14.2) (2020-08-05)
+
+
+### Bug Fixes
+
+* break change dict-xxx的onReady方法参数的component改为{component:xx,data,setDictData} ([6489e34](https://github.com/d2-projects/d2-admin/commit/6489e3478304cf715c9c4dc5c216fbf7e5863e9d))
+* 修复酒店示例多个翻页组件的问题 ([732e75e](https://github.com/d2-projects/d2-admin/commit/732e75e9ba1d40fabbceb2ace6421c2535c97d24))
+
+
+### Performance Improvements
+
+* dict onready事件支持修改过滤data ([bd5907d](https://github.com/d2-projects/d2-admin/commit/bd5907de509b84c6423673d42dc20cc24116de7d))
+* valuesformat增加点击事件 ([d3d6cb7](https://github.com/d2-projects/d2-admin/commit/d3d6cb7c363fd54e839f6e4fe001c906ee3b17df))
+* 数据支持嵌套对象 ([0bbe21f](https://github.com/d2-projects/d2-admin/commit/0bbe21fbc6c3ca4b88c8dc0e0a3e8b0258bb4b91))
+* 数据支持嵌套对象 ([aaec065](https://github.com/d2-projects/d2-admin/commit/aaec0653bafb10d9845616763f7940c07050610f))
+* 查看按钮优化为默认显示 ([07b1112](https://github.com/d2-projects/d2-admin/commit/07b11123f98a86a0441a2642538bc14429ba96bc))
+* 行内禁用示例完善 ([dee1777](https://github.com/d2-projects/d2-admin/commit/dee177711fd20a027ec183aee5d7d2ac4329f5e9))
+* 行组件disabled方法支持传参 ([1de28b0](https://github.com/d2-projects/d2-admin/commit/1de28b0d9fc426a2483b890ed922890bfcc6179a))
+
+
+
+
+
 ## [1.14.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.14.0...@d2-plus/d2-crud-plus-example@1.14.1) (2020-07-30)
 
 

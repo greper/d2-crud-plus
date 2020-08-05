@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.8.2...d2p-extends@1.9.0) (2020-08-05)
+
+
+### Features
+
+* 发布 ([37af76c](https://github.com/greper/d2-crud-plus/commit/37af76c91d205e772118aee50f87766b25804274))
+
+
+
+
+
+## [1.8.2](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.8.1...d2p-extends@1.8.2) (2020-08-05)
+
+
+### Bug Fixes
+
+* 修复quill 默认字体太小的问题 ([50f2235](https://github.com/greper/d2-crud-plus/commit/50f223531747a0f7844f53b19e38ece3ac178d34))
+* 修复七牛不显示上传进度的bug ([d64dff1](https://github.com/greper/d2-crud-plus/commit/d64dff16e61cf2a03d23d773dacbf4e67be9c8f8))
+* 修复多个文件同时上传时，后面完成的文件上传失败的bug ([7fc905b](https://github.com/greper/d2-crud-plus/commit/7fc905b5258e014beb917eb561c7fe939a27ec99))
+
+
+
+
+
 ## [1.8.1](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.8.0...d2p-extends@1.8.1) (2020-07-30)
 
 

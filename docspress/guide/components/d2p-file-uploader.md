@@ -14,6 +14,7 @@
 |returnType|返回类型: url=仅返回链接, object=包含md5和size , key=仅返回文件key|`String`|`false`|'url'|
 |custom|自定义参数|`Object`|`false`|-|
 |elProps|内部封装[el-upload](https://element.eleme.cn/#/zh-CN/component/upload)组件的属性参数<br/>注意，form方式上传的action、name、headers等参数不在此设置|`Object`|`false`|-|
+|preview|预览对话框的配置|`Object`|`false`|-|
 |sizeLimit|文件大小限制 <br/>如果传入{limit,tip(fileSize,limit){vm.$message('可以自定义提示')}}|`Number`|`false`|-|
 |buildUrl|构建下载url方法|`Function`|`false`|function (value, item) {
   return typeof value === 'object' ? item.url : value;

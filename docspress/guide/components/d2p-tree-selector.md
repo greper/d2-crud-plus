@@ -22,10 +22,10 @@
 <!-- @vuese:d2p-tree-selector:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|change|-|-|
 |check-change|-|-|
 |current-change|-|-|
 |input|-|-|
-|change|-|-|
 
 <!-- @vuese:d2p-tree-selector:events:end -->
 

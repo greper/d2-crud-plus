@@ -16,3 +16,13 @@
 <!-- @vuese:values-format:props:end -->
 
 
+## Events
+
+<!-- @vuese:values-format:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|click|-|-|
+
+<!-- @vuese:values-format:events:end -->
+
+

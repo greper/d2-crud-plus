@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.7.3...d2-crud-x@2.8.0) (2020-08-05)
+
+
+### Features
+
+* 发布 ([37af76c](https://github.com/greper/d2-crud/commit/37af76c91d205e772118aee50f87766b25804274))
+
+
+
+
+
 ## [2.7.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.7.2...d2-crud-x@2.7.3) (2020-08-05)
 
 

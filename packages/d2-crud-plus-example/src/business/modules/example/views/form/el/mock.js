@@ -5,6 +5,10 @@ const options = {
 }
 const list = [
   {
+    number: 4
+  },
+  {
+    number: undefined
   }
 ]
 options.list = list

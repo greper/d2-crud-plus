@@ -4,7 +4,7 @@
       <span v-for="(item) in _items" :key="item[dict.value]">{{item[dict.label]}}</span>
     </template>
     <template v-else >
-      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in _items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" >
+      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in _items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" @click="onClick(item)" >
         {{item[dict.label]}}
       </el-tag>
     </template>
@@ -103,7 +103,9 @@ export default {
   created () {
   },
   methods: {
-
+    onClick (item) {
+      this.$emit('click', { item: item })
+    }
   }
 }
 </script>

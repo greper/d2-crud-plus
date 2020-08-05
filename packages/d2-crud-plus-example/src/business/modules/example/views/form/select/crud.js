@@ -43,6 +43,13 @@ export const crudOptions = (vm) => {
               return (<el-alert title="当此处显示的是value而不是label时，请检查value的类型是否一致，string和int是不相等的" type="warning"/>)
             }
           }
+        },
+        component: {
+          on: {
+            click (event) {
+              console.log('点击事件', event)
+            }
+          }
         }
       },
       {

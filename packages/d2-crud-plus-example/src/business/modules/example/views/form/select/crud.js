@@ -81,9 +81,9 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: {},
         type: 'select',
-        disabled: true, // url()方式不会缓存字典数据，不建议在列表中使用，会有性能问题（除非自行处理缓存）
+        disabled: true,
         dict: {
-          url: (dict) => { // 此方式不会缓存数据
+          url: (dict) => {
             return '/dicts/OpenStatusEnum?a=0'
           }
         },
@@ -108,10 +108,39 @@ export const crudOptions = (vm) => {
             props: {
               dict: {
                 cache: false // 表单的dict可以禁用缓存
+              },
+              onReady (component, { data, setDictData }) {
+                console.log('字典请求ready', data, component)
+                data[0].disabled = true // 禁用某个选项
+                setDictData(data)
               }
             }
           },
           helper: '禁用字典缓存，每次打开对话框都会发出字典请求'
+        }
+      },
+      {
+        title: '禁用字典选项',
+        key: 'disabledOptions',
+        sortable: true,
+        search: {},
+        type: 'select',
+        disabled: true,
+        dict: {
+          url: '/dicts/OpenStatusEnum'
+        },
+        form: {
+          component: {
+            props: {
+              onReady (component, { data, setDictData }) {
+                console.log('字典请求ready', data, component)
+                data[0].disabled = true // 禁用某个选项， 还可以自己修改选项
+
+                setDictData(data)
+              }
+            }
+          },
+          helper: '禁用字典选项'
         }
       },
       {

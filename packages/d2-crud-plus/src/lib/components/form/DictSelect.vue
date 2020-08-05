@@ -14,6 +14,7 @@
       :key="option[dict.value]"
       :value="option[dict.value]"
       :label="option[dict.label]"
+      v-bind="option"
     >
     </el-option>
   </el-select>

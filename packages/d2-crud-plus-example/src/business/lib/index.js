@@ -42,7 +42,8 @@ Vue.use(d2CrudPlus, {
           },
           response: {
             current: 'current', // 当前页码 ret.data.current
-            size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
+            size: 'size', // 当前页码 ret.data.current
+            // size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
             total: 'total', // 总记录数 ret.data.total
             records: 'records' // 列表数组 ret.data.records
           }
@@ -63,9 +64,6 @@ Vue.use(d2CrudPlus, {
       },
       rowHandle: {
         width: 260,
-        view: {
-          show: true
-        },
         edit: {
           type: 'primary'
         }

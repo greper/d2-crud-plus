@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-x",
   "description": "d2-crud改进版",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -28,8 +28,8 @@
   "dependencies": {
     "lodash.clonedeep": "^4.5.0",
     "lodash.foreach": "^4.5.0",
-    "lodash.merge": "^4.5.0",
     "lodash.get": "^4.4.2",
+    "lodash.merge": "^4.5.0",
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {

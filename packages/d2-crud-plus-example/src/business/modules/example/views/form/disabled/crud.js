@@ -42,8 +42,8 @@ export const crudOptions = (vm) => {
         sortable: false,
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -59,8 +59,8 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -76,8 +76,8 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -91,9 +91,32 @@ export const crudOptions = (vm) => {
         dict: { data: [{ value: true, label: '是' }, { value: false, label: '否' }] },
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
+          }
+        }
+      },
+      {
+        title: '行内禁用',
+        key: 'switch',
+        type: 'switch',
+        form: {
+          component: {
+            disabled (context) {
+              console.log('switch form disabled:', context)
+              return context.form.disable
+            },
+            show (context) {
+              console.log('switch form show:', context)
+              return true
+            }
+          }
+        },
+        component: {
+          disabled (context) {
+            console.log('switch row disabled:', context)
+            return context.form.disable
           }
         }
       },
@@ -103,8 +126,8 @@ export const crudOptions = (vm) => {
         type: 'area-selector',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -115,8 +138,8 @@ export const crudOptions = (vm) => {
         type: 'area-tree-selector',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -127,8 +150,8 @@ export const crudOptions = (vm) => {
         type: 'avatar-uploader',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -139,8 +162,8 @@ export const crudOptions = (vm) => {
         type: 'image-uploader',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -151,8 +174,8 @@ export const crudOptions = (vm) => {
         type: 'file-uploader',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -163,8 +186,8 @@ export const crudOptions = (vm) => {
         type: 'icon-selector',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -177,8 +200,8 @@ export const crudOptions = (vm) => {
         type: 'text-area',
         form: {
           component: {
-            disabled: () => {
-              return vm.getEditForm().disable
+            disabled: ({ form }) => {
+              return form.disable
             }
           }
         }
@@ -187,6 +210,7 @@ export const crudOptions = (vm) => {
         title: '普通禁用',
         key: 'text3',
         sortable: false,
+        disabled: true,
         form: {
           component: {
             disabled: true
@@ -199,6 +223,7 @@ export const crudOptions = (vm) => {
         sortable: false,
         search: { disabled: false },
         type: 'dict-switch',
+        disabled: true,
         dict: { data: [{ value: true, label: '禁用' }, { value: false, label: '启用' }] },
         form: {
           component: {
@@ -209,7 +234,8 @@ export const crudOptions = (vm) => {
             if (column && column.component) {
               column.component.disabled = value
             }
-          }
+          },
+          valueChangeImmediate: true
         }
       }
 

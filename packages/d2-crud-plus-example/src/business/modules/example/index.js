@@ -6,7 +6,7 @@ const formMenus = []
 const demoRouters = []
 
 addFunction(formMenus, 'form/date', '日期时间')
-addFunction(formMenus, 'form/select', '选择组件')
+addFunction(formMenus, 'form/select', '选择组件', '禁用选项')
 addFunction(formMenus, 'form/phone', '国际电话输入框')
 const uploadGroupMenu = addFunction(formMenus, null, '文件上传')
 const uploadMenus = uploadGroupMenu.children
@@ -23,14 +23,14 @@ addFunction(formMenus, 'form/tree', '树形组件')
 
 addFunction(formMenus, 'form/icon', '图标选择')
 addFunction(formMenus, 'form/editor', '富文本')
-addFunction(formMenus, 'form/independent', '组件独立使用')
+addFunction(formMenus, 'form/independent', '组件独立使用', 'new')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
 addFunction(enhanceMenus, 'form/deepData', '多级数据', 'new')
 addFunction(enhanceMenus, 'form/view', '查看', 'new')
-addFunction(enhanceMenus, 'form/linkage', '选择联动', 'new')
-addFunction(enhanceMenus, 'form/toolbar', '工具条', 'new')
+addFunction(enhanceMenus, 'form/linkage', '选择联动')
+addFunction(enhanceMenus, 'form/toolbar', '工具条')
 addFunction(enhanceMenus, 'form/old', '旧版页面', '兼容')
 addFunction(enhanceMenus, 'form/slot', '自定义组件')
 addFunction(enhanceMenus, 'form/customType', '自定义字段类型')
@@ -43,7 +43,7 @@ addFunction(enhanceMenus, 'form/validation', '表单校验')
 addFunction(enhanceMenus, 'form/group', '表单分组')
 addFunction(enhanceMenus, 'form/addi', '动态添加表单字段')
 addFunction(enhanceMenus, 'form/show', '显隐只读')
-addFunction(enhanceMenus, 'form/disabled', '禁用启用')
+addFunction(enhanceMenus, 'form/disabled', '禁用启用', '行内禁用')
 
 const vxeMenus = []
 addFunction(vxeMenus, 'vxe/column', 'vxe-table', 'beta')

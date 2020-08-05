@@ -6,6 +6,8 @@ const options = {
 }
 const list = [
   {
+    disable: true,
+    disableText3: true,
     status: '0',
     mselect: 'sz',
     cascader: ['zhinan', 'shejiyuanze', 'yizhi'],

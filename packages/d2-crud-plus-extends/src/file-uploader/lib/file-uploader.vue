@@ -279,7 +279,9 @@ export default {
         if (item.response != null && item.response.url != null) {
           list.push({ ...item.response })
         } else {
+          console.log('文件没有上传完成，暂不发射input事件', item)
           list.push(item)
+          return
         }
       }
       console.log('handleUploadFileSuccess list', list, res)

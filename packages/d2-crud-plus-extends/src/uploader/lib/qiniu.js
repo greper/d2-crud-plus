@@ -70,7 +70,9 @@ export default {
       // eslint-disable-next-line no-unused-vars
       let subscription = observable.subscribe({
         next (res) {
-          onProgress(res)
+          if (res) {
+            onProgress(res.total)
+          }
         },
         error (err) {
           onError(err)

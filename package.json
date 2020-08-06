@@ -23,7 +23,7 @@
     "docs:dev": " vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": " vuese gen  && vuepress build docspress",
     "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/",
-    "gitacp": "git add -A . &&  git commit -m publish && git push",
+    "gitacp": "git add -A . &&  git commit -m publish && git push ",
     "publish": "npm run prePublish && npm run lerna:publish && npm run copylogs && npm run afterPublish"
   },
   "version": "1.1.0"

@@ -535,7 +535,7 @@ export default {
         this.crud.page.current = no // 点击查询后，从第一页开始
       }
       if (this.crud.pagination) {
-        this.crud.pagination.pageCurrent = no
+        this.crud.pagination.currentPage = no
       }
     },
     /**

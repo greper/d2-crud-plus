@@ -94,7 +94,9 @@ export const crudOptions = {
       editForm:{
          //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
-      view:{}, // 查看按钮组件的单独配置
+      view:{// 查看按钮组件的单独配置
+        component:{...} 
+      }, 
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
         // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
@@ -161,7 +163,9 @@ export const crudOptions = {
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
   searchOptions: { //查询配置参数
-    form:{},//默认搜索参数
+    form:{ //默认搜索参数
+      name:'小明' // 请求列表默认会带上此处配置参数
+    },
     show: true,//是否显示搜索工具条
     disabled: false, //是否禁用搜索工具条
     debounce:{ //自动查询防抖,debounce:false关闭自动查询
@@ -201,8 +205,8 @@ export const crudOptions = {
     custom:[//自定义按钮
       {
          //配置同上
-         emit: 'custom-emit' //点击事件
-         // 需要在<d2-crud-x @custom-emit="yourHandle"/>
+         //点击事件,需要在<d2-crud-x @custom-emit="yourHandle"/>
+         emit: 'custom-emit' 
       }
     ] 
   },
@@ -212,6 +216,10 @@ export const crudOptions = {
     groups: { //分组
       base: { //分组key
         title: '商品基础', //分组标题
+        disabled:false, //禁止展开或收起
+        // disabled(context){return true} //可以传一个方法
+        show: true,//是否显示
+        // show(context){return true} //可以传一个方法
         icon: 'el-icon-goods', //分组标题前的图标
         columns: ['title', 'code', 'images'] //该组内包含的字段列表
       }

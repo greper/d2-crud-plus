@@ -15,16 +15,16 @@
   "scripts": {
     "lerna:build": "lerna run build",
     "lerna:version": "lerna version --conventional-commits",
-    "prePublish": "cd ./packages/d2-crud-x && npm run build && cd ../d2-crud-plus && npm run build && cd ../../ ",
+    "prePublish1": "cd ./packages/d2-crud-x && npm run build && cd ../d2-crud-plus && npm run build && cd ../../ ",
     "lerna:publish": "lerna publish --conventional-commits && rimraf ./packages/d2-crud-x/dist && rimraf ./packages/d2-crud-plus/dist ",
-    "afterPublish": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/ && npm run docs:build && npm run gitacp",
+    "afterPublish1": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/ && npm run docs:build && npm run gitacp",
     "changelog": "lerna-changelog",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s -p",
     "docs:dev": " vuese gen && vuepress dev docspress --temp .temp",
     "docs:build": " vuese gen  && vuepress build docspress",
     "copylogs": "copyfiles ./packages/*/CHANGELOG.md  ./docspress/guide/changelogs/",
     "gitacp": "git add -A . &&  git commit -m publish && git push ",
-    "publish": "npm run prePublish && npm run lerna:publish && npm run copylogs && npm run afterPublish"
+    "publish1": "npm run prePublish1 && npm run lerna:publish && npm run copylogs && npm run afterPublish1"
   },
   "version": "1.1.0"
 }

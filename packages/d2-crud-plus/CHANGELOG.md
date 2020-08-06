@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.0...d2-crud-plus@1.15.1) (2020-08-06)
+
+
+### Bug Fixes
+
+* 修复一个无限翻页的bug ([8533007](https://github.com/greper/d2-crud-plus/commit/8533007eb370bd3c8123f626ed2b91472e9a579a))
+
+
+### Performance Improvements
+
+* 自动染色功能 ([c955c92](https://github.com/greper/d2-crud-plus/commit/c955c92948c92f30a94f24b4128a8af0527264f4))
+
+
+
+
+
 # [1.15.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.14.2...d2-crud-plus@1.15.0) (2020-08-05)
 
 

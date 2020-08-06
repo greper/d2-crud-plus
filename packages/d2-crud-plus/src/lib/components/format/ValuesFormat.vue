@@ -13,6 +13,7 @@
 
 <script>
 import formatDict from '../../mixins/format-dict'
+const COLOR_LIST = ['primary', 'success', 'warning', 'danger']
 // value格式化展示组件
 export default {
   name: 'values-format',
@@ -36,10 +37,15 @@ export default {
         return {}
       }
     },
-    // 颜色，【primary, success, warning, danger ,info】
+    // 颜色，【auto, primary, success, warning, danger ,info】
+    // 默认自动根据value值hashcode分配颜色值
     color: {
       require: false,
       default: 'primary'
+    },
+    // 自动颜色列表，【 primary, success, warning, danger 】
+    autoColors: {
+      type: Array
     },
     // 展示类型【text, tag】
     type: {
@@ -52,8 +58,7 @@ export default {
 
   },
   data () {
-    return {
-    }
+    return {}
   },
   computed: {
     _items () {
@@ -79,7 +84,7 @@ export default {
           let item = {}
           item[dict.value] = str
           item[dict.label] = str
-          item[dict.color] = this.color
+          this.setColor(item, dict)
           options.push(item)
         }
         return options
@@ -88,12 +93,13 @@ export default {
       for (let str of valueArr) {
         let item = dictDataMap[str]
         if (item != null) {
+          this.setColor(item, dict)
           options.push(item)
         } else {
           item = {}
           item[dict.value] = str
           item[dict.label] = str
-          item[dict.color] = this.color
+          this.setColor(item, dict)
           options.push(item)
         }
       }
@@ -105,6 +111,34 @@ export default {
   methods: {
     onClick (item) {
       this.$emit('click', { item: item })
+    },
+    setColor (item, dict) {
+      if (item[dict.color]) {
+        return
+      }
+      if (this.color === 'auto') {
+        let hashcode = this.hashcode(item[dict.value])
+        let colors = this.autoColors ? this.autoColors : COLOR_LIST
+        item[dict.color] = colors[hashcode % colors.length]
+      } else {
+        item[dict.color] = this.color
+      }
+    },
+    hashcode (str) {
+      if (str == null) {
+        return 0
+      }
+      if (typeof str !== 'string') {
+        str = JSON.stringify(str)
+      }
+      let hash = 0; let i; let chr; let len
+      if (str.length === 0) return hash
+      for (i = 0, len = str.length; i < len; i++) {
+        chr = str.charCodeAt(i)
+        hash = ((hash << 5) - hash) + chr
+        hash |= 0 // Convert to 32bit integer
+      }
+      return hash
     }
   }
 }

@@ -151,9 +151,10 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '多选,本地',
+        title: '多选,本地,自动染色',
         key: 'mselect',
         sortable: true,
+        width: 180,
         search: {
           disabled: false,
           title: '多选1'
@@ -171,7 +172,8 @@ export const crudOptions = (vm) => {
         },
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        }
+        },
+        component: { props: { color: 'auto' } } // 自动染色
       },
       {
         title: '级联',

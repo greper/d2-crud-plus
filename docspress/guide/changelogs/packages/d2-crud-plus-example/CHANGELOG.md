@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.0...@d2-plus/d2-crud-plus-example@1.15.1) (2020-08-06)
+
+
+### Performance Improvements
+
+* 自动染色功能 ([c955c92](https://github.com/d2-projects/d2-admin/commit/c955c92948c92f30a94f24b4128a8af0527264f4))
+
+
+
+
+
 # [1.15.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.14.2...@d2-plus/d2-crud-plus-example@1.15.0) (2020-08-05)
 
 

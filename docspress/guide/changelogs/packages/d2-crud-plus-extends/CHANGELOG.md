@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.0...d2p-extends@1.9.2) (2020-08-06)
+
+
+### Bug Fixes
+
+* quill字体大小和字体类型 ([1c6e74d](https://github.com/greper/d2-crud-plus/commit/1c6e74db741b2cffadf84e06da40e39233c93b63))
+
+
+
+
+
 # [1.9.0](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.8.2...d2p-extends@1.9.0) (2020-08-05)
 
 

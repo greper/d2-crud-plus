@@ -121,8 +121,7 @@ export default {
     }
   },
   created () {
-    this.initColumns()
-    this.doLoad()
+    this._crudOnCreated()
   },
   mounted () {
     this.reComputeCrudHeight()
@@ -173,6 +172,21 @@ export default {
     }
   },
   methods: {
+    /**
+     * 在页面created中调用
+     * @private
+     */
+    _crudOnCreated () {
+      this._crudStart()
+    },
+    /**
+     * crud 初始化
+     * @private
+     */
+    _crudStart () {
+      this.initColumns()
+      this.doLoad()
+    },
     /**
      * 获取编辑框的formData
      * @returns
@@ -921,7 +935,7 @@ export default {
     doFormDataChange ({ key, value, form }) {
     },
     /**
-     * columns filter 用户配置修改
+     * 列配置修改
      * @param columns
      */
     handleColumnsFilterChanged (columns) {
@@ -941,11 +955,12 @@ export default {
      */
     handleSearchDataChange ({ key, value, component, form }) {
     },
+    /**
+     * 当前是否是vxeTable
+     * @returns {boolean}
+     */
     isVxeTable () {
-      if (this.crud.options.tableType === 'vxe-table') {
-        return true
-      }
-      return false
+      return this.crud.options.tableType === 'vxe-table'
     }
 
   }

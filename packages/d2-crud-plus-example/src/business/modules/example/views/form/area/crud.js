@@ -75,9 +75,10 @@ export const crudOptions = {
       key: 'pcaTree',
       type: 'area-tree-selector',
       form: {
-        component: { span: 24 },
+        component: { span: 24, props: { color: 'auto' } },
         helper: '树形，忽略完全选中节点的子节点，精简结果'
-      }
+      },
+      component: { props: { color: 'auto' } } // 自动颜色
     },
     {
       title: '树形选择2',
@@ -89,7 +90,8 @@ export const crudOptions = {
           props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
         },
         helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
-      }
+      },
+      component: { props: { color: 'auto' } } // 自动颜色
     },
     {
       title: '树形选择3',
@@ -102,7 +104,8 @@ export const crudOptions = {
           props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
         },
         helper: '自定义获取省市区数据'
-      }
+      },
+      component: { props: { color: 'auto' } } // 自动颜色
     },
     {
       title: '树形单选',

@@ -8,6 +8,9 @@ export const crudOptions = (vm) => {
     searchOptions: {
       show: null
     },
+    viewOptions: {
+      componentType: 'row'
+    },
     columns: [
       {
         title: '头像',

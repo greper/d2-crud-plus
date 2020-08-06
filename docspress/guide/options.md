@@ -40,6 +40,8 @@ export const crudOptions = {
           title:'表单字段显示的名称', //默认使用column的title
           name: 'dict-select', //表单组件名称，支持任何v-model组件
           props: { //表单组件的参数，具体参数请查看对应的组件文档
+            // 如何查找组件配置，请参考
+            // http://greper.gitee.io/d2-crud-plus/guide/component.html
             separator:",",//dict-select的组件参数，[不同组件参数不同]
             elProps:{ //dict-select内部封装了el-select
               filterable: true, //可过滤选择项
@@ -47,17 +49,23 @@ export const crudOptions = {
               clearable: true, //可清除
             }
           },
-          disabled: false, //是否在表单中禁用组件，也可以配置为方法：disabled(){return false}
-          readonly: false, //表单组件是否是只读，也可以配置为方法：readonly(){return false}
-          show: true, //是否显示该字段，也可以配置为方法：show(){return false}          
-          events:{ //除input change事件外，更多组件事件监听
+          disabled: false, //是否在表单中禁用组件
+          // disabled(context){return false}//还可以配置为方法
+          readonly: false, //表单组件是否是只读
+          // readonly(context){return false} //还可以配置为方法
+          show: true, //是否显示该字段，
+          // show(context){return false} //还可以配置为方法         
+          on:{ //除input change事件外，更多组件事件监听
             select(event){console.log(event)} //监听表单组件的select事件
           },
           scopedSlots:{ //插槽渲染
-             default:(h,scope)=>{ //默认插槽
+             default:(h,scope)=>{ //默认的scoped插槽
                 return (<div>{scope.data}</div>)
              }
           },
+          children:[ //子元素
+              (h)=>{return (<div slot="prefix">非scoped插槽</div>)}
+          ],
           span: 12 //该字段占据多宽，24为占满一行
         },
         disabled:false, //完全关闭该字段在表单中显示
@@ -183,6 +191,10 @@ export const crudOptions = {
         icon:'el-view', //按钮图标
         size: 'small', // 按钮大小
         circle: false,//圆形按钮 ，需要thin=true,且text=true
+        show:true, // 是否显示按钮
+        //show(index,row){return true}// 还可以配置为方法 
+        disabled:false// 是否禁用
+        //disabled(index,row){return true} //还可以配置为方法 
     }, 
     edit:{}, //编辑按钮,配置同上
     remove:{}, //删除按钮,配置同上
@@ -190,6 +202,7 @@ export const crudOptions = {
       {
          //配置同上
          emit: 'custom-emit' //点击事件
+         // 需要在<d2-crud-x @custom-emit="yourHandle"/>
       }
     ] 
   },

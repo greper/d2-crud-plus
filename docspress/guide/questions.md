@@ -130,3 +130,40 @@ this.getD2Crud().showDialog({
 })
 ```
 更多[d2-crud-x外部暴露的方法](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-x/src/mixin/exposeMethods.js)
+
+## 8. 怎么将初始化（或加载数据）从created推迟到mounted？
+默认`d2CrudPlus`的初始化是在`created`里面开始的。    
+但有时候某些参数需要从`mounted`里面才能获取到   
+这时候就需要把初始化过程后移
+
+`d2CrudPlus.crud` mixin如下 
+```js
+curdMixin ={
+  created () {
+    this._crudOnCreated()  
+  },
+  methods: {
+    _crudOnCreated () {//created的时候执行
+      this._crudStart()
+    },
+    _crudStart () { //crud的初始化方法
+      this.initColumns()
+      this.doLoad()
+    }
+  }
+}
+```
+你可以在你的页面中按如下方式改写即可将初始化推迟到`mounted`
+```js
+export default {
+  mounted(){ //mounted里面调用start
+    this._crudStart ()
+  },
+  methods: {
+    _crudOnCreated () {
+      //覆盖为空方法
+    },
+  }
+}
+```
+

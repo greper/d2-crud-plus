@@ -15,7 +15,9 @@ export default {
 ```
 
 ## 接口方法
-以下为d2CrudPlus.crud中的方法，您可以调用或覆盖其中的方法进行自定义
+你可以查看[d2CrudPlus.crud源码](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/mixins/crud.js)
+，然后根据需求调用或覆盖其中的方法来自定义   
+以下列出一些已有的方法，可能更新不及时
 ### getEditForm()
 获取添加和修改表单的formData
 ### initColumns()
@@ -84,8 +86,4 @@ crudOptions的初始化方法，会在create方法中被调用
 【空方法，可直接覆盖】用户自定义的表单改变事件处理
 
 
-## 注意事项
-::: warning 
-请不要修改page.vue中ref的值
-:::
 

@@ -9,6 +9,9 @@ export const crudOptions = (vm) => {
       disabled: true,
       show: null
     },
+    viewOptions: {
+      componentType: 'row'
+    },
     columns: [
       {
         title: '头像',

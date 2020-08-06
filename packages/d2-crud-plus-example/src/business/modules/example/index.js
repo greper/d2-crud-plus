@@ -6,7 +6,7 @@ const formMenus = []
 const demoRouters = []
 
 addFunction(formMenus, 'form/date', '日期时间')
-addFunction(formMenus, 'form/select', '选择组件', '禁用选项')
+addFunction(formMenus, 'form/select', '选择组件', '禁用选项，染色')
 addFunction(formMenus, 'form/phone', '国际电话输入框')
 const uploadGroupMenu = addFunction(formMenus, null, '文件上传')
 const uploadMenus = uploadGroupMenu.children

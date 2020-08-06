@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.1...d2-crud-plus@1.15.2) (2020-08-06)
+
+
+### Bug Fixes
+
+* 修复rowHandle:false 报错的问题 ([59fe2da](https://github.com/greper/d2-crud-plus/commit/59fe2da12493044bb9c0fb45076cbde596681e28))
+
+
+
+
+
+
 ## [1.15.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.0...d2-crud-plus@1.15.1) (2020-08-06)
 
 

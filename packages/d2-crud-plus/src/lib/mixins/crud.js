@@ -97,7 +97,8 @@ export default {
             icon: 'el-icon-view',
             text: '查看',
             size: 'small',
-            disabled: false
+            disabled: false,
+            show: true
           },
           edit: {
             icon: 'el-icon-edit',
@@ -251,8 +252,6 @@ export default {
       }
       if (crud.viewOptions && crud.viewOptions.disabled) {
         crud.rowHandle.view.show = false
-      } else if (crud.viewOptions && crud.viewOptions.disabled === false && crud.rowHandle.view.show == null) {
-        crud.rowHandle.view.show = true
       }
       // 配置group
       this.initColumnsGroup('add', crud)

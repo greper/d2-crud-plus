@@ -44,6 +44,7 @@ addFunction(enhanceMenus, 'form/group', '表单分组')
 addFunction(enhanceMenus, 'form/addi', '动态添加表单字段')
 addFunction(enhanceMenus, 'form/show', '显隐只读')
 addFunction(enhanceMenus, 'form/disabled', '禁用启用', '行内禁用')
+addFunction(enhanceMenus, 'form/rowHandleHide', '隐藏操作列')
 
 const vxeMenus = []
 addFunction(vxeMenus, 'vxe/column', 'vxe-table', 'beta')

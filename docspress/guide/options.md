@@ -164,7 +164,7 @@ export const crudOptions = {
   },
   searchOptions: { //查询配置参数
     form:{ //默认搜索参数
-      name:'小明' // 请求列表默认会带上此处配置参数
+      name:'小明' // 请求列表默认会带上此处配置参数,重置后会恢复成此处配置的值
     },
     show: true,//是否显示搜索工具条
     disabled: false, //是否禁用搜索工具条

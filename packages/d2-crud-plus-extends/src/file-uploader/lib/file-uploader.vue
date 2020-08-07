@@ -14,7 +14,13 @@
     <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" /></div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
-        <img :src="avatarUrl" class="avatar" v-if="avatarUrl!=null">
+        <div v-if="avatarUrl!=null" class="avatar">
+          <img :src="avatarUrl" >
+          <div class="preview">
+            <i class="el-icon-zoom-in" @click="previewAvatar"></i>
+            <i class="el-icon-delete" v-if="!disabled" @click="removeAvatar"></i>
+          </div>
+        </div>
         <i class="el-icon-plus avatar-uploader-icon" v-else/>
       </div>
     </template>
@@ -110,12 +116,14 @@ export default {
     }
   },
   created () {
-    this.initValue()
+    this.initValue(this.value)
   },
   watch: {
     value (val) {
       let arr = []
-      if (typeof val === 'string') {
+      if (val == null) {
+
+      } else if (typeof val === 'string') {
         arr.push(val)
       } else {
         arr = val
@@ -135,7 +143,7 @@ export default {
         changed = true
       }
       if (changed) {
-        this.initValue()
+        this.initValue(val)
       }
     }
   },
@@ -173,7 +181,7 @@ export default {
         showFileList: true,
         action: '',
         onPreview: (file) => {
-          if (this._elProps.listType === 'picture-card' || this._elProps.listType === 'picture') {
+          if (this._elProps.listType === 'picture-card' || this._elProps.listType === 'picture' || this._elProps.listType === 'avatar') {
             this.dialogImageUrl = file.url
             this.dialogVisible = true
           } else {
@@ -219,11 +227,9 @@ export default {
       return D2pUploader.getUploader(type)
     },
     initValue (value) {
-      if (value == null) {
-        value = this.value
-      }
       let fileList = []
       if (value == null) {
+
       } else if (typeof (value) === 'string') {
         if (value !== '') {
           let fileName = value.substring(value.lastIndexOf('/') + 1)
@@ -291,20 +297,31 @@ export default {
       this.fileList = fileList
       this.emitList(fileList)
     },
+    previewAvatar ($event) {
+      $event.stopPropagation()
+      this._elProps.onPreview(this.fileList[0])
+    },
+    removeAvatar ($event) {
+      $event.stopPropagation()
+      this.emit() // 返回undefined，相当于清空已有的值
+    },
     emit (res, list) {
       if (this._elProps.limit === 1) {
-        this.$emit('input', res.value)
-        this.$emit('change', res.value)
+        const value = res ? res.value : undefined
+        this.$emit('input', value)
+        this.$emit('change', value)
       } else {
         this.emitList(list)
       }
     },
     emitList (list) {
-      const tmp = []
-      list.forEach(item => {
-        tmp.push(item.value)
-      })
-      list = tmp
+      if (list) {
+        const tmp = []
+        list.forEach(item => {
+          tmp.push(item.value)
+        })
+        list = tmp
+      }
       this.$emit('input', list)
       this.$emit('change', list)
     },
@@ -532,6 +549,37 @@ export default {
       align-items: center;
       width: 100%;
       height: 100%;
+      position: relative;
+      .avatar{
+        display: contents;
+      }
+    }
+
+    .preview{
+      border-radius: 6px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      cursor: default;
+      text-align: center;
+      color: #fff;
+      opacity: 0;
+      font-size: 20px;
+      background-color: rgba(0,0,0,.9);
+      -webkit-transition: opacity .3s;
+      transition: opacity .3s;
+      &:hover{
+        opacity: 0.9;
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i{
+        margin: 0 7px;
+        cursor: pointer;
+      }
     }
   }
 

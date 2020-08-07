@@ -1,13 +1,14 @@
 <template>
-  <div class="d2p-cropper-uploader" >
+  <div class="d2p-cropper-uploader"  :class="{'is-disabled':disabled}" >
     <div class="image-list">
-      <div class="image-item" v-for="(item,index) in list" :key="index">
+      <div class="image-item" v-for="(item,index) in _urlList" :key="index">
         <el-image class="image"
-          :src="item.url"
+          :src="item"
+          :preview-src-list="_urlList"
           fit="contain" ></el-image>
-        <div class="delete"><i class="el-icon-delete" @click="removeImage(index,item)"></i></div>
+        <div class="delete" v-if="!disabled"><i class="el-icon-delete" @click="removeImage(index,item)"></i></div>
         <div class="status-uploading" v-if="item.status==='uploading'">
-          <el-progress type="circle" :percentage="item.progress" :width="70"></el-progress>
+          <el-progress type="circle" :percentage="item.progress" :width="70"/>
         </div>
         <div class="status-done" v-else>
           <i class="el-icon-upload-success el-icon-check"></i>
@@ -35,6 +36,7 @@
 <script>
 import D2pCropper from './cropper'
 import D2pUploader from '../../uploader'
+import { d2CrudPlus } from '../../utils/d2-crud-plus'
 
 /**
  * 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
@@ -42,6 +44,7 @@ import D2pUploader from '../../uploader'
 
 export default {
   name: 'd2p-cropper-uploader',
+  mixins: [d2CrudPlus.inputBase],
   components: {
     D2pCropper
   },
@@ -112,6 +115,17 @@ export default {
   created () {
     this.initValue()
   },
+  computed: {
+    _urlList () {
+      const urlList = []
+      if (this.list) {
+        for (let item of this.list) {
+          urlList.push(item.url)
+        }
+      }
+      return urlList
+    }
+  },
   methods: {
     initValue () {
       const list = []
@@ -128,6 +142,9 @@ export default {
       this.$set(this, 'list', list)
     },
     addNewImage () {
+      if (this.disabled) {
+        return
+      }
       this.index = undefined
       this.$refs.cropper.clear()
       this.$refs.cropper.open()
@@ -212,6 +229,15 @@ export default {
 
 <style lang="scss" >
   .d2p-cropper-uploader{
+    .el-image-viewer__close{color:#fff}
+    &.is-disabled {
+      .image-list{
+        .image-item{
+          cursor: not-allowed;
+        }
+      }
+      i{cursor: not-allowed}
+    }
     .image-list{
       display: flex;
       justify-content: left;

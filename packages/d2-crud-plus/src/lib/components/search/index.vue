@@ -47,6 +47,7 @@
       </render-component>
 
     </el-form-item>
+    <slot :form="this.form"></slot>
     <el-form-item>
       <el-button
           type="primary"

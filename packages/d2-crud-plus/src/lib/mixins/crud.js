@@ -609,7 +609,9 @@ export default {
         let symbol = get(this.crud, 'format.flatData.symbol', '#')
         forEach(this.crud.columns, item => {
           let key = item.key
-          row[key] = get(row, key.replace(symbol, '.'))
+          if (key.indexOf(symbol) !== -1) {
+            row[key] = get(row, key.replace(symbol, '.'))
+          }
         })
       }
       console.log('flat data complete:', records)
@@ -623,9 +625,11 @@ export default {
       const deleteOnUnFlat = get(this.crud, 'format.flatData.deleteOnUnFlat', true)
       forEach(this.crud.columns, item => {
         let key = item.key
-        row[key] = set(row, key.replace(symbol, '.'), row[key])
-        if (deleteOnUnFlat) {
-          delete row[key]
+        if (key.indexOf(symbol) !== -1) {
+          row[key] = set(row, key.replace(symbol, '.'), row[key])
+          if (deleteOnUnFlat) {
+            delete row[key]
+          }
         }
       })
       console.log('unFlat row complete:', row)

@@ -5,6 +5,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '禁用全部',
         key: 'disable',
         sortable: true,
@@ -30,7 +38,6 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             disabled: ({ key, value, form }) => {
-              console.log('select disabled:', key, value, form)
               return form.disable
             }
           }
@@ -104,18 +111,15 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             disabled (context) {
-              console.log('switch form disabled:', context)
               return context.form.disable
             },
             show (context) {
-              console.log('switch form show:', context)
               return true
             }
           }
         },
         component: {
           disabled (context) {
-            console.log('switch row disabled:', context)
             return context.form.disable
           }
         }

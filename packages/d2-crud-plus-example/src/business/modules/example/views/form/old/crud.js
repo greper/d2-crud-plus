@@ -33,6 +33,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '单选远程',
         key: 'status',
         sortable: true,

@@ -7,10 +7,21 @@ export const crudOptions = (vm) => {
     options: {
       height: '100%'
     },
+    viewOptions: {
+      componentType: 'row'
+    },
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
     columns: [
+      {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
       {
         title: '单选远程',
         key: 'status',

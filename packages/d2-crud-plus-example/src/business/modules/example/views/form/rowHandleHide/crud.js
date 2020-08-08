@@ -12,6 +12,14 @@ export const crudOptions = (vm) => {
     rowHandle: false, // 隐藏操作列
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '单选远程',
         key: 'status',
         sortable: true,

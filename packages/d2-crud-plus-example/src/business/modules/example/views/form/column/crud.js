@@ -81,6 +81,14 @@ export const crudOptions = {
       width: 200
     },
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '时间',
       key: 'time',
       type: 'datetime',
@@ -94,7 +102,6 @@ export const crudOptions = {
       search: { key: 'province', disabled: false },
       type: 'select',
       form: {
-        rules: [{ required: true, message: '请选择地区' }],
         component: { props: { filterable: true, multiple: true, clearable: true } }
       },
       dict: {

@@ -12,6 +12,14 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '创建时间',
       key: 'createDate',
       type: 'datetime',

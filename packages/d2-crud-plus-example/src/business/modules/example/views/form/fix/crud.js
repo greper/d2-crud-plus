@@ -22,6 +22,14 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '左边固定',
       key: 'data',
       sortable: true,
@@ -42,7 +50,6 @@ export const crudOptions = {
       search: { key: 'province', disabled: false },
       type: 'select',
       form: {
-        rules: [{ required: true, message: '请选择地区' }],
         component: { props: { filterable: true, multiple: true, clearable: true } }
       },
       dict: {

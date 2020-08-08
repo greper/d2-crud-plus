@@ -8,6 +8,14 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '头像裁剪',
       key: 'avatar',
       type: 'avatar-cropper'

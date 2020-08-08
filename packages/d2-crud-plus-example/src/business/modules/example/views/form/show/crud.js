@@ -5,6 +5,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '动态显隐',
         key: 'show',
         sortable: true,

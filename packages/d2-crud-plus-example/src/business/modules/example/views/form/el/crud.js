@@ -4,6 +4,14 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '数字',
       search: {},
       key: 'number',

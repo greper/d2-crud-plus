@@ -27,7 +27,7 @@
         <div class="d2-mt-10" v-if="scope.mode!=='view'">
           <el-button @click="addColumn(scope)">添加未分组字段</el-button>
           <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
-          <el-button @click="addGroup(scope)">添加分组</el-button>
+          <el-button @click="addGroup(scope)">添加新分组</el-button>
           <el-button @click="configText(scope)">修改字段配置</el-button>
         </div>
       </template>
@@ -67,10 +67,17 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     },
+    addIndex () {
+      if (this.addIndexValue == null) {
+        this.addIndexValue = 0
+      }
+      this.addIndexValue++
+      return this.addIndexValue
+    },
     addColumn (scope) {
       const key = 'add' + Math.floor(Math.random() * 1000)
       const column = {
-        title: '动态添加',
+        title: '动态添加' + this.addIndex(),
         ket: key,
         component: {
           name: 'dict-select',
@@ -88,11 +95,11 @@ export default {
       const key = 'add' + Math.floor(Math.random() * 1000)
       const groupKey = 'group' + Math.floor(Math.random() * 1000)
       const group = {
-        title: '动态添加分组',
+        title: '动态添加分组' + this.addIndex(),
         columns: {}
       }
       group.columns[groupKey] = {
-        title: '动态添加',
+        title: '动态添加' + this.addIndex(),
         ket: key,
         component: {
           name: 'dict-select',
@@ -111,7 +118,7 @@ export default {
     addGroupColumn (scope) {
       const key = 'add' + Math.floor(Math.random() * 1000)
       const column = {
-        title: '动态添加',
+        title: '动态添加' + this.addIndex(),
         ket: key,
         component: {
           name: 'dict-select',

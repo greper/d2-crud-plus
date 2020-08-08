@@ -7,6 +7,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '手机号',
         key: 'mobileValue',
         sortable: true,

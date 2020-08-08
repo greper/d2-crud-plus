@@ -170,6 +170,7 @@
         :model="formData"
         :rules="handleFormRulesMode()"
         :fullscreen="formOptions.fullscreen"
+        :formMode="formMode"
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions" >
@@ -239,7 +240,9 @@
             </el-collapse-item>
           </template>
         </el-collapse>
-        <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
+        <div class="form-body-append">
+          <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
+        </div>
       </el-form>
       <div slot="footer">
         <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
@@ -434,6 +437,11 @@ export default {
       .el-dialog__header{
         cursor: auto !important;
       }
+    }
+  }
+  .el-form[formMode=view]{
+    .el-form-item__label{
+      color:#909090
     }
   }
 }

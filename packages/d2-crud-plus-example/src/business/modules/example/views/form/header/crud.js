@@ -8,6 +8,14 @@ export const crudOptions = {
       key: 'multi_header',
       children: [
         {
+          title: 'ID',
+          key: 'id',
+          width: 90,
+          form: {
+            disabled: true
+          }
+        },
+        {
           title: '时间',
           children: [
             {
@@ -34,7 +42,6 @@ export const crudOptions = {
           sortable: true,
           search: { key: 'status', disabled: false },
           type: 'select',
-          form: { rules: [{ required: true, message: '请选择状态' }] },
           dict: { url: '/dicts/OpenStatusEnum' }
         }
       ]
@@ -46,7 +53,6 @@ export const crudOptions = {
       search: { key: 'province', disabled: false },
       type: 'select',
       form: {
-        rules: [{ required: true, message: '请选择地区' }],
         component: { props: { filterable: true, multiple: true, clearable: true } }
       },
       dict: {

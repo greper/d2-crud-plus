@@ -1,17 +1,24 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-import { testCommonPage } from '../common'
+import { createCrudTest } from '../../support/common'
 
 describe('国际电话', () => {
-  beforeEach(() => {
+  before(() => {
     cy.login('admin', 'admin')
   })
-  const parentMenu = '表单组件示例'
-  it('国际电话', () => {
-    testCommonPage({
-      cy: cy,
-      parentMenu,
-      subMenu: '国际电话'
-    })
+  createCrudTest({
+    cy,
+    parentMenu: '表单组件示例',
+    subMenu: '国际电话',
+    doAdd () {
+      const mobile = '18603046467'
+      cy.formItem('手机号').find('input[placeholder="手机号"]').clear().type(mobile).should('have.value', mobile)
+      cy.formItem('手机号2').find('input[placeholder="手机号"]').clear().type(mobile).should('have.value', mobile)
+    },
+    doEdit () {
+      const mobile = '18603046467'
+      cy.formItem('手机号').find('input[placeholder="手机号"]').clear().type(mobile).should('have.value', mobile)
+      cy.formItem('手机号2').find('input[placeholder="手机号"]').clear().type(mobile).should('have.value', mobile)
+    }
   })
 })

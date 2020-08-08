@@ -2,14 +2,15 @@
 
 import { createCrudTest } from '../../support/common'
 
-describe('日期组件', () => {
+const menu = '表单校验'
+describe(menu, () => {
   before(() => {
     cy.login('admin', 'admin')
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '日期时间',
+    parentMenu: 'CRUD增强功能',
+    subMenu: menu,
     doAdd () {
     },
     doEdit () {

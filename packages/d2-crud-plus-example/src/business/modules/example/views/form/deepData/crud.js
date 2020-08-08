@@ -16,6 +16,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '用户名',
         key: 'user#name',
         sortable: true
@@ -33,7 +41,7 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '部门',
+        title: '部门名称',
         key: 'dept#name',
         sortable: true,
         search: { disabled: true }

@@ -15,6 +15,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '省',
         key: 'province',
         sortable: true,
@@ -25,7 +33,6 @@ export const crudOptions = (vm) => {
           value: 'id'
         },
         form: {
-          rules: [{ required: true, message: '请选择省' }],
           /**
            *  valueChange 功能大大增强
            * @param key
@@ -65,7 +72,6 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: { props: { dict: { cache: false } } },
-          rules: [{ required: true, message: '请选择市' }],
           // 注释同上
           valueChange (key, value, form, { mode, getColumn, component, immediate, getComponent }) {
             if (value) {
@@ -97,7 +103,6 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: { props: { dict: { cache: false } } },
-          rules: [{ required: true, message: '请选择区' }],
           valueChange (key, value) {
             console.log('您选择了：', value)
           }

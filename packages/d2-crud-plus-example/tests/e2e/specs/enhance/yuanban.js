@@ -2,14 +2,14 @@
 
 import { createCrudTest } from '../../support/common'
 
-describe('日期组件', () => {
+describe('d2Crud原版', () => {
   before(() => {
     cy.login('admin', 'admin')
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '日期时间',
+    parentMenu: 'CRUD增强功能',
+    subMenu: 'd2Crud原版',
     doAdd () {
     },
     doEdit () {

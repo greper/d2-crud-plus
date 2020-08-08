@@ -9,7 +9,7 @@ export const crudOptions = (vm) => {
       show: null
     },
     viewOptions: {
-      componentType: 'row'
+      componentType: 'form'
     },
     columns: [
       {

@@ -12,14 +12,15 @@
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
-    "dev": "npm run serve",
+    "dev": "npm run serve ",
     "dev:pm": "vue-cli-service serve --open --mode pm",
     "build": "vue-cli-service build --report",
     "build:local": "vue-cli-service build --mode local",
     "build:analyze": "vue-cli-service build --mode analyze",
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",
@@ -79,6 +80,7 @@
     "@vue/cli-plugin-unit-jest": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/test-utils": "^1.0.2",
     "babel-eslint": "^10.0.3",

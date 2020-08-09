@@ -55,7 +55,7 @@ Cypress.Commands.add('openEdit', (context) => {
     cy.wait(context.editWait)
   }
   const editForce = context.editForce != null ? context.editForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-edit]').first().click({ force: editForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button i.el-icon-edit').first().click({ force: editForce })
 })
 Cypress.Commands.add('openView', (context) => {
   cy.checkId(context, '1', false)
@@ -63,7 +63,7 @@ Cypress.Commands.add('openView', (context) => {
     cy.wait(context.viewWait)
   }
   const viewForce = context.viewForce != null ? context.viewForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-view]').first().click({ force: viewForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button i.el-icon-view').first().click({ force: viewForce })
 })
 Cypress.Commands.add('closeDialog', (context) => {
   cy.get('.el-dialog__footer').contains('确定').click()
@@ -75,7 +75,7 @@ Cypress.Commands.add('doDelete', (context) => {
     cy.wait(context.deleteWait)
   }
   const deleteForce = context.deleteForce != null ? context.deleteForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-delete]').first().click({ force: deleteForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button i.el-icon-delete').first().click({ force: deleteForce })
   cy.get('.el-message-box__btns').contains('确定').click()
   cy.get('.d2-container-full__body').contains('新增')
   cy.checkId(context, '1')

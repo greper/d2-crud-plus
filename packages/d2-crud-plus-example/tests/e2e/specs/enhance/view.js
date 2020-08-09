@@ -14,6 +14,9 @@ describe(menu, () => {
     doAdd () {
     },
     doEdit () {
+    },
+    doView () {
+      cy.get('.d2-crud-dialog').find('input').should('be.disabled')
     }
   })
 })

@@ -36,6 +36,14 @@ describe(menu, () => {
       cy.get('.d2-crud-body').should($el => {
         expect($el.width()).to.be.lessThan(1698)
       })
+
+      cy.get('.d2p-toolbar button i.el-icon-set-up').click()
+      cy.get('.d2p-table-columns-filter .component--list-item').contains('默认隐藏').click()
+      cy.get('.d2p-table-columns-filter').contains('确定').click()
+
+      cy.get('.has-gutter > tr > .el-table_1_column_10 > .cell').then($el => {
+        expect($el.text().trim()).to.equal('默认隐藏')
+      })
     }
   })
 })

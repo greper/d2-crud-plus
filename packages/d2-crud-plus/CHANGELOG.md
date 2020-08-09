@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.3...d2-crud-plus@1.15.4) (2020-08-09)
+
+
+### Bug Fixes
+
+* 修复一个数据扁平化的bug ([6a53f14](https://github.com/greper/d2-crud-plus/commit/6a53f1484a906833bcff2d84542ab04ed05abd48))
+
+
+### Performance Improvements
+
+* crud-search增加slot ([f6b6b1d](https://github.com/greper/d2-crud-plus/commit/f6b6b1dcce1cdab47f20298b02070c991b58c9d0))
+
+
+
+
+
 ## [1.15.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.2...d2-crud-plus@1.15.3) (2020-08-06)
 
 **Note:** Version bump only for package d2-crud-plus

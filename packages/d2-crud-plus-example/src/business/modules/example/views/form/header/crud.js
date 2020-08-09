@@ -4,17 +4,17 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      width: 90,
+      form: {
+        disabled: true
+      }
+    },
+    {
       title: '多级表头',
       key: 'multi_header',
       children: [
-        {
-          title: 'ID',
-          key: 'id',
-          width: 90,
-          form: {
-            disabled: true
-          }
-        },
         {
           title: '时间',
           children: [

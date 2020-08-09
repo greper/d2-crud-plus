@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-import { createCrudTest } from '../../support/common'
+import { createCrudTest } from '../../support/creator'
 
 const menu = '特殊列'
 describe(menu, () => {
@@ -18,6 +18,7 @@ describe(menu, () => {
     viewForce: true,
     // viewWait: 5000,
     deleteForce: true,
+    viewDisabled: true,
     doAdd () {
     },
     doEdit () {

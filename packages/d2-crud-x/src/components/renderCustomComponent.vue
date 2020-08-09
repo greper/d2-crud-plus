@@ -125,6 +125,11 @@ export default {
       },
       ref: 'target'
     }, children)
+  },
+  methods: {
+    getComponentRef () {
+      return this.$refs.target
+    }
   }
 }
 </script>

@@ -7,7 +7,12 @@
         <p>1、 <a href="https://xuliangzhan_admin.gitee.io/vxe-table/#/table/start/install">安装vex-table</a></p>
         <p>2、 配置crud.options.tableType='vxe-table'</p>
         <br/>
+        <h4>有了el-table，为什么还要用vxe-table</h4>
+        <p>el-table在设置fixed列时，会将所有的列copy一份，在开启expand和tree结构时更糟糕，导致每个cell都渲染多次，加载特别慢。而vxe-table则没有这个问题</p>
+        <p>并且经过测试，vxe-table在动态修改列也不会引起一些奇奇怪怪的问题</p>
         <h4>目前为beta版，生产环境请谨慎使用</h4>
+        <p>还未做大量测试，如果你有性能方面的需求，可以先尝试接入使用，欢迎bug反馈</p>
+
       </example-helper>
 
     </template>

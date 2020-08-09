@@ -75,7 +75,7 @@ export const crudOptions = (vm) => {
         minWidth: 200
       },
       {
-        title: '单选，本地',
+        title: '单选本地',
         key: 'select_local',
         sortable: true,
         search: {
@@ -88,7 +88,7 @@ export const crudOptions = (vm) => {
         minWidth: 200
       },
       {
-        title: '多选,本地',
+        title: '多选本地',
         key: 'mselect',
         sortable: true,
         search: {

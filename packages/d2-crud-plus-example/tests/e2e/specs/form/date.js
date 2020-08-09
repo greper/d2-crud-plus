@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-import { createCrudTest } from '../../support/common'
+import { createCrudTest } from '../../support/creator'
 
 describe('日期组件', () => {
   before(() => {

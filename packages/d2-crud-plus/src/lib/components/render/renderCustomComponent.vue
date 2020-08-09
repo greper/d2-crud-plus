@@ -26,6 +26,7 @@ export default {
     events: {
       default: undefined
     },
+    // 与events等效
     on: {
       default: undefined
     },
@@ -35,6 +36,7 @@ export default {
     scopedSlots: {
       default: undefined
     },
+    //  与scoped等效
     slots: {
       default: undefined
     },
@@ -64,7 +66,7 @@ export default {
       for (let key in self.events) {
         events[key] = (event) => {
           if (self.events[key]) {
-            self.events[key]({ vm: self._self, event: event, props: this.props })
+            self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
           }
         }
       }
@@ -73,7 +75,7 @@ export default {
       for (let key in self.on) {
         events[key] = (event) => {
           if (self.on[key]) {
-            self.on[key]({ vm: self._self, event: event, props: this.props })
+            self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
           }
         }
       }
@@ -125,6 +127,11 @@ export default {
       },
       ref: 'target'
     }, children)
+  },
+  methods: {
+    getComponentRef () {
+      return this.$refs.target
+    }
   }
 }
 </script>

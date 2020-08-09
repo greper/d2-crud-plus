@@ -147,9 +147,7 @@ function onReady (dict, item, options) {
     dict.dataMap = item.dataMap
   }
   if (dict.onReady != null) {
-    setTimeout(() => {
-      dict.onReady(dict.data, dict, options)
-    }, 1)
+    dict.onReady(dict.data, dict, options)
   }
 }
 

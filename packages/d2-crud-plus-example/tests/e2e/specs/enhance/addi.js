@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-import { createCrudTest } from '../../support/common'
+import { createCrudTest } from '../../support/creator'
 
 const menu = '动态添加表单字段'
 describe(menu, () => {

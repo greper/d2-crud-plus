@@ -226,6 +226,7 @@ export default {
     },
     getComponentRef (key) {
       if (this.$refs) {
+        debugger
         const wrapper = this.$refs['form_item_' + key]
         if (wrapper && wrapper.length > 0 && wrapper[0]) {
           return wrapper[0].getComponentRef()
@@ -238,6 +239,7 @@ export default {
         key: key,
         value: this.form[key],
         form: this.form,
+        getComponent: this.getComponentRef,
         component: this.getComponentRef(key),
         column: this.getColumn(key),
         getColumn: this.getColumn

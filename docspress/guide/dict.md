@@ -17,7 +17,14 @@ export const crudOptions = {
         url: (dict,{form,component})=>{ 
           return 'newUrl'
         }, 
-        data: undefined, //[Array]，如果数据无需远程获取，可以直接将字典数组写在这里
+        data: [//[Array]，如果数据无需远程获取，可以直接将字典数组写在这里
+           {
+            value:1,
+            label:'开启', 
+            color:'primary', //颜色 【primary，success，danger，warning，info】
+            disabled:false //是否禁用
+            }
+        ], 
         getData:(url,dict,{form,component})=>{ //配置此参数会覆盖全局的getRemoteDictFunc
           return request().then(ret=>{return ret.data})
         },
@@ -26,7 +33,7 @@ export const crudOptions = {
         label: 'label', // 数据字典中label字段的属性名
         children: 'children', // 数据字典中children字段的属性名
         isTree: false, // 此数据字典是否是树形的，通常用于级联组件、地区选择组件等处
-        onReady:(data, dict)=>{
+        onReady(data, dict,context){
           //远程数据字典加载完成事件，每个引用该字典的组件都会触发一次
         }   
       }   
@@ -46,23 +53,6 @@ dict:{
 * `url()`： 将不会进行缓存
 
 
-## 外部使用数据字典
-```javascript
-import { d2CrudPlus } from 'd2-crud-plus'
-export default {
-  data () {
-    return {
-      dict: { url: '/hotel/roomtype/options' },
-      dictData:[]
-    }
-  },
-  created () {
-    d2CrudPlus.util.dict.get(this.dict,options).then((data) => {
-        this.dictData = data
-    })
-  }
-}
-```
 ## 清除字典缓存   
 远程字典会以url作为key缓存在内存里面  
 某些情况下需要清空字典缓存，比如添加修改删除字典项的时候
@@ -85,3 +75,25 @@ dict:{
   }
 }
 ``` 
+
+## 如何设置行展示组件【values-format】的颜色
+方法1
+获取的字典数据中，带上color即可，可选值【primary,success,danger,warning,info】
+`data:[{value:xx,label:xx,color:'success'}]`
+
+方法2
+如果后台不方便返回color，可以给字段配置自动染色
+` columns:[{component:{props:{color:'auto'}}}]`
+
+方法3
+或者手动设置
+```
+dict:{
+ getData:(url,dict,{form,component})=>{ //配置此参数会覆盖全局的getRemoteDictFunc
+          return request(url).then(ret=>{
+                    //修改颜色值
+                    return ret.data
+           })
+  }
+}
+```

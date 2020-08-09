@@ -55,7 +55,7 @@ Cypress.Commands.add('openEdit', (context) => {
     cy.wait(context.editWait)
   }
   const editForce = context.editForce != null ? context.editForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper').contains('编辑').first().click({ force: editForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-edit]').first().click({ force: editForce })
 })
 Cypress.Commands.add('openView', (context) => {
   cy.checkId(context, '1', false)
@@ -63,7 +63,7 @@ Cypress.Commands.add('openView', (context) => {
     cy.wait(context.viewWait)
   }
   const viewForce = context.viewForce != null ? context.viewForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper').contains('查看').first().click({ force: viewForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-view]').first().click({ force: viewForce })
 })
 Cypress.Commands.add('closeDialog', (context) => {
   cy.get('.el-dialog__footer').contains('确定').click()
@@ -75,14 +75,14 @@ Cypress.Commands.add('doDelete', (context) => {
     cy.wait(context.deleteWait)
   }
   const deleteForce = context.deleteForce != null ? context.deleteForce : false
-  cy.get('.d2-container-full__body .el-table__body-wrapper').contains('删除').first().click({ force: deleteForce })
+  cy.get('.d2-container-full__body .el-table__body-wrapper button[icon=el-icon-delete]').first().click({ force: deleteForce })
   cy.get('.el-message-box__btns').contains('确定').click()
   cy.get('.d2-container-full__body').contains('新增')
   cy.checkId(context, '1')
 })
 
-Cypress.Commands.add('formItem', (label) => {
-  return cy.get('.el-dialog__body  .el-form-item > .el-form-item__label').contains(label).first().parent()
+Cypress.Commands.add('formItem', (label, parentSelect = '.el-dialog__body') => {
+  return cy.get(parentSelect + ' .el-form-item > .el-form-item__label').contains(label).first().parent()
 })
 
 Cypress.Commands.add('checkId', (context, value, equal = true) => {
@@ -118,21 +118,39 @@ Cypress.Commands.add('checkColValue', ({ title, col = 1, row = 1, value, equal =
   //     }
   //   })
   // })
-  cy.get('.el-table__body-wrapper tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + col + ' > .cell').should((target) => {
+
+  cy.get('.el-table > .el-table__body-wrapper >  .el-table__body > tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + col + ' > .cell').should((target) => {
     if (equal) {
-      expect(target.text()).to.equal(value)
+      expect(target.text().trim()).to.equal(value)
     } else {
-      expect(target.text()).to.not.equal(value)
+      expect(target.text().trim()).to.not.equal(value)
     }
   })
 })
 
 Cypress.Commands.add('getCell', ({ title, col = 1, row = 1 }) => {
-  return cy.get('.el-table__body-wrapper tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + col + ' > .cell')
+  return cy.get('.el-table > .el-table__body-wrapper >  .el-table__body> tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + col + ' > .cell')
+})
+
+Cypress.Commands.add('hideFixedBody', (context, hide = true) => {
+  return cy.get('.el-table .el-table__fixed-body-wrapper').then(target => {
+    target[0].css('display', hide ? 'none' : 'block')
+  })
 })
 
 Cypress.Commands.add('checkError', (context) => {
   return cy.get('.d2-header-right .el-badge').should('not.exist')
+})
+
+Cypress.Commands.add('getSelectOptions', () => {
+  return cy.get('.el-select-dropdown.el-popper ul li:visible')
+})
+Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
+  return cy.get('.el-popper.el-cascader__dropdown .el-cascader-menu ul.el-cascader-menu__list:visible:eq(' + (blockIndex - 1) + ')').children()
+})
+
+Cypress.Commands.add('searchClick', () => {
+  return cy.get('.d2p-search-form').contains('查询').click()
 })
 //
 // -- This is a child command --

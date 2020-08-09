@@ -53,6 +53,12 @@ export default {
       return AddObj(row)
     },
     updateRequest (row) {
+      if (!row.city) {
+        row.city = null
+      }
+      if (!row.county) {
+        row.county = null
+      }
       return UpdateObj(row)
     },
     delRequest (row) {

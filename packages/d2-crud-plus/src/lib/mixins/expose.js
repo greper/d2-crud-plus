@@ -21,7 +21,7 @@ export default {
 
     /**
      * 第一次请求页面数据
-     * initColumns完成后调用
+     * initColumns初始化完成后调用
      */
     doLoad () {
       return this.doRefresh({ from: 'load' })

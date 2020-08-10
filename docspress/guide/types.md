@@ -163,7 +163,7 @@ type = icon-selector
 ### 日期时间选择
 * type = datetime | date | time | daterange | datetimerange
 
-<<<@/packages/d2-crud-plus/src/lib/types/list/form.js
+<<<@/packages/d2-crud-plus/src/lib/types/list/date.js
 
 * 相关组件：
     * [el-date-picker](https://element.eleme.cn/#/zh-CN/component/date-picker)  

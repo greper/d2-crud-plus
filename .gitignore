@@ -25,3 +25,4 @@ d2-crud-plus.iml
 lerna-debug.log
 /packages/d2-crud-plus-example/tests/e2e/screenshots/
 /packages/d2-crud-plus-example/tests/e2e/videos/
+/d2-crud-plus-docs/

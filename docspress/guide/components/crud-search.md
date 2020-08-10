@@ -29,6 +29,7 @@
 |Name|Description|Default Slot Content|
 |---|---|---|
 |item.key+'SearchSlot'|-|-|
+|default|-|-|
 
 <!-- @vuese:crud-search:slots:end -->
 

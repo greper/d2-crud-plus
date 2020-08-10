@@ -26,8 +26,16 @@ src
 ```shell script
 git clone https://github.com/greper/d2-crud-plus.git
 cd d2-crud-plus/packages/d2-crud-plus-example
-yarn install  //或者npm install
+yarn install  #或者npm install
 npm run dev
+```
+
+```shell script
+# 如果您已全局设置使用淘宝镜像（可能淘宝镜像还没来得及同步最新版本）
+# 临时使用npmjs registry，即可安装最新版本
+yarn add d2-crud-x d2-crud-plus d2p-extends  --registry  http://registry.npmjs.org
+#如果install太慢，使用淘宝镜像
+yarn install --registry  https://registry.npm.taobao.org
 ```
 
 ### 权限管理示例运行
@@ -46,7 +54,7 @@ git clone https://github.com/greper/d2-crud-plus.git
 cd d2-crud-plus
 lerna link
 cd d2-crud-plus/packages/d2-crud-plus-example
-yarn install  //或者npm install
+yarn install  #或者npm install
 npm run dev
 ```
 
@@ -55,21 +63,21 @@ npm run dev
 在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)试试
 
 ### 1.安装
-```js
-//使用npm
-// npm i @d2-project/d2-crud:2.0.5  -S 
-// 【d2-crud官方已停止维护，推荐使用加强版d2-crud-x】
-// 使用d2-crud-x替换d2-crud【在官方基础上修复了bug，功能更强大】
+```shell script
+#使用npm
+# npm i @d2-project/d2-crud:2.0.5  -S 
+# 【d2-crud官方已停止维护，推荐使用加强版d2-crud-x】
+# 使用d2-crud-x替换d2-crud【在官方基础上修复了bug，功能更强大】
 npm i  d2-crud-x  d2-crud-plus d2p-extends -S
 
-//使用yarn
+#使用yarn
 yarn add d2-crud-x d2-crud-plus d2p-extends 
 
-//使用cnpm
+#使用cnpm
 cnpm i  d2-crud-x  d2-crud-plus d2p-extends -S
 
-// 如果你已设置默认淘宝仓库，可能更新不及时
-// 如下配置临时切换npmjs仓库，可安装最新版本
+# 如果你已设置默认淘宝仓库，可能淘宝同步不及时
+# 如下配置临时切换npmjs仓库，可安装最新版本
 npm i  d2-crud-x  d2-crud-plus d2p-extends -S  --registry  http://registry.npmjs.org
 yarn add d2-crud-x d2-crud-plus d2p-extends  --registry  http://registry.npmjs.org
 

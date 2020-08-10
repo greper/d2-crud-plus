@@ -4,9 +4,11 @@ import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
 import TableStore from '../utils/util.store'
+import expose from '@/lib/mixins/expose'
 
 export default {
   components: {},
+  mixins: [expose],
   data () {
     return {
       crud: {
@@ -122,7 +124,7 @@ export default {
     }
   },
   created () {
-    this._crudOnCreated()
+    this._OnCreated()
   },
   mounted () {
     this.reComputeCrudHeight()
@@ -174,62 +176,14 @@ export default {
   },
   methods: {
     /**
-     * 在页面created中调用
+     * crud 初始化，被_onCreated调用
      * @private
      */
-    _crudOnCreated () {
-      this._crudStart()
-    },
-    /**
-     * crud 初始化
-     * @private
-     */
-    _crudStart () {
+    _doStart () {
       this.initColumns()
       this.doLoad()
     },
-    /**
-     * 获取编辑框的formData
-     * @returns
-     */
-    getD2Crud () {
-      return this.$refs[this.crud.format.ref.d2Crud]
-    },
-    /**
-     *  获取 el-table实例
-     * @returns {*}
-     */
-    getD2CrudTable () {
-      return this.getD2Crud().$refs.elTable
-    },
-    /**
-     * 获取当前列表数据
-     * @returns
-     */
-    getD2CrudTableData () {
-      return this.getD2Crud().d2CrudData
-    },
-    /**
-     * 获取编辑框的formData
-     * @returns
-     */
-    getEditForm () {
-      return this.getD2Crud().formData
-    },
-    /**
-     * 获取编辑框的组件参数配置
-     * @returns
-     */
-    getEditFormTemplate (key, groupKey = undefined) {
-      return this.getD2Crud().getFormTemplate(key, groupKey)
-    },
-    /**
-     * 获取编辑框的分组组件参数配置
-     * @returns
-     */
-    getEditFormTemplateGroup (groupKey, key) {
-      return this.getD2Crud().getFormTemplateGroup(groupKey, key)
-    },
+
     /**
      * 初始化column配置
      * 将配置解析成columns、addTemplate、editTemplate、searchOptions等
@@ -416,12 +370,6 @@ export default {
       // 放到map里面方便快速查找
       this.crud.columnsMap[key] = item
     },
-    /**
-     * 初始化结束后调用方法
-     */
-    initAfter () {
-
-    },
     reComputeCrudHeight () {
       if (this.crud && this.crud.options && this.crud.options.height === '100%') {
         return
@@ -593,6 +541,7 @@ export default {
         }
       }).finally(() => {
         this.crud.loading = false
+        this.doAfterRefresh(query, options)
       })
     },
     /**
@@ -635,13 +584,7 @@ export default {
       console.log('unFlat row complete:', row)
       return row
     },
-    /**
-     * 加载数据
-     * 页面初始化后触发的方法
-     */
-    doLoad () {
-      return this.doRefresh({ form: 'load' })
-    },
+
     /**
      * 获取search组件
      * @returns {*}
@@ -654,8 +597,8 @@ export default {
      * @param mode
      * @param row
      */
-    handleDialogOpen ({ mode, row }) {
-
+    handleDialogOpen (context) {
+      this.doDialogOpen(context)
     },
     /**
      * 编辑对话框打开后要做的操作
@@ -676,9 +619,6 @@ export default {
       }
 
       this.doDialogOpened({ mode, form })
-    },
-    doDialogOpened ({ mode, form }) {
-
     },
     /**
      * 点击添加按钮
@@ -733,18 +673,13 @@ export default {
     handleRowAdd (row, done) {
       this.crud.formOptions.saveLoading = true
       row = this._unFlatData(row)
-      if (this.addBefore != null) {
-        this.addBefore(row)
-      }
-      this.addRequest(row).then(() => {
-        this.$message({
-          message: '保存成功',
-          type: 'success'
-        })
+      this.doValueResolve(row)
+      this.addBefore(row)
+      return this.addRequest(row).then(() => {
+        this.showAddMessage({ row })
         done()
-        this.crud.formOptions.saveLoading = false
-        this.addAfter(row)
-      }).catch(() => {
+        return this.addAfter(row)
+      }).finally(() => {
         this.crud.formOptions.saveLoading = false
       })
     },
@@ -757,26 +692,15 @@ export default {
     handleRowEdit ({ index, row }, done) {
       this.crud.formOptions.saveLoading = true
       row = this._unFlatData(row)
-      if (this.editBefore != null) {
-        this.editBefore(row)
-      }
-      this.updateRequest(row).then((ret) => {
-        this.$message({
-          message: '保存成功',
-          type: 'success'
-        })
+      this.doValueResolve(row)
+      this.editBefore(row)
+      return this.updateRequest(row).then((ret) => {
+        this.showEditMessage({ index, row })
         done()
-        this.crud.formOptions.saveLoading = false
-        this.updateAfter(row)
-      }).catch(() => {
+        return this.editAfter(row)
+      }).finally(() => {
         this.crud.formOptions.saveLoading = false
       })
-    },
-    editBefore (row) {
-      this.doValueResolve(row)
-    },
-    addBefore (row) {
-      this.doValueResolve(row)
     },
     doValueResolve (row) {
       if (row == null) {
@@ -790,13 +714,6 @@ export default {
       }
     },
     /**
-     * 编辑对话框取消
-     * @param done
-     */
-    handleDialogCancel (done) {
-      done()
-    },
-    /**
      * 多条勾选选中
      * @param selection
      */
@@ -805,8 +722,8 @@ export default {
       if (this.isVxeTable()) {
         selection = selection.records
       }
-      console.log('selection', selection)
       this.multipleSelection = selection
+      this.doSelectionChange(selection)
     },
     /**
      * 单条点击选中
@@ -814,13 +731,20 @@ export default {
      * @param oldCurrentRow
      */
     handleCurrentChange (currentRow, oldCurrentRow) {
-      console.log('handleCurrentChange事件', currentRow)
+      this.doCurrentChange(currentRow, oldCurrentRow)
     },
     /**
      * 全选选中
      */
     handleSelectAll (event) {
-      console.log('select all:', event)
+      this.doSelectAll(event)
+    },
+    /**
+     * 编辑对话框取消
+     * @param done
+     */
+    handleDialogCancel (done) {
+      this.doDialogCancel(done)
     },
     /**
      * 删除请求
@@ -829,16 +753,11 @@ export default {
      * @param done
      */
     handleRowRemove ({ index, row }, done) {
-      if (this.delBefore != null) {
-        row = this.delBefore(row)
-      }
-      this.delRequest(row).then(() => {
-        this.$message({
-          message: '删除成功',
-          type: 'success'
-        })
+      this.delBefore(row)
+      return this.delRequest(row).then(() => {
+        this.showRemoveMessage({ index, row })
         done()
-        this.delAfter(row)
+        return this.delAfter(row)
       })
     },
     /**
@@ -853,13 +772,6 @@ export default {
       })
     },
     /**
-     * 添加成功后触发
-     * @param row
-     */
-    addAfter (row) {
-      this.doAfterRowChange(row)
-    },
-    /**
      * 修改http请求
      * @param row
      * @returns {Promise<any>}
@@ -869,13 +781,6 @@ export default {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现updateRequest' })
       })
-    },
-    /**
-     * 修改成功后触发
-     * @param row
-     */
-    updateAfter (row) {
-      this.doAfterRowChange(row)
     },
     /**
      * 删除http请求
@@ -889,13 +794,6 @@ export default {
       })
     },
     /**
-     * 删除成功后触发
-     * @param row
-     */
-    delAfter (row) {
-      this.doAfterRowChange(row)
-    },
-    /**
      * 翻页http请求
      * @param page
      * @returns {Promise<any>}
@@ -904,15 +802,6 @@ export default {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现pageRequest' })
       })
-    },
-    /**
-     * 行变动之后触发
-     * 添加、修改、删除之后触发
-     * 默认触发刷新列表
-     * @param row
-     */
-    doAfterRowChange (row) {
-      this.doRefresh({ from: 'afterRowChange' })
     },
     /**
      * 编辑框表单改变事件
@@ -931,13 +820,6 @@ export default {
       this.doFormDataChange({ key, value, form, getColumn: this.getEditFormTemplate, mode: this.getD2Crud().formMode, component })
     },
     /**
-     * 用户可覆盖的编辑框表单改变事件
-     * @param key
-     * @param value
-     */
-    doFormDataChange ({ key, value, form }) {
-    },
-    /**
      * 列配置修改
      * @param columns
      */
@@ -948,15 +830,14 @@ export default {
           this.getD2CrudTable().doLayout()
         })
       }
+      this.doColumnsFilterChanged(columns)
     },
     /**
      * 搜索表单值change触发
-     * @param key
-     * @param value
-     * @param component
-     * @param form
+     * @param context{ key,value, component,form}
      */
-    handleSearchDataChange ({ key, value, component, form }) {
+    handleSearchDataChange (context) {
+      this.doSearchDataChange(context)
     },
     /**
      * 当前是否是vxeTable

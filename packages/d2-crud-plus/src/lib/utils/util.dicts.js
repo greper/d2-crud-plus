@@ -1,3 +1,4 @@
+import lodash from 'lodash'
 const cache = new Map()
 
 /**
@@ -79,14 +80,14 @@ function get (dict, options) {
       item.data = data
       item.dataMap = getDataMap(dict, data)
 
-      onReady(dict, item, options)
+      const result = onReady(dict, item, options)
       // 之前注册过的callback全部触发
       for (let callback of item.callbacks) {
         callback(item)
       }
       item.loading = false
       item.callbacks = []
-      return buildResult(item, options)
+      return result
     }).catch((err) => {
       console.log(err, dict)
       item.loading = false
@@ -96,8 +97,7 @@ function get (dict, options) {
     // 正在加载中，注册callback，等加载完了之后，再统一触发，就只需要向服务器请求一次字典
     return new Promise((resolve) => {
       let callback = (item) => {
-        onReady(dict, item, options)
-        resolve(buildResult(item, options))
+        resolve(onReady(dict, item, options))
       }
       item.callbacks.push(callback)
     })
@@ -146,9 +146,11 @@ function onReady (dict, item, options) {
     dict.data = item.data
     dict.dataMap = item.dataMap
   }
+  const ret = buildResult(dict, item, options)
   if (dict.onReady != null) {
-    dict.onReady(dict.data, dict, options)
+    dict.onReady(ret, dict, options)
   }
+  return ret
 }
 
 /**
@@ -158,11 +160,17 @@ function onReady (dict, item, options) {
  * @param options
  * @returns {*}
  */
-function buildResult ({ data, dataMap }, options) {
+function buildResult (dict, { data, dataMap }, options) {
+  let ret = null
   if (options && options.returnType === 'dataMap') {
-    return dataMap
+    ret = dataMap
+  } else {
+    ret = data
   }
-  return data
+  if (dict && dict.clone === true) {
+    ret = lodash.cloneDeep(ret)
+  }
+  return ret
 }
 
 /**
@@ -174,8 +182,7 @@ function buildResult ({ data, dataMap }, options) {
  */
 function buildResultPromise (dict, item, options) {
   return new Promise((resolve) => {
-    onReady(dict, item, options)
-    resolve(buildResult(item, options))
+    resolve(onReady(dict, item, options))
   })
 }
 

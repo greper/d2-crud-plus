@@ -4,7 +4,7 @@
     :prop="colKey"
   >
     <template v-if="template.slot === true">
-      <slot :name="colKey+'FormSlot'" :form="formData" />
+      <slot :name="colKey+'FormSlot'" :form="formData" :mode="$attrs.formMode" />
     </template>
     <template  v-else-if="template.formatter">{{template.formatter(formData, template,formData[colKey])}}</template>
     <el-input

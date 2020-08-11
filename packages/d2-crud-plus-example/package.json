@@ -21,10 +21,10 @@
     "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
+    "test.ci:e2e": "vue-cli-service test:e2e  --headless",
     "test1:e2e": "vue-cli-service test:e2e --url http://localhost:8080 --mode development",
     "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
-    "test3:e2e": "vue-cli-service test:e2e  --headless",
-    "test4:e2e": "vue-cli-service test:e2e  --headless --spec tests/e2e/specs/public/login.spec.js"
+    "test3:e2e": "vue-cli-service test:e2e  --headless --spec tests/e2e/specs/public/login.spec.js"
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",

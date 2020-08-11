@@ -1,3 +1,4 @@
+import DictUtil from '../utils/util.dicts'
 /**
  * 暴露的方法
  */
@@ -60,10 +61,18 @@ export default {
       return this.getD2Crud().formData
     },
     /**
-     * 获取编辑框的组件参数配置
+     * 获取编辑框的模式[view,edit,add]
      * @returns
      */
-    getEditFormTemplate (key, groupKey = undefined) {
+    getEditFormMode () {
+      return this.getD2Crud().formMode
+    },
+    /**
+     * 获取编辑框的组件参数配置
+     * groupKey可不传
+     * @returns
+     */
+    getEditFormTemplate (key, groupKey) {
       return this.getD2Crud().getFormTemplate(key, groupKey)
     },
     /**
@@ -72,6 +81,22 @@ export default {
      */
     getEditFormTemplateGroup (groupKey, key) {
       return this.getD2Crud().getFormTemplateGroup(groupKey, key)
+    },
+
+    /**
+     * 获取字典数据,可以传入列的key获取列中配置的dict
+     * @param dict  [Object:dict配置 | string:列的key]
+     * @param options Object {returnType: 'data'} 返回类型 可选值[data,dataMap]
+     * @returns {Promise<T>}  异步返回promise
+     */
+    getDictData (dict, options) {
+      if (typeof dict === 'string') {
+        // 获取某个字段中配置的dict的data
+        dict = this.crud.columnsMap[dict].dict
+      }
+      // 根据dict 获取字典数据
+      DictUtil.mergeDefault(dict)
+      return DictUtil.get(dict, options)
     },
 
     /**

@@ -4,7 +4,7 @@ import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
 import TableStore from '../utils/util.store'
-import expose from '@/lib/mixins/expose'
+import expose from './expose'
 
 export default {
   components: {},

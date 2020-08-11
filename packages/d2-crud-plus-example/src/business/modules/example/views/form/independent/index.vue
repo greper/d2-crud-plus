@@ -29,7 +29,9 @@
       </el-row>
       <el-row>
         <el-col :span="5">
-
+          <el-form-item label="外部获取字典">
+            {{dictData}}
+          </el-form-item>
         </el-col>
         <el-col :span="5">
 
@@ -59,13 +61,11 @@ export default {
           checkStrictly: true, // 可以不需要选到最后一级
           emitPath: false
         }
-      }
+      },
+      dictData: []
     }
   },
-  mounted () {
-  },
   methods: {
-
   }
 }
 </script>

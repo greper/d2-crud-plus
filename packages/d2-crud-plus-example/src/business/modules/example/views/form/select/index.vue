@@ -16,6 +16,9 @@
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+        <el-button size="small" type="success" @click="getXxxDict">根据dict获取数据字典</el-button>
+        <el-button size="small" type="success" @click="getStatusDict">获取状态列的数据字典</el-button>
+        <el-button size="small" type="success" @click="getXxxDictMap">获取字典map</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
@@ -44,6 +47,33 @@ export default {
     console.log('dict cache：', d2CrudPlus.util.dict.getCache())
   },
   methods: {
+    /**
+     * 根据字典配置获取字典数据
+     */
+    getXxxDict () {
+      this.getDictData({ url: '/dicts/OpenStatusEnum' }).then(data => {
+        this.$alert(JSON.stringify(data), '根据dict获取数据字典', {
+          confirmButtonText: '确定'
+        }).catch(() => {})
+      })
+    },
+    getXxxDictMap () {
+      this.getDictData({ url: '/dicts/OpenStatusEnum' }, { returnType: 'dataMap' }).then(data => {
+        this.$alert(JSON.stringify(data), '返回dataMap', {
+          confirmButtonText: '确定'
+        }).catch(() => {})
+      })
+    },
+    /**
+     * 根据字段key获取字典数据
+     */
+    getStatusDict () {
+      this.getDictData('status').then(data => {
+        this.$alert(JSON.stringify(data), '根据列key获取数据字典', {
+          confirmButtonText: '确定'
+        })
+      })
+    },
     getCrudOptions () {
       return crudOptions(this)
     },

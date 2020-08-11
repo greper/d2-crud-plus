@@ -5,7 +5,7 @@ import { createCrudTest } from '../../support/creator'
 const menu = '动态添加表单字段'
 describe(menu, () => {
   before(() => {
-    cy.login('admin', 'admin')
+    cy.login()
   })
   createCrudTest({
     cy,

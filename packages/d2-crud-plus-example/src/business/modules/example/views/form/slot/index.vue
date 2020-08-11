@@ -3,9 +3,9 @@
     <template slot="header">自定义组件
       <example-helper title="自定义组件帮助说明" >
           <div>
-            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/slot.html">slot自定义</link-button>
+            <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/slot.html">slot自定义</link-button>
 
-            <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展组件说明</link-button>
+            <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends.html">自定义扩展组件说明</link-button>
           </div>
       </example-helper>
     </template>

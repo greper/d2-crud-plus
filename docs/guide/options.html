@@ -34,8 +34,8 @@
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/d2-crud-plus/guide/" class="sidebar-link">介绍</a></li><li><a href="/d2-crud-plus/guide/quickstart.html" class="sidebar-link">快速上手</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/d2-crud-plus/guide/mixins.html" class="sidebar-link">d2CrudPlus.crud</a></li><li><a href="/d2-crud-plus/guide/options.html" class="active sidebar-link">crud配置项</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/d2-crud-plus/guide/options.html#最简配置" class="sidebar-link">最简配置</a></li><li class="sidebar-sub-header"><a href="/d2-crud-plus/guide/options.html#最全配置" class="sidebar-link">最全配置</a></li></ul></li><li><a href="/d2-crud-plus/guide/structure.html" class="sidebar-link">数据结构</a></li><li><a href="/d2-crud-plus/guide/component.html" class="sidebar-link">组件配置</a></li><li><a href="/d2-crud-plus/guide/column-type.html" class="sidebar-link">字段类型</a></li><li><a href="/d2-crud-plus/guide/types.html" class="sidebar-link">字段类型列表</a></li><li><a href="/d2-crud-plus/guide/slot.html" class="sidebar-link">slot自定义</a></li><li><a href="/d2-crud-plus/guide/extends.html" class="sidebar-link">自定义扩展</a></li><li><a href="/d2-crud-plus/guide/dict.html" class="sidebar-link">数据字典</a></li><li><a href="/d2-crud-plus/guide/event.html" class="sidebar-link">事件监听</a></li><li><a href="/d2-crud-plus/guide/flat-data.html" class="sidebar-link">数据扁平化</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>附加功能</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/d2-crud-plus/guide/permission.html" class="sidebar-link">权限管理</a></li><li><a href="/d2-crud-plus/guide/generate.html" class="sidebar-link">代码生成</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>更多帮助</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/d2-crud-plus/guide/upgrade.html" class="sidebar-link">版本升级</a></li><li><a href="/d2-crud-plus/guide/breakingchange.html" class="sidebar-link">版本变更说明</a></li><li><a href="/d2-crud-plus/guide/questions.html" class="sidebar-link">常见问题</a></li><li><a href="/d2-crud-plus/guide/contact.html" class="sidebar-link">联系作者</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>extends文档</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/d2-crud-plus/guide/extends/area-selector.html" class="sidebar-link">省市区选择组件</a></li><li><a href="/d2-crud-plus/guide/extends/avatar-cropper.html" class="sidebar-link">头像裁剪上传</a></li><li><a href="/d2-crud-plus/guide/extends/file-uploader.html" class="sidebar-link">文件上传组件</a></li><li><a href="/d2-crud-plus/guide/extends/full-editor.html" class="sidebar-link">富文本</a></li><li><a href="/d2-crud-plus/guide/extends/icon-selector.html" class="sidebar-link">icon选择组件</a></li><li><a href="/d2-crud-plus/guide/extends/tree-selector.html" class="sidebar-link">树形选择组件</a></li><li><a href="/d2-crud-plus/guide/extends/uploader.html" class="sidebar-link">文件上传lib</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>组件文档</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ChangeLog</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="crud配置项"><a href="#crud配置项" class="header-anchor">#</a> crud配置项</h1> <h2 id="最简配置"><a href="#最简配置" class="header-anchor">#</a> 最简配置</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">const</span> crudOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
   columns<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token comment">//字段配置</span>
     <span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">'地区'</span><span class="token punctuation">,</span>  
-      key<span class="token punctuation">:</span> <span class="token string">'province'</span><span class="token punctuation">,</span> 
+      title<span class="token punctuation">:</span> <span class="token string">'地区'</span><span class="token punctuation">,</span>
+      key<span class="token punctuation">:</span> <span class="token string">'province'</span><span class="token punctuation">,</span>
       type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span>
       dict<span class="token punctuation">:</span> <span class="token punctuation">{</span>url<span class="token punctuation">:</span><span class="token string">'/dict/getProvinceList'</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
@@ -44,8 +44,8 @@
 </code></pre></div><h2 id="最全配置"><a href="#最全配置" class="header-anchor">#</a> 最全配置</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">const</span> crudOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
   columns<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token comment">//字段配置</span>
     <span class="token punctuation">{</span>
-      title<span class="token punctuation">:</span> <span class="token string">'地区'</span><span class="token punctuation">,</span>  
-      key<span class="token punctuation">:</span> <span class="token string">'province'</span><span class="token punctuation">,</span> 
+      title<span class="token punctuation">:</span> <span class="token string">'地区'</span><span class="token punctuation">,</span>
+      key<span class="token punctuation">:</span> <span class="token string">'province'</span><span class="token punctuation">,</span>
       <span class="token comment">// -----下方的配置都是可选的------</span>
       type<span class="token punctuation">:</span> <span class="token string">'select'</span><span class="token punctuation">,</span> <span class="token comment">//字段类型，根据类型可生成该字段的默认配置，下方那么多配置基本可以不用写（没有定制化需求的话）</span>
       sortable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//是否支持排序</span>
@@ -56,7 +56,7 @@
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token comment">// 是否启用搜索框的slot插槽,需要d2-crud-x才支持</span>
         <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot</span>
-        slot<span class="token punctuation">:</span><span class="token boolean">false</span> 
+        slot<span class="token punctuation">:</span><span class="token boolean">false</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       form<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">//添加和编辑表单配置</span>
         rules<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token comment">// 表单校验规则</span>
@@ -67,7 +67,7 @@
           name<span class="token punctuation">:</span> <span class="token string">'dict-select'</span><span class="token punctuation">,</span> <span class="token comment">//表单组件名称，支持任何v-model组件</span>
           props<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">//表单组件的参数，具体参数请查看对应的组件文档</span>
             <span class="token comment">// 如何查找组件配置，请参考</span>
-            <span class="token comment">// http://greper.gitee.io/d2-crud-plus/guide/component.html</span>
+            <span class="token comment">// http://greper.gitee.io/d2-crud-plus-docs/guide/component.html</span>
             separator<span class="token punctuation">:</span><span class="token string">&quot;,&quot;</span><span class="token punctuation">,</span><span class="token comment">//dict-select的组件参数，[不同组件参数不同]</span>
             elProps<span class="token punctuation">:</span><span class="token punctuation">{</span> <span class="token comment">//dict-select内部封装了el-select</span>
               filterable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//可过滤选择项</span>
@@ -121,8 +121,8 @@
          <span class="token comment">//修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       view<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token comment">// 查看按钮组件的单独配置</span>
-        component<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span> 
-      <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+        component<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token function">valueBuilder</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span>key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入</span>
         <span class="token comment">// 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象</span>
@@ -130,7 +130,7 @@
         <span class="token comment">// 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/phone</span>
         <span class="token comment">// row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token function">valueResolve</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span>key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      <span class="token function">valueResolve</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span>key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 组件中传回的值也需要分解成row中多个字段的值，用于提交给后台。</span>
         <span class="token comment">// if (row.mobileValue != null) {</span>
         <span class="token comment">//  row.phone = row.mobileValue.phoneNumber</span>
@@ -141,13 +141,13 @@
       dict<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">// 数据字典配置， 供select等组件通过value匹配label</span>
         data<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token comment">// 本地数据字典</span>
           <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'sz'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'深圳'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'gz'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'广州'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
-          <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'wh'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'武汉'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+          <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'gz'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'广州'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'wh'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'武汉'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
           <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'sh'</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">'上海'</span> <span class="token punctuation">}</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token comment">// 若data为空，则通过http请求获取远程数据字典</span>
         <span class="token comment">// 也可以传入一个异步请求来自定义请求方式</span>
-        url<span class="token punctuation">:</span><span class="token string">'/dict/get'</span><span class="token punctuation">,</span> 
+        url<span class="token punctuation">:</span><span class="token string">'/dict/get'</span><span class="token punctuation">,</span>
         <span class="token comment">// url(dict,{form,component}){return '/dict/newUrl'} // 如果url是一个方法，则表示是动态构建url</span>
         cache<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//是否启用cache，默认开启</span>
         value<span class="token punctuation">:</span><span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token comment">// value的属性名</span>
@@ -159,12 +159,12 @@
       <span class="token comment">//行内单元格显示组件</span>
       component<span class="token punctuation">:</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span><span class="token string">'dict-select'</span><span class="token punctuation">,</span> props<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token comment">//是否隐藏该列在列表中显示，不影响form表单中该字段的显示</span>
-      disabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> 
+      disabled<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
       show<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//是否显示单元格内容</span>
       <span class="token comment">// 是否启用该cell的slot插槽,需要d2-crud-x才支持</span>
       <span class="token comment">// 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot</span>
-      rowSlot<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> 
-      
+      rowSlot<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
       <span class="token function">formatter</span> <span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span> column<span class="token punctuation">,</span> value<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// cell 格式化，与d2-crud一致</span>
       <span class="token punctuation">}</span>
@@ -197,7 +197,7 @@
     debounce<span class="token punctuation">:</span><span class="token punctuation">{</span> <span class="token comment">//自动查询防抖,debounce:false关闭自动查询</span>
       wait<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token comment">//延迟500毫秒</span>
       <span class="token operator">...</span> <span class="token comment">//options : https://www.lodashjs.com/docs/lodash.debounce</span>
-    <span class="token punctuation">}</span>   
+    <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   options<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">// d2-crud及el-table的配置参数</span>
     stripe<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -212,7 +212,7 @@
     storage<span class="token punctuation">:</span><span class="token boolean">true</span> <span class="token comment">//本地保存用户每页条数修改，刷新不会丢失该修改，false=关闭</span>
     <span class="token comment">// storage:'keysuffix'// 传入字符串，将会给保存的key增加一个后缀，用于区分同一个页面下多个crud</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  rowHandle<span class="token punctuation">:</span> <span class="token punctuation">{</span> 
+  rowHandle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token comment">//行操作栏，与d2-crud一致，默认配置有修改与删除</span>
     view<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token comment">//查看按钮</span>
         thin<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">//瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 </span>
@@ -225,16 +225,16 @@
         <span class="token comment">//show(index,row){return true}// 还可以配置为方法 </span>
         disabled<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token comment">// 是否禁用</span>
         <span class="token comment">//disabled(index,row){return true} //还可以配置为方法 </span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
     edit<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//编辑按钮,配置同上</span>
     remove<span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">//删除按钮,配置同上</span>
     custom<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token comment">//自定义按钮</span>
       <span class="token punctuation">{</span>
          <span class="token comment">//配置同上</span>
          <span class="token comment">//点击事件,需要在&lt;d2-crud-x @custom-emit=&quot;yourHandle&quot;/&gt;</span>
-         emit<span class="token punctuation">:</span> <span class="token string">'custom-emit'</span> 
+         emit<span class="token punctuation">:</span> <span class="token string">'custom-emit'</span>
       <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span> 
+    <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   formGroup<span class="token punctuation">:</span> <span class="token punctuation">{</span>  <span class="token comment">//表单分组</span>
     type<span class="token punctuation">:</span> <span class="token string">'collapse'</span><span class="token punctuation">,</span> <span class="token comment">// tab暂未实现</span>
@@ -255,7 +255,7 @@
     <span class="token comment">//是否需要拍平数据，当返回数据中有嵌套对象时使用</span>
     <span class="token comment">//dataRow = {user:{gender:0,name:'greper'}}</span>
     <span class="token comment">//columns:[{key:'user#gender'},{key:'user#name'}] //key的配置需要用#号连接</span>
-    flatData<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token punctuation">,</span> 
+    flatData<span class="token punctuation">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
     page<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">// page接口返回的数据结构配置，</span>
       request<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token comment">// 请求参数</span>
         current<span class="token punctuation">:</span> <span class="token string">'current'</span><span class="token punctuation">,</span> <span class="token comment">//当前页码</span>

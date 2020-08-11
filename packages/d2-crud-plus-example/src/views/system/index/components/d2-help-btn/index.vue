@@ -19,11 +19,11 @@
             <d2-icon name="book" class="d2-mr-5"/>
             示例
           </el-button>
-          <el-button @click="$open('https://greper.github.io/d2-crud-plus/')">
+          <el-button @click="$open('https://greper.github.io/d2-crud-plus-docs/')">
             <d2-icon name="book" class="d2-mr-5"/>
             文档(Git)
           </el-button>
-          <el-button @click="$open('http://greper.gitee.io/d2-crud-plus/')">
+          <el-button @click="$open('http://greper.gitee.io/d2-crud-plus-docs/')">
             <d2-icon name="book" class="d2-mr-5"/>
             文档(码云)
           </el-button>

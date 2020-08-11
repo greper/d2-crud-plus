@@ -12,6 +12,7 @@ describe(menu, () => {
     parentMenu: 'CRUD增强功能',
     subMenu: menu,
     idColIndex: 2,
+    listWait: 1000,
     doAdd () {
     },
     doEdit () {
@@ -21,7 +22,7 @@ describe(menu, () => {
       cy.get('.has-gutter > tr > .el-table_1_column_1 > .cell > .el-checkbox > .el-checkbox__input > .el-checkbox__inner').click()
       cy.get('.prefix > .el-button > .el-icon-delete').click()
       cy.get('.el-message-box__btns').contains('确定').click()
-      cy.checkId(context, '1', false)
+      cy.checkId(context, '21')
     }
   })
 })

@@ -10,6 +10,7 @@ describe('富文本', () => {
     cy,
     parentMenu: '表单组件示例',
     subMenu: '富文本',
+    idColIndex: 2,
     doAdd () {
     },
     doEdit () {

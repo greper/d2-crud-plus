@@ -7,7 +7,7 @@
           <h4>示例数据</h4>
           <d2-highlight :code="helper.data"/>
 
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/types.html#国际电话">更多帮助说明</link-button>
+        <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/types.html#国际电话">更多帮助说明</link-button>
       </example-helper>
     </template>
     <d2-crud-x

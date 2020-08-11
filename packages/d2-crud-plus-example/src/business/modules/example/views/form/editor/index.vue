@@ -3,7 +3,7 @@
     <template slot="header">富文本
       <example-helper title="帮助" >
         <div>
-          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/full-editor.html">富文本扩展</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends/full-editor.html">富文本扩展</link-button>
         </div>
       </example-helper>
 

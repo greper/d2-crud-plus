@@ -1,6 +1,14 @@
 {
+  "baseUrl": "http://localhost:8080",
   "pluginsFile": "tests/e2e/plugins/index.js",
   "viewportWidth": 1920,
   "viewportHeight": 1080,
-  "projectId": "57bhiy"
+  "projectId": "57bhiy",
+  "reporter": "junit",
+  "screenshotsFolder": "/test/e2e/results/screenshots",
+  "videosFolder": "/test/e2e/results/videos",
+  "reporterOptions": {
+    "mochaFile": "/test/e2e/results/reports/report-[hash].xml",
+    "toConsole": true
+  }
 }

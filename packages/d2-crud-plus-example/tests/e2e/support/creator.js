@@ -1,86 +1,63 @@
+
 export function createCrudTest (context) {
   const cy = context.cy
-  it('打开', () => {
+  it('CRUD', () => {
     cy.openMenu(context)
-  })
-
-  it('翻页', () => {
+    // 翻页
+    cy.log('翻页')
     cy.get('.el-pagination ul.el-pager li').contains('2').click()
     cy.checkId(context, '1', false)
     cy.get('.el-pagination ul.el-pager li').contains('1').click()
     cy.checkId(context, '1')
-  })
 
-  it('添加', () => {
+    // 添加
+    cy.log('添加')
     cy.openAdd(context)
-  })
-  if (context.doAdd) {
-    it('测试添加', () => {
+
+    // 测试添加
+    if (context.doAdd) {
       context.doAdd(context)
-    })
-  }
-
-  it('保存', () => {
+    }
     cy.closeDialog(context)
-  })
-  if (context.checkAdd) {
-    it('检查添加', () => {
+    if (context.checkAdd) {
       context.checkAdd(context)
-    })
-  }
-  if (!context.editDisabled) {
-    it('打开编辑', () => {
+    }
+
+    if (!context.editDisabled) {
+      cy.log('编辑')
       cy.openEdit(context)
-    })
-    if (context.doEdit) {
-      it('测试编辑', () => {
+      if (context.doEdit) {
         context.doEdit(context)
-      })
-    }
+      }
 
-    it('保存', () => {
       cy.closeDialog(context)
-    })
-    if (context.checkEdit) {
-      it('检查编辑', () => {
+      if (context.checkEdit) {
         context.checkEdit(context)
-      })
+      }
     }
-  }
 
-  if (!context.viewDisabled) {
-    it('打开查看', () => {
+    if (!context.viewDisabled) {
+      cy.log('查看')
       cy.openView(context)
-    })
-    if (context.doView) {
-      it('测试查看', () => {
+      if (context.doView) {
         context.doView(context)
-      })
-    }
-    it('关闭对话框', () => {
+      }
       cy.closeDialog(context)
-    })
-  }
-
-  if (!context.deleteDisabled) {
-    it('删除', () => {
-      cy.doDelete(context)
-    })
-
-    if (context.checkDelete) {
-      it('检查删除', () => {
-        context.checkDelete(context)
-      })
     }
-  }
 
-  if (context.doAfter) {
-    it('其他', () => {
+    if (!context.deleteDisabled) {
+      cy.log('删除')
+      cy.doDelete(context)
+
+      if (context.checkDelete) {
+        context.checkDelete(context)
+      }
+    }
+    cy.log('其他特性')
+    if (context.doAfter) {
       context.doAfter(context)
-    })
-  }
-
-  it('检查异常', () => {
+    }
+    cy.log('异常检查')
     cy.checkError(context)
   })
 }

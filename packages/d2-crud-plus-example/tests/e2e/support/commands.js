@@ -11,7 +11,13 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
-Cypress.Commands.add('login', (name, password) => {
+Cypress.Commands.add('login', () => {
+  cy.setCookie('d2admin-1.15.4-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
+  cy.visit('/#/index')
+  cy.contains('首页')
+  cy.contains('d2-crud-plus')
+})
+Cypress.Commands.add('login2', (name, password) => {
   cy.visit('/#/login')
   cy.contains('button.button-login', '登录')
 
@@ -43,6 +49,7 @@ Cypress.Commands.add('openCrud', (url) => {
 Cypress.Commands.add('openMenu', (context) => {
   cy.get('.d2-layout-header-aside-menu-side li.el-submenu').contains(context.parentMenu).click()
   cy.get('.d2-layout-header-aside-menu-side li.el-menu-item').contains(context.subMenu).click({ force: true })
+  cy.wait(1000)
   cy.checkId(context, '1')
 })
 
@@ -139,7 +146,16 @@ Cypress.Commands.add('hideFixedBody', (context, hide = true) => {
 })
 
 Cypress.Commands.add('checkError', (context) => {
-  return cy.get('.d2-header-right .el-badge').should('not.exist')
+  return cy.get('.d2-header-right .el-badge').then(($el) => {
+    if ($el == null) {
+      cy.log('正确，没有异常')
+    } else {
+      // 点开日志页面
+      $el.click()
+    }
+    // eslint-disable-next-line no-unused-expressions
+    expect($el).not.to.exist
+  })
 })
 
 Cypress.Commands.add('getSelectOptions', () => {

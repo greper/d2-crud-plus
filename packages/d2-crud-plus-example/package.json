@@ -20,7 +20,9 @@
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "test1:e2e": "vue-cli-service test:e2e --url http://localhost:8080 --mode development",
+    "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080"
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",
@@ -75,7 +77,7 @@
     "@d2-projects/vue-filename-injector": "^1.1.0",
     "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.4.6",
+    "@vue/cli-plugin-e2e-cypress": "^4.4.4",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-unit-jest": "^4.1.0",

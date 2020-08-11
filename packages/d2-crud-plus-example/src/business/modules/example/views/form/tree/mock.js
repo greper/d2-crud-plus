@@ -6,7 +6,6 @@ const options = {
 }
 const list = [
   {
-    id: ++options.idGenerator,
     tree1: [10000],
     tree2: [100014, 100015],
     tree3: 10010

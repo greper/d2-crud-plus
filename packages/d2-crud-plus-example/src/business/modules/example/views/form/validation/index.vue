@@ -3,8 +3,8 @@
     <template slot="header">选择组件
       <example-helper title="select" >
         <div>
-          <link-button type="text" target="_blank" href="http://greper.gitee.io/d2-crud-plus/guide/types.html#选择框">选择组件类型</link-button>
-          <link-button type="text" href="http://greper.gitee.io/d2-crud-plus/guide/components/dict-select.html">DictSelect组件</link-button>
+          <link-button type="text" target="_blank" href="http://greper.gitee.io/d2-crud-plus-docs/guide/types.html#选择框">选择组件类型</link-button>
+          <link-button type="text" href="http://greper.gitee.io/d2-crud-plus-docs/guide/components/dict-select.html">DictSelect组件</link-button>
         </div>
       </example-helper>
     </template>

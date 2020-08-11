@@ -13,10 +13,10 @@
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 > 
 >GitHub Pages   
->https://greper.github.io/d2-crud-plus/
+>https://greper.github.io/d2-crud-plus-docs/
 >
 >码云（国内访问推荐 ）  
->http://greper.gitee.io/d2-crud-plus/   
+>http://greper.gitee.io/d2-crud-plus-docs/   
 >
 >示例演示   
 >http://qiniu.veryreader.com/D2CrudPlusExample/index.html
@@ -101,19 +101,19 @@ export const crudOptions = (vm)=>{ // vm即this
 ![](https://raw.githubusercontent.com/greper/d2-crud-plus/master/packages/d2-crud-plus/doc/image/edit.png)
 
 ### 3. 现在就去开始吧
-* [帮助指南](http://greper.gitee.io/d2-crud-plus/guide/)
+* [帮助指南](http://greper.gitee.io/d2-crud-plus-docs/guide/)
 
-* [快速开始](http://greper.gitee.io/d2-crud-plus/guide/quickstart.html)
+* [快速开始](http://greper.gitee.io/d2-crud-plus-docs/guide/quickstart.html)
 
 
 ## 帮助文档 
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 > 
 >GitHub Pages   
->https://greper.github.io/d2-crud-plus/
+>https://greper.github.io/d2-crud-plus-docs/
 >
 >码云（国内访问推荐 ）  
->http://greper.gitee.io/d2-crud-plus/   
+>http://greper.gitee.io/d2-crud-plus-docs/   
 >
 >示例演示   
 >http://qiniu.veryreader.com/D2CrudPlusExample/index.html
@@ -122,7 +122,7 @@ export const crudOptions = (vm)=>{ // vm即this
   
 ## 联系作者
 
-[欢迎bug反馈，需求建议，技术交流等（请备注d2-crud-plus）](http://greper.gitee.io/d2-crud-plus/guide/contact.html)
+[欢迎bug反馈，需求建议，技术交流等（请备注d2-crud-plus）](http://greper.gitee.io/d2-crud-plus-docs/guide/contact.html)
 
 ![](http://d2p.file.veryreader.com/greper/contact.png)
 

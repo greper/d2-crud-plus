@@ -3,9 +3,9 @@
     <template slot="header">阿里云上传
       <example-helper title="帮助" >
         <div>
-          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/file-uploader.html">文件上传</link-button>
-          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">裁剪上传</link-button>
-          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html">上传lib</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends/file-uploader.html">文件上传</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends/avatar-cropper.html">裁剪上传</link-button>
+          <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends/uploader.html">上传lib</link-button>
         </div>
       </example-helper>
     </template>

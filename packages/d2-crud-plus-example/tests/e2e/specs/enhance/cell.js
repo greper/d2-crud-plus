@@ -12,6 +12,7 @@ describe(menu, () => {
     parentMenu: 'CRUD增强功能',
     subMenu: menu,
     idColIndex: 2,
+    listWait: 1000,
     doAdd () {
     },
     doEdit () {

@@ -192,10 +192,10 @@
                 @form-component-custom-event="handleFormComponentCustomEvent"
               >
                 <template :slot="key+'FormSlot'">
-                    <slot :name="key+'FormSlot'" :form="formData"/>
+                    <slot :name="key+'FormSlot'" :form="formData" :mode="formMode"/>
                 </template>
                 <template :slot="key+'HelperSlot'">
-                    <slot :name="key+'HelperSlot'" :form="formData"/>
+                    <slot :name="key+'HelperSlot'" :form="formData" :mode="formMode"/>
                 </template>
               </d2-form-item>
             </el-col>

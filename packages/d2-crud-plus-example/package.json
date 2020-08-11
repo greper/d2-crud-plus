@@ -22,7 +22,9 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "test1:e2e": "vue-cli-service test:e2e --url http://localhost:8080 --mode development",
-    "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080"
+    "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
+    "test3:e2e": "vue-cli-service test:e2e  --headless",
+    "test4:e2e": "vue-cli-service test:e2e  --headless --spec tests/e2e/specs/public/login.spec.js"
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",
@@ -94,6 +96,10 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
+    "mocha": "^8.1.1",
+    "mochawesome": "^6.1.1",
+    "mochawesome-merge": "^4.1.0",
+    "mochawesome-report-generator": "^5.1.0",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "svg-sprite-loader": "^4.1.6",

@@ -139,7 +139,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '日期',
+      title: '仅日期',
       key: 'date',
       sortable: true,
       type: 'date'
@@ -162,7 +162,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '时间',
+      title: '仅时间',
       key: 'time',
       sortable: true,
       type: 'time'

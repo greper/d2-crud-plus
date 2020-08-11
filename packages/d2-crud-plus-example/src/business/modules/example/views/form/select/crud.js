@@ -68,6 +68,7 @@ export const crudOptions = (vm) => {
         key: 'status_custom_1',
         sortable: true,
         search: {},
+        width: 120,
         type: 'select',
         dict: {
           url: '/dicts/OpenStatusEnum', // 配置url，可以缓存字典数据
@@ -106,6 +107,7 @@ export const crudOptions = (vm) => {
       {
         title: '禁用字典缓存',
         key: 'disableCache',
+        width: 120,
         sortable: true,
         search: {},
         type: 'select',
@@ -138,11 +140,12 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             props: {
-              onReady ({ component, data, setDictData }) {
-                console.log('字典请求ready', data, component)
-                data[0].disabled = true // 禁用某个选项， 还可以自己修改选项
-
-                setDictData(data)
+              dict: { // 此处配置不影响列展示的效率
+                clone: true, // 获取成功后clone一份，不影响全局缓存
+                onReady (data, dict, context) {
+                  console.log('字典请求ready', data, context)
+                  data[0].disabled = true // 禁用某个选项， 还可以自己修改选项，如果没有禁用缓存，则可能会影响全局
+                }
               }
             }
           },
@@ -150,7 +153,7 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '单选，本地',
+        title: '单选本地',
         key: 'select_local',
         sortable: true,
         search: {
@@ -168,11 +171,11 @@ export const crudOptions = (vm) => {
         width: 180,
         search: {
           disabled: false,
-          title: '多选1'
+          title: '多选'
         },
         type: 'select',
         form: {
-          title: '多选2',
+          title: '多选本地',
           component: {
             props: {
               filterable: true,
@@ -189,6 +192,18 @@ export const crudOptions = (vm) => {
       {
         title: '级联',
         key: 'cascader',
+        sortable: true,
+        search: {
+          disabled: false
+        },
+        type: 'cascader',
+        dict: {
+          url: '/select/cascadeData'
+        }
+      },
+      {
+        title: '级联单选',
+        key: 'cascader2',
         sortable: true,
         search: {
           disabled: false
@@ -232,6 +247,7 @@ export const crudOptions = (vm) => {
         dict: {
           url: '/dicts/OpenStatusEnum'
         },
+        width: 100,
         form: {
           rules: [{ required: true, message: '请选择一个选项' }],
           component: { span: 24 },

@@ -111,24 +111,26 @@ Cypress.Commands.add('checkId', (context, value, equal = true) => {
 /**
  * 检查列的值是否正确
  */
-Cypress.Commands.add('checkColValue', ({ title, col = 1, row = 1, value, equal = true, wait }) => {
-  // cy.get('table thead tr').contains(title).parent().then(($el) => {
-  //   const clazz = $el[0].className.substring(0, $el[0].className.indexOf(' '))
-  //   const colIndex = clazz.replace('el-table_1_column_', '')
-  //   cy.wrap(colIndex).as('colIndex')
-  // }).then(() => {
-  //   cy.get('tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + this.colIndex + ' > .cell').should((target) => {
-  //     if (equal) {
-  //       expect(target.text()).to.equal(value)
-  //     } else {
-  //       expect(target.text()).to.not.equal(value)
-  //     }
-  //   })
-  // })
-
+Cypress.Commands.add('checkColValue', ({ title, col = 1, row = 1, value, contains, equal = true, startWith = false, wait }) => {
   cy.get('.el-table > .el-table__body-wrapper >  .el-table__body > tbody > :nth-child(' + row + ') > .el-table_' + row + '_column_' + col + ' > .cell').should((target) => {
-    if (equal) {
-      expect(target.text().trim()).to.equal(value)
+    const text = target.text().trim()
+    if (startWith) {
+      if (contains) {
+        for (const item of contains) {
+          if (text.indexOf(item) === 0) {
+            // eslint-disable-next-line no-unused-expressions
+            expect(true).to.be.true
+            return
+          }
+        }
+        // eslint-disable-next-line no-unused-expressions
+        expect(text.indexOf(false) === 0).to.be.true
+      } else if (value) {
+        // eslint-disable-next-line no-unused-expressions
+        expect(text.indexOf(value) === 0).to.be.true
+      }
+    } else if (equal) {
+      expect(text).to.equal(value)
     } else {
       expect(target.text().trim()).to.not.equal(value)
     }
@@ -146,7 +148,8 @@ Cypress.Commands.add('hideFixedBody', (context, hide = true) => {
 })
 
 Cypress.Commands.add('checkError', (context) => {
-  return cy.get('.d2-header-right .el-badge').then(($el) => {
+  return cy.get('.d2-header-right').then(($el) => {
+    $el = $el.find('.el-badge')
     if ($el == null) {
       cy.log('正确，没有异常')
     } else {

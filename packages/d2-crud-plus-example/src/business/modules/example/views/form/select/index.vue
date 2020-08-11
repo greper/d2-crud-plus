@@ -15,10 +15,12 @@
     >
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-        <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-        <el-button size="small" type="success" @click="getXxxDict">根据dict获取数据字典</el-button>
-        <el-button size="small" type="success" @click="getStatusDict">获取状态列的数据字典</el-button>
-        <el-button size="small" type="success" @click="getXxxDictMap">获取字典map</el-button>
+        <el-button-group>
+          <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+          <el-button size="small" type="primary" @click="getXxxDict">根据dict获取字典data</el-button>
+          <el-button size="small" type="primary" @click="getStatusDict">根据列key获取字典data</el-button>
+          <el-button size="small" type="primary" @click="getXxxDictMap">获取字典map</el-button>
+        </el-button-group>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"

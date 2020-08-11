@@ -15,7 +15,7 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '手机号',
+        title: '手机号1',
         key: 'mobileValue',
         sortable: true,
         align: 'left',
@@ -34,7 +34,7 @@ export const crudOptions = (vm) => {
           helper: '手机号输入完成后，可以远程获取客户姓名',
           valueChange (key, value, form) {
             console.log('valueChange', value)
-            if (form.phone == null || form.phone !== '') {
+            if ((form.phone == null || form.phone !== '') && value) {
               GetCustomName(value.callingCode, value.phoneNumber).then(ret => {
                 if (ret.data != null) {
                   form.guestName = ret.data

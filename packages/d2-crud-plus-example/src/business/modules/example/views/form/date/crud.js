@@ -83,6 +83,11 @@ export const crudOptions = {
   options: {
     height: '100%' // 表格高度100%, 使用toolbar必须设置
   },
+  searchOptions: {
+    form: {
+      daterange: [] // 表单bug
+    }
+  },
   columns: [
     {
       title: 'ID',
@@ -172,6 +177,7 @@ export const crudOptions = {
       key: 'daterange',
       sortable: true,
       type: 'daterange',
+      search: { disabled: false, width: 300 },
       form: {
         component: {
           props: {
@@ -186,7 +192,7 @@ export const crudOptions = {
         }
       },
       valueResolve (row, key) {
-        if (row.daterange != null && !StringUtils.hasEmpty(row.daterange)) {
+        if (row.daterange != null && row.daterange.length > 1) {
           row.daterangeStart = row.daterange[0].getTime()
           row.daterangeEnd = row.daterange[1].getTime()
         } else {

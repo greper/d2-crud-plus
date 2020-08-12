@@ -17,7 +17,7 @@
         v-model="form[item.key]"
         :placeholder="item.label"
         v-bind="getComponentProps(item)"
-        :style="{width:(item.width?item.width:150+'px')}"
+        :style="{width:_width(item)}"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
       >
       </el-input>
@@ -32,7 +32,7 @@
         :events="getComponentAttr(item,'events')"
         :on="getComponentAttr(item,'on')"
         :children="getComponentAttr(item,'children')"
-        :style="{width:(item.width?item.width:150+'px')}"
+        :style="{width:_width(item)}"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
         @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
         @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
@@ -42,7 +42,7 @@
         v-else-if="item.component && item.component.render"
         :render-function="item.component.render"
         :scope="{key: item.key, value: form[item.key], row: form}"
-        :style="{width:(item.width?item.width:150+'px')}"
+        :style="{width:_width(item)}"
       >
       </render-component>
 
@@ -109,6 +109,15 @@ export default {
     }
   },
   methods: {
+    _width (item) {
+      if (!item.width) {
+        return '150px'
+      }
+      if (typeof item.width === 'number') {
+        return item.width + 'px'
+      }
+      return item.width
+    },
     setColumns (columns) {
       this.currentColumns = lodash.cloneDeep(columns)
       let form = {}

@@ -2,6 +2,21 @@ export const crudOptions = {
   options: {
     height: '100%'
   },
+  rowHandle: {
+    width: 150,
+    view: {
+      thin: true,
+      text: null
+    },
+    edit: {
+      thin: true,
+      text: null
+    },
+    remove: {
+      thin: true,
+      text: null
+    }
+  },
   columns: [
     {
       title: 'ID',
@@ -92,6 +107,7 @@ export const crudOptions = {
       title: '树形选择2',
       key: 'pcaTree2',
       type: 'area-tree-selector',
+      width: 200,
       form: {
         component: {
           span: 24,

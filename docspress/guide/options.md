@@ -103,14 +103,21 @@ export const crudOptions = {
         // 例如：国际手机号(mobileValue为此column的key) 
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/phone
         // row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
+        // valueBuilder将会在pageRequest成功返回数据后执行
       },
       valueResolve (row,key) { 
         // 组件中传回的值也需要分解成row中多个字段的值，用于提交给后台。
+        // 例如：
         // if (row.mobileValue != null) {
         //  row.phone = row.mobileValue.phoneNumber
         //  row.code = row.mobileValue.callingCode
         //  row.country = row.mobileValue.countryCode
         // } 
+        // valueResolve 将会在
+        //   addRequest（解析添加表单的值）
+        //   updateRequest（解析编辑表单的值）
+        //   pageRequest（解析查询参数）
+        // 之前执行
       },
       dict: { // 数据字典配置， 供select等组件通过value匹配label
         data: [ // 本地数据字典

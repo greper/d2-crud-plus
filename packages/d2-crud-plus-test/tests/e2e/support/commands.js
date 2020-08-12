@@ -122,6 +122,10 @@ Cypress.Commands.add('formItem', (label, parentSelect = '.el-dialog__body') => {
     .parent()
 })
 
+Cypress.Commands.add('searchItem', (label, parentSelect = '.d2p-search-form') => {
+  return cy.formItem(label, parentSelect)
+})
+
 Cypress.Commands.add('checkId', (context, value, equal = true) => {
   // let idColTitle = context.idColTitle
   // if (idColTitle == null) {

@@ -69,6 +69,12 @@ describe('日期组件', () => {
     doEdit () {
       cy.formItem('清空时间戳').find('.el-button').click()
       cy.formItem('时间戳').find('input').should('not.have.value')
+    },
+    doSearch () {
+      const date = dayjs().format('YYYY-MM-DD')
+      cy.searchItem('日期范围').find('.el-date-editor').first().click()
+      cy.get('.el-picker-panel .el-picker-panel__sidebar:visible').contains('今天一晚').click()
+      cy.searchItem('日期范围').find('.el-date-editor input').first().should('have.value', date)
     }
   })
 })

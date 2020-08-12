@@ -53,10 +53,17 @@ export function createCrudTest (context) {
         context.checkDelete(context)
       }
     }
-    cy.log('其他特性')
+
+    if (context.doSearch) {
+      cy.log('查询')
+      context.doSearch(context)
+    }
+
     if (context.doAfter) {
+      cy.log('其他特性')
       context.doAfter(context)
     }
+
     cy.log('异常检查')
     cy.checkError(context)
   })

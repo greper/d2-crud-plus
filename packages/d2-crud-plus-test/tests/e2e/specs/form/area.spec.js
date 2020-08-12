@@ -13,6 +13,9 @@ describe('省市区', () => {
     doAdd () {
     },
     doEdit () {
+    },
+    doSearch () {
+      cy.searchItem('后台返回三个字段').find('.el-cascader input').click()
     }
   })
 })

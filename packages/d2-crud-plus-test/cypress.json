@@ -7,6 +7,7 @@
     "reportDir": "tests/e2e/results/reports",
     "overwrite": true,
     "html": true,
-    "json": true
+    "json": true,
+    "toConsole": true
   }
 }

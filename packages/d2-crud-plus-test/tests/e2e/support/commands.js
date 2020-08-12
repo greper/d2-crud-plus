@@ -229,9 +229,9 @@ Cypress.Commands.add('getSelectOptions', () => {
 Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
   return cy
     .get(
-      '.el-popper.el-cascader__dropdown .el-cascader-menu ul.el-cascader-menu__list:visible:eq(' +
+      '.el-popper.el-cascader__dropdown .el-cascader-panel .el-cascader-menu:visible:eq(' +
         (blockIndex - 1) +
-        ')'
+        ') ul li'
     )
     .children()
 })

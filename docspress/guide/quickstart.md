@@ -40,7 +40,7 @@ yarn install --registry  https://registry.npm.taobao.org
 
 ### 权限管理示例运行
 如果想要运行权限管理示例，执行如下命令
-```js
+```shell script
 npm run dev:pm
 ```
 注意：权限管理需要先运行后台，请查看[权限管理帮助文档](./permission.md)获取更多信息
@@ -179,8 +179,7 @@ Vue.use(D2pFileUploader)
 Vue.use(D2pDemoExtend)
 Vue.use(D2pUploader, {
     ... //文件上传有额外配置,请看下方链接
-  }
-}
+})
 ```
 新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js)
 获取更多信息。
@@ -228,8 +227,8 @@ Vue.use(D2pUploader, {
 当然，如果你不想动这块代码，你也可以在安装d2-crud-plus的时候增加如下配置即可正常使用d2-crud-plus   
 ```js
 Vue.use(d2CrudPlus, {
-    ...
-  commonOption(){ //d2-crud option 全局设置
+    ...,
+  commonOption() { //d2-crud option 全局设置
     return {
       format: {
         response (ret) {

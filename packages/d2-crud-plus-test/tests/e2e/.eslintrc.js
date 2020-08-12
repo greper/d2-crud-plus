@@ -4,6 +4,10 @@ module.exports = {
     mocha: true,
     "cypress/globals": true
   },
+  'extends': [
+    'plugin:vue/essential',
+    '@vue/standard'
+  ],
   rules: {
     strict: "off"
   }

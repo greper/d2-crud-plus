@@ -19,12 +19,7 @@
     "build:analyze": "vue-cli-service build --mode analyze",
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test.ci:e2e": "vue-cli-service test:e2e  --headless",
-    "test.dev:e2e": "vue-cli-service test:e2e --url http://localhost:8080 --mode development",
-    "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
-    "test3:e2e": "vue-cli-service test:e2e  --headless --spec tests/e2e/specs/public/login.spec.js"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",
@@ -79,7 +74,6 @@
     "@d2-projects/vue-filename-injector": "^1.1.0",
     "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.4.4",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-unit-jest": "^4.1.0",
@@ -96,10 +90,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.2.2",
-    "mocha": "^8.1.1",
-    "mochawesome": "^6.1.1",
-    "mochawesome-merge": "^4.1.0",
-    "mochawesome-report-generator": "^5.1.0",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
     "svg-sprite-loader": "^4.1.6",

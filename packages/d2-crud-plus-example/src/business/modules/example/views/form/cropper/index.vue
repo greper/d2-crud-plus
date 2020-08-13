@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     pageRequest (query) {
       return GetList(query)
@@ -57,6 +57,7 @@ export default {
       return AddObj(row)
     },
     updateRequest (row) {
+      console.log('row', row)
       return UpdateObj(row)
     },
     delRequest (row) {

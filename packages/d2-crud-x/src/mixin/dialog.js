@@ -113,7 +113,7 @@ export default {
       delete this.formTemplateStorage.__group__
       this.formTemplateGroupStorage = templage.__group__ ? _clonedeep(templage.__group__) : undefined
       const tempGroups = {
-        'default': { columns: this.formTemplateStorage }
+        default: { columns: this.formTemplateStorage }
       }
       if (this.formTemplateGroupStorage) {
         _forEach(this.formTemplateGroupStorage.groups, (value, key) => {
@@ -123,13 +123,15 @@ export default {
       return this.fetchDetail(index, row, this.formMode).then(newRow => {
         newRow = newRow || {}
         this.formDataStorage = newRow
-        let formGroupsActive = []
+        const formData = {}
+        const formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {
           if (!group.collapsed) {
             formGroupsActive.push(groupKey)
           }
           _forEach(group.columns, (template, key) => {
-            formData[key] = newRow.hasOwnProperty(key) ? newRow[key] : template.value
+            // eslint-disable-next-line no-prototype-builtins
+            this._set(formData, key, this._get(newRow, key))
           })
         })
         this.$set(this, 'formGroupsActive', formGroupsActive)
@@ -178,6 +180,9 @@ export default {
         if (this.formMode === 'edit') {
           rowData = _clonedeep(this.formDataStorage)
           _forEach(this.formData, (value, key) => {
+            if (value == null && this.formOptions && this.formOptions.nullToBlankStr) {
+              value = ''
+            }
             this._set(rowData, key, value)
           })
           this.$emit('row-edit', {

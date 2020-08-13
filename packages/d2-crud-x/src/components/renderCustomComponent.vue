@@ -61,7 +61,7 @@ export default {
     const self = this
     const events = {}
     if (self.events) {
-      for (let key in self.events) {
+      for (const key in self.events) {
         events[key] = (event) => {
           if (self.events[key]) {
             self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
@@ -70,7 +70,7 @@ export default {
       }
     }
     if (self.on) {
-      for (let key in self.on) {
+      for (const key in self.on) {
         events[key] = (event) => {
           if (self.on[key]) {
             self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
@@ -80,14 +80,14 @@ export default {
     }
     const scopedSlots = {}
     if (self.scopedSlots) {
-      for (let key in self.scopedSlots) {
+      for (const key in self.scopedSlots) {
         scopedSlots[key] = (scope) => {
           return self.scopedSlots[key](h, scope)
         }
       }
     }
     if (self.slots) {
-      for (let key in self.slots) {
+      for (const key in self.slots) {
         scopedSlots[key] = (scope) => {
           return self.slots[key](h, scope)
         }
@@ -95,13 +95,13 @@ export default {
     }
     const children = []
     if (self.children) {
-      for (let func of self.children) {
+      for (const func of self.children) {
         children.push(func(h))
       }
     }
 
-    let disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
-    let readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
+    const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
+    const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
       on: {
         input: function (event) {

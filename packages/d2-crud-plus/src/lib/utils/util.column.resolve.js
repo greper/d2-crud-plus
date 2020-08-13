@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash'
 import DefaultTypes from '../types/index'
 
 function getByType (type, item) {
-  let config = DefaultTypes[type]
+  const config = DefaultTypes[type]
   let column = {}
   if (config != null) {
     column = cloneDeep(config)

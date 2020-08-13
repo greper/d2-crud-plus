@@ -133,17 +133,10 @@ export const crudOptions = (vm) => {
               }
             }
           }
-        },
-        component: {
-          props: {
-            buildUrl: function (url) {
-              return url + '?token=' + util.cookies.get('token')
-            }
-          }
         }
       },
       {
-        title: '文件',
+        title: '文件列表',
         key: 'file',
         sortable: true,
         type: 'file-uploader',

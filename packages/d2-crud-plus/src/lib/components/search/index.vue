@@ -113,7 +113,7 @@ export default {
       if (!item.width) {
         return '150px'
       }
-      if (typeof item.width === 'number') {
+      if (!isNaN(item.width)) {
         return item.width + 'px'
       }
       return item.width

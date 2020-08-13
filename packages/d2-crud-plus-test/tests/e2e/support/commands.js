@@ -11,8 +11,13 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
+const version = require('../../../../d2-crud-plus-example/package.json').version
+
+Cypress.Commands.add('login1', () => {
+  cy.setCookie('d2admin-' + version + '-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
+})
 Cypress.Commands.add('login', () => {
-  cy.setCookie('d2admin-1.15.4-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
+  cy.login1()
   cy.visit('/#/index')
   cy.contains('首页')
   cy.contains('d2-crud-plus')
@@ -46,16 +51,17 @@ Cypress.Commands.add('simpleCrud', context => {
  */
 Cypress.Commands.add('openCrud', url => {
   cy.visit('/#' + url)
+  cy.wait(1000)
 })
 /**
  * 点击某个菜单
  */
 Cypress.Commands.add('openMenu', context => {
   cy.get('.d2-layout-header-aside-menu-side li.el-submenu')
-    .contains(context.parentMenu)
+    .contains(context.parentMenu).first()
     .click()
   cy.get('.d2-layout-header-aside-menu-side li.el-menu-item')
-    .contains(context.subMenu)
+    .contains(context.subMenu).first()
     .click({ force: true })
   cy.wait(1000)
   cy.checkId(context, '1')
@@ -241,6 +247,32 @@ Cypress.Commands.add('searchClick', () => {
     .contains('查询')
     .click()
 })
+
+Cypress.Commands.add(
+  'attachFile',
+  {
+    prevSubject: 'element'
+  },
+  (input, fileName, fileType) => {
+    cy.fixture(fileName)
+      .then(content => Cypress.Blob.base64StringToBlob(content, fileType))
+      .then(blob => {
+        const testFile = new File([blob], fileName, { type: fileType })
+        const dataTransfer = new DataTransfer()
+
+        dataTransfer.items.add(testFile)
+        input[0].files = dataTransfer.files
+        return input
+      })
+  }
+)
+
+Cypress.Commands.add(
+  'dialogScrollTo',
+  (target = 'bottom') => {
+    cy.get('.d2-crud .el-dialog__wrapper:visible').scrollTo(target)
+  }
+)
 //
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })

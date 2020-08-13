@@ -13,7 +13,7 @@ function get (dict, options) {
   }
 
   let url = dict.url
-  let dictData = dict.data
+  const dictData = dict.data
   this.mergeDefault(dict)
   if (dictData != null) {
     // 配置中就有字典数据，直接返回
@@ -82,7 +82,7 @@ function get (dict, options) {
 
       const result = onReady(dict, item, options)
       // 之前注册过的callback全部触发
-      for (let callback of item.callbacks) {
+      for (const callback of item.callbacks) {
         callback(item)
       }
       item.loading = false
@@ -96,7 +96,7 @@ function get (dict, options) {
   } else if (item.loading === true) {
     // 正在加载中，注册callback，等加载完了之后，再统一触发，就只需要向服务器请求一次字典
     return new Promise((resolve) => {
-      let callback = (item) => {
+      const callback = (item) => {
         resolve(onReady(dict, item, options))
       }
       item.callbacks.push(callback)
@@ -114,9 +114,9 @@ function get (dict, options) {
  * @param list
  */
 function putAll (dict, map, list) {
-  let valueName = dict.value
-  let childrenName = dict.children
-  for (let item of list) {
+  const valueName = dict.value
+  const childrenName = dict.children
+  for (const item of list) {
     map[item[valueName]] = item
     if (dict.isTree && item[childrenName] != null) {
       putAll(dict, map, item[childrenName])
@@ -131,7 +131,7 @@ function putAll (dict, map, list) {
  * @returns {{}}
  */
 function getDataMap (dict, data) {
-  let dataMap = {}
+  const dataMap = {}
   putAll(dict, dataMap, data)
   return dataMap
 }
@@ -218,7 +218,7 @@ function mergeDefault (dict, clone = false) {
   if (clone) {
     dict = { ...dict }
   }
-  for (let key in defaultDict) {
+  for (const key in defaultDict) {
     if (key === 'data') {
       continue
     }
@@ -239,12 +239,12 @@ function putCache (key, value) {
   return cache.set(key, value)
 }
 function getByValue (value, data, dict) {
-  for (let item of data) {
+  for (const item of data) {
     if (item[dict.value] === value) {
       return item
     }
     if (dict.isTree && item[dict.children] != null) {
-      let target = getByValue(value, item[dict.children], dict)
+      const target = getByValue(value, item[dict.children], dict)
       if (target != null) {
         return target
       }

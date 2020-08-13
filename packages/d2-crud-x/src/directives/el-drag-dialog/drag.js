@@ -52,7 +52,7 @@ export default {
         const maxDragDomLeft = screenWidth - dragDom.offsetLeft - dragDomWidth
 
         const minDragDomTop = dragDom.offsetTop - scrollTop
-        let maxDragDomTop = screenHeight - dialogHeaderEl.offsetTop - dialogHeaderEl.offsetHeight - disY
+        const maxDragDomTop = screenHeight - dialogHeaderEl.offsetTop - dialogHeaderEl.offsetHeight - disY
 
         // 获取到的值带px 正则匹配替换
         let styL = getStyle(dragDom, 'left')

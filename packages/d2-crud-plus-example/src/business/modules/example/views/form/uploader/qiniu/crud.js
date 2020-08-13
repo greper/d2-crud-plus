@@ -13,6 +13,14 @@ export const crudOptions = (vm) => {
     },
     columns: [
       {
+        title: 'ID',
+        key: 'id',
+        width: 90,
+        form: {
+          disabled: true
+        }
+      },
+      {
         title: '头像',
         key: 'avatar1',
         type: 'avatar-uploader',

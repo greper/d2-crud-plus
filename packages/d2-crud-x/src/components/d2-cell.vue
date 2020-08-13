@@ -85,7 +85,7 @@ export default {
       this.$emit('cell-component-custom-event', column)
     },
     getContext (key) {
-      let context = {
+      const context = {
         mode: 'row',
         key: key,
         value: this.row[key],

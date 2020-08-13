@@ -88,7 +88,7 @@ export default {
         component = {}
       }
       if (this.template.scopedComponent) {
-        let cover = this.template.scopedComponent(this.getContext())
+        const cover = this.template.scopedComponent(this.getContext())
         if (cover) {
           component = _cloneDeep(component)
           _merge(component, cover)
@@ -112,14 +112,14 @@ export default {
       this.$emit('form-component-custom-event', { event: event, key: key, form: this.formData })
     },
     getFormComponent () {
-      let component = this._component
+      const component = this._component
       if (component) {
         return component
       }
       return {}
     },
     getFormComponentAttr (attr, defaultValue) {
-      let component = this._component
+      const component = this._component
       if (component) {
         return this.handleAttribute(component[attr], defaultValue, this.getContext())
       }
@@ -133,7 +133,7 @@ export default {
       }
     },
     getContext () {
-      let context = {
+      const context = {
         mode: this.$attrs.formMode,
         key: this.colKey,
         value: this.formData[this.colKey],

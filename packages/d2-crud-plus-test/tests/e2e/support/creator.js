@@ -2,7 +2,11 @@
 export function createCrudTest (context) {
   const cy = context.cy
   it('CRUD', () => {
-    cy.openMenu(context)
+    if (context.url) {
+      cy.openCrud(context.url)
+    } else {
+      cy.openMenu(context)
+    }
     // 翻页
     cy.log('翻页')
     cy.get('.el-pagination ul.el-pager li').contains('2').click()
@@ -19,6 +23,7 @@ export function createCrudTest (context) {
       context.doAdd(context)
     }
     cy.closeDialog(context)
+    cy.checkId(context, '1', false)
     if (context.checkAdd) {
       context.checkAdd(context)
     }
@@ -29,8 +34,8 @@ export function createCrudTest (context) {
       if (context.doEdit) {
         context.doEdit(context)
       }
-
       cy.closeDialog(context)
+      cy.wait(1000)
       if (context.checkEdit) {
         context.checkEdit(context)
       }

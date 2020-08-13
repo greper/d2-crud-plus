@@ -117,14 +117,14 @@ export default {
       }
     },
     _cropper () {
-      let def = {
+      const def = {
         aspectRatio: 1,
         ready: this.ready
       }
       if (this.cropper == null) {
         return def
       }
-      let assign = Object.assign(def, this.cropper)
+      const assign = Object.assign(def, this.cropper)
       console.log('cropper options:', assign)
       return assign
     },
@@ -211,9 +211,9 @@ export default {
     // 触发input框的change事件选择图片
     handleChange (e) {
       e.preventDefault()
-      let files = e.target.files || e.dataTransfer.files
+      const files = e.target.files || e.dataTransfer.files
       this.isLoaded = true
-      let file = files[0]
+      const file = files[0]
       if (this.checkFile(file)) {
         this.file = file
         this.setImage(e)

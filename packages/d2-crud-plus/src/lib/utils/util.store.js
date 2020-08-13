@@ -3,12 +3,13 @@ export default class TableStore {
     this.key = this.getItemKey($router, keyType)
     this.tableId = this.getTableId(tableName)
   }
+
   getTableId (name) {
     let storeName = 'd2CrudPlus'
     if (process.env.VUE_APP_D2P_STORE_NAME) {
       storeName = process.env.VUE_APP_D2P_STORE_NAME
     }
-    let prefix = process.env.NODE_ENV + '.' + storeName
+    const prefix = process.env.NODE_ENV + '.' + storeName
     if (name && (typeof name) === 'string') {
       return prefix + '.' + name
     }
@@ -54,6 +55,7 @@ export default class TableStore {
     }
     return key + '.' + keyType
   }
+
   getTableValue (key) {
     const table = this.getTable()
     if (table == null) {
@@ -66,7 +68,7 @@ export default class TableStore {
   }
 
   clearTableValue (key) {
-    let table = this.getTable()
+    const table = this.getTable()
     if (table == null) {
       return
     }

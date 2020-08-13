@@ -1,16 +1,17 @@
 <template>
   <div class="d2p-cropper-uploader"  :class="{'is-disabled':disabled}" >
     <div class="image-list">
-      <div class="image-item" v-for="(item,index) in _urlList" :key="index">
+      <div class="image-item" v-for="(item,index) in list" :key="index">
         <el-image class="image"
-          :src="item"
+          :src="item.dataUrl?item.dataUrl:item.url"
+          :data-src="item.url"
           :preview-src-list="_urlList"
-          fit="contain" ></el-image>
+          fit="contain" />
         <div class="delete" v-if="!disabled"><i class="el-icon-delete" @click="removeImage(index,item)"></i></div>
         <div class="status-uploading" v-if="item.status==='uploading'">
           <el-progress type="circle" :percentage="item.progress" :width="70"/>
         </div>
-        <div class="status-done" v-else>
+        <div class="status-done" v-else-if="item.status==='done'">
           <i class="el-icon-upload-success el-icon-check"></i>
         </div>
       </div>
@@ -106,20 +107,22 @@ export default {
   },
   watch: {
     value (val) {
-      if (val === this.value) {
+      this.$emit('change', val)
+      if (val === this.emitValue) {
         return
       }
-      this.initValue()
+      this.initValue(val)
     }
   },
   created () {
-    this.initValue()
+    this.emitValue = this.value
+    this.initValue(this.value)
   },
   computed: {
     _urlList () {
       const urlList = []
       if (this.list) {
-        for (let item of this.list) {
+        for (const item of this.list) {
           urlList.push(item.url)
         }
       }
@@ -127,15 +130,15 @@ export default {
     }
   },
   methods: {
-    initValue () {
+    initValue (value) {
       const list = []
-      if (this.value == null || this.value === '') {
+      if (value == null || value === '') {
         return list
       }
-      if (typeof (this.value) === 'string') {
-        list.push({ url: this.value })
+      if (typeof (value) === 'string') {
+        list.push({ url: value, status: 'done' })
       } else {
-        for (let item of this.value) {
+        for (const item of value) {
           list.push({ url: item, status: 'done' })
         }
       }
@@ -150,36 +153,37 @@ export default {
       this.$refs.cropper.open()
     },
     removeImage (index, item) {
-      this.list.splice(index)
+      this.list.splice(index, 1)
       this.emit()
     },
     async cropComplete (ret) {
-      let blob = ret.blob
-      let dataUrl = ret.dataUrl
-      let file = ret.file
+      const blob = ret.blob
+      const dataUrl = ret.dataUrl
+      const file = ret.file
       // 开始上传
-      let item = {
-        url: dataUrl,
+      const item = {
+        url: undefined,
+        dataUrl: dataUrl,
         status: 'uploading',
         progress: 0
       }
-      let onProgress = (e) => {
+      const onProgress = (e) => {
         item.progress = e.percent
       }
-      let onError = (e) => {
+      const onError = (e) => {
         item.status = 'error'
         item.message = '文件上传出错:' + e.message
         console.log(e)
       }
       console.log('blob:', blob)
-      let option = {
+      const option = {
         file: blob,
         fileName: file.name,
         onProgress,
         onError
       }
       this.list.push(item)
-      let upload = await this.doUpload(option)
+      const upload = await this.doUpload(option)
       item.url = upload.url
       item.status = 'done'
       this.emit()
@@ -204,7 +208,7 @@ export default {
     },
     emit () {
       const list = []
-      for (let item of this.list) {
+      for (const item of this.list) {
         if (item.status != null && item.status !== 'done') {
           // 全部上传完再发通知
           return
@@ -219,7 +223,7 @@ export default {
       if (this.limit === 1) {
         ret = list[0]
       }
-      this.$emit('change', ret)
+      this.emitValue = ret
       this.$emit('input', ret)
     }
 

@@ -20,7 +20,7 @@ const util = {
 }
 
 const install = (Vue, options) => {
-  for (let key in components) {
+  for (const key in components) {
     Vue.component(components[key].name, components[key])
   }
   console.log('d2-crud-plus install options:', options)
@@ -40,7 +40,8 @@ const install = (Vue, options) => {
 // if (typeof window !== 'undefined' && window.Vue) {
 //   install(window.Vue)
 // }
-export default { install,
+export default {
+  install,
   util,
   crud,
   input,

@@ -60,8 +60,8 @@ export default {
       if (this.value == null) {
         return []
       }
-      let arr = []
-      for (let item of this.value) {
+      const arr = []
+      for (const item of this.value) {
         arr.push(this.buildValueItem(item))
       }
       return arr
@@ -80,7 +80,7 @@ export default {
         }
         return this.deepMatch(value, valueName, childrenName, dict)
       } else {
-        for (let item of dict) {
+        for (const item of dict) {
           if (item[valueName] === value) {
             return item
           }
@@ -88,14 +88,14 @@ export default {
       }
     },
     deepMatch (value, valueName, childrenName, dict) {
-      for (let item of dict) {
+      for (const item of dict) {
         if (item[valueName] === value) {
           return item
         }
       }
-      for (let item of dict) {
+      for (const item of dict) {
         if (item[childrenName]) {
-          let matched = this.deepMatch(value, valueName, childrenName, item[childrenName])
+          const matched = this.deepMatch(value, valueName, childrenName, item[childrenName])
           if (matched) {
             return matched
           }
@@ -121,14 +121,14 @@ export default {
       if (this.dict != null && this.dict.children != null) {
         childrenName = this.dict.children
       }
-      let labelArr = []
+      const labelArr = []
 
       if (this.data != null) {
         let dict = this.data
         const deepMatch = arr.length === 1
-        for (let value of arr) {
+        for (const value of arr) {
           if (dict != null) {
-            let dictItem = this.getDictItem(value, dict, deepMatch)
+            const dictItem = this.getDictItem(value, dict, deepMatch)
             if (dictItem != null) {
               dict = dictItem[childrenName]
               labelArr.push(dictItem[labelName])

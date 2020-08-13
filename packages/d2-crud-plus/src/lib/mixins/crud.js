@@ -192,16 +192,16 @@ export default {
      */
     initColumns () {
       let crudOptions = this.getCrudOptions()
-      let commonOptions = CommonOptionsUtil.create()
+      const commonOptions = CommonOptionsUtil.create()
       merge(commonOptions, crudOptions)
       crudOptions = commonOptions
-      let columns = crudOptions.columns
+      const columns = crudOptions.columns
       merge(this.crud, crudOptions)
       const crud = this.crud
       crud.columns = []
       crud.searchOptions.columns = []
       crud.columnsMap = {}
-      for (let item of columns) {
+      for (const item of columns) {
         this.initColumnItem(crud.columns, item)
       }
       if (crud.viewOptions && crud.viewOptions.disabled) {
@@ -235,7 +235,7 @@ export default {
       }
     },
     userConfigCover (userConfig, defaultConfig) {
-      let target = cloneDeep(defaultConfig)
+      const target = cloneDeep(defaultConfig)
       if (userConfig == null) {
         return target
       }
@@ -245,16 +245,16 @@ export default {
     initColumnItem (parantColumns, item) {
       if (item.children != null && item.children.length > 0) {
         // 复杂表头
-        let children = []
+        const children = []
         parantColumns.push({ ...item, children: children })
-        for (let subItem of item.children) {
+        for (const subItem of item.children) {
           this.initColumnItem(children, subItem)
         }
         return
       }
-      let key = item.key
-      let defaultColumn = ColumnResolveUtil.getByType(item.type, item)
-      let newItem = cloneDeep(defaultColumn)
+      const key = item.key
+      const defaultColumn = ColumnResolveUtil.getByType(item.type, item)
+      const newItem = cloneDeep(defaultColumn)
 
       // 用户配置覆盖默认配置
       merge(newItem, item)
@@ -284,10 +284,10 @@ export default {
       }
 
       // search配置
-      let form = item.form
+      const form = item.form
       if (item.search != null && item.search.disabled !== true) {
-        let component = item.form ? cloneDeep(item.form.component) : {}
-        let search = {
+        const component = item.form ? cloneDeep(item.form.component) : {}
+        const search = {
           title: item.title,
           key: item.key,
           component: component,
@@ -307,7 +307,7 @@ export default {
         delete template.addTemplateHandle
         delete template.editTemplateHandle
         if (form.addDisabled !== true) {
-          let addTemplate = this.userConfigCover(item.addForm, template)
+          const addTemplate = this.userConfigCover(item.addForm, template)
           this.crud.addTemplate[key] = addTemplate
           if (form.addTemplateHandle != null) {
             form.addTemplateHandle(addTemplate)
@@ -326,7 +326,7 @@ export default {
 
       // viewTemplate
       if (!(item.view && item.view.disabled === true)) {
-        let isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
+        const isFormComponent = this.crud.viewOptions && this.crud.viewOptions.componentType === 'form'
         let view = null
         if (isFormComponent) {
           // 如果是使用form的展示方式，复制form的配置
@@ -336,7 +336,7 @@ export default {
             ...cloneDeep(form)
           }
         } else {
-          let component = cloneDeep(item.component ? item.component : {})
+          const component = cloneDeep(item.component ? item.component : {})
           view = {
             title: item.title,
             key: item.key,
@@ -466,7 +466,7 @@ export default {
      * @param form
      */
     handleSearch (form) {
-      for (let key in form) {
+      for (const key in form) {
         if (form[key] === '') {
           delete form[key]
         }
@@ -489,12 +489,12 @@ export default {
      * 表格刷新，重新拉取数据
      */
     doRefresh (options) {
-      let form = this.crud.searchOptions.form
-      let query = {
+      const form = this.crud.searchOptions.form
+      const query = {
         ...form
       }
-      let requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage
-      let requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
+      const requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage
+      const requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
       if (this.crud.format.page.request.size instanceof Function) {
         this.crud.format.page.request.size(query, requestPageSize)
       } else {
@@ -554,10 +554,10 @@ export default {
       if (!records || !this.crud.format || !this.crud.format.flatData || this.crud.format.flatData.disabled === true) {
         return records
       }
-      for (let row of records) {
-        let symbol = get(this.crud, 'format.flatData.symbol', '#')
+      for (const row of records) {
+        const symbol = get(this.crud, 'format.flatData.symbol', '#')
         forEach(this.crud.columns, item => {
-          let key = item.key
+          const key = item.key
           if (key.indexOf(symbol) !== -1) {
             row[key] = get(row, key.replace(symbol, '.'))
           }
@@ -570,10 +570,10 @@ export default {
       if (!row || !this.crud.format || !this.crud.format.flatData || this.crud.format.flatData.disabled === true) {
         return row
       }
-      let symbol = get(this.crud, 'format.flatData.symbol', '#')
+      const symbol = get(this.crud, 'format.flatData.symbol', '#')
       const deleteOnUnFlat = get(this.crud, 'format.flatData.deleteOnUnFlat', true)
       forEach(this.crud.columns, item => {
-        let key = item.key
+        const key = item.key
         if (key.indexOf(symbol) !== -1) {
           row[key] = set(row, key.replace(symbol, '.'), row[key])
           if (deleteOnUnFlat) {
@@ -607,8 +607,8 @@ export default {
      */
     handleDialogOpened ({ mode, form }) {
       console.log('handleDialogOpened:', mode, form)
-      for (let key in this.crud.columnsMap) {
-        let column = this.crud.columnsMap[key]
+      for (const key in this.crud.columnsMap) {
+        const column = this.crud.columnsMap[key]
         if (column && column.form && column.form.valueChange && column.form.valueChangeImmediate) {
           column.form.valueChange(key, form[key], this.getEditForm(), {
             getColumn: this.getEditFormTemplate,
@@ -640,12 +640,12 @@ export default {
         })
         return
       }
-      let ids = []
+      const ids = []
       let rowKey = this.crud.options.rowKey
       if (this.isVxeTable()) {
         rowKey = this.crud.options.rowId
       }
-      for (let row of this.multipleSelection) {
+      for (const row of this.multipleSelection) {
         ids.push(row[rowKey])
       }
       return this.$confirm('确定要批量删除这' + ids.length + '条数据吗?', '提示', {
@@ -807,7 +807,7 @@ export default {
      * 编辑框表单改变事件
      */
     handleFormDataChange ({ key, value, form, component, getComponent }) {
-      let column = this.crud.columnsMap[key]
+      const column = this.crud.columnsMap[key]
       console.log('FormDataChanged:', key)
       if (column && column.form && column.form.valueChange) {
         column.form.valueChange(key, value, this.getEditForm(), {

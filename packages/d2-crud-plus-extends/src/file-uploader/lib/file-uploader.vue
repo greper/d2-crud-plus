@@ -203,11 +203,12 @@ export default {
       return D2pUploader.getUploader(type)
     },
     initValue (value) {
+      this.$emit('change', value)
       if (this.emitValue === value) {
         return
       }
       this.emitValue = value
-      this.$emit('change', value)
+
       let fileList = []
       if (value == null) {
 
@@ -286,6 +287,7 @@ export default {
     },
     removeAvatar ($event) {
       $event.stopPropagation()
+      this.resetFileList([])
       this.emit() // 返回undefined，相当于清空已有的值
     },
     emit (res, list) {

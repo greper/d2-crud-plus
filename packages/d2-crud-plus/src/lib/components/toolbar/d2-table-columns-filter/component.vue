@@ -163,7 +163,7 @@ export default {
     // 半选状态
     isIndeterminate () {
       const optionsLength = this.options.length
-      let result = this.showLength > 0 && optionsLength !== this.showLength
+      const result = this.showLength > 0 && optionsLength !== this.showLength
       return result
     }
   },
@@ -217,7 +217,7 @@ export default {
     refresh () {
       const options = lodash.cloneDeep(this.options)
       const value = lodash.cloneDeep(this.value)
-      let currentValue = []
+      const currentValue = []
       let checkAll = true
       // 设置比较源
       let compareSource = options
@@ -310,12 +310,12 @@ export default {
     },
     getColumnsHash (columns) {
       const keys = []
-      for (let item of columns) {
+      for (const item of columns) {
         keys.push(item)
       }
       keys.sort()
       let hash = ''
-      for (let key of keys) {
+      for (const key of keys) {
         hash += key
       }
       return hash

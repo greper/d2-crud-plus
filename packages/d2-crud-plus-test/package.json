@@ -1,13 +1,13 @@
 {
   "name": "d2-crud-plus-test",
-  "version": "0.1.0",
+  "version": "1.15.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e --url http://localhost:8080 ",
-    "test.ci:e2e": "vue-cli-service test:e2e  --headless ",
+    "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode remote",
     "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
     "test3:e2e": "vue-cli-service test:e2e  --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js"
   },
@@ -106,7 +106,10 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-console": "warn" ,
+      "no-debugger": "warn"
+    }
   },
   "browserslist": [
     "> 1%",

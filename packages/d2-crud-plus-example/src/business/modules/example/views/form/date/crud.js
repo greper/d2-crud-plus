@@ -85,7 +85,7 @@ export const crudOptions = {
   },
   searchOptions: {
     form: {
-      daterange: [] // 表单bug
+      daterange: [] // 表单重置bug
     }
   },
   columns: [

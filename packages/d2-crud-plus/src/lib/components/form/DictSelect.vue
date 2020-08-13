@@ -114,7 +114,7 @@ export default {
 
       //  TODO 重置表单时，多选的value会重置为[null]
       const val = []
-      for (let item of newVal) {
+      for (const item of newVal) {
         if (item != null) {
           val.push(item)
         }

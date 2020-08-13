@@ -28,10 +28,12 @@ export default {
       }
     },
     // 值
-    value: { default: () => {
-      return []
+    value: {
+      default: () => {
+        return []
+      },
+      require: false
     },
-    require: false },
     // el-cascader的属性,[el-cascader](https://element.eleme.cn/#/zh-CN/component/cascader)
     elProps: {
       type: Object
@@ -52,7 +54,7 @@ export default {
   },
   computed: {
     _elProps () {
-      let defaultElProps = { props: {} }
+      const defaultElProps = { props: {} }
       if (this.dict && this.dict.label) {
         defaultElProps.props.label = this.dict.label
       }

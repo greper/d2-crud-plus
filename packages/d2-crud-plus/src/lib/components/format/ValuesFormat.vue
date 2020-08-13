@@ -65,9 +65,9 @@ export default {
       if (this.value == null || this.value === '') {
         return []
       }
-      let dictDataMap = this[this.returnType]
+      const dictDataMap = this[this.returnType]
       let valueArr = []
-      let options = []
+      const options = []
       if (typeof (this.value) === 'string' && this.multiple && this.separator != null && this.separator !== '') {
         valueArr = this.value.split(this.separator)
       } else if (this.value instanceof Array) {
@@ -77,11 +77,11 @@ export default {
         valueArr = [this.value]
       }
 
-      let dict = this.dict
+      const dict = this.dict
       // 没有字典，直接显示值
       if (dictDataMap == null || Object.keys(dictDataMap).length === 0) {
-        for (let str of valueArr) {
-          let item = {}
+        for (const str of valueArr) {
+          const item = {}
           item[dict.value] = str
           item[dict.label] = str
           this.setColor(item, dict)
@@ -90,7 +90,7 @@ export default {
         return options
       }
       // 根据字典展示
-      for (let str of valueArr) {
+      for (const str of valueArr) {
         let item = dictDataMap[str]
         if (item != null) {
           this.setColor(item, dict)
@@ -117,8 +117,8 @@ export default {
         return
       }
       if (this.color === 'auto') {
-        let hashcode = this.hashcode(item[dict.value])
-        let colors = this.autoColors ? this.autoColors : COLOR_LIST
+        const hashcode = this.hashcode(item[dict.value])
+        const colors = this.autoColors ? this.autoColors : COLOR_LIST
         item[dict.color] = colors[hashcode % colors.length]
       } else {
         item[dict.color] = this.color

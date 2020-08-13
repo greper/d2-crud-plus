@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.5](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.4...d2-crud-plus@1.15.5) (2020-08-13)
+
+
+### Bug Fixes
+
+* 修复cascade不显示label的bug ([d36495e](https://github.com/greper/d2-crud-plus/commit/d36495e7254c28a60158b0e992fd21318f3588f1))
+* 整理了expose方法，其中updateAfter方法名修改成editAfter ([eb9631f](https://github.com/greper/d2-crud-plus/commit/eb9631f65cd5dd5517a90071ca4159af69978786))
+* 查询表单宽度可以不写px后缀 ([4be5c88](https://github.com/greper/d2-crud-plus/commit/4be5c8878483bbffc8da4b21bc5691d6a9d90671))
+
+
+### Performance Improvements
+
+* 升级依赖 ([a4b5635](https://github.com/greper/d2-crud-plus/commit/a4b5635b2ec88b940ac2c1a3eebf2187f875765e))
+* 外部获取数据字典示例 ([53b29ae](https://github.com/greper/d2-crud-plus/commit/53b29ae981c2a12536fb09fd5fd598821882577e))
+* 继续完善e2e测试，修复一堆测出来的bug ([fe7446e](https://github.com/greper/d2-crud-plus/commit/fe7446e94468d7a5561213e7bed01bec065210e7))
+
+
+
+
+
+
 ## [1.15.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.3...d2-crud-plus@1.15.4) (2020-08-09)
 
 

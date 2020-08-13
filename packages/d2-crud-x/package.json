@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-x",
   "description": "d2-crud改进版",
-  "version": "2.8.4",
+  "version": "2.8.5",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -33,21 +33,21 @@
     "lodash.set": "^4.3.2"
   },
   "devDependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.11",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
+    "core-js": "^2.6.5",
     "eslint": "^6.8.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^6.2.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
+    "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

@@ -22,12 +22,12 @@ export default {
       if (groupKey == null) {
         if (key != null) {
           // 未分组的字段
-          let column = this.formTemplateStorage[key]
+          const column = this.formTemplateStorage[key]
           if (column != null) {
             return column
           }
           if (this.formTemplateGroupStorage && this.formTemplateGroupStorage.groups) {
-            for (let groupsKey in this.formTemplateGroupStorage.groups) {
+            for (const groupsKey in this.formTemplateGroupStorage.groups) {
               const group = this.formTemplateGroupStorage.groups[groupsKey]
               if (group && group.columns && group.columns[key]) {
                 return group.columns[key]
@@ -122,7 +122,7 @@ export default {
       if (!item) {
         return defaultValue
       }
-      let component = item.component
+      const component = item.component
       if (component && component.props) {
         return this.handleAttribute(component.props[prop], defaultValue, params)
       }

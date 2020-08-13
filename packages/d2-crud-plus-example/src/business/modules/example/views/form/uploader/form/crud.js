@@ -87,6 +87,7 @@ export const crudOptions = (vm) => {
         form: {
           component: {
             props: {
+              sizeLimit: 50 * 1024 * 1024, // 限制文件大小
               elProps: { // element upload组件的props
                 onPreview: (file) => { // 自定义点击事件
                   window.open(file.url)

@@ -120,8 +120,8 @@ export default {
     },
     setColumns (columns) {
       this.currentColumns = lodash.cloneDeep(columns)
-      let form = {}
-      for (let item of this.currentColumns) {
+      const form = {}
+      for (const item of this.currentColumns) {
         form[item.key] = item.component ? item.component.value : undefined
       }
       let reset = {}
@@ -197,7 +197,7 @@ export default {
       column.getColumn = this.getColumnTemplate
 
       if (this.options.valueChange) {
-        let target = this.getColumnTemplate(column.key)
+        const target = this.getColumnTemplate(column.key)
         if (target && target.valueChange) {
           target.valueChange(column.key, value, this.form, {
             getColumn: this.getColumnTemplate,
@@ -227,7 +227,7 @@ export default {
     },
     getColumnTemplate (key) {
       console.log('getColumn', this.currentColumns)
-      for (let item of this.currentColumns) {
+      for (const item of this.currentColumns) {
         if (item.key === key) {
           return item
         }
@@ -235,7 +235,6 @@ export default {
     },
     getComponentRef (key) {
       if (this.$refs) {
-        debugger
         const wrapper = this.$refs['form_item_' + key]
         if (wrapper && wrapper.length > 0 && wrapper[0]) {
           return wrapper[0].getComponentRef()
@@ -243,7 +242,7 @@ export default {
       }
     },
     getContext (key) {
-      let context = {
+      const context = {
         mode: 'search',
         key: key,
         value: this.form[key],

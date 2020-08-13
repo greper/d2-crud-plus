@@ -14,6 +14,7 @@ process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
 
 // 基础路径 注意发布之前要先修改这里
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/'
+const proxyApi = process.env.VUE_APP_PROXY_API || 'http://127.0.0.1:7070'
 
 // 设置不参与构建的库
 const externals = {}
@@ -41,7 +42,8 @@ module.exports = {
     disableHostCheck: process.env.NODE_ENV === 'development', // 关闭 host check，方便使用 ngrok 之类的内网转发工具
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:7070',
+        target: proxyApi,
+        // target: 'http://qiniu.veryreader.com/D2CrudPlusExample',
         ws: true
       }
     }
@@ -168,6 +170,6 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true
     }
-  },
-  transpileDependencies: ['d2p-extends']
+  }
+  // transpileDependencies: ['d2p-extends']
 }

@@ -67,7 +67,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '多选',
+      title: '多选1',
       key: 'pca3',
       type: 'area-multi-selector',
       dict: { value: 'name' },
@@ -77,7 +77,7 @@ export const crudOptions = {
       }
     },
     {
-      title: '多选',
+      title: '多选2',
       key: 'pca4',
       type: 'area-multi-selector',
       dict: { value: 'name' },

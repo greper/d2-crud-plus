@@ -13,14 +13,16 @@ export default {
    * @returns {Promise<unknown>}
    */
   upload ({ file, fileName, onProgress, onError, config }) {
-    let options = lodash.cloneDeep(this.options)
+    const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
-    let option = {
+    const option = {
       file,
       onProgress,
       ...config
     }
+    option.data.key = config.buildKey(fileName, config.custom)
+    console.log('upload option ', options)
     return new Promise((resolve, reject) => {
       ajax(option,
         (res) => {

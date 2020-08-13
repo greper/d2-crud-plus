@@ -120,42 +120,18 @@ export default {
   },
   watch: {
     value (val) {
-      let arr = []
-      if (val == null) {
-
-      } else if (typeof val === 'string') {
-        arr.push(val)
-      } else {
-        arr = val
-      }
-      let changed = false
-      if (this.fileList.length === arr.length) {
-        for (let i = 0; i < arr.length; i++) {
-          let curUrl = this.fileList[i].url
-          let curValue = this.fileList[i].response ? this.fileList[i].response.value : this.fileList[i].value
-          let newUrl = typeof arr[i] === 'string' ? arr[i] : arr[i].url
-          if (newUrl !== curUrl && newUrl !== curValue) {
-            changed = true
-            break
-          }
-        }
-      } else {
-        changed = true
-      }
-      if (changed) {
-        this.initValue(val)
-      }
+      this.initValue(val)
     }
   },
   computed: {
     _elProps () {
-      let defaultElProps = this.getDefaultElProps()
+      const defaultElProps = this.getDefaultElProps()
       Object.assign(defaultElProps, this.elProps)
       return defaultElProps
     },
     avatarUrl () {
       if (this.fileList.length > 0) {
-        let file = this.fileList[0]
+        const file = this.fileList[0]
         if (file.response != null && file.response.url != null) {
           return file.response.url
         } else if (file.url != null) {
@@ -198,8 +174,8 @@ export default {
             limit = this.sizeLimit
             showMessage = (fileSize, limit) => {
               if (this.$message) {
-                let limitTip = this.computeFileSize(limit)
-                let fileSizeTip = this.computeFileSize(file.size)
+                const limitTip = this.computeFileSize(limit)
+                const fileSizeTip = this.computeFileSize(file.size)
                 this.$message({ message: '文件大小不能超过' + limitTip + '，当前文件大小:' + fileSizeTip, type: 'warning' })
               }
             }
@@ -227,19 +203,24 @@ export default {
       return D2pUploader.getUploader(type)
     },
     initValue (value) {
+      if (this.emitValue === value) {
+        return
+      }
+      this.emitValue = value
+      this.$emit('change', value)
       let fileList = []
       if (value == null) {
 
       } else if (typeof (value) === 'string') {
         if (value !== '') {
-          let fileName = value.substring(value.lastIndexOf('/') + 1)
+          const fileName = value.substring(value.lastIndexOf('/') + 1)
           fileList = [{ value: value, name: fileName }]
         }
       } else if (value instanceof Array) {
         if (value.length > 0 && typeof (value[0]) === 'string') {
-          let tmp = []
+          const tmp = []
           value.forEach(item => {
-            let fileName = item.substring(item.lastIndexOf('/') + 1)
+            const fileName = item.substring(item.lastIndexOf('/') + 1)
             tmp.push({ value: item, name: fileName })
           })
           fileList = tmp
@@ -249,7 +230,7 @@ export default {
       } else if (value instanceof Object) {
         fileList = [value]
       }
-      for (let item of fileList) {
+      for (const item of fileList) {
         if (item.value == null) {
           item.value = item.url
         }
@@ -275,19 +256,21 @@ export default {
       res.size = res.size != null ? res.size : file.size
       res.name = res.name != null ? res.name : file.name
       res.value = this.getReturnValue(res)
-      let value = this.returnType === 'object' ? res.url : res.value
+      const value = this.returnType === 'object' ? res.url : res.value
       const url = this.buildUrl(value, res)
       file.url = res.url = url
       this.resetFileList(fileList)
       this.$emit('success', res, file)
-      let list = []
-      for (let item of fileList) {
+      const list = []
+      for (const item of fileList) {
+        if (item.status === 'uploading') {
+          console.log('当前文件上传完成，等待剩下的文件全部上传成功后再更新value')
+          return
+        }
         if (item.response != null && item.response.url != null) {
           list.push({ ...item.response })
         } else {
-          console.log('文件没有上传完成，暂不发射input事件', item)
           list.push(item)
-          return
         }
       }
       console.log('handleUploadFileSuccess list', list, res)
@@ -308,8 +291,8 @@ export default {
     emit (res, list) {
       if (this._elProps.limit === 1) {
         const value = res ? res.value : undefined
+        this.emitValue = value
         this.$emit('input', value)
-        this.$emit('change', value)
       } else {
         this.emitList(list)
       }
@@ -322,8 +305,8 @@ export default {
         })
         list = tmp
       }
+      this.emitValue = list
       this.$emit('input', list)
-      this.$emit('change', list)
     },
     getReturnValue (item) {
       const value = item[this.returnType]
@@ -338,7 +321,7 @@ export default {
         this.computeMd5(option.file)
       ]).then((ret) => {
         // 得到组合结果， size，md5
-        let result = ret[0]
+        const result = ret[0]
         result.md5 = ret[1]
         option.onSuccess(result)
       })
@@ -402,12 +385,12 @@ export default {
     },
     computeMd5 (file) {
       return new Promise((resolve, reject) => {
-        let blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice
-        let chunkSize = 2097152 // Read in chunks of 2MB
-        let chunks = Math.ceil(file.size / chunkSize)
+        const blobSlice = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice
+        const chunkSize = 2097152 // Read in chunks of 2MB
+        const chunks = Math.ceil(file.size / chunkSize)
         let currentChunk = 0
-        let spark = new SparkMD5.ArrayBuffer()
-        let fileReader = new FileReader()
+        const spark = new SparkMD5.ArrayBuffer()
+        const fileReader = new FileReader()
 
         fileReader.onload = (e) => {
           spark.append(e.target.result) // Append array buffer
@@ -416,7 +399,7 @@ export default {
           if (currentChunk < chunks) {
             loadNext()
           } else {
-            let md5 = spark.end()
+            const md5 = spark.end()
             console.info('computed hash', md5) // Compute hash
 
             resolve(md5)
@@ -429,8 +412,8 @@ export default {
         }
 
         function loadNext () {
-          let start = currentChunk * chunkSize
-          let end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize
+          const start = currentChunk * chunkSize
+          const end = ((start + chunkSize) >= file.size) ? file.size : start + chunkSize
 
           fileReader.readAsArrayBuffer(blobSlice.call(file, start, end))
         }

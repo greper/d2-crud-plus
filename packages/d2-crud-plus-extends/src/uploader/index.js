@@ -9,7 +9,7 @@ function init (uploader, type) {
     uploader.inited = true
   }
   const buildKey = config.buildKey
-  let options = {
+  const options = {
     alioss: config.alioss,
     cos: config.cos,
     form: config.form,

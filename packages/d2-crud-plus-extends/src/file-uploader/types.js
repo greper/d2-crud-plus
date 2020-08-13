@@ -15,7 +15,7 @@ export default {
     },
     align: 'center',
     valueResolve (row, col) {
-      let value = row[col.key]
+      const value = row[col.key]
       if (value != null && value instanceof Array) {
         if (value.length >= 0) {
           row[col.key] = value[0].url

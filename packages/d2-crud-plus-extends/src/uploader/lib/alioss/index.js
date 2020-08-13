@@ -3,7 +3,7 @@ import OSS from './sdk'
 import lodash from 'lodash'
 
 function getKey (fileName, config) {
-  let key = config.buildKey(fileName, config.custom)
+  const key = config.buildKey(fileName, config.custom)
   if (typeof (key) === 'string') {
     return new Promise((resolve) => {
       resolve(key)
@@ -22,7 +22,7 @@ export default {
     if (this.sts == null || this.sts.expiresTime < new Date().getTime()) {
       // 需要重新获取sts
       return config.getAuthorization(custom).then(ret => {
-        let sts = ret
+        const sts = ret
         sts.expiresTime = new Date().getTime() + parseInt(ret.expiration)
         this.sts = sts
         return sts
@@ -50,11 +50,11 @@ export default {
    * @returns  上传结果 {url:xxx}
    */
   async upload ({ file, fileName, onProgress, onError, config }) {
-    let options = lodash.cloneDeep(this.options)
+    const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName, config)
-    let key = await getKey(fileName, config)
+    const key = await getKey(fileName, config)
     let sts = null
     if (this.options.getAuthorization !== null) {
       sts = await this.getSts(this.options, config.custom)
@@ -87,7 +87,7 @@ export default {
       })
     }
     return client.put(key, file).then((ret) => {
-      let result = { url: config.domain + '/' + key, key: key }
+      const result = { url: config.domain + '/' + key, key: key }
       console.log('alioss success', result)
       return result
     }).catch(err => {

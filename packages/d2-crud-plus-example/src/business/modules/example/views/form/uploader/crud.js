@@ -1,5 +1,3 @@
-import util from '@/libs/util'
-
 export const crudOptions = (vm) => {
   return {
     options: {

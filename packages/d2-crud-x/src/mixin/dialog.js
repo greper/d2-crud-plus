@@ -123,7 +123,6 @@ export default {
       return this.fetchDetail(index, row, this.formMode).then(newRow => {
         newRow = newRow || {}
         this.formDataStorage = newRow
-        const formData = {}
         const formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {
           if (!group.collapsed) {

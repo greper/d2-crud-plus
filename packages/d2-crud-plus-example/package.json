@@ -4,7 +4,7 @@
   "version": "1.15.4",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/d2-projects/d2-admin.git"
@@ -102,6 +102,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "access": "private"
   },
   "gitHead": "252cccaba25ecd650f2721e45b30c0571cf79f92"
 }

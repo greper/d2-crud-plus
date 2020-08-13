@@ -116,11 +116,17 @@ export default {
     }
   },
   created () {
+    this.emitValue = this.value
     this.initValue(this.value)
   },
   watch: {
-    value (val) {
-      this.initValue(val)
+    value (value) {
+      this.$emit('change', value)
+      if (this.emitValue === value) {
+        return
+      }
+      this.emitValue = value
+      this.initValue(value)
     }
   },
   computed: {
@@ -203,12 +209,6 @@ export default {
       return D2pUploader.getUploader(type)
     },
     initValue (value) {
-      this.$emit('change', value)
-      if (this.emitValue === value) {
-        return
-      }
-      this.emitValue = value
-
       let fileList = []
       if (value == null) {
 

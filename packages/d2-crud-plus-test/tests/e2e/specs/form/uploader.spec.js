@@ -172,22 +172,18 @@ describe('文件上传', () => {
       cy.get('@文件列表').first().find('a').invoke('text').as('文件列表_value')
     },
     checkEdit () {
-      cy.getCell({ col: 2 }).find('.el-image img').then($el => {
-        cy.get('@头像_value').should('contain', $el.attr('src'))
-      })
-      cy.getCell({ col: 5 }).find('.el-image img').then($el => {
-        cy.get('@获取md5_value').should('contain', $el.attr('src'))
-      })
+      cy.getCell({ col: 2 }).find('.el-image img').should('not.exist')
+      cy.getCell({ col: 5 }).find('.el-image img').should('not.exist')
       cy.checkColValue({ col: 6, value: '39040' })
       cy.checkColValue({ col: 7, value: 'a7e87805bd7f23104fe2169153249903' })
 
-      cy.getCell({ col: 8 }).find('.el-image img').first().then($el => {
+      cy.getCell({ col: 8 }).find('.el-image img').should('have.length', 2).first().then($el => {
         cy.get('@照片墙_value').should('contain', $el.attr('src'))
       })
-      cy.getCell({ col: 9 }).find('.el-image img').first().then($el => {
+      cy.getCell({ col: 9 }).find('.el-image img').should('have.length', 2).first().then($el => {
         cy.get('@图片列表_value').should('contain', $el.attr('src'))
       })
-      cy.getCell({ col: 10 }).find('.tag-item a').first().then($el => {
+      cy.getCell({ col: 10 }).find('.tag-item a').should('have.length', 1).first().then($el => {
         cy.get('@文件列表_value').should('contain', $el.text())
       })
     },

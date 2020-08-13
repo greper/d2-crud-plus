@@ -44,10 +44,12 @@ describe('省市区', () => {
       cy.get('.el-tree .el-tree-node:visible').first().click()
         .find('.el-tree-node__children').click()
         .find('.el-tree-node__children').click()
-        .find('.el-checkbox').first().click().next().click()
+        .find('.el-checkbox').as('leaf_list').first().click()
+      cy.get('@leaf_list').eq(1).click()
       cy.get('.el-dialog__wrapper:visible').scrollTo('bottom')
       cy.get('.el-dialog .el-dialog__footer button:visible').last().click()
-      cy.formItem('树形选择1').find('.d2p-tree-selector').contains('东城区', '西城区')
+      cy.formItem('树形选择1').find('.d2p-tree-selector').contains('东城区')
+      cy.formItem('树形选择1').find('.d2p-tree-selector').contains('西城区')
     },
     checkAdd () {
 

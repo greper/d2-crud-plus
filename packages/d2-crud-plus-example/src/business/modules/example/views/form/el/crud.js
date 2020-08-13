@@ -66,7 +66,14 @@ export const crudOptions = {
       type: 'transfer',
       form: {
         component: { span: 24 }
+      },
+      valueBuilder (row, col) {
+        if (row[col.key] === '') {
+          row[col.key] = null
+        }
+        console.log('tranfer:', row, row[col.key], col.key)
       }
+
     },
     {
       title: '输入建议（autocomplete）',

@@ -17,7 +17,7 @@ describe('富文本', () => {
     doEdit () {
       cy.wait(1000)
     },
-    doView() {
+    doView () {
       cy.wait(1000)
     }
   })

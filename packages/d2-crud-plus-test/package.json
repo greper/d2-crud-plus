@@ -6,7 +6,10 @@
     "test:e2e": "vue-cli-service test:e2e --url http://localhost:8080 ",
     "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode remote",
     "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
-    "test3:e2e": "vue-cli-service test:e2e  --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js"
+    "test3:e2e": "vue-cli-service test:e2e  --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
+    "test4:e2e": "vue-cli-service test:e2e  --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample/index.html "
+
+
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",

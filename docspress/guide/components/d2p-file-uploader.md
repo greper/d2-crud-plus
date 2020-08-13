@@ -31,9 +31,9 @@
 <!-- @vuese:d2p-file-uploader:events:start -->
 |Event Name|Description|Parameters|
 |---|---|---|
+|change|-|-|
 |success|-|-|
 |input|-|-|
-|change|-|-|
 
 <!-- @vuese:d2p-file-uploader:events:end -->
 

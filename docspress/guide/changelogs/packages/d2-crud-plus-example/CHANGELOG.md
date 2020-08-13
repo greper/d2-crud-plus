@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.5](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.4...@d2-plus/d2-crud-plus-example@1.15.5) (2020-08-13)
+
+
+### Bug Fixes
+
+* 整理了expose方法，其中updateAfter方法名修改成editAfter ([eb9631f](https://github.com/d2-projects/d2-admin/commit/eb9631f65cd5dd5517a90071ca4159af69978786))
+* 查询表单宽度可以不写px后缀 ([4be5c88](https://github.com/d2-projects/d2-admin/commit/4be5c8878483bbffc8da4b21bc5691d6a9d90671))
+
+
+### Performance Improvements
+
+* 升级依赖 ([a4b5635](https://github.com/d2-projects/d2-admin/commit/a4b5635b2ec88b940ac2c1a3eebf2187f875765e))
+* 外部获取数据字典示例 ([53b29ae](https://github.com/d2-projects/d2-admin/commit/53b29ae981c2a12536fb09fd5fd598821882577e))
+* 继续完善e2e测试，修复一堆测出来的bug ([5351022](https://github.com/d2-projects/d2-admin/commit/5351022fbfd52400239700ff8123e94b5f14cd7c))
+* 继续完善e2e测试，修复一堆测出来的bug ([fe7446e](https://github.com/d2-projects/d2-admin/commit/fe7446e94468d7a5561213e7bed01bec065210e7))
+
+
+
+
+
+
+## [1.15.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.3...@d2-plus/d2-crud-plus-example@1.15.4) (2020-08-09)
+
+**Note:** Version bump only for package @d2-plus/d2-crud-plus-example
+
+
+
+
+
+## [1.15.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.2...@d2-plus/d2-crud-plus-example@1.15.3) (2020-08-06)
+
+**Note:** Version bump only for package @d2-plus/d2-crud-plus-example
+
+
+
+
+
 ## [1.15.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.1...@d2-plus/d2-crud-plus-example@1.15.2) (2020-08-06)
 
 

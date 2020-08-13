@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.5](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.4...d2-crud-x@2.8.5) (2020-08-13)
+
+
+### Performance Improvements
+
+* slot增加scope.mode ([fdc088f](https://github.com/greper/d2-crud/commit/fdc088fcd44f3a8e3e596aec9471feff7da25a3f))
+* slot增加scope.mode ([cb83bae](https://github.com/greper/d2-crud/commit/cb83baee9b6621951fb607dae0186a86836ec2da))
+* 升级依赖 ([a4b5635](https://github.com/greper/d2-crud/commit/a4b5635b2ec88b940ac2c1a3eebf2187f875765e))
+* 继续完善e2e测试，修复一堆测出来的bug ([fe7446e](https://github.com/greper/d2-crud/commit/fe7446e94468d7a5561213e7bed01bec065210e7))
+
+
+
+
+
+
+## [2.8.4](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.3...d2-crud-x@2.8.4) (2020-08-09)
+
+**Note:** Version bump only for package d2-crud-x
+
+
+
+
+
+## [2.8.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.2...d2-crud-x@2.8.3) (2020-08-06)
+
+**Note:** Version bump only for package d2-crud-x
+
+
+
+
+
 ## [2.8.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.1...d2-crud-x@2.8.2) (2020-08-06)
 
 **Note:** Version bump only for package d2-crud-x

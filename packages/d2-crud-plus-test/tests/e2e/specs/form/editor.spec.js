@@ -11,14 +11,17 @@ describe('富文本', () => {
     parentMenu: '表单组件示例',
     subMenu: '富文本',
     idColIndex: 2,
+    editDisabled: true,
+    viewDisabled: true,
+    addDisabled: true,
     doAdd () {
-      cy.wait(1000)
+      cy.wait(2000)
     },
     doEdit () {
-      cy.wait(1000)
+      cy.wait(2000)
     },
     doView () {
-      cy.wait(1000)
+      cy.wait(2000)
     }
   })
 })

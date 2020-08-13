@@ -1,4 +1,4 @@
-FROM nginx:1.15
+FROM registry.cn-hangzhou.aliyuncs.com/d2-plus/nginx:1.15
 EXPOSE 80
 EXPOSE 443
 ENV TZ=Asia/Shanghai

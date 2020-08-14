@@ -15,9 +15,8 @@ async function runTests () {
     reportDir: 'tests/e2e/results/'
   }
   const jsonReport = await merge(options)
-  const totalFailed = jsonReport.stats.failures
+  // const totalFailed = jsonReport.stats.failures
   await generator.create(jsonReport)
-  process.exit(totalFailed)
 }
 
 runTests()

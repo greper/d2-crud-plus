@@ -1,5 +1,23 @@
 # 版本变更说明
 
+## 1.16.x  自动化测试、操作列按钮排序
+* "d2-crud-plus": "^1.16.x"
+* "d2-crud-x": "^2.9.x"
+* "d2p-extends": "^1.10.x"
+
+### 操作列按钮排序
+rowHandler:{
+    view:{
+        order:1 // 越小越靠前，默认view=1,edit=2,remove=3,custom=4
+    }
+}
+
+### valueBinding参数
+component:{
+    //如果是非vModel组件，则没有value属性，此处配置参数名，将row[key]绑定给指定prop
+    valueBinding:'propName', 
+}
+
 ## 1.15.x  多级数据支持
 * "d2-crud-plus": "^1.15.x"
 * "d2-crud-x": "^2.8.x"

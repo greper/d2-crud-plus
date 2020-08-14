@@ -49,6 +49,7 @@ export const crudOptions = {
               clearable: true, //可清除
             }
           },
+          placeholder:'',
           disabled: false, //是否在表单中禁用组件
           // disabled(context){return false}//还可以配置为方法
           readonly: false, //表单组件是否是只读
@@ -138,7 +139,20 @@ export const crudOptions = {
         getData: (url,dict,{form,component})=>{return Promise} //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
       },
       //行内单元格显示组件
-      component:{ name:'dict-select', props:{...}},
+      component:{ 
+        name:'dict-select', 
+        //如果是非vModel组件，则没有value属性，此处配置参数名，将row[key]绑定给指定prop
+        valueBinding:'propName', 
+        props:{...},
+        style:{},
+        class:{},
+        placeholder,
+        disabled:false,
+        show:true,
+        on:{},//事件绑定
+        scopedSlots:{}, //插槽
+        children:[] //子元素
+      },
       //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
       disabled: false, 
       show: true, //是否显示单元格内容

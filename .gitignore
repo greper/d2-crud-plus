@@ -30,3 +30,4 @@ lerna-debug.log
 /packages/d2-crud-plus-test/tests/e2e/results/
 /packages/d2-crud-plus-test/public/
 /packages/d2-crud-plus-test/src/
+/packages/d2-crud-plus-test/mochawesome-report/

@@ -6,7 +6,7 @@
   "reporterOptions": {
     "reportDir": "tests/e2e/results/reports",
     "overwrite": false,
-    "html": true,
+    "html": false,
     "json": true,
     "toConsole": true
   }

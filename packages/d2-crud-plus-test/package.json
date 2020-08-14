@@ -14,11 +14,12 @@
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e --url http://localhost:8080 ",
-    "test.ci1:e2e": "vue-cli-service test:e2e  --headless --spec tests/e2e/specs/public/login.spec.js",
+    "test.ci1:e2e": "vue-cli-service test:e2e  --headless --mode remote --spec tests/e2e/specs/public/login.spec.js",
     "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode remote",
     "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080",
     "test3:e2e": "vue-cli-service test:e2e  --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
-    "test4:e2e": "vue-cli-service test:e2e  --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample "
+    "test4:e2e": "vue-cli-service test:e2e --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample --spec tests/e2e/specs/form/select.spec.js ",
+    "test5:e2e": "vue-cli-service test:e2e  --mode remote --url http://qiniu.veryreader.com/D2CrudPlusExample  "
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",

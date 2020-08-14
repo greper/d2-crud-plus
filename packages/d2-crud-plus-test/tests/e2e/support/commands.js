@@ -14,13 +14,24 @@
 const version = require('../../../../d2-crud-plus-example/package.json').version
 
 Cypress.Commands.add('login1', () => {
-  cy.setCookie('d2admin-' + version + '-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
+  cy.log('环境：' + Cypress.env('VUE_APP_PROXY_API'))
+  if (Cypress.env('VUE_APP_PROXY_API')) {
+    cy.log('正式环境登录')
+    cy.request('POST', 'http://qiniu.veryreader.com/api/login', {
+      password: 'admin',
+      username: 'admin'
+    }).then(ret => {
+      cy.setCookie('d2admin-' + version + '-token', ret.body.data.token)
+    })
+  } else {
+    cy.log('demo登录')
+    cy.setCookie('d2admin-' + version + '-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
+  }
 })
 Cypress.Commands.add('login', () => {
   cy.login1()
-  cy.visit('/#/index')
-  cy.contains('首页')
-  cy.contains('d2-crud-plus')
+  cy.visit('/#/demo/hotel/dashboard')
+  cy.get('.d2-theme-container-main-header').contains('工作台')
 })
 Cypress.Commands.add('login2', (name, password) => {
   cy.visit('/#/login')

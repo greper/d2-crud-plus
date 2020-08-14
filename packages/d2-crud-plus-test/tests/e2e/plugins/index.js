@@ -14,6 +14,7 @@ module.exports = (on, config) => {
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
+  config.env.VUE_APP_PROXY_API = process.env.VUE_APP_PROXY_API
 
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',

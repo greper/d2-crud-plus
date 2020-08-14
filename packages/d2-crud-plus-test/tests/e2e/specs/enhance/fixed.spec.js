@@ -11,7 +11,7 @@ describe(menu, () => {
     cy,
     parentMenu: 'CRUD增强功能',
     subMenu: menu,
-    listWait: 3000,
+    listWait: 2000,
     editForce: true,
     // editWait: 5000,
     viewForce: true,
@@ -19,6 +19,9 @@ describe(menu, () => {
     deleteForce: true,
     doAdd () {
       cy.formItem('撑开').find('input').type('123').should('have.value', '123')
+      cy.formItem('左边固定').find('.el-input').should($el => {
+        expect($el.attr('placeholder')).equal('左边固定1')
+      })
     },
     checkAdd () {
       cy.checkColValue({ col: 6, value: '123' })
@@ -27,6 +30,11 @@ describe(menu, () => {
     },
     doView () {
       cy.formItem('撑开').find('input').should('be.disabled').should('have.value', '123')
+    },
+    doAfter () {
+      cy.searchItem('左边固定').find('.el-input').should($el => {
+        expect($el.attr('placeholder')).equal('左边固定1')
+      })
     }
   })
 })

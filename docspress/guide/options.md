@@ -197,7 +197,7 @@ export const crudOptions = {
     //行操作栏，与d2-crud一致，默认配置有修改与删除
     view:{//查看按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
-        text: '查看', //按钮文字， 传null 取消文字
+        text: '查看', //按钮文字， null= 取消文字
         type: 'warning', // 按钮类型
         icon:'el-view', //按钮图标
         size: 'small', // 按钮大小
@@ -206,7 +206,7 @@ export const crudOptions = {
         //show(index,row){return true}// 还可以配置为方法 
         disabled:false, // 是否禁用
         //disabled(index,row){return true} //还可以配置为方法 
-        order: 1 //排序号 数字小，排前面
+        order: 1 //排序号，数字小，排前面，默认顺序：查看=1、编辑=2、删除=3、自定义=4
     }, 
     edit:{}, //编辑按钮,配置同上
     remove:{}, //删除按钮,配置同上

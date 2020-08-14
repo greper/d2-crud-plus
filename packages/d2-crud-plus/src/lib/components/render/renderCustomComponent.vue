@@ -1,4 +1,5 @@
 <script>
+import _ from 'lodash'
 export default {
   name: 'render-custom-component',
   props: {
@@ -7,6 +8,13 @@ export default {
      */
     value: {
       required: true
+    },
+    /**
+     * 以组件的某个props设置为row[key]的值
+     *
+     */
+    valueBinding: {
+      type: [String, Object]
     },
     /**
      * @description 传入的组件名
@@ -26,7 +34,6 @@ export default {
     events: {
       default: undefined
     },
-    // 与events等效
     on: {
       default: undefined
     },
@@ -36,7 +43,6 @@ export default {
     scopedSlots: {
       default: undefined
     },
-    //  与scoped等效
     slots: {
       default: undefined
     },
@@ -59,27 +65,44 @@ export default {
       default: undefined
     }
   },
+  computed: {
+    _on () {
+      const self = this
+      const events = {}
+      if (self.events) {
+        for (const key in self.events) {
+          events[key] = (event) => {
+            if (self.events[key]) {
+              self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
+            }
+          }
+        }
+      }
+      if (self.on) {
+        for (const key in self.on) {
+          events[key] = (event) => {
+            if (self.on[key]) {
+              self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
+            }
+          }
+        }
+      }
+      return {
+        input: function (event) {
+          self.$emit('input', event)
+        },
+        change: function (event) {
+          self.$emit('change', { value: event, component: self._self.$refs.target })
+        },
+        ready: function (event) {
+          self.$emit('ready', { value: event, component: self._self.$refs.target })
+        },
+        ...events
+      }
+    }
+  },
   render (h) {
     const self = this
-    const events = {}
-    if (self.events) {
-      for (const key in self.events) {
-        events[key] = (event) => {
-          if (self.events[key]) {
-            self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
-          }
-        }
-      }
-    }
-    if (self.on) {
-      for (const key in self.on) {
-        events[key] = (event) => {
-          if (self.on[key]) {
-            self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
-          }
-        }
-      }
-    }
     const scopedSlots = {}
     if (self.scopedSlots) {
       for (const key in self.scopedSlots) {
@@ -102,35 +125,38 @@ export default {
       }
     }
 
-    const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
-    const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
-      on: {
-        input: function (event) {
-          self.$emit('input', event)
-        },
-        change: function (event) {
-          self.$emit('change', { value: event, component: self._self.$refs.target })
-        },
-        ready: function (event) {
-          self.$emit('ready', { value: event, component: self._self.$refs.target })
-        },
-        ...events
-      },
+      on: self._on,
       attrs: self.$attrs,
       scopedSlots: scopedSlots,
-      props: {
-        value: self.value,
-        disabled: disabled,
-        readonly: readonly,
-        ...self.props
-      },
+      props: self.computedProps(),
       ref: 'target'
     }, children)
   },
   methods: {
     getComponentRef () {
       return this.$refs.target
+    },
+    computedProps () {
+      // const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
+      // const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
+
+      const props = {
+        value: this.value,
+        disabled: this.disabled,
+        readonly: this.readonly,
+        ...this.props
+      }
+      if (this.valueBinding) {
+        if (typeof this.valueBinding === 'string') {
+          _.set(props, this.valueBinding, this.value)
+        } else {
+          const prop = this.valueBinding.prop
+          const handle = this.valueBinding.handle
+          _.set(props, prop, handle({ value: this.value }))
+        }
+      }
+      return props
     }
   }
 }

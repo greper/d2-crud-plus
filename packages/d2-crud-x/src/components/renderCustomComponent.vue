@@ -13,7 +13,7 @@ export default {
      * 以组件的某个props设置为row[key]的值
      *
      */
-    valueProp: {
+    valueBinding: {
       type: [String, Object]
     },
     /**
@@ -138,22 +138,18 @@ export default {
       return this.$refs.target
     },
     computedProps () {
-      const self = this
-      const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
-      const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
-
       const props = {
         value: this.value,
-        disabled: disabled,
-        readonly: readonly,
+        disabled: this.disabled,
+        readonly: this.readonly,
         ...this.props
       }
-      if (this.valueProp) {
-        if (typeof this.valueProp === 'string') {
-          _.set(props, this.valueProp, this.value)
+      if (this.valueBinding) {
+        if (typeof this.valueBinding === 'string') {
+          _.set(props, this.valueBinding, this.value)
         } else {
-          const prop = this.valueProp.prop
-          const handle = this.valueProp.handle
+          const prop = this.valueBinding.prop
+          const handle = this.valueBinding.handle
           _.set(props, prop, handle({ value: this.value }))
         }
       }

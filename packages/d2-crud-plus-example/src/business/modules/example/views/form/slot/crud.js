@@ -12,11 +12,11 @@ export const crudOptions = {
     width: 400,
     custom: [
       {
-        text: '自定义按钮',
+        text: '自定义排序',
         type: 'warning',
         size: 'small',
         emit: 'custom-emit',
-        order: -1
+        order: 1 // 数字越小越排前面
       }
     ]
   },

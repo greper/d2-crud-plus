@@ -4,9 +4,9 @@ import lodash from 'lodash'
 
 function newClient (options) {
   let client = null
-  let secretId = options.secretId
-  let secretKey = options.secretKey
-  let getAuthorization = options.getAuthorization
+  const secretId = options.secretId
+  const secretKey = options.secretKey
+  const getAuthorization = options.getAuthorization
   if (secretId != null && secretId !== '' && secretKey != null && secretKey !== '') {
     client = new COS({
       SecretId: secretId,
@@ -49,7 +49,7 @@ export default {
     return this.client
   },
   async upload ({ file, fileName, onProgress, onError, config }) {
-    let options = lodash.cloneDeep(this.options)
+    const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName)
@@ -58,7 +58,7 @@ export default {
       key = await key
     }
     // TODO 大文件需要分片上传
-    let cos = this.getClient()
+    const cos = this.getClient()
     return new Promise((resolve, reject) => {
       cos.putObject({
         Bucket: config.bucket,
@@ -66,7 +66,7 @@ export default {
         Key: key,
         Body: file,
         onProgress (progressEvent) {
-          let e = progressEvent
+          const e = progressEvent
           if (e.total > 0) {
             e.percent = e.loaded / e.total * 100
           }
@@ -79,7 +79,7 @@ export default {
           reject(err)
         } else {
           console.log('上传成功', data)
-          let result = { url: config.domain + '/' + key, key: key }
+          const result = { url: config.domain + '/' + key, key: key }
           resolve(result)
         }
       })

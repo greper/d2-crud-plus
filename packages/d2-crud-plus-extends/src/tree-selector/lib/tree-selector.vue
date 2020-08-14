@@ -98,7 +98,7 @@ export default {
   },
   computed: {
     _elProps () {
-      let defaultElProps = {
+      const defaultElProps = {
         showCheckbox: this.multiple,
         highlightCurrent: !this.multiple,
         props: {}
@@ -132,14 +132,14 @@ export default {
     },
     setValue (value) {
       let arrValue = value
-      let selected = []
+      const selected = []
       if (arrValue != null) {
         if (!(arrValue instanceof Array)) {
           arrValue = [arrValue]
         }
-        for (let item of arrValue) {
-          let data = this.data
-          let node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
+        for (const item of arrValue) {
+          const data = this.data
+          const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
           if (node != null) {
             node.id = node[this.dict.value]
             selected.push(node)
@@ -165,7 +165,7 @@ export default {
       console.log('this.value1', this.selected)
       setTimeout(() => {
         if (this.selected != null) {
-          let ids = this.selected.map(item => item[this._elProps.props.value])
+          const ids = this.selected.map(item => item[this._elProps.props.value])
           console.log('this.value2', this.selected, ids)
           ids.forEach(id => {
             const current = this.$refs.elTree.store.nodesMap[id]
@@ -211,7 +211,7 @@ export default {
       return item[children]
     },
     selectSubmit () {
-      let nodes = this.refreshSelected()
+      const nodes = this.refreshSelected()
       let values = this.formatValue(nodes)
       this.dialogVisible = false
       this.resetInputHeight()
@@ -225,7 +225,7 @@ export default {
       if (this.multiple) {
         nodes = this.$refs.elTree.getCheckedNodes(this.leafOnly, this.includeHalfChecked)
       } else {
-        let node = this.$refs.elTree.getCurrentNode()
+        const node = this.$refs.elTree.getCurrentNode()
         if (node == null) {
           nodes = []
         } else {
@@ -246,11 +246,11 @@ export default {
       if (this.collapseTags && !this.filterable) return
       this.$nextTick(() => {
         if (!this.$refs.reference) return
-        let inputChildNodes = this.$refs.reference.$el.childNodes
-        let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
+        const inputChildNodes = this.$refs.reference.$el.childNodes
+        const input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
         const tags = this.$refs.tags
         const sizeInMap = this.initialInputHeight || 40
-        let height = this.selected.length === 0
+        const height = this.selected.length === 0
           ? sizeInMap + 'px'
           : Math.max(
             tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
@@ -263,18 +263,18 @@ export default {
       })
     },
     filterFullCheckedChildren (nodes) {
-      let ignored = new Set()
-      for (let item of nodes) {
-        let children = this.getValueChildren(item)
+      const ignored = new Set()
+      for (const item of nodes) {
+        const children = this.getValueChildren(item)
         if (children != null) {
-          for (let child of children) {
+          for (const child of children) {
             ignored.add(this.getValueKey(child))
           }
         }
       }
-      let values = []
-      for (let item of nodes) {
-        let key = this.getValueKey(item)
+      const values = []
+      for (const item of nodes) {
+        const key = this.getValueKey(item)
         if (!ignored.has(key)) {
           values.push(item)
         }
@@ -282,8 +282,8 @@ export default {
       return values
     },
     formatValue (nodes) {
-      let values = []
-      for (let item of nodes) {
+      const values = []
+      for (const item of nodes) {
         values.push(this.getValueKey(item))
       }
       return values

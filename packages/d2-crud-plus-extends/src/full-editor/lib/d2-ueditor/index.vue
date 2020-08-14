@@ -100,19 +100,19 @@ export default {
     _checkDependencies () {
       return new Promise((resolve, reject) => {
         // 判断ueditor.config.js和ueditor.all.js是否均已加载(仅加载完ueditor.config.js时UE对象和UEDITOR_CONFIG对象存在,仅加载完ueditor.all.js时UEDITOR_CONFIG对象存在,但为空对象)
-        let scriptsLoaded = !!window.UE && !!window.UEDITOR_CONFIG && Object.keys(window.UEDITOR_CONFIG).length !== 0 && !!window.UE.getEditor
+        const scriptsLoaded = !!window.UE && !!window.UEDITOR_CONFIG && Object.keys(window.UEDITOR_CONFIG).length !== 0 && !!window.UE.getEditor
         if (scriptsLoaded) {
           resolve()
-        } else if (window['$loadEnv']) { // 利用订阅发布，确保同时渲染多个组件时，不会重复创建script标签
-          window['$loadEnv'].on('scriptsLoaded', () => {
+        } else if (window.$loadEnv) { // 利用订阅发布，确保同时渲染多个组件时，不会重复创建script标签
+          window.$loadEnv.on('scriptsLoaded', () => {
             resolve()
           })
         } else {
-          window['$loadEnv'] = new LoadEvent()
+          window.$loadEnv = new LoadEvent()
           // 如果在其他地方只引用ueditor.all.min.js，在加载ueditor.config.js之后仍需要重新加载ueditor.all.min.js，所以必须确保ueditor.config.js已加载
           this._loadConfig().then(() => this._loadCore()).then(() => {
             resolve()
-            window['$loadEnv'].emit('scriptsLoaded')
+            window.$loadEnv.emit('scriptsLoaded')
           })
         }
       })
@@ -123,7 +123,7 @@ export default {
           resolve()
           return
         }
-        let configScript = document.createElement('script')
+        const configScript = document.createElement('script')
         configScript.type = 'text/javascript'
         configScript.src = this.mixedConfig.UEDITOR_HOME_URL + 'ueditor.config.js'
         document.getElementsByTagName('head')[0].appendChild(configScript)
@@ -142,7 +142,7 @@ export default {
           resolve()
           return
         }
-        let coreScript = document.createElement('script')
+        const coreScript = document.createElement('script')
         coreScript.type = 'text/javascript'
         coreScript.src = this.mixedConfig.UEDITOR_HOME_URL + 'ueditor.all.min.js'
         document.getElementsByTagName('head')[0].appendChild(coreScript)

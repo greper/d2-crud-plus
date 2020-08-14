@@ -54,7 +54,7 @@ export default {
       } else if (this.value instanceof Array) {
         // 本来就是数组的
         valueArr = []
-        for (let val of this.value) {
+        for (const val of this.value) {
           valueArr.push(this.getItem(val))
         }
       }

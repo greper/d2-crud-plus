@@ -11,13 +11,13 @@ import D2pUploader from '../../../uploader'
 import lodash from 'lodash'
 import { d2CrudPlus } from '../../../utils/d2-crud-plus'
 
-let fontSizeStyle = Quill.import('attributors/style/size')
+const fontSizeStyle = Quill.import('attributors/style/size')
 fontSizeStyle.whitelist = ['10px', '14px', '16px', '18px', '22px', '26px', '30px', '34px', '38px', '45px']
 Quill.register(fontSizeStyle, true)
 
 // quill编辑器的字体
-let fonts = ['SimSun', 'SimHei', 'Microsoft-YaHei', 'KaiTi', 'FangSong', 'Arial', 'Times-New-Roman', 'sans-serif']
-let Font = Quill.import('formats/font')
+const fonts = ['SimSun', 'SimHei', 'Microsoft-YaHei', 'KaiTi', 'FangSong', 'Arial', 'Times-New-Roman', 'sans-serif']
+const Font = Quill.import('formats/font')
 Font.whitelist = fonts // 将字体加入到白名单
 Quill.register(Font, true)
 
@@ -55,14 +55,14 @@ export default {
             ['bold', 'italic', 'underline', 'strike'],
             ['blockquote', 'code-block'],
             [{ list: 'ordered' }, { list: 'bullet' }],
-            [{ 'script': 'sub' }, { 'script': 'super' }],
-            [{ 'indent': '-1' }, { 'indent': '+1' }],
-            [{ 'direction': 'rtl' }],
+            [{ script: 'sub' }, { script: 'super' }],
+            [{ indent: '-1' }, { indent: '+1' }],
+            [{ direction: 'rtl' }],
             [{ size: fontSizeStyle.whitelist }], // 解决字体大小 normal太小的问题
             // [{ size: ['small', false, 'large', 'huge'] }],
             [{ header: [1, 2, 3, 4, 5, 6, false] }],
             [{ color: [] }, { background: [] }],
-            [{ 'font': ['Microsoft-YaHei', 'SimSun', 'SimHei', 'KaiTi', 'Arial', 'Times-New-Roman'] }],
+            [{ font: ['Microsoft-YaHei', 'SimSun', 'SimHei', 'KaiTi', 'Arial', 'Times-New-Roman'] }],
             [{ align: [] }],
             ['clean'],
             ['link', 'image', 'video']
@@ -107,7 +107,7 @@ export default {
       lodash.merge(this.options, this.config)
       this.Quill = new Quill(editor, this.options)
 
-      let toolbar = this.Quill.getModule('toolbar')
+      const toolbar = this.Quill.getModule('toolbar')
       toolbar.addHandler('image', () => {
         this.handlerImage()
       })
@@ -152,7 +152,7 @@ export default {
       })
     },
     handlerImage () {
-      let quill = this.Quill
+      const quill = this.Quill
       var Imageinput = document.createElement('input')
       Imageinput.setAttribute('type', 'file')
       Imageinput.setAttribute('name', 'upload_file')
@@ -161,20 +161,20 @@ export default {
       Imageinput.addEventListener('change', () => {
         var file = Imageinput.files[0]
 
-        let item = {
+        const item = {
           status: 'uploading',
           progress: 0
         }
 
-        let onProgress = (e) => {
+        const onProgress = (e) => {
           item.progress = e.percent
         }
-        let onError = (e) => {
+        const onError = (e) => {
           item.status = 'error'
           item.message = '文件上传出错:' + e.message
           console.log(e)
         }
-        let option = {
+        const option = {
           file: file,
           fileName: file.name,
           onProgress,
@@ -182,9 +182,9 @@ export default {
         }
 
         this.doUpload(option).then(upload => {
-          let url = item.url = upload.url
+          const url = item.url = upload.url
           item.status = 'done'
-          let range = quill.getSelection(true)
+          const range = quill.getSelection(true)
           // let index = range.index + range.length
           quill.insertEmbed(range.index, 'image', url)
         })

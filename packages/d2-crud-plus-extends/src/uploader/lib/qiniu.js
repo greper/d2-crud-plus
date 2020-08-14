@@ -21,7 +21,7 @@ config {
  }
  */
 function getToken (fileName, config) {
-  let noCache = true // 七牛更新后，token不支持多次复用了
+  const noCache = true // 七牛更新后，token不支持多次复用了
   if (noCache || tokenCache == null || new Date().getTime() >= tokenCache.expiresTime) {
     return config.getToken(config.custom, fileName).then(ret => {
       let token = null
@@ -41,7 +41,7 @@ function getToken (fileName, config) {
   }
 }
 function getKey (fileName, config) {
-  let key = config.buildKey(fileName, config.custom)
+  const key = config.buildKey(fileName, config.custom)
   if (typeof (key) === 'string') {
     return new Promise((resolve) => {
       resolve(key)
@@ -56,19 +56,19 @@ export default {
     this.options = options
   },
   async upload ({ file, fileName, onProgress, onError, config }) {
-    let options = lodash.cloneDeep(this.options)
+    const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName, config)
-    let key = await getKey(fileName, config)
-    let token = await getToken(fileName, config)
+    const key = await getKey(fileName, config)
+    const token = await getToken(fileName, config)
 
     return new Promise((resolve, reject) => {
       /**
        */
-      let observable = qiniu.upload(file, key, token, config.putExtra, config.putConfig)
+      const observable = qiniu.upload(file, key, token, config.putExtra, config.putConfig)
       // eslint-disable-next-line no-unused-vars
-      let subscription = observable.subscribe({
+      const subscription = observable.subscribe({
         next (res) {
           if (res) {
             onProgress(res.total)

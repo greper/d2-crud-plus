@@ -63,14 +63,14 @@ export default {
   },
   computed: {
     urls () {
-      let urls = []
+      const urls = []
       if (this.value == null || this.value === '') {
         return urls
       }
       if (typeof (this.value) === 'string') {
         urls.push(this.value)
       } else if (this.value instanceof Array) {
-        for (let item of this.value) {
+        for (const item of this.value) {
           if (item.url != null) {
             urls.push(item.url)
           } else {
@@ -81,7 +81,7 @@ export default {
         urls.push(this.value.url)
       }
       const arr = []
-      for (let url of urls) {
+      for (const url of urls) {
         arr.push(this.buildUrl(url))
       }
       return arr
@@ -99,7 +99,7 @@ export default {
       return this.width
     },
     _elProps () {
-      let defaultElProps = {}
+      const defaultElProps = {}
       Object.assign(defaultElProps, this.elProps)
       return defaultElProps
     }

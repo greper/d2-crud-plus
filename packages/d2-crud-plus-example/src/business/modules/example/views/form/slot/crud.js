@@ -107,7 +107,7 @@ export const crudOptions = {
       form: { disabled: true },
       component: {
         name: 'el-image',
-        valueProp: 'src',
+        valueBinding: 'src',
         style: { height: '30px' },
         props: { fit: 'contain' },
         show ({ value }) {

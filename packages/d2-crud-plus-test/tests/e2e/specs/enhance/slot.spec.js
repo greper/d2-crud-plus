@@ -41,6 +41,10 @@ describe(menu, () => {
       ).parent().parent().find('button').then($el => {
         expect($el.eq(1).text()).equal('自定义排序')
       })
+
+      cy.getCell({ col: 7 }).find('.el-image').then(e => {
+        expect(e.find('img').attr('src')).equal('https://www.baidu.com/img/bd_logo1.png')
+      })
     }
   })
 })

@@ -28,8 +28,10 @@
 <!-- @vuese:crud-search:slots:start -->
 |Name|Description|Default Slot Content|
 |---|---|---|
+|prefix|-|-|
 |item.key+'SearchSlot'|-|-|
 |default|-|-|
+|suffix|-|-|
 
 <!-- @vuese:crud-search:slots:end -->
 

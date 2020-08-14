@@ -4,6 +4,7 @@ const generator = require('mochawesome-report-generator')
 
 async function runTests () {
   await fse.remove('mochawesome-report')
+  await fse.remove('./tests/e2e/results/mochawesome.html')
   // const { totalFailed } = await cypress.run()
 
   const options = {
@@ -11,11 +12,11 @@ async function runTests () {
       // you can specify more files or globs if necessary:
       './tests/e2e/results/reports/*.json'
     ],
-    reportDir: 'tests/e2e/results/'
+    reportDir: './tests/e2e/results/'
   }
   const jsonReport = await merge(options)
   // const totalFailed = jsonReport.stats.failures
-  await generator.create(jsonReport)
+  await generator.create(jsonReport, options)
 }
 
 runTests()

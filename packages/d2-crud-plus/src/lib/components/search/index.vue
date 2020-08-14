@@ -7,25 +7,25 @@
       ref="searchForm"
       v-bind="options"
       size="small" class="d2p-search-form" >
-
+    <slot name="prefix" :form="this.form"></slot>
     <el-form-item v-for="(item) in currentColumns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
       <template v-if="item.slot === true">
         <slot :name="item.key+'SearchSlot'" :form="form" />
       </template>
-      <el-input
-        v-else-if="isInput(item)"
-        v-model="form[item.key]"
-        :placeholder="item.label"
-        v-bind="getComponentProps(item)"
-        :style="{width:_width(item)}"
-        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
-      >
-      </el-input>
+<!--      <el-input-->
+<!--        v-else-if="isInput(item)"-->
+<!--        v-model="form[item.key]"-->
+<!--        :placeholder="item.label"-->
+<!--        v-bind="getComponentProps(item)"-->
+<!--        :style="{width:_width(item)}"-->
+<!--        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"-->
+<!--      >-->
+<!--      </el-input>-->
       <render-custom-component
-        v-else-if="item.component && item.component.name"
+        v-else-if="isRenderCustomComponent(item)"
         v-model="form[item.key]"
         :ref="'form_item_'+item.key"
-        :component-name="item.component.name"
+        :component-name="item.component.name?item.component.name:'el-input'"
         :props="getComponentProps(item)"
         :slots="getComponentAttr(item,'slots')"
         :scoped-slots="getComponentAttr(item,'scopedSlots')"
@@ -33,6 +33,8 @@
         :on="getComponentAttr(item,'on')"
         :children="getComponentAttr(item,'children')"
         :style="{width:_width(item)}"
+        :placeholder="getComponentProps().placeholder?getComponentProps().placeholder:getComponentAttr(item,'placeholder')"
+        v-bind="item.component"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
         @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
         @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
@@ -61,6 +63,7 @@
         重置
       </el-button>
     </el-form-item>
+    <slot name="suffix" :form="this.form"></slot>
   </el-form>
   </el-collapse-transition>
 </template>
@@ -178,6 +181,12 @@ export default {
     },
     isInput (item) {
       return !item.component || (!item.component.name && !item.component.render) || item.component.name === 'el-input'
+    },
+    isRenderCustomComponent (item) {
+      if (this.isInput(item)) {
+        return true
+      }
+      return item.component && item.component.name
     },
     getComponentAttr (item, attr, defVal) {
       if (item && item.component && item.component[attr]) {

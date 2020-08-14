@@ -14,7 +14,7 @@ export default {
      *
      */
     valueProp: {
-      type: String
+      type: [String, Object]
     },
     /**
      * @description 传入的组件名
@@ -142,7 +142,13 @@ export default {
         ...this.props
       }
       if (this.valueProp) {
-        _.set(props, this.valueProp, this.value)
+        if (typeof this.valueProp === 'string') {
+          _.set(props, this.valueProp, this.value)
+        } else {
+          const prop = this.valueProp.prop
+          const handle = this.valueProp.handle
+          _.set(props, prop, handle({ value: this.value }))
+        }
       }
       return props
     }

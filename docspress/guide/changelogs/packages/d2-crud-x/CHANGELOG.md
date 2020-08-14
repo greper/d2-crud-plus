@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.5...d2-crud-x@2.9.0) (2020-08-14)
+
+
+### Features
+
+* 取消单独的el-input，合并到renderCustomComponent ([a7b30cb](https://github.com/greper/d2-crud/commit/a7b30cbc3dde40de04715a51914e92ad769569cc))
+* 操作列按钮排序 ([ee5c3b4](https://github.com/greper/d2-crud/commit/ee5c3b459b72304bde40b6c80ee4d346eae90be6))
+
+
+### Performance Improvements
+
+* 增加valueProp参数，可以指定目标组件的某个props接收row[vlaue]的值 ([6409ce2](https://github.com/greper/d2-crud/commit/6409ce2a0ff31f3b5568db9f065a44a2766acac7))
+* 增加valueProp配置，可以将row[key]的值复制给valueProp命名的组件属性 ([d30cfbf](https://github.com/greper/d2-crud/commit/d30cfbfeb4e53ea9bfa485fb0fefc2509594a417))
+* 增加非vModel组件展示的示例 ([2985545](https://github.com/greper/d2-crud/commit/2985545b979798bbc2e629fcb48387246f24ab3d))
+
+
+
+
+
 ## [2.8.5](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.4...d2-crud-x@2.8.5) (2020-08-13)
 
 

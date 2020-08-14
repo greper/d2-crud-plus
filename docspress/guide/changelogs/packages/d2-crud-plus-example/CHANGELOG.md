@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.5...@d2-plus/d2-crud-plus-example@1.16.0) (2020-08-14)
+
+
+### Features
+
+* 取消单独的el-input，合并到renderCustomComponent ([a7b30cb](https://github.com/d2-projects/d2-admin/commit/a7b30cbc3dde40de04715a51914e92ad769569cc))
+* 操作列按钮排序 ([ee5c3b4](https://github.com/d2-projects/d2-admin/commit/ee5c3b459b72304bde40b6c80ee4d346eae90be6))
+
+
+### Performance Improvements
+
+* 增加非vModel组件展示的示例 ([2985545](https://github.com/d2-projects/d2-admin/commit/2985545b979798bbc2e629fcb48387246f24ab3d))
+
+
+
+
+
 ## [1.15.5](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.4...@d2-plus/d2-crud-plus-example@1.15.5) (2020-08-13)
 
 

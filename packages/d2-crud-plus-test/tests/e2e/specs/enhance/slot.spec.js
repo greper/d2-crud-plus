@@ -34,6 +34,13 @@ describe(menu, () => {
     doEdit () {
       cy.formItem('slot自定义').find('input').should('have.value', '123')
       cy.formItem('主题').find('input').should('have.value', '321')
+    },
+    doAfter () {
+      cy.get(
+        '.d2-container-full__body .el-table__body-wrapper button i.el-icon-edit'
+      ).parent().parent().find('button').then($el => {
+        expect($el.eq(1).text()).equal('自定义排序')
+      })
     }
   })
 })

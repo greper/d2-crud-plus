@@ -11,7 +11,8 @@ async function runTests () {
     files: [
       // you can specify more files or globs if necessary:
       './tests/e2e/results/reports/*.json'
-    ]
+    ],
+    reportDir: 'tests/e2e/results/'
   }
   const jsonReport = await merge(options)
   const totalFailed = jsonReport.stats.failures

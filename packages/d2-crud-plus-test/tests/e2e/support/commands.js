@@ -15,7 +15,7 @@ const version = require('../../../../d2-crud-plus-example/package.json').version
 
 Cypress.Commands.add('login1', () => {
   cy.log('环境：' + Cypress.env('VUE_APP_PROXY_API'))
-  if (Cypress.env('VUE_APP_PROXY_API')) {
+  if (Cypress.env('VUE_APP_TEST_TARGET') === 'prod') {
     cy.log('正式环境登录')
     cy.request('POST', 'http://qiniu.veryreader.com/api/login', {
       password: 'admin',

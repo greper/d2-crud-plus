@@ -1,4 +1,5 @@
 <script>
+import _ from 'lodash'
 export default {
   name: 'render-custom-component',
   props: {
@@ -7,6 +8,13 @@ export default {
      */
     value: {
       required: true
+    },
+    /**
+     * 以组件的某个props设置为row[key]的值
+     *
+     */
+    valueProp: {
+      type: String
     },
     /**
      * @description 传入的组件名
@@ -100,8 +108,6 @@ export default {
       }
     }
 
-    const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
-    const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
     return h(self.componentName, {
       on: {
         input: function (event) {
@@ -117,18 +123,28 @@ export default {
       },
       attrs: self.$attrs,
       scopedSlots: scopedSlots,
-      props: {
-        value: self.value,
-        disabled: disabled,
-        readonly: readonly,
-        ...self.props
-      },
+      props: self.computedProps(),
       ref: 'target'
     }, children)
   },
   methods: {
     getComponentRef () {
       return this.$refs.target
+    },
+    computedProps () {
+      const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
+      const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
+
+      const props = {
+        value: this.value,
+        disabled: disabled,
+        readonly: readonly,
+        ...this.props
+      }
+      if (this.valueProp) {
+        _.set(props, this.valueProp, this.value)
+      }
+      return props
     }
   }
 }

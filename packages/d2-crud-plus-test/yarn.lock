@@ -941,6 +941,15 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@d2-plus/vue-cli-plugin-e2e-cypress@~4.5.0":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@d2-plus/vue-cli-plugin-e2e-cypress/-/vue-cli-plugin-e2e-cypress-4.5.3.tgz#64fea26982303d63bc8b35114057295dc5ea451a"
+  integrity sha512-EPfiREZRfkmaxfVAyVHqHQ25ETOISrVJWYd7Y/OAVQVwsAq0FuQRy35ehPOFlrr9e/2M5lHW8TAgm0cAuE9B1g==
+  dependencies:
+    "@vue/cli-shared-utils" "^4.5.3"
+    cypress "^3.8.3"
+    eslint-plugin-cypress "^2.10.3"
+
 "@d2-projects/d2-crud@2.0.5":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@d2-projects/d2-crud/-/d2-crud-2.0.5.tgz#8c4bba8736275ceee2e21eae7cc9a350132eaa1b"
@@ -1606,15 +1615,6 @@
     cache-loader "^4.1.0"
     thread-loader "^2.1.3"
     webpack "^4.0.0"
-
-"@vue/cli-plugin-e2e-cypress@~4.5.0":
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-e2e-cypress/-/cli-plugin-e2e-cypress-4.5.3.tgz#f96b5e93cfe66891155295145dc39a5cc8c0cab8"
-  integrity sha512-hYTMA4e44L4EIbIRgpdXtDZJqKKOKdybiyyKumzD08M1jWIKSA/0rjHTyPItHg6cIuceifJcVy3JC1+9x5iNwg==
-  dependencies:
-    "@vue/cli-shared-utils" "^4.5.3"
-    cypress "^3.8.3"
-    eslint-plugin-cypress "^2.10.3"
 
 "@vue/cli-plugin-eslint@^4.1.0":
   version "4.5.3"

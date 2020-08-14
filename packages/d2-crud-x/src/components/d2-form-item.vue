@@ -30,7 +30,7 @@
       :scoped-slots="_component.scopedSlots"
       :on="_component.on"
       :children="_component.children"
-      :placeholder="_component.props&& _component.props.placeholder?_component.props.placeholder:_component.placeholder"
+      :placeholder="_component.placeholder"
       v-bind="_component"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
@@ -130,9 +130,18 @@ export default {
     getFormComponentAttr (attr, defaultValue) {
       const component = this._component
       if (component) {
-        return this.handleAttribute(component[attr], defaultValue, this.getContext())
+        return this.getFormFuncAttribute(component[attr], defaultValue)
       }
       return defaultValue
+    },
+    getFormFuncAttribute (attribute, defaultValue) {
+      if (attribute === false || attribute === 0 || attribute === '') {
+        return attribute
+      }
+      if (attribute && attribute instanceof Function) {
+        return attribute(this.getContext())
+      }
+      return attribute || defaultValue
     },
     getComponentRef () {
       if (this.$refs && this.$refs.targetWrapper && this.$refs.targetWrapper.$refs) {

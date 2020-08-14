@@ -120,7 +120,6 @@ export const crudOptions = (vm) => {
         },
         component: {
           disabled (context) {
-            console.log('context disabled:', context)
             return context.form.disable
           }
         }

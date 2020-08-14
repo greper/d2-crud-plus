@@ -34,7 +34,8 @@
         :children="getComponentAttr(item,'children')"
         :style="{width:_width(item)}"
         :placeholder="getComponentProps().placeholder?getComponentProps().placeholder:getComponentAttr(item,'placeholder')"
-        v-bind="item.component"
+        :disabled="getComponentAttr(item,'disabled', false)"
+        :readonly="getComponentAttr(item,'readonly', false)"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
         @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
         @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
@@ -190,7 +191,11 @@ export default {
     },
     getComponentAttr (item, attr, defVal) {
       if (item && item.component && item.component[attr]) {
-        return item.component[attr]
+        const attrObj = item.component[attr]
+        if (attrObj instanceof Function) {
+          return attrObj(this.getContext(item.key))
+        }
+        return attrObj
       }
       return defVal
     },

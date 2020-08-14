@@ -204,8 +204,9 @@ export const crudOptions = {
         circle: false,//圆形按钮 ，需要thin=true,且text=true
         show:true, // 是否显示按钮
         //show(index,row){return true}// 还可以配置为方法 
-        disabled:false// 是否禁用
+        disabled:false, // 是否禁用
         //disabled(index,row){return true} //还可以配置为方法 
+        order: 1 //排序号 数字小，排前面
     }, 
     edit:{}, //编辑按钮,配置同上
     remove:{}, //删除按钮,配置同上

@@ -96,40 +96,17 @@
           v-bind="rowHandle"
         >
           <template slot-scope="scope">
-            <d2-button
-              v-if="rowHandle.view && handleRowHandleButtonShow(rowHandle.view.show, scope.$index, scope.row)"
-              :disabled="handleRowHandleButtonDisabled(rowHandle.view.disabled, scope.$index, scope.row)"
-              v-bind="rowHandle.view"
-              @click="handleView(scope.$index, scope.row)"
-              :label="rowHandle.view.text==null?undefined: handleAttribute(rowHandle.view.text, '查看')"
-            />
-            <d2-button
-              v-if="rowHandle.edit && handleRowHandleButtonShow(rowHandle.edit.show, scope.$index, scope.row)"
-              :disabled="handleRowHandleButtonDisabled(rowHandle.edit.disabled, scope.$index, scope.row)"
-              v-bind="rowHandle.edit"
-              @click="handleEdit(scope.$index, scope.row)"
-              :label="rowHandle.edit.text==null?undefined: handleAttribute(rowHandle.edit.text, '编辑')"
-            />
-            <d2-button
-              v-if="rowHandle.remove && handleRowHandleButtonShow(rowHandle.remove.show, scope.$index, scope.row)"
-              :type="handleAttribute(rowHandle.remove.type, 'danger')"
-              :disabled="handleRowHandleButtonDisabled(rowHandle.remove.disabled, scope.$index, scope.row)"
-              @click="handleRemove(scope.$index, scope.row)"
-              :label="rowHandle.remove.text==null?undefined: handleAttribute(rowHandle.remove.text, '删除')"
-              v-bind="rowHandle.remove"
-            />
             <template
-              v-for="(item, index) in handleAttribute(rowHandle.custom, [])"
+              v-for="(item, index) in _handleBtns"
             >
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                          v-bind="item"
-                         @click="$emit(item.emit, {index: scope.$index, row: scope.row})"
+                         @click="item.onClick(scope.$index,  scope.row)"
                          :label="handleAttribute(item.text)"
               />
             </template>
-
           </template>
 
         </component>

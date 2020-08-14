@@ -5,6 +5,21 @@ export const crudOptions = {
   viewOptions: {
     componentType: 'form'
   },
+  formOptions: {
+    center: true // 标题与按钮居中布局
+  },
+  rowHandle: {
+    width: 400,
+    custom: [
+      {
+        text: '自定义按钮',
+        type: 'warning',
+        size: 'small',
+        emit: 'custom-emit',
+        order: -1
+      }
+    ]
+  },
   columns: [
     {
       title: 'ID',
@@ -100,19 +115,5 @@ export const crudOptions = {
         }
       }
     }
-  ],
-  formOptions: {
-    center: true // 标题与按钮居中布局
-  },
-  rowHandle: {
-    width: 400,
-    custom: [
-      {
-        text: '自定义按钮',
-        type: 'warning',
-        size: 'small',
-        emit: 'custom-emit'
-      }
-    ]
-  }
+  ]
 }

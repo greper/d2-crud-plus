@@ -3,7 +3,7 @@
     <template slot="header">图片裁剪上传
 
       <example-helper title="帮助说明" >
-        <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/extends/avatar-cropper.html">帮助说明</link-button>
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/avatar-cropper.html">帮助说明</link-button>
       </example-helper>
     </template>
     <d2-crud-x

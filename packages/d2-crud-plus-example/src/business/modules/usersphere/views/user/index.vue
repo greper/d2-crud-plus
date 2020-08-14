@@ -4,7 +4,7 @@
           用户管理
           <example-helper title="权限管理帮助" >
             <div>
-              <link-button href="http://greper.gitee.io/d2-crud-plus-docs/guide/permission.html">权限管理帮助文档</link-button>
+              <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
             </div>
           </example-helper>
         </template>

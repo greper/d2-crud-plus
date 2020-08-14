@@ -65,27 +65,44 @@ export default {
       default: undefined
     }
   },
+  computed: {
+    _on () {
+      const self = this
+      const events = {}
+      if (self.events) {
+        for (const key in self.events) {
+          events[key] = (event) => {
+            if (self.events[key]) {
+              self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
+            }
+          }
+        }
+      }
+      if (self.on) {
+        for (const key in self.on) {
+          events[key] = (event) => {
+            if (self.on[key]) {
+              self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
+            }
+          }
+        }
+      }
+      return {
+        input: function (event) {
+          self.$emit('input', event)
+        },
+        change: function (event) {
+          self.$emit('change', { value: event, component: self._self.$refs.target })
+        },
+        ready: function (event) {
+          self.$emit('ready', { value: event, component: self._self.$refs.target })
+        },
+        ...events
+      }
+    }
+  },
   render (h) {
     const self = this
-    const events = {}
-    if (self.events) {
-      for (const key in self.events) {
-        events[key] = (event) => {
-          if (self.events[key]) {
-            self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
-          }
-        }
-      }
-    }
-    if (self.on) {
-      for (const key in self.on) {
-        events[key] = (event) => {
-          if (self.on[key]) {
-            self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
-          }
-        }
-      }
-    }
     const scopedSlots = {}
     if (self.scopedSlots) {
       for (const key in self.scopedSlots) {
@@ -109,18 +126,7 @@ export default {
     }
 
     return h(self.componentName, {
-      on: {
-        input: function (event) {
-          self.$emit('input', event)
-        },
-        change: function (event) {
-          self.$emit('change', { value: event, component: self._self.$refs.target })
-        },
-        ready: function (event) {
-          self.$emit('ready', { value: event, component: self._self.$refs.target })
-        },
-        ...events
-      },
+      on: self._on,
       attrs: self.$attrs,
       scopedSlots: scopedSlots,
       props: self.computedProps(),
@@ -132,6 +138,7 @@ export default {
       return this.$refs.target
     },
     computedProps () {
+      const self = this
       const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
       const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
 

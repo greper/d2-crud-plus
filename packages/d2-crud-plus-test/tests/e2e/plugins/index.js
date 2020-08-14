@@ -14,11 +14,10 @@ module.exports = (on, config) => {
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
-  console.log('on', on)
   config.env.VUE_APP_TEST_TARGET = process.env.VUE_APP_TEST_TARGET
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',
-    integrationFolder: 'tests/e2e/specs2',
+    integrationFolder: 'tests/e2e/specs',
     screenshotsFolder: 'tests/e2e/results/screenshots',
     videosFolder: 'tests/e2e/results/videos',
     supportFile: 'tests/e2e/support/index.js'

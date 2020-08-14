@@ -30,8 +30,8 @@ Cypress.Commands.add('login1', () => {
 })
 Cypress.Commands.add('login', () => {
   cy.login1()
-  cy.visit('/#/demo/hotel/dashboard')
-  cy.get('.d2-theme-container-main-header').contains('工作台')
+  cy.visit('/#/log')
+  cy.get('.d2-theme-container-main-header').contains('前端日志')
 })
 Cypress.Commands.add('login2', (name, password) => {
   cy.visit('/#/login')

@@ -36,7 +36,6 @@ describe('日期组件', () => {
 
       cy.formItem('禁用日期').find('.el-input').click()
       cy.get('.el-picker-panel .el-date-table .today:visible').should('have.class', 'disabled')
-      cy.get('.el-picker-panel .el-date-table .today:visible').next().click()
 
       cy.formItem('仅时间').find('.el-input').click()
       cy.get('.el-time-panel .el-time-panel__footer:visible').contains('确定').click()
@@ -61,7 +60,7 @@ describe('日期组件', () => {
       cy.checkColValue({ col: 2, value: date, startWith: true })
       cy.checkColValue({ col: 3, value: date, startWith: true })
       cy.checkColValue({ col: 4, value: date, startWith: true })
-      cy.checkColValue({ col: 5, value: tomorrow, startWith: true })
+      // cy.checkColValue({ col: 5, value: tomorrow, startWith: true })
       cy.checkColValue({ col: 6, contains: [hour1, hour2, hour3], startWith: true })
       cy.checkColValue({ col: 7, value: date + '至' + tomorrow })
       cy.checkColValue({ col: 8, value: date, startWith: true })

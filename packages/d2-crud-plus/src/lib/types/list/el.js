@@ -1,22 +1,22 @@
 export default {
-  'button': {
+  button: {
     form: { component: { name: 'd2p-button-input' } },
     disabled: true
   },
-  'number': {
+  number: {
     form: { component: { name: 'el-input-number', props: { } } },
     align: 'center'
   },
-  'switch': {
+  switch: {
     form: { component: { name: 'el-switch', props: { } } },
     component: { name: 'el-switch', props: { } },
     align: 'center'
   },
-  'slider': {
+  slider: {
     form: { component: { name: 'el-slider', props: { } } },
     align: 'center'
   },
-  'rate': {
+  rate: {
     form: { component: { name: 'el-rate', props: { } } },
     align: 'center'
   },
@@ -24,11 +24,11 @@ export default {
     form: { component: { name: 'el-color-picker', props: { } } },
     align: 'center'
   },
-  'transfer': {
+  transfer: {
     form: { component: { name: 'el-transfer', props: { } } },
     align: 'center'
   },
-  'autocomplete': {
+  autocomplete: {
     form: { component: { name: 'el-autocomplete', props: { } } }
   }
 }

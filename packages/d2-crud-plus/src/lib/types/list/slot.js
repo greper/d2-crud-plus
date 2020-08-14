@@ -4,7 +4,7 @@ export default {
     form: { slot: true },
     rowSlot: true
   },
-  'slot': {
+  slot: {
     form: { slot: true },
     rowSlot: true
   },

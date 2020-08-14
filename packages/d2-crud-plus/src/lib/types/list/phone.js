@@ -1,10 +1,13 @@
 export default {
   phoneNumber: {
-    form: { component: { name: 'el-phone-number-input',
-      props: {
-        size: 'sm'
+    form: {
+      component: {
+        name: 'el-phone-number-input',
+        props: {
+          size: 'sm'
+        }
       }
-    } },
+    },
     formatter (row, column, value, index) {
       let ret = ''
       if (value != null) {

@@ -13,15 +13,15 @@
     "build:analyze": "vue-cli-service build --mode analyze",
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
-    "test:e2e": "vue-cli-service test:e2e --url http://localhost:8080 ",
-    "test.ci1:e2e": "vue-cli-service test:e2e  --headless --mode test_prod --spec tests/e2e/specs/public/login.spec.js",
-    "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode test_prod",
-    "test.ci.prod:e2e": "vue-cli-service test:e2e  --headless --mode test_prod --url http://qiniu.veryreader.com/D2CrudPlusExample",
+    "test:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --url http://localhost:8080 ",
+    "test.ci1:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod --spec tests/e2e/specs/public/login.spec.js",
+    "test.ci:e2e": "vue-cli-service test:e2e  --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod",
+    "test.ci.prod:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod --url http://qiniu.veryreader.com/D2CrudPlusExample",
     "buildReport": "node tests/e2e/start/index.js",
-    "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
-    "test3:e2e": "vue-cli-service test:e2e  --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
-    "test4:e2e": "vue-cli-service test:e2e --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample --spec tests/e2e/specs/form/select.spec.js ",
-    "test5:e2e": "vue-cli-service test:e2e  --mode test_prod --url http://qiniu.veryreader.com/D2CrudPlusExample  "
+    "test2:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --url http://localhost:8080 && npm run buildReport",
+    "test3:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
+    "test4:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample --spec tests/e2e/specs/form/select.spec.js ",
+    "test5:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --mode test_prod --url http://qiniu.veryreader.com/D2CrudPlusExample  "
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",

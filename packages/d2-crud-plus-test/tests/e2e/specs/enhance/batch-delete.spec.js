@@ -22,7 +22,7 @@ describe(menu, () => {
       cy.get('.has-gutter > tr > .el-table_1_column_1 > .cell > .el-checkbox > .el-checkbox__input > .el-checkbox__inner').click()
       cy.get('.prefix > .el-button > .el-icon-delete').click()
       cy.get('.el-message-box__btns').contains('确定').click()
-      cy.wait(1000)
+      cy.wait(3000)
       cy.checkId({ col: 2 }, '21')
     }
   })

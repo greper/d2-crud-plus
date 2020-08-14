@@ -7,29 +7,31 @@
       <slot :name="colKey+'FormSlot'" :form="formData" :mode="$attrs.formMode" />
     </template>
     <template  v-else-if="template.formatter">{{template.formatter(formData, template,formData[colKey])}}</template>
-    <el-input
-      v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"
-      v-model="formData[colKey]"
-      ref="targetInput"
-      :disabled="getFormComponentAttr('disabled', false)"
-      :readonly="getFormComponentAttr('readonly', false)"
-      v-bind="(getFormComponent().props?getFormComponent().props:getFormComponent())"
-      @change="handleFormDataChange($event,colKey)"
-    >
-    </el-input>
+<!--    <el-input-->
+<!--      v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"-->
+<!--      v-model="formData[colKey]"-->
+<!--      ref="targetInput"-->
+<!--      :disabled="getFormComponentAttr('disabled', false)"-->
+<!--      :readonly="getFormComponentAttr('readonly', false)"-->
+<!--      v-bind="(getFormComponent().props?getFormComponent().props:getFormComponent())"-->
+<!--      @change="handleFormDataChange($event,colKey)"-->
+<!--    >-->
+<!--    </el-input>-->
     <render-custom-component
-      v-else-if="getFormComponent().name"
+      v-else-if="getFormComponentName()"
       v-model="formData[colKey]"
       ref="targetWrapper"
-      :component-name="getFormComponent().name"
+      :component-name="getFormComponentName()"
       :disabled="getFormComponentAttr('disabled', false)"
       :readonly="getFormComponentAttr('readonly', false)"
-      :props="getFormComponent().props"
-      :events="getFormComponent().events"
-      :slots="getFormComponent().slots"
-      :scoped-slots="getFormComponent().scopedSlots"
-      :on="getFormComponent().on"
-      :children="getFormComponent().children"
+      :props="_component.props"
+      :events="_component.events"
+      :slots="_component.slots"
+      :scoped-slots="_component.scopedSlots"
+      :on="_component.on"
+      :children="_component.children"
+      :placeholder="_component.props&& _component.props.placeholder?_component.props.placeholder:_component.placeholder"
+      v-bind="_component"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
       @custom="handleFormComponentCustomEvent($event,colKey)"
@@ -117,6 +119,13 @@ export default {
         return component
       }
       return {}
+    },
+    getFormComponentName () {
+      const component = this.getFormComponent()
+      if ((!component) || ((!component.name) && (!component.render)) || component.name === 'el-input') {
+        return 'el-input'
+      }
+      return component.name
     },
     getFormComponentAttr (attr, defaultValue) {
       const component = this._component

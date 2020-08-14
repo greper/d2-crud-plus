@@ -17,17 +17,21 @@
         @custom-emit="customEmit">
 
       <div slot="header">
+
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
+          <el-button slot="prefix" class="d2-mr-5" size="small" type="success" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+
           <template slot="slotExampleSearchSlot" slot-scope="scope">
             <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"/>
           </template>
+          <el-button slot="suffix"  size="small" type="success" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+
+          <crud-toolbar :compact.sync="crud.pageOptions.compact"
+                        :columns="crud.columns"
+                        @refresh="doRefresh()"
+                        @columns-filter-changed="handleColumnsFilterChanged"/>
         </crud-search>
-        <el-button slot="header"  size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-        <crud-toolbar :search.sync="crud.searchOptions.show"
-                      :compact.sync="crud.pageOptions.compact"
-                      :columns="crud.columns"
-                      @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"/>
+
       </div>
 
       <template slot="FormHeaderSlot">

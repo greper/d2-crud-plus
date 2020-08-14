@@ -34,7 +34,14 @@ export const crudOptions = {
       key: 'data',
       sortable: true,
       width: 100,
-      fixed: 'left'
+      search: {},
+      fixed: 'left',
+      form: {
+        component: {
+          props: { },
+          placeholder: '左边固定1'
+        }
+      }
     },
     {
       title: '时间',

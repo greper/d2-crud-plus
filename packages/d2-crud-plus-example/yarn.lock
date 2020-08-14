@@ -3539,20 +3539,20 @@ cz-conventional-changelog@3.2.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^1.15.4:
-  version "1.15.4"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.15.4.tgz#a7e2125dfc183082a749857d6520697059450b01"
-  integrity sha512-bPu34jzQQB23sbcublGaSE1gwmVjefG2/wb4PBCa20GVPkXO2+yJ5yEldoZN1mnzOmSV06gtjce/Voub0qnq9w==
+d2-crud-plus@^1.15.5:
+  version "1.15.5"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.15.5.tgz#14bf66777efe13eb1bc1cc1eb9fd58ac2d8d5b65"
+  integrity sha512-1qJQcloPCL8mV4Azj7rJYPnxJv8SY8B+SZH/OGfzXKpyjMgS2pieqUcqIh8vfJie7bokhC/JanoS8rdtRd2NOQ==
   dependencies:
-    dayjs "^1.8.16"
-    lodash "^4.17.11"
-    vue "^2.6.10"
-    vuedraggable "^2.23.2"
+    dayjs "^1.8.17"
+    lodash "^4.17.19"
+    vue "^2.6.11"
+    vuedraggable "^2.24.0"
 
-d2-crud-x@^2.8.4:
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.8.4.tgz#e3f7abc2a49b0d8a10cde9c7ee194ed91917e9af"
-  integrity sha512-2LuLQ9043U5rXPsnFpjvgIuqbhyzXON0m5i5lHtbcCdsrqyYF28O4dcS1SKuJ9XISLLwyN5vr6fieGB5mSN85w==
+d2-crud-x@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.8.5.tgz#e0bfb7ee20a6773b458ea810c95f928abe302eba"
+  integrity sha512-SdtW3ifofKDyI2p62x5taJn6dlJGsJhEJ4h0K+edwhs0oluYiNMCcrMObaSz9CJ/hxIaIKarV6ZdFpUm9tlKiw==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -3560,21 +3560,22 @@ d2-crud-x@^2.8.4:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.9.5:
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.9.5.tgz#f603ddb6c7db6e3639ed15b4a670aa03596719f6"
-  integrity sha512-7u/W8Cr4J44pJNak7a2V/dGg06ZvtrxUEDoaGHAezR8XSEmJdT4719rGlaVU824PSZ6tEeWWrGsM56QzVBvHbg==
+d2p-extends@^1.9.6:
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.9.6.tgz#ac91635cc38de76283bcc9b5876126fa672418ae"
+  integrity sha512-AeZ+/HawmDon9irQuzUULhCilnlo+tiYsZ4GiRp7GSP1Ts2vELjGQz5OYn6EDVVz7FRchvwa8i0Fswtj/TC3eQ==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
+    core-js "^3.6.5"
     cos-js-sdk-v5 "^0.5.27"
     cropperjs "^1.5.6"
-    lodash "^4.17.13"
+    lodash "^4.17.19"
     object-assign "^4.1.1"
     qiniu-js "^2.5.4"
     quill "^1.3.7"
     spark-md5 "^3.0.0"
-    vue "^2.6.10"
+    vue "^2.6.11"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -3592,7 +3593,7 @@ data-urls@^1.0.0, data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
-dayjs@^1.8.16, dayjs@^1.8.17:
+dayjs@^1.8.17:
   version "1.8.28"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.28.tgz#37aa6201df483d089645cb6c8f6cef6f0c4dbc07"
   integrity sha512-ccnYgKC0/hPSGXxj7Ju6AV/BP4HUkXC2u15mikXT5mX9YorEaoi1bEKOmAqdkJHN4EEkmAf97SpH66Try5Mbeg==
@@ -3983,10 +3984,10 @@ ejs@^2.6.1:
   resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.4.tgz#48661287573dcc53e366c7a1ae52c3a120eec9ba"
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
-el-phone-number-input@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/el-phone-number-input/-/el-phone-number-input-1.1.3.tgz#bce550d5a6524f2904865254499e4a134a2dc262"
-  integrity sha512-977ZgDsR6nRf4+75bXKe3lQrK4YOeQczHYvChvRSw9m8Q0Qo4a278txqvpHak+HDhP+fUwBZHbQoRahjRAAJuw==
+el-phone-number-input@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/el-phone-number-input/-/el-phone-number-input-1.1.5.tgz#8723646e42497b0ff3c338a1558cd29263783948"
+  integrity sha512-6315qTzkbO5wXS97thk1hPjZbVeEUzfmes7tAXLqYUlp8qlvC7atLS2iG17e9rkGLUSGO4wZmSriy4kQqn9yDg==
   dependencies:
     libphonenumber-js "^1.7.54"
     vue "^2.6.10"
@@ -10766,7 +10767,7 @@ vue@^2.5.16, vue@^2.5.19, vue@^2.6.10, vue@^2.6.11:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
-vuedraggable@^2.23.2:
+vuedraggable@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/vuedraggable/-/vuedraggable-2.24.0.tgz#1ee069eeb91f61fcb540faf20f1c6b2d4d990a26"
   integrity sha512-IlslPpc+iZ2zPNSJbydFZIDrE+don5u+Nc/bjT2YaF+Azidc+wxxJKfKT0NwE68AKk0syb0YbZneAcnynqREZQ==

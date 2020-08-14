@@ -1,11 +1,12 @@
 <template>
-  <span>
+  <span v-if="getTemplateComponentAttr(item,'show', true,getContext(item.key))">
       <template v-if="item.rowSlot === true">
         <slot :name="item.key+'Slot'" :row="row"/>
       </template>
       <render-custom-component
         v-else-if="item.component && item.component.name"
         v-model="row[item.key]"
+        :value-prop="item.component.valueProp"
         :component-name="item.component.name"
         :disabled="getTemplateComponentAttr(item,'disabled', false,getContext(item.key))"
         :readonly="getTemplateComponentAttr(item,'readonly', false,getContext(item.key))"
@@ -15,6 +16,8 @@
         :scoped-slots="item.component.scopedSlots"
         :on="item.component.on"
         :children="item.component.children"
+        :style="item.component.style"
+        :class="item.component.class"
         @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @custom="handleCellComponentCustomEvent($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"

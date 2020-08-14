@@ -10,7 +10,8 @@ const list = [
     updateDate: new Date().getTime() - 10000,
     slotExample: '可以愉快的写filter啦',
     topics: ['slot插槽自定义组件'],
-    render: 'jsx 方式render5'
+    render: 'jsx 方式render5',
+    imagePreview: 'https://www.baidu.com/img/bd_logo1.png'
   },
   {
     createDate: new Date().getTime() - 800000,

@@ -85,6 +85,20 @@ export const crudOptions = {
           return (<div>行render：{scope.value}</div>)
         }
       }
+    },
+    {
+      title: '非vModel组件',
+      key: 'imagePreview',
+      form: { disabled: true },
+      component: {
+        name: 'el-image',
+        valueProp: 'src',
+        style: { height: '30px' },
+        props: { fit: 'contain' },
+        show ({ value }) {
+          return value != null
+        }
+      }
     }
   ],
   formOptions: {

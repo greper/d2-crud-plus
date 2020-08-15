@@ -15,7 +15,7 @@
     "lint": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e  --url http://localhost:8080 ",
     "test.ci1:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod --spec tests/e2e/specs/public/login.spec.js",
-    "test.ci:e2e": "vue-cli-service test:e2e  --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod",
+    "test.ci:e2e": "vue-cli-service test:e2e  --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test",
     "test.ci.prod:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_prod --url http://qiniu.veryreader.com/D2CrudPlusExample",
     "buildReport": "node tests/e2e/start/index.js",
     "test2:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",

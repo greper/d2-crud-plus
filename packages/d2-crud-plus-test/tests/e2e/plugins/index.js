@@ -14,7 +14,7 @@ module.exports = (on, config) => {
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
-  config.env.VUE_APP_TEST_TARGET = process.env.VUE_APP_TEST_TARGET
+  config.env.VUE_APP_PM_ENABLED = process.env.VUE_APP_PM_ENABLED
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',
     integrationFolder: 'tests/e2e/specs',

@@ -3539,20 +3539,20 @@ cz-conventional-changelog@3.2.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^1.15.5:
-  version "1.15.5"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.15.5.tgz#14bf66777efe13eb1bc1cc1eb9fd58ac2d8d5b65"
-  integrity sha512-1qJQcloPCL8mV4Azj7rJYPnxJv8SY8B+SZH/OGfzXKpyjMgS2pieqUcqIh8vfJie7bokhC/JanoS8rdtRd2NOQ==
+d2-crud-plus@^1.15.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.15.6.tgz#15068caed5954b73122e4c2aedbe60c7b8209367"
+  integrity sha512-0rYAcFwn2LDYKrBeTdIJ1MVZhP0jymh7KX3qmK14oi3Zy0lLtR0boicrJjUBrZmDAlNz5dVssKbV7n+ZhV0Jeg==
   dependencies:
     dayjs "^1.8.17"
     lodash "^4.17.19"
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 
-d2-crud-x@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.8.5.tgz#e0bfb7ee20a6773b458ea810c95f928abe302eba"
-  integrity sha512-SdtW3ifofKDyI2p62x5taJn6dlJGsJhEJ4h0K+edwhs0oluYiNMCcrMObaSz9CJ/hxIaIKarV6ZdFpUm9tlKiw==
+d2-crud-x@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.9.0.tgz#344a7c8d2365d3c1eded041541b1f89d9eda7e56"
+  integrity sha512-9g0KlI5tRjMkoWpDXJTESobv+0ucYwFo+yxPuVfAXQ6M2+AxlocF+e/jGOdm1qEE7oZPEIhacQ/EPpsAfEWhkw==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -3560,10 +3560,10 @@ d2-crud-x@^2.8.5:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.9.6:
-  version "1.9.6"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.9.6.tgz#ac91635cc38de76283bcc9b5876126fa672418ae"
-  integrity sha512-AeZ+/HawmDon9irQuzUULhCilnlo+tiYsZ4GiRp7GSP1Ts2vELjGQz5OYn6EDVVz7FRchvwa8i0Fswtj/TC3eQ==
+d2p-extends@^1.9.7:
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-1.9.7.tgz#2c7dfa7795f7b0a7ac417815df5913db48f6b108"
+  integrity sha512-N5hKguZXJ7DrbBH1b29I4Hfv56FkmZKiApTGVTWaDjkcSMtCSiajOcVQVxsW5Zy5H8vDoBs735QYwfPHgGUx0g==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"

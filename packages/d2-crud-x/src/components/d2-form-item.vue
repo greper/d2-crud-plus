@@ -30,7 +30,6 @@
       :scoped-slots="_component.scopedSlots"
       :on="_component.on"
       :children="_component.children"
-      :placeholder="_component.placeholder"
       v-bind="_component"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"

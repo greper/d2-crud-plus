@@ -16,8 +16,6 @@
         :scoped-slots="item.component.scopedSlots"
         :on="item.component.on"
         :children="item.component.children"
-        :style="item.component.style"
-        :class="item.component.class"
         v-bind="item.component"
         @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
         @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"

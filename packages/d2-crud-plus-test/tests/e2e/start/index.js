@@ -1,11 +1,11 @@
 const fse = require('fs-extra')
 const { merge } = require('mochawesome-merge')
 const generator = require('mochawesome-report-generator')
-
+// const cypress = require('cypress')
 async function runTests () {
   await fse.remove('mochawesome-report')
   await fse.remove('./tests/e2e/results/mochawesome.html')
-  // const { totalFailed } = await cypress.run()
+  // await cypress.run({ config: { baseUrl: 'http://localhost:8080/' } })
 
   const options = {
     files: [

@@ -9,9 +9,9 @@ module.exports = {
   css: { extract: false },
   configureWebpack: {
     externals: {
-      'vue': 'Vue',
+      vue: 'Vue',
       'element-ui': 'ElementUI',
-      'lodash': 'lodash'
+      lodash: 'lodash'
     },
     plugins: plugins
   }

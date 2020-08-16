@@ -9,9 +9,9 @@ module.exports = {
   css: { extract: false },
   configureWebpack: {
     externals: {
-      'vue': 'Vue',
+      vue: 'Vue',
       'd2-crud-plus': 'd2CrudPlus',
-      'lodash': 'lodash'
+      lodash: 'lodash'
     },
     plugins: plugins
   }

@@ -29,9 +29,10 @@ Cypress.Commands.add('login1', () => {
   }
 })
 Cypress.Commands.add('login', () => {
-  cy.login1()
-  cy.visit('/#/log')
-  cy.get('.d2-theme-container-main-header').contains('前端日志')
+  cy.login2('admin', 'admin')
+  cy.visit('/#/index')
+  cy.contains('首页')
+  cy.contains('d2-crud-plus')
 })
 Cypress.Commands.add('login2', (name, password) => {
   cy.visit('/#/login')
@@ -234,9 +235,10 @@ Cypress.Commands.add('checkError', context => {
     } else {
       // 点开日志页面
       $el.click()
+      cy.wait(1000)
     }
     // eslint-disable-next-line no-unused-expressions
-    expect($el).not.to.exist
+    expect($el).to.exist
   })
 })
 

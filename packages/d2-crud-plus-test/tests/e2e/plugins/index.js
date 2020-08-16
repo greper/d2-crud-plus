@@ -19,7 +19,7 @@ module.exports = (on, config) => {
   console.log('pm enabled:', config.env.VUE_APP_PM_ENABLED)
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',
-    integrationFolder: 'tests/e2e/specs',
+    integrationFolder: 'tests/e2e/specs2',
     screenshotsFolder: 'tests/e2e/results/screenshots',
     videosFolder: 'tests/e2e/results/videos',
     supportFile: 'tests/e2e/support/index.js'

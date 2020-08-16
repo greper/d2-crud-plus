@@ -238,7 +238,7 @@ Cypress.Commands.add('checkError', context => {
       cy.wait(1000)
     }
     // eslint-disable-next-line no-unused-expressions
-    expect($el).to.exist
+    expect($el).not.exist
   })
 })
 

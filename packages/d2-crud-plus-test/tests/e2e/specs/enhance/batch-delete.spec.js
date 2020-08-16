@@ -23,7 +23,7 @@ describe(menu, () => {
       cy.get('.prefix > .el-button > .el-icon-delete').click()
       cy.get('.el-message-box__btns').contains('确定').click()
       cy.wait(3000)
-      cy.checkId({ col: 2 }, '21')
+      cy.checkId({ idColIndex: 2 }, '21')
     }
   })
 })

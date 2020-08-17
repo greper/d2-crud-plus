@@ -4,9 +4,11 @@ export const crudOptions = (vm) => {
     options: {
       height: '100%'
     },
-    selectionRow: {
-      align: 'center',
-      width: 100
+    selectionRow: true,
+    rowHandle: {
+      view: { type: 'text' },
+      edit: { type: 'text' },
+      remove: { type: 'text', style: { color: 'red' } }
     },
     columns: [
       {

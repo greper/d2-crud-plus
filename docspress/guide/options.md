@@ -207,6 +207,20 @@ export const crudOptions = {
     storage:true //本地保存用户每页条数修改，刷新不会丢失该修改，false=关闭
     // storage:'keysuffix'// 传入字符串，将会给保存的key增加一个后缀，用于区分同一个页面下多个crud
   },
+  indexRow: { // 序号列,或者直接传true,不显示title，不居中
+    title: '序号',
+    align: 'center',
+    width: 100
+  },
+  selectionRow: {  //选择列
+    align: 'center',
+    width: 100
+  },
+  expandRow: { // 展开列， 或者直接传true,不显示title，不居中
+    title: '展开',
+    align: 'center',
+    width: 100
+  },     
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
     view:{//查看按钮

@@ -107,6 +107,7 @@
                          :label="handleAttribute(item.text)"
               />
             </template>
+            <slot name="rowHandle" :index="scope.$index" :row="scope.row"></slot>
           </template>
 
         </component>

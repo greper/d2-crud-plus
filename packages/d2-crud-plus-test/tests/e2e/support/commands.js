@@ -76,11 +76,11 @@ Cypress.Commands.add('openMenu', context => {
     .contains(context.subMenu).first()
     .click({ force: true })
   cy.wait(1000)
-  cy.checkId(context, '1')
+  return cy.checkId(context, '1')
 })
 
 Cypress.Commands.add('openAdd', context => {
-  cy.get('.d2-container-full__body')
+  return cy.get('.d2-container-full__body')
     .contains('新增')
     .click()
 })
@@ -90,7 +90,7 @@ Cypress.Commands.add('openEdit', context => {
     cy.wait(context.editWait)
   }
   const editForce = context.editForce != null ? context.editForce : false
-  cy.get(
+  return cy.get(
     '.d2-container-full__body .el-table__body-wrapper button i.el-icon-edit'
   )
     .first()
@@ -102,14 +102,14 @@ Cypress.Commands.add('openView', context => {
     cy.wait(context.viewWait)
   }
   const viewForce = context.viewForce != null ? context.viewForce : false
-  cy.get(
+  return cy.get(
     '.d2-container-full__body .el-table__body-wrapper button i.el-icon-view'
   )
     .first()
     .click({ force: viewForce })
 })
 Cypress.Commands.add('closeDialog', context => {
-  cy.get('.el-dialog__footer')
+  return cy.get('.el-dialog__footer')
     .contains('确定')
     .click()
 })
@@ -129,7 +129,7 @@ Cypress.Commands.add('doDelete', context => {
     .contains('确定')
     .click()
   cy.get('.d2-container-full__body').contains('新增')
-  cy.checkId(context, '1')
+  return cy.checkId(context, '1')
 })
 
 Cypress.Commands.add('formItem', (label, parentSelect = '.el-dialog__body') => {
@@ -158,7 +158,7 @@ Cypress.Commands.add('checkId', (context, value, equal = true) => {
   if (context.listWait) {
     cy.wait(context.listWait)
   }
-  cy.checkColValue({ col: idColIndex, row: context.row, value, equal })
+  return cy.checkColValue({ col: idColIndex, row: context.row, value, equal })
 })
 /**
  * 检查列的值是否正确
@@ -175,7 +175,7 @@ Cypress.Commands.add(
     startWith = false,
     wait
   }) => {
-    cy.get(
+    return cy.get(
       '.el-table > .el-table__body-wrapper >  .el-table__body > tbody > :nth-child(' +
         row +
         ') > .el-table_' +
@@ -236,9 +236,9 @@ Cypress.Commands.add('checkError', context => {
       // 点开日志页面
       $el.click()
       cy.wait(1000)
+      // eslint-disable-next-line no-unused-expressions
+      expect($el).not.exist
     }
-    // eslint-disable-next-line no-unused-expressions
-    expect($el).not.exist
   })
 })
 
@@ -268,7 +268,7 @@ Cypress.Commands.add(
     prevSubject: 'element'
   },
   (input, fileName, fileType) => {
-    cy.fixture(fileName)
+    return cy.fixture(fileName)
       .then(content => Cypress.Blob.base64StringToBlob(content, fileType))
       .then(blob => {
         const testFile = new File([blob], fileName, { type: fileType })
@@ -284,7 +284,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'dialogScrollTo',
   (target = 'bottom') => {
-    cy.get('.d2-crud .el-dialog__wrapper:visible').scrollTo(target)
+    return cy.get('.d2-crud .el-dialog__wrapper:visible').scrollTo(target)
   }
 )
 //

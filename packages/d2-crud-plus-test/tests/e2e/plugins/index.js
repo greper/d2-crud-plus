@@ -15,7 +15,6 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
   config.env.VUE_APP_PM_ENABLED = process.env.VUE_APP_PM_ENABLED
-
   console.log('pm enabled:', config.env.VUE_APP_PM_ENABLED)
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',

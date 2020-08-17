@@ -15,9 +15,10 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
   config.env.VUE_APP_PM_ENABLED = process.env.VUE_APP_PM_ENABLED
-  on('before:browser:launch', (browser = {}, launchOptions) => {
-    launchOptions.args.push('--disable-dev-shm-usage')
-  })
+  console.log('pm enabled:', config.env.VUE_APP_PM_ENABLED)
+  // on('before:browser:launch', (browser = {}, launchOptions = { args: {} }) => {
+  //   launchOptions.args.push('--disable-dev-shm-usage')
+  // })
   console.log('config', config)
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',

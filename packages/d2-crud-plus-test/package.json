@@ -17,14 +17,15 @@
     "test.all:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
     "test.ci1:e2e": "vue-cli-service test:e2e  --headless --mode test  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
     "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode test",
-    "test.ci.pm:e2e": "vue-cli-service test:e2e  --headless --mode test_pm --browser chrome  --url http://api.veryreader.com:9080/D2CrudPlusExample",
+    "test.ci.pm:e2e": "vue-cli-service test:e2e  --headless --mode test_pm   --url http://api.veryreader.com:9080/D2CrudPlusExample",
     "test.ci.preview:e2e": "vue-cli-service test:e2e --record --key 85c6440c-b4e5-43f3-9ff9-be205cded925 --headless --mode test_pm --url http://qiniu.veryreader.com/D2CrudPlusExample",
     "buildReport": "node tests/e2e/start/index.js",
     "test0:e2e": "vue-cli-service test:e2e --mode test ",
     "test1:e2e": "vue-cli-service test:e2e --mode test_pm ",
     "test3:e2e": "vue-cli-service test:e2e --headless  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
     "test4:e2e": "vue-cli-service test:e2e --headless  --url http://qiniu.veryreader.com/D2CrudPlusExample --spec tests/e2e/specs/form/select.spec.js ",
-    "test5:e2e": "vue-cli-service test:e2e --mode test_pm --url http://qiniu.veryreader.com/D2CrudPlusExample  "
+    "test5:e2e": "vue-cli-service test:e2e --mode test_pm --url http://qiniu.veryreader.com/D2CrudPlusExample  ",
+    "test6:e2e": "vue-cli-service test:e2e --mode test_pm --browser chrome --url http://qiniu.veryreader.com/D2CrudPlusExample  "
   },
   "dependencies": {
     "core-js": "^3.6.5",

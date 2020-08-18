@@ -349,7 +349,7 @@ export const crudOptions = (vm) => {
         search: { disabled: true },
         type: 'radio',
         dict: {
-          url: '/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum?a=3'
         },
         disabled: true,
         form: {
@@ -374,7 +374,7 @@ export const crudOptions = (vm) => {
         search: { disabled: true },
         type: 'radio',
         dict: {
-          url: '/dicts/OpenStatusEnum',
+          url: '/dicts/OpenStatusEnum?a=1',
           onReady (data, dict, context) {
             data[0].type = 'danger'
           }
@@ -396,7 +396,7 @@ export const crudOptions = (vm) => {
         search: { disabled: true },
         type: 'checkbox',
         dict: {
-          url: '/dicts/OpenStatusEnum'
+          url: '/dicts/OpenStatusEnum?a=2'
         },
         disabled: true,
         form: {

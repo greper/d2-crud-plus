@@ -101,13 +101,50 @@ export default {
 
     /**
      * 翻页
-     * doPageTurn (no){}
+     * no=页码
      */
+    // this.doPageTurn (no){}
 
     /**
      * 刷新页面
-     * doRefresh (){}
      */
+    // this.doRefresh (){}
+
+    // --------------以下是crud暴露的方法，可以修改列表中的数据等--------------
+    /**
+     * 外部暴露的更新单元格数据方法
+     */
+    // this.getD2Crud().updateCell(rowIndex, key, value)
+
+    /**
+     * 外部暴露的新增行方法
+     */
+    // this.getD2Crud().addRow(row)
+
+    /**
+     * 外部暴露的编辑行方法
+     */
+    // this.getD2Crud().handleUpdateRow(index, row)
+
+    /**
+     * 外部暴露的删除行方法
+     */
+    // this.getD2Crud().removeRow(index)
+
+    /**
+     * 外部暴露的打开模态框方法
+     */
+    // this.getD2Crud().showDialog({
+    //   mode=[add,edit],
+    //   rowIndex = 0,
+    //   template = null,
+    //   addData = null
+    // })
+
+    /**
+     * 外部暴露的关闭模态框方法
+     */
+    // this.getD2Crud().closeDialog()
 
     // --------------以下方法，可以被覆盖重写--------------
 

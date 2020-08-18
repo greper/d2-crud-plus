@@ -133,7 +133,7 @@ export default {
         const colors = this.autoColors ? this.autoColors : COLOR_LIST
         item[dict.color] = colors[hashcode % colors.length]
         const effects = this.autoEffects ? this.autoEffects : EFFECT_LIST
-        item.effect = effects[hashcode % effects.length]
+        item.effect = effects[Math.floor(hashcode / colors.length) % effects.length]
       } else {
         item[dict.color] = this.color
       }

@@ -95,8 +95,9 @@ export const crudOptions = {
       editForm:{
          //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
-      view:{// 查看按钮组件的单独配置
-        component:{...} 
+      view:{// 查看对话框组件的单独配置
+        disabled: false,
+        component:{...}
       }, 
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
@@ -141,14 +142,15 @@ export const crudOptions = {
       //行内单元格显示组件
       component:{ 
         name:'dict-select', 
-        //如果是非vModel组件，则没有value属性，此处配置参数名，将row[key]绑定给指定prop
+        //如果是非vModel组件，则没有value属性
+        //此处配置组件的参数名，将row[key]绑定给指定prop
         valueBinding:'propName', 
         props:{...},
         style:{},
         class:{},
         placeholder,
-        disabled:false,
-        show:true,
+        disabled:false, //可以传入一个方法
+        show:true,//可以传入一个方法
         on:{},//事件绑定
         scopedSlots:{}, //插槽
         children:[] //子元素

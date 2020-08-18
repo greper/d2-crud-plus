@@ -164,6 +164,7 @@ export default {
         'row-add': this.handleRowAdd,
         'row-remove': this.handleRowRemove,
         'form-data-change': this.handleFormDataChange,
+        'cell-data-change': this.handleCellDataChange,
         'current-change': this.handleCurrentChange,
         'selection-change': this.handleSelectionChange,
         'pagination-change': this.handlePaginationChange,
@@ -802,6 +803,9 @@ export default {
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现pageRequest' })
       })
+    },
+    handleCellDataChange (context) {
+      this.doCellDataChange(context)
     },
     /**
      * 编辑框表单改变事件

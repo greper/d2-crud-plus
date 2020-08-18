@@ -223,6 +223,8 @@ export const crudOptions = {
   },     
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
+    width: 100, // 操作列宽度
+    title: '操作',// 操作列名
     view:{//查看按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
         text: '查看', //按钮文字， null= 取消文字

@@ -1,10 +1,10 @@
 <template>
   <el-radio-group class="d2p-dict-radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange">
-    <el-radio :disabled="disabled" :readonly="readonly" v-for="option in _options"
+    <component :is="type" :disabled="disabled" :readonly="readonly" v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]"
               v-bind="option"
-    >{{option[dict.label]}}</el-radio>
+    >{{option[dict.label]}}</component>
   </el-radio-group>
 </template>
 
@@ -37,6 +37,12 @@ export default {
       type: Array,
       require: false
     },
+    // 按钮类型 [el-radio,el-radio-button]
+    type: {
+      type: String,
+      default: 'el-radio'
+    },
+
     // 字典加载完成
     onReady: {
       type: Function,

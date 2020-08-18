@@ -231,6 +231,11 @@ export default {
     },
 
     /**
+     * 用户可覆盖的cell value 改变事件
+     * @param context
+     */
+    doCellDataChange (context) {},
+    /**
      * 用户可覆盖的编辑框表单改变事件
      * @param key
      * @param value

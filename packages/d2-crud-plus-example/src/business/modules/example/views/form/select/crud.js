@@ -185,7 +185,13 @@ export const crudOptions = (vm) => {
           }
         },
         dict: {
-          data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
+          data: [
+            { value: 'sz', label: '深圳' },
+            { value: 'gz', label: '广州' },
+            { value: 'wh', label: '武汉' },
+            { value: 'sh', label: '上海' },
+            { value: 'hz', label: '杭州' },
+            { value: 'bj', label: '北京' }]
         },
         component: { props: { color: 'auto' } } // 自动染色
       },
@@ -335,6 +341,33 @@ export const crudOptions = (vm) => {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
           }
+        }
+      },
+      {
+        title: '单选按钮',
+        key: 'radio_btn',
+        search: { disabled: true },
+        type: 'radio',
+        dict: {
+          url: '/dicts/OpenStatusEnum'
+        },
+        disabled: true,
+        form: {
+          component: { props: { type: 'el-radio-button' } }
+        }
+      },
+      {
+        title: '多选按钮',
+        key: 'checkbox_btn',
+        sortable: true,
+        search: { disabled: true },
+        type: 'checkbox',
+        dict: {
+          url: '/dicts/OpenStatusEnum'
+        },
+        disabled: true,
+        form: {
+          component: { props: { type: 'el-checkbox-button' } }
         }
       }
     ]

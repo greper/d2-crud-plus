@@ -68,11 +68,11 @@ export default {
   .d2p-dict-radio{
     width:100%
   }
-  .d2p-dict-radio.el-radio-button__inner, .d2p-dict-radio.el-radio-group {
-      line-height: 40px;
-    .el-radio, .el-radio__input{
-      line-height: 40px;
-    }
-  }
+  //.d2p-dict-radio.el-radio-button__inner, .d2p-dict-radio.el-radio-group {
+  //    line-height: 40px;
+  //  .el-radio, .el-radio__input{
+  //    line-height: 40px;
+  //  }
+  //}
 
 </style>

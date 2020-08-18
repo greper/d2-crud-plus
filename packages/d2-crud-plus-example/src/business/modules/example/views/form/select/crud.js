@@ -344,8 +344,8 @@ export const crudOptions = (vm) => {
         }
       },
       {
-        title: '单选按钮',
-        key: 'radio_btn',
+        title: '单选边框',
+        key: 'radio_border',
         search: { disabled: true },
         type: 'radio',
         dict: {
@@ -353,7 +353,40 @@ export const crudOptions = (vm) => {
         },
         disabled: true,
         form: {
-          component: { props: { type: 'el-radio-button' } }
+          component: {
+            props: {
+              type: 'el-radio',
+              elProps: { size: 'mini' },
+              dict: {
+                clone: true,
+                onReady (data, dict, context) {
+                  data.map(item => { item.border = true })
+                }
+              }
+
+            }
+          }
+        }
+      },
+      {
+        title: '单选按钮',
+        key: 'radio_btn',
+        search: { disabled: true },
+        type: 'radio',
+        dict: {
+          url: '/dicts/OpenStatusEnum',
+          onReady (data, dict, context) {
+            data[0].type = 'danger'
+          }
+        },
+        disabled: true,
+        form: {
+          component: {
+            props: {
+              type: 'el-radio-button',
+              elProps: { size: 'mini' }
+            }
+          }
         }
       },
       {

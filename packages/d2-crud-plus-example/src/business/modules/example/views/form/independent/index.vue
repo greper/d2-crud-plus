@@ -39,7 +39,6 @@
       </el-row>
 
     </el-form>
-
   </d2-container>
 </template>
 

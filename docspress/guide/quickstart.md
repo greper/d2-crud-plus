@@ -62,6 +62,7 @@ npm run dev
 
 在开始着手集成之前，建议您先运行示例项目，在里面[开发一个crud](#开发一个crud)试试
 
+
 ### 1.安装
 ```shell script
 #使用npm
@@ -418,4 +419,10 @@ export function DelObj (id) {
 ![](https://gitee.com/greper/d2-crud-plus/raw/master/packages/d2-crud-plus/doc/image/edit.png)
 
 
+### 6. d2-crud-plus-with-d2admin-starter
+觉得自己集成挺麻烦的？    
+这里已经准备了一个`d2-crud-plus`与`d2-admin`集成好了的启动项目   
+[d2-crud-plus-with-d2admin-starter](https://github.com/greper/d2-crud-plus-with-d2admin-starter)
 
+### 7. 关于升级
+你可能还想知道[如何升级](./upgrade.md)

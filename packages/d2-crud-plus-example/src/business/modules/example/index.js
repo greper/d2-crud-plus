@@ -24,6 +24,7 @@ addFunction(formMenus, 'form/tree', '树形组件')
 addFunction(formMenus, 'form/icon', '图标选择')
 addFunction(formMenus, 'form/editor', '富文本')
 addFunction(formMenus, 'form/independent', '组件独立使用', 'new')
+// addFunction(formMenus, 'form/eltable', '刷新table问题', 'new')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')

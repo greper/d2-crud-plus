@@ -1,12 +1,61 @@
 # d2-crud-x
 
-## 修复bug
+## 属性参数
+
+### columns 表头数据
+```
+columns: {
+  type: Array,
+  required: true
+}
+``` 
+###  loading 表格加载
+
+```
+loading: {
+  type: Boolean,
+  default: false
+},
+```
+ 
+### loadingOptions  表格加载配置
+```
+loadingOptions:{
+    text:xxx,
+    spinner:xxx
+    background:xxx
+}
+```
+### options 表格配置
+```
+options: {
+    type: Object,
+    default: null
+},
+```
 
 
+```
 
 
-### 表单组件事件监听
-* form-data-change 
-* form-component-ready
-* form-component-custom-event
+/**
+ * @description 索引
+ */
+indexRow: {
+  default: null
+},
+/**
+ * @description 多选
+ */
+selectionRow: {
+  default: null
+},
+/**
+ * @description 行展开
+ */
+expandRow: {
+  default: null
+}
 
+
+```

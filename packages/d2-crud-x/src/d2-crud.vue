@@ -103,10 +103,11 @@
                          v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                          v-bind="item"
-                         @click="item.onClick(scope.$index,  scope.row)"
+                         @click="item.doClick(scope.$index,  scope.row)"
                          :label="handleAttribute(item.text)"
               />
             </template>
+            <slot name="rowHandle" :index="scope.$index" :row="scope.row"></slot>
           </template>
 
         </component>

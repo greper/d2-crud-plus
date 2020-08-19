@@ -217,8 +217,5 @@ export const crudOptions = {
         rules: [{ required: false, message: '请输入备注' }]
       }
     }
-  ],
-  options: {
-    selectionRow: true
-  }
+  ]
 }

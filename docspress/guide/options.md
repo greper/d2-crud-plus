@@ -95,8 +95,9 @@ export const crudOptions = {
       editForm:{
          //修改对话框的特别配置，当添加和修改的配置有差异时，可以在此单独配置差异部分
       },
-      view:{// 查看按钮组件的单独配置
-        component:{...} 
+      view:{// 查看对话框组件的单独配置
+        disabled: false,
+        component:{...}
       }, 
       valueBuilder (row,key) {
         // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
@@ -141,14 +142,15 @@ export const crudOptions = {
       //行内单元格显示组件
       component:{ 
         name:'dict-select', 
-        //如果是非vModel组件，则没有value属性，此处配置参数名，将row[key]绑定给指定prop
+        //如果是非vModel组件，则没有value属性
+        //此处配置组件的参数名，将row[key]绑定给指定prop
         valueBinding:'propName', 
         props:{...},
         style:{},
         class:{},
         placeholder,
-        disabled:false,
-        show:true,
+        disabled:false, //可以传入一个方法
+        show:true,//可以传入一个方法
         on:{},//事件绑定
         scopedSlots:{}, //插槽
         children:[] //子元素
@@ -207,8 +209,24 @@ export const crudOptions = {
     storage:true //本地保存用户每页条数修改，刷新不会丢失该修改，false=关闭
     // storage:'keysuffix'// 传入字符串，将会给保存的key增加一个后缀，用于区分同一个页面下多个crud
   },
+  indexRow: { // 序号列,或者直接传true,不显示title，不居中
+    title: '序号',
+    align: 'center',
+    width: 100
+  },
+  selectionRow: {  //选择列
+    align: 'center',
+    width: 100
+  },
+  expandRow: { // 展开列， 或者直接传true,不显示title，不居中
+    title: '展开',
+    align: 'center',
+    width: 100
+  },     
   rowHandle: { 
     //行操作栏，与d2-crud一致，默认配置有修改与删除
+    width: 100, // 操作列宽度
+    title: '操作',// 操作列名
     view:{//查看按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
         text: '查看', //按钮文字， null= 取消文字

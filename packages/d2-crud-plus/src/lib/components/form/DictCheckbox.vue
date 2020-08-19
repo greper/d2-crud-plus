@@ -1,10 +1,10 @@
 <template>
   <el-checkbox-group class="d2p-dict-checkbox" :value="currentValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
-    <el-checkbox :disabled="disabled" :readonly="readonly" v-for="option in _options"
+    <component :is="type" :disabled="disabled" :readonly="readonly" v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]"
                  v-bind="option"
-    >{{option[dict.label]}}</el-checkbox>
+    >{{option[dict.label]}}</component>
   </el-checkbox-group>
 </template>
 
@@ -40,6 +40,11 @@ export default {
     options: {
       type: Array,
       require: false
+    },
+    // 按钮类型 [el-checkbox,el-checkbox-button]
+    type: {
+      type: String,
+      default: 'el-checkbox'
     },
     onReady: {
       type: Function,

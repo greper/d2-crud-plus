@@ -4,7 +4,13 @@
       <span v-for="(item) in _items" :key="item[dict.value]">{{item[dict.label]}}</span>
     </template>
     <template v-else >
-      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in _items" :key="item[dict.value]"  size="small"  :type="item[dict.color]" @click="onClick(item)" >
+      <el-tag class='tag-item  d2-mr-5 d2-mb-2 d2-mt-2' v-for="(item) in _items"
+              :key="item[dict.value]"
+              size="small"
+              :type="item[dict.color]"
+              @click="onClick(item)"
+              :effect="item.effect"
+      >
         {{item[dict.label]}}
       </el-tag>
     </template>
@@ -14,6 +20,8 @@
 <script>
 import formatDict from '../../mixins/format-dict'
 const COLOR_LIST = ['primary', 'success', 'warning', 'danger']
+const EFFECT_LIST = ['plain', 'light']
+
 // value格式化展示组件
 export default {
   name: 'values-format',
@@ -38,13 +46,17 @@ export default {
       }
     },
     // 颜色，【auto, primary, success, warning, danger ,info】
-    // 默认自动根据value值hashcode分配颜色值
+    // 配置auto，则自动根据value值hashcode分配颜色值
     color: {
       require: false,
       default: 'primary'
     },
     // 自动颜色列表，【 primary, success, warning, danger 】
     autoColors: {
+      type: Array
+    },
+    // 自动主题列表，【 light, plain 】
+    autoEffects: {
       type: Array
     },
     // 展示类型【text, tag】
@@ -120,6 +132,8 @@ export default {
         const hashcode = this.hashcode(item[dict.value])
         const colors = this.autoColors ? this.autoColors : COLOR_LIST
         item[dict.color] = colors[hashcode % colors.length]
+        const effects = this.autoEffects ? this.autoEffects : EFFECT_LIST
+        item.effect = effects[Math.floor(hashcode / colors.length) % effects.length]
       } else {
         item[dict.color] = this.color
       }

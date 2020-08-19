@@ -14,7 +14,7 @@ export default {
       if (this.rowHandle.view) {
         btns.push({
           disabled: false,
-          onClick: (index, row) => {
+          doClick: (index, row) => {
             this.handleView(index, row)
           },
           order: 1,
@@ -26,7 +26,7 @@ export default {
         btns.push({
           type: 'primary',
           disabled: false,
-          onClick: (index, row) => {
+          doClick: (index, row) => {
             this.handleEdit(index, row)
           },
           text: '编辑',
@@ -38,7 +38,7 @@ export default {
         btns.push({
           type: 'danger',
           disabled: false,
-          onClick: (index, row) => {
+          doClick: (index, row) => {
             this.handleRemove(index, row)
           },
           text: '删除',
@@ -49,7 +49,7 @@ export default {
       if (this.rowHandle.custom && this.rowHandle.custom.length > 0) {
         for (const item of this.rowHandle.custom) {
           btns.push({
-            onClick: (index, row) => {
+            doClick: (index, row) => {
               this.$emit(item.emit, { index: index, row: row })
             },
             order: 4,

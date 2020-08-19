@@ -7,7 +7,7 @@ const options = {
 const list = [
   {
     status: '0',
-    mselect: 'sz',
+    mselect: 'sz,bj,gz,sh,hz,wh',
     cascader: ['zhinan', 'shejiyuanze', 'yizhi'],
     checkbox: '0',
     status_custom_1: '0',

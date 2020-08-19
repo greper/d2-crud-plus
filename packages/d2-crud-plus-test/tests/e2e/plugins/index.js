@@ -16,9 +16,18 @@ module.exports = (on, config) => {
   // }))
   config.env.VUE_APP_PM_ENABLED = process.env.VUE_APP_PM_ENABLED
   console.log('pm enabled:', config.env.VUE_APP_PM_ENABLED)
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    if (browser.family === 'chrome') {
+      console.log('Adding --disable-dev-shm-usage...')
+      launchOptions.args.push('--disable-dev-shm-usage')
+    }
+
+    return launchOptions
+  })
+  console.log('config', config)
   return Object.assign({}, config, {
     fixturesFolder: 'tests/e2e/fixtures',
-    integrationFolder: 'tests/e2e/specs2',
+    integrationFolder: 'tests/e2e/specs',
     screenshotsFolder: 'tests/e2e/results/screenshots',
     videosFolder: 'tests/e2e/results/videos',
     supportFile: 'tests/e2e/support/index.js'

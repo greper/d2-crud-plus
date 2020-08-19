@@ -5,6 +5,8 @@ export const crudOptions = {
   viewOptions: {
     disabled: false
   },
+  rowHandle: {
+  },
   columns: [
     {
       title: 'ID',

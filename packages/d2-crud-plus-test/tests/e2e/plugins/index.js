@@ -21,7 +21,6 @@ module.exports = (on, config) => {
     //   console.log('Adding --disable-dev-shm-usage...')
     //   launchOptions.args.push('--disable-dev-shm-usage')
     // }
-
     return launchOptions
   })
   console.log('config', config)

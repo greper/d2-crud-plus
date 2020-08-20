@@ -162,6 +162,13 @@ export const crudOptions = (vm) => {
         type: 'select',
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
+        },
+        form: {
+          component: {
+            props: {
+              value: 'sz'
+            }
+          }
         }
       },
       {

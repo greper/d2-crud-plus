@@ -124,13 +124,21 @@ export default {
         newRow = newRow || {}
         this.formDataStorage = newRow
         const formGroupsActive = []
+        debugger
         _forEach(tempGroups, (group, groupKey) => {
           if (!group.collapsed) {
             formGroupsActive.push(groupKey)
           }
           _forEach(group.columns, (template, key) => {
-            // eslint-disable-next-line no-prototype-builtins
-            this._set(formData, key, this._get(newRow, key))
+            let value = this._get(newRow, key)
+            // 设置默认值
+            if (template && template.component &&
+              template.component.props &&
+              template.component.props.value != null &&
+              value === undefined) {
+              value = template.component.props.value
+            }
+            this._set(formData, key, value)
           })
         })
         this.$set(this, 'formGroupsActive', formGroupsActive)

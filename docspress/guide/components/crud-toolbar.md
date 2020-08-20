@@ -9,7 +9,7 @@
 |refresh|是否显示刷新|`Boolean`|`false`|true|
 |compact|是否显示紧凑模式|`Boolean`|`false`|undefined|
 |columns|列配置|`Array`|`false`|undefined|
-|storage|是否保存用户列设置传string则表示传入缓存的主key|`Boolean` / `String`|`false`|true|
+|storage|是否保存用户列设置传string则表示传入缓存的主key|`String` / `Boolean`|`false`|true|
 
 <!-- @vuese:crud-toolbar:props:end -->
 

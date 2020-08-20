@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.9.0...d2-crud-x@2.9.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* exapndRow=true 报错的bug ([7d1740a](https://github.com/greper/d2-crud/commit/7d1740a301ef4187eba31e446640fcd25a5307f6))
+* 修复一个奇怪的问题 ([709ff8f](https://github.com/greper/d2-crud/commit/709ff8f275e92cc55540478ffc5e968d935059b3))
+
+
+### Performance Improvements
+
+* rowHandle增加rowHandle插槽 ([8ad84e9](https://github.com/greper/d2-crud/commit/8ad84e9fc9991a5baa446848d7d8d90e1f3534b6))
+* 表单增加默认值功能 ([41132df](https://github.com/greper/d2-crud/commit/41132dfac320d7ecfed50b00eb8e37b7c6aa3c77))
+
+
+
+
+
 # [2.9.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.8.5...d2-crud-x@2.9.0) (2020-08-14)
 
 

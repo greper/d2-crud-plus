@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.8](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.7...d2p-extends@1.9.8) (2020-08-20)
+
+
+### Bug Fixes
+
+* 修复文件上传错误处理的bug ([6ce8370](https://github.com/greper/d2-crud-plus/commit/6ce83706df19050d3ec6006d69ea00e3e729ef26))
+
+
+
+
+
 ## [1.9.7](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.6...d2p-extends@1.9.7) (2020-08-14)
 
 **Note:** Version bump only for package d2p-extends

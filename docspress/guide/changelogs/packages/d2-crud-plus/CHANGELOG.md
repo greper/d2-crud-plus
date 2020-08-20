@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.7](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.6...d2-crud-plus@1.15.7) (2020-08-20)
+
+
+### Bug Fixes
+
+* 修复view模式下0 值不展示的bug ([6b06680](https://github.com/greper/d2-crud-plus/commit/6b06680fd34b834334c40a675f1b8d78c98c402b))
+
+
+### Performance Improvements
+
+* checkbox radio增加按钮样式配置 ([602265b](https://github.com/greper/d2-crud-plus/commit/602265bdab4780f881298ac01e4215da9b15b860))
+* radio增加border配置 ([640ca4c](https://github.com/greper/d2-crud-plus/commit/640ca4cf877ade9bb97c7dff593b6cc9ae396da9))
+* 增加嵌套表格示例 ([5b9b3e0](https://github.com/greper/d2-crud-plus/commit/5b9b3e08ad17956742c5175fb1c5f59df185aa1b))
+
+
+
+
+
 ## [1.15.6](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.5...d2-crud-plus@1.15.6) (2020-08-14)
 
 

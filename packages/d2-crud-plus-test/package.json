@@ -1,6 +1,6 @@
 {
   "name": "d2-crud-plus-test",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
@@ -31,12 +31,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11",
-    "dayjs": "^1.8.17"
+    "dayjs": "^1.8.17",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
     "@d2-plus/vue-cli-plugin-e2e-cypress": "4.5.3-4.9.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",

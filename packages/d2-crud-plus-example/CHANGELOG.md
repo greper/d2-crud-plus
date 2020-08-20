@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.16.0...@d2-plus/d2-crud-plus-example@1.16.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* exapndRow=true 报错的bug ([7d1740a](https://github.com/d2-projects/d2-admin/commit/7d1740a301ef4187eba31e446640fcd25a5307f6))
+
+
+### Performance Improvements
+
+* checkbox radio增加按钮样式配置 ([602265b](https://github.com/d2-projects/d2-admin/commit/602265bdab4780f881298ac01e4215da9b15b860))
+* radio增加border配置 ([640ca4c](https://github.com/d2-projects/d2-admin/commit/640ca4cf877ade9bb97c7dff593b6cc9ae396da9))
+* 增加嵌套表格示例 ([5b9b3e0](https://github.com/d2-projects/d2-admin/commit/5b9b3e08ad17956742c5175fb1c5f59df185aa1b))
+* 增加嵌套表格示例 ([aea1cff](https://github.com/d2-projects/d2-admin/commit/aea1cffcfd73ba1d7a8729a3b2a9bf095d389543))
+* 表单增加默认值功能 ([41132df](https://github.com/d2-projects/d2-admin/commit/41132dfac320d7ecfed50b00eb8e37b7c6aa3c77))
+
+
+
+
+
 # [1.16.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.15.5...@d2-plus/d2-crud-plus-example@1.16.0) (2020-08-14)
 
 

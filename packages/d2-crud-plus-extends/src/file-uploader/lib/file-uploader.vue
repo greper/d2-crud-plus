@@ -7,6 +7,7 @@
              :on-exceed="onExceed"
              :on-remove="handleUploadFileRemove"
              :on-success="handleUploadFileSuccess"
+             :on-error="handleUploadeFileError"
              ref="fileUploader"
              v-bind="_elProps"
   >
@@ -280,6 +281,10 @@ export default {
     handleUploadFileRemove (file, fileList) {
       this.fileList = fileList
       this.emitList(fileList)
+    },
+    handleUploadeFileError (err, file, fileList) {
+      console.error('文件上传失败', err, file, fileList)
+      this.$message({ type: 'error', message: '文件上传失败' })
     },
     previewAvatar ($event) {
       $event.stopPropagation()

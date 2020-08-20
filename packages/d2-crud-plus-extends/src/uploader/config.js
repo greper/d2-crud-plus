@@ -44,6 +44,9 @@ export default {
   },
   form: {
     successHandle (ret) { // 需要将res.url 设置为url
+      if (ret.data == null || ret.data === '') {
+        throw new Error('上传失败')
+      }
       return { url: ret.data }
     },
     action: undefined,

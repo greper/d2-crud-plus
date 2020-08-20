@@ -19,6 +19,7 @@ export default {
     const option = {
       file,
       onProgress,
+      onError,
       ...config
     }
     option.data.key = config.buildKey(fileName, config.custom)
@@ -26,7 +27,12 @@ export default {
     return new Promise((resolve, reject) => {
       ajax(option,
         (res) => {
-          resolve(config.successHandle(res))
+          try {
+            const url = config.successHandle(res)
+            resolve(url)
+          } catch (e) {
+            onError(e)
+          }
         },
         (e) => {
           onError(e)

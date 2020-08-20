@@ -29,8 +29,9 @@ describe('选择组件', () => {
       cy.getSelectOptions().first().should('have.class', 'is-disabled')
       cy.getSelectOptions().last().click()
 
-      cy.formItem('单选本地').find('.el-select').click()
-      cy.getSelectOptions().last().click()
+      // 测试默认值
+      // cy.formItem('单选本地').find('.el-select').click()
+      // cy.getSelectOptions().last().click()
 
       cy.formItem('多选本地').find('.el-select').click()
       // 要能够多选
@@ -67,7 +68,7 @@ describe('选择组件', () => {
       cy.checkColValue({ col: 2, value: '打开' })
       cy.checkColValue({ col: 3, value: '打开' })
       cy.checkColValue({ col: 4, value: '打开' })
-      cy.checkColValue({ col: 5, value: '上海' })
+      cy.checkColValue({ col: 5, value: '深圳' })
       cy.checkColValue({ col: 6, value: '深圳  武汉' })
       cy.checkColValue({ col: 7, value: '指南 / 设计原则 / 一致' })
       cy.checkColValue({ col: 8, value: '设计原则' })

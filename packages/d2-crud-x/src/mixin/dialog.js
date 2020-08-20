@@ -124,7 +124,6 @@ export default {
         newRow = newRow || {}
         this.formDataStorage = newRow
         const formGroupsActive = []
-        debugger
         _forEach(tempGroups, (group, groupKey) => {
           if (!group.collapsed) {
             formGroupsActive.push(groupKey)

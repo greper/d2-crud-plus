@@ -4,6 +4,12 @@ export const crudOptions = {
   },
   columns: [
     {
+      title: 'ID',
+      key: 'id',
+      sortable: true,
+      form: { disabled: true }
+    },
+    {
       title: '并列表格日期',
       key: 'date',
       sortable: true,
@@ -17,7 +23,6 @@ export const crudOptions = {
       sortable: true,
       search: { key: 'status', disabled: false },
       type: 'select',
-      form: { rules: [{ required: true, message: '请选择状态' }] },
       dict: { url: '/dicts/OpenStatusEnum' }
     },
     {
@@ -27,7 +32,6 @@ export const crudOptions = {
       search: { key: 'province', disabled: false },
       type: 'select',
       form: {
-        rules: [{ required: true, message: '请选择地区' }],
         component: { props: { filterable: true, multiple: true, clearable: true } }
       },
       dict: {

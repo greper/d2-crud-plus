@@ -11,7 +11,8 @@ export const crudOptions = {
     {
       title: 'ID',
       key: 'id',
-      sortable: true
+      sortable: true,
+      form: { disabled: true }
     },
     {
       title: '子表格日期',

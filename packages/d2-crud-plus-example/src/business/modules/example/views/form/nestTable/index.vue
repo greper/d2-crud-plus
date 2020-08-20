@@ -3,7 +3,7 @@
     <template slot="header">嵌套表格</template>
 
     <el-row :gutter="20" style="height:100%">
-      <el-col :span="12" style="height:100%">
+      <el-col :span="12" style="height:100%" class="leftTable">
         <d2-crud-x
           ref="d2Crud"
           v-bind="_crudProps"
@@ -24,7 +24,7 @@
         </d2-crud-x>
       </el-col>
 
-      <el-col :span="12" style="height:100%">
+      <el-col :span="12" style="height:100%" class="rightTable">
         <apposition-table></apposition-table>
       </el-col>
     </el-row>

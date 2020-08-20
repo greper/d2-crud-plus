@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div>当前选中：<el-tag v-if="value">{{value}} ，{{selectedName}}</el-tag></div>
+    <div>当前选中：<span class="current_selected"><el-tag v-if="value">{{value}} ，{{selectedName}}</el-tag></span></div>
     <d2-crud-x
       ref="d2Crud"
       v-bind="_crudProps"

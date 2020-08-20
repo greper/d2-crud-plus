@@ -27,6 +27,6 @@ export function DelObj (id) {
   return request({
     url: '/test/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }

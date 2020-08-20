@@ -27,6 +27,6 @@ export function DelObj (id) {
   return request({
     url: '/subTable/delete',
     method: 'post',
-    params: { id }
+    data: { id }
   })
 }

@@ -80,7 +80,7 @@ Cypress.Commands.add('openMenu', context => {
 })
 
 Cypress.Commands.add('openAdd', context => {
-  return cy.get('.d2-container-full__body')
+  return cy.get(context.parentSelector + ' .d2-crud')
     .contains('新增')
     .click()
 })
@@ -91,7 +91,8 @@ Cypress.Commands.add('openEdit', context => {
   }
   const editForce = context.editForce != null ? context.editForce : false
   return cy.get(
-    '.d2-container-full__body .el-table__body-wrapper button i.el-icon-edit'
+    context.parentSelector +
+    ' .d2-crud .el-table__body-wrapper button i.el-icon-edit'
   )
     .first()
     .click({ force: editForce })
@@ -103,7 +104,8 @@ Cypress.Commands.add('openView', context => {
   }
   const viewForce = context.viewForce != null ? context.viewForce : false
   return cy.get(
-    '.d2-container-full__body .el-table__body-wrapper button i.el-icon-view'
+    context.parentSelector +
+    ' .d2-crud .el-table__body-wrapper button i.el-icon-view'
   )
     .first()
     .click({ force: viewForce })
@@ -121,20 +123,21 @@ Cypress.Commands.add('doDelete', context => {
   }
   const deleteForce = context.deleteForce != null ? context.deleteForce : false
   cy.get(
-    '.d2-container-full__body .el-table__body-wrapper button i.el-icon-delete'
+    context.parentSelector +
+    ' .d2-crud .el-table__body-wrapper button i.el-icon-delete'
   )
     .first()
     .click({ force: deleteForce })
   cy.get('.el-message-box__btns')
     .contains('确定')
     .click()
-  cy.get('.d2-container-full__body').contains('新增')
+  cy.get(context.parentSelector + ' .d2-crud').contains('新增')
   return cy.checkId(context, '1')
 })
 
 Cypress.Commands.add('formItem', (label, parentSelect = '.el-dialog__body') => {
   return cy
-    .get(parentSelect + ' .el-form-item > .el-form-item__label')
+    .get(parentSelect + ' .el-form-item > .el-form-item__label:visible')
     .contains(label)
     .first()
     .parent()
@@ -158,7 +161,7 @@ Cypress.Commands.add('checkId', (context, value, equal = true) => {
   if (context.listWait) {
     cy.wait(context.listWait)
   }
-  return cy.checkColValue({ col: idColIndex, row: context.row, value, equal })
+  return cy.checkColValue({ col: idColIndex, tableIndex: context.tableIndex, row: context.row, value, equal, parentSelector: context.parentSelector })
 })
 /**
  * 检查列的值是否正确
@@ -169,17 +172,20 @@ Cypress.Commands.add(
     title,
     col = 1,
     row = 1,
+    tableIndex = 1,
     value,
     contains,
     equal = true,
     startWith = false,
-    wait
+    wait,
+    parentSelector = ''
   }) => {
     return cy.get(
-      '.el-table > .el-table__body-wrapper >  .el-table__body > tbody > :nth-child(' +
-        row +
+      parentSelector +
+      ' .el-table > .el-table__body-wrapper >  .el-table__body > tbody > :nth-child(' +
+      row +
         ') > .el-table_' +
-        row +
+      tableIndex +
         '_column_' +
         col +
         ' > .cell'
@@ -209,9 +215,10 @@ Cypress.Commands.add(
   }
 )
 
-Cypress.Commands.add('getCell', ({ title, col = 1, row = 1 }) => {
+Cypress.Commands.add('getCell', ({ title, col = 1, row = 1, parentSelector = '' }) => {
   return cy.get(
-    '.el-table > .el-table__body-wrapper >  .el-table__body> tbody > :nth-child(' +
+    parentSelector +
+    ' .el-table > .el-table__body-wrapper >  .el-table__body> tbody > :nth-child(' +
       row +
       ') > .el-table_' +
       row +
@@ -222,7 +229,7 @@ Cypress.Commands.add('getCell', ({ title, col = 1, row = 1 }) => {
 })
 
 Cypress.Commands.add('hideFixedBody', (context, hide = true) => {
-  return cy.get('.el-table .el-table__fixed-body-wrapper').then(target => {
+  return cy.get(context.parentSelector + ' .el-table .el-table__fixed-body-wrapper').then(target => {
     target[0].css('display', hide ? 'none' : 'block')
   })
 })
@@ -256,9 +263,9 @@ Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
     )
 })
 
-Cypress.Commands.add('searchClick', () => {
+Cypress.Commands.add('searchClick', (context) => {
   return cy
-    .get('.d2p-search-form')
+    .get(context.parentSelector + ' .d2p-search-form')
     .contains('查询')
     .click()
 })

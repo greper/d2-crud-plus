@@ -52,7 +52,7 @@ export default {
           disabled: true,
           componentType: 'form',
           defaultRender: (h, scope) => {
-            return (scope.value ? <el-tag>{scope.value}</el-tag> : undefined)
+            return (scope.value != null && scope.value !== '' ? <el-tag>{scope.value}</el-tag> : undefined)
           }
         },
         formOptions: {

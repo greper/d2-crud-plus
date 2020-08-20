@@ -17,10 +17,10 @@ module.exports = (on, config) => {
   config.env.VUE_APP_PM_ENABLED = process.env.VUE_APP_PM_ENABLED
   console.log('pm enabled:', config.env.VUE_APP_PM_ENABLED)
   on('before:browser:launch', (browser = {}, launchOptions) => {
-    if (browser.family === 'chrome') {
-      console.log('Adding --disable-dev-shm-usage...')
-      launchOptions.args.push('--disable-dev-shm-usage')
-    }
+    // if (browser.family === 'chrome') {
+    //   console.log('Adding --disable-dev-shm-usage...')
+    //   launchOptions.args.push('--disable-dev-shm-usage')
+    // }
 
     return launchOptions
   })

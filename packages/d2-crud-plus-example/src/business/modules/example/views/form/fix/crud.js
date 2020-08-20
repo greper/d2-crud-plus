@@ -17,6 +17,9 @@ export const crudOptions = {
     height: '100%', // 表格高度100%, 使用toolbar必须设置
     rowKey: 'id'
   },
+  viewOptions: {
+    componentType: 'row'
+  },
   pageOptions: {
     compact: true // 是否紧凑型页面
   },
@@ -74,6 +77,7 @@ export const crudOptions = {
       key: 'amount',
       sortable: true,
       width: 100,
+      type: 'number',
       fixed: 'right'
     },
     {

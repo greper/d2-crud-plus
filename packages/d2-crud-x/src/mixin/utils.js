@@ -145,6 +145,12 @@ export default {
         return 'el-table-column'
       }
     },
+    forBindProps (props) {
+      if (props instanceof Object) {
+        return props
+      }
+      return undefined
+    },
     isVxeTable (tableType) {
       const table = this.getTableImpl(tableType)
       if (table === 'vxe-table') {

@@ -243,11 +243,11 @@ Cypress.Commands.add('checkError', context => {
 })
 
 Cypress.Commands.add('getSelectOptions', () => {
-  cy.wait(50)
+  cy.wait(200)
   return cy.get('.el-select-dropdown.el-popper ul li:visible')
 })
 Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
-  cy.wait(50)
+  cy.wait(200)
   return cy
     .get(
       '.el-popper.el-cascader__dropdown:visible .el-cascader-panel:visible .el-cascader-menu:visible:eq(' +

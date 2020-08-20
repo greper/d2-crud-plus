@@ -14,7 +14,7 @@
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e  --url http://localhost:8080",
-    "test.all:e2e": "vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
+    "test.all:e2e": "rimraf ./tests/e2e/results  && vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
     "test.ci1:e2e": "vue-cli-service test:e2e  --headless --mode test  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
     "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode test",
     "test.ci.pm:e2e": "vue-cli-service test:e2e  --headless --mode test_pm  --url http://api.veryreader.com:9080/D2CrudPlusExample",
@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "dayjs": "^1.8.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -10,5 +10,6 @@
     "json": true,
     "toConsole": true
   },
+  "browser": "chrome",
   "projectId": "2bz2i1"
 }

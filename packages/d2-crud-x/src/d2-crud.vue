@@ -38,7 +38,7 @@
           v-if="selectionRow || selectionRow === ''"
           :type="isVxeTable()?'checkbox':'selection'"
           :label="handleAttribute(selectionRow.title, '')"
-          v-bind="selectionRow"
+          v-bind="forBindProps(selectionRow)"
         >
         </component>
         <component
@@ -46,7 +46,7 @@
           :is="getTableColumnImpl()"
           type="expand"
           :title="handleAttribute(expandRow.title, '')"
-          v-bind="expandRow"
+          v-bind="forBindProps(expandRow)"
         >
           <template slot="content" slot-scope="scope">
             <slot name="expandSlot" :row="scope.row"/>
@@ -57,7 +57,7 @@
           :is="getTableColumnImpl()"
           type="expand"
           :label="handleAttribute(expandRow.title, '')"
-          v-bind="expandRow"
+          v-bind="forBindProps(expandRow)"
         >
           <template  slot-scope="scope">
             <slot name="expandSlot" :row="scope.row"/>
@@ -69,7 +69,7 @@
           :type="getTableImpl(options.tableType)==='el-table'?'index':'seq'"
           :title="handleAttribute(indexRow.title, '')"
           :label="handleAttribute(indexRow.title, '')"
-          v-bind="indexRow"
+          v-bind="forBindProps(indexRow)"
         >
         </component>
         <!-- 使用d2-column递归组件 -->
@@ -93,7 +93,7 @@
           v-if="rowHandle"
           :title="handleAttribute(rowHandle.columnHeader, '操作')"
           :label="handleAttribute(rowHandle.columnHeader, '操作')"
-          v-bind="rowHandle"
+          v-bind="forBindProps(rowHandle)"
         >
           <template slot-scope="scope">
             <template

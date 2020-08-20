@@ -37,7 +37,9 @@ lerna-debug.log
 !/packages/d2-crud-plus-test/cypress.json
 !/packages/d2-crud-plus-test/package.json
 !/packages/d2-crud-plus-test/vue.config.js
-
+!/packages/d2-crud-plus-test/vue.config.js
+!/packages/d2-crud-plus-test/package-lock.json
+!/packages/d2-crud-plus-test/CHANGELOG.md
 
 
 

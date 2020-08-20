@@ -31,15 +31,7 @@ lerna-debug.log
 /packages/d2-crud-plus-test/public/
 /packages/d2-crud-plus-test/src/
 /packages/d2-crud-plus-test/mochawesome-report/
-/packages/d2-crud-plus-test/
-!/packages/d2-crud-plus-test/tests/
-!/packages/d2-crud-plus-test/.eslintrc.js
-!/packages/d2-crud-plus-test/cypress.json
-!/packages/d2-crud-plus-test/package.json
-!/packages/d2-crud-plus-test/vue.config.js
-!/packages/d2-crud-plus-test/vue.config.js
-!/packages/d2-crud-plus-test/package-lock.json
-!/packages/d2-crud-plus-test/CHANGELOG.md
+
 
 
 

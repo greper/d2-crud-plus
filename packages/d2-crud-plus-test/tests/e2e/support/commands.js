@@ -137,8 +137,7 @@ Cypress.Commands.add('doDelete', context => {
 
 Cypress.Commands.add('formItem', (label, parentSelect = '.el-dialog__body') => {
   return cy
-    .get(parentSelect + ' .el-form-item > .el-form-item__label:visible')
-    .contains(label)
+    .contains(parentSelect + ' .el-form-item > .el-form-item__label:visible', label)
     .first()
     .parent()
 })

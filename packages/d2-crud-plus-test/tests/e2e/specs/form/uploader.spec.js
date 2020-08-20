@@ -177,10 +177,10 @@ describe('文件上传', () => {
       cy.checkColValue({ col: 6, value: '39040' })
       cy.checkColValue({ col: 7, value: 'a7e87805bd7f23104fe2169153249903' })
 
-      cy.getCell({ col: 8 }).find('.el-image img').should('have.length', 2).first().then($el => {
+      cy.getCell({ col: 8 }).find('.el-image').should('have.length', 2).first().find('img').then($el => {
         cy.get('@照片墙_value').should('contain', $el.attr('src'))
       })
-      cy.getCell({ col: 9 }).find('.el-image img').should('have.length', 2).first().then($el => {
+      cy.getCell({ col: 9 }).find('.el-image').should('have.length', 2).first().find('img').then($el => {
         cy.get('@图片列表_value').should('contain', $el.attr('src'))
       })
       cy.getCell({ col: 10 }).find('.tag-item a').should('have.length', 1).first().then($el => {

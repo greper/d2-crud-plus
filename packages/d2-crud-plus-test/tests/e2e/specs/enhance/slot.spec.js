@@ -14,9 +14,9 @@ describe(menu, () => {
     doAdd () {
       cy.formItem('slot自定义').find('input').type('123').should('have.value', '123')
       cy.formItem('创建时间').find('.el-input').click()
-      cy.get('.el-picker-panel__footer:visible').contains('此刻').click()
+      cy.contains('.el-picker-panel__footer:visible button', '此刻').click()
       cy.formItem('更新时间').find('.el-input').click()
-      cy.get('.el-picker-panel__footer:visible').contains('此刻').click()
+      cy.contains('.el-picker-panel__footer:visible button', '此刻').click()
 
       cy.formItem('主题').contains('添加主题').click()
       cy.formItem('主题').find('input').type('321')

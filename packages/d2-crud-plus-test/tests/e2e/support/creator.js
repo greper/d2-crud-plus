@@ -11,9 +11,9 @@ export function createCrudTest (context) {
   it('翻页', () => {
     // 翻页
     cy.log('翻页')
-    cy.get('.el-pagination ul.el-pager li').contains('2').click()
+    cy.contains('.el-pagination ul.el-pager li', '2').click()
     cy.checkId(context, '1', false)
-    cy.get('.el-pagination ul.el-pager li').contains('1').click()
+    cy.contains('.el-pagination ul.el-pager li', '1').click()
     cy.checkId(context, '1')
   })
   it('添加', () => {

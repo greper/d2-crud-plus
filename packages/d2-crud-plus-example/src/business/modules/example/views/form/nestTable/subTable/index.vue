@@ -1,20 +1,21 @@
 <template>
-  <div style="height:500px">
+  <div >
     <div>当前选中：<el-tag v-if="value">{{value}} ，{{selectedName}}</el-tag></div>
     <d2-crud-x
       ref="d2Crud"
       v-bind="_crudProps"
       v-on="_crudListeners"
+      style="height:500px"
     >
       <div slot="header">
-        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  >
-          <el-button slot="prefix" class="d2-mr-5" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-          <crud-toolbar slot="suffix" :search.sync="crud.searchOptions.show"
-                        :columns="crud.columns"
-                        @refresh="doRefresh()"
-                        @columns-filter-changed="handleColumnsFilterChanged"/>
-
-        </crud-search>
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
+        <el-button   size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+        <!-- 同一个页面下 多个toolbar 需要设置storage名称否则会有冲突-->
+        <crud-toolbar  :search.sync="crud.searchOptions.show"
+                      :columns="crud.columns"
+                      @refresh="doRefresh()"
+                       storage="subTable"
+                      @columns-filter-changed="handleColumnsFilterChanged"/>
 
       </div>
     </d2-crud-x>

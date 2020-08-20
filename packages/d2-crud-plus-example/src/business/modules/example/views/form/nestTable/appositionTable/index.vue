@@ -7,10 +7,12 @@
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+
+        <!-- 同一个页面下 多个toolbar 需要设置storage名称否则会有冲突-->
         <crud-toolbar :search.sync="crud.searchOptions.show"
-                      :compact.sync="crud.pageOptions.compact"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
+                      storage="appositionTable"
                       @columns-filter-changed="handleColumnsFilterChanged"/>
       </div>
     </d2-crud-x>

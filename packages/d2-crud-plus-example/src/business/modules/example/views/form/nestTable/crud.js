@@ -43,7 +43,9 @@ export const crudOptions = {
       title: '嵌套表格',
       key: 'nestId',
       sortable: true,
+
       form: {
+        rules: [{ required: true, message: '请选择嵌套id' }],
         slot: true,
         component: {
           span: 24

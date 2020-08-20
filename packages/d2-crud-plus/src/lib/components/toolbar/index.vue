@@ -55,7 +55,7 @@ export default {
      * 传string则表示传入缓存的主key
      */
     storage: {
-      type: [Boolean, String],
+      type: [String, Boolean],
       default: true
     }
   },

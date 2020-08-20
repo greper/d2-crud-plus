@@ -2,8 +2,8 @@
   <d2-container >
     <template slot="header">嵌套表格</template>
 
-    <el-row :gutter="20" :style="{height:'100%'}">
-      <el-col :span="12" :style="{height:'100%'}">
+    <el-row :gutter="20" style="height:100%">
+      <el-col :span="12" style="height:100%">
         <d2-crud-x
           ref="d2Crud"
           v-bind="_crudProps"
@@ -11,9 +11,9 @@
         >
           <div slot="header">
             <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
-            <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+            <el-button class="d2-mr-5" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+            <span style="color:gray;font-size: 12px">添加新增查看嵌套表格</span>
             <crud-toolbar :search.sync="crud.searchOptions.show"
-                          :compact.sync="crud.pageOptions.compact"
                           :columns="crud.columns"
                           @refresh="doRefresh()"
                           @columns-filter-changed="handleColumnsFilterChanged"/>
@@ -24,7 +24,7 @@
         </d2-crud-x>
       </el-col>
 
-      <el-col :span="12" :style="{height:'100%'}">
+      <el-col :span="12" style="height:100%">
         <apposition-table></apposition-table>
       </el-col>
     </el-row>

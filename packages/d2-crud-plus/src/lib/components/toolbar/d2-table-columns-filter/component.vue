@@ -143,7 +143,7 @@ export default {
       required: false
     },
     storage: {
-      type: Boolean,
+      type: [Boolean, String],
       default: true,
       required: false
     }

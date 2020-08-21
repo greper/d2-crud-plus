@@ -5,7 +5,8 @@
       </template>
       <render-custom-component
         v-else-if="item.component && item.component.name"
-        v-model="row[item.key]"
+        :value="_get(row,item.key)"
+        @input="_set(row,item.key,$event)"
         :value-prop="item.component.valueProp"
         :component-name="item.component.name"
         :disabled="getTemplateComponentAttr(item,'disabled', false,getContext(item.key))"
@@ -38,6 +39,7 @@ import utils from '../mixin/utils'
 import renderComponent from '../components/renderComponent.vue'
 import renderCustomComponent from '../components/renderCustomComponent.vue'
 import _get from 'lodash.get'
+import _set from 'lodash.set'
 export default {
   name: 'd2-cell',
   provide: function () {
@@ -71,6 +73,7 @@ export default {
      * @description lodash.get
      */
     _get,
+    _set,
     getRow () {
       return this.row
     },

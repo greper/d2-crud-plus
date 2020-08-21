@@ -23,7 +23,8 @@
 <!--      </el-input>-->
       <render-custom-component
         v-else-if="isRenderCustomComponent(item)"
-        v-model="form[item.key]"
+        :value="_get(form,item.key)"
+        @input="_set(form,item.key,$event)"
         :ref="'form_item_'+item.key"
         :component-name="item.component.name?item.component.name:'el-input'"
         :props="getComponentProps(item)"
@@ -71,6 +72,8 @@
 
 <script>
 import lodash from 'lodash'
+import _get from 'lodash.get'
+import _set from 'lodash.set'
 export default {
   name: 'crud-search',
   provide: function () {
@@ -113,6 +116,8 @@ export default {
     }
   },
   methods: {
+    _get,
+    _set,
     _width (item) {
       if (!item.width) {
         return '150px'

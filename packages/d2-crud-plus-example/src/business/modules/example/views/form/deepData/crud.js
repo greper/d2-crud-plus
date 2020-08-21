@@ -30,7 +30,7 @@ export const crudOptions = (vm) => {
       },
       {
         title: '性别',
-        key: 'user#gender',
+        key: 'user.gender',
         sortable: true,
         search: {
           disabled: true
@@ -42,7 +42,7 @@ export const crudOptions = (vm) => {
       },
       {
         title: '部门名称',
-        key: 'dept#name',
+        key: 'dept.name',
         sortable: true,
         search: { disabled: true }
       },

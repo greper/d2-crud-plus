@@ -440,7 +440,11 @@ export default {
     },
     getPageSizeTableStore () {
       if (this.pageSizeTableStore == null) {
-        this.pageSizeTableStore = new TableStore({ $router: this.$route, tableName: 'pageSize', keyType: this.crud.pagination.storage })
+        this.pageSizeTableStore = new TableStore({
+          $router: this.$route,
+          tableName: 'pageSize',
+          keyType: this.crud.pagination.storage
+        })
       }
       return this.pageSizeTableStore
     },
@@ -548,7 +552,6 @@ export default {
     /**
      * 拍平数据
      * @param records
-     * @param unFlat
      * @private
      */
     _flatData (records) {
@@ -557,8 +560,7 @@ export default {
       }
       for (const row of records) {
         const symbol = get(this.crud, 'format.flatData.symbol', '#')
-        forEach(this.crud.columns, item => {
-          const key = item.key
+        forEach(this.crud.columnsMap, (item, key) => {
           if (key.indexOf(symbol) !== -1) {
             row[key] = get(row, key.replace(symbol, '.'))
           }
@@ -573,8 +575,7 @@ export default {
       }
       const symbol = get(this.crud, 'format.flatData.symbol', '#')
       const deleteOnUnFlat = get(this.crud, 'format.flatData.deleteOnUnFlat', true)
-      forEach(this.crud.columns, item => {
-        const key = item.key
+      forEach(this.crud.columnsMap, (item, key) => {
         if (key.indexOf(symbol) !== -1) {
           row[key] = set(row, key.replace(symbol, '.'), row[key])
           if (deleteOnUnFlat) {
@@ -821,7 +822,14 @@ export default {
           getComponent: getComponent
         })
       }
-      this.doFormDataChange({ key, value, form, getColumn: this.getEditFormTemplate, mode: this.getD2Crud().formMode, component })
+      this.doFormDataChange({
+        key,
+        value,
+        form,
+        getColumn: this.getEditFormTemplate,
+        mode: this.getD2Crud().formMode,
+        component
+      })
     },
     /**
      * 列配置修改

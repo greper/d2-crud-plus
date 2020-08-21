@@ -150,18 +150,16 @@ export const crudOptions = {
         class:{},
         placeholder,
         disabled:false, //可以传入一个方法
-        show:true,//可以传入一个方法
+        show:true,//是否显示单元格组件
         on:{},//事件绑定
         scopedSlots:{}, //插槽
         children:[] //子元素
       },
-      //是否隐藏该列在列表中显示，不影响form表单中该字段的显示
-      disabled: false, 
-      show: true, //是否显示单元格内容
+      disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
+      show: true, //是否在列表中显示该列（列配置中可选）
       // 是否启用该cell的slot插槽,需要d2-crud-x才支持
       // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
       rowSlot: false, 
-      
       formatter (row, column, value, index) {
         // cell 格式化，与d2-crud一致
       }

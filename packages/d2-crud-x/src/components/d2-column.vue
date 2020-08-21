@@ -40,7 +40,8 @@
 import utils from '../mixin/utils'
 import D2Cell from './d2-cell'
 import RenderComponent from './renderComponent'
-
+import _get from 'lodash.get'
+import _set from 'lodash.set'
 export default {
   name: 'd2-column',
   mixins: [
@@ -61,6 +62,8 @@ export default {
     }
   },
   methods: {
+    _get,
+    _set,
     getRow () {
       return this.scope.row
     },

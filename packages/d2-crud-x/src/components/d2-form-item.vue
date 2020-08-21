@@ -7,19 +7,10 @@
       <slot :name="colKey+'FormSlot'" :form="formData" :mode="$attrs.formMode" />
     </template>
     <template  v-else-if="template.formatter">{{template.formatter(formData, template,formData[colKey])}}</template>
-<!--    <el-input-->
-<!--      v-else-if="(!getFormComponent()) ||((!getFormComponent().name) && (!getFormComponent().render)) || getFormComponent().name === 'el-input'"-->
-<!--      v-model="formData[colKey]"-->
-<!--      ref="targetInput"-->
-<!--      :disabled="getFormComponentAttr('disabled', false)"-->
-<!--      :readonly="getFormComponentAttr('readonly', false)"-->
-<!--      v-bind="(getFormComponent().props?getFormComponent().props:getFormComponent())"-->
-<!--      @change="handleFormDataChange($event,colKey)"-->
-<!--    >-->
-<!--    </el-input>-->
     <render-custom-component
       v-else-if="getFormComponentName()"
-      v-model="formData[colKey]"
+      :value="_get(formData,colKey)"
+      @input="_set(formData,colKey,$event)"
       ref="targetWrapper"
       :component-name="getFormComponentName()"
       :disabled="getFormComponentAttr('disabled', false)"
@@ -60,6 +51,7 @@ import utils from '../mixin/utils'
 import renderComponent from '../components/renderComponent.vue'
 import renderCustomComponent from '../components/renderCustomComponent.vue'
 import _get from 'lodash.get'
+import _set from 'lodash.set'
 import _merge from 'lodash.merge'
 import _cloneDeep from 'lodash.clonedeep'
 export default {
@@ -103,6 +95,7 @@ export default {
      * @description lodash.get
      */
     _get,
+    _set,
     handleFormDataChange ({ value, component }, key) {
       this.$emit('form-data-change', { key: key, value: value, form: this.formData, component: component })
     },

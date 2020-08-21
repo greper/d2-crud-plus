@@ -91,9 +91,7 @@
         <component
           :is="getTableColumnImpl(options.tableType)"
           v-if="rowHandle"
-          :title="handleAttribute(rowHandle.columnHeader, '操作')"
-          :label="handleAttribute(rowHandle.columnHeader, '操作')"
-          v-bind="forBindProps(rowHandle)"
+          v-bind="forBindPropsRowHandle(rowHandle)"
         >
           <template slot-scope="scope">
             <template
@@ -104,7 +102,7 @@
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
                          v-bind="item"
                          @click="item.doClick(scope.$index,  scope.row)"
-                         :label="handleAttribute(item.text)"
+                         :label="handleAttribute(item.text,null,{index:scope.$index,row:scope.row})"
               />
             </template>
             <slot name="rowHandle" :index="scope.$index" :row="scope.row"></slot>

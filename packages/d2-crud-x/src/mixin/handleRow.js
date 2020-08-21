@@ -60,6 +60,7 @@ export default {
       btns.sort((a, b) => { return a.order - b.order })
       return btns
     }
+
   },
   methods: {
     /**
@@ -83,6 +84,18 @@ export default {
         return disabled(index, row)
       }
       return Boolean(disabled)
+    },
+    forBindPropsRowHandle (rowHandle) {
+      const props = this.forBindProps(rowHandle)
+      if (!props) {
+        return props
+      }
+      if (this.isVxeTable()) {
+        props.title = this.handleAttribute(rowHandle.columnHeader, '操作')
+      } else {
+        props.label = this.handleAttribute(rowHandle.columnHeader, '操作')
+      }
+      return props
     }
   }
 }

@@ -77,7 +77,7 @@ export default {
                 for (const key in query) {
                   // 判定某一个条件
                   const value = query[key]
-                  if (value == null) {
+                  if (value == null || value === '') {
                     continue
                   }
                   if (value instanceof Array) {
@@ -107,6 +107,13 @@ export default {
                     }
                     if (!found) {
                       allFound = false
+                    }
+                  } else if (value instanceof Object) {
+                    for (const key2 in value) {
+                      const v = value[key2]
+                      if (v && v !== item[key][key2]) {
+                        return false
+                      }
                     }
                   } else if (item[key] !== value) {
                     allFound = false

@@ -2,18 +2,7 @@
   <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       多级数据
-      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何支持多级数据（嵌套object）】</span>
-      <example-helper  >
-        <h3>如何支持多级数据嵌套object</h3>
-        <div>
-          <ul>
-            <li>1、crud:{format:{flatData:{disabled:false}}}，配置开启数据扁平化</li>
-            <li>3、columns:[{key:'user#gender'}]，key需要配置成‘#’号连接样式</li>
-            <li>2、pageRequest之后会将嵌套数据{user:{gender:0}} 拍平成{'user#gender':0}"</li>
-            <li>4、在addRequest、updateRequest会自动恢复成嵌套结构</li>
-          </ul>
-        </div>
-      </example-helper>
+      <span style="color:gray;font-size: 12px">数据嵌套object的处理{ id: 1, user: { name: '小红' , gender: 2 } }，【配置点号key即可，key:'user.name'】 </span>
     </template>
     <d2-crud-x
         ref="d2Crud"

@@ -470,7 +470,7 @@ export default {
      * 查询按钮点击
      * @param form
      */
-    handleSearch (form) {
+    handleSearch (form = {}) {
       for (const key in form) {
         if (form[key] === '') {
           delete form[key]

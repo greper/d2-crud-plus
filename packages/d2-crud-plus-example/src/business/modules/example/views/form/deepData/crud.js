@@ -1,8 +1,5 @@
 export const crudOptions = (vm) => {
   return {
-    format: {
-      flatData: { disabled: false } // 启用数据扁平化
-    },
     pageOptions: {
       compact: true
     },
@@ -25,7 +22,8 @@ export const crudOptions = (vm) => {
       },
       {
         title: '用户名',
-        key: 'user#name',
+        key: 'user.name',
+        search: {},
         sortable: true
       },
       {
@@ -33,7 +31,7 @@ export const crudOptions = (vm) => {
         key: 'user.gender',
         sortable: true,
         search: {
-          disabled: true
+          disabled: false
         },
         type: 'select',
         dict: {
@@ -48,7 +46,7 @@ export const crudOptions = (vm) => {
       },
       {
         title: '部门状态',
-        key: 'dept#status',
+        key: 'dept.status',
         sortable: true,
         search: { disabled: true },
         type: 'radio',

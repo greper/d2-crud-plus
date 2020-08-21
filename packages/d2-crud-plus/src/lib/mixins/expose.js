@@ -110,6 +110,14 @@ export default {
      */
     // this.doRefresh (){}
 
+    /**
+     * 主动查询
+     * form = 查询参数
+     */
+    doSearch (form) {
+      this.handleSearch(form)
+    },
+
     // --------------以下是crud暴露的方法，可以修改列表中的数据等--------------
     /**
      * 外部暴露的更新单元格数据方法

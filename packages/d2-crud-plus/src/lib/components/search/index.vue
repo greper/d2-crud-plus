@@ -131,15 +131,20 @@ export default {
       this.currentColumns = lodash.cloneDeep(columns)
       const form = {}
       for (const item of this.currentColumns) {
-        form[item.key] = item.component ? item.component.value : undefined
+        if (item.key.indexOf('.') !== -1) {
+          _set(form, item.key, undefined)
+        }
+        if (item.component) {
+          if (item.component.value !== undefined) {
+            _set(form, item.key, item.component.value)
+          }
+          if (item.component.props && item.component.props.value !== undefined) {
+            _set(form, item.key, item.component.props.value)
+          }
+        }
       }
-      let reset = {}
-      if (this.options.form) {
-        reset = lodash.cloneDeep(this.options.form)
-      }
-      lodash.merge(form, reset)
-      // 合并默认查询formdata
-      this.$set(this, 'form', form)
+      lodash.merge(form, this.options.form)
+      this.setForm(form)
     },
     // 获取查询form表单值
     getForm () {
@@ -151,12 +156,13 @@ export default {
      * @param isMerge 是否与原有form值合并
      */
     setForm (form, isMerge = false) {
+      const baseForm = {}
       if (isMerge) {
-        lodash.merge(this.form, form)
-        this.$set(this, 'form', this.form)
+        lodash.merge(baseForm, this.form, form)
       } else {
-        this.$set(this, 'form', form)
+        lodash.merge(baseForm, form)
       }
+      this.$set(this, 'form', baseForm)
     },
     doSearch () {
       this.handleFormSubmit()

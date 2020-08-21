@@ -131,9 +131,7 @@ export default {
       this.currentColumns = lodash.cloneDeep(columns)
       const form = {}
       for (const item of this.currentColumns) {
-        if (item.key.indexOf('.') !== -1) {
-          _set(form, item.key, undefined)
-        }
+        _set(form, item.key, undefined)
         if (item.component) {
           if (item.component.value !== undefined) {
             _set(form, item.key, item.component.value)

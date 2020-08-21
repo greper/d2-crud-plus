@@ -120,7 +120,6 @@ export default {
         }
       }
       this.currentValue = val
-
       if (newVal.length === 1 && newVal[0] == null) {
         this.onInput(val)
       }

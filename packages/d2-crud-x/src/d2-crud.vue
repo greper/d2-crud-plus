@@ -33,45 +33,62 @@
         @current-change="handleCurrentChange"
         v-on="_tableListeners"
       >
-        <component
-          :is="getTableColumnImpl()"
-          v-if="selectionRow || selectionRow === ''"
-          :type="isVxeTable()?'checkbox':'selection'"
-          :label="handleAttribute(selectionRow.title, '')"
-          v-bind="forBindProps(selectionRow)"
-        >
-        </component>
-        <component
-          v-if="(expandRow || expandRow === '') && isVxeTable()"
-          :is="getTableColumnImpl()"
-          type="expand"
-          :title="handleAttribute(expandRow.title, '')"
-          v-bind="forBindProps(expandRow)"
-        >
-          <template slot="content" slot-scope="scope">
-            <slot name="expandSlot" :row="scope.row"/>
-          </template>
-        </component>
-        <component
-          v-if="(expandRow || expandRow === '') && !isVxeTable()"
-          :is="getTableColumnImpl()"
-          type="expand"
-          :label="handleAttribute(expandRow.title, '')"
-          v-bind="forBindProps(expandRow)"
-        >
-          <template  slot-scope="scope">
-            <slot name="expandSlot" :row="scope.row"/>
-          </template>
-        </component>
-        <component
-          :is="getTableColumnImpl()"
-          v-if="indexRow || indexRow === ''"
-          :type="getTableImpl(options.tableType)==='el-table'?'index':'seq'"
-          :title="handleAttribute(indexRow.title, '')"
-          :label="handleAttribute(indexRow.title, '')"
-          v-bind="forBindProps(indexRow)"
-        >
-        </component>
+        <template v-if="isVxeTable()">
+          <component
+            :is="getTableColumnImpl()"
+            v-if="(selectionRow || selectionRow === '') "
+            type="checkbox"
+            :title="handleAttribute(selectionRow.title, '')"
+            v-bind="forBindProps(selectionRow)"
+          />
+          <component
+            v-if="(expandRow || expandRow === '') && isVxeTable()"
+            :is="getTableColumnImpl()"
+            type="expand"
+            :title="handleAttribute(expandRow.title, '')"
+            v-bind="forBindProps(expandRow)"
+          >
+            <template slot="content" slot-scope="scope">
+              <slot name="expandSlot" :row="scope.row"/>
+            </template>
+          </component>
+          <component
+            :is="getTableColumnImpl()"
+            v-if="indexRow || indexRow === ''"
+            type="seq"
+            :title="handleAttribute(indexRow.title, '')"
+            v-bind="forBindProps(indexRow)"
+          />
+        </template>
+        <template v-else>
+          <component
+            :is="getTableColumnImpl()"
+            v-if="(selectionRow || selectionRow === '') "
+            type="selection"
+            :label="handleAttribute(selectionRow.title, '')"
+            v-bind="forBindProps(selectionRow)"
+          />
+
+          <component
+            v-if="(expandRow || expandRow === '') "
+            :is="getTableColumnImpl()"
+            type="expand"
+            :label="handleAttribute(expandRow.title, '')"
+            v-bind="forBindProps(expandRow)"
+          >
+            <template  slot-scope="scope">
+              <slot name="expandSlot" :row="scope.row"/>
+            </template>
+          </component>
+          <component
+            :is="getTableColumnImpl()"
+            v-if="indexRow || indexRow === ''"
+            type="index"
+            :label="handleAttribute(indexRow.title, '')"
+            v-bind="forBindProps(indexRow)"
+          />
+        </template>
+
         <!-- 使用d2-column递归组件 -->
         <d2-column v-for="(item, index) in columns"
                    :key="index"

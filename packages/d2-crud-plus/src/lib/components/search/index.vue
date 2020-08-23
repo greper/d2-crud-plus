@@ -166,6 +166,10 @@ export default {
       this.handleFormSubmit()
     },
     handleFormSubmit () {
+      if (this.searchDebounce) {
+        // 防抖查询取消
+        this.searchDebounce.cancel()
+      }
       this.$refs.searchForm.validate((valid) => {
         if (valid) {
           this.$emit('submit', lodash.cloneDeep(this.form))

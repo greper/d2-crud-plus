@@ -2,11 +2,7 @@
   <component
     :is="getTableColumnImpl(tableType)"
     v-if="item.show!==false"
-    :title="handleAttribute(item.title, '')"
-    :field="handleAttribute(item.key, null)"
-    :label="handleAttribute(item.title, '')"
-    :prop="handleAttribute(item.key, null)"
-    v-bind="item">
+    v-bind="forColumnBindProps(item)">
   <template slot-scope="scope">
     <d2-cell :item="item" :row="scope.row" :rowIndex="scope.$index"
              @cell-data-change="handleCellDataChange"
@@ -75,6 +71,18 @@ export default {
     },
     handleCellComponentCustomEvent (column) {
       this.$emit('cell-component-custom-event', column)
+    },
+    forColumnBindProps (item) {
+      const targetItem = { ...item }
+      if (this.isVxeTable(this.tableType)) {
+        targetItem.title = this.handleAttribute(item.title, '')
+        targetItem.field = this.handleAttribute(item.key, null)
+      } else {
+        targetItem.label = this.handleAttribute(item.title, '')
+        targetItem.prop = this.handleAttribute(item.key, null)
+        delete targetItem.title
+      }
+      return targetItem
     }
   }
 }

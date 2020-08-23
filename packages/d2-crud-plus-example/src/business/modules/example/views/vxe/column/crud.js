@@ -20,12 +20,12 @@ export const crudOptions = {
   },
   options: {
     tableType: 'vxe-table',
-    rowKey: true,
+    rowKey: true, // 必须设置，true or false
     rowId: 'id',
     height: '100%', // 表格高度100%, 使用toolbar必须设置
     highlightCurrentRow: true,
 
-    treeConfig: {
+    treeConfig: { // 树形数据配置
       lazy: true,
       children: 'children',
       hasChild: 'hasChildren',
@@ -41,7 +41,7 @@ export const crudOptions = {
       },
       iconLoaded: 'el-icon-loading' // 美化loading图标
     },
-    showFooter: true,
+    showFooter: true, // 合计行
     footerMethod: ({ columns, data }) => {
       const sums = []
       columns.forEach((column, columnIndex) => {
@@ -66,11 +66,11 @@ export const crudOptions = {
     align: 'center',
     width: 100
   },
-  selectionRow: {
+  selectionRow: { // 多选列
     align: 'center',
     width: 100
   },
-  expandRow: { // 或者直接传true,不显示title，不居中
+  expandRow: { // 行展开 或者直接传true,不显示title，不居中
     title: '展开',
     align: 'center',
     width: 100

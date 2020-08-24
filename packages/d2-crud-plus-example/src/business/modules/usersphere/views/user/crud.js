@@ -38,7 +38,7 @@ export const crudOptions = (vm) => {
           emit: 'authz',
           icon: 'el-icon-s-flag',
           disabled () {
-            return !vm.hasPermissions('permission:user:view')
+            return !vm.hasPermissions('usersphere:user:edit')
           }
         }
       ]

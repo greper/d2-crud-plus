@@ -12,21 +12,21 @@ export const crudOptions = (vm) => {
         thin: true,
         text: null,
         disabled () {
-          return !vm.hasPermissions('permission:user:view')
+          return !vm.hasPermissions('usersphere:user:view')
         }
       },
       edit: {
         thin: true,
         text: null,
         disabled () {
-          return !vm.hasPermissions('permission:user:view')
+          return !vm.hasPermissions('usersphere:user:edit')
         }
       },
       remove: {
         thin: true,
         text: null,
         disabled () {
-          return !vm.hasPermissions('permission:user:view')
+          return !vm.hasPermissions('usersphere:user:del')
         }
       },
       custom: [

@@ -14,7 +14,7 @@ describe(menu, () => {
     listWait: 1000,
     parentSelector: '.leftTable',
     doAdd () {
-      cy.formItem('嵌套表格').as('subTable').find('.el-table__body-wrapper tbody tr:eq(1)').as('firstRow').click()
+      cy.formItem('用户').as('subTable').find('.el-table__body-wrapper tbody tr:eq(1)').as('firstRow').click()
       cy.get('@firstRow').should('have.class', 'current-row')
       cy.contains('.el-dialog__wrapper .el-pagination ul.el-pager li', '2').click()
       cy.checkColValue({ tableIndex: 3, col: 12, value: '21', parentSelector: '.el-dialog__body' })
@@ -32,7 +32,7 @@ describe(menu, () => {
       cy.checkColValue({ tableIndex: 1, col: 5, value: '2' })
     },
     doEdit () {
-      cy.formItem('嵌套表格').as('subTable').find('.current_selected').contains('小黄')
+      cy.formItem('用户').as('subTable').find('.current_selected').contains('小黄')
     },
     checkEdit () {
     }

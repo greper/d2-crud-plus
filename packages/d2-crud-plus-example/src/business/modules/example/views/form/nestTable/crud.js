@@ -1,6 +1,6 @@
 export const crudOptions = {
   options: {
-    height: '100%' // 表格高度100%, 使用toolbar必须设置
+    height: '100%' // 表格高度100%, 新版页面必须设置
   },
   columns: [
     {
@@ -44,13 +44,12 @@ export const crudOptions = {
       }
     },
     {
-      title: '嵌套表格',
+      title: '用户',
       key: 'nestId',
       sortable: true,
-
-      form: {
-        rules: [{ required: true, message: '请选择嵌套id' }],
-        slot: true,
+      form: { // 嵌套表格字段
+        rules: [{ required: true, message: '请选择用户' }],
+        slot: true, // 通过form slot 引入子表格，将子表格当做一个字段组件来用
         component: {
           span: 24
         }

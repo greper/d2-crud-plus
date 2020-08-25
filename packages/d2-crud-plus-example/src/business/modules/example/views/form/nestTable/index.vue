@@ -12,19 +12,22 @@
           <div slot="header">
             <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
             <el-button class="d2-mr-5" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-            <span style="color:gray;font-size: 12px">添加新增查看嵌套表格</span>
+            <span style="color:gray;font-size: 12px">点击新增查看嵌套表格示例</span>
             <crud-toolbar :search.sync="crud.searchOptions.show"
                           :columns="crud.columns"
                           @refresh="doRefresh()"
                           @columns-filter-changed="handleColumnsFilterChanged"/>
           </div>
           <div slot="nestIdFormSlot" slot-scope="scope">
+            <!--  form slot 嵌入子表格，把子表格当做一个表单组件来用 -->
+            <!-- form slot 文档 http://greper.gitee.io/d2-crud-plus/guide/slot.html -->
             <sub-table :value="scope.form.nestId" @selected="nestIdSelected($event,scope.form)"></sub-table>
           </div>
         </d2-crud-x>
       </el-col>
 
       <el-col :span="12" style="height:100%" class="rightTable">
+        <!-- 并列表格 --->
         <apposition-table></apposition-table>
       </el-col>
     </el-row>

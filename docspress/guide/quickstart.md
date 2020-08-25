@@ -142,9 +142,10 @@ Vue.use(d2CrudPlus, {
  ```
 [更多关于后台返回数据结构的配置说明](/guide/structure.md)
 
-#### d2-crud-x与d2-crud共同使用
-如果你的项目之前已经使用了`官方版d2-crud`  
-你可以直接在此基础上使用`d2-crud-x`,并不会破坏以前的功能    
+### d2-crud-x与d2-crud共同使用
+`d2-crud-x`与`d2-crud`并不冲突，可以在一个项目里面同时使用。    
+如果你正在使用`d2-crud`，你可以在现有项目基础上使用`d2-crud-x`，并不会破坏以前的功能。 
+
 ```js
  import d2Crud from '@d2-projects/d2-crud'
  import d2CrudX from 'd2-crud-x'
@@ -163,7 +164,12 @@ Vue.use(d2CrudPlus, {
   </d2-container>
 </template>
 ```
-
+::: warn  
+随着d2-crud-x的功能越来越强大，已经无法直接兼容d2-crud。   
+也就是说，以前用`d2-crud`的页面继续用`d2-crud`。  
+新页面用`d2-crud-x`和`d2-crud-plus`   
+等以后有空了，再把以前的旧页面改成`d2-crud-x`（用`d2-crud-plus`开发很快的）
+:::
 
 ### 3. 安装扩展插件
 如果你还需要文件上传、图片裁剪、富文本、地区选择器、树形选择器、图标选择器等组件   

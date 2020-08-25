@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/greper/d2-crud/compare/d2-crud-x@2.9.1...d2-crud-x@2.10.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* 减少vxetable的警告 ([6f2a0cb](https://github.com/greper/d2-crud/commit/6f2a0cb842a3c65e9b4ba1e0198cec9489fe595f))
+* 减少vxetable的警告 ([8e30fb7](https://github.com/greper/d2-crud/commit/8e30fb78d2596f402fbdea6e35a4956a58e82b76))
+
+
+### Features
+
+* 支持点号key的方式配置多级数据 ([927600d](https://github.com/greper/d2-crud/commit/927600d0fefb4c281c2b797f29158ac792cca99c))
+
+
+
+
+
 ## [2.9.1](https://github.com/greper/d2-crud/compare/d2-crud-x@2.9.0...d2-crud-x@2.9.1) (2020-08-20)
 
 

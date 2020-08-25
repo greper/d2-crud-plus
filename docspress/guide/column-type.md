@@ -100,7 +100,7 @@ d2CrudPlus.util.columnResolve.addTypes({
 或者获取到官方配置，然后修改它。
 ```js
 //修改自定义字段类型
-const datetimeType = d2CrudPlus.util.columnResolve.getByType('datetime')
+const datetimeType = d2CrudPlus.util.columnResolve.getType('datetime')
 datetimeType.component.props.format='YYYY-MM-DD'  //修改行展示组件的时间格式化
 ```
 

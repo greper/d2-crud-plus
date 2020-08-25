@@ -20,8 +20,12 @@ function getTypes () {
   return DefaultTypes
 }
 
+function getType (key) {
+  return DefaultTypes[key]
+}
 const ColumnResolveUtil = {
   getByType: getByType,
+  getType: getType,
   addTypes (newTypes) {
     for (const key in newTypes) {
       DefaultTypes[key] = newTypes[key]

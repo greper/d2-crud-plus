@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.16.1...@d2-plus/d2-crud-plus-example@1.17.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* 修复点号配置多级数据时查询的问题 ([95f6bdc](https://github.com/d2-projects/d2-admin/commit/95f6bdc74b1809a2fc2be6801e4f87989c5b2d70))
+* 修复用户没有添加按钮的bug ([41bf1bc](https://github.com/d2-projects/d2-admin/commit/41bf1bc8294aaafd54bc8867db66a16ce0620bae))
+* 修复用户没有添加按钮的bug ([6572492](https://github.com/d2-projects/d2-admin/commit/6572492fdd6c0b3f8b8ffdfea65c2109b1fa3f1f))
+* 减少vxetable的警告 ([8e30fb7](https://github.com/d2-projects/d2-admin/commit/8e30fb78d2596f402fbdea6e35a4956a58e82b76))
+
+
+### Features
+
+* 支持点号key的方式配置多级数据 ([927600d](https://github.com/d2-projects/d2-admin/commit/927600d0fefb4c281c2b797f29158ac792cca99c))
+
+
+
+
+
 ## [1.16.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.16.0...@d2-plus/d2-crud-plus-example@1.16.1) (2020-08-20)
 
 

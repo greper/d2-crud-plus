@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.7...d2-crud-plus@1.16.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* 修复input查询框点击查询 执行两次查询的bug ([110e8b9](https://github.com/greper/d2-crud-plus/commit/110e8b9ff2200d894ef03c74ba781d41afc511d7))
+* 修复点号配置多级数据时查询的问题 ([d936775](https://github.com/greper/d2-crud-plus/commit/d9367758f90434a452d425012d6e9b244e8046f4))
+* 修复点号配置多级数据时查询的问题 ([95f6bdc](https://github.com/greper/d2-crud-plus/commit/95f6bdc74b1809a2fc2be6801e4f87989c5b2d70))
+
+
+### Features
+
+* 支持点号key的方式配置多级数据 ([927600d](https://github.com/greper/d2-crud-plus/commit/927600d0fefb4c281c2b797f29158ac792cca99c))
+
+
+
+
+
 ## [1.15.7](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.6...d2-crud-plus@1.15.7) (2020-08-20)
 
 

@@ -83,21 +83,24 @@ this.crud= {
 ```
 ## 自定义字段类型
 其实就是事先自定义好column的配置，运行时根据type直接生成默认配置，减轻配置工作量   
-如果官方的字段类型不符合您的需求，您也可以配置相同的type覆盖官方配置，从而实现定制化
+
 ```javascript
 import { d2CrudPlus } from 'd2-crud-plus'
 Vue.use(d2CrudPlus)
 
-//添加自定义字段类型
+//添加自定义字段类型,使用type:'time2'，你就可以省略下面的配置
 d2CrudPlus.util.columnResolve.addTypes({
   'time2':{
      form: { component: { name: 'el-date-picker' } },
-     component: { name: 'date-format', props: { format: 'YYYY-MM-DD' } },
-     _handle (column) {...}// 此方法将在运行时执行。在自定义配置与默认配置合并之后执行
-    
+     component: { name: 'date-format', props: { format: 'YYYY-MM-DD' } }
   }
 })
 ```
-
-
+如果官方的字段类型不符合您的需求，您也可以配置相同的type来覆盖官方配置
+或者获取到官方配置，然后修改它。
+```js
+//修改自定义字段类型
+const datetimeType = d2CrudPlus.util.columnResolve.getByType('datetime')
+datetimeType.component.props.format='YYYY-MM-DD'  //修改行展示组件的时间格式化
+```
 

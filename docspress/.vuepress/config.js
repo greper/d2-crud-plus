@@ -141,6 +141,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       children: [
         'upgrade',
         'breakingchange',
+        'upgradechange',
         'questions',
         'contact'
       ]

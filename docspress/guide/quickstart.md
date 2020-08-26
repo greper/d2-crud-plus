@@ -164,7 +164,7 @@ Vue.use(d2CrudPlus, {
   </d2-container>
 </template>
 ```
-::: warn  
+::: warning  
 随着d2-crud-x的功能越来越强大，已经无法直接兼容d2-crud。   
 也就是说，以前用`d2-crud`的页面继续用`d2-crud`。  
 新页面用`d2-crud-x`和`d2-crud-plus`   

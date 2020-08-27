@@ -122,6 +122,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'extends',
         'dict',
         'event',
+        'nest-data',
         'flat-data'
       ]
     },

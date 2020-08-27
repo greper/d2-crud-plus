@@ -588,13 +588,6 @@ export default {
     },
 
     /**
-     * 获取search组件
-     * @returns {*}
-     */
-    getSearch () {
-      return this.$refs[this.crud.format.ref.search]
-    },
-    /**
      * 编辑对话框打开前要做的操作
      * @param mode
      * @param row

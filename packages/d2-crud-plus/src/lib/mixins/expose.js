@@ -118,6 +118,19 @@ export default {
       this.handleSearch(form)
     },
 
+    /**
+     * 获取search组件ref
+     * @returns {*}
+     */
+    getSearch () {
+      return this.$refs[this.crud.format.ref.search]
+    },
+
+    /**
+     * 获取search form 数据
+     */
+    // this.getSearch().getForm()
+
     // --------------以下是crud暴露的方法，可以修改列表中的数据等--------------
     /**
      * 外部暴露的更新单元格数据方法

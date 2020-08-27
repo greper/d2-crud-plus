@@ -11,7 +11,7 @@
 
 * [d2-crud-x](./changelogs/packages/d2-crud-x/CHANGELOG.md)
 * [d2-crud-plus](./changelogs/packages/d2-crud-plus/CHANGELOG.md)
-* [d2-crud-extends](./changelogs/packages/d2-crud-extends/CHANGELOG.md)
+* [d2-crud-extends](./changelogs/packages/d2-crud-plus-extends/CHANGELOG.md)
 * [d2-crud-plus-example](./changelogs/packages/d2-crud-plus-example/CHANGELOG.md)
 
 

@@ -113,6 +113,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
       sidebarDepth: 3,
       children: [
         'mixins',
+        'expose',
         'options',
         'structure',
         'component',

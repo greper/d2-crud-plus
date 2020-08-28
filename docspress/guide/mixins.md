@@ -28,4 +28,5 @@ export default {
 8.  　　－－`form`中的配置覆盖`view`的配置生成`字段查看配置`（componentType='form'）
 10.  处理分组配置
 11.  生成最终的`crud配置`，输出日志 crud init `{this.crud}`
-12.  触发`doSearch`方法执行`pageRequest`获取数据
+12.  将crud配置传入d2-crud-x组件
+13.  触发`doSearch`方法执行`pageRequest`获取数据

@@ -2,15 +2,12 @@
 # 组件配置
 ## 组件配置
 表单组件、行组件都是通过`render-custom-component`进行动态生成的。   
-每一列的配置中有三处地方可以配置component：
+每个字段的配置中有几处地方可以配置component：
  1. column.form.component = 表单组件配置
  2. column.component = 表格行展示组件配置
  3. column.search.component = 查询表单组件配置
  4. column.view.component = 查看表单组件配置
 
-通过component.name 配置组件名称  
-通过component.props 配置组件参数  
-默认监听input和change事件    
 使用相关组件前，需要通过`Vue.use` 或 `Vue.component`引入组件
 
 ## 组件配置项

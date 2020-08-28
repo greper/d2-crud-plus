@@ -96,11 +96,12 @@ d2CrudPlus.util.columnResolve.addTypes({
   }
 })
 ```
-如果官方的字段类型不符合您的需求，您也可以配置相同的type来覆盖官方配置
+如果官方的字段类型不符合您的需求，您也可以配置相同的type来覆盖官方配置。   
+
 或者获取到官方配置，然后修改它。
 ```js
-//修改自定义字段类型
+//修改官方字段类型
 const datetimeType = d2CrudPlus.util.columnResolve.getType('datetime')
 datetimeType.component.props.format='YYYY-MM-DD'  //修改行展示组件的时间格式化
 ```
-
+[官方字段类型列表](./types.md)

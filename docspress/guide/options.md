@@ -33,11 +33,11 @@ export const crudOptions = {
         slot:false 
       },
       form: { //添加和编辑表单配置
+        title:'表单字段显示的名称', //默认使用column的title
         rules: [ // 表单校验规则
           { required: true, message: '请选择地区' }
         ],
         component: { //添加和修改时form表单的组件
-          title:'表单字段显示的名称', //默认使用column的title
           name: 'dict-select', //表单组件名称，支持任何v-model组件
           props: { //表单组件的参数，具体参数请查看对应的组件文档
             // 如何查找组件配置，请参考

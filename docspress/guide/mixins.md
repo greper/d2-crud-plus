@@ -19,7 +19,7 @@ export default {
 
 1.  `created()`中开始crud初始化
 2.  页面配置`crudOptions`覆盖全局配置`commonOption`
-2.  遍历`crudOptions.columns`
+2.  遍历`crudOptions.columns`，[详细过程](./column-type.md)
 3.  　　－－根据`type`获取默认字段配置
 4.  　　－－使用用户的配置覆盖默认配置
 5.  　　－－`form`中的配置覆盖`search`的配置生成`字段查询配置`

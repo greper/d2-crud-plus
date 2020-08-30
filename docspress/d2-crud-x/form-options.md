@@ -67,3 +67,17 @@
 * 类型: Number
 * 可选值: 无
 * 默认值: 0
+
+## draggable
+
+* 说明: 是否可拖拽
+* 类型: Boolean
+* 可选值: 无
+* 默认值: true
+
+## fullscreen
+
+* 说明: 是否支持对话框全屏按钮
+* 类型: Boolean
+* 可选值: 无
+* 默认值: true

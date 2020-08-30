@@ -44,6 +44,14 @@
 * 可选值: 无
 * 默认值: 无
 * 同义参数：`component.events`
+* 示例：
+```
+on:{
+    select(event){  // 监听组件的select事件
+        console.log('xxx selected')
+    }
+}
+```
 
 ## component.scopedSlots
 * 说明: 组件的scoped插槽，支持jsx语法

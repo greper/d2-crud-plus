@@ -45,7 +45,7 @@ new Vue({
 
 之后就可以在项目中使用`d2-crud-x`了。
 
-[搭配d2-crud-plus](http://localhost:8080/d2-crud-plus/guide/quickstart.html#集成到你的项目中)让你开发crud更有效率哦。【推荐】
+[搭配d2-crud-plus](/guide/quickstart.html#集成到你的项目中)让你开发crud更有效率哦。【推荐】
 
 ## 文档
 

@@ -53,7 +53,11 @@ export default {
         await dispatch('d2admin/user/set', {}, { root: true })
 
         // 清空权限信息
-        commit('permission/clear', true, { root: true })
+        const isPmEnabled = process.env.VUE_APP_PM_ENABLED === 'true'
+        if (isPmEnabled) {
+          console.log('清空权限信息')
+          commit('permission/clear', true, { root: true })
+        }
 
         // 跳转路由
         router.push({ name: 'login' })

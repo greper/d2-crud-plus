@@ -131,11 +131,16 @@ export default {
           _forEach(group.columns, (template, key) => {
             let value = this._get(newRow, key)
             // 设置默认值
-            if (template && template.component &&
-              template.component.props &&
-              template.component.props.value != null &&
-              value === undefined) {
-              value = template.component.props.value
+            if (template && value === undefined) {
+              if (template.value != null) {
+                value = template.value
+              } else if (template.component) {
+                if (template.component.value != null) {
+                  value = template.component.value
+                } else if (template.component.props && template.component.props.value != null) {
+                  value = template.component.props.value
+                }
+              }
             }
             this._set(formData, key, value)
           })

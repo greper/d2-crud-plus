@@ -44,7 +44,9 @@ module.exports = ctx => ({
         sidebar: {
          // '/api/': getApiSidebar(),
           '/guide/': getGuideSidebar(),
-         // '/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
+          '/d2-crud-x/': getD2CrudXSidebar(),
+
+          // '/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
          // '/theme/': getThemeSidebar('主题', '介绍')
         }
       },
@@ -122,7 +124,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'slot',
         'extends',
         'dict',
-        'event',
+        // 'event',
         'nest-data',
         'flat-data'
       ]
@@ -181,43 +183,19 @@ function getGuideSidebar (groupA, groupB,groupC) {
     }
   ]
 }
-//
-// function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
-//   return [
-//     {
-//       title: pluginTitle,
-//       collapsable: false,
-//       children: [
-//         ['', pluginIntro],
-//         'using-a-plugin',
-//         'writing-a-plugin',
-//         'life-cycle',
-//         'option-api',
-//         'context-api'
-//       ]
-//     },
-//     {
-//       title: officialPluginTitle,
-//       collapsable: false,
-//       children: officalPlugins
-//     }
-//   ]
-// }
-//
-// function getThemeSidebar (groupA, introductionA) {
-//   return [
-//     {
-//       title: groupA,
-//       collapsable: false,
-//       sidebarDepth: 2,
-//       children: [
-//         ['', introductionA],
-//         'using-a-theme',
-//         'writing-a-theme',
-//         'option-api',
-//         'default-theme-config',
-//         'inheritance'
-//       ]
-//     }
-//   ]
-// }
+
+function getD2CrudXSidebar () {
+  return  [
+    '',
+    // 'guide',
+    // 'example',
+    {
+      title: '配置项',
+      children: [ 'crud', 'columns', 'options', 'loading-options', 'index-row', 'selection-row', 'row-handle', 'form-options', 'form-template', 'component' ,'pagination' ]
+    },
+    'events',
+    'slots',
+    'expose'
+  ]
+}
+

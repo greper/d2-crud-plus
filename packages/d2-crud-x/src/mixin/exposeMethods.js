@@ -47,6 +47,13 @@ export default {
      */
     closeDialog () {
       this.handleCloseDialog()
+    },
+
+    /**
+     * 获取当前表格数据
+     */
+    getTableData () {
+      return this.$refs.d2Crud.d2CrudData
     }
   }
 }

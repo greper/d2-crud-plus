@@ -53,7 +53,6 @@ Github: <https://github.com/greper/d2-crud-plus>
 ### 1. d2-admin
 Github: <https://github.com/d2-projects/d2-admin>  
 文档：<https://d2.pub/zh/doc/d2-admin/> 
-### 2. d2-crud
-Github： <https://github.com/d2-projects/d2-crud>   
-文档：<https://d2.pub/zh/doc/d2-crud-v2/> 
+### 2. d2-crud-x
+文档：[d2-crud-x](../d2-crud-x/)
 

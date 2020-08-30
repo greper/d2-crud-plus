@@ -22,7 +22,13 @@ export const crudOptions = {
       title: '创建时间',
       key: 'createDate',
       type: 'datetime',
-      width: 200
+      width: 200,
+      form: {
+        component: {
+          style: { width: '500px' },
+          class: { 'd2-mr-5': true }
+        }
+      }
     },
     {
       title: '分组字段',

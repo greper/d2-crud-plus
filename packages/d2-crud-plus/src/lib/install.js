@@ -23,8 +23,17 @@ const install = (Vue, options) => {
   for (const key in components) {
     Vue.component(components[key].name, components[key])
   }
-  console.log('d2-crud-plus install options:', options)
   if (options != null) {
+    if (!(options.starTip === false)) {
+      console.log('演示地址  http://qiniu.veryreader.com/D2CrudPlusExample/')
+      console.log('文档  http://greper.gitee.io/d2-crud-plus/')
+      console.log('Gitee   https://gitee.com/greper/d2-crud-plus')
+      console.log('GitHub  https://github.com/greper/d2-crud-plus')
+      console.log('请不要吝啬您的star，谢谢！')
+      console.log('您可以通过 vue.use(d2CrudPlus,{starTip:false}) 来关闭以上消息')
+    }
+
+    console.log('d2-crud-plus install options:', options)
     if (options.getRemoteDictFunc != null) {
       util.dict.getRemoteDictFunc = options.getRemoteDictFunc
     }

@@ -8,7 +8,7 @@ export default {
     // --------------页面初始化方法，可以被覆盖--------------
     /**
      * 页面初始化，在created中被调用
-     * 必要时可以覆盖为空方法，改变初始化的时机
+     * 必要时可以覆盖为空方法，将this._doStart()在mounted中调用，用于改变初始化的时机
      * @private
      */
     _OnCreated () {
@@ -23,6 +23,7 @@ export default {
     /**
      * 第一次请求页面数据
      * initColumns初始化完成后调用
+     * 可以用一个空方法覆盖它，阻止初始化后请求数据
      */
     doLoad () {
       return this.doRefresh({ from: 'load' })
@@ -30,7 +31,8 @@ export default {
 
     // --------------以下方法，可以被调用，请注意不要覆盖--------------
     /**
-     * 获取编辑框的formData
+     * 获取D2CrudX的实例
+     * 之后可以调用它暴露的方法
      * @returns
      */
     getD2Crud () {
@@ -156,10 +158,10 @@ export default {
      * 外部暴露的打开模态框方法
      */
     // this.getD2Crud().showDialog({
-    //   mode=[add,edit],
-    //   rowIndex = 0,
-    //   template = null,
-    //   addData = null
+    //   mode=[add,edit,view], //当前打开模式
+    //   rowIndex = 0, //编辑或查看时，哪一行的数据
+    //   template = null, //表单模版
+    //   addData = null //添加时的默认数据
     // })
 
     /**

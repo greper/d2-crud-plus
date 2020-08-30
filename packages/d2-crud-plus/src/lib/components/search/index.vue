@@ -132,12 +132,15 @@ export default {
       const form = {}
       for (const item of this.currentColumns) {
         _set(form, item.key, undefined)
-        if (item.component) {
-          if (item.component.value !== undefined) {
-            _set(form, item.key, item.component.value)
-          }
-          if (item.component.props && item.component.props.value !== undefined) {
-            _set(form, item.key, item.component.props.value)
+        if (item.value !== undefined) {
+          _set(form, item.key, item.value)
+        } else {
+          if (item.component) {
+            if (item.component.value !== undefined) {
+              _set(form, item.key, item.component.value)
+            } else if (item.component.props && item.component.props.value !== undefined) {
+              _set(form, item.key, item.component.props.value)
+            }
           }
         }
       }

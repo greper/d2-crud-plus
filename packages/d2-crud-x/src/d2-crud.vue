@@ -122,7 +122,9 @@
                          :label="handleAttribute(item.text,null,{index:scope.$index,row:scope.row})"
               />
             </template>
+            <!-- 即将废弃 -->
             <slot name="rowHandle" :index="scope.$index" :row="scope.row"></slot>
+            <slot name="rowHandleSlot" :index="scope.$index" :row="scope.row"></slot>
           </template>
 
         </component>
@@ -155,7 +157,7 @@
     >
       <template slot="title">
         {{getFormTitle()}}
-        <slot name="FormHeaderSlot" v-bind:mode="formMode" v-bind:data="formData" />
+        <slot name="FormHeaderSlot" :mode="formMode" :data="formData"  :form="formData"/>
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"/></button>
       </template>
       <el-form
@@ -238,7 +240,7 @@
         </div>
       </el-form>
       <div slot="footer">
-        <slot name="FormFooterSlot" :mode="formMode" :data="formData" />
+        <slot name="FormFooterSlot" :mode="formMode" :data="formData" :form="formData" />
         <el-button v-if="getAttribute(formOptions,'saveButtonShow', true)"
           :size="getAttribute(formOptions,'saveButtonSize', null)"
           :type="getAttribute(formOptions,'saveButtonType' ,null)"

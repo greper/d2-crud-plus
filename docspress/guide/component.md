@@ -11,6 +11,7 @@
 使用相关组件前，需要通过`Vue.use` 或 `Vue.component`引入组件
 
 ## 组件配置项
+[d2-crud-x中的组件配置](../d2-crud-x/component.md)
 ```js
 component:{ //添加和修改时form表单的组件
   name: 'dict-select', //表单组件名称，支持任何v-model组件
@@ -40,7 +41,10 @@ component:{ //添加和修改时form表单的组件
   children:[ //子元素jsx
       (h)=>{return (<div slot="prefix">非scoped插槽</div>)}
   ],
-  span: 12 //该字段占据多宽，24为占满一行
+  span: 12, //该字段占据多宽，24为占满一行
+  // 组件的其他html属性,会直接传递给组件
+  style:{width:'100px'},
+  class:{'d2-mr-5':true}
 }
 ```
 

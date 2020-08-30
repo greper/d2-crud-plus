@@ -76,7 +76,7 @@ export const crudOptions = (vm) => {
         form: {
           helper: '自定义扩展演示(d2-crud-plus-extends/src/demo-extends)',
           component: {
-            slots: {
+            scopedSlots: {
               test1: (h, scope) => {
                 return (<span>--{scope.value}--</span>)
               }

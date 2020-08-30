@@ -10,7 +10,10 @@
     "@commitlint/config-conventional": "^8.2.0",
     "@vuepress/shared-utils": "yarn yarn 1.2.0",
     "lerna": "^3.21.0",
-    "vuepress": "^1.5.2"
+    "vuepress": "^1.5.4"
+  },
+  "resolutions": {
+    "watchpack": "1.6.1"
   },
   "scripts": {
     "lerna:build": "lerna run build",

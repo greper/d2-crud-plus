@@ -1,6 +1,6 @@
 # 配置: pagination
 
-`pagination:false` 隐藏操作列
+`pagination:false` 隐藏翻页组件
 
 ## currentPage
 

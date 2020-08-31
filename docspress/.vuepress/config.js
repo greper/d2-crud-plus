@@ -173,7 +173,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
     {
       title: 'ChangeLog',
       collapsable: true,
-      sidebarDepth: 0,
+      sidebarDepth: 1,
       children: [
         ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
         ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],
@@ -191,7 +191,7 @@ function getD2CrudXSidebar () {
     // 'example',
     {
       title: '配置项',
-      children: [ 'crud', 'columns', 'options', 'loading-options', 'index-row', 'selection-row', 'row-handle', 'form-options', 'form-template', 'component' ,'pagination' ]
+      children: [ 'crud', 'columns', 'options', 'loading-options', 'index-row', 'selection-row','expand-row', 'row-handle', 'form-options', 'form-template', 'component' ,'pagination' ]
     },
     'events',
     'slots',

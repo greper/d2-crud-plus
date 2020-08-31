@@ -18,11 +18,6 @@ function install (Vue, options) {
 
   // 配置type
   if (d2CrudPlus != null) {
-    // 设置默认uploader
-    const defaultType = D2pUploader.getDefaultType()
-    for (const typesKey in types) {
-      types[typesKey].form.component.props.type = defaultType
-    }
     d2CrudPlus.util.columnResolve.addTypes(types)
   }
 }

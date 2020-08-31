@@ -53,7 +53,7 @@ export default {
     // 上传后端类型，[cos,qiniu,alioss,form]
     type: {
       type: String,
-      default: 'cos' // 上传类型：form cos qiniu  alioss
+      default: undefined // 上传类型：form cos qiniu  alioss
     },
     // 值：url<br/>
     // 或 [url1,url2]<br/>

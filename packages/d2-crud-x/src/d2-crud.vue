@@ -1,7 +1,7 @@
 <template>
   <div
     class="d2-crud d2-crud-x"
-    :class="{'d2-crud-height100':options.height==='100%'}"
+    :class="{'d2-crud-height100':(options && options.height==='100%')}"
     v-loading="loading"
     :element-loading-text="getAttribute(loadingOptions,'text', null)"
     :element-loading-spinner="getAttribute(loadingOptions,'spinner', null)"

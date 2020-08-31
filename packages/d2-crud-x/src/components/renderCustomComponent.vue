@@ -63,6 +63,12 @@ export default {
      */
     readonly: {
       default: undefined
+    },
+    /**
+     * @description 传入的行数据
+     */
+    scope: {
+      default: null
     }
   },
   computed: {
@@ -140,6 +146,7 @@ export default {
     computedProps () {
       const props = {
         value: this.value,
+        scope: this.scope,
         disabled: this.disabled,
         readonly: this.readonly,
         ...this.props

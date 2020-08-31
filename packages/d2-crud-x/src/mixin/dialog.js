@@ -8,7 +8,9 @@ export default {
      */
     formOptions: {
       type: Object,
-      default: null
+      default () {
+        return {}
+      }
     },
     /**
      * @description dialog查看标题

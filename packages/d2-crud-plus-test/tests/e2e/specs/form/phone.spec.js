@@ -8,8 +8,7 @@ describe('国际电话', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '国际电话',
+    url: '/demo/form/phone',
     doAdd () {
       const mobile = '18603046467'
       cy.formItem('手机号1').find('input[placeholder="手机号"]').clear().type(mobile).should('have.value', mobile)

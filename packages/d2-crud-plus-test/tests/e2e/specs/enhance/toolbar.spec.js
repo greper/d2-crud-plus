@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/toolbar',
     listWait: 600,
     editForce: true,
     viewForce: true,

@@ -8,8 +8,7 @@ describe('d2Crud原版', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: 'd2Crud原版',
+    url: '/demo/form/d2Crud',
     viewDisabled: true,
     doAdd () {
       cy.formItem('单选远程').find('.el-input').click()

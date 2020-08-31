@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/show',
     doAdd () {
       cy.get('.el-dialog__body .el-form-item > .el-form-item__label').contains('显隐目标').should('not.exist')
       cy.formItem('动态显隐').find('.el-radio').first().click()

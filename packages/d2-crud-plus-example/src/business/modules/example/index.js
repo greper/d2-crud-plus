@@ -1,9 +1,44 @@
 import layoutHeaderAside from '@/layout/header-aside'
 const _import = require('../../utils/util.import.' + process.env.NODE_ENV) // 页面懒加载的问题修复
 const viewsPrefix = 'example/views/'
-
+const crudMenus = []
 const formMenus = []
 const demoRouters = []
+
+const crudBaseMenus = addFunction(crudMenus, null, '基础功能').children
+const crudHandleMenus = addFunction(crudMenus, null, '数据操作').children
+addFunction(crudBaseMenus, 'crud/demo1', '基础表格')
+addFunction(crudBaseMenus, 'crud/demo27', '加载状态')
+addFunction(crudBaseMenus, 'crud/demo28', '自定义加载状态')
+addFunction(crudBaseMenus, 'crud/demo2', '带斑马纹表格')
+addFunction(crudBaseMenus, 'crud/demo3', '带边框表格')
+addFunction(crudBaseMenus, 'crud/demo4', '带状态表格')
+addFunction(crudBaseMenus, 'crud/demo5', '固定表头')
+addFunction(crudBaseMenus, 'crud/demo6', '固定列')
+addFunction(crudBaseMenus, 'crud/demo7', '流体高度')
+addFunction(crudBaseMenus, 'crud/demo8', '多级表头')
+addFunction(crudBaseMenus, 'crud/demo9', '单选')
+addFunction(crudBaseMenus, 'crud/demo10', '多选')
+addFunction(crudBaseMenus, 'crud/demo11', '排序')
+addFunction(crudBaseMenus, 'crud/demo12', '筛选')
+addFunction(crudBaseMenus, 'crud/demo13', '表尾合计行')
+addFunction(crudBaseMenus, 'crud/demo14', '合并行')
+addFunction(crudBaseMenus, 'crud/demo15', '合并列')
+addFunction(crudBaseMenus, 'crud/demo24', '表格slot')
+
+addFunction(crudHandleMenus, 'crud/demo29', '分页')
+addFunction(crudHandleMenus, 'crud/demo16', '新增数据')
+addFunction(crudHandleMenus, 'crud/demo17', '修改数据')
+addFunction(crudHandleMenus, 'crud/demo18', '删除数据')
+addFunction(crudHandleMenus, 'crud/demo19', '自定义操作列')
+addFunction(crudHandleMenus, 'crud/demo20', '表单组件渲染')
+addFunction(crudHandleMenus, 'crud/demo21', '表单布局')
+addFunction(crudHandleMenus, 'crud/demo22', '表单校验')
+addFunction(crudHandleMenus, 'crud/demo23', '表格内编辑')
+addFunction(crudHandleMenus, 'crud/demo25', '表格自定义组件')
+addFunction(crudHandleMenus, 'crud/demo30', '表单事件监听')
+addFunction(crudHandleMenus, 'crud/demo26', '表单自定义组件')
+addFunction(crudHandleMenus, 'crud/demo31', 'CRUD事件')
 
 addFunction(formMenus, 'form/date', '日期时间')
 addFunction(formMenus, 'form/select', '选择组件', '禁用选项，染色')
@@ -109,6 +144,11 @@ const aside = [
     icon: 'folder-o',
     path: '/demo',
     children: [
+      {
+        title: 'd2-crud-x',
+        icon: 'folder-o',
+        children: crudMenus
+      },
       {
         title: '表单组件示例',
         icon: 'folder-o',

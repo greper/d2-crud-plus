@@ -49,10 +49,13 @@ Github: <https://github.com/greper/d2-crud-plus>
 
 ## 请先了解
 本项目基于d2-admin 以及 d2-crud   
-本文档假设您已熟悉d2-admin以及d2-crud的基础知识
-### 1. d2-admin
+本文档假设您已熟悉vue、ElementUI 以及 d2-crud的基础知识
+### 1. ElementUI
+Github: <https://github.com/ElemeFE/element>  
+文档：<https://element.eleme.cn/#/zh-CN/component/installation> 
+### 2. d2-admin
 Github: <https://github.com/d2-projects/d2-admin>  
 文档：<https://d2.pub/zh/doc/d2-admin/> 
-### 2. d2-crud-x
+### 3. d2-crud-x
 文档：[d2-crud-x](../d2-crud-x/)
 

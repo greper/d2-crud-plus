@@ -52,7 +52,7 @@
 
     </el-form-item>
     <slot :form="this.form"></slot>
-    <el-form-item>
+    <el-form-item class="search-btns">
       <el-button
           type="primary"
           @click="handleFormSubmit">

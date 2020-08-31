@@ -31,6 +31,10 @@ export const crudOptions = {
       }
     },
     {
+      title: '撑开',
+      key: 'text2'
+    },
+    {
       title: '分组字段',
       key: 'text'
     }

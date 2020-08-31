@@ -13,6 +13,9 @@ export const crudOptions = (vm) => {
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
+    searchOptions: {
+      labelWidth: '100px' // 设置查询表单label的宽度
+    },
     columns: [
       {
         title: 'ID',

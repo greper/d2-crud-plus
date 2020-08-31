@@ -370,7 +370,8 @@ export default {
 ### 3.  api.js
 实现添删改查请求接口，通常复制，改一下url即可，你也可以自行增加方法，用于业务需求
 ```javascript
-import { request } from '@/api/service'
+//import request from '@/business/api/request.mock' 示例当中用的是模拟数据
+import { request } from '@/api/service' //改成这个请求真实后端
 export function GetList (query) {
   return request({
     url: '/test/page',

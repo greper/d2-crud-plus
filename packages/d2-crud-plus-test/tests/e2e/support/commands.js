@@ -85,15 +85,12 @@ Cypress.Commands.add('openAdd', context => {
 })
 Cypress.Commands.add('openEdit', context => {
   cy.checkId(context, '1', false)
-  // const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
-  const body = 'el-table'
-  return cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-edit:visible').first()
+  return cy.get(context.parentSelector + ' .d2-crud .el-table button i.el-icon-edit:visible').first()
     .click()
 })
 Cypress.Commands.add('openView', context => {
   cy.checkId(context, '1', false)
-  const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
-  return cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-view:visible').first()
+  return cy.get(context.parentSelector + ' .d2-crud .el-table button i.el-icon-view:visible').first()
     .click()
 })
 Cypress.Commands.add('closeDialog', context => {
@@ -104,8 +101,7 @@ Cypress.Commands.add('closeDialog', context => {
 
 Cypress.Commands.add('doDelete', context => {
   cy.checkId(context, '1', false)
-  const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
-  cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-delete:visible').first().click()
+  cy.get(context.parentSelector + ' .d2-crud .el-table button i.el-icon-delete:visible').first().click()
   cy.get('.el-message-box__btns')
     .contains('确定')
     .click()
@@ -135,9 +131,6 @@ Cypress.Commands.add('checkId', (context, value, equal = true) => {
   if (idColIndex == null) {
     idColIndex = 1
   }
-  if (context.listWait) {
-    // cy.wait(context.listWait)
-  }
   return cy.checkColValue({ col: idColIndex, tableIndex: context.tableIndex, row: context.row, value, equal, parentSelector: context.parentSelector })
 })
 /**
@@ -154,7 +147,6 @@ Cypress.Commands.add(
     contains,
     equal = true,
     startWith = false,
-    wait,
     parentSelector = ''
   }) => {
     return cy.get(

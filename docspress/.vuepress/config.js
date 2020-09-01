@@ -115,11 +115,10 @@ function getGuideSidebar (groupA, groupB,groupC) {
       sidebarDepth: 3,
       children: [
         'mixins',
-        'expose',
-        'options',
         'structure',
         'column-type',
         'types',
+        'custom-type',
         'component',
         'slot',
         'extends',
@@ -127,6 +126,23 @@ function getGuideSidebar (groupA, groupB,groupC) {
         // 'event',
         'nest-data',
         'flat-data'
+      ]
+    },
+    {
+      title: 'API',
+      collapsable: false,
+      sidebarDepth: 3,
+      children: [
+        'options',
+        'expose',
+        {
+          title: '扩展',
+          children: extendsDocs
+        },
+        {
+          title: '组件',
+          children: componentDocs
+        },
       ]
     },
     {
@@ -150,30 +166,10 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'contact'
       ]
     },
-    // {
-    //   title: 'd2-crud-x',
-    //   collapsable: false,
-    //   sidebarDepth: 3,
-    //   children: [
-    //     'd2crudx'
-    //   ]
-    // },
-    {
-      title: 'extends文档',
-      collapsable: false,
-      sidebarDepth: 0,
-      children: extendsDocs
-    },
-    {
-      title: '组件文档',
-      collapsable: true,
-      sidebarDepth: 0,
-      children: componentDocs
-    },
     {
       title: 'ChangeLog',
-      collapsable: true,
-      sidebarDepth: 1,
+      collapsable: false,
+      sidebarDepth: 0,
       children: [
         ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
         ['./changelogs/packages/d2-crud-plus/CHANGELOG','d2-crud-plus'],

@@ -18,9 +18,9 @@ export default {
 
 ## 简化字段配置
 
-`d2-crud-plus`的首要任务是简化`d2-crud`的配置
+`d2-crud-plus`的首要任务是简化[d2-crud-x的配置](http://greper.gitee.io/d2-crud-plus/d2-crud-x/)
 
-## 未简化的配置
+### 1.简化前的配置
 下面以仅有一个`status`字段的`crud`举例    
 如下是`d2-crud`需要的最终配置，将如下配置传入`d2-crud`即可完成一个`crud`的开发     
 这个代码量还是挺大的，很多重复的东西，我们来看看`d2-crud-plus`是如何简化的
@@ -85,9 +85,10 @@ this.crudOptions= {
 }
 ```
 
-### 1. 简化第一步，从功能角度转到字段角度
-上面配置是按功能划分的，字段配置在功能下
-我们转换成按字段划分，功能配置在字段下
+### 2. 简化第一步，从功能角度转到字段角度
+上面配置是按功能划分的，字段配置在功能下     
+我们转换成按字段划分，功能配置在字段下   
+此状态是crudOptions的字段的最全配置
 ```js
 columns:[ 
   {
@@ -102,7 +103,7 @@ columns:[
 ]
 ```
 
-### 2. 简化addForm、editForm、view
+### 3. 简化addForm、editForm、view
 addForm、editForm、view这三个大部分情况下都是一样的，可以合并成一个form
 ```js
 columns:[ 
@@ -116,7 +117,9 @@ columns:[
 ]
 ```
 
-### 3. 通过字段类型继续简化
+### 4. 通过字段类型继续简化
+字段类型背后代表了一段默认配置，当你配置了type时，你可以省略它代表的这部分默认配置    
+
 查看[字段类型](./column-type.md)更详细的说明
 ```js
 columns:[ 
@@ -129,7 +132,27 @@ columns:[
 ]
 ```
 
-### 4. 初始化过程
+::: tip
+你仍然可以单独设置被简化掉的配置    
+比如你想让status字段在添加时启用，编辑时禁用，可以使用如下配置
+:::
+```js
+columns:[ 
+  {
+    title:'状态',
+    key:'status',
+    type: 'select',
+    dict:{url:'/dict/status'},
+    editForm:{ //配置编辑时禁用此组件
+        component:{
+            disabled: true
+        }
+    }
+  } 
+]
+```
+
+### 5. 初始化过程
 
 下面是以上简化过程的伪代码
 
@@ -155,7 +178,7 @@ columns:[
 Vue.use(d2CrudPlus, {
   commonOption(){ //全局配置
     return {
-      ... //每个页面会以此全局配置为基础
+      ... //每个页面的crudOptions会以此全局配置为基础
     }
   }
 })
@@ -164,22 +187,15 @@ Vue.use(d2CrudPlus, {
 ## 简化事件
 [d2-crud有哪些事件](../d2-crud-x/events.md)
 
-页面会通过mixins继承`_crudListeners`这个方法。
-这个方法将会把d2-crud事件一次性监听。   
-并[暴露出相应的方法]((./expose.md))，你只需要覆盖方法即可处理事件。
-```
+页面会通过mixins继承`_crudListeners`这个方法。     
+这个方法将会把`d2-crud`事件全部配置监听。   
+```js
 <d2-crud-x
   v-on="_crudListeners" 
->
-</d2-crud-x>
+  @xxx="handleXxx"  //可以自己配置事件，覆盖_crudListeners里的监听
+/>
 ```
+
+
 ### valueChange
 `form-data-change`、`cell-data-change`、`search-data-change`事件还会自动触发每个字段中配置的`valueChange`方法
-
-
-## 暴露的方法
-[暴露的方法](./expose.md)
-
-::: warning
-注意不要覆盖[d2CrudPlus.crud](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/mixins/crud.js)中未暴露的方法
-:::

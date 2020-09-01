@@ -15,17 +15,20 @@ process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
 // 基础路径 注意发布之前要先修改这里
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/'
 const proxyApi = process.env.VUE_APP_PROXY_API || 'http://127.0.0.1:7070'
+const noCdn = process.env.VUE_APP_NO_CDN || 'false'
 
 // 设置不参与构建的库
 const externals = {}
 cdnDependencies.forEach(pkg => { externals[pkg.name] = pkg.library })
 
 // 引入文件的 cdn 链接
-const cdn = {
+let cdn = {
   css: cdnDependencies.map(e => e.css).filter(e => e),
   js: cdnDependencies.map(e => e.js).filter(e => e)
 }
-
+if (noCdn === true) {
+  cdn = { css: {}, js: {} }
+}
 // 多页配置，默认未开启，如需要请参考 https://cli.vuejs.org/zh/config/#pages
 const pages = undefined
 // const pages = {

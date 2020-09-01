@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus-test@1.16.2...d2-crud-plus-test@1.16.3) (2020-09-01)
+
+
+### Performance Improvements
+
+* e2e测试优化 ([a3f4962](https://github.com/greper/d2-crud-plus/commit/a3f49624c2921b058b37ad9f9c49a894f1b44c2b))
+* e2e测试优化，去掉wait ([728825a](https://github.com/greper/d2-crud-plus/commit/728825a9759543e079e47ad3760ca9f96295766c))
+* 文档优化 ([5629114](https://github.com/greper/d2-crud-plus/commit/562911449d0399d989c7dddfd76f90ad4bc45322))
+
+
+
+
+
 ## [1.16.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus-test@1.16.1...d2-crud-plus-test@1.16.2) (2020-08-25)
 
 **Note:** Version bump only for package d2-crud-plus-test

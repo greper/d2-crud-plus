@@ -12,7 +12,6 @@ describe(menu, () => {
     url: '/demo/form/nestTable',
     idColIndex: 7,
     tableIndex: 2,
-    listWait: 1000,
     parentSelector: '.rightTable',
     doAdd () {
     },

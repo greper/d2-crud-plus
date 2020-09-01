@@ -42,7 +42,6 @@ describe('图片裁剪上传', () => {
       cy.get('@裁剪框').find('.cropper-uploader-wrap:visible .cropper-canvas').should('be.exist')
       cy.get('.cropper-uploader .el-dialog__footer button:visible').last().click()
 
-      cy.wait(500)
       cy.formItem('支持多个').find('.d2p-cropper-uploader .image-list .image-item .el-icon-upload-success:visible').should('have.length', 2)
       cy.formItem('支持多个').find('.d2p-cropper-uploader .image-list .image-item').as('图片列表')
       cy.get('@图片列表').first().find('.el-image img').then($el => {

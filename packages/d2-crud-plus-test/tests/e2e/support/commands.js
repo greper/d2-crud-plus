@@ -13,7 +13,7 @@
 // Cypress.Commands.add("login", (email, password) => { ... })
 const version = require('../../../../d2-crud-plus-example/package.json').version
 
-Cypress.Commands.add('login1', () => {
+Cypress.Commands.add('login', () => {
   cy.log('pm enabled：' + Cypress.env('VUE_APP_PM_ENABLED'))
   if (Cypress.env('VUE_APP_PM_ENABLED') === 'true') {
     cy.log('http接口登录')
@@ -28,7 +28,7 @@ Cypress.Commands.add('login1', () => {
     cy.setCookie('d2admin-' + version + '-token', '8ab2b2cc-c3e7-4df8-a919-a32b65f10091')
   }
 })
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('login1', () => {
   cy.login2('admin', 'admin')
   cy.visit('/#/index')
   cy.contains('首页')
@@ -63,7 +63,7 @@ Cypress.Commands.add('simpleCrud', context => {
  */
 Cypress.Commands.add('openCrud', url => {
   cy.visit('/#' + url)
-  cy.wait(1000)
+  cy.get('.el-tabs__nav .el-tabs__item').should('have.length', 2)
 })
 /**
  * 点击某个菜单
@@ -75,7 +75,6 @@ Cypress.Commands.add('openMenu', context => {
   cy.get('.d2-layout-header-aside-menu-side li.el-menu-item')
     .contains(context.subMenu).first()
     .click({ force: true })
-  cy.wait(1000)
   return cy.checkId(context, '1')
 })
 
@@ -86,29 +85,16 @@ Cypress.Commands.add('openAdd', context => {
 })
 Cypress.Commands.add('openEdit', context => {
   cy.checkId(context, '1', false)
-  if (context.editWait) {
-    cy.wait(context.editWait)
-  }
-  const editForce = context.editForce != null ? context.editForce : false
-  return cy.get(
-    context.parentSelector +
-    ' .d2-crud .el-table__body-wrapper button i.el-icon-edit'
-  )
-    .first()
-    .click({ force: editForce })
+  // const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
+  const body = 'el-table'
+  return cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-edit:visible').first()
+    .click()
 })
 Cypress.Commands.add('openView', context => {
   cy.checkId(context, '1', false)
-  if (context.viewWait) {
-    cy.wait(context.viewWait)
-  }
-  const viewForce = context.viewForce != null ? context.viewForce : false
-  return cy.get(
-    context.parentSelector +
-    ' .d2-crud .el-table__body-wrapper button i.el-icon-view'
-  )
-    .first()
-    .click({ force: viewForce })
+  const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
+  return cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-view:visible').first()
+    .click()
 })
 Cypress.Commands.add('closeDialog', context => {
   return cy.get('.el-dialog__footer')
@@ -118,16 +104,8 @@ Cypress.Commands.add('closeDialog', context => {
 
 Cypress.Commands.add('doDelete', context => {
   cy.checkId(context, '1', false)
-  if (context.deleteWait) {
-    cy.wait(context.deleteWait)
-  }
-  const deleteForce = context.deleteForce != null ? context.deleteForce : false
-  cy.get(
-    context.parentSelector +
-    ' .d2-crud .el-table__body-wrapper button i.el-icon-delete'
-  )
-    .first()
-    .click({ force: deleteForce })
+  const body = context.isFixed === true ? 'el-table__fixed-body-wrapper' : 'el-table__body-wrapper'
+  cy.get(context.parentSelector + ' .d2-crud .' + body + ' button i.el-icon-delete:visible').first().click()
   cy.get('.el-message-box__btns')
     .contains('确定')
     .click()
@@ -158,7 +136,7 @@ Cypress.Commands.add('checkId', (context, value, equal = true) => {
     idColIndex = 1
   }
   if (context.listWait) {
-    cy.wait(context.listWait)
+    // cy.wait(context.listWait)
   }
   return cy.checkColValue({ col: idColIndex, tableIndex: context.tableIndex, row: context.row, value, equal, parentSelector: context.parentSelector })
 })
@@ -236,12 +214,13 @@ Cypress.Commands.add('hideFixedBody', (context, hide = true) => {
 Cypress.Commands.add('checkError', context => {
   return cy.get('.d2-header-right').then($el => {
     $el = $el.find('.el-badge')
-    if ($el == null) {
+    if ($el == null || $el.length === 0) {
       cy.log('正确，没有异常')
     } else {
       // 点开日志页面
-      $el.click()
-      cy.wait(1000)
+      cy.visit('/#/log')
+      cy.get('.d2-container-full__footer .fa-cloud-upload')
+      cy.get('.el-table__empty-block .el-table__empty-text').should('not.exist')
       // eslint-disable-next-line no-unused-expressions
       expect($el).not.exist
     }
@@ -249,17 +228,12 @@ Cypress.Commands.add('checkError', context => {
 })
 
 Cypress.Commands.add('getSelectOptions', () => {
-  cy.wait(200)
   return cy.get('.el-select-dropdown.el-popper ul li:visible')
 })
 Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
-  cy.wait(200)
-  return cy
-    .get(
-      '.el-popper.el-cascader__dropdown:visible .el-cascader-panel:visible .el-cascader-menu:visible:eq(' +
-        (blockIndex - 1) +
-        ') .el-cascader-menu__wrap ul li:visible'
-    )
+  cy.get('.el-popper.el-cascader__dropdown .el-cascader-panel .el-cascader-menu:visible')
+    .eq(blockIndex - 1)
+    .find('.el-cascader-menu__wrap ul li:visible')
 })
 
 Cypress.Commands.add('searchClick', (context) => {

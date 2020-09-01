@@ -10,10 +10,6 @@ describe(menu, () => {
   createCrudTest({
     cy,
     url: '/demo/form/toolbar',
-    listWait: 600,
-    editForce: true,
-    viewForce: true,
-    deleteForce: true,
     doAdd () {
       cy.formItem('radio').find('label.el-radio').first().click()
     },

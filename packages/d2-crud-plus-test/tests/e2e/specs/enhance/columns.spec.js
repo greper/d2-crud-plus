@@ -9,15 +9,8 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    url: '/demo/form/columns',
+    url: '/demo/form/column',
     idColIndex: 5,
-    listWait: 6000,
-    editForce: true,
-    // editWait: 5000,
-    viewForce: true,
-    // viewWait: 5000,
-    deleteForce: true,
-    viewDisabled: true,
     doAdd () {
     },
     doEdit () {

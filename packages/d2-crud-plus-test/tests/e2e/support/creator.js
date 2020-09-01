@@ -44,7 +44,6 @@ export function createCrudTest (context) {
         context.doEdit(context)
       }
       cy.closeDialog(context)
-      cy.wait(1000)
       if (context.checkEdit) {
         context.checkEdit(context)
       }

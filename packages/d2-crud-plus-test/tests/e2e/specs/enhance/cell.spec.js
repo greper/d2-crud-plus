@@ -11,7 +11,6 @@ describe(menu, () => {
     cy,
     url: '/demo/form/cell',
     idColIndex: 2,
-    listWait: 1000,
     doAdd () {
     },
     doEdit () {

@@ -31,7 +31,7 @@ describe(menu, () => {
     doView () {
       cy.get('.el-collapse .el-collapse-item').should('have.length', 4)
       cy.get('.el-collapse .el-collapse-item').contains('自定义').should('exist')
-      cy.wait(500) // TODO ueditor 关闭过快会报一个offsetWidth的错，暂时通过延时测试忽略该问题
+      cy.wait(1500) // TODO ueditor 关闭过快会报一个offsetWidth的错，暂时通过延时测试忽略该问题
     }
   })
 })

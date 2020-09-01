@@ -11,7 +11,6 @@ describe(menu, () => {
     cy,
     url: '/demo/form/nestTable',
     idColIndex: 1,
-    listWait: 1000,
     parentSelector: '.leftTable',
     doAdd () {
       cy.formItem('用户').as('subTable').find('.el-table__body-wrapper tbody tr:eq(1)').as('firstRow').click()
@@ -22,7 +21,6 @@ describe(menu, () => {
       cy.checkColValue({ tableIndex: 3, col: 12, value: '1', parentSelector: '.el-dialog__body' })
 
       cy.get('@subTable').contains('button', '新增').click()
-      cy.wait(200)
 
       cy.get('.el-dialog__wrapper .el-form-item > .el-form-item__label:visible').first().parent().find('input').type('小白')
       cy.contains('.el-dialog__wrapper .el-dialog__footer:visible', '确定').find('button').first().click()

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.0...@d2-plus/d2-crud-plus-example@1.17.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* 消除edge下权限清空的报错 ([65127d6](https://github.com/d2-projects/d2-admin/commit/65127d6864aa7dae4b0ddfd7975eb7815d3a4fa2))
+
+
+### Performance Improvements
+
+* e2e测试优化 ([a3f4962](https://github.com/d2-projects/d2-admin/commit/a3f49624c2921b058b37ad9f9c49a894f1b44c2b))
+* 关闭cdn，打开速度好像快了很多 ([4fabcea](https://github.com/d2-projects/d2-admin/commit/4fabcea985eb6e9c21adebad8751ef8c96bbe149))
+* 增加d2-crud示例 ([509cac1](https://github.com/d2-projects/d2-admin/commit/509cac1ee86405f1626f754e1014b5aa456f5046))
+* 文档优化 ([5629114](https://github.com/d2-projects/d2-admin/commit/562911449d0399d989c7dddfd76f90ad4bc45322))
+
+
+
+
+
 # [1.17.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.16.1...@d2-plus/d2-crud-plus-example@1.17.0) (2020-08-25)
 
 

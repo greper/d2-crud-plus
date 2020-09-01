@@ -443,19 +443,19 @@ export default {
         this.pageSizeTableStore = new TableStore({
           $router: this.$route,
           tableName: 'pageSize',
-          keyType: this.crud.pagination.storage
+          keyType: (this.crud.pagination == null ? undefined : this.crud.pagination.storage)
         })
       }
       return this.pageSizeTableStore
     },
     savePageSizeToStorage (size) {
-      if (this.crud.pagination && this.crud.pagination.storage === false) {
+      if (this.crud.pagination || this.crud.pagination.storage === false) {
         return
       }
       this.getPageSizeTableStore().updateTableValue(size)
     },
     getPageSizeFromStorage () {
-      if (this.crud.pagination && this.crud.pagination.storage === false) {
+      if (this.crud.pagination || this.crud.pagination.storage === false) {
         return
       }
       const size = this.getPageSizeTableStore().getTableValue()

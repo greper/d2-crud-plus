@@ -223,6 +223,7 @@ Cypress.Commands.add('getSelectOptions', () => {
   return cy.get('.el-select-dropdown.el-popper ul li:visible')
 })
 Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {
+  cy.wait(100) // 上一个还没消失，当前的还没打开的情况下会出问题
   cy.get('.el-popper.el-cascader__dropdown .el-cascader-panel .el-cascader-menu:visible')
     .eq(blockIndex - 1)
     .find('.el-cascader-menu__wrap ul li:visible')

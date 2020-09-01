@@ -14,7 +14,7 @@ describe(menu, () => {
     parentSelector: '.leftTable',
     doAdd () {
       cy.formItem('用户').as('subTable').find('.el-table__body-wrapper tbody tr:eq(1)').as('firstRow').click()
-      cy.get('@firstRow').should('have.class', 'current-row')
+      cy.get('@firstRow').should('have.class', 'current-row') // 单行选中测试
       cy.contains('.el-dialog__wrapper .el-pagination ul.el-pager li', '2').click()
       cy.checkColValue({ tableIndex: 3, col: 12, value: '21', parentSelector: '.el-dialog__body' })
       cy.contains('.el-dialog__wrapper .el-pagination ul.el-pager li', '1').click()

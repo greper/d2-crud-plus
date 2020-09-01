@@ -1,8 +1,52 @@
 
 # 字段类型
 
-配置字段类型可生成column默认配置，减少大部分的column繁琐配置   
-用户配置会覆盖默认配置，当需要定制某些部分的时候，只需要单独配置那一项即可   
+字段类型背后代表了一段默认配置，当你配置了type时，你可以省略它代表的这部分默认配置    
+
+当没有字段类型时，你需要写如下这一大段字段配置
+```js
+columns:[
+    {
+      title:'状态',
+      key:'status',
+      dict:{url:'/dict/status'},
+      search:{
+        compnent:{  //查询 使用选择框组件，并且是可以清除的
+          name:'dict-select',
+          props:{
+            clearable:true
+          }
+        }
+      },
+      form:{  //添加和编辑表单 使用选择框组件
+        compnent:{
+          name:'dict-select'
+        }
+      },
+      component:{ //单元格 使用value格式化组件，展示为tag
+        name:'values-format'
+      }
+    }
+]
+    
+
+```
+
+有了字段类型，你可以使用字段类型简写上面的配置
+```js
+columns:[
+    {
+      title:'状态',
+      key:'status',
+      dict:{url:'/dict/status'},
+      type:'select'
+    }
+]
+
+```
+::: tip
+你可以通过[字段类型列表](./types.md)查看字段类型包含了哪些具体配置
+:::
 
 ## 配置生成过程
 
@@ -41,6 +85,7 @@ export const crudOptions = {
 运行时，将会根据type生成该类型定义的默认配置，用户自定义配置会覆盖默认配置   
 其中dict配置会自动复制到form.component以及component下
 
+
 ```javascript
 export const crudOptions = {
   columns: [ 
@@ -65,6 +110,8 @@ export const crudOptions = {
   ]
 }
 ```
+
+
 #### 4.转化成d2-crud的最终配置  
 d2-crud有哪些配置项，请参考d2-crud文档：<https://d2.pub/zh/doc/d2-crud-v2/>
 ```javascript

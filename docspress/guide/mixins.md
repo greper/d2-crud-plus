@@ -15,7 +15,123 @@ export default {
 </script>
 ```
 
-## 初始化过程
+
+## 简化字段配置
+
+`d2-crud-plus`的首要任务是简化`d2-crud`的配置
+
+## 未简化的配置
+下面以仅有一个`status`字段的`crud`举例    
+如下是`d2-crud`需要的最终配置，将如下配置传入`d2-crud`即可完成一个`crud`的开发     
+这个代码量还是挺大的，很多重复的东西，我们来看看`d2-crud-plus`是如何简化的
+```js
+this.crudOptions= {
+  columns: [ //单元格的配置
+    {//配置单元格用values-format显示
+      title:'状态',
+      key:'status',
+      component:{ 
+        name: 'values-format',
+        props:{dict:{url:'/dict/status'}}
+      } 
+    } 
+  ], 
+  addRules:{
+    status:[{request:true}]
+  },
+  addTemplate:{ //添加表单
+    status:{ 
+      title:'状态', //【与单元格的title重复，可简化】
+      compnent:{
+        name:'dict-select', //添加时使用选择框
+        props:{dict:{url:'/dict/status'}}
+      }
+    }
+  },
+  editRules:{
+    status:[{request:true}] //与addRules一样【重复，可简化】
+  },
+  editTemplate:{ //修改表单配置，【跟addTemplate差不多,可简化】
+    status:{ 
+      title:'状态',
+      compnent:{ 
+        name:'dict-select', //修改时使用选择框
+        props:{dict:{url:'/dict/status'}} // dict跟单元格里配置一样【可简化】
+      }
+    }
+  },
+  viewTemplate:{//查看表单配置【跟addTemplate差不多，可简化】
+    status:{ 
+      title:'状态',
+      compnent:{ 
+        name:'dict-select', //查看使用选择框
+        props:{dict:{url:'/dict/status'}},
+        disabled: true //查看时禁用
+      }
+    }
+  },
+  searchOptions:{ // d2-crud不包含查询工具条，查询配置是d2-crud-plus的crud-search组件上需要的
+    columns:[
+      { 
+        title:'状态',
+        key:'status',
+        compnent:{ //查询工具条里面还是使用选择框【跟addTemplate一样,多了个可清除参数，可简化】
+          name:'dict-select',
+          props:{dict:{url:'/dict/status'},clearable:true},
+        }
+      }
+    ]
+  }
+}
+```
+
+### 1. 简化第一步，从功能角度转到字段角度
+上面配置是按功能划分的，字段配置在功能下
+我们转换成按字段划分，功能配置在字段下
+```js
+columns:[ 
+  {
+    title:'状态',
+    key:'status',
+    search:{component:{...}},//这里放查询配置
+    addForm:{component:{...}},//这里放添加表单配置
+    editForm:{component:{...}},//这里放编辑表单配置
+    view:{component:{...}}, //这里放查询表单配置
+    component:{} //这里放单元格组件配置
+  } 
+]
+```
+
+### 2. 简化addForm、editForm、view
+addForm、editForm、view这三个大部分情况下都是一样的，可以合并成一个form
+```js
+columns:[ 
+  {
+    title:'状态',
+    key:'status',
+    search:{},//这里放查询配置
+    form:{}, //addForm、editForm、view合并成form
+    component:{} //这里放单元格配置
+  } 
+]
+```
+
+### 3. 通过字段类型继续简化
+查看[字段类型](./column-type.md)更详细的说明
+```js
+columns:[ 
+  {
+    title:'状态',
+    key:'status',
+    type: 'select',
+    dict:{url:'/dict/status'}
+  } 
+]
+```
+
+### 4. 初始化过程
+
+下面是以上简化过程的伪代码
 
 1.  `created()`中开始crud初始化
 2.  页面配置`crudOptions`覆盖全局配置`commonOption`
@@ -30,6 +146,36 @@ export default {
 11.  生成最终的`crud配置`，输出日志 crud init `{crud}`（你可以在此检查生成的配置是否正确）
 12.  将`crud配置`传入`d2-crud-x`组件
 13.  触发`doSearch`方法执行`pageRequest`获取数据
+
+
+## 简化其他配置
+
+通过全局配置,可以简化其他配置
+```js
+Vue.use(d2CrudPlus, {
+  commonOption(){ //全局配置
+    return {
+      ... //每个页面会以此全局配置为基础
+    }
+  }
+})
+```
+
+## 简化事件
+[d2-crud有哪些事件](../d2-crud-x/events.md)
+
+页面会通过mixins继承`_crudListeners`这个方法。
+这个方法将会把d2-crud事件一次性监听。   
+并[暴露出相应的方法]((./expose.md))，你只需要覆盖方法即可处理事件。
+```
+<d2-crud-x
+  v-on="_crudListeners" 
+>
+</d2-crud-x>
+```
+### valueChange
+`form-data-change`、`cell-data-change`、`search-data-change`事件还会自动触发每个字段中配置的`valueChange`方法
+
 
 ## 暴露的方法
 [暴露的方法](./expose.md)

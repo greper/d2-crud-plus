@@ -127,7 +127,7 @@ Vue.use(d2CrudPlus, {
         defaultSpan: 12 // 默认的表单 span
       },
       options: {
-        height: '100%' // 表格高度100%, 使用toolbar必须设置
+        height: '100%' // 表格高度100%，此时d2-crud-x外部容器必须有高度, 使用toolbar必须设置
       },
       pageOptions: {
         compact: true // 是否紧凑型页面

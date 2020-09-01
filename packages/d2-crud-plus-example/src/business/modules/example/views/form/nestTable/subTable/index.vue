@@ -36,35 +36,47 @@ export default {
   },
   data () {
     return {
+      selectedId: undefined,
       selectedName: undefined
     }
   },
   watch: {
     value (value) {
+      this.$emit('change', value)// 可以触发上级表单的valueChange方法
+      if (this.selectedId === this.value) {
+        return
+      }
       this.setValue(value)
     }
   },
-  mounted () {
-    this.setValue(this.value)
+  created () {
+    this.selectedId = this.value
   },
   methods: {
     doAfterRefresh (query, options) {
-      if (!this.selectedName && this.value) {
-        const row = this.getDataById(this.value)
+      // 查询结束后，查找选中id的name
+      this.resetSelectName()
+    },
+    setValue (value) {
+      this.selectedId = value
+      const row = this.getDataById(value)
+      if (row) {
+        this.getD2CrudTable().setCurrentRow(row)
+      }
+    },
+    getDataById (id) {
+      const d2CrudTableData = this.getD2CrudTableData()
+      return d2CrudTableData == null || d2CrudTableData.find(item => {
+        return item.id === id
+      })
+    },
+    resetSelectName () {
+      if (!this.selectedName && this.selectedId) {
+        const row = this.getDataById(this.selectedId)
         if (row) {
           this.selectedName = row.name
         }
       }
-    },
-    setValue (value) {
-      const row = this.getDataById(value)
-      this.getD2CrudTable().setCurrentRow(row)
-      this.emit(row)
-    },
-    getDataById (id) {
-      return this.getD2CrudTableData().find(item => {
-        return item.id === id
-      })
     },
     doCurrentChange (event) {
       console.log('单行选中：', event)
@@ -75,6 +87,7 @@ export default {
         return
       }
       this.selectedName = row.name
+      this.selectedId = row.id
       this.$emit('selected', row)
       this.$emit('input', row.id)
     },

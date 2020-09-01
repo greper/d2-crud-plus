@@ -12,5 +12,5 @@
   },
   "browser": "chrome",
   "projectId": "2bz2i1",
-  "defaultCommandTimeout": 6000
+  "defaultCommandTimeout": 8000
 }

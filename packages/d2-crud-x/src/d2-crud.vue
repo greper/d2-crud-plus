@@ -33,7 +33,7 @@
         @current-change="handleCurrentChange"
         v-on="_tableListeners"
       >
-        <template v-if="isVxeTable()">
+        <template v-if="thisIsVxeTable">
           <component
             :is="getTableColumnImpl()"
             v-if="(selectionRow || selectionRow === '') "
@@ -42,14 +42,14 @@
             v-bind="forBindProps(selectionRow)"
           />
           <component
-            v-if="(expandRow || expandRow === '') && isVxeTable()"
+            v-if="(expandRow || expandRow === '') && thisIsVxeTable"
             :is="getTableColumnImpl()"
             type="expand"
             :title="handleAttribute(expandRow.title, '')"
             v-bind="forBindProps(expandRow)"
           >
             <template slot="content" slot-scope="scope">
-              <slot name="expandSlot" :row="scope.row"/>
+              <slot name="expandSlot" :rowIndex="scope.$rowIndex" :row="scope.row"/>
             </template>
           </component>
           <component
@@ -77,9 +77,10 @@
             v-bind="forBindProps(expandRow)"
           >
             <template  slot-scope="scope">
-              <slot name="expandSlot" :row="scope.row"/>
+              <slot name="expandSlot" :index="scope.$index" :row="scope.row"/>
             </template>
           </component>
+
           <component
             :is="getTableColumnImpl()"
             v-if="indexRow || indexRow === ''"
@@ -100,7 +101,7 @@
         >
             <template slot-scope="scope" :slot="item.key+'Slot'">
               <template v-if="item.rowSlot">
-                <slot :name="item.key+'Slot'" :row="scope.row"/>
+                <slot :name="item.key+'Slot'" :row="scope.row" :index="scope.$index" :rowIndex="scope.$rowIndex"/>
               </template>
             </template>
         </d2-column>
@@ -115,16 +116,16 @@
               v-for="(item, index) in _handleBtns"
             >
               <d2-button :key="index"
-                         v-if="handleRowHandleButtonShow(item.show, scope.$index, scope.row)"
-                         :disabled="handleRowHandleButtonDisabled(item.disabled, scope.$index, scope.row)"
+                         v-if="handleRowHandleButtonShow(item.show, scope)"
+                         :disabled="handleRowHandleButtonDisabled(item.disabled, scope)"
                          v-bind="item"
-                         @click="item.doClick(scope.$index,  scope.row)"
-                         :label="handleAttribute(item.text,null,{index:scope.$index,row:scope.row})"
+                         @click="item.doClick(scope)"
+                         :label="handleAttribute(item.text,null,scope)"
               />
             </template>
             <!-- 即将废弃 -->
-            <slot name="rowHandle" :index="scope.$index" :row="scope.row"></slot>
-            <slot name="rowHandleSlot" :index="scope.$index" :row="scope.row"></slot>
+            <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
+            <slot name="rowHandleSlot" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
           </template>
 
         </component>

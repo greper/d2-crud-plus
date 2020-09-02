@@ -129,11 +129,14 @@ export default {
       return defaultValue
     },
     getTableImpl (tableType) {
-      if (!tableType && this.options) {
-        tableType = this.options.tableType
-      }
       if (tableType) {
         return tableType
+      }
+      if (this.options && this.options.tableType) {
+        return this.options.tableType
+      }
+      if (this.tableType) {
+        return this.tableType
       }
       return 'el-table'
     },
@@ -157,6 +160,20 @@ export default {
         return true
       }
       return false
+    },
+    getCellScope (scope) {
+      if (this.thisIsVxeTable) {
+        // vxe-table的index不一样
+        scope.index = scope.$rowIndex
+      } else {
+        scope.index = scope.$index
+      }
+      return scope
+    }
+  },
+  computed: {
+    thisIsVxeTable () {
+      return this.isVxeTable()
     }
   }
 }

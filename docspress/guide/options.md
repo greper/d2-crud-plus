@@ -183,10 +183,11 @@ export const crudOptions = {
     draggable:true, //是否支持表单对话框拖拽
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
-  searchOptions: { //查询配置参数
+  searchOptions: { //查询配置参数, 支持el-form的配置参数
     form:{ //默认搜索参数
       name:'小明' // 请求列表默认会带上此处配置参数,重置后会恢复成此处配置的值
     },
+    size:'small',
     show: true,//是否显示搜索工具条
     disabled: false, //是否禁用搜索工具条
     debounce:{ //自动查询防抖,debounce:false关闭自动查询

@@ -5,8 +5,7 @@
       :inline="true"
       :model="form"
       ref="searchForm"
-      v-bind="options"
-      size="small" class="d2p-search-form" >
+      v-bind="options" class="d2p-search-form" >
     <slot name="prefix" :form="this.form"></slot>
     <el-form-item v-for="(item) in currentColumns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
       <template v-if="item.slot === true">

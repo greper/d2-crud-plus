@@ -93,8 +93,9 @@ export default {
       console.log('单选', event.row)
       this.$message('单选' + event.row.data)
     },
-    customHandleBtnHandle ({ index, row }) {
-      this.$message('自定义操作按钮：' + row.data)
+    customHandleBtnHandle (scope) {
+      console.log('custom btn:', scope)
+      this.$message('自定义操作按钮：' + scope.row.data + ',index:' + scope.index)
     },
     checkSecond () {
       this.getD2CrudTable().toggleCheckboxRow(this.getD2CrudTableData()[0]) // 与下面等效

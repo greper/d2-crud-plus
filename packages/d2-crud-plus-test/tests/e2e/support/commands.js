@@ -220,6 +220,7 @@ Cypress.Commands.add('checkError', context => {
 })
 
 Cypress.Commands.add('getSelectOptions', () => {
+  cy.wait(100) // 上一个还没消失，当前的还没打开的情况下会出问题
   return cy.get('.el-select-dropdown.el-popper ul li:visible')
 })
 Cypress.Commands.add('getCascadeOptions', (blockIndex = 1) => {

@@ -33,7 +33,6 @@ const install = (Vue, options) => {
       console.log('您可以通过 vue.use(d2CrudPlus,{starTip:false}) 来关闭以上消息')
     }
 
-    console.log('d2-crud-plus install options:', options)
     if (options.getRemoteDictFunc != null) {
       util.dict.getRemoteDictFunc = options.getRemoteDictFunc
     }
@@ -44,6 +43,8 @@ const install = (Vue, options) => {
         console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
       }
     }
+
+    console.log('d2-crud-plus installed:', options)
   }
 }
 // if (typeof window !== 'undefined' && window.Vue) {

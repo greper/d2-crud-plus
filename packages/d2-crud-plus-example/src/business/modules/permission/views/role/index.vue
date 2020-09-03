@@ -5,6 +5,11 @@
             <div>
               <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
             </div>
+            <div>
+              如果不需要平台管理，请按如下操作：<br/>
+              1、删除组件引用：&lt;platform-selector&gt;&lt;/platform-selector&gt; <br/>
+              2、删除 methods.doLoad() 方法
+            </div>
           </example-helper>
         </template>
         <d2-crud-x

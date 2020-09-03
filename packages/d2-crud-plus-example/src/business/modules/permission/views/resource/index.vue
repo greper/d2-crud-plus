@@ -5,6 +5,11 @@
         <div>
           <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
         </div>
+        <div>
+          如果不需要平台管理，请按如下操作：<br/>
+          1、删除组件引用：&lt;platform-selector&gt;&lt;/platform-selector&gt; <br/>
+          2、删除 methods.doLoad() 方法
+        </div>
       </example-helper>
     </template>
     <d2-crud-x
@@ -18,6 +23,7 @@
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
 
         <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
+
         <el-button slot="header"  v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow"><i class="el-icon-plus"/> 新增</el-button>
 
         <crud-toolbar :search.sync="crud.searchOptions.show"
@@ -48,7 +54,7 @@ export default {
   },
   methods: {
     doLoad () {
-      // 打开页面不加载，等平台列表加载完了再刷新列表
+      // 覆盖d2CrudPlus的首次加载方法， 打开页面不加载，等平台列表加载完了再刷新列表
     },
     // 由平台选择组件触发列表查询
     platformInit (platformId) {

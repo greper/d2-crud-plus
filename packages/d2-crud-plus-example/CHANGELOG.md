@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.1...@d2-plus/d2-crud-plus-example@1.17.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* 修复请求地址出错的问题 ([bc9a6c0](https://github.com/d2-projects/d2-admin/commit/bc9a6c0bfad92675e03a3c036d8e387bb6ee30bf))
+
+
+
+
+
 ## [1.17.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.0...@d2-plus/d2-crud-plus-example@1.17.1) (2020-09-01)
 
 

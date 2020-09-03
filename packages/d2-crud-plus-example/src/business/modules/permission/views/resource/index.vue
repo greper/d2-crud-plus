@@ -55,6 +55,7 @@ export default {
   methods: {
     doLoad () {
       // 覆盖d2CrudPlus的首次加载方法， 打开页面不加载，等平台列表加载完了再刷新列表
+      // 如果你想要删除平台管理，这个方法需要删除
     },
     // 由平台选择组件触发列表查询
     platformInit (platformId) {

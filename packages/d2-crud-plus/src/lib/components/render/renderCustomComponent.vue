@@ -63,26 +63,24 @@ export default {
      */
     readonly: {
       default: undefined
+    },
+    /**
+     * @description 传入的行数据
+     */
+    scope: {
+      default: null
     }
   },
   computed: {
     _on () {
       const self = this
       const events = {}
-      if (self.events) {
-        for (const key in self.events) {
+      if (self.events || self.on) {
+        const propsEvents = { ...self.events, ...self.on }
+        for (const key in propsEvents) {
           events[key] = (event) => {
-            if (self.events[key]) {
-              self.events[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
-            }
-          }
-        }
-      }
-      if (self.on) {
-        for (const key in self.on) {
-          events[key] = (event) => {
-            if (self.on[key]) {
-              self.on[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
+            if (propsEvents[key]) {
+              propsEvents[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props })
             }
           }
         }
@@ -104,24 +102,29 @@ export default {
   render (h) {
     const self = this
     const scopedSlots = {}
-    if (self.scopedSlots) {
-      for (const key in self.scopedSlots) {
+
+    if (self.scopedSlots || self.slots) {
+      const slots = { ...self.scopedSlots, ...self.slots }
+      for (const key in slots) {
         scopedSlots[key] = (scope) => {
-          return self.scopedSlots[key](h, scope)
+          return slots[key](h, scope)
         }
       }
     }
-    if (self.slots) {
-      for (const key in self.slots) {
-        scopedSlots[key] = (scope) => {
-          return self.slots[key](h, scope)
-        }
-      }
-    }
+
     const children = []
     if (self.children) {
-      for (const func of self.children) {
-        children.push(func(h))
+      if (self.children instanceof Array) {
+        for (const func of self.children) {
+          children.push(func(h))
+        }
+      } else if (self.children instanceof Function) {
+        const items = self.children(h)
+        if (items instanceof Array) {
+          children.push(...items)
+        } else {
+          children.push(items)
+        }
       }
     }
 
@@ -138,11 +141,9 @@ export default {
       return this.$refs.target
     },
     computedProps () {
-      // const disabled = self.disabled instanceof Function ? self.disabled() : self.disabled
-      // const readonly = self.readonly instanceof Function ? self.readonly() : self.readonly
-
       const props = {
         value: this.value,
+        scope: this.scope,
         disabled: this.disabled,
         readonly: this.readonly,
         ...this.props

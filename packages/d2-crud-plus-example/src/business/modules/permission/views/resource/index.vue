@@ -3,10 +3,11 @@
     <template slot="header">资源管理
       <example-helper title="权限管理帮助" >
         <div>
+          <h3>如何启用权限管理，请点击下面帮助链接</h3>
           <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
         </div>
         <div>
-          如果不需要平台管理，请按如下操作：<br/>
+          <h3>如果不需要平台管理，请按如下操作：</h3>
           1、删除组件引用：&lt;platform-selector&gt;&lt;/platform-selector&gt; <br/>
           2、删除 methods.doLoad() 方法
         </div>

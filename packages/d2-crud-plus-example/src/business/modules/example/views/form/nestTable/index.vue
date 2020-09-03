@@ -19,7 +19,7 @@
                           @columns-filter-changed="handleColumnsFilterChanged"/>
           </div>
           <div slot="nestIdFormSlot" slot-scope="scope">
-            <!--  form slot 嵌入子表格，把子表格当做一个表单组件来用 -->
+            <!--  form slot 嵌入子表格，把子表格当做一个普通的组件来用，子表格记得要设置高度 -->
             <!-- form slot 文档 http://greper.gitee.io/d2-crud-plus/guide/slot.html -->
             <sub-table :value="scope.form.nestId" @selected="nestIdSelected($event,scope.form)"></sub-table>
           </div>

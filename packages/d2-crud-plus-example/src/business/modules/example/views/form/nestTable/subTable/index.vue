@@ -5,12 +5,11 @@
       ref="d2Crud"
       v-bind="_crudProps"
       v-on="_crudListeners"
-      style="height:500px"
     >
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" @search-data-change="handleSearchDataChange"  />
         <el-button   size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-        <!-- 同一个页面下 多个toolbar 需要设置storage名称否则会有冲突-->
+        <!-- 同一个页面下 多个toolbar 需要设置storage名称，否则列设置保存会有冲突-->
         <crud-toolbar  :search.sync="crud.searchOptions.show"
                       :columns="crud.columns"
                       @refresh="doRefresh()"
@@ -26,6 +25,10 @@
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetList, AddObj, UpdateObj, DelObj } from './api'
+
+/**
+ * 子表格当成一个普通组件来被父表格引用
+ */
 export default {
   name: 'subTable',
   mixins: [d2CrudPlus.crud],

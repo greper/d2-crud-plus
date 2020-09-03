@@ -91,15 +91,14 @@ export default {
           value: '',
           component: {
             name: 'el-select',
-            children: [ // 建议使用 d2-crud-plus 带的 dict-select组件,看下面
-              (h) => {
-                return (<span>
-                  <el-option value='王小虎'>王小虎</el-option>
-                  <el-option value='王中虎'>王中虎</el-option>
-                  <el-option value='王老虎'>王老虎</el-option>
-                </span>)
-              }
-            ],
+            // 建议使用 d2-crud-plus 带的 dict-select组件,看下面
+            children (h) {
+              const items = []
+              items.push(<el-option value='王小虎'>王小虎</el-option>)
+              items.push(<el-option value='王中虎'>王中虎</el-option>)
+              items.push(<el-option value='王老虎'>王老虎</el-option>)
+              return items
+            },
             span: 12
           }
         },

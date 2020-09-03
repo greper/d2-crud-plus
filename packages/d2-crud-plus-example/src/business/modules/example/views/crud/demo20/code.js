@@ -15,6 +15,8 @@ export default `<template>
 export default {
   data () {
     return {
+      doc,
+      code,
       columns: [
         {
           title: '日期',
@@ -73,20 +75,32 @@ export default {
           value: '',
           component: {
             name: 'el-select',
-            options: [
-              {
-                value: '王小虎',
-                label: '王小虎'
-              },
-              {
-                value: '王中虎',
-                label: '王中虎'
-              },
-              {
-                value: '王老虎',
-                label: '王老虎'
+            // 建议使用 d2-crud-plus 带的 dict-select组件,看下面
+            children (h) {
+              const items = []
+              items.push(<el-option value='王小虎'>王小虎</el-option>)
+              items.push(<el-option value='王中虎'>王中虎</el-option>)
+              items.push(<el-option value='王老虎'>王老虎</el-option>)
+              return items
+            },
+            size: 'small'
+            span: 12
+          }
+        },
+        status: {
+          title: '状态',
+          value: '1', // 默认值
+          component: {
+            name: 'dict-select',
+            props: {
+              dict: {
+                data: [
+                  { value: '1', label: '开启' },
+                  { value: '2', label: '关闭' },
+                  { value: '3', label: '停止' }
+                ]
               }
-            ],
+            },
             span: 12
           }
         },

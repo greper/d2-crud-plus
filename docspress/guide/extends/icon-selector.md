@@ -3,7 +3,7 @@
 ##  1. 引入   
 ```javascript
 // 先引入d2-crud,d2-crud-plus
-// 参考 https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js
+// 参考 https://github.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/install.js
 // 然后引入树形组件
 import { D2pIconSelector } from 'd2p-extends' // 组件支持懒加载
 Vue.use(D2pIconSelector)

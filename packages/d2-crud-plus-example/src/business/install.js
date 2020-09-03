@@ -161,3 +161,7 @@ d2CrudPlus.util.columnResolve.addTypes({
     }
   }
 })
+
+// 修改官方字段类型
+const selectType = d2CrudPlus.util.columnResolve.getType('select')
+selectType.component.props.color = 'auto' // 修改官方的字段类型，设置select的单元格组件支持自动染色

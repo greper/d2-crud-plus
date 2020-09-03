@@ -1,4 +1,4 @@
-import './lib'
+import './install'
 import './components'
 import './filters'
 import './modules'

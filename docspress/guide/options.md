@@ -161,7 +161,7 @@ export const crudOptions = {
       // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
       rowSlot: false, 
       formatter (row, column, value, index) {
-        // cell 格式化，与d2-crud一致
+        // cell 格式化，http://greper.gitee.io/d2-crud-plus/d2-crud-x/columns.html#formatter
       }
     }
   ],

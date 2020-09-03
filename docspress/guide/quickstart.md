@@ -188,7 +188,7 @@ Vue.use(D2pUploader, {
     ... //文件上传有额外配置,请看下方链接
 })
 ```
-新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js)
+新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/install.js)
 获取更多信息。
 ### 4. 修改http响应拦截的返回结果
 如果你是集成到d2-admin，d2-admin中响应拦截器中成功的返回结果是`dataAxios.data`，code和msg是不会丢给下层处理的   

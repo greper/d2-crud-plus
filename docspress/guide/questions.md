@@ -170,13 +170,24 @@ export default {
 ## 9. 表格错位怎么办
 在合适的时机调用如下代码
 ```js
+// 使用setTimeout 验证是否能够起作用
+setTimeout(() => {
+   this.getD2CrudTable().doLayout()
+}, 1000)
+// 或者
 this.$nextTick(() => {
   this.getD2CrudTable().doLayout()
 })
 ```
 如果还不行可以试试下面这个
 ```js
+// 使用setTimeout 验证是否能够起作用
 setTimeout(() => {
   this.getD2CrudTable().store.scheduleLayout()
 }, 1000)
+
+// 或者
+this.$nextTick(() => {
+ this.getD2CrudTable().store.scheduleLayout()
+})
 ```

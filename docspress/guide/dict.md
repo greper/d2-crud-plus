@@ -48,10 +48,9 @@ dict:{
 }
 ```
     
-注意： `url()` ,`getData()` 这两者都会覆盖全局的getRemoteDictFunc   
-区别是：
+注意： `getData()` 会覆盖全局的getRemoteDictFunc   
 * `getData()` ：如果配置相同的url，即便getData不一样，还是会获取到相同的字典数据，可以通过url单独清理缓存   
-* `url()`： 将不会进行缓存
+
 
 ## 页面中获取数据字典
 ```js

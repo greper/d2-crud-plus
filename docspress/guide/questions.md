@@ -197,9 +197,10 @@ this.$nextTick(() => {
 form:{
   component: {
     props: {
-      onReady ({ component, data }) {
+      //字典加载完成后触发
+      onReady ({ component, data }) { //component为dict-select组件ref， data为字典选项数组
         if (component.value == null) {
-          component.onInput(data[0].value)
+          component.onInput(data[0].value) //这里触发选中事件
         }
       }
     }

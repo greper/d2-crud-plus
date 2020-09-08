@@ -29,8 +29,8 @@
       </el-row>
       <el-row>
         <el-col :span="5">
-          <el-form-item label="外部获取字典">
-            {{dictData}}
+          <el-form-item label="图片裁剪">
+            <d2p-cropper-uploader v-bind="{type:'qiniu'}" ></d2p-cropper-uploader>
           </el-form-item>
         </el-col>
         <el-col :span="5">

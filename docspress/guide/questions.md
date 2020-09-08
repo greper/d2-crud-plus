@@ -191,3 +191,19 @@ this.$nextTick(() => {
  this.getD2CrudTable().store.scheduleLayout()
 })
 ```
+
+## 10. 怎么给select设置默认选中第一个选项？
+```js
+form:{
+  component: {
+    props: {
+      onReady ({ component, data }) {
+        if (component.value == null) {
+          component.onInput(data[0].value)
+        }
+      }
+    }
+  }
+}
+
+```

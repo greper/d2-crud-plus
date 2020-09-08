@@ -36,9 +36,12 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: {
-            events: {
-              ready: () => {
-                console.log('status1, ready...')
+            props: {
+              onReady ({ component, data }) {
+                if (component.value == null) {
+                  // 让选择框默认选中第一个
+                  component.onInput(data[0].value)
+                }
               }
             },
             span: 18

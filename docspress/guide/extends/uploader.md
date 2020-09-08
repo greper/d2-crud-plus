@@ -6,7 +6,7 @@
  1. 创建相应的bucket，配置跨域访问等
  2. 生产环境还需配置获取相应的授权(以各平台上java为例)：
  * <a target="_blank" href="https://cloud.tencent.com/document/product/436/14048">腾讯云临时密钥</a>
- * <a target="_blank" href="https://help.aliyun.com/document_detail/100624.html">阿里云的sts</a>
+ * <a target="_blank" href="https://help.aliyun.com/document_detail/100624.html?source=5176.11533457&userCode=qya11txb&type=copy">阿里云的sts</a>
  * <a target="_blank" href="https://developer.qiniu.com/kodo/sdk/1239/java#simple-uptoken">七牛获取token</a>
  * 后端实现参考：https://github.com/greper/d2-crud-plus-server.git
 ## 引入

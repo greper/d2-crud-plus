@@ -107,7 +107,9 @@ export default {
     updatePermession (userId) {
       let checked = []
       for (const item of this.roleList) {
-        checked = checked.concat(item.checked)
+        if (item.checked) {
+          checked = checked.concat(item.checked)
+        }
       }
       DoAuthz(userId, checked).then(ret => {
         this.dialogPermissionVisible = false

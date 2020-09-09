@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.2...d2-crud-plus@1.16.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* 修复 dict-switch 修改value为非boolean值时表单无法显示正确值的bug ([f378624](https://github.com/greper/d2-crud-plus/commit/f378624d48f35202a9507f5255822ab762b1a3a3))
+
+
+### Performance Improvements
+
+* values-format优化为，加载的时候不显示value值 ([21f1380](https://github.com/greper/d2-crud-plus/commit/21f13808a4baa5bc3e033a97a25ec2f2ba7f9cf7))
+* 精简renderCustomComponent代码 ([bd544ce](https://github.com/greper/d2-crud-plus/commit/bd544ce9f120712d35ef056e27f1ead6f4a30238))
+
+
+
+
+
 ## [1.16.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.1...d2-crud-plus@1.16.2) (2020-09-03)
 
 

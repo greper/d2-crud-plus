@@ -512,7 +512,14 @@ export default {
       }
 
       this.crud.loading = true
-      return this.pageRequest(query, options).then(ret => {
+      const promise = this.pageRequest(query, options)
+      if (!promise || !promise.then) {
+        console.warning('pageRequest需要返回一个Promise,return :', promise)
+      }
+      return promise.then(ret => {
+        if (!ret) {
+          console.warning('pageRequest请求结果异常,res:', ret)
+        }
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)

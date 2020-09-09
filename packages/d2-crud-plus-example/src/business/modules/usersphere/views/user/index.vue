@@ -85,7 +85,6 @@ export default {
       return GetObj(row.id)
     },
     authzHandle (event) {
-      console.log('authz', event)
       GetRoleList().then(ret => {
         const roleList = ret.data
         let userRoles = event.row.roles
@@ -93,14 +92,12 @@ export default {
           userRoles = []
         }
         this.activeNames.splice(0, this.activeNames.length)
-        console.log('roleList', roleList)
         roleList.forEach(item => {
           if (!item.roles) {
             return
           }
           item.checked = item.roles.map(item => item.id).filter(item => userRoles.indexOf(item) >= 0)
           this.activeNames.push(item.platform.id)
-          console.log('checked', item.checked)
         })
         this.$set(this, 'roleList', roleList)
         this.currentUserId = event.row.id

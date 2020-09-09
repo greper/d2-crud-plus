@@ -1,7 +1,7 @@
 <template>
   <el-switch
     :value="value"
-    @input="onInput"
+    @input="onElInput"
     @change="onChange"
     :disabled="disabled"
     :readonly="readonly"
@@ -19,7 +19,7 @@
 <script>
 import inputBase from '../../mixins/input-base'
 import inputDict from '../../mixins/input-dict'
-// 字典radio选择器
+// 字典switch
 export default {
   name: 'dict-switch',
   mixins: [inputBase, inputDict],
@@ -76,10 +76,18 @@ export default {
   created () {
   },
   methods: {
-    setValue () {
-      // 置空
-    }
+    setValue (value) {
+    },
+    onDictLoaded () {
+      // this.onInput(this.value)
+    },
+    onElInput (value) { // 字典没有加载完成之前，屏蔽switch发来的input事件
+      if (this._active[this.dict.value] == null) {
+        return
+      }
 
+      this.onInput(value)
+    }
   }
 }
 </script>

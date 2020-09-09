@@ -13,6 +13,7 @@ const list = [
     status_custom_1: '0',
     status_custom_2: '0',
     checkedRadio: '1',
+    switch: true,
     mcascader: [['zhinan', 'shejiyuanze', 'yizhi']]
   },
   {

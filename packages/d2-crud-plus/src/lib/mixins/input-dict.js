@@ -93,10 +93,14 @@ export default {
         if (this.onReady != null) {
           this.onReady({ component: this, data: data, setDictData: this.setDictData, form: options.form })
         }
+        this.onDictLoaded()
       })
     },
     setDictData (data) {
       this.$set(this, 'dictOptions', data)
+    },
+    onDictLoaded () {
+
     }
   }
 }

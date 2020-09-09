@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.2...@d2-plus/d2-crud-plus-example@1.17.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* 修复 dict-switch 修改value为非boolean值时表单无法显示正确值的bug ([f378624](https://github.com/d2-projects/d2-admin/commit/f378624d48f35202a9507f5255822ab762b1a3a3))
+* 修复平台下无角色无法给用户授权的bug ([e90d3a9](https://github.com/d2-projects/d2-admin/commit/e90d3a9de834e4fb6d99bab3da1b60296f9f6a5f))
+* 修复用户无法授予角色的bug ([367192b](https://github.com/d2-projects/d2-admin/commit/367192ba2ec0be35250470c4ac599aab0aeb6593))
+
+
+### Performance Improvements
+
+* 修改lib/index 为install.js ([117c028](https://github.com/d2-projects/d2-admin/commit/117c0284a55ee32121656aafeb6a22391c56a995))
+
+
+
+
+
 ## [1.17.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.1...@d2-plus/d2-crud-plus-example@1.17.2) (2020-09-03)
 
 

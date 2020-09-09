@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.12](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.11...d2p-extends@1.9.12) (2020-09-09)
+
+**Note:** Version bump only for package d2p-extends
+
+
+
+
+
 ## [1.9.11](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.10...d2p-extends@1.9.11) (2020-09-03)
 
 **Note:** Version bump only for package d2p-extends

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.3](https://github.com/greper/d2-crud/compare/d2-crud-x@2.10.2...d2-crud-x@2.10.3) (2020-09-09)
+
+
+### Performance Improvements
+
+* 精简renderCustomComponent代码 ([bd544ce](https://github.com/greper/d2-crud/commit/bd544ce9f120712d35ef056e27f1ead6f4a30238))
+
+
+
+
+
 ## [2.10.2](https://github.com/greper/d2-crud/compare/d2-crud-x@2.10.1...d2-crud-x@2.10.2) (2020-09-03)
 
 

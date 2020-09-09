@@ -93,7 +93,11 @@ export default {
           userRoles = []
         }
         this.activeNames.splice(0, this.activeNames.length)
+        console.log('roleList', roleList)
         roleList.forEach(item => {
+          if (!item.roles) {
+            return
+          }
           item.checked = item.roles.map(item => item.id).filter(item => userRoles.indexOf(item) >= 0)
           this.activeNames.push(item.platform.id)
           console.log('checked', item.checked)

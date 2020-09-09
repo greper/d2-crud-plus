@@ -60,6 +60,7 @@ export default {
       }
       this.loading = true
       dict.get(this.dict, options).then((data) => {
+        debugger
         this.loading = false
         this.resolveDictData(data)
       })

@@ -96,16 +96,12 @@ export default {
     // 构建下载url方法
     buildUrl: {
       type: Function,
-      default: function (value, item) {
-        return (typeof value === 'object') ? item.url : value
-      }
+      default: function (value, item) { return (typeof value === 'object') ? item.url : value }
     },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object,
-      default () {
-        return {}
-      }
+      default () { return {} }
     }
   },
   data () {

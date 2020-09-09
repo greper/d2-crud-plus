@@ -140,7 +140,13 @@ Vue.use(D2pUploader, {
   },
   form: {
     action: process.env.VUE_APP_API + 'upload/form/upload',
-    name: 'file'
+    name: 'file',
+    successHandle (ret) { // 需要将res.url 设置为url
+      if (ret.data == null || ret.data === '') {
+        throw new Error('上传失败')
+      }
+      return { url: ret.data }
+    }
   }
 })
 

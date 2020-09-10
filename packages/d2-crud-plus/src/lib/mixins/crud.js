@@ -321,7 +321,7 @@ export default {
           if (form.editTemplateHandle != null) {
             form.editTemplateHandle(editTemplate)
           }
-          this.crud.editRules[key] = form.rules
+          this.crud.editRules[key] = editTemplate.rules
         }
       }
 

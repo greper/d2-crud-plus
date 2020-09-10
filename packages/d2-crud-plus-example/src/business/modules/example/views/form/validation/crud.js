@@ -38,6 +38,8 @@ export const crudOptions = (vm) => {
         key: 'name',
         sortable: true,
         disabled: true,
+        headerAlign: 'center',
+        align: 'left',
         form: {
           helper: '添加时必填不校验长度，编辑时非必填但校验长度'
         },

@@ -97,7 +97,7 @@ export default {
     uploader: {
       type: Object
     },
-    // 构建下载url方法
+    // 构建下载url方法,不影响提交的value
     buildUrl: {
       type: Function,
       default: function (value, item) { return (typeof value === 'object') ? item.url : value }

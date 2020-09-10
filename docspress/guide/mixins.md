@@ -117,8 +117,8 @@ columns:[
 ]
 ```
 ::: warning
-由于数组的合并是取并集，所以当添加和编辑的校验规则不相同时，不要配置在`form`里面，需要在`editForm`和`editForm`下分别配置      
-当然相同的部分还是可以配置在`form.rules`里面的   
+由于数组的合并是取并集，所以当添加和编辑的校验规则不相同时，不要配置在`form.rules`里面，需要在`editForm.rules`和`editForm.rules`下分别配置      
+ 
 :::
 
 ### 4. 通过字段类型继续简化

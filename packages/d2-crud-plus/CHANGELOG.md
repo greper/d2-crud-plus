@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.3...d2-crud-plus@1.16.4) (2020-09-10)
+
+
+### Bug Fixes
+
+* format的提示优化 ([01f4a72](https://github.com/greper/d2-crud-plus/commit/01f4a722a3ab6213446aa3e406fc10758f2bfb29))
+* format的提示优化 ([eaa41fd](https://github.com/greper/d2-crud-plus/commit/eaa41fd3847b3eddb0108f825d4170431e0838b7))
+* 修复编辑和添加rule有差异时的问题 ([cf1ec26](https://github.com/greper/d2-crud-plus/commit/cf1ec26d4dee2e3d3fd54d226350c074c8713273))
+
+
+### Performance Improvements
+
+* 图片上传组件优化 ([c2d1cd0](https://github.com/greper/d2-crud-plus/commit/c2d1cd09438873cfdb60d8ff5fd49e8ef6506367))
+
+
+
+
+
 ## [1.16.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.2...d2-crud-plus@1.16.3) (2020-09-09)
 
 

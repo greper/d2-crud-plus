@@ -40,13 +40,12 @@ export const crudOptions = (vm) => {
         headerAlign: 'center',
         align: 'left',
         form: {
-          helper: '添加时必填不校验长度，编辑时非必填但校验长度'
+          helper: '添加和编辑时必填，编辑时额外需要校验长度',
+          // 由于数组配置合并时是取并集，不同的部分需要分开配置
+          rules: [{ required: true, message: '请输入姓名' }]
         },
         editForm: { // 由于数组配置合并时是取并集，所以需要分开配置
           rules: [{ min: 2, max: 5, message: '姓名长度为2-5' }]
-        },
-        addForm: {
-          rules: [{ required: true, message: '请输入姓名' }]
         }
       },
       {

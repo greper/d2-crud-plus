@@ -116,10 +116,7 @@ columns:[
   } 
 ]
 ```
-::: warning
-由于数组的合并是取并集，所以当添加和编辑的校验规则不相同时，不要配置在`form.rules`里面，需要在`editForm.rules`和`editForm.rules`下分别配置      
- 
-:::
+
 
 ### 4. 通过字段类型继续简化
 字段类型背后代表了一段默认配置，当你配置了type时，你可以省略它代表的这部分默认配置    
@@ -154,6 +151,27 @@ columns:[
     }
   } 
 ]
+```
+
+::: warning
+由于数组的合并是取并集，所以当添加和编辑的校验规则不相同时，不要配置在`form.rules`里面，需要在`editForm.rules`和`editForm.rules`下分别配置      
+ 
+:::
+```
+columns:[ 
+  {
+    title:'姓名',
+    key:'name',
+    form: {
+      helper: '添加和编辑时都必填，编辑时额外校验长度',
+      rules: [{ required: true, message: '请输入姓名' }]
+    },
+    editForm: {
+      rules: [{ min: 2, max: 5, message: '姓名长度为2-5' }]
+    }
+  } 
+]
+```
 ```
 
 ### 5. 初始化过程

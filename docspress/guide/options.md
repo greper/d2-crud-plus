@@ -265,10 +265,9 @@ export const crudOptions = {
     }
   },
   format: {
-    //是否需要拍平数据，当返回数据中有嵌套对象时使用
-    //dataRow = {user:{gender:0,name:'greper'}}
-    //columns:[{key:'user#gender'},{key:'user#name'}] //key的配置需要用#号连接
-    flatData:false, 
+    response (ret) {
+      return ret.data //getlist返回结果获取
+    },
     page: { // page接口返回的数据结构配置，
       request: { // 请求参数
         current: 'current', //当前页码

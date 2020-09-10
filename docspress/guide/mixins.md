@@ -163,7 +163,7 @@ columns:[
     title:'姓名',
     key:'name',
     form: {
-      helper: '添加和编辑时都必填，编辑时额外校验长度',
+      helper: '添加时必填，编辑时必填且需要校验长度',
       rules: [{ required: true, message: '请输入姓名' }]
     },
     editForm: {

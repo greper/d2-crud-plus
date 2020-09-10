@@ -537,7 +537,7 @@ export default {
         }
 
         if (records == null || current == null || size == null || total == null) {
-          console.warn('请确保format配置或ret的格式正确:', ret)
+          console.warn('请确保format配置或ret的格式正确(这段打个断点debug一下),ret:', ret, ',format:', pageFormat)
         }
         this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })
 

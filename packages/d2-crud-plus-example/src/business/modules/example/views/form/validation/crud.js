@@ -37,7 +37,6 @@ export const crudOptions = (vm) => {
         title: '姓名',
         key: 'name',
         sortable: true,
-        disabled: true,
         headerAlign: 'center',
         align: 'left',
         form: {

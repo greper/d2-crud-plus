@@ -114,7 +114,7 @@ export function GetList (query) {
     ret.data= ret.data?ret.data:{}
     ret.data.current = 当前页码
     ret.data.size = 当前每页条数
-    ret.data.totla = 总记录数
+    ret.data.total = 总记录数
     ret.data.records = 列表数据
     return ret
   })
@@ -140,7 +140,7 @@ format配置与结果改造同时使用的时候,你要按如下修改
 ret.data= ret.data?ret.data:{}
 ret.data.pageNo = 当前页码
 ret.data.limit = 当前每页条数
-ret.data.totla = 总记录数
+ret.data.total = 总记录数
 ret.data.list = 列表数据
 ```
 :::

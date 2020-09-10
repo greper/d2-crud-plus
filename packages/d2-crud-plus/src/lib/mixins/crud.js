@@ -514,7 +514,7 @@ export default {
       this.crud.loading = true
       const promise = this.pageRequest(query, options)
       if (!promise || !promise.then) {
-        console.warn('pageRequest需要返回一个Promise,return :', promise)
+        console.warn('pageRequest需要返回一个Promise,当前返回值 :', promise)
       }
       return promise.then(ret => {
         if (!ret) {
@@ -523,6 +523,9 @@ export default {
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
+        if (data == null) {
+          console.warn('获取返回结果不正确，请参考: "http://greper.gitee.io/d2-crud-plus/guide/quickstart.html#_4-修改http响应拦截的返回结果"')
+        }
         let records = format(data, pageFormat.records)
         const current = format(data, pageFormat.current)
         const size = format(data, pageFormat.size)
@@ -537,7 +540,7 @@ export default {
         }
 
         if (records == null || current == null || size == null || total == null) {
-          console.warn('请确保format配置或ret的格式正确(这段打个断点debug一下),ret:', ret, ',format:', pageFormat)
+          console.warn('请确保format配置或ret的格式正确(这段打个断点debug一下),ret:', ret, ',format:', pageFormat, ',请参考："http://greper.gitee.io/d2-crud-plus/guide/structure.html#自定义数据结构"')
         }
         this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })
 

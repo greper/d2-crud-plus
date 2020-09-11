@@ -53,7 +53,7 @@ export default {
     // 上传后端类型，[cos,qiniu,alioss,form]
     type: {
       type: String,
-      default: 'cos' // 上传类型：form cos qiniu  alioss
+      default: undefined // 上传类型：form cos qiniu  alioss
     },
     // 值：url<br/>
     // 或 [url1,url2]<br/>
@@ -96,16 +96,12 @@ export default {
     // 构建下载url方法
     buildUrl: {
       type: Function,
-      default: function (value, item) {
-        return (typeof value === 'object') ? item.url : value
-      }
+      default: function (value, item) { return (typeof value === 'object') ? item.url : value }
     },
     // 上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object,
-      default () {
-        return {}
-      }
+      default () { return {} }
     }
   },
   data () {

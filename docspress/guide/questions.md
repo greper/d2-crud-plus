@@ -167,3 +167,44 @@ export default {
 }
 ```
 
+## 9. 表格错位怎么办
+在合适的时机调用如下代码
+```js
+// 使用setTimeout 验证是否能够起作用
+setTimeout(() => {
+   this.getD2CrudTable().doLayout()
+}, 1000)
+// 或者
+this.$nextTick(() => {
+  this.getD2CrudTable().doLayout()
+})
+```
+如果还不行可以试试下面这个
+```js
+// 使用setTimeout 验证是否能够起作用
+setTimeout(() => {
+  this.getD2CrudTable().store.scheduleLayout()
+}, 1000)
+
+// 或者
+this.$nextTick(() => {
+ this.getD2CrudTable().store.scheduleLayout()
+})
+```
+
+## 10. 怎么给select设置默认选中第一个选项？
+```js
+form:{
+  component: {
+    props: {
+      //字典加载完成后触发
+      onReady ({ component, data }) { //component为dict-select组件ref， data为字典选项数组
+        if (component.value == null) {
+          component.onInput(data[0].value) //这里触发选中事件
+        }
+      }
+    }
+  }
+}
+
+```

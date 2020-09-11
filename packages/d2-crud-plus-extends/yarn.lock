@@ -3179,10 +3179,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.15.6:
-  version "1.15.6"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-1.15.6.tgz#15068caed5954b73122e4c2aedbe60c7b8209367"
-  integrity sha512-0rYAcFwn2LDYKrBeTdIJ1MVZhP0jymh7KX3qmK14oi3Zy0lLtR0boicrJjUBrZmDAlNz5dVssKbV7n+ZhV0Jeg==
+d2-crud-plus@^1.16.1:
+  version "1.16.1"
+  resolved "https://registry.npmjs.org/d2-crud-plus/-/d2-crud-plus-1.16.1.tgz#603e6a2b6eb236449f06fc2b797744939675c654"
+  integrity sha512-vxq9RVen9g95CTR3zoZB/F8w+4vHxUA2y18fBh1kvimxTOq/khrs4FXxufaYXsEHJzq6cDZtyLu1DwKMWjdxIQ==
   dependencies:
     dayjs "^1.8.17"
     lodash "^4.17.19"

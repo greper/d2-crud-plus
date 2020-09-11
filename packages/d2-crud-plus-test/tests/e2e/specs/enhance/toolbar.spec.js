@@ -9,12 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
-    listWait: 600,
-    editForce: true,
-    viewForce: true,
-    deleteForce: true,
+    url: '/demo/form/toolbar',
     doAdd () {
       cy.formItem('radio').find('label.el-radio').first().click()
     },

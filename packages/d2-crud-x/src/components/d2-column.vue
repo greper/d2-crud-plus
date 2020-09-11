@@ -4,7 +4,7 @@
     v-if="item.show!==false"
     v-bind="forColumnBindProps(item)">
   <template slot-scope="scope">
-    <d2-cell :item="item" :row="scope.row" :rowIndex="scope.$index"
+    <d2-cell :item="item" :row="scope.row" :rowIndex="thisIsVxeTable?scope.$rowIndex:scope.$index"
              @cell-data-change="handleCellDataChange"
              @cell-component-ready="handleCellComponentReady"
              @cell-component-custom-event="handleCellComponentCustomEvent"
@@ -74,7 +74,7 @@ export default {
     },
     forColumnBindProps (item) {
       const targetItem = { ...item }
-      if (this.isVxeTable(this.tableType)) {
+      if (this.thisIsVxeTable) {
         targetItem.title = this.handleAttribute(item.title, '')
         targetItem.field = this.handleAttribute(item.key, null)
       } else {

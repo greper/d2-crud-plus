@@ -9,14 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
-    listWait: 2000,
-    editForce: true,
-    // editWait: 5000,
-    viewForce: true,
-    // viewWait: 5000,
-    deleteForce: true,
+    url: '/demo/form/fix',
     doAdd () {
       cy.formItem('撑开').find('input').type('123').should('have.value', '123')
       cy.formItem('金额').find('input').type('0').should('have.value', '0')

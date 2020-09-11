@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.3...@d2-plus/d2-crud-plus-example@1.17.4) (2020-09-10)
+
+
+### Bug Fixes
+
+* 修复编辑和添加rule有差异时的问题 ([cf1ec26](https://github.com/d2-projects/d2-admin/commit/cf1ec26d4dee2e3d3fd54d226350c074c8713273))
+
+
+### Performance Improvements
+
+* 图片上传组件优化 ([c2d1cd0](https://github.com/d2-projects/d2-admin/commit/c2d1cd09438873cfdb60d8ff5fd49e8ef6506367))
+
+
+
+
+
+## [1.17.3](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.2...@d2-plus/d2-crud-plus-example@1.17.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* 修复 dict-switch 修改value为非boolean值时表单无法显示正确值的bug ([f378624](https://github.com/d2-projects/d2-admin/commit/f378624d48f35202a9507f5255822ab762b1a3a3))
+* 修复平台下无角色无法给用户授权的bug ([e90d3a9](https://github.com/d2-projects/d2-admin/commit/e90d3a9de834e4fb6d99bab3da1b60296f9f6a5f))
+* 修复用户无法授予角色的bug ([367192b](https://github.com/d2-projects/d2-admin/commit/367192ba2ec0be35250470c4ac599aab0aeb6593))
+
+
+### Performance Improvements
+
+* 修改lib/index 为install.js ([117c028](https://github.com/d2-projects/d2-admin/commit/117c0284a55ee32121656aafeb6a22391c56a995))
+
+
+
+
+
+## [1.17.2](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.1...@d2-plus/d2-crud-plus-example@1.17.2) (2020-09-03)
+
+
+### Bug Fixes
+
+* 修复请求地址出错的问题 ([bc9a6c0](https://github.com/d2-projects/d2-admin/commit/bc9a6c0bfad92675e03a3c036d8e387bb6ee30bf))
+
+
+
+
+
+## [1.17.1](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.0...@d2-plus/d2-crud-plus-example@1.17.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* 消除edge下权限清空的报错 ([65127d6](https://github.com/d2-projects/d2-admin/commit/65127d6864aa7dae4b0ddfd7975eb7815d3a4fa2))
+
+
+### Performance Improvements
+
+* e2e测试优化 ([a3f4962](https://github.com/d2-projects/d2-admin/commit/a3f49624c2921b058b37ad9f9c49a894f1b44c2b))
+* 关闭cdn，打开速度好像快了很多 ([4fabcea](https://github.com/d2-projects/d2-admin/commit/4fabcea985eb6e9c21adebad8751ef8c96bbe149))
+* 增加d2-crud示例 ([509cac1](https://github.com/d2-projects/d2-admin/commit/509cac1ee86405f1626f754e1014b5aa456f5046))
+* 文档优化 ([5629114](https://github.com/d2-projects/d2-admin/commit/562911449d0399d989c7dddfd76f90ad4bc45322))
+
+
+
+
+
 # [1.17.0](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.16.1...@d2-plus/d2-crud-plus-example@1.17.0) (2020-08-25)
 
 

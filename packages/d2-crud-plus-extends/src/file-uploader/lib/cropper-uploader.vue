@@ -96,6 +96,11 @@ export default {
     // 上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)
     uploader: {
       type: Object
+    },
+    // 构建下载url方法,不影响提交的value
+    buildUrl: {
+      type: Function,
+      default: function (value, item) { return (typeof value === 'object') ? item.url : value }
     }
 
   },
@@ -136,10 +141,10 @@ export default {
         return list
       }
       if (typeof (value) === 'string') {
-        list.push({ url: value, status: 'done' })
+        list.push({ url: this.buildUrl(value), value: value, status: 'done' })
       } else {
         for (const item of value) {
-          list.push({ url: item, status: 'done' })
+          list.push({ url: this.buildUrl(item), value: item, status: 'done' })
         }
       }
       this.$set(this, 'list', list)
@@ -184,7 +189,8 @@ export default {
       }
       this.list.push(item)
       const upload = await this.doUpload(option)
-      item.url = upload.url
+      item.url = this.buildUrl(upload.url)
+      item.value = upload.url
       item.status = 'done'
       this.emit()
     },
@@ -216,12 +222,12 @@ export default {
         if (typeof (item) === 'string') {
           list.push(item)
         } else {
-          list.push(item.url)
+          list.push(item.value)
         }
       }
       let ret = list
       if (this.limit === 1) {
-        ret = list[0]
+        ret = ((list && list.length > 0) ? list[0] : undefined)
       }
       this.emitValue = ret
       this.$emit('input', ret)

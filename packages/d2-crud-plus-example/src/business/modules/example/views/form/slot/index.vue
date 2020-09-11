@@ -111,7 +111,8 @@ export default {
       console.log('失去焦点：', event)
       this.$message('失去焦点：' + event)
     },
-    customEmit () {
+    customEmit ($event) {
+      console.log('自定义按钮事件：', $event)
       this.$message('自定义按钮')
     },
     addTopic () {

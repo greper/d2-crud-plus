@@ -161,7 +161,7 @@ export const crudOptions = {
       // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
       rowSlot: false, 
       formatter (row, column, value, index) {
-        // cell 格式化，与d2-crud一致
+        // cell 格式化，http://greper.gitee.io/d2-crud-plus/d2-crud-x/columns.html#formatter
       }
     }
   ],
@@ -183,10 +183,11 @@ export const crudOptions = {
     draggable:true, //是否支持表单对话框拖拽
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
   },
-  searchOptions: { //查询配置参数
+  searchOptions: { //查询配置参数, 支持el-form的配置参数
     form:{ //默认搜索参数
       name:'小明' // 请求列表默认会带上此处配置参数,重置后会恢复成此处配置的值
     },
+    size:'small',
     show: true,//是否显示搜索工具条
     disabled: false, //是否禁用搜索工具条
     debounce:{ //自动查询防抖,debounce:false关闭自动查询
@@ -264,10 +265,9 @@ export const crudOptions = {
     }
   },
   format: {
-    //是否需要拍平数据，当返回数据中有嵌套对象时使用
-    //dataRow = {user:{gender:0,name:'greper'}}
-    //columns:[{key:'user#gender'},{key:'user#name'}] //key的配置需要用#号连接
-    flatData:false, 
+    response (ret) {
+      return ret.data //getlist返回结果获取
+    },
     page: { // page接口返回的数据结构配置，
       request: { // 请求参数
         current: 'current', //当前页码

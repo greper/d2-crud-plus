@@ -8,8 +8,7 @@ describe('省市区', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '省市区选择组件',
+    url: '/demo/form/area',
     doAdd () {
       cy.formItem('级联式').find('.d2p-cascade').click()
       cy.getCascadeOptions(1).first().click()

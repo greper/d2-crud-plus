@@ -29,6 +29,7 @@ const router = new VueRouter({
   routes
 })
 
+const isBaiduTraceEnabled = process.env.VUE_APP_BAIDU_TRACE === 'true'
 /**
  * 路由拦截
  * 权限验证
@@ -46,7 +47,7 @@ router.beforeEach(async (to, from, next) => {
   // add by greper
 
   // 百度分析
-  if (to.path) {
+  if (isBaiduTraceEnabled && to.path) {
     if (window._hmt) {
       window._hmt.push(['_trackPageview', '/#' + to.fullPath])
     }

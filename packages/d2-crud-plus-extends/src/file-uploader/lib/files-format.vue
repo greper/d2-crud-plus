@@ -34,9 +34,7 @@ export default {
     // 构建下载url方法
     buildUrl: {
       type: Function,
-      default: function (value, item) {
-        return value
-      }
+      default: function (value, item) { return value }
     }
   },
   data () {

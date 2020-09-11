@@ -6,8 +6,8 @@ export default [
     icon: 'file-text-o',
     path: 'doc',
     children: [
-      { path: 'https://greper.github.io/d2-crud-plus/', title: 'GitHub Pages', icon: 'file-text-o' },
-      { path: 'http://greper.gitee.io/d2-crud-plus/', title: '码云（国内速度快）', icon: 'file-text-o' },
+      { path: 'http://greper.gitee.io/d2-crud-plus/', title: 'd2-crud-plus', icon: 'file-text-o' },
+      { path: 'http://greper.gitee.io/d2-crud-plus/d2-crud-x', title: 'd2-crud-x', icon: 'file-text-o' },
       { path: 'http://www.veryreader.com:9080/reports/mochawesome.html', title: '测试报告', icon: 'file-text-o' }
     ]
   }

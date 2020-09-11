@@ -24,10 +24,13 @@
       .d2-home__loading { height: 32px; width: 32px; margin-bottom: 20px; }
     </style>
     <script>
-      var _hmt = _hmt || [];
-      var hmid = "2e51e3ad232193b989595504b8977012";
-      (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?" + hmid; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();
-    </script>
+      var isBaiduTraceEnabled = "<%= VUE_APP_BAIDU_TRACE %>"
+      if(isBaiduTraceEnabled ==='true'){
+        var _hmt = _hmt || [];
+        var hmid = "2e51e3ad232193b989595504b8977012";
+        (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?" + hmid; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();
+      }
+     </script>
   </head>
   <body>
     <noscript>

@@ -77,6 +77,9 @@ export default {
       if (this.value == null || this.value === '') {
         return []
       }
+      if (this.loading) {
+        return []
+      }
       const dictDataMap = this[this.returnType]
       let valueArr = []
       const options = []

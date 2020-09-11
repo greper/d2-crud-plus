@@ -1,8 +1,10 @@
 # 起步
 
 ## 介绍
-`d2-crud-x`是一套基于 [Vue.js 2.2.0+](https://cn.vuejs.org/) 和 [Element 2.0.0+](http://element-cn.eleme.io/#/zh-CN) 的表格组件，`d2-crud-x`将 `Element` 的功能进行了封装，并增加了表格的增删改查、数据校验、表格内编辑等常用的功能。大部分功能可根据配置的json实现，大大简化了开发流程。
+`d2-crud-x`是一套基于 [Vue.js 2.2.0+](https://cn.vuejs.org/) 和 [Element 2.0.0+](http://element-cn.eleme.io/#/zh-CN
+) 的表格组件，`d2-crud-x`将 `Element` 的功能进行了封装，并增加了表格的增删改查、数据校验、表格内编辑等常用的功能。大部分功能可根据配置的json实现，大大简化了开发流程。   
 
+感谢 [d2-crud](https://github.com/d2-projects/d2-crud) 打下的基础
 
 
 ## 功能
@@ -45,7 +47,7 @@ new Vue({
 
 之后就可以在项目中使用`d2-crud-x`了。
 
-[搭配d2-crud-plus](http://localhost:8080/d2-crud-plus/guide/quickstart.html#集成到你的项目中)让你开发crud更有效率哦。【推荐】
+[搭配d2-crud-plus](/guide/quickstart.html#集成到你的项目中)让你开发crud更有效率哦。【推荐】
 
 ## 文档
 

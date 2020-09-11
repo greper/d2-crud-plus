@@ -8,8 +8,7 @@ describe('EL', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: 'EL表单组件',
+    url: '/demo/form/el',
     doAdd () {
     },
     doEdit () {

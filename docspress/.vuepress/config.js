@@ -21,7 +21,7 @@ module.exports = ctx => ({
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  // theme: '@vuepress/vue',
+  theme: 'docmirror',
   themeConfig: {
     repo: 'greper/d2-crud-plus',
     editLinks: true,
@@ -115,18 +115,34 @@ function getGuideSidebar (groupA, groupB,groupC) {
       sidebarDepth: 3,
       children: [
         'mixins',
-        'expose',
-        'options',
         'structure',
-        'component',
         'column-type',
         'types',
+        'custom-type',
+        'component',
         'slot',
         'extends',
         'dict',
         // 'event',
         'nest-data',
         'flat-data'
+      ]
+    },
+    {
+      title: 'API',
+      collapsable: false,
+      sidebarDepth: 3,
+      children: [
+        'options',
+        'expose',
+        {
+          title: '扩展',
+          children: extendsDocs
+        },
+        {
+          title: '组件',
+          children: componentDocs
+        },
       ]
     },
     {
@@ -150,29 +166,9 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'contact'
       ]
     },
-    // {
-    //   title: 'd2-crud-x',
-    //   collapsable: false,
-    //   sidebarDepth: 3,
-    //   children: [
-    //     'd2crudx'
-    //   ]
-    // },
-    {
-      title: 'extends文档',
-      collapsable: false,
-      sidebarDepth: 0,
-      children: extendsDocs
-    },
-    {
-      title: '组件文档',
-      collapsable: true,
-      sidebarDepth: 0,
-      children: componentDocs
-    },
     {
       title: 'ChangeLog',
-      collapsable: true,
+      collapsable: false,
       sidebarDepth: 0,
       children: [
         ['./changelogs/packages/d2-crud-x/CHANGELOG','d2-crud-x'],
@@ -191,7 +187,7 @@ function getD2CrudXSidebar () {
     // 'example',
     {
       title: '配置项',
-      children: [ 'crud', 'columns', 'options', 'loading-options', 'index-row', 'selection-row', 'row-handle', 'form-options', 'form-template', 'component' ,'pagination' ]
+      children: [ 'crud', 'columns', 'options', 'loading-options', 'index-row', 'selection-row','expand-row', 'row-handle', 'form-options', 'form-template', 'component' ,'pagination' ]
     },
     'events',
     'slots',

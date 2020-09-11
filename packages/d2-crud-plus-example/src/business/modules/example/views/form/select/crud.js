@@ -13,6 +13,9 @@ export const crudOptions = (vm) => {
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
+    searchOptions: {
+      labelWidth: '100px' // 设置查询表单label的宽度
+    },
     columns: [
       {
         title: 'ID',
@@ -33,9 +36,12 @@ export const crudOptions = (vm) => {
         },
         form: {
           component: {
-            events: {
-              ready: () => {
-                console.log('status1, ready...')
+            props: {
+              onReady ({ component, data }) {
+                if (component.value == null) {
+                  // 让选择框默认选中第一个
+                  component.onInput(data[0].value)
+                }
               }
             },
             span: 18

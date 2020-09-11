@@ -16,6 +16,9 @@
 |accept|可接收的文件后缀|`String`|`false`|'.jpg, .jpeg, .png, .gif, .webp'|
 |cropper|[cropperjs的参数](https://github.com/fengyuanchen/cropperjs)|`Object`|`false`|-|
 |uploader|上传参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|-|
+|buildUrl|构建下载url方法,不影响提交的value|`Function`|`false`|function (value, item) {
+  return typeof value === 'object' ? item.url : value;
+}|
 
 <!-- @vuese:d2p-cropper-uploader:props:end -->
 

@@ -11,5 +11,6 @@
     "toConsole": true
   },
   "browser": "chrome",
-  "projectId": "2bz2i1"
+  "projectId": "2bz2i1",
+  "defaultCommandTimeout": 8000
 }

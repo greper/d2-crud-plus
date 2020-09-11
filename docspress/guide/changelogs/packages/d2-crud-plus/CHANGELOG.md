@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.4](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.3...d2-crud-plus@1.16.4) (2020-09-10)
+
+
+### Bug Fixes
+
+* format的提示优化 ([01f4a72](https://github.com/greper/d2-crud-plus/commit/01f4a722a3ab6213446aa3e406fc10758f2bfb29))
+* format的提示优化 ([eaa41fd](https://github.com/greper/d2-crud-plus/commit/eaa41fd3847b3eddb0108f825d4170431e0838b7))
+* 修复编辑和添加rule有差异时的问题 ([cf1ec26](https://github.com/greper/d2-crud-plus/commit/cf1ec26d4dee2e3d3fd54d226350c074c8713273))
+
+
+### Performance Improvements
+
+* 图片上传组件优化 ([c2d1cd0](https://github.com/greper/d2-crud-plus/commit/c2d1cd09438873cfdb60d8ff5fd49e8ef6506367))
+
+
+
+
+
+## [1.16.3](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.2...d2-crud-plus@1.16.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* 修复 dict-switch 修改value为非boolean值时表单无法显示正确值的bug ([f378624](https://github.com/greper/d2-crud-plus/commit/f378624d48f35202a9507f5255822ab762b1a3a3))
+
+
+### Performance Improvements
+
+* values-format优化为，加载的时候不显示value值 ([21f1380](https://github.com/greper/d2-crud-plus/commit/21f13808a4baa5bc3e033a97a25ec2f2ba7f9cf7))
+* 精简renderCustomComponent代码 ([bd544ce](https://github.com/greper/d2-crud-plus/commit/bd544ce9f120712d35ef056e27f1ead6f4a30238))
+
+
+
+
+
+## [1.16.2](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.1...d2-crud-plus@1.16.2) (2020-09-03)
+
+
+### Performance Improvements
+
+* 查询框支持修改尺寸 ([dfa2852](https://github.com/greper/d2-crud-plus/commit/dfa28526a1a826281fd74a7a2033d137e71c427a))
+
+
+
+
+
+## [1.16.1](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.0...d2-crud-plus@1.16.1) (2020-09-01)
+
+
+### Performance Improvements
+
+* 增加d2-crud示例 ([509cac1](https://github.com/greper/d2-crud-plus/commit/509cac1ee86405f1626f754e1014b5aa456f5046))
+* 增加字典获取错误提示 ([067a3d2](https://github.com/greper/d2-crud-plus/commit/067a3d20fe7345ddad74801de3675de41b372224))
+* 文档优化 ([5629114](https://github.com/greper/d2-crud-plus/commit/562911449d0399d989c7dddfd76f90ad4bc45322))
+
+
+
+
+
 # [1.16.0](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.15.7...d2-crud-plus@1.16.0) (2020-08-25)
 
 

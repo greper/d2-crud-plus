@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/validation',
     doAdd () {
       cy.get('.el-dialog__footer').contains('确定').click()
       cy.formItem('密码').contains('请输入密码')

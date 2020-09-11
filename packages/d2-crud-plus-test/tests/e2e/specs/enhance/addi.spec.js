@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/addi',
     doAdd () {
       cy.formItem('创建时间').find('.el-input').click()
       cy.get('.el-picker-panel').contains('此刻').click()

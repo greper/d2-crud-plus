@@ -9,8 +9,7 @@ describe('选择组件', () => {
 
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '选择组件',
+    url: '/demo/form/select',
     doAdd () {
       cy.formItem('单选远程').find('.el-select').click()
       cy.getSelectOptions().first().click()

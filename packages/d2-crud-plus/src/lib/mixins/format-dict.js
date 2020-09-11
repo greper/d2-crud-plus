@@ -23,7 +23,8 @@ export default {
     return {
       dataMap: {},
       data: [],
-      returnType: 'dataMap'
+      returnType: 'dataMap',
+      loading: false
     }
   },
   created () {
@@ -57,7 +58,9 @@ export default {
       if (this.d2CrudContext) {
         options.form = this.d2CrudContext.getForm()
       }
+      this.loading = true
       dict.get(this.dict, options).then((data) => {
+        this.loading = false
         this.resolveDictData(data)
       })
     },

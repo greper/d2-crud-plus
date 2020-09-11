@@ -2,7 +2,8 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const VueFilenameInjector = require('@d2-projects/vue-filename-injector')
 const ThemeColorReplacer = require('webpack-theme-color-replacer')
 const forElementUI = require('webpack-theme-color-replacer/forElementUI')
-const cdnDependencies = require('./dependencies-cdn')
+const cdnDependenciesHave = require('./dependencies-cdn')
+const cdnDependenciesNot = require('./dependencies-cdn-not')
 const { chain, set, each } = require('lodash')
 
 // 拼接路径
@@ -15,7 +16,11 @@ process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
 // 基础路径 注意发布之前要先修改这里
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/'
 const proxyApi = process.env.VUE_APP_PROXY_API || 'http://127.0.0.1:7070'
-
+const noCdn = process.env.VUE_APP_NO_CDN || 'false'
+let cdnDependencies = cdnDependenciesHave
+if (noCdn === 'true') {
+  cdnDependencies = cdnDependenciesNot
+}
 // 设置不参与构建的库
 const externals = {}
 cdnDependencies.forEach(pkg => { externals[pkg.name] = pkg.library })
@@ -26,6 +31,7 @@ const cdn = {
   js: cdnDependencies.map(e => e.js).filter(e => e)
 }
 
+console.log('cdn ', cdn)
 // 多页配置，默认未开启，如需要请参考 https://cli.vuejs.org/zh/config/#pages
 const pages = undefined
 // const pages = {

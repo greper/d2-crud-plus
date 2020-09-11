@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/group',
     doAdd () {
       cy.formItem('商品标题').find('input').type('雨伞').should('have.value', '雨伞')
       cy.formItem('商品代码').find('input').type('001').should('have.value', '001')
@@ -32,7 +31,7 @@ describe(menu, () => {
     doView () {
       cy.get('.el-collapse .el-collapse-item').should('have.length', 4)
       cy.get('.el-collapse .el-collapse-item').contains('自定义').should('exist')
-      cy.wait(500) // TODO ueditor 关闭过快会报一个offsetWidth的错，暂时通过延时测试忽略该问题
+      cy.wait(3000) // TODO ueditor 关闭过快会报一个offsetWidth的错，暂时通过延时测试忽略该问题
     }
   })
 })

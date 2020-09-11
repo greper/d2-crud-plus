@@ -127,7 +127,7 @@ Vue.use(d2CrudPlus, {
         defaultSpan: 12 // 默认的表单 span
       },
       options: {
-        height: '100%' // 表格高度100%, 使用toolbar必须设置
+        height: '100%' // 表格高度100%，此时d2-crud-x外部容器必须有高度, 使用toolbar必须设置
       },
       pageOptions: {
         compact: true // 是否紧凑型页面
@@ -188,7 +188,7 @@ Vue.use(D2pUploader, {
     ... //文件上传有额外配置,请看下方链接
 })
 ```
-新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/lib/index.js)
+新插件在不断开发，你可以点击[示例中的插件引入参考](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus-example/src/business/install.js)
 获取更多信息。
 ### 4. 修改http响应拦截的返回结果
 如果你是集成到d2-admin，d2-admin中响应拦截器中成功的返回结果是`dataAxios.data`，code和msg是不会丢给下层处理的   
@@ -370,7 +370,8 @@ export default {
 ### 3.  api.js
 实现添删改查请求接口，通常复制，改一下url即可，你也可以自行增加方法，用于业务需求
 ```javascript
-import { request } from '@/api/service'
+//import request from '@/business/api/request.mock' 示例当中用的是模拟数据
+import { request } from '@/api/service' //改成这个请求真实后端
 export function GetList (query) {
   return request({
     url: '/test/page',

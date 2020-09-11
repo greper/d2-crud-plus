@@ -76,6 +76,9 @@ function get (dict, options) {
       if (data == null) {
         data = ret
       }
+      if (!(data instanceof Array)) {
+        console.warn('获取到的字典类型不是数组：', ret)
+      }
 
       item.data = data
       item.dataMap = getDataMap(dict, data)

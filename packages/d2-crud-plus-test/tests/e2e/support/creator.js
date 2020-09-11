@@ -12,14 +12,17 @@ export function createCrudTest (context) {
       cy.openMenu(context)
     }
   })
-  it('翻页', () => {
-    // 翻页
-    cy.log('翻页')
-    cy.contains(parentSelctor + ' .el-pagination ul.el-pager li', '2').click()
-    cy.checkId(context, '1', false)
-    cy.contains(parentSelctor + ' .el-pagination ul.el-pager li', '1').click()
-    cy.checkId(context, '1')
-  })
+  if (!context.paginationDisabled) {
+    it('翻页', () => {
+      // 翻页
+      cy.log('翻页')
+      cy.contains(parentSelctor + ' .el-pagination ul.el-pager li:visible', '2').click()
+      cy.checkId(context, '1', false)
+      cy.contains(parentSelctor + ' .el-pagination ul.el-pager li:visible', '1').click()
+      cy.checkId(context, '1')
+    })
+  }
+
   it('添加', () => {
     // 添加
     cy.log('添加')
@@ -44,7 +47,6 @@ export function createCrudTest (context) {
         context.doEdit(context)
       }
       cy.closeDialog(context)
-      cy.wait(1000)
       if (context.checkEdit) {
         context.checkEdit(context)
       }

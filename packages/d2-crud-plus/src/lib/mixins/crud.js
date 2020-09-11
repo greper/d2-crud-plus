@@ -76,7 +76,7 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false, show: true, form: {} },
+        searchOptions: { disabled: false, show: true, form: {}, size: 'small' },
         list: [],
         loading: false,
         pagination: {
@@ -321,7 +321,7 @@ export default {
           if (form.editTemplateHandle != null) {
             form.editTemplateHandle(editTemplate)
           }
-          this.crud.editRules[key] = form.rules
+          this.crud.editRules[key] = editTemplate.rules
         }
       }
 
@@ -443,19 +443,19 @@ export default {
         this.pageSizeTableStore = new TableStore({
           $router: this.$route,
           tableName: 'pageSize',
-          keyType: this.crud.pagination.storage
+          keyType: (this.crud.pagination == null ? undefined : this.crud.pagination.storage)
         })
       }
       return this.pageSizeTableStore
     },
     savePageSizeToStorage (size) {
-      if (this.crud.pagination && this.crud.pagination.storage === false) {
+      if (this.crud.pagination || this.crud.pagination.storage === false) {
         return
       }
       this.getPageSizeTableStore().updateTableValue(size)
     },
     getPageSizeFromStorage () {
-      if (this.crud.pagination && this.crud.pagination.storage === false) {
+      if (this.crud.pagination || this.crud.pagination.storage === false) {
         return
       }
       const size = this.getPageSizeTableStore().getTableValue()
@@ -512,10 +512,20 @@ export default {
       }
 
       this.crud.loading = true
-      return this.pageRequest(query, options).then(ret => {
+      const promise = this.pageRequest(query, options)
+      if (!promise || !promise.then) {
+        console.warn('pageRequest需要返回一个Promise,当前返回值 :', promise)
+      }
+      return promise.then(ret => {
+        if (!ret) {
+          console.warn('pageRequest请求结果异常,res:', ret)
+        }
         const pageFormat = this.crud.format.page.response
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
+        if (data == null) {
+          console.warn('获取返回结果不正确，请参考: "http://greper.gitee.io/d2-crud-plus/guide/quickstart.html#_4-修改http响应拦截的返回结果"')
+        }
         let records = format(data, pageFormat.records)
         const current = format(data, pageFormat.current)
         const size = format(data, pageFormat.size)
@@ -529,9 +539,11 @@ export default {
           }
         }
 
-        if (records == null || current == null || size == null) {
-          console.warn('请确保format配置或ret的格式正确:', ret)
+        if (records == null || current == null || size == null || total == null) {
+          console.warn('请确保format配置或response的格式正确,response:', ret, ',format:', pageFormat)
+          console.warn('你可以在此处打个断点调试一下,请参考："http://greper.gitee.io/d2-crud-plus/guide/structure.html#自定义数据结构"')
         }
+
         this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })
 
         // 拍平数据

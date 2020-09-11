@@ -8,8 +8,7 @@ describe('树形组件', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '树形组件',
+    url: '/demo/form/tree',
     doAdd () {
     },
     doEdit () {

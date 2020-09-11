@@ -8,8 +8,7 @@ describe('日期组件', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '日期时间',
+    url: '/demo/form/date',
     doAdd () {
       cy.formItem('时间戳').find('.el-input').click()
 

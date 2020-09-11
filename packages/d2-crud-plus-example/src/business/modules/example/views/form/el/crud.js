@@ -25,7 +25,6 @@ export const crudOptions = {
         disabled: false,
         component: {
           show (context) {
-            console.log('switch search show:', context)
             return true
           }
         }
@@ -33,17 +32,23 @@ export const crudOptions = {
       form: {
         component: {
           show (context) {
-            console.log('switch form show:', context)
             return true
           }
         }
       },
       component: {
         disabled (context) {
-          console.log('switch row disabled:', context)
           return !context.form.number
         }
       }
+    },
+    {
+      title: '开关2',
+      key: 'switch2',
+      sortable: true,
+      search: { disabled: false },
+      type: 'dict-switch', // 区别在于这个是包装组件，支持dict，并且单元格使用tag展示
+      dict: { data: [{ value: 1, label: '开启' }, { value: 0, label: '关闭' }] }
     },
     {
       title: '滑块',
@@ -71,7 +76,7 @@ export const crudOptions = {
         if (row[col.key] === '') {
           row[col.key] = null
         }
-        console.log('tranfer:', row, row[col.key], col.key)
+        // console.log('tranfer:', row, row[col.key], col.key)
       }
 
     },

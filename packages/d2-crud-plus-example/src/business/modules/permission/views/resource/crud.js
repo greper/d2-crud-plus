@@ -138,7 +138,7 @@ export const crudOptions = (vm) => {
               placeholder: ''
             }
           },
-          helper: 'layoutHeaderAside或/permission/views/resource'
+          helper: '最顶层的菜单必须配置为layoutHeaderAside。子菜单配置组件路径，例如/permission/views/resource'
         },
         width: 180
         // type: 'select',
@@ -186,7 +186,7 @@ export const crudOptions = (vm) => {
         title: '父节点',
         key: 'parentId',
         sortable: true,
-        width: 90,
+        width: 100,
         type: 'tree-selector',
         dict: {
           url: '/permission/manager/resource/tree',

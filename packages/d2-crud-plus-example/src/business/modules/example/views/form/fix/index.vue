@@ -63,13 +63,13 @@ export default {
       return DelObj(row.id)
     },
     handleCurrentChange (currentRow, oldCurrentRow) {
-      this.$message('单选' + currentRow.data)
+      this.$message('单选事件：' + currentRow.data)
     },
     handleSelectionChange (selection) {
       console.log('多选数据：', selection)
     },
     customHandleBtnHandle ({ index, row }) {
-      this.$message('自定义操作按钮：' + row.data)
+      this.$message('自定义操作按钮：' + row.data + ',index:' + index)
     }
   }
 }

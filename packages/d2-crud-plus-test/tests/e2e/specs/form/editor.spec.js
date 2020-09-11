@@ -8,8 +8,7 @@ describe('富文本', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '富文本',
+    url: '/demo/form/editor',
     idColIndex: 2,
     editDisabled: true,
     viewDisabled: true,

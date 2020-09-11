@@ -26,7 +26,9 @@ export default {
      */
     options: {
       type: Object,
-      default: null
+      default () {
+        return {}
+      }
     },
     /**
      * @description 索引

@@ -2,6 +2,6 @@
 
 describe('登录', () => {
   it('登录', () => {
-    cy.login2('admin', 'admin1111')
+    cy.login2('admin', 'admin')
   })
 })

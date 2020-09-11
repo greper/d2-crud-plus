@@ -8,8 +8,7 @@ describe('多级数据', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: '多级数据',
+    url: '/demo/form/deepData',
     doAdd () {
       cy.formItem('用户名').find('input').type('小红').should('have.value', '小红')
       cy.formItem('性别').find('.el-select').click()

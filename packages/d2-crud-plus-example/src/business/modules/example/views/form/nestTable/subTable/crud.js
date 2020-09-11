@@ -3,7 +3,7 @@ export const crudOptions = {
     appendToBody: true // 子表格必须 否则弹出对话框无法显示最顶层
   },
   options: {
-    height: '100%', // 表格高度100%, 使用toolbar必须设置
+    height: '500px', // 子表格必须设置高度， 你也可以在这里设置100%，然后给子表格外面包一层有高度的div
     highlightCurrentRow: true,
     rowKey: 'id'
   },

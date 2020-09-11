@@ -1,6 +1,6 @@
 {
   "name": "d2-crud-plus-test",
-  "version": "1.16.2",
+  "version": "1.16.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
@@ -13,8 +13,10 @@
     "build:analyze": "vue-cli-service build --mode analyze",
     "build:preview": "vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
-    "test:e2e": "vue-cli-service test:e2e  --url http://localhost:8080",
-    "test.all:e2e": "rimraf ./tests/e2e/results  && vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
+    "test": "vue-cli-service test:e2e  --url http://localhost:8080",
+    "test.pm": "vue-cli-service test:e2e --mode pm --url http://localhost:8080",
+    "test.all": "rimraf ./tests/e2e/results  && vue-cli-service test:e2e  --headless --url http://localhost:8080 && npm run buildReport",
+    "test.all.pm": "rimraf ./tests/e2e/results  && vue-cli-service test:e2e --mode pm  --headless --url http://localhost:8080 && npm run buildReport",
     "test.ci1:e2e": "vue-cli-service test:e2e  --headless --mode test  --url http://localhost:8080 --spec tests/e2e/specs/public/login.spec.js",
     "test.ci:e2e": "vue-cli-service test:e2e  --headless --mode test",
     "test.ci.pm:e2e": "vue-cli-service test:e2e  --headless --mode test_pm  --url http://api.veryreader.com:9080/D2CrudPlusExample",

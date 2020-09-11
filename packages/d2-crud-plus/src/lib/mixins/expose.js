@@ -52,7 +52,8 @@ export default {
      * @returns
      */
     getD2CrudTableData () {
-      return this.getD2Crud().d2CrudData
+      const d2Crud = this.getD2Crud()
+      return d2Crud == null || d2Crud.d2CrudData
     },
 
     /**

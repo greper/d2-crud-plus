@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/disabled',
     doAdd () {
       cy.formItem('禁用全部').find('.el-switch__core').click()
       cy.formItem('普通禁用动态').find('.el-switch__core').click()

@@ -8,8 +8,7 @@ describe('图标选择', () => {
   })
   createCrudTest({
     cy,
-    parentMenu: '表单组件示例',
-    subMenu: '图标选择',
+    url: '/demo/form/icon',
     doAdd () {
     },
     doEdit () {

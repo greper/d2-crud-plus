@@ -9,8 +9,7 @@ describe(menu, () => {
   })
   createCrudTest({
     cy,
-    parentMenu: 'CRUD增强功能',
-    subMenu: menu,
+    url: '/demo/form/slot',
     doAdd () {
       cy.formItem('slot自定义').find('input').type('123').should('have.value', '123')
       cy.formItem('创建时间').find('.el-input').click()

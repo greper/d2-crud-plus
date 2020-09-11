@@ -71,6 +71,9 @@ function get (dict, options) {
     }
     // 处理远程结果
     return promise.then((ret) => {
+      if (ret == null) {
+        console.warn('获取的远程数据字典为空，请检查后台返回,', url)
+      }
       // prop mapping
       let data = ret.data
       if (data == null) {

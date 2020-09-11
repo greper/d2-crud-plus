@@ -10387,6 +10387,13 @@ vuepress-plugin-smooth-scroll@^0.0.3:
   dependencies:
     smoothscroll-polyfill "^0.4.3"
 
+vuepress-theme-docmirror@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.npmjs.org/vuepress-theme-docmirror/-/vuepress-theme-docmirror-1.5.4.tgz#a3a26d9948ed943429e74e1be8b2b1a1a5c33626"
+  integrity sha512-dA9+eNBGBZsJYKCVp+XENTcsNcqw/c7wsSlK1Km4T2BbE+UG7//0coWeTBiISBV52n+NUeE468BxFwGYPan1tA==
+  dependencies:
+    "@vuepress/theme-default" "1.5.4"
+
 vuepress@^1.5.4:
   version "1.5.4"
   resolved "https://registry.npmjs.org/vuepress/-/vuepress-1.5.4.tgz#282d2412c1c7269d8bd93b83d421ef53b77b45f6"

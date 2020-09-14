@@ -1,5 +1,5 @@
 # 配置: form-options
-
+[支持el-dialog的全部参数](https://element.eleme.cn/#/zh-CN/component/dialog)
 ## labelWidth
 
 * 说明: 表单 label 宽度
@@ -19,6 +19,17 @@
 * 类型: Boolean
 * 可选值: 无
 * 默认值: true
+
+## closeOnClickModal
+
+* 说明: 是否点击遮罩层关闭对话框。
+* 类型: String
+* 可选值: 无
+* 默认值: true   
+
+::: warning     
+用户在选择文本时，如果划到了对话框外边会误触发对话框关闭，可根据情况酌情关闭此功能
+:::
 
 ## saveButtonDisabled
 * 说明: 是否禁用保存按钮

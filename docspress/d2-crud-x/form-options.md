@@ -1,5 +1,7 @@
 # 配置: form-options
-[支持el-dialog的全部参数](https://element.eleme.cn/#/zh-CN/component/dialog)
+[支持el-dialog的参数](https://element.eleme.cn/#/zh-CN/component/dialog)
+[支持el-form的参数](https://element.eleme.cn/#/zh-CN/component/form)
+
 ## labelWidth
 
 * 说明: 表单 label 宽度

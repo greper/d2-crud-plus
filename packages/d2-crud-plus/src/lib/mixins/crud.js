@@ -213,7 +213,11 @@ export default {
       this.initColumnsGroup('edit', crud)
       this.initColumnsGroup('view', crud)
 
+      // 查询字段排序
+      this._sortSearchColumns()
+
       this.getPageSizeFromStorage()
+
       this.initAfter()
       console.log('crud inited:', crud)
     },
@@ -242,6 +246,18 @@ export default {
       }
       merge(target, userConfig)
       return target
+    },
+    _sortSearchColumns () {
+      if (!this.crud.searchOptions || !this.crud.searchOptions.columns || this.crud.searchOptions.columns.length === 0) {
+        return
+      }
+      const columns = this.crud.searchOptions.columns
+      columns.forEach(item => {
+        if (item.order === undefined) {
+          item.order = 10
+        }
+      })
+      columns.sort((a, b) => { return a.order - b.order })
     },
     initColumnItem (parantColumns, item) {
       if (item.children != null && item.children.length > 0) {
@@ -863,6 +879,5 @@ export default {
     isVxeTable () {
       return this.crud.options.tableType === 'vxe-table'
     }
-
   }
 }

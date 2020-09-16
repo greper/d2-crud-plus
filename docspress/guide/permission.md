@@ -62,7 +62,7 @@ run ApiServerApplication
 ```js
 export default {
     created(){
-        if(this.hasPermissions('permission:role:add')){
+        if(this.hasPermissions('permission:role:add')){ //支持数组
             console.log("您拥有添加权限")
         }
     }
@@ -72,40 +72,13 @@ export default {
 ## 3 权限模块如何接入到你的d2-admin项目中
  1. 在`.env`中配置`VUE_APP_PM_ENABLED = true`
  2. 复制example中 `src/business/modules/permission` 到你的d2-admin项目中
- 3. 引入`permission`模块
+ 3. 安装`permission`模块
 ```js
-// src/business/modules/index.js 也可以在main.js中加入
+// 在main.js中加入
 import '@/business/modules/permission' // 加载permission
 ```
- 4. 复制`src/router/router.hook.js` 
- 5. 在`src/router/index.js` 的`beforeEach` 中加入以下代码
-```js {12-17}
-router.beforeEach(async (to, from, next) => {
-  // 确认已经加载多标签页数据 https://github.com/d2-projects/d2-admin/issues/201
-  await store.dispatch('d2admin/page/isLoaded')
-  // 确认已经加载组件尺寸设置 https://github.com/d2-projects/d2-admin/issues/198
-  await store.dispatch('d2admin/size/isLoaded')
- // 进度条
-  NProgress.start()
-  // 关闭搜索面板
-  store.commit('d2admin/search/set', false)
-
-  // 远程获取权限与菜单
-  if (RouterHook.beforeEach) {
-    const hookRet = await RouterHook.beforeEach(to, from, next)
-    if (hookRet) {
-      return
-    }
-  }
-  // add end
-
-  // 验证当前路由所有的匹配中是否需要有登录验证的
-  if (to.matched.some(r => r.meta.auth)) {
-    ...
-  }
-}
-```
-  6. 在`/src/store/modules/d2admin/modules/account.js`中加入以下代码
+   4.  在`/src/store/modules/d2admin/modules/account.js`中加入以下代码   
+ 用于注销时清空权限信息
 ```js {12-14}
     logout ({ commit, dispatch }, { confirm = false } = {}) {
       /**
@@ -126,4 +99,37 @@ router.beforeEach(async (to, from, next) => {
           name: 'login'
         })
       }
+```
+
+## 4 如果要使用自己的后端权限接口
+请修改 `@/src/business/modules/permission/store/api.js`
+```js
+import { request } from '@/api/service'
+export function getPermissions () {
+  return request({
+    url: '/auth/user/permissions',
+    method: 'get'
+  }).then(ret => {
+    // 如果使用你自己的后端，需要在此处将返回结果改造为本模块需要的结构
+    // 结构详情，请参考示例中打印的日志 ”获取权限数据成功：{...}“ （实际上就是“资源管理”页面中列出来的数据）
+    return ret
+  })
+}
+
+```
+
+## 5. 权限执行逻辑说明
+更多详细信息请参考 `@/src/business/modules/permission/index.js`
+```js
+// 开启权限模块
+if (isEnabled) {
+  // 注册v-permission指令, 用于控制按钮权限
+  Vue.use(permissionDirective)
+  // 注册权限的store模块，用于存储当前权限数据
+  store.registerModule('permission', storeModule)
+  // 注册路由钩子
+  // 通过路由守卫，在登录成功后拦截路由，从后台加载权限数据
+  // 然后将权限数据转化为菜单和路由，添加到系统中
+  registerRouterHook()
+}
 ```

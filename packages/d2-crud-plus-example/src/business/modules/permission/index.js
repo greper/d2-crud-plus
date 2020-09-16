@@ -31,6 +31,7 @@ function registerRouterHook () {
     try {
       console.log('PM is enabled')
       const menuTreeRes = await getPermissions()
+      console.log('获取权限数据成功：', menuTreeRes)
       const menuTree = menuTreeRes.data
       // 加载动态路由
       await store.dispatch('permission/generateRoutes', { menuTree })
@@ -44,12 +45,15 @@ function registerRouterHook () {
 }
 
 const isEnabled = process.env.VUE_APP_PM_ENABLED === 'true'
+// 开启权限模块
 if (isEnabled) {
-  // 注册v-permission指令
+  // 注册v-permission指令, 用于控制按钮权限
   Vue.use(permissionDirective)
-  // 权限的store模块
+  // 注册权限的store模块，用于存储当前权限数据
   store.registerModule('permission', storeModule)
   // 注册路由钩子
+  // 通过路由守卫，在登录成功后拦截路由，从后台加载权限数据
+  // 然后将权限数据转化为菜单和路由，添加到系统中
   registerRouterHook()
 }
 

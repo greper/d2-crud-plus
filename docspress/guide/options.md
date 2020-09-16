@@ -28,6 +28,7 @@ export const crudOptions = {
         component:{ //查询框组件配置，默认根据form配置生成 
            name:'dict-select' //支持任何v-model组件
         },
+        order: 10, //查询字段排序，数字越小越靠前
         // 是否启用搜索框的slot插槽,需要d2-crud-x才支持
         // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
         slot:false 

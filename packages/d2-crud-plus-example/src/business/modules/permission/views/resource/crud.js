@@ -169,7 +169,9 @@ export const crudOptions = (vm) => {
           }
         },
         // search: { disabled: true }, //开启查询
-        // form: { disabled: true } //表单配置
+        form: {
+          rules: [{ required: true, message: '请选择资源类型' }]
+        },
         // disabled: false //是否隐藏列
         sortable: true
       },
@@ -205,34 +207,11 @@ export const crudOptions = (vm) => {
               multiple: false,
               elProps: {
                 defaultExpandAll: true
-              }
+              },
+              dict: { cache: false }
             }
           }
         }
-
-        // type: 'select',
-        // search: { disabled: true }, //开启查询
-        // form: { disabled: true } //表单配置
-        // disabled: false //是否隐藏列
-      },
-      {
-        title: '所属平台',
-        key: 'platformId',
-        type: 'select',
-        disabled: true,
-        search: { disabled: true }, // 开启查询
-        dict: { url: '/permission/manager/platform/list', value: 'id', label: 'name' },
-        addForm: { // 添加时可以修改
-          component: { disabled: false }
-        },
-        form: {
-          component: { disabled: true }, // 编辑时不允许修改
-          valueChange (key, value) {
-            console.log('-----你选择了', value, vm.crud.columnsMap.platformId.component.props.dict.dataMap[value].name)
-          }
-        }, // 表单配置
-        // disabled: false //是否隐藏列
-        sortable: true
       }
     ]
   }

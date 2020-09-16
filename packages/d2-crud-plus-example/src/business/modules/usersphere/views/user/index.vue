@@ -29,15 +29,9 @@
         <el-dialog title="授予角色"
                    :visible.sync="dialogPermissionVisible">
 
-            <el-collapse v-model="activeNames" >
-                <el-collapse-item v-for="group in roleList" :key="group.platform.id" :title="group.platform.name" :name="group.platform.id">
-                        <el-checkbox-group v-model="group.checked">
-                        <el-checkbox v-for="option in group.roles"
-                                     :key="option.id"
-                                     :label="option.id" >{{option.name}}</el-checkbox>
-                    </el-checkbox-group>
-                </el-collapse-item>
-            </el-collapse>
+          <el-checkbox-group v-model="checkedRoleIds">
+            <el-checkbox class="d2-mb-10" v-for="option in roleList" :key="option.id"  :label="option.id" >{{option.name}}</el-checkbox>
+          </el-checkbox-group>
 
             <div slot="footer"
                  class="dialog-footer">
@@ -52,15 +46,14 @@
 <script>
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { GetList, AddObj, UpdateObj, DelObj, GetObj, GetRoleList, DoAuthz } from './api'
+import * as api from './api'
 export default {
   name: 'User',
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      activeNames: [],
       roleList: [],
-      checked: [],
+      checkedRoleIds: [],
       dialogPermissionVisible: false,
       currentUserId: undefined
     }
@@ -70,48 +63,36 @@ export default {
       return crudOptions(this)
     },
     pageRequest (query) {
-      return GetList(query)
+      return api.GetList(query)
     },
     addRequest (row) {
-      return AddObj(row)
+      return api.AddObj(row)
     },
     updateRequest (row) {
-      return UpdateObj(row)
+      return api.UpdateObj(row)
     },
     delRequest (row) {
-      return DelObj(row.id)
+      return api.DelObj(row.id)
     },
     infoRequest (row) {
-      return GetObj(row.id)
+      return api.GetObj(row.id)
     },
     authzHandle (event) {
-      GetRoleList().then(ret => {
+      api.GetRoleList().then(ret => {
         const roleList = ret.data
         let userRoles = event.row.roles
         if (userRoles == null) {
           userRoles = []
         }
-        this.activeNames.splice(0, this.activeNames.length)
-        roleList.forEach(item => {
-          if (!item.roles) {
-            return
-          }
-          item.checked = item.roles.map(item => item.id).filter(item => userRoles.indexOf(item) >= 0)
-          this.activeNames.push(item.platform.id)
-        })
+        const checkedRoleIds = roleList.map(item => item.id).filter(item => userRoles.indexOf(item) >= 0)
+        this.$set(this, 'checkedRoleIds', checkedRoleIds)
         this.$set(this, 'roleList', roleList)
         this.currentUserId = event.row.id
         this.dialogPermissionVisible = true
       })
     },
     updatePermession (userId) {
-      let checked = []
-      for (const item of this.roleList) {
-        if (item.checked) {
-          checked = checked.concat(item.checked)
-        }
-      }
-      DoAuthz(userId, checked).then(ret => {
+      api.DoAuthz(userId, this.checkedRoleIds).then(ret => {
         this.dialogPermissionVisible = false
         this.doRefresh()
       })

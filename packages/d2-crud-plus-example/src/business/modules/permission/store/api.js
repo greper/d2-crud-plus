@@ -5,10 +5,9 @@ export function getUserInfo () {
     method: 'get'
   })
 }
-export function getPermissions (platformCode) {
+export function getPermissions () {
   return request({
     url: '/auth/user/permissions',
-    method: 'get',
-    params: { platformCode }
+    method: 'get'
   })
 }

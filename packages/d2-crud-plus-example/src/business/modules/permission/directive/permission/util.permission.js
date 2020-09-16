@@ -5,8 +5,7 @@ export default {
     let need = []
     if (typeof value === 'string') {
       need.push(value)
-    }
-    if (value && value instanceof Array && value.length > 0) {
+    } else if (value && value instanceof Array && value.length > 0) {
       need = need.concat(value)
     }
     if (need.length === 0) {

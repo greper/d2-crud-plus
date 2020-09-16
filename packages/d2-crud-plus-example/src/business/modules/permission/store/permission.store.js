@@ -2,6 +2,7 @@ import constantRoutes, { frameInRoutes } from '@/router/routes'
 import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
 import { menuHeader, supplementPath } from '@/menu'
+import router from '@/router'
 const StaticMenuHeader = [...menuHeader] // 静态菜单暂存，重新登录后，需要重新加载动态菜单与此处的静态菜单合并
 /**
  * 构建路由列表
@@ -108,7 +109,7 @@ const state = {
 }
 
 const mutations = {
-  SET_ROUTES: (state, { accessedRoutes: routes, permissions }) => {
+  setRoutes: (state, { accessedRoutes: routes, permissions }) => {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
     state.inited = true
@@ -125,20 +126,23 @@ const mutations = {
 const actions = {
   generateRoutes ({ rootState, state, commit }, { menuTree }) {
     return new Promise(resolve => {
-      const accessedRoutes = formatRouter(null, menuTree)
-      const permissions = formatPermissions(menuTree, [])
-      commit('SET_ROUTES', { accessedRoutes, permissions })
-
-      const menus = supplementPath(formatMenu(menuTree))
-      menuHeader.splice(0, menuHeader.length)
-      menuHeader.push(...StaticMenuHeader)
-      menuHeader.push(...menus)
-
+      // 处理路由
+      const accessedRoutes = formatRouter(null, menuTree) // 根据后台获取到的资源树构建路由列表
+      const permissions = formatPermissions(menuTree, []) // 从资源树中抽取权限code列表
+      commit('setRoutes', { accessedRoutes, permissions }) // 将菜单和权限存储到vuex里面
+      router.addRoutes(accessedRoutes) // 添加动态路由
       // 处理路由 得到每一级的路由设置
       commit('d2admin/page/init', frameInRoutes.concat(accessedRoutes), { root: true })
-      // 设置顶栏菜单
+
+      // 处理菜单
+      const menus = supplementPath(formatMenu(menuTree)) // 根据后台获取的资源树，构建菜单
+      menuHeader.splice(0, menuHeader.length)
+      menuHeader.push(...StaticMenuHeader) // 重新构建菜单列表
+      menuHeader.push(...menus) // 将动态菜单放进去
+
+      // 重新设置顶栏菜单
       commit('d2admin/menu/headerSet', menuHeader, { root: true })
-      // 设置侧边栏菜单
+      // 重新设置侧边栏菜单
       if (rootState.d2admin.menu.asideSet == null) {
         const defaultMenuIndex = parseInt(process.env.VUE_APP_D2P_MENU_DEFAULT)
         if (defaultMenuIndex >= 0) {
@@ -148,10 +152,10 @@ const actions = {
           console.warn('默认左侧菜单未配置：VUE_APP_D2P_MENU_DEFAULT=', process.env.VUE_APP_D2P_MENU_DEFAULT)
         }
       }
-      // 初始化菜单搜索功能
+      // 重新初始化菜单搜索功能
       commit('d2admin/search/init', menuHeader, { root: true })
 
-      resolve(accessedRoutes)
+      resolve(true)
     })
   },
   clear ({ commit }) {

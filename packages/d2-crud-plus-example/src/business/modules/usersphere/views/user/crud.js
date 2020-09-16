@@ -198,6 +198,9 @@ export const crudOptions = (vm) => {
         form: { // 表单配置
           disabled: true // 禁用表单编辑
         },
+        view: {
+          disabled: true
+        },
         sortable: true
       }
     ]

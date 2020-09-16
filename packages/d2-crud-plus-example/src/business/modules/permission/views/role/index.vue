@@ -6,11 +6,6 @@
               <h3>如何启用权限管理，请点击下面帮助链接</h3>
               <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
             </div>
-            <div>
-              <h3>如果不需要平台管理，请按如下操作：</h3>
-              1、删除组件引用：&lt;platform-selector&gt;&lt;/platform-selector&gt; <br/>
-              2、删除 methods.doLoad() 方法
-            </div>
           </example-helper>
         </template>
         <d2-crud-x
@@ -27,7 +22,6 @@
           <div slot="header">
             <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
 
-            <platform-selector size="small" @change="platformChanged" @init="platformInit"/>
             <el-button v-permission="'permission:role:add'" size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
 
             <crud-toolbar :search.sync="crud.searchOptions.show"
@@ -66,16 +60,13 @@
 <script>
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
-import { GetList, AddObj, UpdateObj, DelObj, GetPermission, DoAuthz } from './api'
-import { GetTree } from '../resource/api'
-import PlatformSelector from '../../component/platform-selector'
+import * as api from './api'
+import * as resourceApi from '../resource/api'
 export default {
   name: 'Role',
   mixins: [d2CrudPlus.crud],
-  components: { PlatformSelector },
   data () {
     return {
-      platformId: 1,
       dsScopeData: [],
       treeData: [],
       checkedKeys: [],
@@ -90,34 +81,20 @@ export default {
     }
   },
   methods: {
-    initAfter () {
-    },
-    doLoad () {
-      // 打开页面不加载，等平台列表加载完了再刷新列表
-      // 如果你想要删除平台管理，这个方法需要删除
-    },
     getCrudOptions () {
       return crudOptions(this)
     },
     pageRequest (query) {
-      return GetList(query)
+      return api.GetList(query)
     },
     addRequest (row) {
-      return AddObj(row)
+      return api.AddObj(row)
     },
     updateRequest (row) {
-      return UpdateObj(row)
+      return api.UpdateObj(row)
     },
     delRequest (row) {
-      return DelObj(row.id)
-    },
-    platformInit (platformId) {
-      this.platformId = platformId
-      this.getSearch().setForm({ platformId }, true)
-      this.getSearch().doSearch()
-    },
-    platformChanged (platformId) {
-      this.platformInit(platformId)
+      return api.DelObj(row.id)
     },
     // 如果勾选节点中存在非叶子节点，tree组件会将其所有子节点全部勾选
     // 所以要找出所有叶子节点，仅勾选叶子节点，tree组件会将父节点同步勾选
@@ -137,7 +114,7 @@ export default {
     authzHandle (event) {
       console.log('authz', event)
 
-      GetTree({ platformId: this.platformId }).then(ret => {
+      resourceApi.GetTree().then(ret => {
         this.$set(this, 'treeData', ret.data)
         this.$set(this, 'checkedKeys', [])
         // this.treeData = ret.data
@@ -148,7 +125,7 @@ export default {
       })
     },
     updateChecked (id) {
-      return GetPermission(id).then(ret => {
+      return api.GetPermission(id).then(ret => {
         let checkedIds = ret.data
         // 找出所有的叶子节点
         checkedIds = this.getAllCheckedLeafNodeId(this.treeData, checkedIds, [])
@@ -161,7 +138,7 @@ export default {
     },
     updatePermession (roleId) {
       this.menuIds = this.$refs.menuTree.getCheckedKeys().concat(this.$refs.menuTree.getHalfCheckedKeys())
-      DoAuthz(roleId, this.menuIds).then(() => {
+      api.DoAuthz(roleId, this.menuIds).then(() => {
         this.dialogPermissionVisible = false
         this.updateChecked(roleId)
       })

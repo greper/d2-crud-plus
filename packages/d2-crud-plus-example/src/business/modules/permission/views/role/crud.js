@@ -91,32 +91,6 @@ export const crudOptions = (vm) => {
         }, // 表单配置
         // disabled: false //是否隐藏列
         sortable: true
-      },
-      {
-        title: '父角色id',
-        key: 'parentId',
-        sortable: true
-        // type: 'select',
-        // search: { disabled: true }, //开启查询
-        // form: { disabled: true } //表单配置
-        // disabled: false //是否隐藏列
-      },
-      {
-        title: '所属平台',
-        key: 'platformId',
-        type: 'select',
-        search: { disabled: true }, // 开启查询
-        dict: { url: '/permission/manager/platform/list', value: 'id', label: 'name' },
-        form: {
-          editTemplateHandle (form) {
-            form.component.disabled = true // 编辑时禁用控件，不允许编辑
-          },
-          valueChange (key, value) {
-            console.log('-----你选择了', value, vm.crud.columnsMap.platformId.component.props.dict.dataMap[value].name)
-          }
-        }, // 表单配置
-        // disabled: false //是否隐藏列
-        sortable: true
       }
 
     ]

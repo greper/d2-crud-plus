@@ -6,6 +6,5 @@ VUE_APP_PATH=/
 VUE_APP_API=/api/
 
 VUE_APP_PM_ENABLED=true
-VUE_APP_PM_PLATFORM=admin
 # 关闭cdn
 VUE_APP_NO_CDN=true

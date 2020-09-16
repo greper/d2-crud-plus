@@ -10,7 +10,6 @@ import util from '@/libs/util.js'
 
 // 路由数据
 import routes from './routes'
-import RouterHook from '@/router/router.hook'
 
 // fix vue-router NavigationDuplicated
 const VueRouterPush = VueRouter.prototype.push
@@ -29,7 +28,6 @@ const router = new VueRouter({
   routes
 })
 
-const isBaiduTraceEnabled = process.env.VUE_APP_BAIDU_TRACE === 'true'
 /**
  * 路由拦截
  * 权限验证
@@ -43,23 +41,6 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start()
   // 关闭搜索面板
   store.commit('d2admin/search/set', false)
-
-  // add by greper
-
-  // 百度分析
-  if (isBaiduTraceEnabled && to.path) {
-    if (window._hmt) {
-      window._hmt.push(['_trackPageview', '/#' + to.fullPath])
-    }
-  }
-
-  if (RouterHook.beforeEach) {
-    const hookRet = await RouterHook.beforeEach(to, from, next)
-    if (hookRet) {
-      return
-    }
-  }
-  // add end
 
   // 验证当前路由所有的匹配中是否需要有登录验证的
   if (to.matched.some(r => r.meta.auth)) {

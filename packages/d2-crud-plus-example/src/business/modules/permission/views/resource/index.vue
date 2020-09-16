@@ -6,11 +6,6 @@
           <h3>如何启用权限管理，请点击下面帮助链接</h3>
           <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
         </div>
-        <div>
-          <h3>如果不需要平台管理，请按如下操作：</h3>
-          1、删除组件引用：&lt;platform-selector&gt;&lt;/platform-selector&gt; <br/>
-          2、删除 methods.doLoad() 方法
-        </div>
       </example-helper>
     </template>
     <d2-crud-x
@@ -22,9 +17,6 @@
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-
-        <platform-selector slot="header" size="small" @change="platformChanged" @init="platformInit"></platform-selector>
-
         <el-button slot="header"  v-permission="'permission:resource:add'" size="small" type="primary" @click="addRootRow"><i class="el-icon-plus"/> 新增</el-button>
 
         <crud-toolbar :search.sync="crud.searchOptions.show"
@@ -43,30 +35,14 @@ import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 import { GetTree, AddObj, UpdateObj, DelObj, GetObj } from './api'
 import foreach from 'lodash.foreach'
-import PlatformSelector from '../../component/platform-selector'
 export default {
   name: 'Resource',
   mixins: [d2CrudPlus.crud],
-  components: { PlatformSelector },
   data () {
     return {
-      platformId: 1
     }
   },
   methods: {
-    doLoad () {
-      // 覆盖d2CrudPlus的首次加载方法， 打开页面不加载，等平台列表加载完了再刷新列表
-      // 如果你想要删除平台管理，这个方法需要删除
-    },
-    // 由平台选择组件触发列表查询
-    platformInit (platformId) {
-      this.platformId = platformId
-      this.getSearch().setForm({ platformId }, true)
-      this.getSearch().doSearch()
-    },
-    platformChanged (platformId) {
-      this.platformInit(platformId)
-    },
     getCrudOptions () {
       return crudOptions(this)
     },
@@ -112,10 +88,10 @@ export default {
       return GetObj(row.id)
     },
     handleAddSubResource ({ index, row }) {
-      this.addRow({ parentId: row.id, platformId: row.platformId })
+      this.addRow({ parentId: row.id })
     },
     addRootRow () {
-      this.addRow({ parentId: 0, platformId: this.platformId })
+      this.addRow({ parentId: 0 })
     }
 
   }

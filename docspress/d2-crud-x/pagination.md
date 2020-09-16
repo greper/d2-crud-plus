@@ -1,4 +1,5 @@
 # 配置: pagination
+[支持el-pagination的全部参数](https://element.eleme.cn/#/zh-CN/component/pagination)
 
 `pagination:false` 隐藏翻页组件
 

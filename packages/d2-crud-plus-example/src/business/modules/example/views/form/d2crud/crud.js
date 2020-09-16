@@ -23,7 +23,7 @@ export const crudOptions = (vm) => {
         title: '单选远程',
         key: 'status',
         sortable: true,
-        search: {},
+        search: { disabled: false },
         type: 'select',
         dict: {
           url: '/dicts/OpenStatusEnum'

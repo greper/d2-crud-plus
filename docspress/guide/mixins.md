@@ -172,12 +172,11 @@ columns:[
   } 
 ]
 ```
-```
 
 ### 5. 初始化过程
 
 下面是以上简化过程的伪代码
-
+```
 1.  `created()`中开始crud初始化
 2.  页面配置`crudOptions`覆盖全局配置`commonOption`
 2.  遍历`crudOptions.columns`，[详细过程](./column-type.md)
@@ -191,7 +190,7 @@ columns:[
 11.  生成最终的`crud配置`，输出日志 crud init `{crud}`（你可以在此检查生成的配置是否正确）
 12.  将`crud配置`传入`d2-crud-x`组件
 13.  触发`doSearch`方法执行`pageRequest`获取数据
-
+```
 
 ## 简化其他配置
 

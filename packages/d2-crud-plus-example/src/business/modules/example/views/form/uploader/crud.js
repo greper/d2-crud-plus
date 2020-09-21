@@ -131,6 +131,11 @@ export const crudOptions = (vm) => {
               }
             }
           }
+        },
+        component: {
+          props: {
+            elProps: { previewSrcList: null }
+          }
         }
       },
       {

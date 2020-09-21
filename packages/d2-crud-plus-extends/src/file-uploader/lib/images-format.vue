@@ -97,7 +97,7 @@ export default {
       return this.width
     },
     _elProps () {
-      const defaultElProps = { fit: 'contain', 'preview-src-list': this.urls }
+      const defaultElProps = { fit: 'contain', previewSrcList: this.urls }
       Object.assign(defaultElProps, this.elProps)
       return defaultElProps
     }

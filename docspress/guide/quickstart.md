@@ -411,6 +411,12 @@ export function DelObj (id) {
     {date: '2016-05-03',status: '2',province: 'wh,gz'}
   ]
 ```
+
+::: tip    
+示例中的数据为mock数据，实际开发中需要替换为你的真实后端接口      
+如果后端打算使用java的话，你可以参考[配套java后端](https://github.com/greper/d2-crud-plus-server)   
+以上代码还可以通过[代码生成](./generate.md)   
+:::
 ### 4.  添加路由和菜单
 如果是在example项目中添加新crud，则在如下文件中添加路由和菜单。   
 `packages/d2-crud-plus-example/src/business/modules/example/index.js`

@@ -421,7 +421,7 @@ export function DelObj (id) {
 如果是在example项目中添加新crud，则在如下文件中添加路由和菜单。   
 `packages/d2-crud-plus-example/src/business/modules/example/index.js`
 
-如果是你自己的d2-admin项目，这部分你应该相当清楚了
+如果是你自己的d2-admin项目，请参考[路由配置](https://d2.pub/zh/doc/d2-admin/router/#数据) ，[菜单配置](https://d2.pub/zh/doc/d2-admin/menu/#数据源)
 
 ### 5. 看看效果    
 

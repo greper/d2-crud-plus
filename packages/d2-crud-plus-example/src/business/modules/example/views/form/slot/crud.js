@@ -11,6 +11,11 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       width: 400,
+      edit: {
+        text (scope) {
+          return '编辑' + scope.$index
+        }
+      },
       custom: [
         {
           text: '自定义排序',

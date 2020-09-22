@@ -135,7 +135,7 @@ valueChange (key, value, form, { getColumn, mode, component, immediate, getCompo
             }
           },
 ```
-DictSelect组件ref暴露如下一些方法可以操作字典：
+DictSelect、DictRadio、DictCheckbox组件ref暴露如下一些方法可以操作字典：
 ```
 component.clearDict()  //清除字典
 component.loadDict() //加载字典

@@ -87,7 +87,7 @@
               <div
                 flex-box="0"
                 class="component--list-item-handle handle">
-                <d2-icon name="bars"/>
+                <i class="el-icon-sort" ></i>
               </div>
             </div>
           </transition-group>

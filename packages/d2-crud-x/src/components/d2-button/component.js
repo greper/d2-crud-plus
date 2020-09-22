@@ -12,7 +12,6 @@ export default {
         }
         style={ this.block ? { width: '100%' } : {} }
         on-click={ this.onClick }>
-        { this.fa ? <d2-icon name={ this.fa }/> : undefined }
         { this.fa && (this.label || this.$slots.default) ? ' ' : undefined }
         { this.label ? this.label : undefined }
         { this.$slots.default }

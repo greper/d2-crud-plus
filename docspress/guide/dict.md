@@ -114,3 +114,39 @@ dict:{
   }
 }
 ```
+
+## 动态修改字典数据
+
+直接修改dict.data无法动态修改select的选项数据
+
+方式1： 配置DictSelect组件的options(数据结构与dict.data一致)，options参数比dict.data具有更高优先级，并且可以动态修改
+```
+valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
+       getColumn.component.props.options=[{字典数据}]
+ },
+```
+方式2： 参考选择联动http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/linkage
+```
+valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
+            form.city = undefined // 将“city”的值置空
+            form.county = undefined// 将“county”的值置空
+            if (value) {
+              getComponent('city').reloadDict() // 执行city的select组件的reloadDict()方法，触发“city”重新加载字典
+            }
+          },
+```
+DictSelect组件ref暴露如下一些方法可以操作字典：
+```
+component.clearDict()  //清除字典
+component.loadDict() //加载字典
+component.setDictData(data) //修改字典数据
+```
+
+方式3：动态修改dict.url 也会触发字典重载
+```
+valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
+       getColumn.component.props.dict.url=dict.url?params=xxx //不同的参数获取不同的字典列表
+ },
+
+```
+

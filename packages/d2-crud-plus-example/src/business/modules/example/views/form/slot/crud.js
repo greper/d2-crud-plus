@@ -7,6 +7,7 @@ export const crudOptions = (vm) => {
       componentType: 'form'
     },
     formOptions: {
+      width: '80%',
       center: true // 标题与按钮居中布局
     },
     rowHandle: {

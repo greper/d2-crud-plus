@@ -1,5 +1,5 @@
 import HeightUtil from '../utils/util.height'
-import { cloneDeep, merge, forEach, get, set } from 'lodash'
+import { cloneDeep, forEach, get, merge, set } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
@@ -16,6 +16,7 @@ export default {
           compact: undefined
         },
         format: {
+          // 基本可以废弃
           flatData: { // 是否支持数据扁平化，将数据中的嵌套object拍平
             disabled: true, // 默认禁用
             symbol: '#', // key分隔符
@@ -61,7 +62,7 @@ export default {
           saveLoading: false,
           gutter: 20,
           fullscreen: false,
-          updateTableDataAfterEdit: false
+          updateTableDataAfterEdit: false // 是否在更新和添加数据后直接更新表格数据，默认false，因为提交到服务端后，将会自动刷新数据
         },
         options: {
           rowKey: 'id',
@@ -878,6 +879,36 @@ export default {
      */
     isVxeTable () {
       return this.crud.options.tableType === 'vxe-table'
+    },
+
+    handleExport () {
+      if (!this.crud.pageOptions.export) {
+        console.log('您还未开启export功能：', "请配置'pageOptions.export:{}'")
+        return
+      }
+
+      const tips = this.crud.pageOptions.export.tips ? this.crud.pageOptions.export.tips : '确定要导出数据吗？'
+      return this.$confirm(tips, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        return this.doExport({
+          search: this.crud.searchOptions.form,
+          columns: this.crud.columns,
+          data: this.crud.data
+        })
+      }).catch(() => {
+        // console.log('取消删除', err)
+      })
+    },
+    doExport (context) {
+      if(this.crud.pageOptions.export.url){
+
+      }else if(this.crud.pageOptions.export.){
+
+      }
     }
+
   }
 }

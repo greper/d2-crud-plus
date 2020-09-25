@@ -3,6 +3,7 @@
     <el-button v-if="refresh!=null"  size="small" icon="el-icon-refresh" circle title="刷新列表" @click="doRefresh"/>
     <el-button v-if="search!=null" :type="search?'primary':''"  size="small" icon="el-icon-search" circle title="显示/隐藏查询" @click="doSearch"/>
     <el-button v-if="compact!=null" :type="compact?'primary':''"  size="small" icon="el-icon-rank" circle title="紧凑型页面" @click="doCompact"/>
+    <el-button v-if="['export']!=null" :type="['export']?'primary':''"  size="small" icon="el-icon-download" circle title="导出数据" @click="doExport"/>
     <el-button v-if="columns!=null" type="success" size="small" icon="el-icon-set-up" circle title="列设置"  @click="doColumnsFilter"/>
 
     <d2-table-columns-filter v-if="columns!=null" ref="columnsSetup"
@@ -42,6 +43,13 @@ export default {
     compact: {
       type: Boolean,
       default: undefined
+    },
+    /**
+     * 导出 , [true 开启 | false 关闭 ]
+     */
+    export: {
+      type: [Boolean],
+      default: false
     },
     /**
      * 列配置
@@ -86,6 +94,9 @@ export default {
     },
     handleColumnsFilterChanged (event) {
       this.$emit('columns-filter-changed', event)
+    },
+    doExport () {
+      this.$emit('export')
     }
   }
 }

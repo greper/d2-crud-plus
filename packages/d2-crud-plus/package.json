@@ -46,7 +46,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "@d2-projects/vue-table-export": "^1.0.1"
   },
   "postcss": {
     "plugins": {

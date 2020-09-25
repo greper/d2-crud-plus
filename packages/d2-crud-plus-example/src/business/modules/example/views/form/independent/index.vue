@@ -33,8 +33,13 @@
             <d2p-cropper-uploader v-bind="{type:'qiniu'}" ></d2p-cropper-uploader>
           </el-form-item>
         </el-col>
-        <el-col :span="5">
 
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-form-item label="ueditor">
+            <d2p-ueditor></d2p-ueditor>
+          </el-form-item>
         </el-col>
       </el-row>
 

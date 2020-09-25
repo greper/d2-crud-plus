@@ -56,6 +56,7 @@ run ApiServerApplication
 ## 2 按钮权限
 ### 2.1 directive控制
 ```html
+// 支持数组
 <el-button v-permission="'permission:role:add'">添加角色</el-button>
 ```
 ### 2.2 代码控制
@@ -101,7 +102,7 @@ import '@/business/modules/permission' // 加载permission
       }
 ```
 
-## 4 如果要使用自己的后端权限接口
+## 4 如何适配你自己的后端权限接口
 请修改 `@/src/business/modules/permission/store/api.js`
 ```js
 import { request } from '@/api/service'
@@ -117,6 +118,8 @@ export function getPermissions () {
 }
 
 ```
+
+使用配套后端，无需改造，开箱即用，[d2-crud-plus-server](https://github.com/greper/d2-crud-plus-server)
 
 ## 5. 权限执行逻辑说明
 更多详细信息请参考 `@/src/business/modules/permission/index.js`

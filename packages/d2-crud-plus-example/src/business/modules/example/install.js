@@ -110,6 +110,7 @@ function addFunction (menuGroup, path, title, badge) {
   const menu = {
     path: '/demo/' + path,
     title: title
+    // icon: 'el-file-o'
   }
   if (badge != null) {
     menu.badge = badge

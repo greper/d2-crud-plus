@@ -72,6 +72,7 @@ export default {
     },
     /**
      * 获取编辑框的组件参数配置
+     * 可以进行动态修改
      * groupKey可不传
      * @returns
      */
@@ -179,14 +180,22 @@ export default {
 
     /**
      * 对话框打开前被调用
+     * 此方法内无法执行 getEditFormTemplate，请写到doDialogOpened
      * @param context
      * @private
      */
     doDialogOpen (context) {},
 
     /***
-     * 对话框打开后被调用（注意：此时组件可能还没有被mounted）
-     * @param context { mode,form}
+     * 对话框打开后被调用（注意：此时组件还没有被mounted）
+     * 可以设置一些默认值，或者做一些动态修改的工作
+     * @param context :{
+          mode: this.formMode,
+          row: newRow,
+          form: formData,
+          template: this.formTemplateStorage,
+          groupTemplate: this.formTemplateGroupStorage
+      }
      */
     doDialogOpened (context) {},
 

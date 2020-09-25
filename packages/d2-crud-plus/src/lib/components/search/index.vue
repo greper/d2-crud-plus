@@ -55,12 +55,12 @@
       <el-button
           type="primary"
           @click="handleFormSubmit">
-        <d2-icon name="search"/>
+        <i class="el-icon-search"></i>
         查询
       </el-button>
       <el-button
         @click="handleFormReset">
-        <d2-icon name="refresh"/>
+        <i class="el-icon-refresh"></i>
         重置
       </el-button>
     </el-form-item>

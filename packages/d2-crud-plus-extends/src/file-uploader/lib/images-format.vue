@@ -3,7 +3,7 @@
      <el-image
        :style="{width:imgWidth,height:imgHeight,'margin-right':'10px',border:'1px solid #eee'}"
        v-for="url in urls"  :key="url" :src="url"
-       :preview-src-list="urls"  fit="contain">
+       v-bind="_elProps" >
        <template v-if="error==='slot'">
          <div slot="error" class="image-slot">
             <slot name="error"/>
@@ -97,7 +97,7 @@ export default {
       return this.width
     },
     _elProps () {
-      const defaultElProps = {}
+      const defaultElProps = { fit: 'contain', previewSrcList: this.urls }
       Object.assign(defaultElProps, this.elProps)
       return defaultElProps
     }

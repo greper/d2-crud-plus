@@ -118,9 +118,10 @@
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope)"
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope)"
-                         v-bind="item"
+                         :icon="handleAttribute(item.icon,null,scope)"
                          @click="item.doClick(scope)"
                          :label="handleAttribute(item.text,null,scope)"
+                         v-bind="item"
               />
             </template>
             <!-- 即将废弃 -->

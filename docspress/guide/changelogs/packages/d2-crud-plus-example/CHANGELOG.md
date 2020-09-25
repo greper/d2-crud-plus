@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.5](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.4...@d2-plus/d2-crud-plus-example@1.17.5) (2020-09-16)
+
+**Note:** Version bump only for package @d2-plus/d2-crud-plus-example
+
+
+
+
+
 ## [1.17.4](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.3...@d2-plus/d2-crud-plus-example@1.17.4) (2020-09-10)
 
 

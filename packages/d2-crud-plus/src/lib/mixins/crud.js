@@ -205,7 +205,7 @@ export default {
       for (const item of columns) {
         this.initColumnItem(crud.columns, item)
       }
-      if (crud.viewOptions && crud.viewOptions.disabled) {
+      if (crud.rowHandle && crud.viewOptions && crud.viewOptions.disabled && crud.rowHandle.view) {
         crud.rowHandle.view.show = false
       }
       // 配置group

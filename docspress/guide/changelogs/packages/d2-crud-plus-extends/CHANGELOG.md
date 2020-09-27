@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.16](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.14...d2p-extends@1.9.16) (2020-09-27)
+
+
+### Performance Improvements
+
+* extends升级一个小版本 ([161d0ec](https://github.com/greper/d2-crud-plus/commit/161d0ec8b4a2f437a5d474f18bf8c6bd8cb8a2df))
+* 修复图片format 配置elProps的问题 ([39aba20](https://github.com/greper/d2-crud-plus/commit/39aba2065216e02254fadb92400e781abbd5fbb1))
+* 修复图片format 配置elProps的问题 ([8391ae0](https://github.com/greper/d2-crud-plus/commit/8391ae0dcc79768757087edefc989bf72f27d833))
+
+
+
+
+
 ## [1.9.14](https://github.com/greper/d2-crud-plus/compare/d2p-extends@1.9.13...d2p-extends@1.9.14) (2020-09-16)
 
 **Note:** Version bump only for package d2p-extends

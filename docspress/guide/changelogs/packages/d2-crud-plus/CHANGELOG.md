@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.6](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.5...d2-crud-plus@1.16.6) (2020-09-27)
+
+
+### Bug Fixes
+
+* 修复隐藏操作列报错的bug ([0ab2d27](https://github.com/greper/d2-crud-plus/commit/0ab2d27cd970c4d804640682fef547181d8905a8))
+* 修复隐藏操作列报错的bug ([1d353ad](https://github.com/greper/d2-crud-plus/commit/1d353ad9f41be5b82840b8c18f8aece3122bdc17))
+* 兼容finally ([ce959f7](https://github.com/greper/d2-crud-plus/commit/ce959f7f1a17dc00bbb667f3c36d46e8d9c76daa))
+
+
+### Performance Improvements
+
+* toobar 和 search 增加文本配置，可以自定义展示文本 ([13e0183](https://github.com/greper/d2-crud-plus/commit/13e0183e4dd435f7647bb43a0b182d794fe98ab6))
+* 移除d2-icon依赖 ([2d8fdb4](https://github.com/greper/d2-crud-plus/commit/2d8fdb4292f7b26c7f9f8a7dbe9fbab9aca26119))
+
+
+
+
+
 ## [1.16.5](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.4...d2-crud-plus@1.16.5) (2020-09-16)
 
 

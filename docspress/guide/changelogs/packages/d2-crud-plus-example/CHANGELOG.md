@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.6](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.5...@d2-plus/d2-crud-plus-example@1.17.6) (2020-09-27)
+
+
+### Performance Improvements
+
+* extends升级一个小版本 ([161d0ec](https://github.com/d2-projects/d2-admin/commit/161d0ec8b4a2f437a5d474f18bf8c6bd8cb8a2df))
+* rowhandle btn 图标支持传入一个方法 ([90bca1c](https://github.com/d2-projects/d2-admin/commit/90bca1c64f8f9c3f6128f5adcf4ed21e0edf4beb))
+* toobar 和 search 增加文本配置，可以自定义展示文本 ([13e0183](https://github.com/d2-projects/d2-admin/commit/13e0183e4dd435f7647bb43a0b182d794fe98ab6))
+* 修复图片format 配置elProps的问题 ([39aba20](https://github.com/d2-projects/d2-admin/commit/39aba2065216e02254fadb92400e781abbd5fbb1))
+
+
+
+
+
 ## [1.17.5](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.4...@d2-plus/d2-crud-plus-example@1.17.5) (2020-09-16)
 
 **Note:** Version bump only for package @d2-plus/d2-crud-plus-example

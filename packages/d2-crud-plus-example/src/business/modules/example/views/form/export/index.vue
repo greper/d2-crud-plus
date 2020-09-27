@@ -4,7 +4,7 @@
       数据导出
       <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何开启导出功能】</span>
       <example-helper title="帮助说明" >
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/export.html">导出功能文档</link-button>
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/data-export.html">导出功能文档</link-button>
       </example-helper>
     </template>
     <d2-crud-x

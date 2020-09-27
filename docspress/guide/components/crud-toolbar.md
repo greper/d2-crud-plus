@@ -11,6 +11,7 @@
 |export|导出 , [true 开启 | false 关闭 ]|`Boolean` / `Object`|`false`|false|
 |columns|列配置|`Array`|`false`|undefined|
 |storage|是否保存用户列设置传string则表示传入缓存的主key|`String` / `Boolean`|`false`|true|
+|text|文本配置     `     {        refreshBtn: '刷新列表',        searchBtn: '显示/隐藏查询',        compactBtn: '紧凑型页面',        exportBtn: '导出数据',        columnsSetBtn: '列设置',        columnsSet: {          title: '列设置',          fixed: '固定',          order: '排序',          reset: '还原',          confirm: '确定',          unnamed: '未命名'        }      }     `|`Object`|`false`|undefined|
 
 <!-- @vuese:crud-toolbar:props:end -->
 

@@ -43,7 +43,7 @@
 
 <template>
   <el-drawer
-    title="列设置"
+    :title="_text.title"
     :visible.sync="active"
     size="300px"
     class="d2p-table-columns-filter"
@@ -64,7 +64,7 @@
                   {{ showLength }} / {{ options.length }}
                 </el-checkbox>
               </span>
-            <span class="title">固定 / 排序</span>
+            <span class="title">{{_text.fixed}} / {{_text.order}}</span>
           </div>
         <draggable
           ghost-class="ghost"
@@ -77,7 +77,7 @@
               class="component--list-item"
               flex="main:justify cross:center">
               <el-checkbox flex-box="1" v-model="currentValue[index].show">
-                {{ option.title || option.key || '未命名' }}
+                {{ option.title || option.key || _text.unnamed }}
               </el-checkbox>
               <d2-table-columns-fixed-controller
                 flex-box="0"
@@ -99,7 +99,7 @@
           <d2-button
             size="default"
             icon="el-icon-refresh"
-            label="还原"
+            :label="_text.reset"
             block
             @click="reset"/>
         </el-col>
@@ -108,7 +108,7 @@
             size="default"
             type="primary"
             icon="el-icon-check"
-            label="确定"
+            :label="_text.confirm"
             block
             @click="submit()"/>
         </el-col>
@@ -146,6 +146,10 @@ export default {
       type: [Boolean, String],
       default: true,
       required: false
+    },
+    text: {
+      type: Object,
+      default: undefined
     }
   },
   data () {
@@ -165,6 +169,18 @@ export default {
       const optionsLength = this.options.length
       const result = this.showLength > 0 && optionsLength !== this.showLength
       return result
+    },
+    _text () {
+      const def = {
+        title: '列设置',
+        fixed: '固定',
+        order: '排序',
+        reset: '还原',
+        confirm: '确定',
+        unnamed: '未命名'
+      }
+      lodash.merge(def, this.text)
+      return def
     }
   },
   watch: {

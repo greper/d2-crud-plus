@@ -6,6 +6,7 @@
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |options|查询参数，options.form为表单初始值|`Object`|`false`|-|
+|text|文本配置{search: '查询',reset: '重置'}|`Object`|`false`|-|
 
 <!-- @vuese:crud-search:props:end -->
 

@@ -56,12 +56,12 @@
           type="primary"
           @click="handleFormSubmit">
         <i class="el-icon-search"></i>
-        查询
+        {{_text.search}}
       </el-button>
       <el-button
         @click="handleFormReset">
         <i class="el-icon-refresh"></i>
-        重置
+        {{reset}}
       </el-button>
     </el-form-item>
     <slot name="suffix" :form="this.form"></slot>
@@ -86,6 +86,21 @@ export default {
     // 查询参数，options.form为表单初始值
     options: {
       type: Object
+    },
+    // 文本配置
+    // {search: '查询',reset: '重置'}
+    text: {
+      type: Object
+    }
+  },
+  computed: {
+    _text () {
+      const def = {
+        search: '查询',
+        reset: '重置'
+      }
+      lodash.merge(def, this.text)
+      return def
     }
   },
   data () {

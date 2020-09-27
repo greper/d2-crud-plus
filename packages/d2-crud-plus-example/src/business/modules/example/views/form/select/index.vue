@@ -21,11 +21,7 @@
           <el-button size="small" type="primary" @click="getStatusDict">根据列key获取字典data</el-button>
           <el-button size="small" type="primary" @click="getXxxDictMap">获取字典map</el-button>
         </el-button-group>
-        <crud-toolbar :search.sync="crud.searchOptions.show"
-                      :compact.sync="crud.pageOptions.compact"
-                      :columns="crud.columns"
-                      @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"/>
+        <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners" :text="toolbarText"/>
 
       </div>
     </d2-crud-x>
@@ -42,7 +38,21 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      show: true
+      show: true,
+      toolbarText: {
+        compactBtn: 'compact',
+        searchBtn: 'search hide',
+        refreshBtn: 'refresh',
+        exportBtn: 'export data',
+        columnsSetBtn: 'columns set',
+        columnsSet: {
+          title: 'columns set',
+          reset: 'reset',
+          confirm: 'ok',
+          fixed: 'fixed',
+          order: 'sort'
+        }
+      }
     }
   },
   mounted () {

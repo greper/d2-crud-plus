@@ -22,12 +22,7 @@
           <el-button   size="small" type="primary" @click="checkSecond">选中第一、二行</el-button>
 
         </el-button-group>
-
-        <crud-toolbar :search.sync="crud.searchOptions.show"
-                      :compact.sync="crud.pageOptions.compact"
-                      :columns="crud.columns"
-                      @refresh="doRefresh()"
-                      @columns-filter-changed="handleColumnsFilterChanged"/>
+        <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"  />
       </div>
 
       <template slot="expandSlot" slot-scope="scope">

@@ -50,7 +50,13 @@ Vue.use(d2CrudPlus, {
         }
       },
       pageOptions: {
-        compact: true
+        compact: true,
+        export: {
+          local: true, // 本地导出,false为服务端导出
+          title: '导出数据', // 文件名
+          type: 'excel' // 导出类型，excel 或 cvs
+          // formatter(row,context){}
+        }
       },
       options: {
         size: 'small'

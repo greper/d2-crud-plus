@@ -325,7 +325,48 @@ export default {
      * 列设置修改后调用
      * @param columns
      */
-    doColumnsFilterChanged (columns) {}
+    doColumnsFilterChanged (columns) {},
 
+    /**
+     * 服务端导出数据
+     * @param context={
+          search: this.crud.searchOptions.form,
+          columns: this.crud.columns,
+          data: this.crud.list
+     * }
+     */
+    doServerExport (context) {
+      this.$message('请覆盖“doServerExport (context) ”方法，window.open打开后端导出url')
+    },
+
+    /**
+     * 本地导出列参数格式化
+     * @param context
+     * @param columns
+     * @returns {*}
+     */
+    doExportHeaderFormat (context, columns) {
+      return columns.map((col) => {
+        return {
+          label: col.title,
+          prop: col.key
+        }
+      })
+    },
+    /**
+     *  本地导出 数据格式化
+     * @param context
+     * @param list
+     * @returns {*}
+     */
+    doExportDataFormat (context, list) {
+      const formatter = this.crud.pageOptions.export.formatter
+      return list.map((row) => {
+        if (formatter) {
+          formatter(row, context)
+        }
+        return row
+      })
+    }
   }
 }

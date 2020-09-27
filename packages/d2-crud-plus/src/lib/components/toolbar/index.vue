@@ -1,11 +1,12 @@
 <template>
   <span class="d2p-toolbar" >
+    <slot name="ToolbarPreSlot"></slot>
     <el-button v-if="refresh!=null"  size="small" icon="el-icon-refresh" circle title="刷新列表" @click="doRefresh"/>
     <el-button v-if="search!=null" :type="search?'primary':''"  size="small" icon="el-icon-search" circle title="显示/隐藏查询" @click="doSearch"/>
     <el-button v-if="compact!=null" :type="compact?'primary':''"  size="small" icon="el-icon-rank" circle title="紧凑型页面" @click="doCompact"/>
-    <el-button v-if="['export']!=null" :type="['export']?'primary':''"  size="small" icon="el-icon-download" circle title="导出数据" @click="doExport"/>
+    <el-button v-if="_export" :type="_export?'primary':''"  size="small" icon="el-icon-upload2" circle title="导出数据" @click="doExport"/>
     <el-button v-if="columns!=null" type="success" size="small" icon="el-icon-set-up" circle title="列设置"  @click="doColumnsFilter"/>
-
+    <slot name="ToolbarAppendSlot"></slot>
     <d2-table-columns-filter v-if="columns!=null" ref="columnsSetup"
                              v-model="columnsFilter.value"
                              :options="columnsFilter.options"
@@ -48,7 +49,7 @@ export default {
      * 导出 , [true 开启 | false 关闭 ]
      */
     export: {
-      type: [Boolean],
+      type: [Boolean, Object],
       default: false
     },
     /**
@@ -78,6 +79,11 @@ export default {
   created () {
     this.columnsFilter.options = lodash.cloneDeep(this.columns)
     this.columnsFilter.value = lodash.cloneDeep(this.columns)
+  },
+  computed: {
+    _export () {
+      return this.export
+    }
   },
   methods: {
     doRefresh () {

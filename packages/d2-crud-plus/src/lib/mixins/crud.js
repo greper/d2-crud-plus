@@ -5,7 +5,6 @@ import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
 import TableStore from '../utils/util.store'
 import expose from './expose'
-
 export default {
   components: {},
   mixins: [expose],
@@ -173,6 +172,25 @@ export default {
         'dialog-opened': this.handleDialogOpened,
         'dialog-cancel': this.handleDialogCancel,
         'select-all': this.handleSelectAll
+      }
+    },
+    _crudToolbarProps () {
+      const props = {
+        search: this.crud.searchOptions.show,
+        compact: this.crud.pageOptions.compact,
+        columns: this.crud.columns,
+        export: this.crud.pageOptions.export,
+        loading: this.crud.loading
+      }
+      return props
+    },
+    _crudToolbarListeners () {
+      return {
+        export: this.handleExport,
+        refresh: this.doRefresh,
+        'columns-filter-changed': this.handleColumnsFilterChanged,
+        'update:search': (value) => { this.crud.searchOptions.show = value },
+        'update:compact': (value) => { this.crud.pageOptions.compact = value }
       }
     }
   },
@@ -896,18 +914,38 @@ export default {
         return this.doExport({
           search: this.crud.searchOptions.form,
           columns: this.crud.columns,
-          data: this.crud.data
+          data: this.crud.list
         })
-      }).catch(() => {
-        // console.log('取消删除', err)
+      }).catch((error) => {
+        console.error(error)
       })
     },
     doExport (context) {
-      if(this.crud.pageOptions.export.url){
-
-      }else if(this.crud.pageOptions.export.){
-
+      if (!this.crud.pageOptions.export.local) {
+        // 服务端导出
+        console.log('export server', context)
+        this.doServerExport(context)
+      } else {
+        console.log('export local', context)
+        this.doLocalExport(context)
       }
+    },
+    doLocalExport (context) {
+      const columns = this.doExportHeaderFormat(context, this.crud.columns)
+      const exportOptions = this.crud.pageOptions.export
+      let list = cloneDeep(this.crud.list)
+      list = this.doExportDataFormat(context, list)
+      const options = {
+        columns: columns,
+        data: list,
+        ...exportOptions
+      }
+      console.log('export options：', options)
+      const type = exportOptions.type ? exportOptions.type : 'excel'
+      this.$export[type](options)
+        .then(() => {
+          this.$message('导出成功')
+        })
     }
 
   }

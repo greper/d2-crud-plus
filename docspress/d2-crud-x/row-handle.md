@@ -1,6 +1,6 @@
 # 配置: row-handle
 
-`rowHandler:false` 隐藏操作列
+`rowHandle:false` 隐藏操作列
 
 ## columnHeader
 

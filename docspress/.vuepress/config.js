@@ -125,7 +125,8 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'dict',
         // 'event',
         'nest-data',
-        'flat-data'
+        'flat-data',
+        'data-export',
       ]
     },
     {

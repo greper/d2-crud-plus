@@ -59,7 +59,6 @@ addFunction(formMenus, 'form/tree', '树形组件')
 addFunction(formMenus, 'form/icon', '图标选择')
 addFunction(formMenus, 'form/editor', '富文本')
 addFunction(formMenus, 'form/independent', '组件独立使用', 'new')
-// addFunction(formMenus, 'form/eltable', '刷新table问题', 'new')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
@@ -95,7 +94,7 @@ addFunction(hotelMenus, 'hotel/room/list', '房间管理')
 addFunction(hotelMenus, 'hotel/room/checkin', '入住管理')
 addFunction(hotelMenus, 'hotel/room/roomtype', '房间类型管理')
 
-function addFunction (menuGroup, path, title, badge, noMenu) {
+function addFunction (menuGroup, path, title, badge) {
   if (path == null) {
     const menu = {
       title: title,
@@ -126,7 +125,7 @@ function addFunction (menuGroup, path, title, badge, noMenu) {
       name += arr[i].substring(1)
     }
   }
-
+  menuGroup.push(menu)
   demoRouters.push({
     path: path,
     name: name,

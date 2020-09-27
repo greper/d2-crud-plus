@@ -93,3 +93,4 @@ component:{
     class:{'d2-mr-5',true} // 组件的class
 }
 ```
+

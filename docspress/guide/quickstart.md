@@ -106,7 +106,7 @@ Vue.use(d2CrudPlus, {
       return ret.data  //返回字典数组
     })  
   },
-  commonOption(){ //d2-crud option 全局设置，可以不用配置
+  commonOption(){ //d2-crud option 全局配置，每个页面的crudOptions会以全局配置为基础进行覆盖
     return {
        format: {
         page: { // page接口返回的数据结构配置，

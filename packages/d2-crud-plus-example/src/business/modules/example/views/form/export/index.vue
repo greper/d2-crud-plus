@@ -2,9 +2,9 @@
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       数据导出
-      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何从旧版页面升级】</span>
+      <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何开启导出功能】</span>
       <example-helper title="帮助说明" >
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">省市区选择组件</link-button>
+        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/export.html">导出功能文档</link-button>
       </example-helper>
     </template>
     <d2-crud-x

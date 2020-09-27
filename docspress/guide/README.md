@@ -41,7 +41,7 @@ Github: <https://github.com/greper/d2-crud-plus>
 
 ## 关系
 * `d2-crud` : 官方的一个crud框架，使用起来相对繁琐，且已久不维护
-* `d2-crud-x` ：fork`d2-crud`改造而来，威力加强版（修复bug，增强功能）
+* `d2-crud-x`: fork`d2-crud`改造而来，威力加强版（修复bug，增强功能）
 * `d2-crud-plus`: 辅助`d2-crud-x`或`d2-crud`，让它们使用起来更简单
 * `d2-crud-plus-example`: 以`d2-admin`为基础的示例工程，可以单独复制此项目作为你的启动项目
 * `d2-crud-plus-extends`: 实用的扩展组件（文件上传组件、地区选择组件、树形选择组件等）

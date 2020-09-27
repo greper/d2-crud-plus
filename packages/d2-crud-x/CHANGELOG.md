@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.5](https://github.com/greper/d2-crud/compare/d2-crud-x@2.10.4...d2-crud-x@2.10.5) (2020-09-27)
+
+
+### Performance Improvements
+
+* rowhandle btn 图标支持传入一个方法 ([90bca1c](https://github.com/greper/d2-crud/commit/90bca1c64f8f9c3f6128f5adcf4ed21e0edf4beb))
+* 移除d2-icon依赖 ([2d8fdb4](https://github.com/greper/d2-crud/commit/2d8fdb4292f7b26c7f9f8a7dbe9fbab9aca26119))
+
+
+
+
+
 ## [2.10.4](https://github.com/greper/d2-crud/compare/d2-crud-x@2.10.3...d2-crud-x@2.10.4) (2020-09-16)
 
 **Note:** Version bump only for package d2-crud-x

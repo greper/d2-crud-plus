@@ -1,7 +1,7 @@
 {
   "name": "@d2-plus/d2-crud-plus-example",
   "description": "d2-crud-plus的示例工程",
-  "version": "1.17.5",
+  "version": "1.17.6",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": true,
@@ -34,9 +34,9 @@
     "clipboard-polyfill": "^2.8.6",
     "core-js": "^3.4.3",
     "cropperjs": "^1.5.6",
-    "d2-crud-plus": "^1.16.5",
-    "d2-crud-x": "^2.10.4",
-    "d2p-extends": "^1.9.15",
+    "d2-crud-plus": "^1.16.6",
+    "d2-crud-x": "^2.10.5",
+    "d2p-extends": "^1.9.16",
     "dayjs": "^1.8.17",
     "el-phone-number-input": "^1.1.5",
     "element-ui": "^2.13.0",
@@ -73,8 +73,8 @@
     "xe-utils": "^2.6.5"
   },
   "devDependencies": {
-    "@d2-projects/vue-table-export": "^1.0.1",
     "@d2-projects/vue-filename-injector": "^1.1.0",
+    "@d2-projects/vue-table-export": "^1.0.1",
     "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

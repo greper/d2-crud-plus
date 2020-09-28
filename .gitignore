@@ -32,6 +32,6 @@ lerna-debug.log
 /packages/d2-crud-plus-test/src/
 /packages/d2-crud-plus-test/mochawesome-report/
 
-
+/packages/vue-table-export/
 
 

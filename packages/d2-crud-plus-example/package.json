@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@d2-projects/d2-crud": "2.0.5",
+    "@d2-projects/vue-table-export": "^1.0.1",
     "autoprefixer": "^6.5.4",
     "axios": "^0.19.0",
     "axios-mock-adapter": "^1.18.1",
@@ -74,7 +75,6 @@
   },
   "devDependencies": {
     "@d2-projects/vue-filename-injector": "^1.1.0",
-    "@d2-projects/vue-table-export": "^1.0.1",
     "@kazupon/vue-i18n-loader": "^0.5.0",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

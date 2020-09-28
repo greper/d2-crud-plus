@@ -69,8 +69,8 @@ doServerExport (context) {
 },
 ```
 
-
-## 可选配置参数
+## api
+###  配置参数
 以下是可选配置参数
 ```js
 const crudOptions={
@@ -80,7 +80,12 @@ const crudOptions={
             title:'数据导出',//导出的文件名
             type:'excel', //导出文件类型，可选： [ csv | excel ]
             formatter(row, context){
-                // 数据格式化，row.xxx = parseInt(row.xxx)
+                // 数据格式化
+                // row.xxx = parseInt(row.xxx)
+            },
+            columnBuilder(col, context){
+                // 列设置
+                // col.width=20 //设置列宽
             },
             // 以下是 vue-table-export 插件的参数
             // excel

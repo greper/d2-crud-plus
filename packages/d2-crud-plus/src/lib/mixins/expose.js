@@ -346,11 +346,16 @@ export default {
      * @returns {*}
      */
     doExportHeaderFormat (context, columns) {
+      const columnBuilder = this.crud.pageOptions.export.columnBuilder
       return columns.map((col) => {
-        return {
+        const colConfig = {
           label: col.title,
           prop: col.key
         }
+        if (columnBuilder) {
+          columnBuilder(colConfig, context)
+        }
+        return colConfig
       })
     },
     /**

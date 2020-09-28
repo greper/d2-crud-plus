@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/d2-crud-*"
+    "packages/d2-crud-*",
+    "packages/vue-table-*"
   ],
   "command": {
     "publish": {

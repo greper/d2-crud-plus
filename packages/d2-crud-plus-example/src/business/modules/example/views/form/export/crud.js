@@ -14,6 +14,12 @@ export const crudOptions = (vm) => {
           if (row.switch != null) {
             row.switch = row.switch ? '是' : '否'
           }
+        },
+        columnBuilder (col, context) {
+          col.width = 20 // 设置列宽度
+          if (col.prop === 'avatar1') {
+            col.width = 50
+          }
         }
       }
     },

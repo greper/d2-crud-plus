@@ -3848,20 +3848,20 @@ cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^1.16.5:
-  version "1.16.5"
-  resolved "https://registry.npmjs.org/d2-crud-plus/-/d2-crud-plus-1.16.5.tgz#4487915f734f865f8820a1aa46bd592993523344"
-  integrity sha512-5izbVRhNtP2HsdxKUfAQhSMPowKNeWOTqf6ssFyV3+jXK1tGMQTDwxOWV56SwZT2oFYVeJZTM8L3/wuteUO8vA==
+d2-crud-plus@^1.16.6:
+  version "1.16.6"
+  resolved "https://registry.npm.taobao.org/d2-crud-plus/download/d2-crud-plus-1.16.6.tgz#ad5671dac2fd6eabb8deee92a44beff669fcf7e3"
+  integrity sha1-rVZx2sL9bqu43u6SpEvv9mn89+M=
   dependencies:
     dayjs "^1.8.17"
     lodash "^4.17.19"
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 
-d2-crud-x@^2.10.4:
-  version "2.10.4"
-  resolved "https://registry.npmjs.org/d2-crud-x/-/d2-crud-x-2.10.4.tgz#1994b0b5f95b6c6680bc7d033882fce3ff0ffb0b"
-  integrity sha512-p/Khcobdid9QVkk8Avo8xrwGpN2OnqOS+Bo8NY7rgYJWHsIk9BO7ErZOZL6AfcJLiQrGvptvYQmwhDS/ATMD3A==
+d2-crud-x@^2.10.5:
+  version "2.10.5"
+  resolved "https://registry.npm.taobao.org/d2-crud-x/download/d2-crud-x-2.10.5.tgz#7d8bd196cfc28c12f6344f96f88031984c4112dd"
+  integrity sha1-fYvRls/CjBL2NE+W+IAxmExBEt0=
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -3869,10 +3869,10 @@ d2-crud-x@^2.10.4:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^1.9.15:
-  version "1.9.15"
-  resolved "https://registry.npmjs.org/d2p-extends/-/d2p-extends-1.9.15.tgz#229b6a72dc3b094a028e5e9e902742794af9224f"
-  integrity sha512-j1TeBsuOY8qIhaVXP0lG6WiCyGCx3f7Nr7uuyqsFFaY314jK0B4V7YQJjEMLRql0dTZvXklNXpf4gdKRIT0bdQ==
+d2p-extends@^1.9.16:
+  version "1.9.16"
+  resolved "https://registry.npm.taobao.org/d2p-extends/download/d2p-extends-1.9.16.tgz#8b89650239520b4f4b2ff6c45a4b395ff9163c1e"
+  integrity sha1-i4llAjlSC09LL/bEWks5X/kWPB4=
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"

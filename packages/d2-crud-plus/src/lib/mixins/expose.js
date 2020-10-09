@@ -16,6 +16,17 @@ export default {
     },
 
     /**
+     *  // 如果需要重复init，需要做一些清理工作
+     * @private
+     */
+    initBefore () {
+      this.crud.addRules = {}
+      this.crud.addTemplate = {}
+      this.crud.editRules = {}
+      this.crud.editTemplate = {}
+      this.crud.viewTemplate = {}
+    },
+    /**
      * initColumns 初始化结束后调用方法
      */
     initAfter () {},

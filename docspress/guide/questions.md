@@ -140,13 +140,13 @@ this.getD2Crud().showDialog({
 ```js
 curdMixin ={
   created () {
-    this._crudOnCreated()  
+    this._OnCreated()  
   },
   methods: {
-    _crudOnCreated () {//created的时候执行
-      this._crudStart()
+    _OnCreated () {//created的时候执行
+      this._doStart()
     },
-    _crudStart () { //crud的初始化方法
+    _doStart () { //crud的初始化方法
       this.initColumns()
       this.doLoad()
     }
@@ -157,10 +157,10 @@ curdMixin ={
 ```js
 export default {
   mounted(){ //mounted里面调用start
-    this._crudStart ()
+    this._doStart ()
   },
   methods: {
-    _crudOnCreated () {
+    _OnCreated () {
       //覆盖为空方法
     },
   }

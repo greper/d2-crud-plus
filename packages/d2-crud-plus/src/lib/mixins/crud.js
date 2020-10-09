@@ -211,6 +211,7 @@ export default {
      * 每个column的add、edit、search共用一个form.component的配置
      */
     initColumns () {
+      this.initBefore()
       let crudOptions = this.getCrudOptions()
       const commonOptions = CommonOptionsUtil.create()
       merge(commonOptions, crudOptions)

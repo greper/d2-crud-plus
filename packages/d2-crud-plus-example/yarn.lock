@@ -922,8 +922,8 @@
 
 "@d2-projects/vue-table-export@^1.0.1":
   version "1.0.1"
-  resolved "https://registry.npmjs.org/@d2-projects/vue-table-export/-/vue-table-export-1.0.1.tgz#c4d3c3670ce8f59a6ca5e9610a8da05b446eb583"
-  integrity sha512-/F+ctYRSP79LmtiD+B53VBr0s7WhqHOgsxtxbnt9vN5zreMUkfd81wQKWxt2soH+FXiPDWxFi9cPSs29Iru30w==
+  resolved "https://registry.npm.taobao.org/@d2-projects/vue-table-export/download/@d2-projects/vue-table-export-1.0.1.tgz#c4d3c3670ce8f59a6ca5e9610a8da05b446eb583"
+  integrity sha1-xNPDZwzo9ZpspelhCo2gW0RutYM=
   dependencies:
     file-saver "^2.0.0"
     vue "^2.5.11"

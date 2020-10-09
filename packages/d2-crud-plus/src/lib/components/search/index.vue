@@ -61,7 +61,7 @@
       <el-button
         @click="handleFormReset">
         <i class="el-icon-refresh"></i>
-        {{reset}}
+        {{_text.reset}}
       </el-button>
     </el-form-item>
     <slot name="suffix" :form="this.form"></slot>

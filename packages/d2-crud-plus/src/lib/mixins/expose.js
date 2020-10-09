@@ -25,6 +25,9 @@ export default {
       this.crud.editRules = {}
       this.crud.editTemplate = {}
       this.crud.viewTemplate = {}
+      if (this.crud.searchOptions) {
+        this.crud.searchOptions.columns = []
+      }
     },
     /**
      * initColumns 初始化结束后调用方法

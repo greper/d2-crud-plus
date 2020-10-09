@@ -28,6 +28,11 @@ export default {
     },
     /**
      * initColumns 初始化结束后调用方法
+     *
+     * 初始化完成后，会生成crud-x需要的最终配置
+     * http://greper.gitee.io/d2-crud-plus/guide/mixins.html#_1-简化前的配置
+     *
+     * 如果需要动态修改列，可以在此处修改
      */
     initAfter () {},
 

@@ -40,6 +40,8 @@ export default {
         this.handleEdit(rowIndex, this.d2CrudData[rowIndex], template)
       } else if (mode === 'add') {
         this.handleAdd(template, addData)
+      } else if (mode === 'view') {
+        this.handleView(rowIndex, this.d2CrudData[rowIndex], template)
       }
     },
     /**

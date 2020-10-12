@@ -53,7 +53,7 @@ addFunction(uploadMenus, 'form/uploader/alioss', '阿里云上传')
 addFunction(uploadMenus, 'form/uploader/qiniu', '七牛上传')
 
 addFunction(formMenus, 'form/el', 'EL表单组件')
-addFunction(formMenus, 'form/area', '省市区选择组件')
+addFunction(formMenus, 'form/area', '省市区选择组件', '懒加载')
 addFunction(formMenus, 'form/tree', '树形组件')
 
 addFunction(formMenus, 'form/icon', '图标选择')
@@ -62,6 +62,7 @@ addFunction(formMenus, 'form/independent', '组件独立使用', 'new')
 
 const enhanceMenus = []
 addFunction(enhanceMenus, 'form/d2crud', 'd2Crud原版')
+addFunction(enhanceMenus, 'form/localPagination', '本地分页', 'new')
 addFunction(enhanceMenus, 'form/export', '数据导出', 'new')
 addFunction(enhanceMenus, 'form/searchOrder', '查询排序', 'new')
 addFunction(enhanceMenus, 'form/nestTable', '嵌套表格')

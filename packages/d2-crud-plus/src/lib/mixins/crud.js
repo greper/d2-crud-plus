@@ -551,6 +551,7 @@ export default {
       const promise = this.pageRequest(query, options)
       if (!promise || !promise.then) {
         console.warn('pageRequest需要返回一个Promise,当前返回值 :', promise)
+        return
       }
       return promise.then(ret => {
         if (!ret) {

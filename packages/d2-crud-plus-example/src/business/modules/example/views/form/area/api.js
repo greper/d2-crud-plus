@@ -1,4 +1,5 @@
 import request from '@/business/api/request.mock'
+import { TreeNodesLazyLoader } from './pcas-data'
 
 export function GetList (query) {
   return request({
@@ -7,6 +8,7 @@ export function GetList (query) {
     data: query
   })
 }
+
 export function AddObj (obj) {
   return request({
     url: '/area/add',
@@ -22,10 +24,19 @@ export function UpdateObj (obj) {
     data: obj
   })
 }
+
 export function DelObj (id) {
   return request({
     url: '/area/delete',
     method: 'post',
     data: { id }
   })
+}
+
+export function GetTreeChildrenByParentId (parentId) {
+  return TreeNodesLazyLoader.getChildren(parentId)
+}
+
+export function GetNodesByValues (values) {
+  return TreeNodesLazyLoader.getNodesByValues(values)
 }

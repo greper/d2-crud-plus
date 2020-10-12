@@ -35,8 +35,32 @@ export default {
     }
     // 根据changeReload参数确定是否需要watch value ，优化性能
     this.registerWatch()
+
+    if (this.dict.getNodes) {
+      this.getNodes()
+      // 绑定观察value
+      const _unwatch = this.$watch('value', function (value) {
+        this.getNodes()
+      })
+      this.$once('hook:beforeDestroy', function () {
+        // 销毁后取消观察
+        _unwatch()
+      })
+    }
   },
   methods: {
+    getNodes () {
+      this.dict.getNodes(this.getValueArr()).then(data => {
+        if (this.returnType === 'dataMap') {
+          const dataMap = {}
+          for (const item of data) {
+            dataMap[item[this.dict.value]] = item
+          }
+          data = dataMap
+        }
+        this.$set(this, this.returnType, data)
+      })
+    },
     registerWatch () {
       let needWatch = this.changeReload
       if (needWatch == null) {

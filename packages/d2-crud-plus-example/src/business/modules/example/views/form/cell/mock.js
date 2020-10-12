@@ -12,7 +12,8 @@ const list = [
     checkbox: '0',
     status_custom_1: '0',
     status_custom_2: '0',
-    checkedRadio: '1'
+    checkedRadio: '1',
+    switch: false
   },
   {
     status: '1',
@@ -20,7 +21,8 @@ const list = [
     status_custom_2: '0',
     mselect: 'sh,sz',
     slotExample: 'slotExample',
-    checkbox: '0'
+    checkbox: '0',
+    switch: false
   },
   {
     status: '1',
@@ -28,7 +30,8 @@ const list = [
     status_custom_2: '0',
     mselect: 'gz',
     slotExample: 'slotExample',
-    checkbox: '0'
+    checkbox: '0',
+    switch: false
   }
 ]
 

@@ -68,6 +68,32 @@ export default {
     }
   },
   methods: {
+    getValueArr (values) {
+      if (values == null) {
+        if (this.multiple) {
+          values = []
+          for (const item of this.value) {
+            for (const sub of item) {
+              values.push(sub)
+            }
+          }
+        } else {
+          values = this.value
+        }
+      }
+      if (values == null) {
+        return []
+      }
+      let arr = null
+      if (typeof (values) === 'string' && !this.multiple && this.separator != null && this.separator !== '') {
+        arr = values.split(this.separator)
+      } else if (values instanceof Array) {
+        arr = values
+      } else {
+        arr = [values]
+      }
+      return arr
+    },
     getDictItem (value, dict, deepMatch) {
       let valueName = 'value'
       if (this.dict && this.dict.value) {
@@ -103,14 +129,7 @@ export default {
       }
     },
     buildValueItem (values) {
-      let arr = null
-      if (typeof (values) === 'string' && !this.multiple && this.separator != null && this.separator !== '') {
-        arr = values.split(this.separator)
-      } else if (values instanceof Array) {
-        arr = values
-      } else {
-        arr = [values]
-      }
+      const arr = this.getValueArr()
 
       let labelName = 'label'
       if (this.dict != null && this.dict.label != null) {

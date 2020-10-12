@@ -81,17 +81,8 @@ export default {
         return []
       }
       const dictDataMap = this[this.returnType]
-      let valueArr = []
+      const valueArr = this.getValueArr()
       const options = []
-      if (typeof (this.value) === 'string' && this.multiple && this.separator != null && this.separator !== '') {
-        valueArr = this.value.split(this.separator)
-      } else if (this.value instanceof Array) {
-        // 本来就是数组的
-        valueArr = this.value
-      } else {
-        valueArr = [this.value]
-      }
-
       const dict = this.dict
       // 没有字典，直接显示值
       if (dictDataMap == null || Object.keys(dictDataMap).length === 0) {
@@ -122,8 +113,21 @@ export default {
     }
   },
   created () {
+
   },
   methods: {
+    getValueArr () {
+      let valueArr = []
+      if (typeof (this.value) === 'string' && this.multiple && this.separator != null && this.separator !== '') {
+        valueArr = this.value.split(this.separator)
+      } else if (this.value instanceof Array) {
+        // 本来就是数组的
+        valueArr = this.value
+      } else {
+        valueArr = [this.value]
+      }
+      return valueArr
+    },
     onClick (item) {
       this.$emit('click', { item: item })
     },

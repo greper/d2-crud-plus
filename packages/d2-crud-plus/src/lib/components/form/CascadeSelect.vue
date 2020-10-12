@@ -71,6 +71,7 @@ export default {
   },
   methods: {
     setValue (value) {
+      console.log('cascader value', value)
       if (this._elProps.showAllLevels === false && this._elProps.props && this._elProps.props.emitPath === false) {
         this.currentValue = value
         return

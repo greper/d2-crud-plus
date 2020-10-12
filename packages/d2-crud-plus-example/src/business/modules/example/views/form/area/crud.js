@@ -1,3 +1,5 @@
+import * as Api from './api'
+
 export const crudOptions = {
   options: {
     height: '100%'
@@ -31,7 +33,7 @@ export const crudOptions = {
       key: 'pca',
       type: 'area-selector',
       form: {
-        helper: '级联式，获取到的值为code,点击保存可看到请求的数据中发给服务器的数据为code'
+        helper: '级联式，获取到的值为code'
       }
     },
     {
@@ -48,6 +50,9 @@ export const crudOptions = {
       key: 'address',
       type: 'area-selector',
       dict: { value: 'name' },
+      form: {
+        title: '后台三个字段'
+      },
       search: { disabled: false, component: { value: [] } },
       valueBuilder (row, col) {
         row.address = [row.province, row.area, row.city]
@@ -64,6 +69,45 @@ export const crudOptions = {
           form.city = undefined
         }
         delete form.address
+      }
+    },
+    {
+      title: '级联式懒加载',
+      key: 'pcaLazy',
+      type: 'area-selector',
+      dict: {
+        url: null,
+        getData: null,
+        getNodes (values) { // 配置行展示远程获取node
+          return Api.GetNodesByValues(values)
+        }
+      },
+      form: {
+        component: {
+          props: {
+            elProps: {
+              props: {
+                lazy: true,
+                lazyLoad (node, resolve) { // 懒加载
+                  console.log('-----------------node,', node)
+                  if (node.level === 0) {
+                    Api.GetTreeChildrenByParentId().then(data => {
+                      setTimeout(() => {
+                        resolve(data)
+                      }, 100)
+                    })
+                    return
+                  }
+                  Api.GetTreeChildrenByParentId(node.data.code).then(data => {
+                    setTimeout(() => {
+                      resolve(data)
+                    }, 100)
+                  })
+                }
+              }
+            }
+          }
+        }
       }
     },
     {
@@ -93,6 +137,7 @@ export const crudOptions = {
         helper: '级联式多选，全部显示'
       }
     },
+
     {
       title: '树形选择1',
       key: 'pcaTree',
@@ -140,6 +185,41 @@ export const crudOptions = {
         component: {
           span: 24,
           props: { multiple: false }
+        }
+      }
+    },
+    {
+      title: '树形懒加载',
+      key: 'tree5',
+      type: 'tree-selector',
+      dict: {
+        isTree: true,
+        label: 'name',
+        value: 'code',
+        getNodes (values) { // 配置行展示远程获取nodes
+          return Api.GetNodesByValues(values)
+        }
+      },
+      form: {
+        component: {
+          span: 24,
+          props: {
+            multiple: false,
+            elProps: {
+              lazy: true,
+              load (node, resolve) { // 懒加载
+                if (node.level === 0) {
+                  Api.GetTreeChildrenByParentId().then(data => {
+                    resolve(data)
+                  })
+                  return
+                }
+                Api.GetTreeChildrenByParentId(node.data.code).then(data => {
+                  resolve(data)
+                })
+              }
+            }
+          }
         }
       }
     }

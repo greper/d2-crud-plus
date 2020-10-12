@@ -9,7 +9,6 @@
         ref="d2Crud"
         v-bind="_crudProps"
         v-on="_crudListeners"
-        @cell-data-change="handleCellDataChange"
     >
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
@@ -49,7 +48,7 @@ export default {
     delRequest (row) {
       return DelObj(row.id)
     },
-    handleCellDataChange (event) {
+    doCellDataChange (event) {
       console.log('cell data change:', event)
     }
   }

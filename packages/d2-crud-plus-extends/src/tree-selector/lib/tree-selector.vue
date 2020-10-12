@@ -132,19 +132,32 @@ export default {
     },
     setValue (value) {
       let arrValue = value
-      const selected = []
       if (arrValue != null) {
         if (!(arrValue instanceof Array)) {
           arrValue = [arrValue]
         }
-        for (const item of arrValue) {
-          const data = this.data
-          const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
-          if (node != null) {
-            node.id = node[this.dict.value]
-            selected.push(node)
+        if (this.dict.getNodes) {
+          this.dict.getNodes(arrValue).then(nodes => {
+            this.selectedNodes(nodes, value)
+          })
+        } else {
+          const nodes = []
+          for (const item of arrValue) {
+            const data = this.data
+            const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
+            if (node != null) {
+              nodes.push(node)
+            }
           }
+          this.selectedNodes(nodes, value)
         }
+      }
+    },
+    selectedNodes (nodes, value) {
+      const selected = []
+      for (const node of nodes) {
+        node.id = node[this.dict.value]
+        selected.push(node)
       }
       console.log('selected:', selected)
       this.$set(this, 'selected', selected)
@@ -162,11 +175,9 @@ export default {
         return
       }
       this.dialogVisible = true
-      console.log('this.value1', this.selected)
       setTimeout(() => {
         if (this.selected != null) {
           const ids = this.selected.map(item => item[this._elProps.props.value])
-          console.log('this.value2', this.selected, ids)
           ids.forEach(id => {
             const current = this.$refs.elTree.store.nodesMap[id]
             if (current != null) {

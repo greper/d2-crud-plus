@@ -1,5 +1,4 @@
 import mockUtil from '@/business/mock/base'
-
 const options = {
   name: 'area',
   idGenerator: 0
@@ -63,4 +62,5 @@ mock.push({
     }
   }
 })
+
 export default mock

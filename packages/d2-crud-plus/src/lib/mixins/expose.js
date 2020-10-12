@@ -179,7 +179,7 @@ export default {
      * 外部暴露的打开模态框方法
      */
     // this.getD2Crud().showDialog({
-    //   mode=[add,edit,view], //当前打开模式
+    //   mode='view', //当前打开模式,可选项[add,edit,view]
     //   rowIndex = 0, //编辑或查看时，哪一行的数据
     //   template = null, //表单模版
     //   addData = null //添加时的默认数据

@@ -113,7 +113,6 @@ export default {
             icon: 'el-icon-delete',
             text: '删除',
             size: 'small',
-            fixed: 'right',
             confirm: true,
             show: true,
             disabled: false

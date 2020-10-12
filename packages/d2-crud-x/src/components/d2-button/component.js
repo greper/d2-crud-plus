@@ -10,6 +10,7 @@ export default {
             'is-thin': this.thin
           }
         }
+        type={this.type}
         style={ this.block ? { width: '100%' } : {} }
         on-click={ this.onClick }>
         { this.fa && (this.label || this.$slots.default) ? ' ' : undefined }
@@ -29,11 +30,6 @@ export default {
       default: '',
       required: false
     },
-    to: {
-      type: [String, Object],
-      default: '',
-      required: false
-    },
     block: {
       type: Boolean,
       default: false,
@@ -43,13 +39,13 @@ export default {
       type: Boolean,
       default: false,
       required: false
+    },
+    type: {
+      type: String
     }
   },
   methods: {
     onClick (e) {
-      if (this.to) {
-        this.$router.push(this.to)
-      }
       this.$emit('click', e)
     }
   }

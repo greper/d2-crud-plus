@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.7](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus-test@1.16.6...d2-crud-plus-test@1.16.7) (2020-10-12)
+
+
+### Bug Fixes
+
+* 修复自动化测试出来的bug， 级联value format 显示的bug ([2658d2f](https://github.com/greper/d2-crud-plus/commit/2658d2fbc0e7c06ef760d2e8c12dd81e66fcd7f8))
+
+
+
+
+
 ## [1.16.6](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus-test@1.16.5...d2-crud-plus-test@1.16.6) (2020-09-27)
 
 **Note:** Version bump only for package d2-crud-plus-test

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.7](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.6...@d2-plus/d2-crud-plus-example@1.17.7) (2020-10-12)
+
+
+### Bug Fixes
+
+* 修复查询工具条，重置按钮丢失的问题 ([6ab9c45](https://github.com/d2-projects/d2-admin/commit/6ab9c4579545733d4c38f735c87a0744af996b44))
+* 删除多余的路由 ([f859e2a](https://github.com/d2-projects/d2-admin/commit/f859e2a88a95a8edf803335e89d372f17a13ec62))
+* 前端分页搜索示例 ([669d6bb](https://github.com/d2-projects/d2-admin/commit/669d6bbcb4635d79c3493b0e3724d469f211f00c))
+* 懒加载示例 ([a2641d4](https://github.com/d2-projects/d2-admin/commit/a2641d471bc5b1acf4bac326c1045c00ed3ffdbd))
+
+
+### Performance Improvements
+
+* 优化导出，支持设置列宽 ([5ce5650](https://github.com/d2-projects/d2-admin/commit/5ce5650a7fcf8b699c493d8d787d99e840be60e4))
+
+
+
+
+
 ## [1.17.6](https://github.com/d2-projects/d2-admin/compare/@d2-plus/d2-crud-plus-example@1.17.5...@d2-plus/d2-crud-plus-example@1.17.6) (2020-09-27)
 
 

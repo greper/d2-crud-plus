@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.7](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.6...d2-crud-plus@1.16.7) (2020-10-12)
+
+
+### Bug Fixes
+
+* 修复查询工具条，重置按钮丢失的问题 ([6ab9c45](https://github.com/greper/d2-crud-plus/commit/6ab9c4579545733d4c38f735c87a0744af996b44))
+* 修复自动化测试出来的bug， 级联value format 显示的bug ([2658d2f](https://github.com/greper/d2-crud-plus/commit/2658d2fbc0e7c06ef760d2e8c12dd81e66fcd7f8))
+* 前端分页搜索示例 ([669d6bb](https://github.com/greper/d2-crud-plus/commit/669d6bbcb4635d79c3493b0e3724d469f211f00c))
+* 懒加载示例 ([a2641d4](https://github.com/greper/d2-crud-plus/commit/a2641d471bc5b1acf4bac326c1045c00ed3ffdbd))
+
+
+### Performance Improvements
+
+* 优化导出，支持设置列宽 ([5ce5650](https://github.com/greper/d2-crud-plus/commit/5ce5650a7fcf8b699c493d8d787d99e840be60e4))
+* 修复文档错误，新增initBefore，做一些清理工作 ([90567fa](https://github.com/greper/d2-crud-plus/commit/90567fa4ce7a8893c6c65c7c24c40259c4f1abc2))
+
+
+
+
+
 ## [1.16.6](https://github.com/greper/d2-crud-plus/compare/d2-crud-plus@1.16.5...d2-crud-plus@1.16.6) (2020-09-27)
 
 

@@ -11,6 +11,9 @@ describe(menu, () => {
     cy,
     url: '/demo/form/validation',
     doAdd () {
+      cy.formItem('姓名').find('.el-input').click()
+      cy.formItem('姓名').find('input').clear().type('张三')
+
       cy.get('.el-dialog__footer').contains('确定').click()
       cy.formItem('密码').contains('请输入密码')
       cy.formItem('必选').contains('请选择一个选项')

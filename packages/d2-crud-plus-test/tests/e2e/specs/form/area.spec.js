@@ -20,7 +20,7 @@ describe('省市区', () => {
       cy.getCascadeOptions(2).first().click()
       cy.getCascadeOptions(3).first().click()
 
-      cy.formItem('后台返回三个字段').find('.d2p-cascade').click()
+      cy.formItem('后台三个字段').find('.d2p-cascade').click()
       cy.getCascadeOptions(1).first().click()
       cy.getCascadeOptions(2).first().click()
       cy.getCascadeOptions(3).first().click()

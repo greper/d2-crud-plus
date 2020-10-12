@@ -129,7 +129,7 @@ export default {
       }
     },
     buildValueItem (values) {
-      const arr = this.getValueArr()
+      const arr = this.getValueArr(values)
 
       let labelName = 'label'
       if (this.dict != null && this.dict.label != null) {

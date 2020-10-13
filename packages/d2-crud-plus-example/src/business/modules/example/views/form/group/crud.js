@@ -55,7 +55,10 @@ export const crudOptions = {
       key: 'content',
       sortable: true,
       type: 'editor-ueditor',
-      disabled: true
+      disabled: true,
+      form: {
+        formItem: { labelWidth: '0px' }
+      }
     },
     {
       title: '自定义',

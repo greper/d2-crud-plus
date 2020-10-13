@@ -12,7 +12,6 @@ export default ({ service, request, serviceForMock, requestForMock, mock, faker,
    * @param {Object} data 登录携带的信息
    */
   SYS_USER_LOGIN (data = {}) {
-    // 模拟数据
     if (process.env.VUE_APP_PM_ENABLED === 'true') {
       return request({
         url: '/login',
@@ -20,7 +19,7 @@ export default ({ service, request, serviceForMock, requestForMock, mock, faker,
         data
       })
     }
-
+    // 模拟数据
     mock
       .onAny('/login')
       .reply(config => {

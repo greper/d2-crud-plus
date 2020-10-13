@@ -239,7 +239,8 @@ crudOptions={
             label:'label', // label的属性名
             children:'children', // children的属性名
             isTree: false, //是否是树形结构
-            getData: (url,dict,{form,component})=>{return Promise} //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
+            getData: (url,dict,{form,component})=>{return Promise}, //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
+            getNodes(values){return nodeArr} //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
           },
           //行内单元格显示组件
           component:{ 

@@ -57,7 +57,7 @@ export const crudOptions = {
       type: 'editor-ueditor',
       disabled: true,
       form: {
-        formItem: { labelWidth: '0px' }
+        itemProps: { labelWidth: '0px' }
       }
     },
     {

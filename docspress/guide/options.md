@@ -333,7 +333,7 @@ crudOptions:{
                 // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
                 // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
                 slot:false,
-                formItem:{
+                itemProps:{
                     // el-form-item的配置
                     //  https://element.eleme.cn/#/zh-CN/component/form#form-item-attributes
                     labelWidth:'0px' //可以隐藏表单项的label

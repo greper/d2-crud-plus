@@ -189,3 +189,21 @@
 * 类型: Boolean
 * 可选值: 无
 * 默认值: false
+
+
+## fetchDetail
+* 说明: 打开编辑框前请求后台获取完整数据
+* 类型: Function
+* 可选值: 无
+* 默认值: 无
+```
+{
+  options:{
+    fetchDetail(index,row){
+        return request({url:'getInfoById',params:{row.id}}).then(ret=>{
+            return ret.data
+        })
+    }
+  }
+}
+```

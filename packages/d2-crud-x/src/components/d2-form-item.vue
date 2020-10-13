@@ -2,6 +2,7 @@
   <el-form-item
     :label="template.title"
     :prop="colKey"
+    v-bind="template.formItem"
   >
     <template v-if="template.slot === true">
       <slot :name="colKey+'FormSlot'" :form="formData" :mode="$attrs.formMode" />

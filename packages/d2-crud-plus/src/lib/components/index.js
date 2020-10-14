@@ -15,6 +15,7 @@ import CrudSearch from './search/index'
 import CrudFooter from './footer/index'
 import renderComponent from './render/renderComponent'
 import renderCustomComponent from './render/renderCustomComponent'
+import CrudContainer from './container'
 
 export default {
   DictSelect,
@@ -31,5 +32,6 @@ export default {
   renderComponent,
   renderCustomComponent,
   Toolbar,
-  ButtonInput
+  ButtonInput,
+  CrudContainer
 }

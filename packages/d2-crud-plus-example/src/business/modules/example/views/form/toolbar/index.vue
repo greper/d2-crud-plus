@@ -1,5 +1,5 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
+  <crud-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       右上角工具条
       <span style="color:gray;font-size: 12px">【点击右边帮助按钮，查看如何从旧版页面升级】</span>
@@ -34,7 +34,7 @@
         <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
       </div>
     </d2-crud-x>
-  </d2-container>
+  </crud-container>
 </template>
 
 <script>

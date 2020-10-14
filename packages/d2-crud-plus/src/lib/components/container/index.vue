@@ -38,7 +38,7 @@ export default {
     }
   }
   .crud-c-header{
-    padding:15px;
+    padding:20px;
     border-bottom: 1px solid #cfd7e5;
     background: #FFF;
   }

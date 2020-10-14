@@ -87,6 +87,10 @@ export default {
     options: {
       type: Object
     },
+    // 查询字段配置
+    columns: {
+      type: Array
+    },
     // 文本配置
     // {search: '查询',reset: '重置'}
     text: {
@@ -101,6 +105,9 @@ export default {
       }
       lodash.merge(def, this.text)
       return def
+    },
+    _columns () {
+      return this.columns ? this.columns : this.options.columns
     }
   },
   data () {
@@ -111,12 +118,19 @@ export default {
     }
   },
   watch: {
-    'options.columns': (value) => {
-      this.setColumns(value)
+    'options.columns': {
+      handler (value) {
+        this.setColumns(value)
+      }
+    },
+    columns: {
+      handler (value) {
+        this.setColumns(value)
+      }
     }
   },
   created () {
-    this.setColumns(this.options.columns)
+    this.setColumns(this._columns)
     // 构建防抖查询函数
     if (this.options.debounce !== false) {
       let wait = null
@@ -142,7 +156,7 @@ export default {
       return item.width
     },
     setColumns (columns) {
-      this.currentColumns = lodash.cloneDeep(columns)
+      this.currentColumns = columns
       const form = {}
       for (const item of this.currentColumns) {
         _set(form, item.key, undefined)

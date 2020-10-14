@@ -1,5 +1,5 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
+  <d2-container :class="{'page-compact':crud.pageOptions.compact}" >
     <template slot="header">
       动态添加表单字段
       <example-helper title="自定义组件帮助说明" >
@@ -8,27 +8,29 @@
           </div>
       </example-helper>
     </template>
-    <d2-crud-x
-        ref="d2Crud"
-        v-bind="_crudProps"
-        v-on="_crudListeners">
+   <crud-container class="crud-container-wrapped" >
+     <d2-crud-x
+       ref="d2Crud"
+       v-bind="_crudProps"
+       v-on="_crudListeners">
 
-      <div slot="header">
-        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
-        <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
-        <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
-      </div>
+       <div slot="header">
+         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+         <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
+       </div>
 
-      <template slot="FormBodyAppendSlot" slot-scope="scope">
-        <div class="d2-mt-10" v-if="scope.mode!=='view'">
-          <el-button @click="addColumn(scope)">添加未分组字段</el-button>
-          <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
-          <el-button @click="addGroup(scope)">添加新分组</el-button>
-          <el-button @click="configText(scope)">修改字段配置</el-button>
-        </div>
-      </template>
+       <template slot="FormBodyAppendSlot" slot-scope="scope">
+         <div class="d2-mt-10" v-if="scope.mode!=='view'">
+           <el-button @click="addColumn(scope)">添加未分组字段</el-button>
+           <el-button @click="addGroupColumn(scope)">添加分组字段</el-button>
+           <el-button @click="addGroup(scope)">添加新分组</el-button>
+           <el-button @click="configText(scope)">修改字段配置</el-button>
+         </div>
+       </template>
 
-    </d2-crud-x>
+     </d2-crud-x>
+   </crud-container>
   </d2-container>
 </template>
 

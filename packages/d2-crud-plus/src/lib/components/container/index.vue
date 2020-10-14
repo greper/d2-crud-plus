@@ -1,7 +1,7 @@
 <template>
   <div class="crud-container">
     <div class="body-wrapper">
-      <div class="crud-c-header"><slot name="header"></slot></div>
+      <div v-if="$slots.header" class="crud-c-header"><slot name="header"></slot></div>
       <div class="crud-c-body"> <slot></slot></div>
       <div class="crud-c-footer"> <slot name="footer"></slot></div>
     </div>
@@ -31,37 +31,42 @@ export default {
     flex-direction: column;
     overflow: hidden;
   }
+
+  &.crud-container-wrapped{
+    .crud-c-body{
+      padding:0px;
+    }
+  }
   .crud-c-header{
     padding:15px;
     border-bottom: 1px solid #cfd7e5;
     background: #FFF;
   }
   .crud-c-body{
-    padding:15px;
     flex-grow: 1;
     height: 100%;
     overflow: auto;
     position: relative;
+    padding:15px;
   }
+}
 
-  &.page-compact{
-
-    .crud-c-body{
-      padding:0px;
-      .d2-crud{
-        .d2-crud-header{
-          padding:10px;
-        }
+.page-compact{
+  .crud-c-body{
+    padding:0px;
+    .d2-crud{
+      .d2-crud-header{
+        padding:10px;
       }
     }
   }
 }
 .d2-theme-container-main-body{
-  .crud-container{
+  >.crud-container{
     margin-right:20px;
-    border: 1px solid #cfd7e5;
-    border-top: none;
-    border-bottom: none;
+    border-left: 1px solid #cfd7e5;
+    border-right: 1px solid #cfd7e5;
   }
 }
+
 </style>

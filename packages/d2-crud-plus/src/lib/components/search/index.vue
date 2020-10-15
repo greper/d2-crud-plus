@@ -11,15 +11,6 @@
       <template v-if="item.slot === true">
         <slot :name="item.key+'SearchSlot'" :form="form" />
       </template>
-<!--      <el-input-->
-<!--        v-else-if="isInput(item)"-->
-<!--        v-model="form[item.key]"-->
-<!--        :placeholder="item.label"-->
-<!--        v-bind="getComponentProps(item)"-->
-<!--        :style="{width:_width(item)}"-->
-<!--        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"-->
-<!--      >-->
-<!--      </el-input>-->
       <render-custom-component
         v-else-if="isRenderCustomComponent(item)"
         :value="_get(form,item.key)"
@@ -32,10 +23,11 @@
         :events="getComponentAttr(item,'events')"
         :on="getComponentAttr(item,'on')"
         :children="getComponentAttr(item,'children')"
-        :style="{width:_width(item)}"
         :placeholder="getComponentProps().placeholder?getComponentProps().placeholder:getComponentAttr(item,'placeholder')"
         :disabled="getComponentAttr(item,'disabled', false)"
         :readonly="getComponentAttr(item,'readonly', false)"
+        v-bind="item.component"
+        :style="_style(item)"
         @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
         @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
         @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
@@ -192,6 +184,13 @@ export default {
         return item.width + 'px'
       }
       return item.width
+    },
+    _style (item) {
+      const defStyle = { width: this._width(item) }
+      if (item.component && item.component.style) {
+        lodash.merge(defStyle, item.component.style)
+      }
+      return defStyle
     },
     setColumns (columns) {
       this.currentColumns = columns

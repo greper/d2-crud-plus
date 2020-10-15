@@ -111,7 +111,7 @@ export default {
                   } else if (value instanceof Object) {
                     for (const key2 in value) {
                       const v = value[key2]
-                      if (v && v !== item[key][key2]) {
+                      if (v && item[key] && v !== item[key][key2]) {
                         return false
                       }
                     }

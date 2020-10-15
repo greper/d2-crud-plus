@@ -66,7 +66,21 @@ export const crudOptions = {
     debounce:{ //自动查询防抖,debounce:false关闭自动查询
       wait: 500, //延迟500毫秒
       ... //options : https://www.lodashjs.com/docs/lodash.debounce
-    }   
+    },
+    buttons:{
+      search:{ // 配置false，隐藏按钮
+        thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
+        text: '查看', //按钮文字， null= 取消文字
+        type: 'warning', // 按钮类型
+        icon:'el-view', //按钮图标
+        size: 'small', // 按钮大小
+        circle: false,//圆形按钮 ，需要thin=true,且text=null
+        show:true, // 是否显示按钮
+        disabled:false, // 是否禁用
+        order: 1 //排序号，数字小，排前面
+      }, 
+      reset:{} //同上
+    }    
   },
   options: { // d2-crud及el-table的配置参数
     stripe: true,
@@ -105,7 +119,7 @@ export const crudOptions = {
         type: 'warning', // 按钮类型
         icon:'el-view', //按钮图标
         size: 'small', // 按钮大小
-        circle: false,//圆形按钮 ，需要thin=true,且text=true
+        circle: false,//圆形按钮 ，需要thin=true,且text=null
         show:true, // 是否显示按钮
         //show(index,row){return true}// 还可以配置为方法 
         disabled:false, // 是否禁用

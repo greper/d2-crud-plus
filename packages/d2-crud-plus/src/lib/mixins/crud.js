@@ -407,7 +407,7 @@ export default {
       this.crud.columnsMap[key] = item
     },
     reComputeCrudHeight () {
-      if (this.crud && this.crud.options && this.crud.options.height === '100%') {
+      if (this.crud && this.crud.options && (this.crud.options.height === '100%' || this.crud.options.height === 'auto')) {
         return
       }
       this.$nextTick(() => {

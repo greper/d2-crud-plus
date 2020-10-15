@@ -360,6 +360,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .d2-crud-x {
   display: flex;
   flex-direction: column;
@@ -419,6 +420,7 @@ export default {
     }
   }
 }
+
 .d2-crud-dialog{
   .el-dialog__headerbtn{
     padding:10px;
@@ -465,5 +467,4 @@ export default {
 .d2-mt-2{margin-top: 2px;}
 .d2-mr-5{margin-right: 5px}
 .d2-mr-10{margin-right: 10px}
-
 </style>

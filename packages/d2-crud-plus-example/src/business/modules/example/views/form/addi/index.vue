@@ -1,5 +1,5 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}" >
+  <d2-container  :class="{'page-compact':crud.pageOptions.compact}" >
     <template slot="header">
       动态添加表单字段
       <example-helper title="自定义组件帮助说明" >

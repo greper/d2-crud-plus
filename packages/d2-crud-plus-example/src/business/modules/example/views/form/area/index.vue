@@ -1,5 +1,5 @@
 <template>
-  <d2-container :class="{'page-compact':crud.pageOptions.compact}">
+  <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">地区选择
       <example-helper title="帮助说明" >
         <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">省市区选择组件</link-button>

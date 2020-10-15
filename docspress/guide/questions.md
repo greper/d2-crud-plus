@@ -208,3 +208,5 @@ form:{
 }
 
 ```
+## 11. 表格滚动条美化
+引入css `/d2-crud-plus-example/src/business/style/scroll.scss`

@@ -10,7 +10,6 @@ import height from './utils/util.height'
 import columnResolve from './utils/util.column.resolve'
 import lodash from './utils/util.lodash'
 import commonOptions from './utils/util.options.common'
-
 const util = {
   dict,
   height,
@@ -43,7 +42,6 @@ const install = (Vue, options) => {
         console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
       }
     }
-
     console.log('d2-crud-plus installed:', options)
   }
 }

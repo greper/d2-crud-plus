@@ -5,6 +5,11 @@ export const crudOptions = (vm) => {
     options: {
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
+    searchOptions: {
+      buttons: {
+        search: { type: 'danger', text: null, thin: true }
+      }
+    },
     columns: [
       {
         title: 'ID',

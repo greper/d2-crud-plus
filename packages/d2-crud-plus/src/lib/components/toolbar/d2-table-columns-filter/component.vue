@@ -96,7 +96,7 @@
       </el-card>
       <el-row class="drawer-footer" :gutter="10">
         <el-col :span="12">
-          <d2-button
+          <d2p-button
             size="default"
             icon="el-icon-refresh"
             :label="_text.reset"
@@ -104,7 +104,7 @@
             @click="reset"/>
         </el-col>
         <el-col :span="12">
-          <d2-button
+          <d2p-button
             size="default"
             type="primary"
             icon="el-icon-check"
@@ -120,7 +120,7 @@
 <script>
 import draggable from 'vuedraggable'
 import lodash from 'lodash'
-import d2Button from '../d2-button/component'
+import d2pButton from '../../basic/d2p-button/component'
 import D2TableColumnsFixedController from '../d2-table-columns-fixed-controller/component'
 import TableStore from '../../../utils/util.store'
 // 输入 全部分表格列设置
@@ -129,7 +129,7 @@ import TableStore from '../../../utils/util.store'
 export default {
   name: 'd2-table-columns-filter',
   components: {
-    draggable, d2Button, D2TableColumnsFixedController
+    draggable, d2pButton, D2TableColumnsFixedController
   },
   props: {
     options: {

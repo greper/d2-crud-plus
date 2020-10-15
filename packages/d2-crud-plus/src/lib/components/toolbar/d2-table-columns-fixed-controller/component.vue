@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
 .d2-table-columns-fixed-controller {
-  .d2-button {
+  .d2p-button {
     padding: 2px;
     font-size: 10px;
   }
@@ -9,7 +9,7 @@
 
 <template>
   <el-button-group class="d2-table-columns-fixed-controller">
-    <d2-button
+    <d2p-button
       v-for="option of options"
       :key="option.icon"
       :type="value === option.value ? 'primary' : 'default'"
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import d2Button from '../d2-button/component'
+import d2pButton from '../../basic/d2p-button/component'
 export default {
   name: 'd2-table-columns-fixed-controller',
   components: {
-    d2Button
+    d2pButton
   },
   props: {
     value: {

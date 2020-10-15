@@ -1,12 +1,13 @@
+import './style.scss'
 export default {
-  name: 'd2-button',
+  name: 'd2p-button',
   render () {
     const button =
       <el-button
         { ...{ attrs: this.$attrs } }
         class={
           {
-            'd2-button': true,
+            'd2p-button': true,
             'is-thin': this.thin
           }
         }

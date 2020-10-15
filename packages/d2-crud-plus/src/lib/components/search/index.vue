@@ -52,17 +52,19 @@
     </el-form-item>
     <slot :form="this.form"></slot>
     <el-form-item class="search-btns">
-      <el-button
-          type="primary"
-          @click="handleFormSubmit">
-        <i class="el-icon-search"></i>
-        {{_text.search}}
-      </el-button>
-      <el-button
-        @click="handleFormReset">
-        <i class="el-icon-refresh"></i>
-        {{_text.reset}}
-      </el-button>
+
+      <template
+        v-for="(item, index) in _buttons"
+      >
+        <d2p-button :key="index"
+                   v-if="item.show"
+                   :disabled="item.disabled"
+                   :icon="item.icon"
+                   @click="item.doClick()"
+                   :label="item.text"
+                   v-bind="item"
+        />
+      </template>
     </el-form-item>
     <slot name="suffix" :form="this.form"></slot>
   </el-form>
@@ -73,8 +75,10 @@
 import lodash from 'lodash'
 import _get from 'lodash.get'
 import _set from 'lodash.set'
+import d2pButton from '../basic/d2p-button/component'
 export default {
   name: 'crud-search',
+  components: { d2pButton },
   provide: function () {
     return {
       d2CrudContext: {
@@ -108,6 +112,40 @@ export default {
     },
     _columns () {
       return this.columns ? this.columns : this.options.columns
+    },
+    _buttons () {
+      const btns = []
+      const defBtnOptions = { search: {}, reset: {} }
+      lodash.merge(defBtnOptions, this.options.buttons)
+      if (defBtnOptions.search) {
+        btns.push({
+          show: true,
+          type: 'primary',
+          disabled: false,
+          doClick: () => {
+            this.handleFormSubmit()
+          },
+          order: 1,
+          icon: 'el-icon-search',
+          text: this._text.search,
+          ...defBtnOptions.search
+        })
+      }
+      if (defBtnOptions.reset) {
+        btns.push({
+          show: true,
+          disabled: false,
+          doClick: () => {
+            this.handleFormReset()
+          },
+          icon: 'el-icon-refresh',
+          text: this._text.reset,
+          order: 2,
+          ...defBtnOptions.reset
+        })
+      }
+      btns.sort((a, b) => { return a.order - b.order })
+      return btns
     }
   },
   data () {

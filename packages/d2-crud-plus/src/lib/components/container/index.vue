@@ -32,7 +32,7 @@ export default {
     overflow: hidden;
   }
 
-  &.crud-container-wrapped{
+  &.d2-container-wrapped{
     .crud-c-body{
       padding:0px;
     }

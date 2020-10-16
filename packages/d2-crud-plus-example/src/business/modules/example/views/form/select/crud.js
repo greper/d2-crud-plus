@@ -31,6 +31,10 @@ export const crudOptions = (vm) => {
         sortable: true,
         search: {
           disabled: false,
+          show () {
+            return false
+          },
+          value: '',
           component: {
             style: { width: '100px' }
           }

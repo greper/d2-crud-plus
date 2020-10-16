@@ -6,42 +6,46 @@
       :model="form"
       ref="searchForm"
       v-bind="options" class="d2p-search-form" >
-    <slot name="prefix" :form="this.form"></slot>
-    <el-form-item v-for="(item) in currentColumns" :key="item.key"  :label="item.title?item.title:item.label" :prop="item.key"  >
-      <template v-if="item.slot === true">
-        <slot :name="item.key+'SearchSlot'" :form="form" />
-      </template>
-      <render-custom-component
-        v-else-if="isRenderCustomComponent(item)"
-        :value="_get(form,item.key)"
-        @input="_set(form,item.key,$event)"
-        :ref="'form_item_'+item.key"
-        :component-name="item.component.name?item.component.name:'el-input'"
-        :props="getComponentProps(item)"
-        :slots="getComponentAttr(item,'slots')"
-        :scoped-slots="getComponentAttr(item,'scopedSlots')"
-        :events="getComponentAttr(item,'events')"
-        :on="getComponentAttr(item,'on')"
-        :children="getComponentAttr(item,'children')"
-        :placeholder="getComponentProps().placeholder?getComponentProps().placeholder:getComponentAttr(item,'placeholder')"
-        :disabled="getComponentAttr(item,'disabled', false)"
-        :readonly="getComponentAttr(item,'readonly', false)"
-        v-bind="item.component"
-        :style="_style(item)"
-        @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
-        @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
-        @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
-      >
-      </render-custom-component>
-      <render-component
-        v-else-if="item.component && item.component.render"
-        :render-function="item.component.render"
-        :scope="{key: item.key, value: form[item.key], row: form}"
-        :style="{width:_width(item)}"
-      >
-      </render-component>
+     <slot name="prefix" :form="this.form"></slot>
+     <el-form-item
+       v-for="(item) in currentColumns" :key="item.key"
+       v-if="getItemAttr(item,'show',true)"
+       :label="item.title?item.title:item.label" :prop="item.key">
+        <template v-if="item.slot === true">
+          <slot :name="item.key+'SearchSlot'" :form="form" />
+        </template>
+        <render-custom-component
+          v-else-if="isRenderCustomComponent(item)"
+          :value="_get(form,item.key)"
+          @input="_set(form,item.key,$event)"
+          :ref="'form_item_'+item.key"
+          :component-name="item.component.name?item.component.name:'el-input'"
+          :props="getComponentProps(item)"
+          :slots="getComponentAttr(item,'slots')"
+          :scoped-slots="getComponentAttr(item,'scopedSlots')"
+          :events="getComponentAttr(item,'events')"
+          :on="getComponentAttr(item,'on')"
+          :children="getComponentAttr(item,'children')"
+          :placeholder="getComponentProps().placeholder?getComponentProps().placeholder:getComponentAttr(item,'placeholder')"
+          :disabled="getComponentAttr(item,'disabled', false)"
+          :readonly="getComponentAttr(item,'readonly', false)"
+          v-bind="item.component"
+          :style="_style(item)"
+          @change="handleSearchDataChange($event, { key: item.key, value: form[item.key], row: form, form:form })"
+          @ready="handleSearchComponentReady($event, { key: item.key, value: form[item.key], row: form, form:form})"
+          @custom="handleSearchComponentCustomEvent($event, { key: item.key, value: form[item.key], row: form, form:form})"
+        >
+        </render-custom-component>
+        <render-component
+          v-else-if="item.component && item.component.render"
+          :render-function="item.component.render"
+          :scope="{key: item.key, value: form[item.key], row: form}"
+          :style="{width:_width(item)}"
+        >
+        </render-component>
 
     </el-form-item>
+
     <slot :form="this.form"></slot>
     <el-form-item class="search-btns">
 
@@ -270,8 +274,18 @@ export default {
       }
       return item.component && item.component.name
     },
+    getItemAttr (item, attr, defVal) {
+      if (item && item[attr] != null) {
+        const attrObj = item[attr]
+        if (attrObj instanceof Function) {
+          return attrObj(this.getContext(item.key))
+        }
+        return attrObj
+      }
+      return defVal
+    },
     getComponentAttr (item, attr, defVal) {
-      if (item && item.component && item.component[attr]) {
+      if (item && item.component != null && item.component[attr] != null) {
         const attrObj = item.component[attr]
         if (attrObj instanceof Function) {
           return attrObj(this.getContext(item.key))

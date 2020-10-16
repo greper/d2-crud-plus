@@ -8,7 +8,7 @@
           </div>
       </example-helper>
     </template>
-   <crud-container class="crud-container-wrapped" >
+   <crud-container class="d2-container-wrapped" >
      <d2-crud-x
        ref="d2Crud"
        v-bind="_crudProps"

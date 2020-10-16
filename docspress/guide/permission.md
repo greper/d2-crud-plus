@@ -37,11 +37,13 @@ run ApiServerApplication
 ### 1.2 启动d2-crud-plus-example
 开启权限模块
 ```shell
-/packages/d2-crud-plus-example#  npm run dev:pm
+cd /packages/d2-crud-plus-example
+npm run dev:pm
 
 # 或者
 # 修改.env.development文件：VUE_APP_PM_ENABLED=true
-/packages/d2-crud-plus-example#  npm run dev
+cd /packages/d2-crud-plus-example
+npm run dev
 ```
 
 

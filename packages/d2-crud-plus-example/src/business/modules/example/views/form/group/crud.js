@@ -90,7 +90,7 @@ export const crudOptions = {
       base: {
         title: '商品基础',
         icon: 'el-icon-goods',
-        columns: ['title', 'code', 'images']
+        columns: ['code', 'title', 'images']
       },
       price: {
         title: '库存价格',

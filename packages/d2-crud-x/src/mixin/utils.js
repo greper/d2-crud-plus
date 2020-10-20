@@ -113,20 +113,20 @@ export default {
       return defaultValue
     },
     getAttribute (obj, attr, defaultValue, params) {
-      if (obj) {
+      if (obj != null) {
         return this.handleAttribute(obj[attr], defaultValue, params)
       }
       return defaultValue
     },
-    getComponentProp (item, key, prop, defaultValue, params) {
-      if (!item) {
-        return defaultValue
+    getAttr (obj, attr, defValue, colKey) {
+      if (obj != null) {
+        let context = null
+        if (colKey != null && this.getFormContext != null) {
+          context = this.getFormContext(colKey)
+        }
+        return this.handleAttribute(obj[attr], defValue, context)
       }
-      const component = item.component
-      if (component && component.props) {
-        return this.handleAttribute(component.props[prop], defaultValue, params)
-      }
-      return defaultValue
+      return defValue
     },
     getTableImpl (tableType) {
       if (tableType) {

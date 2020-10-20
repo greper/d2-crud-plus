@@ -1,7 +1,7 @@
 <template>
   <component
     :is="getTableColumnImpl(tableType)"
-    v-if="item.show!==false"
+    v-if="getAttr(item,'show',true)!==false"
     v-bind="forColumnBindProps(item)">
   <template slot-scope="scope">
     <d2-cell :item="item" :row="scope.row" :rowIndex="thisIsVxeTable?scope.$rowIndex:scope.$index"
@@ -60,9 +60,6 @@ export default {
   methods: {
     _get,
     _set,
-    getRow () {
-      return this.scope.row
-    },
     handleCellDataChange (column) {
       this.$emit('cell-data-change', column)
     },

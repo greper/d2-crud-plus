@@ -277,7 +277,7 @@ crudOptions={
             children:[] //子元素
           },
           disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
-          show: true, //是否在列表中显示该列（列配置中可选）
+          show: true, //是否在列表中显示该列（列配置中可选），也可以配置一个无参方法
           // 是否启用该cell的slot插槽,需要d2-crud-x才支持
           // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
           rowSlot: false, 
@@ -330,6 +330,7 @@ crudOptions:{
                   children:[ //子元素
                       (h)=>{return (<div slot="prefix">非scoped插槽</div>)}
                   ],
+                  order:10,//排序号，默认为10，数字越小 越靠前
                   span: 12 //该字段占据多宽，24为占满一行
                 },
                 disabled:false, //完全关闭该字段在表单中显示

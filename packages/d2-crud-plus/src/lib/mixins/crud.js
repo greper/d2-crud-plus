@@ -227,13 +227,19 @@ export default {
       if (crud.rowHandle && crud.viewOptions && crud.viewOptions.disabled && crud.rowHandle.view) {
         crud.rowHandle.view.show = false
       }
+
+      // 查询字段排序
+      this._sortFormColumns('add')
+      this._sortFormColumns('edit')
+      this._sortFormColumns('view')
+
+      // 查询字段排序
+      this._sortSearchColumns()
+
       // 配置group
       this.initColumnsGroup('add', crud)
       this.initColumnsGroup('edit', crud)
       this.initColumnsGroup('view', crud)
-
-      // 查询字段排序
-      this._sortSearchColumns()
 
       this.getPageSizeFromStorage()
 
@@ -252,7 +258,7 @@ export default {
             const columnTemplate = crud[templateKey][key]
             if (columnTemplate) { // 将字段挪到分组里面去
               groupColumns[key] = columnTemplate
-              delete crud[templateKey][key] // 未分组的字段
+              delete crud[templateKey][key]
             }
           })
         })
@@ -265,6 +271,27 @@ export default {
       }
       merge(target, userConfig)
       return target
+    },
+    _sortFormColumns (mode) {
+      const template = this.crud[mode + 'Template']
+      if (template == null) {
+        return
+      }
+      const columns = []
+      forEach(template, (item, key) => {
+        item.key = key
+        if (item.order === undefined) {
+          item.order = 10
+        }
+        columns.push(item)
+      })
+      columns.sort((a, b) => { return a.order - b.order })
+
+      const newTemplate = {}
+      for (const column of columns) {
+        newTemplate[column.key] = column
+      }
+      this.crud[mode + 'Template'] = newTemplate
     },
     _sortSearchColumns () {
       if (!this.crud.searchOptions || !this.crud.searchOptions.columns || this.crud.searchOptions.columns.length === 0) {

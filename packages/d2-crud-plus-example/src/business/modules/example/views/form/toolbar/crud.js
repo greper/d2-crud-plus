@@ -52,7 +52,10 @@ export const crudOptions = (vm) => {
         key: 'text1',
         show: false,
         sortable: true,
-        minWidth: 200
+        minWidth: 200,
+        form: {
+          order: 1
+        }
       },
       {
         title: '禁用字典缓存',

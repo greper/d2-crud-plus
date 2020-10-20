@@ -49,7 +49,7 @@ export default {
       if (this.dictOptions != null) {
         return this.dictOptions
       }
-      return []
+      return undefined
     }
   },
   watch: {

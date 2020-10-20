@@ -152,11 +152,6 @@ export default {
     }
   },
   watch: {
-    'options.columns': {
-      handler (value) {
-        this.setColumns(value)
-      }
-    },
     columns: {
       handler (value) {
         this.setColumns(value)
@@ -176,6 +171,20 @@ export default {
       }
       this.searchDebounce = lodash.debounce(this.handleFormSubmit, wait, this.options.debounce)
     }
+  },
+  mounted () {
+    const unwatch = this.$watch('options.columns', (value) => {
+      this.setColumns(value)
+    })
+    const unwatch2 = this.$watch('options', (value) => {
+      this.setColumns(value.columns)
+    })
+    this.$once('hook:beforeDestroy', function () {
+      // 销毁后取消观察
+      unwatch()
+      // 销毁后取消观察
+      unwatch2()
+    })
   },
   methods: {
     _get,

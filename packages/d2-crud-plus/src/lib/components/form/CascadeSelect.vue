@@ -2,7 +2,6 @@
   <el-cascader
     class="d2p-cascade"
     :value="currentValue"
-    :options="_options"
     :disabled="disabled" :readonly="readonly"
     v-bind="_elProps"
     @input="onInput" />
@@ -62,6 +61,12 @@ export default {
         defaultElProps.props.value = this.dict.value
       }
       merge(defaultElProps, this.elProps)
+      if (defaultElProps.props && defaultElProps.props.lazy === true) {
+
+      } else {
+        defaultElProps.options = this._options
+      }
+
       console.log('cascade:', defaultElProps, this.elProps)
       return defaultElProps
     }

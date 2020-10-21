@@ -41,6 +41,7 @@ export default {
     },
     /**
      * 是否显示紧凑模式
+     * 传null，则不显示按钮
      */
     compact: {
       type: Boolean,

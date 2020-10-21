@@ -53,14 +53,14 @@ export default {
   }
 }
 ```
-示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select
+示例： http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/select
 
 ## 3. 怎么动态获取表单组件的配置
 ```js
 let template = this.getEditFormTemplate(columnKey) //获取组件配置
 template.component.props.options = [] //动态将选项置空
 ```
-示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/addi
+示例： http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/addi
 
 ## 4. 怎么获取某个字段的数据字典的选项列表？
 ```js
@@ -79,7 +79,7 @@ let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
 // 注意：新版本已不支持 this.crud.columnsMap[columnKey].dict 方式获取
 // 请使用 this.crud.columnsMap[columnKey].component.props.dict
 ```
-示例： http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select
+示例： http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/select
 
 ## 5. 怎么获取表单各个字段的值？
 ```js

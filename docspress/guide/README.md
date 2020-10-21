@@ -1,7 +1,7 @@
 # 介绍
 d2-crud-plus 是基于 d2-admin 的 d2-crud 的扩展,旨在简化 d2-crud 配置，快速开发crud功能。   
 Github: <https://github.com/greper/d2-crud-plus>    
-示例地址：<http://qiniu.veryreader.com/D2CrudPlusExample/index.html>
+示例地址：<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html>
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
@@ -29,11 +29,11 @@ Github: <https://github.com/greper/d2-crud-plus>
 在官方基础上修复了一些bug，增强了部分功能【推荐使用d2-crud-x】   
 见<https://github.com/greper/d2-crud/>   
 * 支持隐藏表格，自定义列表展示方式【配置options.hide=true】     
-<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/hotel/dashboard> 
+<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/hotel/dashboard> 
 * 支持slot编写各个字段的form表单     
-<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/slot> 
+<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/slot> 
 * 自定义组件支持form-data-change事件（官方是不支持的）   
-<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/uploader>    
+<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/uploader>    
 例如：上传头像后可以看到获取到事件，并将获取到的md5、size值赋值给form表单的其他字段
 * 修复官方的form-data-change某些情况下获取到的值不是最新的bug  
 * 支持行展开

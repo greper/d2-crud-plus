@@ -49,7 +49,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: proxyApi,
-        // target: 'http://qiniu.veryreader.com/D2CrudPlusExample',
+        // target: 'http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample',
         ws: true
       }
     }

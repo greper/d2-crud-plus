@@ -17,7 +17,7 @@ Cypress.Commands.add('login', () => {
   cy.log('pm enabled：' + Cypress.env('VUE_APP_PM_ENABLED'))
   if (Cypress.env('VUE_APP_PM_ENABLED') === 'true') {
     cy.log('http接口登录')
-    cy.request('POST', 'http://qiniu.veryreader.com/api/login', {
+    cy.request('POST', 'http://preview.d2-crud-plus.docmirror.cn/api/login', {
       password: 'admin',
       username: 'admin'
     }).then(ret => {

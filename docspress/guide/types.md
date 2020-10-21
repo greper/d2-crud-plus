@@ -20,7 +20,7 @@ select | radio | checkbox
     * [dict-checkbox](./components/dict-checkbox)  
     * [values-format](./components/values-format)
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select>   
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/select>   
 * 配置示例说明：
     * 表单组件dict-select 内部封装了el-select：[el-select](https://element.eleme.cn/#/zh-CN/component/select)
     * el-select的参数需要配置在component.props.elProps下
@@ -63,7 +63,7 @@ type = cascader （单选）| cascader-multi（多选）
     * [cascader-select](./components/dict-select)  
     * [cascader-format](./components/values-format)
 * 示例： 
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/select>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/select>
 
 
 
@@ -78,7 +78,7 @@ type=phoneNumber
 * 相关组件：
     * [el-phone-number-input](https://github.com/greper/el-phone-number-input)  
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/phone>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/phone>
 
 
 
@@ -91,7 +91,7 @@ type=phoneNumber
   * [cascade-select](components/cascade-select.md)
   * [cascade-format](components/cascade-format.md)
 * 示例地址：
-  * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area>
+  * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/area>
 
 
 ### 树形选择
@@ -105,7 +105,7 @@ type = tree-selector
     * [d2p-tree-selector参数](components/d2p-tree-selector.md)
             
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/area>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/area>
 
 
 ### 文件上传，裁剪上传
@@ -115,8 +115,8 @@ type = tree-selector
     
 <<< @/packages/d2-crud-plus-extends/src/file-uploader/types.js
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/uploader>
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/cropper>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/uploader>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/cropper>
 
 * 相关组件文档：
     * [D2pUploader安装](extends/uploader.md)  
@@ -140,7 +140,7 @@ type = icon-selector
     * [d2p-icon](components/d2p-icon.md)
                     
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/icon>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/icon>
 
 
 ### 富文本框
@@ -153,7 +153,7 @@ type = icon-selector
   * [d2p-quill](extends/file-uploader.md) 
   
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/editor>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/editor>
 
 
 ## ElementUI组件
@@ -170,7 +170,7 @@ type = icon-selector
     * [el-time-picker](https://element.eleme.cn/#/zh-CN/component/time-picker)  
     * [date-format](./components/date-format)
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/date>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/date>
     
 ## 其他el组件
 * 类型
@@ -181,38 +181,38 @@ type = icon-selector
 * 表单组件：
     * [el-input-number](https://element.eleme.cn/#/zh-CN/component/input-number)
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>  
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>  
 ### 开关
 * type = switch
 * 相关组件：
     * [el-switch](https://element.eleme.cn/#/zh-CN/component/switch)
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>  
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>  
 ### 滑动条
 * type = slider
 * 相关组件：
     * [el-slider](https://element.eleme.cn/#/zh-CN/component/slider)  
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>
 ### 评分
 * type = rate
 * 相关组件：
     * [el-rate](https://element.eleme.cn/#/zh-CN/component/rate)  
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>
 ### 颜色
 * type = color-picker
 * 相关组件：
     * [el-color-picker](https://element.eleme.cn/#/zh-CN/component/color-picker)  
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>
     
 ### 穿梭框
 * type = transfer 
 * 相关组件:
     * [el-transfer](https://element.eleme.cn/2.0/#/zh-CN/component/transfer)  
 * 示例：
-    * <http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/el>
+    * <http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/el>
 
 
 

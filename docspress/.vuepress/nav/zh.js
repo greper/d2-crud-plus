@@ -28,5 +28,5 @@ module.exports = [
       },
     ]
   },
-  { text: '演示', link: 'http://qiniu.veryreader.com/D2CrudPlusExample/index.html' },
+  { text: '演示', link: 'http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html' },
 ]

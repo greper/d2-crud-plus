@@ -1,5 +1,5 @@
 ## 富文本
-示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/editor
+示例地址：http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/editor
 
 ###  1. 引入   
 ```javascript
@@ -60,7 +60,7 @@ export const crudOptions = {
 }
 ```
 ###  3. 效果
- http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/editor
+ http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/editor
  
 ### 4. 其他注意事项
 #### 1.ueditor 安装

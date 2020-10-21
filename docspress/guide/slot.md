@@ -95,4 +95,4 @@ let crudOption={
 [字段类型配置参考](./types-code)
 
 ## 演示示例
-<http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/slot> 
+<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/slot> 

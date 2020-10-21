@@ -1,5 +1,5 @@
 # icon选择组件
-示例地址：http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/icon
+示例地址：http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/icon
 ##  1. 引入   
 ```javascript
 // 先引入d2-crud,d2-crud-plus
@@ -21,7 +21,7 @@ export const crudOptions = {
 }
 ```
 ##  3. 效果
- http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/icon
+ http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/icon
 
 ## 4. 组件文档
 [d2-icon-select](../components/d2p-icon-select.md)

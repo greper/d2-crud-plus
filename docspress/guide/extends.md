@@ -42,7 +42,7 @@ import { D2pDemoExtend } from 'd2p-extends'
 Vue.use(D2pDemoExtend)
 ```
 ### 6. 使用
-[查看效果](http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/slot) 
+[查看效果](http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/slot) 
 ```js
 export const crudOptions = {
   columns: [

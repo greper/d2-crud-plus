@@ -202,7 +202,7 @@ crudOptions={
                 },
                 order: 10, //查询字段排序，数字越小越靠前
                 // 是否启用搜索框的slot插槽,需要d2-crud-x才支持
-                // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
+                // 示例 http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/#/demo/form/slot
                 slot:false 
           },
           form: { 
@@ -223,7 +223,7 @@ crudOptions={
             // 某些组件传入的value值可能是一个复杂对象，而row中的单个属性的值不合适传入
             // 则需要在打开编辑对话框前将row里面多个字段组合成组件需要的value对象
             // 例如：国际手机号(mobileValue为此column的key) 
-            // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/phone
+            // 示例 http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/#/demo/form/phone
             // row.mobileValue = { phoneNumber: row.phone, callingCode: row.code, countryCode: row.country }
             // valueBuilder将会在pageRequest成功返回数据后执行
           },
@@ -279,7 +279,7 @@ crudOptions={
           disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
           show: true, //是否在列表中显示该列（列配置中可选），也可以配置一个无参方法
           // 是否启用该cell的slot插槽,需要d2-crud-x才支持
-          // 见 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
+          // 见 http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/#/demo/form/slot
           rowSlot: false, 
           formatter (row, column, value, index) {
             // cell 格式化，http://greper.gitee.io/d2-crud-plus/d2-crud-x/columns.html#formatter
@@ -350,7 +350,7 @@ crudOptions:{
                 },
                 valueChangeImmediate:false, //是否在打开对话框后触发一次valueChange事件
                 // 是否启用form编辑框的slot插槽,需要d2-crud-x才支持
-                // 示例 http://qiniu.veryreader.com/D2CrudPlusExample/#/demo/form/slot
+                // 示例 http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/#/demo/form/slot
                 slot:false,
                 itemProps:{
                     // el-form-item的配置

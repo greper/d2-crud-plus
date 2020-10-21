@@ -125,7 +125,7 @@ valueChange (key, value, form, { getColumn, mode, component, immediate, getCompo
        getColumn.component.props.options=[{字典数据}]
  },
 ```
-方式2： 参考选择联动http://qiniu.veryreader.com/D2CrudPlusExample/index.html#/demo/form/linkage
+方式2： 参考选择联动http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/linkage
 ```
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
             form.city = undefined // 将“city”的值置空

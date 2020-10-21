@@ -269,6 +269,8 @@ export default {
       if (this.options && this.options.reset) {
         this.options.reset({ form: this.form })
       }
+      // 表单重置事件
+      this.$emit('reset')
       if (this.searchDebounce) {
         // 防抖查询
         this.searchDebounce()

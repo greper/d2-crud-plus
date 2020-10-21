@@ -11,7 +11,12 @@
         >
 
       <div slot="header">
-        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
+        <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  >
+          <template slot="idSearchSlot" slot-scope="scope">
+            <el-input placeholder="slot自定义" v-model="scope.form.id"></el-input>
+          </template>
+
+        </crud-search>
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar :search.sync="crud.searchOptions.show"
                       :compact.sync="crud.pageOptions.compact"

@@ -14,6 +14,7 @@ export const crudOptions = (vm) => {
         title: 'ID',
         key: 'id',
         width: 90,
+        search: { slot: true },
         form: {
           disabled: true
         }

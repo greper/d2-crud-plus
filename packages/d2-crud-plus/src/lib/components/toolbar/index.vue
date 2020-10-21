@@ -1,7 +1,7 @@
 <template>
   <span class="d2p-toolbar" >
     <slot name="ToolbarPreSlot"></slot>
-    <el-button v-if="refresh!=null"  size="small" icon="el-icon-refresh" circle :title="_text.refreshBtn" @click="doRefresh"/>
+    <el-button v-if="refresh"  size="small" icon="el-icon-refresh" circle :title="_text.refreshBtn" @click="doRefresh"/>
     <el-button v-if="search!=null" :type="search?'primary':''"  size="small" icon="el-icon-search" circle :title="_text.searchBtn" @click="doSearch"/>
     <el-button v-if="compact!=null" :type="compact?'primary':''"  size="small" icon="el-icon-rank" circle :title="_text.compactBtn" @click="doCompact"/>
     <el-button v-if="_export" :type="_export?'primary':''"  size="small" icon="el-icon-upload2" circle :title="_text.exportBtn" @click="doExport"/>

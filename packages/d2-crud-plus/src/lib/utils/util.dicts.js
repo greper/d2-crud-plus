@@ -83,6 +83,10 @@ function get (dict, options) {
         console.warn('获取到的字典类型不是数组：', ret)
       }
 
+      if (dict.transfer) {
+        data = dict.transfer(data, options)
+      }
+
       item.data = data
       item.dataMap = getDataMap(dict, data)
 

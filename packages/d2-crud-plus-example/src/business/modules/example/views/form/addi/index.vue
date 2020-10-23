@@ -27,13 +27,12 @@
            <el-button @click="addGroup(scope)">添加新分组</el-button>
            <el-button @click="configText(scope)">修改字段配置</el-button>
          </div>
+         <div class="d2-mt-20">
+           <el-form-item label="非配置字段" prop="noConfigProp">
+             <el-input v-model="scope.form.noConfigProp"></el-input>
+           </el-form-item>
+         </div>
        </template>
-
-       <div class="d2-mt-20">
-         <el-form-item label="非配置字段" prop="noConfigProp">
-           <el-input v-model="scope.form.noConfigProp"></el-input>
-         </el-form-item>
-       </div>
 
      </d2-crud-x>
    </crud-container>

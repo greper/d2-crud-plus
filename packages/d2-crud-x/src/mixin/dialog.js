@@ -124,7 +124,6 @@ export default {
       }
       return this.fetchDetail(index, row, this.formMode).then(newRow => {
         newRow = newRow || {}
-        debugger
         this.formDataStorage = newRow
         const formGroupsActive = []
         _forEach(tempGroups, (group, groupKey) => {

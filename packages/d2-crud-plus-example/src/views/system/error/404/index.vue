@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div v-if="!this.isLogined()" class="page" >
     <p class="page_title">404 page not found</p>
     <div>
       <el-button class="d2-mt" @click="$router.replace({ path: '/' })">

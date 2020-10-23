@@ -176,6 +176,6 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true
     }
-  }
-  // transpileDependencies: ['d2p-extends']
+  },
+  transpileDependencies: ['d2p-extends']
 }

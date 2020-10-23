@@ -257,8 +257,11 @@ crudOptions={
             label:'label', // label的属性名
             children:'children', // children的属性名
             isTree: false, //是否是树形结构
+            clone: false, //获取到
             getData: (url,dict,{form,component})=>{return Promise}, //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
-            getNodes(values){return nodeArr} //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
+            getNodes(values){return nodeArr}, //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
+            transfer:(data,options)=>{return data},// 可以修改获取到的远程数据，比如将字典的id字段转成字符串形式（缓存开启时只会执行一次）
+            onReady:(data,dict,options)=>{ }  //每个组件都会执行一次，配置clone=true后可以随便修改字典数据,只会影响自己组件的数据
           },
           //行内单元格显示组件
           component:{ 

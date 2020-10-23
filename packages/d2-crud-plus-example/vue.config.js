@@ -177,5 +177,6 @@ module.exports = {
       enableInSFC: true
     }
   },
+  // 解决ie打不开的问题
   transpileDependencies: ['d2p-extends']
 }

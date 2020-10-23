@@ -27,14 +27,13 @@
            <el-button @click="addGroup(scope)">添加新分组</el-button>
            <el-button @click="configText(scope)">修改字段配置</el-button>
          </div>
-
-         <el-form-item
-           label="测试"
-           prop="aaa"
-         >
-           <el-input v-model="getEditForm().aaa"></el-input>
-         </el-form-item>
        </template>
+
+       <div class="d2-mt-20">
+         <el-form-item label="非配置字段" prop="noConfigProp">
+           <el-input v-model="scope.form.noConfigProp"></el-input>
+         </el-form-item>
+       </div>
 
      </d2-crud-x>
    </crud-container>
@@ -149,7 +148,14 @@ export default {
       }
     },
     doDialogOpened (context) {
-      this.$set(this.getEditForm(), 'aaa', 111)
+      // 非配置字段演示
+      if (context.form.noConfigProp == null) {
+        this.$set(context.form, 'noConfigProp', undefined) // 添加一个属性，使它能够双向绑定
+      }
+      if (context.row.noConfigProp != null) {
+        // 默认form只会将配置字段赋值，所以这里要手动赋值
+        context.form.noConfigProp = context.row.noConfigProp
+      }
     }
   }
 }

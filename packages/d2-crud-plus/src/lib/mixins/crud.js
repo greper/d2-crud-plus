@@ -672,10 +672,9 @@ export default {
     },
     /**
      * 编辑对话框打开后要做的操作
-     * @param mode
-     * @param row
      */
-    handleDialogOpened ({ mode, form }) {
+    handleDialogOpened (context) {
+      const { mode, form } = context
       console.log('handleDialogOpened:', mode, form)
       for (const key in this.crud.columnsMap) {
         const column = this.crud.columnsMap[key]
@@ -688,7 +687,7 @@ export default {
         }
       }
 
-      this.doDialogOpened({ mode, form })
+      this.doDialogOpened(context)
     },
     /**
      * 点击添加按钮

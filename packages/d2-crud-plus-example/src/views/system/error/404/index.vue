@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!this.isLogined()" class="page" >
+  <div v-if="this.isLogined()" class="page" >
     <p class="page_title">404 page not found</p>
     <div>
       <el-button class="d2-mt" @click="$router.replace({ path: '/' })">
@@ -19,7 +19,7 @@ export default {
   methods: {
     isLogined () {
       const uuid = util.cookies.get('uuid')
-      return !!uuid
+      return uuid != null
     },
     goLogin () {
       const path = this.$route.path

@@ -81,7 +81,7 @@ export default {
       const key = 'add' + Math.floor(Math.random() * 1000)
       const column = {
         title: '动态添加' + this.addIndex(),
-        ket: key,
+        key: key,
         component: {
           name: 'dict-select',
           props: {
@@ -99,17 +99,18 @@ export default {
       const groupKey = 'group' + Math.floor(Math.random() * 1000)
       const group = {
         title: '动态添加分组' + this.addIndex(),
-        columns: {}
-      }
-      group.columns[groupKey] = {
-        title: '动态添加' + this.addIndex(),
-        ket: key,
-        component: {
-          name: 'dict-select',
-          props: {
-            dict: { url: '/dicts/OpenStatusEnum' }
-          },
-          span: 12
+        columns: {
+          [groupKey]: {
+            title: '动态添加' + this.addIndex(),
+            key: key,
+            component: {
+              name: 'dict-select',
+              props: {
+                dict: { url: '/dicts/OpenStatusEnum' }
+              },
+              span: 12
+            }
+          }
         }
       }
       const groups = this.getEditFormTemplateGroup()
@@ -122,7 +123,7 @@ export default {
       const key = 'add' + Math.floor(Math.random() * 1000)
       const column = {
         title: '动态添加' + this.addIndex(),
-        ket: key,
+        key: key,
         component: {
           name: 'dict-select',
           props: {

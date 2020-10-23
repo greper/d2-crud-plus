@@ -13,6 +13,9 @@ export const crudOptions = {
     ],
     fixed: 'right' // 右边固定列
   },
+  searchOptions: {
+    columns: []
+  },
   options: {
     height: '100%', // 表格高度100%, 使用toolbar必须设置
     rowKey: 'id'
@@ -50,6 +53,7 @@ export const crudOptions = {
       title: '时间',
       key: 'time',
       type: 'datetime',
+      search: { disabled: false },
       sortable: true,
       width: 160
     },

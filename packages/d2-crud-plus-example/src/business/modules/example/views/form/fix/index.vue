@@ -46,7 +46,13 @@ export default {
   },
   computed: {
   },
+  mounted () { // 将初始化推迟到mounted
+    this._doStart()
+  },
   methods: {
+    _OnCreated () {
+      // 覆盖为空方法
+    },
     getCrudOptions () {
       return crudOptions
     },

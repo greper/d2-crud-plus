@@ -107,7 +107,8 @@ export default {
       return def
     },
     _columns () {
-      return this.columns ? this.columns : this.options.columns
+      return this.columns ? this.columns
+        : (this.options ? this.options.columns : null)
     },
     _buttons () {
       const btns = []
@@ -206,6 +207,9 @@ export default {
       return defStyle
     },
     setColumns (columns) {
+      if (columns == null) {
+        return
+      }
       this.currentColumns = columns
       const form = {}
       for (const item of this.currentColumns) {

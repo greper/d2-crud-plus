@@ -76,7 +76,7 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false, show: true, form: {}, size: 'small' },
+        searchOptions: { disabled: false, show: true, form: {}, size: 'small', columns: [] },
         list: [],
         loading: false,
         pagination: {

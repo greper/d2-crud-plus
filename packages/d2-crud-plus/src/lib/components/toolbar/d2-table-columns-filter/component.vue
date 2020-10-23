@@ -3,10 +3,13 @@
     :focus {
       outline: 0;
     }
-    .d2p-drawer-wrapper{
-      padding:10px;
-      height: 100%;
-      overflow-y: scroll;
+    .el-drawer__body{
+      height: 0;
+      .d2p-drawer-wrapper{
+        padding:10px;
+        height: 100%;
+        overflow-y: scroll;
+      }
     }
 
     .drawer-footer{

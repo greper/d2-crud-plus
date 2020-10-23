@@ -27,6 +27,13 @@
            <el-button @click="addGroup(scope)">添加新分组</el-button>
            <el-button @click="configText(scope)">修改字段配置</el-button>
          </div>
+
+         <el-form-item
+           label="测试"
+           prop="aaa"
+         >
+           <el-input v-model="getEditForm().aaa"></el-input>
+         </el-form-item>
        </template>
 
      </d2-crud-x>
@@ -140,6 +147,9 @@ export default {
         },
         span: 12
       }
+    },
+    doDialogOpened (context) {
+      this.$set(this.getEditForm(), 'aaa', 111)
     }
   }
 }

@@ -26,7 +26,11 @@ new Vue({
     this.$store.commit('d2admin/menu/headerSet', menuHeader)
     // 设置默认侧边栏菜单
     const defaultMenuIndex = menuHeader.length > 2 ? 2 : menuHeader.length
-    this.$store.commit('d2admin/menu/asideSet', menuHeader[defaultMenuIndex].children)
+    if (!menuHeader[defaultMenuIndex]) {
+      console.warn('找不到默认菜单', defaultMenuIndex, menuHeader)
+    } else {
+      this.$store.commit('d2admin/menu/asideSet', menuHeader[defaultMenuIndex].children)
+    }
     // 初始化菜单搜索功能
     this.$store.commit('d2admin/search/init', menuHeader)
   },

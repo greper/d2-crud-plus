@@ -46,7 +46,7 @@
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
-        slot自定义：<el-input v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
+        slot自定义：<el-input :disabled="scope.mode==='view'" v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
       </template>
       <template slot="slotExampleHelperSlot" slot-scope="scope">
         <el-alert type="warning" >
@@ -55,10 +55,10 @@
       </template>
 
       <template slot="topicsFormSlot" slot-scope="scope">
-        <el-input class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >
-          <el-button slot="append" icon="el-icon-remove-outline" @click="removeTopic(index)"/>
+        <el-input :disabled="scope.mode==='view'" class="d2-mb-5" v-for="(item,index) in scope.form.topics" :key="index"   v-model="scope.form.topics[index]" >
+          <el-button :disabled="scope.mode==='view'" slot="append" icon="el-icon-remove-outline" @click="removeTopic(index)"/>
         </el-input>
-        <el-button @click="addTopic">添加主题</el-button>
+        <el-button :disabled="scope.mode==='view'" @click="addTopic">添加主题</el-button>
       </template>
 
       <template slot="FormFooterSlot" slot-scope="scope">

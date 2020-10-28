@@ -19,6 +19,31 @@ export const crudOptions = {
     compact: true // 是否紧凑型页面
   },
   options: {
+    events: {
+      /**
+       *  默认没有支持的事件需要在此配置
+       https://element.eleme.cn/#/zh-CN/component/table#table-events
+
+       * 默认支持的事件
+       @select="handleSelect"
+       @sort-change="handleSortChange"
+       @cell-mouse-enter="handleCellMouseEnter"
+       @cell-mouse-leave="handleCellMouseLeave"
+       @cell-click="handleCellClick"
+       @cell-dblclick="handleCellDblclick"
+       @row-click="handleRowClick"
+       @row-contextmenu="handleRowContextmenu"
+       @row-dblclick="handleRowDblclick"
+       @header-click="handleHeaderClick"
+       @header-contextmenu="handleHeaderContextmenu"
+       @current-change="handleCurrentChange"
+       'select-all': this.handleSelectAll,
+       'selection-change': this.handleSelectionChange,
+       */
+      'expand-change': (row, arg2) => {
+        console.log('expand-changed:', row, arg2)
+      }
+    },
     height: '100%', // 表格高度100%, 使用toolbar必须设置
     highlightCurrentRow: true,
     rowKey: 'id',

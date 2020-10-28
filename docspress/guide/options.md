@@ -294,6 +294,7 @@ crudOptions={
 ```
 
 ## form
+
 ```js
 crudOptions:{  
     columns:[
@@ -305,6 +306,7 @@ crudOptions:{
                 ],
                 component: { //添加和修改时form表单的组件
                   name: 'dict-select', //表单组件名称，支持任何v-model组件
+                  value: null, //组件默认值，你还可以通过覆盖doDialogOpened(context)方法，修改context.form.xx的值
                   props: { //表单组件的参数，具体参数请查看对应的组件文档
                     // 如何查找组件配置，请参考
                     // http://greper.gitee.io/d2-crud-plus/guide/component.html

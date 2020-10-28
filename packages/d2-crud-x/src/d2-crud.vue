@@ -303,15 +303,18 @@ export default {
   },
   computed: {
     _tableListeners () {
+      const events = this.options.events || {}
       if (this.isVxeTable()) {
         return {
           'checkbox-all': this.handleSelectAll,
-          'checkbox-change': this.handleSelectionChange
+          'checkbox-change': this.handleSelectionChange,
+          ...events
         }
       } else {
         return {
           'select-all': this.handleSelectAll,
-          'selection-change': this.handleSelectionChange
+          'selection-change': this.handleSelectionChange,
+          ...events
         }
       }
     }

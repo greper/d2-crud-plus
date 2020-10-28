@@ -207,3 +207,18 @@
   }
 }
 ```
+
+## events
+* 说明: 监听el-table事件
+* 类型: Object
+* 可选值: 无
+* 默认值: 无
+```
+{
+  options:{
+     events:{
+        'expand-change':(event)=>{}
+    }
+  }
+}
+```

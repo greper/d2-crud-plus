@@ -90,7 +90,10 @@ export const crudOptions = {
     //要想去掉el-table自身的滚动条，内容高度撑开
     //可以配置 height:null,maxHeight:null,然后用空方法覆盖reComputeCrudHeight(){}
     height: '100%', 
-    maxHeight: 'auto'
+    maxHeight: 'auto',
+    events:{ //el-table事件监听
+      'expand-change':(event)=>{}
+    } 
   },
   pagination: { //翻页配置,更多配置参考el-pagination
     currentPage: 1,

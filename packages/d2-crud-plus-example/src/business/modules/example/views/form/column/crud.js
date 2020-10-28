@@ -24,21 +24,21 @@ export const crudOptions = {
        *  默认没有支持的事件需要在此配置
        https://element.eleme.cn/#/zh-CN/component/table#table-events
 
-       * 默认支持的事件
-       @select="handleSelect"
-       @sort-change="handleSortChange"
-       @cell-mouse-enter="handleCellMouseEnter"
-       @cell-mouse-leave="handleCellMouseLeave"
-       @cell-click="handleCellClick"
-       @cell-dblclick="handleCellDblclick"
-       @row-click="handleRowClick"
-       @row-contextmenu="handleRowContextmenu"
-       @row-dblclick="handleRowDblclick"
-       @header-click="handleHeaderClick"
-       @header-contextmenu="handleHeaderContextmenu"
-       @current-change="handleCurrentChange"
-       'select-all': this.handleSelectAll,
-       'selection-change': this.handleSelectionChange,
+       * 默认已经支持的事件
+       @select
+       @sort-change
+       @cell-mouse-enter
+       @cell-mouse-leave
+       @cell-click
+       @cell-dblclick
+       @row-click
+       @row-contextmenu
+       @row-dblclick
+       @header-click
+       @header-contextmenu
+       @current-change
+       'select-all'
+       'selection-change'
        */
       'expand-change': (row, arg2) => {
         console.log('expand-changed:', row, arg2)

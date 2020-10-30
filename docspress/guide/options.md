@@ -305,6 +305,7 @@ crudOptions:{
             form:{
                 title:'表单字段显示的名称', //默认使用column的title
                 rules: [ // 表单校验规则
+                    //更多帮助请参考 https://element.eleme.cn/#/zh-CN/component/form#zi-ding-yi-xiao-yan-gui-ze
                     { required: true, message: '请选择地区' }
                 ],
                 component: { //添加和修改时form表单的组件

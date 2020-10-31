@@ -63,6 +63,10 @@ export default {
     // TODO 大文件需要分片上传
     const cos = this.getClient()
     return new Promise((resolve, reject) => {
+      onProgress({
+        total: 0,
+        percent: 0
+      })
       cos.putObject({
         Bucket: config.bucket,
         Region: config.region,
@@ -71,7 +75,7 @@ export default {
         onProgress (progressEvent) {
           const e = progressEvent
           if (e.total > 0) {
-            e.percent = e.loaded / e.total * 100
+            e.percent = Math.floor(e.loaded / e.total * 100)
           }
           onProgress(e)
         }

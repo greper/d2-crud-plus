@@ -73,6 +73,10 @@ export default {
     return new Promise((resolve, reject) => {
       /**
        */
+      onProgress({
+        total: 0,
+        percent: 0
+      })
       const observable = qiniu.upload(file, key, token, config.putExtra, config.putConfig)
       // eslint-disable-next-line no-unused-vars
       const subscription = observable.subscribe({

@@ -28,8 +28,16 @@ export default {
     if (key instanceof Promise) {
       key = await key
     }
+    if (options.data == null) {
+      options.data = {}
+    }
+    options.data.key = key
     console.log('upload option ', options)
     return new Promise((resolve, reject) => {
+      onProgress({
+        total: 0,
+        percent: 0
+      })
       ajax(option,
         (res) => {
           try {

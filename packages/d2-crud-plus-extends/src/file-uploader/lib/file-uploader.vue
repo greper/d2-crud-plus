@@ -18,7 +18,7 @@
     </div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
-        <div class="status-uploading" v-if="avatarLoading">
+        <div class="status-uploading" v-if="avatarLoading!=null">
           <el-progress type="circle" :percentage="avatarLoading" :width="70"/>
         </div>
         <div v-if="avatarUrl!=null" class="avatar">
@@ -261,7 +261,7 @@ export default {
     handleUploadProgress (event, file, fileList) {
       if (this._elProps.listType === 'avatar') {
         console.log('progress', event, file)
-        this.avatarLoading = event.percent
+        this.avatarLoading = Math.floor(event.percent)
         if (event.percent === 100) {
           this.avatarLoading = undefined
         }

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.2](https://github.com/greper/d2-crud-plus/compare/v2.12.1...v2.12.2) (2020-10-31)
+
+**Note:** Version bump only for package d2p-extends
+
+
+
+
+
+## [2.12.1](https://github.com/greper/d2-crud-plus/compare/v2.12.0...v2.12.1) (2020-10-31)
+
+
+### Performance Improvements
+
+* 优化上传lib，增加上传时获取文件的参数 ([27b010a](https://github.com/greper/d2-crud-plus/commit/27b010ab59917e206fa67e897cdcb5170993eefc))
+* 头像上传增加loading ([4ba9766](https://github.com/greper/d2-crud-plus/commit/4ba9766dd1bdee5b4f8635fba4c07edf4ea15610))
+* 头像上传预览阻止点击事件穿透 ([170b905](https://github.com/greper/d2-crud-plus/commit/170b905b947358cabdd5f97f223110160f73c6ff))
+
+
+
+
+
 # [2.12.0](https://github.com/greper/d2-crud-plus/compare/v1.1.0...v2.12.0) (2020-10-21)
 
 

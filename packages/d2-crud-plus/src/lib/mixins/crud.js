@@ -38,7 +38,10 @@ export default {
           page: { // page接口返回的数据结构配置
             request: {
               current: 'current', // 目标页码
-              size: 'size' // 每页条数
+              size: 'size', // 每页条数
+              // 需要开启服务端排序： options.sortByServerSide:true
+              orderColumn: 'orderColumn', // 排序字段
+              orderAsc: 'orderAsc' // 是否正序
             },
             response: {
               current: 'current', // 当前页码
@@ -170,7 +173,8 @@ export default {
         'dialog-open': this.handleDialogOpen,
         'dialog-opened': this.handleDialogOpened,
         'dialog-cancel': this.handleDialogCancel,
-        'select-all': this.handleSelectAll
+        'select-all': this.handleSelectAll,
+        'sort-change': this.handleSortChange
       }
     },
     _crudToolbarProps () {
@@ -562,15 +566,22 @@ export default {
       }
       const requestCurrent = this.crud.pagination.current ? this.crud.pagination.current : this.crud.pagination.currentPage
       const requestPageSize = this.crud.pagination.size ? this.crud.pagination.size : this.crud.pagination.pageSize // 兼容
-      if (this.crud.format.page.request.size instanceof Function) {
-        this.crud.format.page.request.size(query, requestPageSize)
-      } else {
-        query[this.crud.format.page.request.size] = requestPageSize
+      const requestFormat = this.crud.format.page.request
+
+      function queryFormat (key, value, requestFormat, query) {
+        if (requestFormat[key] instanceof Function) {
+          requestFormat[key](query, value)
+        } else {
+          query[requestFormat[key]] = value
+        }
       }
-      if (this.crud.format.page.request.current instanceof Function) {
-        this.crud.format.page.request.current(query, requestCurrent)
-      } else {
-        query[this.crud.format.page.request.current] = requestCurrent
+      queryFormat('size', requestPageSize, requestFormat, query)
+      queryFormat('current', requestCurrent, requestFormat, query)
+
+      if (this.crud.options.order) {
+        const order = this.crud.options.order
+        queryFormat('orderColumn', order.column, requestFormat, query)
+        queryFormat('orderAsc', order.asc, requestFormat, query)
       }
 
       this.crud.loading = true
@@ -917,6 +928,23 @@ export default {
      */
     handleSearchDataChange (context) {
       this.doSearchDataChange(context)
+    },
+    handleSortChange (context) {
+      const { prop, order } = context
+      console.log('sort change:', prop, order)
+      const column = this.crud.columnsMap[prop]
+      if (column && typeof column.sortable === 'string') {
+        if (order == null) {
+          this.crud.options.order = null
+        } else {
+          this.crud.options.order = {
+            column: column.sortable === 'custom' ? prop : column.sortable,
+            type: order,
+            asc: (order === 'ascending')
+          }
+        }
+        this.doRefresh({ from: 'sort' })
+      }
     },
     /**
      * 当前是否是vxeTable

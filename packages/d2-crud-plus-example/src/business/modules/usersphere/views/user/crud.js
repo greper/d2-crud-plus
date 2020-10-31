@@ -53,7 +53,7 @@ export const crudOptions = (vm) => {
         // search: { disabled: true}, // 开启查询
         form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '创建时间',
@@ -64,7 +64,7 @@ export const crudOptions = (vm) => {
         // search: { disabled: true}, // 开启查询
         form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'create_time'
       },
       {
         title: '修改时间',
@@ -75,7 +75,7 @@ export const crudOptions = (vm) => {
         // search: { disabled: true}, // 开启查询
         form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'update_time'
       },
       {
         title: '用户名',
@@ -88,7 +88,7 @@ export const crudOptions = (vm) => {
           rules: [{ required: true, message: '请输入用户名' }]
         },
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '密码',
@@ -106,7 +106,7 @@ export const crudOptions = (vm) => {
           helper: '填写则修改密码'
         }, // 表单配置
         disabled: true, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '昵称',
@@ -116,7 +116,7 @@ export const crudOptions = (vm) => {
         search: { disabled: false }, // 开启查询
         // form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '手机号',
@@ -139,7 +139,7 @@ export const crudOptions = (vm) => {
         search: { disabled: false, width: '260px' }, // 开启查询
         // form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'mobile'
       },
       {
         title: '头像',
@@ -150,7 +150,7 @@ export const crudOptions = (vm) => {
         // search: { disabled: true}, // 开启查询
         // form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '性别',
@@ -165,7 +165,7 @@ export const crudOptions = (vm) => {
         // search: { disabled: true}, // 开启查询
         // form: { disabled: true }, // 表单配置
         // disabled: false, // 是否隐藏列
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '邮箱',
@@ -178,7 +178,7 @@ export const crudOptions = (vm) => {
           // disabled: true, // 禁用表单编辑
           rules: [{ required: false, message: '请输入邮箱' }, { type: 'email', message: '请输入正确的邮箱' }]
         },
-        sortable: true
+        sortable: 'custom'
       },
       {
         title: '角色',

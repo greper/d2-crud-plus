@@ -45,7 +45,7 @@ export const crudOptions = (vm) => {
       {
         title: 'id',
         key: 'id',
-        sortable: true,
+        sortable: 'custom',
         width: 100,
         // type: 'select',
         // search: { disabled: true }, //开启查询
@@ -55,7 +55,7 @@ export const crudOptions = (vm) => {
       {
         title: '创建时间',
         key: 'createTime',
-        sortable: true,
+        sortable: 'create_time',
         type: 'datetime',
         // search: { disabled: true }, //开启查询
         form: { disabled: true } // 表单配置
@@ -64,7 +64,7 @@ export const crudOptions = (vm) => {
       {
         title: '更新时间',
         key: 'updateTime',
-        sortable: true,
+        sortable: 'update_time',
         type: 'datetime',
         // search: { disabled: true }, //开启查询
         form: { disabled: true } // 表单配置
@@ -73,7 +73,7 @@ export const crudOptions = (vm) => {
       {
         title: '角色名称',
         key: 'name',
-        sortable: true
+        sortable: 'name'
         // type: 'select',
         // search: { disabled: true }, //开启查询
         // form: { disabled: true } //表单配置
@@ -90,7 +90,7 @@ export const crudOptions = (vm) => {
           }
         }, // 表单配置
         // disabled: false //是否隐藏列
-        sortable: true
+        sortable: 'custom'
       }
 
     ]

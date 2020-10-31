@@ -5,14 +5,10 @@ const LimitChunkCountPlugin = new webpack.optimize.LimitChunkCountPlugin({
 })
 const plugins = []
 plugins.push(LimitChunkCountPlugin)
+
 module.exports = {
   css: { extract: false },
   configureWebpack: {
-    externals: {
-      vue: 'Vue',
-      'element-ui': 'ElementUI',
-      lodash: 'lodash'
-    },
     plugins: plugins
   }
 }

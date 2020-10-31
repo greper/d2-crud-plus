@@ -20,19 +20,22 @@
   ],
   "main": "dist/d2-crud-plus.umd.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build --report --target lib ./src/index.js",
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --report --target lib ./src/index.js"
   },
   "dependencies": {
     "dayjs": "^1.8.17",
-    "lodash": "^4.17.19",
     "vue": "^2.6.11",
     "vuedraggable": "^2.24.0"
   },
   "devDependencies": {
+    "element-ui": "^2.13.0",
+    "lodash": "^4.17.19",
     "@d2-projects/vue-table-export": "^1.0.1",
+    "d2-crud-x": "^2.12.0",
+    "d2p-extends": "^2.12.0",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",

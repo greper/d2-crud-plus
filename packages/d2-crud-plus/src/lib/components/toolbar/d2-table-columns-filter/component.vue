@@ -3,6 +3,25 @@
     :focus {
       outline: 0;
     }
+    [flex~="cross:center"] {
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    [flex~="main:justify"] {
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+    [flex] {
+      display: -ms-flexbox;
+      display: flex;
+    }
+    [flex-box="1"] {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+    [flex]>* {
+      display: block;
+    }
     .el-drawer__body{
       height: 0;
       .d2p-drawer-wrapper{

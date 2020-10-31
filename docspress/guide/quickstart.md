@@ -7,7 +7,6 @@
 * `d2-crud-plus-example`: 以`d2-admin`为基础的示例工程，可以单独复制此项目作为你的启动项目
 * `d2-crud-plus-extends`: 实用的扩展组件（文件上传组件、地区选择组件、树形选择组件等）
 
-理论上可以脱离d2-admin使用在其他项目中
 
 ## 目录结构
 ```
@@ -57,6 +56,16 @@ cd d2-crud-plus/packages/d2-crud-plus-example
 yarn install  #或者npm install
 npm run dev
 ```
+
+::: tip
+可以脱离d2-admin使用在其他项目中
+运行以下命令可以启动一个无其他依赖示例
+```
+cd /src/packages/d2-crud-plus
+npm install
+npm run dev
+```
+:::
 
 ## 集成到你的项目中
 

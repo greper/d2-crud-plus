@@ -197,7 +197,7 @@ crudOptions={
           key: 'province', 
           // -----下方的配置都是可选的------
           type: 'select', //字段类型，根据类型可生成该字段的默认配置，下方那么多配置基本可以不用写（没有定制化需求的话）
-          sortable: true, //是否支持排序
+          sortable: true, //是否支持排序，如果传入'custom'，则为服务端排序。如果传入其他字符串，则以该字符串作为排序字段名
           search: {
                 disabled: false, //是否禁用该字段的查询，默认false
                 component:{ //查询框组件配置，默认根据form配置生成 

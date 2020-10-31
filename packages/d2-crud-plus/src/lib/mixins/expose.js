@@ -29,6 +29,16 @@ export default {
         this.crud.searchOptions.columns = []
       }
     },
+
+    /**
+     * 初始化column前调用
+     * 适合于当你想要给每个字段设置相同的属性时
+     * 比如想要给所有的字段设置服务端排序：column.sortable='custom'
+     * @param item
+     */
+    initColumnBefore (column) {
+
+    },
     /**
      * initColumns 初始化结束后调用方法
      *

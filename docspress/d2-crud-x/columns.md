@@ -49,6 +49,7 @@
 * 可选值: true, false, 'custom'
 * 默认值: false
 
+
 ## sortMethod
 
 * 说明: 对数据进行排序的时候使用的方法，仅当 sortable 设置为 true 的时候有效，需返回一个数字，和 Array.sort 表现一致

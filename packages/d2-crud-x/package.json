@@ -8,7 +8,7 @@
   "main": "dist/d2-crud-x.umd.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/greper/d2-crud"
+    "url": "https://github.com/greper/d2-crud-plus.git"
   },
   "keywords": [
     "d2-crud-x",

@@ -7,7 +7,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/d2-projects/d2-admin.git"
+    "url": "https://github.com/greper/d2-crud-plus.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve --open",

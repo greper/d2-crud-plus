@@ -232,7 +232,7 @@ export default {
         crud.rowHandle.view.show = false
       }
 
-      // 查询字段排序
+      // 表单字段排序
       this._sortFormColumns('add')
       this._sortFormColumns('edit')
       this._sortFormColumns('view')
@@ -331,6 +331,10 @@ export default {
       }
       if (item.form && item.form.component && item.form.component.span == null) {
         item.form.component.span = this.crud.formOptions.defaultSpan ? this.crud.formOptions.defaultSpan : 12
+      }
+
+      if (this.initColumnBefore) {
+        this.initColumnBefore(item)
       }
 
       // 字典配置

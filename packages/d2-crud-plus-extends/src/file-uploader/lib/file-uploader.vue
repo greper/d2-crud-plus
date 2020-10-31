@@ -23,7 +23,7 @@
         </div>
         <div v-if="avatarUrl!=null" class="avatar">
           <img :src="avatarUrl" >
-          <div class="preview">
+          <div class="preview" @click.stop="" >
             <i class="el-icon-zoom-in" @click="previewAvatar"></i>
             <i class="el-icon-delete" v-if="!disabled" @click="removeAvatar"></i>
           </div>

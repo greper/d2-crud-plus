@@ -10,6 +10,9 @@ export const crudOptions = (vm) => {
         search: { type: 'danger', text: null, thin: true }
       }
     },
+    rowHandle: {
+      width: '260px'
+    },
     columns: [
       {
         title: 'ID',

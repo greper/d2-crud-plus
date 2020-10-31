@@ -71,7 +71,7 @@ Vue.use(d2CrudPlus, {
         componentType: 'form' // 【form,row】 表单组件 或 行组件展示
       },
       rowHandle: {
-        minWidth: 260,
+        width: 260,
         edit: {
           type: 'primary'
         }

@@ -43,13 +43,6 @@ import _get from 'lodash.get'
 import _set from 'lodash.set'
 export default {
   name: 'd2-cell',
-  provide: function () {
-    return {
-      d2CrudContext: {
-        getForm: this.getRow
-      }
-    }
-  },
   mixins: [
     utils
   ],

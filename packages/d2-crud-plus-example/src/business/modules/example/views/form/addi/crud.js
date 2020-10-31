@@ -1,7 +1,8 @@
 export const crudOptions = {
   options: {
-    height: null,
-    maxHeight: null
+    // height: null,
+    // maxHeight: null
+    height: '100%'
   },
   pageOptions: {
     compact: true // 是否紧凑型页面

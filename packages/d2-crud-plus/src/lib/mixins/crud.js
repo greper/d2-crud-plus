@@ -94,7 +94,7 @@ export default {
         },
         rowHandle: {
           // columnHeader: '操作',
-          width: 200,
+          minWidth: 200,
           view: {
             icon: 'el-icon-view',
             text: '查看',

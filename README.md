@@ -19,7 +19,7 @@
 >http://greper.gitee.io/d2-crud-plus/   
 >
 >示例演示   
->http://qiniu.veryreader.com/D2CrudPlusExample/index.html
+>http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html
 >
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ## 特性
@@ -116,7 +116,7 @@ export const crudOptions = (vm)=>{ // vm即this
 >http://greper.gitee.io/d2-crud-plus/   
 >
 >示例演示   
->http://qiniu.veryreader.com/D2CrudPlusExample/index.html
+>http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html
 >
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↑%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   

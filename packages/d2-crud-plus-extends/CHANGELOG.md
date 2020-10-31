@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.3](https://github.com/greper/d2-crud-plus/compare/v2.12.2...v2.12.3) (2020-10-31)
+
+
+### Bug Fixes
+
+* 修复头像上传loading ([37c4a8b](https://github.com/greper/d2-crud-plus/commit/37c4a8bfc0eab9735dbcee96662b157859980e3c))
+
+
+
+
+
 ## [2.12.2](https://github.com/greper/d2-crud-plus/compare/v2.12.1...v2.12.2) (2020-10-31)
 
 **Note:** Version bump only for package d2p-extends

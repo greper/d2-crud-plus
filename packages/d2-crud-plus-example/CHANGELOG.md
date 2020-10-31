@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.3](https://github.com/d2-projects/d2-admin/compare/v2.12.2...v2.12.3) (2020-10-31)
+
+**Note:** Version bump only for package @d2-plus/d2-crud-plus-example
+
+
+
+
+
 ## [2.12.2](https://github.com/d2-projects/d2-admin/compare/v2.12.1...v2.12.2) (2020-10-31)
 
 **Note:** Version bump only for package @d2-plus/d2-crud-plus-example

@@ -20,10 +20,14 @@ config {
   }
  }
  */
-function getToken (fileName, config) {
+function getToken (file, fileName, key, config) {
   const noCache = true // 七牛更新后，token不支持多次复用了
   if (noCache || tokenCache == null || new Date().getTime() >= tokenCache.expiresTime) {
-    return config.getToken(config.custom, fileName).then(ret => {
+    return config.getToken({
+      key,
+      file,
+      ...(config.custom || {})
+    }, fileName).then(ret => {
       let token = null
       if (typeof (ret) === 'string') {
         token = { token: ret, expires: 3600 }
@@ -40,8 +44,11 @@ function getToken (fileName, config) {
     })
   }
 }
-function getKey (fileName, config) {
-  const key = config.buildKey(fileName, config.custom)
+function getKey (file, fileName, config) {
+  const key = config.buildKey(fileName, {
+    file,
+    ...(config.custom || {})
+  })
   if (typeof (key) === 'string') {
     return new Promise((resolve) => {
       resolve(key)
@@ -60,8 +67,8 @@ export default {
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName, config)
-    const key = await getKey(fileName, config)
-    const token = await getToken(fileName, config)
+    const key = await getKey(file, fileName, config)
+    const token = await getToken(file, fileName, key, config)
 
     return new Promise((resolve, reject) => {
       /**

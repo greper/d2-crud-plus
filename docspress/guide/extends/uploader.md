@@ -82,7 +82,7 @@ Vue.use(D2pUploader, {
       return { url: res.data }  // data是该文件的url
     },
   }
-   // ,buildKey(){} //key生成规则方法
+   // ,buildKey(){} //key生成规则方法，也可以配置在组件的uploader参数里面，默认根据时间日期和文件名称生成
 })
 
 ```

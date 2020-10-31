@@ -15,3 +15,15 @@ div.el-scrollbar__wrap::-webkit-scrollbar {
     background-color: #b3b3b3; /*滚动条的背景颜色*/
   }
 }
+/*
+美化所有滚动条
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+*::-webkit-scrollbar-thumb{
+   box-shadow: 0px 1px 1px #eee inset;
+  border-radius: 3px;
+  background-color: #b3b3b3;
+}
+ */

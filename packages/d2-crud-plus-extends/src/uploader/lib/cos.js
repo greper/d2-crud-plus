@@ -53,7 +53,10 @@ export default {
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName)
-    let key = config.buildKey(fileName, config.custom)
+    let key = config.buildKey(fileName, {
+      file,
+      ...(config.custom || {})
+    })
     if (key instanceof Promise) {
       key = await key
     }

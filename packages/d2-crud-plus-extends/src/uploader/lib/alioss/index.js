@@ -2,8 +2,11 @@ import OSS from './sdk'
 // import OSS from 'ali-oss'
 import lodash from 'lodash'
 
-function getKey (fileName, config) {
-  const key = config.buildKey(fileName, config.custom)
+function getKey (file, fileName, config) {
+  const key = config.buildKey(fileName, {
+    file,
+    ...(config.custom || {})
+  })
   if (typeof (key) === 'string') {
     return new Promise((resolve) => {
       resolve(key)
@@ -54,10 +57,14 @@ export default {
     lodash.merge(options, config)
     config = options
     console.log('-----------开始上传----------', fileName, config)
-    const key = await getKey(fileName, config)
+    const key = await getKey(file, fileName, config)
     let sts = null
     if (this.options.getAuthorization !== null) {
-      sts = await this.getSts(this.options, config.custom)
+      sts = await this.getSts(this.options, {
+        key,
+        file,
+        ...(config.custom || {})
+      })
     }
     /**
      // ret.data:{

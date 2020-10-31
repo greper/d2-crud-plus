@@ -11,8 +11,7 @@ export default {
    * @param option {file,filename,action,data,headers}
    * @param config
    * @returns {Promise<unknown>}
-   */
-  upload ({ file, fileName, onProgress, onError, config }) {
+   */ async upload ({ file, fileName, onProgress, onError, config }) {
     const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
@@ -22,7 +21,13 @@ export default {
       onError,
       ...config
     }
-    option.data.key = config.buildKey(fileName, config.custom)
+    let key = config.buildKey(fileName, {
+      file,
+      ...(config.custom || {})
+    })
+    if (key instanceof Promise) {
+      key = await key
+    }
     console.log('upload option ', options)
     return new Promise((resolve, reject) => {
       ajax(option,

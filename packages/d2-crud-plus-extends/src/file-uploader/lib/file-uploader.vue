@@ -7,14 +7,20 @@
              :on-exceed="onExceed"
              :on-remove="handleUploadFileRemove"
              :on-success="handleUploadFileSuccess"
-             :on-error="handleUploadeFileError"
+             :on-error="handleUploadFileError"
+             :on-progress="handleUploadProgress"
              ref="fileUploader"
              v-bind="_elProps"
   >
     <el-button :disabled="disabled" :size="btnSize" type="primary" v-if="_elProps.listType === 'text' || this._elProps.listType === 'picture'">{{btnName}}</el-button>
-    <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'"> <i class="el-icon-plus avatar-uploader-icon" /></div>
+    <div class="avatar-item-wrapper"  v-else-if="this._elProps.listType === 'picture-card'">
+      <i class="el-icon-plus avatar-uploader-icon" />
+    </div>
     <template v-else-if="_elProps.listType ===  'avatar'">
       <div class="avatar-item-wrapper">
+        <div class="status-uploading" v-if="avatarLoading">
+          <el-progress type="circle" :percentage="avatarLoading" :width="70"/>
+        </div>
         <div v-if="avatarUrl!=null" class="avatar">
           <img :src="avatarUrl" >
           <div class="preview">
@@ -109,7 +115,8 @@ export default {
       fileList: [],
       context: {},
       dialogImageUrl: '',
-      dialogVisible: false
+      dialogVisible: false,
+      avatarLoading: undefined
     }
   },
   created () {
@@ -135,6 +142,7 @@ export default {
     avatarUrl () {
       if (this.fileList.length > 0) {
         const file = this.fileList[0]
+        console.log('file,', file, file.status)
         if (file.response != null && file.response.url != null) {
           return file.response.url
         } else if (file.url != null) {
@@ -250,6 +258,15 @@ export default {
     resetFileList (fileList) {
       this.$set(this, 'fileList', fileList)
     },
+    handleUploadProgress (event, file, fileList) {
+      if (this._elProps.listType === 'avatar') {
+        console.log('progress', event, file)
+        this.avatarLoading = event.percent
+        if (event.percent === 100) {
+          this.avatarLoading = undefined
+        }
+      }
+    },
     handleUploadFileSuccess (res, file, fileList) {
       res.size = res.size != null ? res.size : file.size
       res.name = res.name != null ? res.name : file.name
@@ -278,7 +295,7 @@ export default {
       this.fileList = fileList
       this.emitList(fileList)
     },
-    handleUploadeFileError (err, file, fileList) {
+    handleUploadFileError (err, file, fileList) {
       console.error('文件上传失败', err, file, fileList)
       this.$message({ type: 'error', message: '文件上传失败' })
     },
@@ -464,6 +481,33 @@ export default {
         font-size: 28px;
         color: #8c939d;
         line-height: 100px;
+      }
+      .status-uploading{
+        border-radius: 6px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        cursor: default;
+        text-align: center;
+        color: #fff;
+        opacity: 1;
+        font-size: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-transition: opacity .3s;
+        transition: opacity .3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .el-progress{
+          width: 70px;
+          height: 70px;
+          .el-progress__text {
+            color:#fff;
+          }
+        }
+
       }
     }
     .el-upload--picture-card .el-icon-plus.avatar-uploader-icon {

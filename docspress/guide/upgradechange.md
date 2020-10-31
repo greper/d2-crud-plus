@@ -1,4 +1,15 @@
 # 版本变更说明
+## 2.12.3
+1、增加options.events配置，支持更多el-table的事件监听   
+2、修复el-phone-number-input无法disabled的问题    
+3、修复列设置没有滚动条的问题   
+4、修复推迟到mounted初始化时，search报错的bug   
+5、dict 增加transfer配置，可以获取到字典后做一些修改   
+6、toolbar的refresh配置false可以隐藏按钮    
+7、服务端排序支持    
+8、头像上传增加loading   
+9、buildKey参数中可以获取file   
+
 ## 2.12.0 统一所有子项目版本，无重大改变
 1. 增强search的v-bind属性，可能会将form中配置的属性也绑定到search上，注意修改旧版本
 

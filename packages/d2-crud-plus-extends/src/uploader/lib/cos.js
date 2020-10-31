@@ -63,10 +63,10 @@ export default {
     // TODO 大文件需要分片上传
     const cos = this.getClient()
     return new Promise((resolve, reject) => {
-      onProgress({
-        total: 0,
-        percent: 0
-      })
+      // onProgress({
+      //   total: 0,
+      //   percent: 0
+      // })
       cos.putObject({
         Bucket: config.bucket,
         Region: config.region,

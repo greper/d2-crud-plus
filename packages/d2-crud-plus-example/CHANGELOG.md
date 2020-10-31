@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.1](https://github.com/d2-projects/d2-admin/compare/v2.12.0...v2.12.1) (2020-10-31)
+
+
+### Bug Fixes
+
+* 修复ie 11打不开的问题 ([44a48b7](https://github.com/d2-projects/d2-admin/commit/44a48b78cdfbe05a185360ca9ed8603742da7c78))
+* 修复phoneinput组件无法disabled的问题 ([93e22e6](https://github.com/d2-projects/d2-admin/commit/93e22e6ba4aad6f49f1b12deb7cf785f41bb5be5))
+* 修复phoneinput组件无法disabled的问题 ([de6974d](https://github.com/d2-projects/d2-admin/commit/de6974d13314317579931e69fe34a30c06e82b48))
+* 修复推迟加载后search报错的bug ([148d9fd](https://github.com/d2-projects/d2-admin/commit/148d9fd2207ef850f3ad5cfb26a24fab355dede7))
+* 修复权限链接报404的问题 ([7c77efa](https://github.com/d2-projects/d2-admin/commit/7c77efae6616cfbedb853a581c0a46f2c616bd33))
+* 修复非配置字段赋值的bug ([ddbd2e0](https://github.com/d2-projects/d2-admin/commit/ddbd2e0f0a773abaa2108562e8174b7da57dbfbb))
+* 修复非配置字段赋值的bug ([9a3daaa](https://github.com/d2-projects/d2-admin/commit/9a3daaa2ba8bee34b4d82587a18127cd874591b3))
+
+
+### Performance Improvements
+
+* rowHandle默认改为minWidth ([d9edc6a](https://github.com/d2-projects/d2-admin/commit/d9edc6a162a736e5c1d0a9c3fcf642352965ea48))
+* view模式的slot禁用示例 ([cf1da74](https://github.com/d2-projects/d2-admin/commit/cf1da74844595dfade6790860d06e9303666107c))
+* 优化上传lib，增加上传时获取文件的参数 ([27b010a](https://github.com/d2-projects/d2-admin/commit/27b010ab59917e206fa67e897cdcb5170993eefc))
+* 增加el-table的 events配置 ([88fb917](https://github.com/d2-projects/d2-admin/commit/88fb917863a5c9b4c029580438daec194c558cdc))
+* 增加el-table的 events配置 ([d5dce3b](https://github.com/d2-projects/d2-admin/commit/d5dce3bd0d65225041acb2560422a2b6b615c0a8))
+* 服务端排序实现 ([08f7ba5](https://github.com/d2-projects/d2-admin/commit/08f7ba55e8b412c3388fd95b2e59b912b140b61d))
+
+
+
+
+
 # [2.12.0](https://github.com/d2-projects/d2-admin/compare/v1.1.0...v2.12.0) (2020-10-21)
 
 

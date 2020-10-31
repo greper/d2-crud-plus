@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.1](https://github.com/greper/d2-crud/compare/v2.12.0...v2.12.1) (2020-10-31)
+
+
+### Bug Fixes
+
+* 修复非配置字段赋值的bug ([ddbd2e0](https://github.com/greper/d2-crud/commit/ddbd2e0f0a773abaa2108562e8174b7da57dbfbb))
+* 修复非配置字段赋值的bug ([9a3daaa](https://github.com/greper/d2-crud/commit/9a3daaa2ba8bee34b4d82587a18127cd874591b3))
+
+
+### Performance Improvements
+
+* 增加el-table的 events配置 ([d5dce3b](https://github.com/greper/d2-crud/commit/d5dce3bd0d65225041acb2560422a2b6b615c0a8))
+
+
+
+
+
 # [2.12.0](https://github.com/greper/d2-crud/compare/v1.1.0...v2.12.0) (2020-10-21)
 
 

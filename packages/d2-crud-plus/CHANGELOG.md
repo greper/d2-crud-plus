@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.1](https://github.com/greper/d2-crud-plus/compare/v2.12.0...v2.12.1) (2020-10-31)
+
+
+### Bug Fixes
+
+* 修复phoneinput组件无法disabled的问题 ([93e22e6](https://github.com/greper/d2-crud-plus/commit/93e22e6ba4aad6f49f1b12deb7cf785f41bb5be5))
+* 修复列太多，列设置的确定按钮点不到的bug ([b12cefe](https://github.com/greper/d2-crud-plus/commit/b12cefea502f22eeb750870d6a7be84a253df265))
+* 修复推迟加载后search报错的bug ([148d9fd](https://github.com/greper/d2-crud-plus/commit/148d9fd2207ef850f3ad5cfb26a24fab355dede7))
+* 修复权限链接报404的问题 ([7c77efa](https://github.com/greper/d2-crud-plus/commit/7c77efae6616cfbedb853a581c0a46f2c616bd33))
+* 修复非配置字段赋值的bug ([9a3daaa](https://github.com/greper/d2-crud-plus/commit/9a3daaa2ba8bee34b4d82587a18127cd874591b3))
+
+
+### Performance Improvements
+
+* dict 增加transfer配置 ([2ceb3fb](https://github.com/greper/d2-crud-plus/commit/2ceb3fb7e854435c4cf6adb5760f5d4eeb2d201f))
+* rowhandle修改为minWidth ([9985c9a](https://github.com/greper/d2-crud-plus/commit/9985c9acb3230f473208f9eb42f97eace00dae9c))
+* rowHandle默认改为minWidth ([d9edc6a](https://github.com/greper/d2-crud-plus/commit/d9edc6a162a736e5c1d0a9c3fcf642352965ea48))
+* toolbar refresh配置false可以隐藏按钮 ([ae6a067](https://github.com/greper/d2-crud-plus/commit/ae6a06745f9cc3bff34b67285a0be6b36632f95e))
+* 增加initColumnBefore方法 ([5860e7a](https://github.com/greper/d2-crud-plus/commit/5860e7a5651f8c1d0b376d2333c0e2b4f136f8a5))
+* 增加无依赖示例 ([a3a0d77](https://github.com/greper/d2-crud-plus/commit/a3a0d7713fa14c9819f7426839b219c2c2a5a98b))
+* 服务端排序实现 ([08f7ba5](https://github.com/greper/d2-crud-plus/commit/08f7ba55e8b412c3388fd95b2e59b912b140b61d))
+
+
+
+
+
 # [2.12.0](https://github.com/greper/d2-crud-plus/compare/v1.1.0...v2.12.0) (2020-10-21)
 
 

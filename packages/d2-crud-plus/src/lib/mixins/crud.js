@@ -40,7 +40,7 @@ export default {
               current: 'current', // 目标页码
               size: 'size', // 每页条数
               // 需要开启服务端排序： options.sortByServerSide:true
-              orderColumn: 'orderColumn', // 排序字段
+              orderProp: 'orderProp', // 排序字段
               orderAsc: 'orderAsc' // 是否正序
             },
             response: {
@@ -584,7 +584,7 @@ export default {
 
       if (this.crud.options.order) {
         const order = this.crud.options.order
-        queryFormat('orderColumn', order.column, requestFormat, query)
+        queryFormat('orderProp', order.prop, requestFormat, query)
         queryFormat('orderAsc', order.asc, requestFormat, query)
       }
 
@@ -942,7 +942,7 @@ export default {
           this.crud.options.order = null
         } else {
           this.crud.options.order = {
-            column: column.sortable === 'custom' ? prop : column.sortable,
+            prop: column.sortable === 'custom' ? prop : column.sortable,
             type: order,
             asc: (order === 'ascending')
           }

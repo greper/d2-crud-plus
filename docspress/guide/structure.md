@@ -6,7 +6,10 @@ pageRequest请求默认所需要的参数和数据结构如下：
 ```js
 {
     current:1, // 页码
-    size: 20 // 每页记录条数
+    size: 20, // 每页记录条数
+    orderProp: 'id',//排序字段
+    orderAsc: true,//是否正序
+    ...其他查询参数
 }
 ```
 2. pageRequest返回所需要数据结构
@@ -32,10 +35,13 @@ Vue.use(d2CrudPlus, {
   commonOption () { // 公共配置
     return {
       format: {
-        page: { // page接口返回的数据结构配置
+        page: { // page接口参数和返回数据的属性名配置
           request:{
             current:'current',
-            size: 'size'
+            size: 'size',
+            orderProp:'orderProp',
+            orderAsc:'orderAsc',
+            // orderAsc(query,value){query[你的排序方式参数名]=value} //你可以配置一个方法
           },
           response:{
             current: 'current', // 当前页码 ret.data.current

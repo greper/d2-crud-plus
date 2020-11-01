@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-x",
   "description": "d2-crud改进版",
-  "version": "2.12.1",
+  "version": "2.13.0",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -29,9 +29,9 @@
     "lodash.clonedeep": "^4.5.0",
     "lodash.foreach": "^4.5.0",
     "lodash.get": "^4.4.2",
+    "lodash.isequal": "^4.5.0",
     "lodash.merge": "^4.5.0",
-    "lodash.set": "^4.3.2",
-    "lodash.isequal": "^4.5.0"
+    "lodash.set": "^4.3.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

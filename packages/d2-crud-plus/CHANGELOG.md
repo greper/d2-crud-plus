@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
+
+
+### Features
+
+* 表单增加抽屉模式，优化表单打开动画，检测修改提醒保存 ([dde6933](https://github.com/greper/d2-crud-plus/commit/dde6933d603ee1c376f96a82a1a4d552d5bddb66))
+* 行编辑支持 ([2ecefb9](https://github.com/greper/d2-crud-plus/commit/2ecefb9e27320babb2bd34bf6bf0b832ba5ebc43))
+
+
+### Performance Improvements
+
+* 优化排除lodash ([71d88c7](https://github.com/greper/d2-crud-plus/commit/71d88c7f8cfc2db7b23b3df584230ff6d2b01d81))
+
+
+
+
+
 ## [2.12.2](https://github.com/greper/d2-crud-plus/compare/v2.12.1...v2.12.2) (2020-10-31)
 
 **Note:** Version bump only for package d2-crud-plus

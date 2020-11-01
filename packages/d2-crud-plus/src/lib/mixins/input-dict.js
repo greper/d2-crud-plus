@@ -81,7 +81,7 @@ export default {
       }
     },
     getDictData () {
-      return this.dictOptions
+      return this._options
     },
     loadDict () {
       const options = { component: this }

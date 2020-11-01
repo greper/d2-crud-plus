@@ -62,6 +62,7 @@ addPage(formMenus, 'form/independent', '组件独立使用', 'new')
 
 const enhanceMenus = []
 addPage(enhanceMenus, 'form/d2crud', 'd2Crud原版')
+addPage(enhanceMenus, 'form/drawer', '抽屉表单', 'new')
 addPage(enhanceMenus, 'form/localPagination', '本地分页', 'new')
 addPage(enhanceMenus, 'form/export', '数据导出', 'new')
 addPage(enhanceMenus, 'form/searchOrder', '查询排序', 'new')

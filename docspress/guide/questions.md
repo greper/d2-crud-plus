@@ -64,6 +64,7 @@ template.component.props.options = [] //动态将选项置空
 
 ## 4. 怎么获取某个字段的数据字典的选项列表？
 ```js
+// 方式1：
 //获取form表单组件中的字典选项列表
 let columnKey = '你的字段key'
 let dictData = this.getEditFormTemplate(columnKey).component.props.dict.data;
@@ -75,6 +76,19 @@ let label = this.getEditFormTemplate(columnKey).component.props.dict.dataMap[val
 //获取行展示组件中的字典选项列表
 let columnKey = '你的字段key'
 let dictData = this.crud.columnsMap[columnKey].component.props.dict.data;
+// 注意：以上方式在字典动态变化时可能会无效
+
+// 方式2：推荐，通过component的ref获取
+valueChange(key ,value ,form, {getColumn, mode, component, immediate, getComponent })){
+ const data = component.getDictData()
+ const otherColumnDictData = getComponent('otherColumnKey').getDictData()
+}
+// 方式3：异步获取
+const dict = {url:'xxx'}
+d2CrudPlus.util.dict.get(dict).then((data) => {
+  const dictData  = data
+})
+
 
 // 注意：新版本已不支持 this.crud.columnsMap[columnKey].dict 方式获取
 // 请使用 this.crud.columnsMap[columnKey].component.props.dict

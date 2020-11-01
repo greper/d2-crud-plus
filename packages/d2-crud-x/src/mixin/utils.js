@@ -174,6 +174,9 @@ export default {
   computed: {
     thisIsVxeTable () {
       return this.isVxeTable()
+    },
+    isFormDrawer () {
+      return this.formOptions.type === 'drawer'
     }
   }
 }

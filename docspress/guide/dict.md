@@ -140,6 +140,7 @@ DictSelect、DictRadio、DictCheckbox组件ref暴露如下一些方法可以操�
 component.clearDict()  //清除字典
 component.loadDict() //加载字典
 component.setDictData(data) //修改字典数据
+component.getDictData()
 ```
 
 方式3：动态修改dict.url 也会触发字典重载

@@ -148,13 +148,13 @@
     </div>
 
     <!-- 表单对话框 -->
-    <el-dialog
+    <component
+      :is="'el-'+formOptions.type"
       class="d2-crud-dialog"
-      v-if="isDialogShow"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
-      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true)}"
+      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer}"
       v-bind="formOptions"
     >
       <template slot="title">
@@ -163,6 +163,7 @@
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"/></button>
       </template>
       <el-form
+        v-if="isFormShow"
         ref="form"
         :model="formData"
         :rules="handleFormRulesMode()"
@@ -241,7 +242,7 @@
           <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
         </div>
       </el-form>
-      <div slot="footer">
+      <div class="d2p-form-footer" :slot="isFormDrawer?'default':'footer'" >
         <slot name="FormFooterSlot" :mode="formMode" :data="formData" :form="formData" />
         <el-button v-if="getAttribute(formOptions,'saveButtonShow', true)"
           :size="getAttribute(formOptions,'saveButtonSize', null)"
@@ -254,7 +255,7 @@
         {{ getAttribute(formOptions,'saveButtonText', '确定')}}
         </el-button>
       </div>
-    </el-dialog>
+    </component>
   </div>
 </template>
 
@@ -444,6 +445,15 @@ export default {
   .el-form[formMode=view]{
     .el-form-item__label{
       color:#909090
+    }
+  }
+
+  &.d2p-form-drawer{
+    .el-drawer__body{
+      padding:20px
+    }
+    .d2p-form-footer{
+      text-align: right;
     }
   }
 }

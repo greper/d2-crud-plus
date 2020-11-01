@@ -30,7 +30,8 @@
     "lodash.foreach": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.5.0",
-    "lodash.set": "^4.3.2"
+    "lodash.set": "^4.3.2",
+    "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",

@@ -1,5 +1,6 @@
 import _forEach from 'lodash.foreach'
 import _clonedeep from 'lodash.clonedeep'
+import _isequal from 'lodash.isequal'
 
 export default {
   props: {
@@ -68,10 +69,12 @@ export default {
        * @description dialog显示与隐藏
        */
       isDialogShow: false,
+      isFormShow: false,
       /**
        * @description 表单数据
        */
       formData: {},
+      formDataBefore: {},
       /**
        * @description 表单模式
        */
@@ -149,7 +152,13 @@ export default {
         })
         this.$set(this, 'formGroupsActive', formGroupsActive)
         this.$set(this, 'formData', formData)
-        this.isDialogShow = true
+        if (this.formOptions.saveRemind) {
+          this.$set(this, 'formDataBefore', _clonedeep(formData))
+        }
+        this.isFormShow = true
+        this.$nextTick(() => {
+          this.isDialogShow = true
+        })
 
         this.$emit('dialog-opened', {
           mode: this.formMode,
@@ -234,6 +243,30 @@ export default {
      * @description 取消保存行数据
      */
     handleDialogCancel (done) {
+      if (this.formOptions.saveRemind) {
+        if (!_isequal(this.formData, this.formDataBefore)) {
+          // 提醒保存
+          let confirm = this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {
+            distinguishCancelAndClose: true,
+            confirmButtonText: '保存',
+            cancelButtonText: '放弃保存',
+            type: 'warning'
+          })
+          if (this.formOptions.saveRemind instanceof Function) {
+            confirm = this.formOptions.saveRemind()
+          }
+          return confirm.then(() => {
+            this.handleDialogSave()
+          }).catch((action) => {
+            if (action === 'cancel') {
+              // 放弃保存，并关闭
+              this.$emit('dialog-cancel', done)
+            } else {
+              // 留在当前页面
+            }
+          })
+        }
+      }
       this.$emit('dialog-cancel', done)
     },
     /**
@@ -254,7 +287,11 @@ export default {
      * @description 关闭模态框
      */
     handleCloseDialog () {
+      this.formDataBefore = null
       this.isDialogShow = false
+      this.$nextTick(() => {
+        this.isFormShow = false
+      })
     }
   }
 }

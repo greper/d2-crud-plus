@@ -48,13 +48,17 @@ export const crudOptions = {
     }
   },
   formOptions: { // 编辑对话框及el-form的配置
+    type:'dialog',//默认对话框模式，drawer 抽屉模式
+    size: '50%', //抽屉模式的宽度
+    fullscreen: true,//全屏按钮，抽屉模式请关闭
+    draggable:true, //是否支持表单对话框拖拽，抽屉模式请关闭
+    saveRemind: true, //有修改时是否需要保存提醒，也可以传入一个方法，自定义确认对话框，()=> return vm.$confirm({})
     labelWidth: '100px',
     labelPosition: 'left',
     saveLoading: false,
     gutter: 20,
     defaultSpan: 12, // 默认表单字段所占宽度
-    draggable:true, //是否支持表单对话框拖拽
-    updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据
+    updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据，默认会自动刷新表格，所以不需要更新本地数据
   },
   searchOptions: { //查询配置参数, 支持el-form的配置参数
     form:{ //默认搜索参数

@@ -113,7 +113,7 @@
         >
           <template slot-scope="scope">
             <template
-              v-for="(item, index) in _handleBtns"
+              v-for="(item, index) in ((lineEditor && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleBtns)"
             >
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope)"
@@ -280,7 +280,10 @@ export default {
   provide: function () {
     return {
       d2CrudContext: {
-        getForm: this.getFormData
+        getForm: this.getFormData,
+        getLineEditor: () => {
+          return this.lineEditor
+        }
       }
     }
   },

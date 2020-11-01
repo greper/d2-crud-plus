@@ -178,7 +178,7 @@ export default {
           return {
             code: 0,
             msg: 'success',
-            data: null
+            data: req.body.id
           }
         }
       },

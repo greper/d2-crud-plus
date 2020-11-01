@@ -108,7 +108,7 @@ export default {
     getFormData () {
       return this.formData
     },
-    openDialog (index, row, templage) {
+    async buildFormData (index, row, templage) {
       if (templage == null) {
         console.warn('template为空,mode:', this.formMode)
         templage = {}
@@ -125,48 +125,58 @@ export default {
           tempGroups[key] = value
         })
       }
-      return this.fetchDetail(index, row, this.formMode).then(newRow => {
-        newRow = newRow || {}
-        this.formDataStorage = newRow
-        const formGroupsActive = []
-        _forEach(tempGroups, (group, groupKey) => {
-          if (!group.collapsed) {
-            formGroupsActive.push(groupKey)
-          }
-          _forEach(group.columns, (template, key) => {
-            let value = this._get(newRow, key)
-            // 设置默认值
-            if (template && value === undefined) {
-              if (template.value != null) {
-                value = template.value
-              } else if (template.component) {
-                if (template.component.value != null) {
-                  value = template.component.value
-                } else if (template.component.props && template.component.props.value != null) {
-                  value = template.component.props.value
-                }
+      let newRow = await this.fetchDetail(index, row, this.formMode)
+      newRow = newRow || {}
+      this.formDataStorage = newRow
+      const formGroupsActive = []
+      _forEach(tempGroups, (group, groupKey) => {
+        if (!group.collapsed) {
+          formGroupsActive.push(groupKey)
+        }
+        _forEach(group.columns, (template, key) => {
+          let value = this._get(newRow, key)
+          // 设置默认值
+          if (template && value === undefined) {
+            if (template.value != null) {
+              value = template.value
+            } else if (template.component) {
+              if (template.component.value != null) {
+                value = template.component.value
+              } else if (template.component.props && template.component.props.value != null) {
+                value = template.component.props.value
               }
             }
-            this._set(formData, key, value)
-          })
+          }
+          this._set(formData, key, value)
         })
-        this.$set(this, 'formGroupsActive', formGroupsActive)
-        this.$set(this, 'formData', formData)
-        if (this.formOptions.saveRemind) {
-          this.$set(this, 'formDataBefore', _clonedeep(formData))
-        }
-        this.isFormShow = true
-        this.$nextTick(() => {
-          this.isDialogShow = true
-        })
+      })
+      this.$set(this, 'formGroupsActive', formGroupsActive)
+      this.$set(this, 'formData', formData)
+      if (this.formOptions.saveRemind) {
+        this.$set(this, 'formDataBefore', _clonedeep(formData))
+      }
 
-        this.$emit('dialog-opened', {
-          mode: this.formMode,
-          row: newRow,
-          form: formData,
-          template: this.formTemplateStorage,
-          groupTemplate: this.formTemplateGroupStorage
-        })
+      return {
+        newRow,
+        formData,
+        formTemplateStorage: this.formTemplateStorage,
+        formTemplateGroupStorage: this.formTemplateGroupStorage,
+        formDataStorage: this.formDataStorage
+      }
+    },
+    async openDialog (index, row, templage) {
+      const { newRow, formData } = await this.buildFormData(index, row, templage)
+      this.isFormShow = true
+      this.$nextTick(() => {
+        this.isDialogShow = true
+      })
+
+      this.$emit('dialog-opened', {
+        mode: this.formMode,
+        row: newRow,
+        form: formData,
+        template: this.formTemplateStorage,
+        groupTemplate: this.formTemplateGroupStorage
       })
     },
     fetchDetail (index, row) {
@@ -190,6 +200,23 @@ export default {
       }
     },
 
+    buildAddSubmitData () {
+      const rowData = {}
+      _forEach(this.formData, (value, key) => {
+        this._set(rowData, key, value)
+      })
+      return rowData
+    },
+    buildEditSubmitData () {
+      const rowData = _clonedeep(this.formDataStorage)
+      _forEach(this.formData, (value, key) => {
+        if (value == null && this.formOptions && this.formOptions.nullToBlankStr) {
+          value = ''
+        }
+        this._set(rowData, key, value)
+      })
+      return rowData
+    },
     /**
      * @description 保存行数据
      */
@@ -200,13 +227,7 @@ export default {
         }
         let rowData = {}
         if (this.formMode === 'edit') {
-          rowData = _clonedeep(this.formDataStorage)
-          _forEach(this.formData, (value, key) => {
-            if (value == null && this.formOptions && this.formOptions.nullToBlankStr) {
-              value = ''
-            }
-            this._set(rowData, key, value)
-          })
+          rowData = this.buildEditSubmitData()
           this.$emit('row-edit', {
             index: this.editIndex,
             row: rowData
@@ -221,9 +242,7 @@ export default {
             })
           })
         } else if (this.formMode === 'add') {
-          _forEach(this.formData, (value, key) => {
-            this._set(rowData, key, value)
-          })
+          rowData = this.buildAddSubmitData()
           this.$emit('row-add', rowData, (param = null) => {
             if (param === false) {
               this.handleCloseDialog()

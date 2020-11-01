@@ -9,6 +9,32 @@ export default {
     }
   },
   computed: {
+    _lineEditModeBtns () {
+      const btns = []
+      btns.push({
+        disabled: false,
+        doClick: (scope) => {
+          scope = this.getCellScope(scope)
+          this.handleLineEditSave(scope.index, scope.row)
+        },
+        type: 'primary',
+        order: 1,
+        text: '保存',
+        ...this.rowHandle.lineEditSave
+      })
+      btns.push({
+        disabled: false,
+        doClick: (scope) => {
+          scope = this.getCellScope(scope)
+          this.handleLineEditCancel(scope.index, scope.row)
+        },
+        type: 'danger',
+        order: 2,
+        text: '取消',
+        ...this.rowHandle.lineEditCancel
+      })
+      return btns
+    },
     _handleBtns () {
       const btns = []
       if (this.rowHandle.view) {
@@ -34,6 +60,19 @@ export default {
           text: '编辑',
           order: 2,
           ...this.rowHandle.edit
+        })
+      }
+      if (this.rowHandle.lineEdit) {
+        btns.push({
+          type: 'primary',
+          disabled: false,
+          doClick: (scope) => {
+            scope = this.getCellScope(scope)
+            this.handleLineEdit(scope.index, scope.row)
+          },
+          text: '编辑',
+          order: 2,
+          ...this.rowHandle.lineEdit
         })
       }
       if (this.rowHandle.remove) {

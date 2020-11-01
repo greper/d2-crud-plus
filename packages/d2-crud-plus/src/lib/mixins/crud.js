@@ -164,6 +164,8 @@ export default {
     },
     _crudListeners () {
       return {
+        'line-edit': this.handleLineEdit,
+        'line-add': this.handleLineAdd,
         'row-edit': this.handleRowEdit,
         'row-add': this.handleRowAdd,
         'row-remove': this.handleRowRemove,
@@ -715,6 +717,11 @@ export default {
         addData: addData
       })
     },
+    lineEditAdd (addData) {
+      this.getD2Crud().lineEditAdd({
+        addData: addData
+      })
+    },
     /**
      * 批量删除
      */
@@ -786,6 +793,42 @@ export default {
         return this.editAfter(row)
       }).finally(() => {
         this.crud.formOptions.saveLoading = false
+      })
+    },
+
+    /**
+     * 行编辑添加提交
+     * @param row
+     * @param done
+     */
+    handleLineAdd ({ index, row }, done) {
+      // loading true
+      row = this._unFlatData(row)
+      this.doValueResolve(row)
+      this.addBefore(row)
+      return this.addRequest(row).then((ret) => {
+        this.showAddMessage({ row })
+        done(ret)
+      }).finally(() => {
+        // loading false
+      })
+    },
+    /**
+     * 行编辑提交
+     * @param index
+     * @param row
+     * @param done
+     */
+    handleLineEdit ({ index, row }, done) {
+      // this.crud.formOptions.saveLoading = true
+      row = this._unFlatData(row)
+      this.doValueResolve(row)
+      this.editBefore(row)
+      return this.updateRequest(row).then((ret) => {
+        this.showEditMessage({ index, row })
+        done(ret)
+      }).finally(() => {
+        // this.crud.formOptions.saveLoading = false
       })
     },
     doValueResolve (row) {

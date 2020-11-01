@@ -27,11 +27,11 @@
         <template v-else>{{ item.formatter ? item.formatter(row, item, _get(row, item.key), rowIndex) : _get(row, item.key) }}</template>
       </template>
     <template v-else>
-      <template v-if="getItem().rowSlot === true">
+      <template v-if="getItem().slot === true">
           <slot :name="item.key+'Slot'" :row="getRow()" :isLineEdit="isLineEdit()"/>
         </template>
         <render-custom-component
-          v-else-if="getItem().component && getItem().component.name"
+          v-else-if="getItem().component "
           :value="_get(getRow(),item.key)"
           @input="_set(getRow(),item.key,$event)"
           :component-name="getFormComponentName()"

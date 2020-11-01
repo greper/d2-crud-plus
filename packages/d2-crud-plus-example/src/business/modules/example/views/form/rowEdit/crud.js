@@ -16,6 +16,7 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       width: 260,
+      fixed: 'right',
       edit: {
         show: false
       },
@@ -41,6 +42,12 @@ export const crudOptions = (vm) => {
         }
       },
       {
+        title: '文本',
+        key: 'text1',
+        sortable: true,
+        minWidth: 100
+      },
+      {
         title: '单选远程',
         key: 'status',
         sortable: true,
@@ -49,30 +56,7 @@ export const crudOptions = (vm) => {
         dict: {
           url: '/dicts/OpenStatusEnum'
         },
-        minWidth: 200
-      },
-      {
-        title: '默认隐藏',
-        key: 'text1',
-        show: false,
-        sortable: true,
-        minWidth: 200,
-        form: {
-          order: 1
-        }
-      },
-      {
-        title: '单选，本地',
-        key: 'select_local',
-        sortable: true,
-        search: {
-          disabled: true
-        },
-        type: 'select',
-        dict: {
-          data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        },
-        minWidth: 200
+        minWidth: 100
       },
       {
         title: '多选,本地',
@@ -94,7 +78,31 @@ export const crudOptions = (vm) => {
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
         },
-        minWidth: 200
+        minWidth: 100
+      },
+      {
+        title: 'radio',
+        key: 'radio',
+        type: 'radio',
+        sortable: true,
+        minWidth: 100,
+        dict: { data: [{ value: '1', label: '开启' }, { value: '0', label: '关闭' }] }
+      },
+      {
+        title: 'checkbox',
+        key: 'checkbox',
+        sortable: true,
+        type: 'checkbox',
+        minWidth: 100,
+        dict: { data: [{ value: '1', label: '开启' }, { value: '0', label: '关闭' }] }
+      },
+      {
+        title: 'switch',
+        key: 'switch',
+        sortable: true,
+        type: 'dict-switch',
+        minWidth: 100,
+        dict: { data: [{ value: true, label: '开启' }, { value: false, label: '关闭' }] }
       }
 
     ]

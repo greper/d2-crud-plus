@@ -1,7 +1,7 @@
 import mockUtil from '@/business/mock/base'
 
 const options = {
-  name: 'rowEdit',
+  name: 'lineEdit',
   idGenerator: 0
 }
 const list = [

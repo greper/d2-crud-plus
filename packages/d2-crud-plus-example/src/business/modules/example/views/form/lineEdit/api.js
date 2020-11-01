@@ -2,14 +2,14 @@ import request from '@/business/api/request.mock'
 
 export function GetList (query) {
   return request({
-    url: '/rowEdit/page',
+    url: '/lineEdit/page',
     method: 'get',
     data: query
   })
 }
 export function AddObj (obj) {
   return request({
-    url: '/rowEdit/add',
+    url: '/lineEdit/add',
     method: 'post',
     data: obj
   })
@@ -17,14 +17,14 @@ export function AddObj (obj) {
 
 export function UpdateObj (obj) {
   return request({
-    url: '/rowEdit/update',
+    url: '/lineEdit/update',
     method: 'post',
     data: obj
   })
 }
 export function DelObj (id) {
   return request({
-    url: '/rowEdit/delete',
+    url: '/lineEdit/delete',
     method: 'post',
     data: { id }
   })

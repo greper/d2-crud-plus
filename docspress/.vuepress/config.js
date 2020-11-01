@@ -127,6 +127,7 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'nest-data',
         'flat-data',
         'data-export',
+        'line-edit',
       ]
     },
     {

@@ -24,16 +24,9 @@ export const crudOptions = (vm) => {
         show: false
       },
       lineEdit: {
-        text: '行编辑',
-        size: 'small'
-      },
-      lineEditSave: {
-        show: true,
-        size: 'small'
-      },
-      lineEditCancel: {
-        size: 'small'
+        show: true
       }
+
     },
     columns: [
       {

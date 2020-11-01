@@ -121,6 +121,27 @@ export default {
             confirm: true,
             show: true,
             disabled: false
+          },
+          lineEdit: {
+            icon: 'el-icon-edit',
+            text: '编辑',
+            size: 'small',
+            show: false,
+            disabled: false
+          },
+          lineEditSave: {
+            icon: 'el-icon-check',
+            text: '保存',
+            size: 'small',
+            show: true,
+            disabled: false
+          },
+          lineEditCancel: {
+            icon: 'el-icon-close',
+            text: '取消',
+            size: 'small',
+            show: true,
+            disabled: false
           }
         }
       },

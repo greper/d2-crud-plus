@@ -1,15 +1,18 @@
 <template>
   <crud-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
-      行编辑
+      行编辑【高级版】
       <span style="color:gray;font-size: 12px">【点击右边帮助按钮,如何启用行编辑】</span>
       <example-helper title="帮助说明" >
         <div>
           如下配置即可
           <pre>
             const crudOptions={
+              lineEdit: {
+                validation: true // 行编辑是否启用，性能会有点影响
+              },
               rowHandle:{
-                rowEdit:{}
+                rowEdit:{show:true}
               }
             }
           </pre>
@@ -40,7 +43,7 @@ import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
-  name: 'formToolbar',
+  name: 'formLineEdit',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {

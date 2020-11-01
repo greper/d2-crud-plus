@@ -135,7 +135,7 @@
               />
             </template>
             <!-- 即将废弃 -->
-            <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
+            <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row" ></slot>
             <slot name="rowHandleSlot" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
           </template>
 

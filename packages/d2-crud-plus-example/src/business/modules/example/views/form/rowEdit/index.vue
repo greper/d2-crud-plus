@@ -25,6 +25,10 @@
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button size="small" type="primary" @click="lineEditAdd()"><i class="el-icon-plus"/> 新增</el-button>
+
+        <el-switch style="margin-left:10px;"  v-model="needValidation" @change="validationChanged"
+                   active-text="需要校验"
+                   inactive-text="关闭校验" ></el-switch>
         <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
       </div>
     </d2-crud-x>
@@ -41,9 +45,13 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
+      needValidation: true
     }
   },
   methods: {
+    validationChanged (newValue) {
+      this.crud.options.lineEdit.validation = newValue
+    },
     getCrudOptions () {
       return crudOptions(this)
     },

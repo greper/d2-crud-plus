@@ -4,6 +4,9 @@ export const crudOptions = (vm) => {
       compact: true // 是否紧凑型页面
     },
     options: {
+      lineEdit: {
+        validation: true // 行编辑是否需要校验
+      },
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
     formOptions: {
@@ -45,7 +48,10 @@ export const crudOptions = (vm) => {
         title: '文本',
         key: 'text1',
         sortable: true,
-        minWidth: 100
+        minWidth: 100,
+        form: {
+          rules: [{ required: true, message: '此项必填' }]
+        }
       },
       {
         title: '单选远程',
@@ -55,6 +61,9 @@ export const crudOptions = (vm) => {
         type: 'select',
         dict: {
           url: '/dicts/OpenStatusEnum'
+        },
+        form: {
+          rules: [{ required: true, message: '此项必填' }]
         },
         minWidth: 100
       },
@@ -73,7 +82,8 @@ export const crudOptions = (vm) => {
               multiple: true,
               clearable: true
             }
-          }
+          },
+          rules: [{ required: true, message: '此项必填' }]
         },
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]

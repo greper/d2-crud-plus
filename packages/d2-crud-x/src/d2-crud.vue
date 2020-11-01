@@ -15,6 +15,16 @@
     </div>
     <div class="d2-crud-body" v-else >
       <component
+        :is="(options.lineEdit&&options.lineEdit.validation)?'el-form':'div'"
+        style="height:100%"
+        ref="lineEditForm"
+        :model="lineEditor.form"
+        :rules="handleFormRulesMode()"
+        :formMode="formMode"
+        v-bind="formOptions"
+        labelWidth="0"
+      >
+      <component
         :is="getTableImpl(options.tableType)"
         ref="elTable"
         :data="d2CrudData"
@@ -113,7 +123,7 @@
         >
           <template slot-scope="scope">
             <template
-              v-for="(item, index) in ((lineEditor && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleBtns)"
+              v-for="(item, index) in ((lineEditor && lineEditor.active && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleBtns)"
             >
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope)"
@@ -130,6 +140,7 @@
           </template>
 
         </component>
+      </component>
       </component>
     </div>
     <div class="d2-crud-footer">

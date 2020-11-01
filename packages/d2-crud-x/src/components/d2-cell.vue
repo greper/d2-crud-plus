@@ -26,8 +26,13 @@
        />
         <template v-else>{{ item.formatter ? item.formatter(row, item, _get(row, item.key), rowIndex) : _get(row, item.key) }}</template>
       </template>
-    <template v-else>
-      <template v-if="getItem().slot === true">
+    <component v-else
+               :is="isNeedValidation()?'el-form-item':'div'"
+                  :prop="item.key"
+                  :rules="getEditRules()"
+                  v-bind="getItem().itemProps"
+    >
+        <template v-if="getItem().slot === true">
           <slot :name="item.key+'Slot'" :row="getRow()" :isLineEdit="isLineEdit()"/>
         </template>
         <render-custom-component
@@ -44,7 +49,7 @@
           @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: getRow()[item.key], row: getRow()})"
           @custom="handleCellComponentCustomEvent($event, {rowIndex: rowIndex, key: item.key, value: getRow()[item.key], row: getRow()})"
         />
-    </template>
+    </component>
   </span>
 </template>
 
@@ -107,6 +112,21 @@ export default {
       }
       return this.item
     },
+    isNeedValidation () {
+      const lineEditor = this.isLineEdit()
+      if (lineEditor) {
+        return lineEditor.validation
+      }
+      return false
+    },
+    getEditRules () {
+      const lineEditor = this.isLineEdit()
+      if (lineEditor) {
+        const rules = lineEditor.rules[this.item.key]
+        return rules
+      }
+      return null
+    },
     getFormComponentName () {
       const name = this.getItem().component.name
       if (name) {
@@ -139,7 +159,7 @@ export default {
     isLineEdit () {
       if (this.d2CrudContext && this.d2CrudContext.getLineEditor) {
         const editor = this.d2CrudContext.getLineEditor()
-        if (editor && editor.index === this.rowIndex) {
+        if (editor && editor.active && editor.index === this.rowIndex) {
           return editor
         }
       }

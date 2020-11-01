@@ -5,7 +5,9 @@ export default {
        * @description 被编辑行的索引
        */
       editIndex: 0,
-      lineEditor: undefined
+      lineEditor: {
+        active: false
+      }
     }
   },
   methods: {
@@ -29,7 +31,7 @@ export default {
     },
 
     async lineEditAdd ({ addData = {}, templage }) {
-      if (this.lineEditor != null) {
+      if (this.lineEditor.active) {
         this.$message('请先保存或取消上一个行编辑')
         return
       }
@@ -44,7 +46,15 @@ export default {
         templage = this.addTemplate
       }
       const { formData, formTemplateStorage } = await this.buildFormData(index, addData, templage)
-      this.$set(this, 'lineEditor', { index: index, form: formData, template: formTemplateStorage, isAdd: true })
+      this.$set(this, 'lineEditor', {
+        active: true,
+        index: index,
+        form: formData,
+        template: formTemplateStorage,
+        isAdd: true,
+        rules: this.addRules,
+        validation: this.options.lineEdit && this.options.lineEdit.validation
+      })
     },
     /**
      * @description 进入行编辑模式
@@ -53,7 +63,7 @@ export default {
      * @param templage
      */
     async handleLineEdit (index, row, templage = null) {
-      if (this.lineEditor != null) {
+      if (this.lineEditor.active) {
         this.$message('请先保存或取消上一个行编辑')
         return
       }
@@ -63,7 +73,14 @@ export default {
         templage = this.editTemplate
       }
       const { formData, formTemplateStorage } = await this.buildFormData(index, row, templage)
-      this.$set(this, 'lineEditor', { index: index, form: formData, template: formTemplateStorage })
+      this.$set(this, 'lineEditor', {
+        active: true,
+        index: index,
+        form: formData,
+        template: formTemplateStorage,
+        rules: this.editRules,
+        validation: this.options.lineEdit && this.options.lineEdit.validation
+      })
     },
 
     handleLineEditCancel () {
@@ -73,17 +90,29 @@ export default {
       if (this.lineEditor.isAdd) {
         this.handleRemoveRow(this.lineEditor.index)
       }
-      this.lineEditor = undefined
+      this.lineEditor.active = false
     },
     handleLineEditSave (index, row) {
-      const rowData = this.buildEditSubmitData()
       if (this.lineEditor == null) {
         throw new Error('当前不在行编辑模式')
       }
+      if (this.options.lineEdit && this.options.lineEdit.validation) {
+        this.$refs.lineEditForm.validate((valid) => {
+          if (!valid) {
+            return false
+          }
+          this.doLineEditSave(index, row)
+        })
+      } else {
+        this.doLineEditSave(index, row)
+      }
+    },
+    doLineEditSave (index, row) {
+      const rowData = this.buildEditSubmitData()
       if (this.lineEditor.isAdd) {
         const rowData = this.buildAddSubmitData()
         this.$emit('line-add', { index: index, row: rowData }, (param = {}) => {
-          this.lineEditor = undefined
+          this.lineEditor.active = false
           this.handleUpdateRow(index, param.row)
         })
       } else {
@@ -91,7 +120,7 @@ export default {
           index,
           row: rowData
         }, (param = {}) => {
-          this.lineEditor = undefined
+          this.lineEditor.active = false
           this.handleUpdateRow(index, param.row)
         })
       }

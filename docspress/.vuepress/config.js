@@ -165,7 +165,8 @@ function getGuideSidebar (groupA, groupB,groupC) {
         'breakingchange',
         'upgradechange',
         'questions',
-        'contact'
+        'contact',
+        'donate'
       ]
     },
     {

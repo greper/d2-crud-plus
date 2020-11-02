@@ -68,6 +68,7 @@ export const crudOptions = (vm) => {
             }
             return undefined // 返回undefined 将不加载字典
           },
+          immediate: true,
           value: 'id'
         },
         form: {

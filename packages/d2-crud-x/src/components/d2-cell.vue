@@ -65,6 +65,13 @@ export default {
   mixins: [
     utils
   ],
+  provide: function () {
+    return {
+      d2CrudContext: {
+        getForm: this.getRow
+      }
+    }
+  },
   inject: {
     d2CrudContext: {
       default () {

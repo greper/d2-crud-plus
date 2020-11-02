@@ -50,30 +50,7 @@
 * 类型: Object | Boolean
 * 可选值: 无
 * 默认值: 无
-* 详细配置: 
-```js
-edit:{
-    thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
-    text: '编辑', //按钮文字， null= 取消文字
-    type: 'warning', // 按钮类型  可选值【primary / success / warning / danger / info / text】
-    icon:'icon-edit', //按钮图标
-    size: 'small', // 按钮大小
-    circle: false,//圆形按钮 ，需要thin=true,且text=null
-    show:true, // 是否显示按钮
-    //show(index,row){return true}// 支持按条件显隐 
-    disabled:false, // 是否禁用
-    //disabled(index,row){return true} //支持按条件禁用启用 
-    order: 1 //排序号，数字小，排前面，默认顺序：查看=1、编辑=2、删除=3、自定义=4
-}
-```
-```js
-//仅显示图标，不显示文字
-edit:{
-   thin: true,
-   text: null,
-   icon: 'icon-edit'
-}
-```
+* 更多见后面：按钮详细配置
 
 ## view
 
@@ -81,7 +58,7 @@ edit:{
 * 类型: Object | Boolean
 * 可选值: 无
 * 默认值: 无
-* 详细配置： 同`edit`
+* 更多见后面：按钮详细配置
 
 ## remove
 
@@ -89,7 +66,7 @@ edit:{
 * 类型: Object | Boolean
 * 可选值: 无
 * 默认值: 无
-* 详细配置： 同`edit`
+* 更多见后面：按钮详细配置
 
 ## remove.confirm
 
@@ -119,6 +96,7 @@ edit:{
 * 类型: Array
 * 可选值: 无
 * 默认值: 无
+* 更多见后面：按钮详细配置
 * 示例配置：
 ```js
 custom:[
@@ -135,6 +113,30 @@ custom:[
 </d2-crud-x>
  ```
 
-
-
-
+## 按钮详细配置
+以edit为例
+```js
+edit:{
+    thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
+    text: '编辑', //按钮文字， null= 取消文字
+    //text(scope){return 'xx'}, //也可传入一个方法
+    type: 'warning', // 按钮类型  可选值【primary / success / warning / danger / info / text】
+    icon:'icon-edit', //按钮图标
+    //icon(scope){return 'xx'}  //也可传入一个方法
+    size: 'small', // 按钮大小
+    circle: false,//圆形按钮 ，需要thin=true,且text=null
+    show:true, // 是否显示按钮
+    //show(index,row){return true}// 支持按条件显隐 
+    disabled:false, // 是否禁用
+    //disabled(index,row){return true} //支持按条件禁用启用 
+    order: 1 //排序号，数字小，排前面，默认顺序：查看=1、编辑=2、删除=3、自定义=4
+}
+```
+```js
+//仅显示图标，不显示文字
+edit:{
+   thin: true,
+   text: null,
+   icon: 'icon-edit'
+}
+```

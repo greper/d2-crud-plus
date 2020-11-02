@@ -75,12 +75,16 @@ export const crudOptions = {
       search:{ // 配置false，隐藏按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
         text: '查看', //按钮文字， null= 取消文字
+        //text(scope){return 'xx'}
         type: 'warning', // 按钮类型
         icon:'el-view', //按钮图标
+         //icon(scope){return 'xx'}
         size: 'small', // 按钮大小
         circle: false,//圆形按钮 ，需要thin=true,且text=null
         show:true, // 是否显示按钮
+        //show(index,row){return row.status==='xxx'} //也可以传入一个方法根据数据决定该按钮是否显示
         disabled:false, // 是否禁用
+        //disabled(index,row){return row.status==='xxx'} //也可以传入一个方法根据数据决定该按钮是否禁用
         order: 1 //排序号，数字小，排前面
       }, 
       reset:{} //同上

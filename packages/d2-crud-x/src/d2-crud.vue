@@ -160,7 +160,7 @@
 
     <!-- 表单对话框 -->
     <component
-      :is="'el-'+formOptions.type"
+      :is="'el-'+(formOptions.type || 'dialog')"
       class="d2-crud-dialog"
       :visible.sync="isDialogShow"
       :before-close="handleDialogCancel"

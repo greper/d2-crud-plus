@@ -1,7 +1,7 @@
 {
   "name": "d2-crud-plus",
   "description": "d2-admin的d2-crud的扩展 ",
-  "version": "2.13.0",
+  "version": "2.13.1",
   "author": "Greper <252959493@qq.com>",
   "license": "MIT",
   "private": false,
@@ -38,7 +38,7 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.0.3",
     "core-js": "^2.6.5",
-    "d2-crud-x": "^2.13.0",
+    "d2-crud-x": "^2.13.1",
     "element-ui": "^2.13.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* 恢复误删的provider ([3ce7ce9](https://github.com/greper/d2-crud-plus/commit/3ce7ce99e61867e37b4b4377df2071e81f288847))
+
+
+
+
+
 # [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
 
 

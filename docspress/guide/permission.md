@@ -13,6 +13,7 @@ d2-crud-plus-example中提供权限管理模块，位于`/src/business/modules/p
 git clone https://github.com/greper/d2-crud-plus-server.git
 # 导入idea或eclipse
 ```
+【注意： 需要安装lombok插件】
 #### 1.1.2 创建数据库
 ```
 创建数据库`d2p_pm`
@@ -30,7 +31,8 @@ spring:
 ```
 #### 1.1.4 启动api-server
 ```
-run ApiServerApplication
+右键 `com\veryreader\d2p\api\ApiServerApplication.java`
+点击`RUN`
 ```
 
 
@@ -134,6 +136,27 @@ import '@/business/modules/permission' // 加载permission
       data
     })
   }
+```
+
+## 6. 配置本地代理
+解决本地开发时请求后台接口的跨域问题
+在`vue.config.js`中添加如下配置
+```js
+module.exports = {
+  publicPath,
+  lintOnSave: true,
+  devServer: {
+    publicPath, // 和 publicPath 保持一致
+    disableHostCheck: process.env.NODE_ENV === 'development', // 关闭 host check，方便使用 ngrok 之类的内网转发工具
+    //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓配置如下代理↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    proxy: {
+      '/api': { // 请求/api/时代理到http://localhost:7070/api这个地址上去
+        target: 'http://localhost:7070',
+        ws: true
+      }
+    }
+  }
+}
 ```
 
 ## 4 如何适配你自己的后端权限接口

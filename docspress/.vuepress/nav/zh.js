@@ -16,6 +16,7 @@ module.exports = [
         text: '周边项目',
         items: [
           { text: '精简启动项目', link: 'https://github.com/greper/d2-crud-plus-with-d2admin-starter' },
+          { text: '精简启动项目-带权限', link: 'https://github.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission' },
           { text: '配套java后端', link: 'https://github.com/greper/d2-crud-plus-server' }
         ]
       },

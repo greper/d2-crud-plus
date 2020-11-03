@@ -440,5 +440,8 @@ export function DelObj (id) {
 这里已经准备了一个`d2-crud-plus`与`d2-admin`集成好了的启动项目   
 [d2-crud-plus-with-d2admin-starter](https://github.com/greper/d2-crud-plus-with-d2admin-starter)
 
+
+[d2-crud-plus-with-d2admin-starter-带权限版](https://github.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission)
+
 ### 7. 关于升级
 你可能还想知道[如何升级](./upgrade.md)

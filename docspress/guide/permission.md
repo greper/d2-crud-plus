@@ -80,7 +80,7 @@ export default {
 // 在main.js中加入
 import '@/business/modules/permission' // 加载permission
 ```
-   4.  在`/src/store/modules/d2admin/modules/account.js`中加入以下代码   
+ 4.  在`/src/store/modules/d2admin/modules/account.js`中加入以下代码   
  用于注销时清空权限信息
 ```js {12-14}
     logout ({ commit, dispatch }, { confirm = false } = {}) {
@@ -102,6 +102,38 @@ import '@/business/modules/permission' // 加载permission
           name: 'login'
         })
       }
+```
+
+  5. 登录请求由模拟改为请求真实后端
+```js
+  SYS_USER_LOGIN (data = {}) {
+    // 模拟数据
+    mock
+      .onAny('/login')
+      .reply(config => {
+        const user = find(users, tools.parse(config.data))
+        return user
+          ? tools.responseSuccess(assign({}, user, { token: faker.random.uuid() }))
+          : tools.responseError({}, '账号或密码不正确')
+      })
+    // 接口请求
+    return requestForMock({
+      url: '/login',
+      method: 'post',
+      data
+    })
+  }
+```
+修改为如下
+```js
+ SYS_USER_LOGIN (data = {}) {
+    // 登录请求真实后端
+    return request({
+      url: '/login',   // 真实的后端地址 /api/login
+      method: 'post',
+      data
+    })
+  }
 ```
 
 ## 4 如何适配你自己的后端权限接口

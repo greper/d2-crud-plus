@@ -1,8 +1,24 @@
 import constantRoutes, { frameInRoutes } from '@/router/routes'
 import layoutHeaderAside from '@/layout/header-aside'
-import { menuHeader, supplementPath } from '@/menu'
+import { menuHeader } from '@/menu'
 import router from '@/router'
+import { uniqueId } from 'lodash'
 const StaticMenuHeader = [...menuHeader] // 静态菜单暂存，重新登录后，需要重新加载动态菜单与此处的静态菜单合并
+
+/**
+ * @description 给菜单数据补充上 path 字段
+ * @description https://github.com/d2-projects/d2-admin/issues/209
+ * @param {Array} menu 原始的菜单数据
+ */
+function supplementPath (menu) {
+  return menu.map(e => ({
+    ...e,
+    path: e.path || uniqueId('d2-menu-empty-'),
+    ...e.children ? {
+      children: supplementPath(e.children)
+    } : {}
+  }))
+}
 
 function isEmpty (value) {
   if (value == null || value === '') {

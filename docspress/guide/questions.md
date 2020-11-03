@@ -227,3 +227,13 @@ form:{
 ```
 ## 11. 表格滚动条美化
 引入css `/d2-crud-plus-example/src/business/style/scroll.scss`
+
+## 12. IE11打不开
+请尝试在你项目的vue.config.js中配置：
+```js
+module.exports = {
+  // 解决ie打不开的问题
+  transpileDependencies: ['d2p-extends']
+}
+
+```

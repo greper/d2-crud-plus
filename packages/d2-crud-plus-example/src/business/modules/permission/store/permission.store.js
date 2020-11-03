@@ -1,9 +1,15 @@
 import constantRoutes, { frameInRoutes } from '@/router/routes'
-import StringUtils from '@/business/utils/util.string'
 import layoutHeaderAside from '@/layout/header-aside'
 import { menuHeader, supplementPath } from '@/menu'
 import router from '@/router'
 const StaticMenuHeader = [...menuHeader] // 静态菜单暂存，重新登录后，需要重新加载动态菜单与此处的静态菜单合并
+
+function isEmpty (value) {
+  if (value == null || value === '') {
+    return true
+  }
+  return false
+}
 /**
  * 构建路由列表
  * menuType 1=menu 2=btn 3=route
@@ -17,7 +23,7 @@ function formatRouter (parent, list) {
   }
   list.forEach((item) => {
     let newRouter = parent
-    if (item.type !== 2 && !StringUtils.isEmpty(item.component)) { // 如果是按钮 或者没有配置component，则不加入路由
+    if (item.type !== 2 && !isEmpty(item.component)) { // 如果是按钮 或者没有配置component，则不加入路由
       let component = null
       if (item.component === 'layoutHeaderAside') {
         component = layoutHeaderAside

@@ -1,6 +1,10 @@
 export const crudOptions = (vm) => {
   return {
     options: {
+      defaultSort: {
+        prop: 'id',
+        order: 'descending'
+      },
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
     rowHandle: {

@@ -615,6 +615,10 @@ export default {
       queryFormat('size', requestPageSize, requestFormat, query)
       queryFormat('current', requestCurrent, requestFormat, query)
 
+      const defaultSort = this.crud.options.defaultSort
+      if (defaultSort && this.crud.options.order == null) {
+        this.crud.options.order = { prop: defaultSort.prop, asc: defaultSort.order === 'ascending' }
+      }
       if (this.crud.options.order) {
         const order = this.crud.options.order
         queryFormat('orderProp', order.prop, requestFormat, query)

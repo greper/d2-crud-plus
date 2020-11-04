@@ -180,6 +180,7 @@ export const crudOptions = {
       title: '树形单选',
       key: 'tree4',
       type: 'tree-selector',
+      search: { disabled: false },
       dict: { url: '/area/tree', isTree: true, value: 'id' },
       form: {
         component: {

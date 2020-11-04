@@ -132,25 +132,27 @@ export default {
     },
     setValue (value) {
       let arrValue = value
-      if (arrValue != null) {
-        if (!(arrValue instanceof Array)) {
-          arrValue = [arrValue]
-        }
-        if (this.dict.getNodes) {
-          this.dict.getNodes(arrValue).then(nodes => {
-            this.selectedNodes(nodes, value)
-          })
-        } else {
-          const nodes = []
-          for (const item of arrValue) {
-            const data = this.data
-            const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
-            if (node != null) {
-              nodes.push(node)
-            }
-          }
+      if (value == null) {
+        this.selected = []
+      }
+
+      if (!(arrValue instanceof Array)) {
+        arrValue = [arrValue]
+      }
+      if (this.dict.getNodes) {
+        this.dict.getNodes(arrValue).then(nodes => {
           this.selectedNodes(nodes, value)
+        })
+      } else {
+        const nodes = []
+        for (const item of arrValue) {
+          const data = this.data
+          const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
+          if (node != null) {
+            nodes.push(node)
+          }
         }
+        this.selectedNodes(nodes, value)
       }
     },
     selectedNodes (nodes, value) {

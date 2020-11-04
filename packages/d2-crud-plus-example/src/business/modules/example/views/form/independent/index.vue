@@ -38,7 +38,7 @@
       <el-row>
         <el-col :span="24">
           <el-form-item label="ueditor">
-            <d2p-ueditor></d2p-ueditor>
+            <d2p-ueditor :config="{zIndex:100}"></d2p-ueditor>
           </el-form-item>
         </el-col>
       </el-row>

@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* 前端分页没有更新的问题 ([bdced0c](https://github.com/greper/d2-crud-plus/commit/bdced0c8c47e270bc3733af5b61da20c422141dd))
+* 修复独立使用ueditor时zindex在对话框之上的bug ([4827c11](https://github.com/greper/d2-crud-plus/commit/4827c11649ce77d9686055d153150e74aa36f87e))
+* 修复pagination.pageSizes无法覆盖的bug ([88b65c4](https://github.com/greper/d2-crud-plus/commit/88b65c41e758aadffeb0dfc5c44c5cab5bd96e42))
+* defaultSort无效的问题 ([b3c5677](https://github.com/greper/d2-crud-plus/commit/b3c56770ffaf3f2b5fa395c6b45e8c0d74da0afb))
+
+
+### Performance Improvements
+
+* 优化前端分页 ([fc26345](https://github.com/greper/d2-crud-plus/commit/fc2634512fa33964ca683a304c830de0aecabf9d))
+* 优化依赖引入 ([9e80b0c](https://github.com/greper/d2-crud-plus/commit/9e80b0cd3e647bab610ad7721297772e52ce64f6))
+
+
+
+
+
+## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* 恢复误删的provider ([3ce7ce9](https://github.com/greper/d2-crud-plus/commit/3ce7ce99e61867e37b4b4377df2071e81f288847))
+
+
+
+
+
 # [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
 
 

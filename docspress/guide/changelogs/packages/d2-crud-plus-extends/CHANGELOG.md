@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* 头像增加loading ([8e04742](https://github.com/greper/d2-crud-plus/commit/8e04742f5e8637818e6333588e78da032d26c1de))
+* 图片上传隐藏加号 ([1ea2f33](https://github.com/greper/d2-crud-plus/commit/1ea2f33a3c7dcf72f0c4ef9dcdcb9c330c943084))
+* 图片行展示组件增加loading ([0e9e62e](https://github.com/greper/d2-crud-plus/commit/0e9e62e3a87c2645f62f71883bbf2891b551ba65))
+* 修复树形组件重置不清空的bug ([6ebdbe3](https://github.com/greper/d2-crud-plus/commit/6ebdbe3aa2979842e60e73fb50f0d41f8c79260f))
+* 修复tree-selector 打开对话框就触发change的bug ([f0ab6e7](https://github.com/greper/d2-crud-plus/commit/f0ab6e7308126522f14077b0256c14cf32d305a4))
+
+
+
+
+
+## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
+
+**Note:** Version bump only for package d2p-extends
+
+
+
+
+
 # [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
 
 **Note:** Version bump only for package d2p-extends

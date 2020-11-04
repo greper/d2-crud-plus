@@ -2,10 +2,12 @@ import Vue from 'vue'
 import d2Crud from '@d2-projects/d2-crud'
 import d2CrudX from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
+import { ElPhoneNumberInput } from 'el-phone-number-input'
+import pluginExport from '@d2-projects/vue-table-export'
 import { D2pAreaSelector, D2pFileUploader, D2pIconSelector, D2pTreeSelector, D2pFullEditor, D2pUploader, D2pDemoExtend } from 'd2p-extends' // 源码方式引入，上传组件支持懒加载
+
 // http请求
 import { request, requestForMock } from '@/api/service'
-
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/index.css'
@@ -81,6 +83,8 @@ Vue.use(d2CrudPlus, {
   }
 })
 
+Vue.use(pluginExport)
+Vue.component('el-phone-number-input', ElPhoneNumberInput)
 // 安装扩展插件, extends里面的组件全部是懒加载的，可以放心use
 Vue.use(D2pTreeSelector)
 Vue.use(D2pAreaSelector)

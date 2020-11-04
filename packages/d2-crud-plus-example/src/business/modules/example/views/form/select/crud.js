@@ -353,12 +353,7 @@ export const crudOptions = (vm) => {
         dict: { data: [{ value: true, label: '开启' }, { value: false, label: '关闭' }] },
         form: {
           component: {
-            span: 24,
-            events: {
-              blur: () => {
-                console.log('on blur')
-              }
-            }
+            span: 24
           },
           valueChange (key, value, form) {
             console.log('您选中了：', value)

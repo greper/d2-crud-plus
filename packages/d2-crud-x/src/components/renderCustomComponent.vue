@@ -80,7 +80,7 @@ export default {
         for (const key in propsEvents) {
           events[key] = (event) => {
             if (propsEvents[key]) {
-              propsEvents[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.props, scope: this.scope })
+              propsEvents[key]({ vm: self._self, component: self._self.$refs.target, event: event, props: this.computedProps(), scope: this.scope })
             }
           }
         }

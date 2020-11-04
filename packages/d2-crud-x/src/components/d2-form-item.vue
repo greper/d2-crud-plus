@@ -22,7 +22,7 @@
       :scoped-slots="_component.scopedSlots"
       :on="_component.on"
       :children="_component.children"
-      :scope="{form:formData}"
+      :scope="{form:formData,mode:$attrs.formMode}"
       v-bind="_component"
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"

@@ -1,5 +1,5 @@
 import HeightUtil from '../utils/util.height'
-import { cloneDeep, forEach, get, merge, set } from 'lodash'
+import lodash, { cloneDeep, forEach, get, merge, mergeWith, set } from 'lodash'
 import ColumnResolveUtil from '../utils/util.column.resolve'
 import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
@@ -86,7 +86,7 @@ export default {
         loading: false,
         pagination: {
           pageSize: 20,
-          pageSizes: [5, 10, 20, 30, 40, 50, 100],
+          pageSizes: [5, 10, 20, 30, 40, 50],
           layout: 'slot, total, sizes, prev, pager, next, jumper',
           background: true,
           currentPage: 1,
@@ -242,10 +242,18 @@ export default {
       this.initBefore()
       let crudOptions = this.getCrudOptions()
       const commonOptions = CommonOptionsUtil.create()
-      merge(commonOptions, crudOptions)
+      mergeWith(commonOptions, crudOptions, (objValue, srcValue, key, object, source, stack) => {
+        if (lodash.isArray(srcValue)) {
+          return srcValue
+        }
+      })
       crudOptions = commonOptions
       const columns = crudOptions.columns
-      merge(this.crud, crudOptions)
+      mergeWith(this.crud, crudOptions, (objValue, srcValue, key, object, source, stack) => {
+        if (lodash.isArray(srcValue)) {
+          return srcValue
+        }
+      })
       const crud = this.crud
       crud.columns = []
       crud.searchOptions.columns = []

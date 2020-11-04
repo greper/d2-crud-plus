@@ -10,6 +10,21 @@ export const crudOptions = {
   searchOptions: {
     show: false
   },
+  formGroup: {
+    groups: {
+      test: {
+        title: '分组',
+        icon: 'el-icon-star-off',
+        columns: ['text']
+      }
+    }
+  },
+  formOptions: {
+    defaultSpan: 12
+  },
+  pagination: {
+    pageSizes: [10, 20]
+  },
   columns: [
     {
       title: 'ID',
@@ -29,20 +44,5 @@ export const crudOptions = {
       title: '分组字段',
       key: 'text'
     }
-  ],
-  formGroup: {
-    groups: {
-      test: {
-        title: '分组',
-        icon: 'el-icon-star-off',
-        columns: ['text']
-      }
-    }
-  },
-  formOptions: {
-    defaultSpan: 12
-  },
-  pagination: {
-    layout: 'prev, pager , next , jumper , -> , total '
-  }
+  ]
 }

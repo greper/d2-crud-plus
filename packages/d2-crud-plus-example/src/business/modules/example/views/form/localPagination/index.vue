@@ -57,7 +57,8 @@ export default {
       const size = query.size
       let current = query.current
       data = data.filter(item => {
-        // 前端搜索过滤
+        // 根据你的业务，编写你的查询逻辑
+        // text改成你的查询字段
         if (query.text && item.text.indexOf(query.text) < 0) {
           return false
         }

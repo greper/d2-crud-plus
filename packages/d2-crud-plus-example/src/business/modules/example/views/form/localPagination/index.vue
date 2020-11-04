@@ -32,28 +32,24 @@ export default {
   mixins: [d2CrudPlus.crud],
   data () {
     return {
-      tableData: undefined,
-      doFirstRequest: false
+      tableData: undefined
     }
   },
   created () {
-    GetList().then(ret => { // 获取全部数据
-      this.tableData = ret.data.records
-      if (this.doFirstRequest) {
-        this.doRefresh()
-      }
-    })
   },
   methods: {
+    doLoad () {
+      // 重写第一次load方法
+      GetList().then(ret => {
+        this.tableData = ret.data.records
+        this.doRefresh()
+      })
+    },
     getCrudOptions () {
       return crudOptions
     },
     pageRequest (query) {
       let data = this.tableData
-      if (data == null) { // 第一次加载的时候 ，获取全部数据的请求还没有返回，先return，等请求完成后再刷新一次
-        this.doFirstRequest = true
-        return
-      }
       const size = query.size
       let current = query.current
       data = data.filter(item => {

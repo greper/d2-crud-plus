@@ -163,7 +163,7 @@
       :is="'el-'+(formOptions.type || 'dialog')"
       class="d2-crud-dialog"
       :visible="isDialogShow"
-      v-on:update:visible="isDialogShow = $event;isFormShow=$event"
+      v-on:update:visible="handleDialogShowUpdate"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
       :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer}"

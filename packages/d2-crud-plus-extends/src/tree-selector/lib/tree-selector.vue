@@ -84,6 +84,7 @@ export default {
   },
   data () {
     return {
+      currentValue: undefined,
       collapseTags: false,
       data: [],
       selected: [],
@@ -120,6 +121,7 @@ export default {
   },
   watch: {
     value (value) {
+      this.$emit('change', value)
       this.setValue(value)
     }
   },
@@ -131,6 +133,9 @@ export default {
       })
     },
     setValue (value) {
+      if (this.currentValue === this.value) {
+        return
+      }
       let arrValue = value
       if (value == null) {
         this.selected = []
@@ -164,7 +169,6 @@ export default {
       console.log('selected:', selected)
       this.$set(this, 'selected', selected)
       this.resetInputHeight()
-      this.$emit('change', value)
     },
     handleCheckChange (event) {
       this.$emit('check-change', event)
@@ -231,6 +235,7 @@ export default {
       if (!this.multiple) {
         values = values && values.length > 0 ? values[0] : undefined
       }
+      this.currentValue = values
       this.$emit('input', values)
     },
     refreshSelected () {

@@ -26,6 +26,7 @@
 import { AddObj, GetList, UpdateObj, DelObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
+import lodash from 'lodash'
 export default {
   name: 'formLocalPagination',
   components: {},
@@ -90,10 +91,19 @@ export default {
       })
     },
     addRequest (row) {
-      return AddObj(row)
+      return AddObj(row).then((ret) => {
+        row.id = ret.data
+        this.tableData.unshift(row) // 更新本地数据
+      })
     },
     updateRequest (row) {
-      return UpdateObj(row)
+      return UpdateObj(row).then((ret) => {
+        for (const item of this.tableData) {
+          if (item.id === row.id) {
+            lodash.merge(item, row) // 更新本地数据
+          }
+        }
+      })
     },
     delRequest (row) {
       return DelObj(row.id)

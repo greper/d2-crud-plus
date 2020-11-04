@@ -3,6 +3,10 @@ export const crudOptions = {
     height: '100%',
     maxHeight: 'auto'
   },
+  formOptions: {
+    updateTableDataAfterEdit: true,
+    defaultSpan: 12
+  },
   pageOptions: {
     compact: true // 是否紧凑型页面
   },
@@ -26,8 +30,6 @@ export const crudOptions = {
       key: 'text',
       search: {}
     }
-  ],
-  formOptions: {
-    defaultSpan: 12
-  }
+  ]
+
 }

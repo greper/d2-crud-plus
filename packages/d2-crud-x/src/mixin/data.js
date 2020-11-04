@@ -83,7 +83,8 @@ export default {
      * @param {Object} row 新增的表格行数据
      */
     handleAddRow (row) {
-      this.$set(this.d2CrudData, this.d2CrudData.length, row)
+    // this.$set(this.d2CrudData, this.d2CrudData.length, row)
+      this.d2CrudData.unshift(row)
       if (this.defaultSort) {
         this.handleSortDataChange()
       }

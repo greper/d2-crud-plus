@@ -443,5 +443,8 @@ export function DelObj (id) {
 
 [d2-crud-plus-with-d2admin-starter-带权限版](https://github.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission)
 
+
+参考文章：[如何从零开始搭建一套带权限的后台管理系统](https://www.jianshu.com/p/cdccadcf6ce9)
+
 ### 7. 关于升级
 你可能还想知道[如何升级](./upgrade.md)

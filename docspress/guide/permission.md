@@ -193,3 +193,15 @@ if (isEnabled) {
   registerRouterHook()
 }
 ```
+
+
+### 6. d2-crud-plus-with-d2admin-starter
+觉得自己集成挺麻烦的？    
+这里已经准备了一个`d2-crud-plus`与`d2-admin`集成好了的启动项目   
+[d2-crud-plus-with-d2admin-starter](https://github.com/greper/d2-crud-plus-with-d2admin-starter)
+
+
+[d2-crud-plus-with-d2admin-starter-带权限版](https://github.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission)
+
+
+参考文章：[如何从零开始搭建一套带权限的后台管理系统](https://www.jianshu.com/p/cdccadcf6ce9)

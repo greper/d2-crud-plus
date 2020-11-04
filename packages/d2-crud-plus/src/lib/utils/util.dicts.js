@@ -23,15 +23,18 @@ function get (dict, options) {
     return buildResultPromise(dict, { data: dictData, dataMap: dict.dataMap }, options)
   }
 
+  if (url == null && dict.getData == null) {
+    return buildResultPromise(dict, { data: [], dataMap: {} }, options)
+  }
+
   if (url && url instanceof Function) {
     url = url(dict, options)
     if (url instanceof Promise) {
       console.warn('新版本已不支持url()返回字典数据，url()应该返回一个字典请求url')
     }
-  }
-
-  if (url == null && dict.getData == null) {
-    return buildResultPromise(dict, { data: [], dataMap: {} }, options)
+    if (url == null) {
+      return buildResultPromise(dict, { data: [], dataMap: {} }, options)
+    }
   }
 
   let cacheKey = url

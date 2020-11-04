@@ -162,7 +162,8 @@
     <component
       :is="'el-'+(formOptions.type || 'dialog')"
       class="d2-crud-dialog"
-      :visible.sync="isDialogShow"
+      :visible="isDialogShow"
+      v-on:update:visible="isDialogShow = $event;isFormShow=$event"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
       :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer}"

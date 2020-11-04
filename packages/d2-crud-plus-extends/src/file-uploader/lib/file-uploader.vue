@@ -155,6 +155,9 @@ export default {
       if (this._elProps.listType === 'avatar') {
         return 'avatar-uploader'
       } else if (this._elProps.listType === 'picture-card') {
+        if (this.fileList && this.fileList.length >= this._elProps.limit) {
+          return 'image-uploader hide-plus'
+        }
         return 'image-uploader'
       }
       return 'file-uploader'
@@ -458,6 +461,11 @@ export default {
       }
       .el-upload-list__item-actions{
         cursor: not-allowed
+      }
+    }
+    .hide-plus{
+      .el-upload--picture-card{
+        display: none;
       }
     }
     .avatar-uploader{

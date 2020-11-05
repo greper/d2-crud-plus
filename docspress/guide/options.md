@@ -147,6 +147,7 @@ export const crudOptions = {
     view:{//查看按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
         text: '查看', //按钮文字， null= 取消文字
+        title: undefined, //鼠标停留的提示文字
         type: 'warning', // 按钮类型
         icon:'el-view', //按钮图标
         size: 'small', // 按钮大小

@@ -120,6 +120,7 @@ edit:{
     thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
     text: '编辑', //按钮文字， null= 取消文字
     //text(scope){return 'xx'}, //也可传入一个方法
+    title: undefined, //鼠标停留的提示文字
     type: 'warning', // 按钮类型  可选值【primary / success / warning / danger / info / text】
     icon:'icon-edit', //按钮图标
     //icon(scope){return 'xx'}  //也可传入一个方法

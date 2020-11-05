@@ -6,7 +6,11 @@
           :src="item.dataUrl?item.dataUrl:item.url"
           :data-src="item.url"
           :preview-src-list="_urlList"
-          fit="contain" />
+          fit="contain" >
+          <div slot="placeholder" class="image-slot">
+            <img src="./loading-spin.svg">
+          </div>
+        </el-image>
         <div class="delete" v-if="!disabled"><i class="el-icon-delete" @click="removeImage(index,item)"></i></div>
         <div class="status-uploading" v-if="item.status==='uploading'">
           <el-progress type="circle" :percentage="item.progress" :width="70"/>

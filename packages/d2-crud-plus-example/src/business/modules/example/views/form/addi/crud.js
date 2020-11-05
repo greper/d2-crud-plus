@@ -42,7 +42,16 @@ export const crudOptions = {
     },
     {
       title: '分组字段',
-      key: 'text'
+      key: 'text',
+      form: {
+        component: {
+          on: {
+            blur: (context) => {
+              console.log('on blur', context)
+            }
+          }
+        }
+      }
     }
   ]
 }

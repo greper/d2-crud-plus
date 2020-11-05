@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* 打开第二次对话框触发formDataChange的bug ([d08f824](https://github.com/greper/d2-crud-plus/commit/d08f8249d6a4bfaba7b1b4855262c75c3bb9d848))
+* 前端分页没有更新的问题 ([bdced0c](https://github.com/greper/d2-crud-plus/commit/bdced0c8c47e270bc3733af5b61da20c422141dd))
+* 头像增加loading ([8e04742](https://github.com/greper/d2-crud-plus/commit/8e04742f5e8637818e6333588e78da032d26c1de))
+* 图片上传隐藏加号 ([1ea2f33](https://github.com/greper/d2-crud-plus/commit/1ea2f33a3c7dcf72f0c4ef9dcdcb9c330c943084))
+* 图片行展示组件增加loading ([0e9e62e](https://github.com/greper/d2-crud-plus/commit/0e9e62e3a87c2645f62f71883bbf2891b551ba65))
+* 修复独立使用ueditor时zindex在对话框之上的bug ([4827c11](https://github.com/greper/d2-crud-plus/commit/4827c11649ce77d9686055d153150e74aa36f87e))
+* 修复树形组件重置不清空的bug ([6ebdbe3](https://github.com/greper/d2-crud-plus/commit/6ebdbe3aa2979842e60e73fb50f0d41f8c79260f))
+* 修复pagination.pageSizes无法覆盖的bug ([88b65c4](https://github.com/greper/d2-crud-plus/commit/88b65c41e758aadffeb0dfc5c44c5cab5bd96e42))
+* 修复tree-selector 打开对话框就触发change的bug ([f0ab6e7](https://github.com/greper/d2-crud-plus/commit/f0ab6e7308126522f14077b0256c14cf32d305a4))
+* defaultSort无效的问题 ([b3c5677](https://github.com/greper/d2-crud-plus/commit/b3c56770ffaf3f2b5fa395c6b45e8c0d74da0afb))
+* dict.url()返回空则不请求数据字典 ([4183cd5](https://github.com/greper/d2-crud-plus/commit/4183cd514057d337381d9112c8a0e7823bf01e6f))
+
+
+### Performance Improvements
+
+* 优化前端分页 ([fc26345](https://github.com/greper/d2-crud-plus/commit/fc2634512fa33964ca683a304c830de0aecabf9d))
+* 优化依赖引入 ([9e80b0c](https://github.com/greper/d2-crud-plus/commit/9e80b0cd3e647bab610ad7721297772e52ce64f6))
+* render增加scope ([a2674b1](https://github.com/greper/d2-crud-plus/commit/a2674b1c53c86af96444273366d17428b734ddfc))
+* render增加scope ([c9664b0](https://github.com/greper/d2-crud-plus/commit/c9664b040c54f42b02fe8021611f0749966d6618))
+
+
+
+
+
 ## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
 
 

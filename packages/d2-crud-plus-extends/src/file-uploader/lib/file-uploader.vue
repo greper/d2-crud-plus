@@ -22,7 +22,11 @@
           <el-progress type="circle" :percentage="avatarLoading" :width="70"/>
         </div>
         <div v-if="avatarUrl!=null" class="avatar">
-          <img :src="avatarUrl" >
+          <el-image :src="avatarUrl">
+            <div slot="placeholder" class="image-slot">
+              <img src="./loading-spin.svg">
+            </div>
+          </el-image>
           <div class="preview" @click.stop="" >
             <i class="el-icon-zoom-in" @click="previewAvatar"></i>
             <i class="el-icon-delete" v-if="!disabled" @click="removeAvatar"></i>
@@ -155,7 +159,7 @@ export default {
       if (this._elProps.listType === 'avatar') {
         return 'avatar-uploader'
       } else if (this._elProps.listType === 'picture-card') {
-        if (this.fileList && this.fileList.length >= this._elProps.limit) {
+        if (this.fileList && this._elProps.limit !== 0 && this.fileList.length >= this._elProps.limit) {
           return 'image-uploader hide-plus'
         }
         return 'image-uploader'

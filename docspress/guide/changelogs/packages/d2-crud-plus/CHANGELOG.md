@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* 修复pagination.pageSizes无法覆盖的bug ([88b65c4](https://github.com/greper/d2-crud-plus/commit/88b65c41e758aadffeb0dfc5c44c5cab5bd96e42))
+* defaultSort无效的问题 ([b3c5677](https://github.com/greper/d2-crud-plus/commit/b3c56770ffaf3f2b5fa395c6b45e8c0d74da0afb))
+* dict.url()返回空则不请求数据字典 ([4183cd5](https://github.com/greper/d2-crud-plus/commit/4183cd514057d337381d9112c8a0e7823bf01e6f))
+
+
+### Performance Improvements
+
+* render增加scope ([c9664b0](https://github.com/greper/d2-crud-plus/commit/c9664b040c54f42b02fe8021611f0749966d6618))
+
+
+
+
+
+## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* 恢复误删的provider ([3ce7ce9](https://github.com/greper/d2-crud-plus/commit/3ce7ce99e61867e37b4b4377df2071e81f288847))
+
+
+
+
+
 # [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
 
 

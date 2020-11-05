@@ -164,12 +164,23 @@ export default {
         formDataStorage: this.formDataStorage
       }
     },
+    handleDialogShowUpdate (value) {
+      if (value) {
+        this.isFormShow = true
+        this.$nextTick(() => {
+          this.isDialogShow = true
+        })
+      } else {
+        this.isDialogShow = false
+        this.$nextTick(() => {
+          this.isFormShow = false
+        })
+      }
+    },
     async openDialog (index, row, templage) {
       const { newRow, formData } = await this.buildFormData(index, row, templage)
-      this.isFormShow = true
-      this.$nextTick(() => {
-        this.isDialogShow = true
-      })
+
+      this.handleDialogShowUpdate(true)
 
       this.$emit('dialog-opened', {
         mode: this.formMode,
@@ -307,10 +318,7 @@ export default {
      */
     handleCloseDialog () {
       this.formDataBefore = null
-      this.isDialogShow = false
-      this.$nextTick(() => {
-        this.isFormShow = false
-      })
+      this.handleDialogShowUpdate(false)
     }
   }
 }

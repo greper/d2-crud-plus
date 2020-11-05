@@ -4,6 +4,9 @@
        :style="{width:imgWidth,height:imgHeight,'margin-right':'10px',border:'1px solid #eee'}"
        v-for="url in urls"  :key="url" :src="url"
        v-bind="_elProps" >
+        <div slot="placeholder" class="image-slot">
+            <img style="max-width:50%" src="./loading-spin.svg">
+          </div>
        <template v-if="error==='slot'">
          <div slot="error" class="image-slot">
             <slot name="error"/>

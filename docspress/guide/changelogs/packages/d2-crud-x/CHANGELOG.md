@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
+
+
+### Bug Fixes
+
+* 打开第二次对话框触发formDataChange的bug ([d08f824](https://github.com/greper/d2-crud-plus/commit/d08f8249d6a4bfaba7b1b4855262c75c3bb9d848))
+* 前端分页没有更新的问题 ([bdced0c](https://github.com/greper/d2-crud-plus/commit/bdced0c8c47e270bc3733af5b61da20c422141dd))
+* 修复tree-selector 打开对话框就触发change的bug ([f0ab6e7](https://github.com/greper/d2-crud-plus/commit/f0ab6e7308126522f14077b0256c14cf32d305a4))
+
+
+### Performance Improvements
+
+* render增加scope ([a2674b1](https://github.com/greper/d2-crud-plus/commit/a2674b1c53c86af96444273366d17428b734ddfc))
+* render增加scope ([c9664b0](https://github.com/greper/d2-crud-plus/commit/c9664b040c54f42b02fe8021611f0749966d6618))
+
+
+
+
+
+## [2.13.1](https://github.com/greper/d2-crud-plus/compare/v2.13.0...v2.13.1) (2020-11-02)
+
+
+### Bug Fixes
+
+* formOptions.type增加默认值 ([8156d49](https://github.com/greper/d2-crud-plus/commit/8156d49a7ed221d15bd8a4349f24fea1f12c0a23))
+* 恢复误删的provider ([3ce7ce9](https://github.com/greper/d2-crud-plus/commit/3ce7ce99e61867e37b4b4377df2071e81f288847))
+
+
+
+
+
 # [2.13.0](https://github.com/greper/d2-crud-plus/compare/v2.12.3...v2.13.0) (2020-11-01)
 
 

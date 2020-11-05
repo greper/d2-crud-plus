@@ -16,6 +16,11 @@ export const crudOptions = (vm) => {
     searchOptions: {
       labelWidth: '100px' // 设置查询表单label的宽度
     },
+    rowHandle: {
+      edit: {
+        title: '添加'
+      }
+    },
     columns: [
       {
         title: 'ID',

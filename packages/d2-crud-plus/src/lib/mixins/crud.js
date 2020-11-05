@@ -779,7 +779,11 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        return this.batchDelRequest(ids).then(() => {
+        const promise = this.batchDelRequest(ids)
+        if (promise == null || !(promise instanceof Promise)) {
+          return
+        }
+        return promise.then(() => {
           this.delAfter()
           this.$message({
             type: 'success',
@@ -801,7 +805,11 @@ export default {
       row = this._unFlatData(row)
       this.doValueResolve(row)
       this.addBefore(row)
-      return this.addRequest(row).then(() => {
+      const promise = this.addRequest(row)
+      if (promise == null || !(promise instanceof Promise)) {
+        return
+      }
+      return promise.then(() => {
         this.showAddMessage({ row })
         done()
         return this.addAfter(row)
@@ -820,7 +828,11 @@ export default {
       row = this._unFlatData(row)
       this.doValueResolve(row)
       this.editBefore(row)
-      return this.updateRequest(row).then((ret) => {
+      const promise = this.updateRequest(row)
+      if (promise == null || !(promise instanceof Promise)) {
+        return
+      }
+      return promise.then((ret) => {
         this.showEditMessage({ index, row })
         done()
         return this.editAfter(row)
@@ -839,7 +851,11 @@ export default {
       row = this._unFlatData(row)
       this.doValueResolve(row)
       this.addBefore(row)
-      return this.addRequest(row).then((ret) => {
+      const promise = this.addRequest(row)
+      if (promise == null || !(promise instanceof Promise)) {
+        return
+      }
+      return promise.then((ret) => {
         this.showAddMessage({ row })
         done(ret)
       }).finally(() => {
@@ -857,7 +873,11 @@ export default {
       row = this._unFlatData(row)
       this.doValueResolve(row)
       this.editBefore(row)
-      return this.updateRequest(row).then((ret) => {
+      const promise = this.updateRequest(row)
+      if (promise == null || !(promise instanceof Promise)) {
+        return
+      }
+      return promise.then((ret) => {
         this.showEditMessage({ index, row })
         done(ret)
       }).finally(() => {

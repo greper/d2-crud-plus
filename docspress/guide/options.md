@@ -18,8 +18,10 @@ export const crudOptions = {
 ```js
 export const crudOptions = {
   columns: [ 
-    {
-        itemProps:{} //对应 el-form-item的配置
+    {   //对应el-table-column的配置
+        form:{
+            itemProps:{} //对应 el-form-item的配置
+        }
     }
   ],
   options:{}, //对应el-table的配置

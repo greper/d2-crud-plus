@@ -48,7 +48,8 @@ export const crudOptions = {
       title: '简介',
       key: 'intro',
       sortable: true,
-      type: 'text-area'
+      type: 'text-area',
+      showOverflowTooltip: true
     },
     {
       title: '详情',

@@ -2,7 +2,7 @@
   <span v-if="getTemplateComponentAttr(item,'show', true,getContext(item.key))">
     <template v-if="!isLineEdit()">
         <template v-if="item.rowSlot === true">
-          <slot :name="item.key+'Slot'" :row="row" :isLineEdit="isLineEdit()"/>
+          <slot :name="item.key+'Slot'" :rowIndex="rowIndex" :index="rowIndex" :row="row" :isLineEdit="isLineEdit()"/>
         </template>
        <render-custom-component
          v-else-if="item.component && item.component.name"
@@ -12,7 +12,7 @@
          :disabled="getTemplateComponentAttr(item,'disabled', false,getContext(item.key))"
          :readonly="getTemplateComponentAttr(item,'readonly', false,getContext(item.key))"
          :props="item.component.props ? item.component.props : null"
-         :scope="{$index:rowIndex,row:row}"
+         :scope="{$index:rowIndex,index:rowIndex,row:row}"
          v-bind="item.component"
          @change="handleCellDataChange($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"
          @ready="handleCellComponentReady($event, {rowIndex: rowIndex, key: item.key, value: row[item.key], row: row})"

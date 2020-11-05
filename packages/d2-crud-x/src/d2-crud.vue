@@ -59,7 +59,7 @@
             v-bind="forBindProps(expandRow)"
           >
             <template slot="content" slot-scope="scope">
-              <slot name="expandSlot" :rowIndex="scope.$rowIndex" :row="scope.row"/>
+              <slot name="expandSlot" :rowIndex="scope.$rowIndex" :index="scope.$rowIndex" :row="scope.row"/>
             </template>
           </component>
           <component

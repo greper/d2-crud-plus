@@ -14,6 +14,20 @@ export const crudOptions = {
 }
 ```
 
+## 配置与element-ui配置的对应关系
+```js
+export const crudOptions = {
+  columns: [ 
+    {
+        itemProps:{} //对应 el-form-item的配置
+    }
+  ],
+  options:{}, //对应el-table的配置
+  formOptions:{},  //对应 el-dialog（el-drawer）、el-form  的配置
+  pagination:{} // 对应el-pagination的配置
+}
+```
+
 ## crudOptions
 
 ```javascript

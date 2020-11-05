@@ -106,7 +106,13 @@ export default {
       })
     },
     delRequest (row) {
-      return DelObj(row.id)
+      return DelObj(row.id).then((ret) => {
+        for (const item of this.tableData) {
+          if (item.id === row.id) {
+            this.tableData.splice()
+          }
+        }
+      })
     }
   }
 }

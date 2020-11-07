@@ -1,4 +1,5 @@
 import lodash from 'lodash'
+import log from './util.log'
 const cache = new Map()
 
 /**
@@ -102,7 +103,7 @@ function get (dict, options) {
       item.callbacks = []
       return result
     }).catch((err) => {
-      console.log(err, dict)
+      log.debug(err, dict)
       item.loading = false
       item.error = true
     })
@@ -204,7 +205,7 @@ function buildResultPromise (dict, item, options) {
  * @param url
  */
 function clear (url) {
-  console.log('dict clear:', url)
+  log.debug('dict clear:', url)
   if (url == null) {
     cache.clear()
   } else {
@@ -248,7 +249,7 @@ function getCache (key) {
   return cache
 }
 function putCache (key, value) {
-  console.log('set cache:', key)
+  log.debug('set cache:', key)
   return cache.set(key, value)
 }
 function getByValue (value, data, dict) {

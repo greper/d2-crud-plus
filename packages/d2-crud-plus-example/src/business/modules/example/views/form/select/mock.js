@@ -10,6 +10,7 @@ const list = [
     mselect: 'sz,bj,gz,sh,hz,wh',
     cascader: ['zhinan', 'shejiyuanze', 'yizhi'],
     checkbox: '0',
+    select_local: 'sz',
     status_custom_1: '0',
     status_custom_2: '0',
     checkedRadio: '1',
@@ -20,6 +21,7 @@ const list = [
     status: '1',
     status_custom_1: '1',
     status_custom_2: '2',
+    select_local: 'gz',
     mselect: 'sh,sz',
     slotExample: 'slotExample',
     checkbox: '0'
@@ -28,6 +30,7 @@ const list = [
     date: '2016-05-03',
     status: '2',
     status_custom_1: '2',
+    select_local: 'bj',
     status_custom_2: '1',
     mselect: 'wh,gz',
     slotExample: 'slotExample',

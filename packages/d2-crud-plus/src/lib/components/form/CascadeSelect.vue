@@ -11,7 +11,7 @@
 import { merge } from 'lodash'
 import input from '../../mixins/input'
 import inputDict from '../../mixins/input-dict'
-
+import log from '../../utils/util.log'
 // 级联选择器
 export default {
   name: 'cascade-select',
@@ -67,7 +67,7 @@ export default {
         defaultElProps.options = this._options
       }
 
-      console.log('cascade:', defaultElProps, this.elProps)
+      log.debug('cascade:', defaultElProps, this.elProps)
       return defaultElProps
     }
 
@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     setValue (value) {
-      console.log('cascader value', value)
+      log.debug('cascader value', value)
       if (this._elProps.showAllLevels === false && this._elProps.props && this._elProps.props.emitPath === false) {
         this.currentValue = value
         return

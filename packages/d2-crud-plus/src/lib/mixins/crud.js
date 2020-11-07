@@ -5,6 +5,7 @@ import CommonOptionsUtil from '../utils/util.options.common'
 import DictUtil from '../utils/util.dicts'
 import TableStore from '../utils/util.store'
 import expose from './expose'
+import log from '../utils/util.log'
 export default {
   components: {},
   mixins: [expose],
@@ -281,7 +282,7 @@ export default {
       this.getPageSizeFromStorage()
 
       this.initAfter()
-      console.log('crud inited:', crud)
+      log.debug('crud inited:', crud)
     },
     initColumnsGroup (mode, crud) {
       const templateKey = mode + 'Template'
@@ -582,7 +583,7 @@ export default {
       this.doPageTurn(1)
       this.crud.searchOptions.form = form
       this.doValueResolve(form)
-      console.log('do search , 查询参数:', form)
+      log.debug('do search , 查询参数:', form)
       this.doRefresh({ from: 'search' })
     },
     doPageTurn (no) {
@@ -693,7 +694,7 @@ export default {
           }
         })
       }
-      console.log('flat data complete:', records)
+      log.debug('flat data complete:', records)
       return records
     },
     _unFlatData (row) {
@@ -710,7 +711,7 @@ export default {
           }
         }
       })
-      console.log('unFlat row complete:', row)
+      log.debug('unFlat row complete:', row)
       return row
     },
 
@@ -727,7 +728,7 @@ export default {
      */
     handleDialogOpened (context) {
       const { mode, form } = context
-      console.log('handleDialogOpened:', mode, form)
+      log.debug('handleDialogOpened:', mode, form)
       for (const key in this.crud.columnsMap) {
         const column = this.crud.columnsMap[key]
         if (column && column.form && column.form.valueChange && column.form.valueChangeImmediate) {
@@ -791,7 +792,7 @@ export default {
           })
         })
       }).catch(() => {
-        // console.log('取消删除', err)
+        // log.debug('取消删除', err)
       })
     },
 
@@ -948,7 +949,7 @@ export default {
      * @returns {Promise<any>}
      */
     addRequest (row) {
-      console.log('addRequest:', row)
+      log.debug('addRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现addRequest' })
       })
@@ -959,7 +960,7 @@ export default {
      * @returns {Promise<any>}
      */
     updateRequest (row) {
-      console.log('updateRequest:', row)
+      log.debug('updateRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现updateRequest' })
       })
@@ -970,7 +971,7 @@ export default {
      * @returns {Promise<any>}
      */
     delRequest (row) {
-      console.log('delRequest:', row)
+      log.debug('delRequest:', row)
       return new Promise((resolve) => {
         resolve({ code: 1, msg: '请实现delRequest' })
       })
@@ -993,7 +994,7 @@ export default {
      */
     handleFormDataChange ({ key, value, form, component, getComponent }) {
       const column = this.crud.columnsMap[key]
-      console.log('FormDataChanged:', key)
+      log.debug('FormDataChanged:', key)
       if (column && column.form && column.form.valueChange) {
         column.form.valueChange(key, value, this.getEditForm(), {
           getColumn: this.getEditFormTemplate,
@@ -1033,7 +1034,7 @@ export default {
     },
     handleSortChange (context) {
       const { prop, order } = context
-      console.log('sort change:', prop, order)
+      log.debug('sort change:', prop, order)
       const column = this.crud.columnsMap[prop]
       if (column && typeof column.sortable === 'string') {
         if (order == null) {
@@ -1058,7 +1059,7 @@ export default {
 
     handleExport () {
       if (!this.crud.pageOptions.export) {
-        console.log('您还未开启export功能：', "请配置'pageOptions.export:{}'")
+        log.debug('您还未开启export功能：', "请配置'pageOptions.export:{}'")
         return
       }
 
@@ -1080,10 +1081,10 @@ export default {
     doExport (context) {
       if (!this.crud.pageOptions.export.local) {
         // 服务端导出
-        console.log('export server', context)
+        log.debug('export server', context)
         this.doServerExport(context)
       } else {
-        console.log('export local', context)
+        log.debug('export local', context)
         this.doLocalExport(context)
       }
     },
@@ -1097,7 +1098,7 @@ export default {
         data: list,
         ...exportOptions
       }
-      console.log('export options：', options)
+      log.debug('export options：', options)
       const type = exportOptions.type ? exportOptions.type : 'excel'
       this.$export[type](options)
         .then(() => {

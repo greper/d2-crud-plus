@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     show () {
-      return process.env.VUE_APP_SCOURCE_LINK === 'TRUE'
+      return process.env.VUE_APP_SOURCE_LINK === 'TRUE'
     }
   },
   watch: {

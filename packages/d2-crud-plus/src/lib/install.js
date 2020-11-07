@@ -5,19 +5,7 @@ import input from './mixins/input'
 import inputBase from './mixins/input-base'
 import inputDict from './mixins/input-dict'
 
-import dict from './utils/util.dicts'
-import height from './utils/util.height'
-import columnResolve from './utils/util.column.resolve'
-import lodash from './utils/util.lodash'
-import commonOptions from './utils/util.options.common'
-const util = {
-  dict,
-  height,
-  columnResolve,
-  lodash,
-  commonOptions
-}
-
+import util from './utils'
 const install = (Vue, options) => {
   for (const key in components) {
     Vue.component(components[key].name, components[key])
@@ -37,12 +25,12 @@ const install = (Vue, options) => {
     }
     if (options.commonOption != null) {
       if (options.commonOption instanceof Function) {
-        commonOptions.create = options.commonOption
+        util.commonOptions.create = options.commonOption
       } else {
         console.error('defaultOptions 必须传入一个方法，类似data(){ return {} }')
       }
     }
-    console.log('d2-crud-plus installed:', options)
+    util.log.debug('d2-crud-plus installed:', options)
   }
 }
 // if (typeof window !== 'undefined' && window.Vue) {

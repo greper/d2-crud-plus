@@ -72,6 +72,7 @@ import lodash from 'lodash'
 import _get from 'lodash.get'
 import _set from 'lodash.set'
 import d2pButton from '../basic/d2p-button/component'
+import log from '../../utils/util.log'
 export default {
   name: 'crud-search',
   components: { d2pButton },
@@ -332,7 +333,7 @@ export default {
           })
         }
       }
-      console.log('search value change:', column.key)
+      log.debug('search value change:', column.key)
       this.$emit('search-data-change', column)
 
       if (this.searchDebounce) {
@@ -350,7 +351,7 @@ export default {
       this.$emit('search-component-custom-event', column)
     },
     getColumnTemplate (key) {
-      console.log('getColumn', this.currentColumns)
+      log.debug('getColumn', this.currentColumns)
       for (const item of this.currentColumns) {
         if (item.key === key) {
           return item

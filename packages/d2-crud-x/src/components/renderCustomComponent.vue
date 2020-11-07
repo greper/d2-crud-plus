@@ -1,5 +1,5 @@
 <script>
-import _ from 'lodash'
+import _set from 'lodash.set'
 export default {
   name: 'render-custom-component',
   props: {
@@ -150,11 +150,11 @@ export default {
       }
       if (this.valueBinding) {
         if (typeof this.valueBinding === 'string') {
-          _.set(props, this.valueBinding, this.value)
+          _set(props, this.valueBinding, this.value)
         } else {
           const prop = this.valueBinding.prop
           const handle = this.valueBinding.handle
-          _.set(props, prop, handle({ value: this.value }))
+          _set(props, prop, handle({ value: this.value }))
         }
       }
       return props

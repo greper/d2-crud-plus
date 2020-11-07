@@ -282,7 +282,7 @@ export default {
       this.getPageSizeFromStorage()
 
       this.initAfter()
-      log.debug('crud inited:', crud)
+      log.info('crud inited:', crud)
     },
     initColumnsGroup (mode, crud) {
       const templateKey = mode + 'Template'

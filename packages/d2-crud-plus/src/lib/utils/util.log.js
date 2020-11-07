@@ -1,4 +1,5 @@
 let debug = () => {}
+let info = () => {}
 function getCallerInfo () {
   const e = new Error()
   return e.stack.split('\n')[3]
@@ -14,8 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
       }
     }
   }
+  if (process.env.VUE_APP_D2P_LOG_INFO !== 'false') {
+    info = (...args) => {
+      console.log('[info]', ...args)
+    }
+  }
 }
 
 export default {
-  debug
+  debug, info
 }

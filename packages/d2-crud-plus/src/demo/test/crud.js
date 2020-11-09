@@ -1,3 +1,4 @@
+import log from '@log'
 export const crudOptions = (vm) => {
   return {
     pageOptions: {
@@ -162,12 +163,12 @@ export const crudOptions = (vm) => {
             span: 24,
             events: {
               blur: () => {
-                console.log('on blur')
+                log.debug('on blur')
               }
             }
           },
           valueChange (key, value, form) {
-            console.log('您选中了：', value)
+            log.debug('您选中了：', value)
           }
         },
         minWidth: 200

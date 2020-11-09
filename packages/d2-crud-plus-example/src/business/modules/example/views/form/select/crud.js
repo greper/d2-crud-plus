@@ -1,4 +1,5 @@
 import request from '@/business/api/request.mock'
+
 export const crudOptions = (vm) => {
   return {
     pageOptions: {
@@ -103,7 +104,9 @@ export const crudOptions = (vm) => {
           }
         },
         form: {
-          value: '2', // 添加时的初始值
+          component: {
+            value: '2' // 默认值
+          },
           helper: 'dict.getData可以覆盖全局配置的getRemoteDictFunc'
         }
       },
@@ -115,13 +118,9 @@ export const crudOptions = (vm) => {
         type: 'select',
         disabled: true,
         dict: {
-          url: (dict) => {
+          url: (dict, options) => {
             return '/dicts/OpenStatusEnum?a=0'
           }
-        },
-        form: {
-          value: '2', // 添加时的初始值
-          helper: 'dict.url可以直接配置一个ajax请求获取数据字典'
         }
       },
       {
@@ -181,13 +180,17 @@ export const crudOptions = (vm) => {
         },
         type: 'select',
         dict: {
-          data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
+          data: [
+            { value: 'sz', label: '深圳', color: 'success' },
+            { value: 'gz', label: '广州', color: 'warning' },
+            { value: 'bj', label: '北京' },
+            { value: 'wh', label: '武汉' },
+            { value: 'sh', label: '上海' }
+          ]
         },
         form: {
           component: {
-            props: {
-              value: 'sz'
-            }
+            value: 'sz' // 默认值
           }
         }
       },
@@ -213,12 +216,12 @@ export const crudOptions = (vm) => {
         },
         dict: {
           data: [
-            { value: 'sz', label: '深圳' },
+            { value: 'sz', label: '深圳', color: 'success' },
             { value: 'gz', label: '广州' },
             { value: 'wh', label: '武汉' },
             { value: 'sh', label: '上海' },
             { value: 'hz', label: '杭州' },
-            { value: 'bj', label: '北京' }]
+            { value: 'bj', label: '北京', color: 'danger' }]
         },
         component: { props: { color: 'auto' } } // 自动染色
       },
@@ -291,7 +294,17 @@ export const crudOptions = (vm) => {
         title: 'checkbox',
         key: 'checkbox',
         sortable: true,
-        search: { disabled: false, component: { props: { dict: { onReady () {} } } } }, // 查询的时候触发一个空方法
+        search: {
+          disabled: false,
+          component: {
+            props: {
+              dict: {
+                onReady () {
+                }
+              }
+            }
+          }
+        }, // 查询的时候触发一个空方法
         type: 'checkbox',
         dict: {
           url: '/dicts/OpenStatusEnum'
@@ -382,7 +395,9 @@ export const crudOptions = (vm) => {
               dict: {
                 clone: true,
                 onReady (data, dict, context) {
-                  data.map(item => { item.border = true })
+                  data.map(item => {
+                    item.border = true
+                  })
                 }
               }
 

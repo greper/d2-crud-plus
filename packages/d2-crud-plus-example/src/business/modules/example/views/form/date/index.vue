@@ -37,7 +37,7 @@ export default {
     },
     async pageRequest (query) {
       const ret = await GetList(query)
-      // 需要3次nextTick el-table才能最终完成初始化
+      // 需要2次nextTick el-table才能最终完成初始化
       this.$nextTick().then(async () => {
         await this.$nextTick()
         const tableData = this.getD2CrudTableData()

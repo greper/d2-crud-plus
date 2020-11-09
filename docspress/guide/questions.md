@@ -145,7 +145,7 @@ this.getD2Crud().showDialog({
 ```
 更多[d2-crud-x外部暴露的方法](https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-x/src/mixin/exposeMethods.js)
 
-## 8. 怎么将初始化（或加载数据）从created推迟到mounted？
+## 8.1 怎么将初始化从created推迟到mounted？
 默认`d2CrudPlus`的初始化是在`created`里面开始的。    
 但有时候某些参数需要从`mounted`里面才能获取到   
 这时候就需要把初始化过程后移
@@ -176,6 +176,51 @@ export default {
   methods: {
     _OnCreated () {
       //覆盖为空方法
+    },
+  }
+}
+```
+
+## 8.2 怎么将第一次加载数据从created推迟到mounted？
+默认`d2CrudPlus`第一次加载数据是在`doLoad`方法中调用`doRefresh`。    
+你可以在你的页面中按如下方式改写即可将第一次加载数据推迟到`mounted`
+```js
+export default {
+  mounted(){ //mounted里面调用刷新方法
+    this.doRefresh()
+  },
+  methods: {
+    doLoad () {
+      //覆盖为空方法
+    },
+  }
+}
+```
+
+## 8.3 怎么一打开页面就获取el-table中的数据？
+通过`this.getD2CrudTableData()`即可获取`el-table`中的数据     
+但是由于从后端请求数据是异步的，直接在`created`或者`mounted`里面去调用的话        
+`el-table`可能还没有初始化完成或者数据还未加载完成    
+所以需要先将加载数据推迟到`mounted`    
+然后在获取数据成功后的`nextTick`中获取`data`    
+```js
+export default {
+  mounted(){ //mounted里面调用刷新方法
+    this.doRefresh()
+  },
+  methods: {
+    doLoad () {
+      //覆盖为空方法
+    },
+    async pageRequest (query) {
+      const ret = await  GetList(query)
+      // 需要等待2次nextTick el-table才能最终完成初始化，此时才能正确获取到data
+      this.$nextTick().then(async () => {
+        await this.$nextTick()
+        const tableData = this.getD2CrudTableData()
+        console.log('tableData:', tableData)
+      })
+      return ret
     },
   }
 }

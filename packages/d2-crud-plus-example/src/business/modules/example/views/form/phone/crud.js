@@ -36,6 +36,10 @@ export const crudOptions = (vm) => {
           component: {
             props: {
               onlyCountries: ['CN', 'HK', 'TW', 'US']
+            },
+            value: {
+              callingCode: '86',
+              phoneNumber: ''
             }
           },
           rules: [{ required: true, message: '请输入手机号' }, { validator: mobileValidator, message: '手机号不正确' }],

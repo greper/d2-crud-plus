@@ -24,12 +24,26 @@ import { d2CrudPlus } from 'd2-crud-plus'
 export default {
   name: 'formDate',
   mixins: [d2CrudPlus.crud],
+  mounted () {
+    // 获取数据推迟到 mounted之后
+    this.doRefresh()
+  },
   methods: {
+    doLoad () {
+
+    },
     getCrudOptions () {
       return crudOptions
     },
-    pageRequest (query) {
-      return GetList(query)
+    async pageRequest (query) {
+      const ret = await GetList(query)
+      // 需要3次nextTick el-table才能最终完成初始化
+      this.$nextTick().then(async () => {
+        await this.$nextTick()
+        const tableData = this.getD2CrudTableData()
+        console.log('tableData:', tableData)
+      })
+      return ret
     },
     addRequest (row) {
       this.beforeSave(row)

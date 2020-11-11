@@ -23,7 +23,7 @@
             <d2-icon name="book" class="d2-mr-5"/>
             文档(Git)
           </el-button>
-          <el-button @click="$open('http://greper.gitee.io/d2-crud-plus/')">
+          <el-button @click="$open('http://d2-crud-plus.docmirror.cn/d2-crud-plus/')">
             <d2-icon name="book" class="d2-mr-5"/>
             文档(码云)
           </el-button>

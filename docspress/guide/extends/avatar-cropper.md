@@ -18,7 +18,7 @@ Vue.use(d2Crud)
 Vue.use(d2CrudPlus)
 
 // 安装文件上传lib，  
-Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html)
+Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/uploader.html)
         form:{},
         alioss:{},
         cos:{},

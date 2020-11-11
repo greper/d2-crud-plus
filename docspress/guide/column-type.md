@@ -113,7 +113,7 @@ export const crudOptions = {
 
 
 #### 4.转化成d2-crud的最终配置  
-d2-crud有哪些配置项，请参考d2-crud-x文档：<http://greper.gitee.io/d2-crud-plus/d2-crud-x/>
+d2-crud有哪些配置项，请参考d2-crud-x文档：<http://d2-crud-plus.docmirror.cn/d2-crud-plus/d2-crud-x/>
 ```javascript
 this.crud= {
   columns: [...],

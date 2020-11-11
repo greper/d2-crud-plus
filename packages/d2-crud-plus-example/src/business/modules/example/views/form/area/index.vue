@@ -2,8 +2,8 @@
   <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">地区选择
       <example-helper title="帮助说明" >
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/area-selector.html">省市区选择组件</link-button>
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends/tree-selector.html">树形选择组件</link-button>
+        <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/area-selector.html">省市区选择组件</link-button>
+        <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/tree-selector.html">树形选择组件</link-button>
 
       </example-helper>
     </template>

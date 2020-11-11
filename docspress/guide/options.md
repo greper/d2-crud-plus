@@ -313,7 +313,7 @@ crudOptions={
           // 见 http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/#/demo/form/slot
           rowSlot: false, 
           formatter (row, column, value, index) {
-            // cell 格式化，http://greper.gitee.io/d2-crud-plus/d2-crud-x/columns.html#formatter
+            // cell 格式化，http://d2-crud-plus.docmirror.cn/d2-crud-plus/d2-crud-x/columns.html#formatter
           }
         }
       
@@ -338,7 +338,7 @@ crudOptions:{
                   value: null, //组件默认值，你还可以通过覆盖doDialogOpened(context)方法，修改context.form.xx的值
                   props: { //表单组件的参数，具体参数请查看对应的组件文档
                     // 如何查找组件配置，请参考
-                    // http://greper.gitee.io/d2-crud-plus/guide/component.html
+                    // http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/component.html
                     separator:",",//dict-select的组件参数，[不同组件参数不同]
                     elProps:{ //dict-select内部封装了el-select
                       filterable: true, //可过滤选择项

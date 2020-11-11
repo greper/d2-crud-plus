@@ -20,7 +20,7 @@
           </div>
           <div slot="nestIdFormSlot" slot-scope="scope">
             <!--  form slot 嵌入子表格，把子表格当做一个普通的组件来用，子表格记得要设置高度 -->
-            <!-- form slot 文档 http://greper.gitee.io/d2-crud-plus/guide/slot.html -->
+            <!-- form slot 文档 http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/slot.html -->
             <sub-table :value="scope.form.nestId" @selected="nestIdSelected($event,scope.form)"></sub-table>
           </div>
         </d2-crud-x>

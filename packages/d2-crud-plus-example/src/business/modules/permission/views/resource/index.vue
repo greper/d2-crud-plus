@@ -4,7 +4,7 @@
       <example-helper title="权限管理帮助" >
         <div>
           <h3>如何启用权限管理，请点击下面帮助链接</h3>
-          <link-button href="http://greper.gitee.io/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
+          <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/permission.html">权限管理帮助文档</link-button>
         </div>
       </example-helper>
     </template>

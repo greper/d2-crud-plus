@@ -18,7 +18,7 @@ export default {
 
 ## 简化字段配置
 
-`d2-crud-plus`的首要任务是简化[d2-crud-x的配置](http://greper.gitee.io/d2-crud-plus/d2-crud-x/)
+`d2-crud-plus`的首要任务是简化[d2-crud-x的配置](http://d2-crud-plus.docmirror.cn/d2-crud-plus/d2-crud-x/)
 
 ### 1.简化前的配置
 下面以仅有一个`status`字段的`crud`举例    

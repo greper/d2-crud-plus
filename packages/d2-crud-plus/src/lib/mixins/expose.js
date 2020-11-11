@@ -43,7 +43,7 @@ export default {
      * initColumns 初始化结束后调用方法
      *
      * 初始化完成后，会生成crud-x需要的最终配置
-     * http://greper.gitee.io/d2-crud-plus/guide/mixins.html#_1-简化前的配置
+     * http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/mixins.html#_1-简化前的配置
      *
      * 如果需要动态修改列，可以在此处修改
      */
@@ -87,6 +87,7 @@ export default {
 
     /**
      * 获取编辑框的formData
+     * 仅在编辑对话框打开的情况下可用
      * @returns
      */
     getEditForm () {
@@ -94,6 +95,7 @@ export default {
     },
     /**
      * 获取编辑框的模式[view,edit,add]
+     * 仅在编辑对话框打开的情况下可用
      * @returns
      */
     getEditFormMode () {
@@ -101,6 +103,7 @@ export default {
     },
     /**
      * 获取编辑框的组件参数配置
+     * 仅在编辑对话框打开的情况下可用
      * 可以进行动态修改
      * groupKey可不传
      * @returns
@@ -110,6 +113,7 @@ export default {
     },
     /**
      * 获取编辑框的分组组件参数配置
+     * 仅在编辑对话框打开的情况下可用
      * @returns
      */
     getEditFormTemplateGroup (groupKey, key) {

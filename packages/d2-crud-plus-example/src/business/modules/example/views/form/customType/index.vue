@@ -2,8 +2,8 @@
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">自定义字段类型
       <example-helper title="帮助说明" >
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/column-type.html#自定义字段类型">自定义字段类型</link-button>
-        <link-button href="http://greper.gitee.io/d2-crud-plus/guide/extends.html">自定义扩展</link-button>
+        <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/column-type.html#自定义字段类型">自定义字段类型</link-button>
+        <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends.html">自定义扩展</link-button>
       </example-helper>
     </template>
     <d2-crud-x

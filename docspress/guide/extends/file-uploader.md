@@ -20,7 +20,7 @@ Vue.use(d2Crud)
 Vue.use(d2CrudPlus)
 
 // 安装文件上传lib，  
-Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html)
+Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/uploader.html)
         form:{},
         alioss:{},
         cos:{},
@@ -69,7 +69,7 @@ export const crudOptions = {
             },
             uploader:{ 
                // uploader参数，将临时覆盖uploader的全局配置
-               // 具体配置请参考 [d2p-uploader](http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html)
+               // 具体配置请参考 [d2p-uploader](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/uploader.html)
                type: 'cos', //与上方type作用一致，配置一个即可
                custom:{}, //自定义参数，可以在获取token、sts时传入不同的参数给后端
                ... //其他uploader参数
@@ -82,4 +82,4 @@ export const crudOptions = {
  }
 ```
 
-上传参数配置：[d2p-uploader](http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html)
+上传参数配置：[d2p-uploader](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/uploader.html)

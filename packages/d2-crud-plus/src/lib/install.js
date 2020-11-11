@@ -13,7 +13,7 @@ const install = (Vue, options) => {
   if (options != null) {
     if (!(options.starTip === false)) {
       console.log('演示地址  http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/')
-      console.log('文档  http://greper.gitee.io/d2-crud-plus/')
+      console.log('文档  http://d2-crud-plus.docmirror.cn/d2-crud-plus/')
       console.log('Gitee   https://gitee.com/greper/d2-crud-plus')
       console.log('GitHub  https://github.com/greper/d2-crud-plus')
       console.log('请不要吝啬您的star，谢谢！')

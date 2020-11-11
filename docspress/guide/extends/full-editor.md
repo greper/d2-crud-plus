@@ -12,7 +12,7 @@ Vue.use(D2pFullEditor)
 ```js
 // 安装文件上传扩展插件，整个项目配置一次即可
 // 支持quill的图片上传
-Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://greper.gitee.io/d2-crud-plus/guide/extends/uploader.html)
+Vue.use(D2pUploader,{ //上传全局配置参数，具体配置参考[d2p-uploader](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/uploader.html)
     form:{},
     alioss:{},
     cos:{},

@@ -640,7 +640,7 @@ export default {
         const format = this.crud.format.doFormat
         const data = this.crud.format.response(ret)
         if (data == null) {
-          console.warn('获取返回结果不正确，请参考: "http://greper.gitee.io/d2-crud-plus/guide/quickstart.html#_4-修改http响应拦截的返回结果"')
+          console.warn('获取返回结果不正确，请参考: "http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/quickstart.html#_4-修改http响应拦截的返回结果"')
         }
         let records = format(data, pageFormat.records)
         const current = format(data, pageFormat.current)
@@ -657,7 +657,7 @@ export default {
 
         if (records == null || current == null || size == null || total == null) {
           console.warn('请确保format配置或response的格式正确,response:', ret, ',format:', pageFormat)
-          console.warn('你可以在此处打个断点调试一下,请参考："http://greper.gitee.io/d2-crud-plus/guide/structure.html#自定义数据结构"')
+          console.warn('你可以在此处打个断点调试一下,请参考："http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/structure.html#自定义数据结构"')
         }
 
         this.doPaginationMerge({ currentPage: current, pageSize: size, total: total })

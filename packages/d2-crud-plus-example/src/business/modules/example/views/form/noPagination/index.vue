@@ -33,7 +33,17 @@ export default {
       return crudOptions
     },
     pageRequest (query) {
-      return GetList(query)
+      query.size = 999999999999
+      return GetList(query).then(ret => {
+        // 假如你返回的只是一个数组
+        // 你可以构造一个返回结构
+        // ret.data = {
+        //   records: ret.data,
+        //   total: ret.data.length,
+        //   size: 99999999,
+        //   current: 1
+        // }
+      })
     },
     addRequest (row) {
       return AddObj(row)

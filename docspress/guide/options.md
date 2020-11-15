@@ -344,7 +344,8 @@ crudOptions:{
                       filterable: true, //可过滤选择项
                       multiple: true, //支持多选
                       clearable: true, //可清除
-                    }
+                    },
+                    dict:{},//详细见dict配置。运行时，会将column.dict复制到此处，再由此处配置的dict覆盖
                   },
                   placeholder:'',
                   disabled: false, //是否在表单中禁用组件
@@ -356,7 +357,7 @@ crudOptions:{
                   on:{ //除input change事件外，更多组件事件监听
                     select(event){console.log(event)} //监听表单组件的select事件
                   },
-                  scopedSlots:{ //插槽渲染
+                  slots:{ //插槽渲染
                      default:(h,scope)=>{ //默认的scoped插槽
                         return (<div>{scope.data}</div>)
                      }
@@ -378,6 +379,7 @@ crudOptions:{
                    * @param component 当前组件的ref
                    * @param immediate 是否是对话框打开后立即触发的
                    * @param getComponent 获取组件Ref的方法， getComponent(keyName), 返回组件ref，可以动态调用该组件的方法
+                        注意：当component未初始化或者没有显示时，是获取不到组件ref的
                 **/
                 valueChange(key ,value ,form, {getColumn, mode, component, immediate, getComponent }){
                     // form表单数据change事件，表单值有改动将触发此事件

@@ -170,7 +170,7 @@
       v-bind="formOptions"
     >
       <template slot="title">
-        {{getFormTitle()}}
+       <span> {{getFormTitle()}}</span>
         <slot name="FormHeaderSlot" :mode="formMode" :data="formData"  :form="formData"/>
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"/></button>
       </template>

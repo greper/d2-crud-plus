@@ -9,7 +9,7 @@ export const crudOptions = (vm) => {
     formOptions: {
       type: 'drawer',
       draggable: false,
-      fullscreen: false,
+      fullscreen: null,
       size: '50%',
       saveRemind: true,
       defaultSpan: 12 // 默认的表单 span

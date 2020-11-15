@@ -1,7 +1,7 @@
 # 代码生成
 
 ## 项目地址【java】
-[d2-crud-plus-server/code-generator](https://github.com/greper/d2-crud-plus-server/code-generator)
+[d2-crud-plus-server/code-generator](https://github.com/greper/d2-crud-plus-server/tree/master/code-generator)
 ```shell
 git clone https://github.com/greper/d2-crud-plus-server.git
 # 导入idea或eclipse

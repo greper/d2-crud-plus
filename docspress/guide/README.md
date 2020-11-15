@@ -1,6 +1,7 @@
 # 介绍
 d2-crud-plus 是基于 d2-admin 的 d2-crud 的扩展,旨在简化 d2-crud 配置，快速开发crud功能。   
 Github: <https://github.com/greper/d2-crud-plus>    
+Gitee: <https://gitee.com/greper/d2-crud-plus>   
 示例地址：<http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html>
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)

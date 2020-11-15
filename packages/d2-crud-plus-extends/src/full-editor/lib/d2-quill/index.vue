@@ -10,7 +10,7 @@ import 'quill/dist/quill.bubble.css'
 import D2pUploader from '../../../uploader'
 import lodash from 'lodash'
 import { d2CrudPlus } from '../../../utils/d2-crud-plus'
-
+import log from '../../../utils/util.log'
 const fontSizeStyle = Quill.import('attributors/style/size')
 fontSizeStyle.whitelist = ['10px', '14px', '16px', '18px', '22px', '26px', '30px', '34px', '38px', '45px']
 Quill.register(fontSizeStyle, true)
@@ -172,7 +172,7 @@ export default {
         const onError = (e) => {
           item.status = 'error'
           item.message = '文件上传出错:' + e.message
-          console.log(e)
+          log.debug(e)
         }
         const option = {
           file: file,

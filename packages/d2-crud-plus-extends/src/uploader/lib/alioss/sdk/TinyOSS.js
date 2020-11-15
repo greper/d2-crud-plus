@@ -73,7 +73,6 @@ export default class TinyOSS {
       headers.Authorization = `OSS ${accessKeyId}:${signature}`
       const protocol = this.opts.secure ? 'https' : 'http'
       const url = `${protocol}://${this.host}/${objectName}`
-      console.log(url)
       return ajax(url, {
         method: verb,
         headers,

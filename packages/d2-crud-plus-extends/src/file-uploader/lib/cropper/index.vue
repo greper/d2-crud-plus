@@ -47,6 +47,7 @@
 
 <script>
 import VueCropper from './vue-cropper'
+import log from '../../../utils/util.log'
 // 图片裁剪对话框，封装cropperjs
 export default {
   name: 'd2p-cropper',
@@ -125,7 +126,7 @@ export default {
         return def
       }
       const assign = Object.assign(def, this.cropper)
-      console.log('cropper options:', assign)
+      log.debug('cropper options:', assign)
       return assign
     },
     _cropperHeight () {
@@ -176,7 +177,7 @@ export default {
       return this.$refs.cropper
     },
     ready (event) {
-      console.log('cropper ready:', event)
+      log.debug('cropper ready:', event)
       // this.zoom(-0.3)
     },
     preventDefault (e) {
@@ -236,7 +237,7 @@ export default {
       this.doOutput(this.file)
     },
     doOutput (file) {
-      console.log('output this:', this)
+      log.debug('output this:', this)
       const ret = { file }
       if (this.output === 'all') {
         this.getCropImageBlob((blob) => {

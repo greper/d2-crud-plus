@@ -1,6 +1,6 @@
 import base64js from 'base64-js'
 import Digest from '../vendor/digest'
-
+import log from '../../../../../utils/util.log'
 function isDate (obj) {
   return obj && Object.prototype.toString.call(obj) === '[object Date]' && obj.toString !== 'Invalid Date'
 }
@@ -132,7 +132,7 @@ function getSignature (options = {}) {
 
   data.push(`${canonicalizedOSSHeaders}${canonicalizedResource}`)
   const text = data.join('\n')
-  console.log('text', text, accessKeySecret)
+  log.debug('text', text, accessKeySecret)
   const hmac = new Digest.HMAC_SHA1()
   hmac.setKey(accessKeySecret)
   hmac.update(text)

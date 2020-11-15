@@ -1,6 +1,7 @@
 import choose from './choose'
 import config from './config'
 import lodash from 'lodash'
+import log from '../utils/util.log'
 function install (Vue, options) {
   lodash.merge(config, options)
 }
@@ -18,7 +19,7 @@ function init (uploader, type) {
   if (options[type].buildKey == null) {
     options[type].buildKey = buildKey
   }
-  console.log('uploader [' + type + '] init ....')
+  log.debug('uploader [' + type + '] init ....')
   uploader.init(options[type])
 }
 export default {

@@ -79,7 +79,6 @@ export default {
       this.$emit('beforeInit', this.id, this.mixedConfig)
       this.editor = window.UE.getEditor(this.id, this.mixedConfig)
       this.editor.addListener('ready', () => {
-        console.log('ueditor ready')
         if (this.status === 2) { // 使用 keep-alive 组件会出现这种情况
           this.editor.setContent(this.value)
         } else {

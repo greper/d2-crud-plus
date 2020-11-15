@@ -1,6 +1,6 @@
 import ajax from './ajax'
 import lodash from 'lodash'
-
+import log from '../../../utils/util.log'
 export default {
   options: undefined,
   init (options) {
@@ -32,7 +32,7 @@ export default {
       options.data = {}
     }
     options.data.key = key
-    console.log('upload option ', options)
+    log.debug('upload option ', options)
     return new Promise((resolve, reject) => {
       // onProgress({
       //   total: 0,

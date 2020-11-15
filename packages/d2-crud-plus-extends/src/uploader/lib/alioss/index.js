@@ -1,7 +1,7 @@
 import OSS from './sdk'
 // import OSS from 'ali-oss'
 import lodash from 'lodash'
-
+import log from '../../../utils/util.log'
 function getKey (file, fileName, config) {
   const key = config.buildKey(fileName, {
     file,
@@ -56,7 +56,7 @@ export default {
     const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
-    console.log('-----------开始上传----------', fileName, config)
+    log.debug('-----------开始上传----------', fileName, config)
     const key = await getKey(file, fileName, config)
     let sts = null
     if (this.options.getAuthorization !== null) {
@@ -95,14 +95,14 @@ export default {
     }
     return client.put(key, file).then((ret) => {
       const result = { url: config.domain + '/' + key, key: key }
-      console.log('alioss success', result)
+      log.debug('alioss success', result)
       return result
     }).catch(err => {
       onError(err)
     })
     /**
      * onProgress (progressEvent) {
-          console.log('progressEvent', progressEvent)
+          log.debug('progressEvent', progressEvent)
           let e = progressEvent
           if (e.total > 0) {
             e.percent = e.loaded / e.total * 100

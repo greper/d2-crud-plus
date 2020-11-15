@@ -42,7 +42,7 @@
 import D2pCropper from './cropper'
 import D2pUploader from '../../uploader'
 import { d2CrudPlus } from '../../utils/d2-crud-plus'
-
+import log from '../../utils/util.log'
 /**
  * 图片裁剪上传组件,封装了d2p-cropper, d2p-cropper内部封装了cropperjs
  */
@@ -182,9 +182,9 @@ export default {
       const onError = (e) => {
         item.status = 'error'
         item.message = '文件上传出错:' + e.message
-        console.log(e)
+        log.debug(e)
       }
-      console.log('blob:', blob)
+      log.debug('blob:', blob)
       const option = {
         file: blob,
         fileName: file.name,

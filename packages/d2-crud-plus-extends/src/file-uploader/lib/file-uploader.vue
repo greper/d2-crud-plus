@@ -49,6 +49,7 @@ import SparkMD5 from 'spark-md5'
 import D2pUploader from '../../uploader'
 import lodash from 'lodash'
 import { d2CrudPlus } from '../../utils/d2-crud-plus'
+import log from '../../utils/util.log'
 // 文件上传组件,依赖D2pUploader
 export default {
   name: 'd2p-file-uploader',
@@ -146,7 +147,7 @@ export default {
     avatarUrl () {
       if (this.fileList.length > 0) {
         const file = this.fileList[0]
-        console.log('file,', file, file.status)
+        log.debug('file,', file, file.status)
         if (file.response != null && file.response.url != null) {
           return file.response.url
         } else if (file.url != null) {
@@ -202,7 +203,7 @@ export default {
             showMessage = this.sizeLimit.tip
           }
           if (file.size > limit) {
-            console.log('文件大小超过限制：', file.size)
+            log.debug('文件大小超过限制：', file.size)
             showMessage(file.size, limit)
             return false
           }
@@ -267,7 +268,7 @@ export default {
     },
     handleUploadProgress (event, file, fileList) {
       if (this._elProps.listType === 'avatar') {
-        console.log('progress', event, file)
+        log.debug('progress', event, file)
         this.avatarLoading = Math.floor(event.percent)
         if (event.percent === 100) {
           this.avatarLoading = undefined
@@ -286,7 +287,7 @@ export default {
       const list = []
       for (const item of fileList) {
         if (item.status === 'uploading') {
-          console.log('当前文件上传完成，等待剩下的文件全部上传成功后再更新value')
+          log.debug('当前文件上传完成，等待剩下的文件全部上传成功后再更新value')
           return
         }
         if (item.response != null && item.response.url != null) {
@@ -295,7 +296,7 @@ export default {
           list.push(item)
         }
       }
-      console.log('handleUploadFileSuccess list', list, res)
+      log.debug('handleUploadFileSuccess list', list, res)
       this.emit(res, list)
     },
     handleUploadFileRemove (file, fileList) {
@@ -389,7 +390,7 @@ export default {
       })
     },
     onExceed (files, fileList) {
-      console.log('文件数量超出限制')
+      log.debug('文件数量超出限制')
       if (this._elProps.limit === 1) {
         this.clearFiles()
         this.$refs.fileUploader.handleStart(files[0])

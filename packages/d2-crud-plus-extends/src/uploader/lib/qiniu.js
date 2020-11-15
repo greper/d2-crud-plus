@@ -1,5 +1,6 @@
 import * as qiniu from 'qiniu-js'
 import lodash from 'lodash'
+import log from '../../utils/util.log'
 let tokenCache = null
 /**
 config {
@@ -66,7 +67,7 @@ export default {
     const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
-    console.log('-----------开始上传----------', fileName, config)
+    log.debug('-----------开始上传----------', fileName, config)
     const key = await getKey(file, fileName, config)
     const token = await getToken(file, fileName, key, config)
 

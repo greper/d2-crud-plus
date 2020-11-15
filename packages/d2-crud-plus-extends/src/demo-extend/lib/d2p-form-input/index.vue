@@ -67,7 +67,6 @@ export default {
     this.setValue(this.value)
   },
   mounted () {
-    console.log('demo-input', this, this.$slots)
   },
   methods: {
     setValue (value) {

@@ -1,7 +1,7 @@
 // 初始化实例
 import COS from 'cos-js-sdk-v5'
 import lodash from 'lodash'
-
+import log from '../../utils/util.log'
 function newClient (options) {
   let client = null
   const secretId = options.secretId
@@ -52,7 +52,7 @@ export default {
     const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
-    console.log('-----------开始上传----------', fileName)
+    log.debug('-----------开始上传----------', fileName)
     let key = config.buildKey(fileName, {
       file,
       ...(config.custom || {})
@@ -82,10 +82,10 @@ export default {
       }, function (err, data) {
         if (err != null) {
           onError(err)
-          console.log(err)
+          log.debug(err)
           reject(err)
         } else {
-          console.log('上传成功', data)
+          log.debug('上传成功', data)
           const result = { url: config.domain + '/' + key, key: key }
           resolve(result)
         }

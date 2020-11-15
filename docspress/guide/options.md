@@ -66,7 +66,7 @@ export const crudOptions = {
   formOptions: { // 编辑对话框及el-form的配置
     type:'dialog',//默认对话框模式，drawer 抽屉模式
     size: '50%', //抽屉模式的宽度
-    fullscreen: true,//全屏按钮，抽屉模式请关闭
+    fullscreen: true,//全屏按钮，传null则隐藏全屏按钮，抽屉模式请隐藏
     draggable:true, //是否支持表单对话框拖拽，抽屉模式请关闭
     saveRemind: true, //有修改时是否需要保存提醒，也可以传入一个方法，自定义确认对话框，()=> return vm.$confirm({})
     labelWidth: '100px',

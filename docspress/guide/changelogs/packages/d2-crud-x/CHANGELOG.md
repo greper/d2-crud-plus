@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.3](https://github.com/greper/d2-crud-plus/compare/v2.13.2...v2.13.3) (2020-11-15)
+
+
+### Bug Fixes
+
+* 修复抽屉表单全屏按钮问题，设置fullscreen=null即可 ([6cef8fd](https://github.com/greper/d2-crud-plus/commit/6cef8fd1a426cba7e5293ff1d74dbb84db81cc64))
+* slot增加index ([9a15d04](https://github.com/greper/d2-crud-plus/commit/9a15d048d7e7be3e743bcbcf417be9c599b4bd2c))
+
+
+### Performance Improvements
+
+* 去除多余的log ([8f789c1](https://github.com/greper/d2-crud-plus/commit/8f789c15f680e994d0397b2eb387e23eded510de))
+* 优化crud-x的包大小 ([aa41b3b](https://github.com/greper/d2-crud-plus/commit/aa41b3bd10e0547c943eaad26c915d0c58ee9854))
+
+
+
+
+
 ## [2.13.2](https://github.com/greper/d2-crud-plus/compare/v2.13.1...v2.13.2) (2020-11-04)
 
 

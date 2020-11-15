@@ -428,7 +428,7 @@ export default {
             loadNext()
           } else {
             const md5 = spark.end()
-            console.info('computed hash', md5) // Compute hash
+            log.debug('computed hash', md5) // Compute hash
 
             resolve(md5)
           }

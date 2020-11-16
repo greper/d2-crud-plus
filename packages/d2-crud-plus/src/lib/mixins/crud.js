@@ -259,6 +259,9 @@ export default {
       crud.columns = []
       crud.searchOptions.columns = []
       crud.columnsMap = {}
+      if (columns == null) {
+        console.warn('crudOptions.columns不能为空')
+      }
       for (const item of columns) {
         this.initColumnItem(crud.columns, item)
       }

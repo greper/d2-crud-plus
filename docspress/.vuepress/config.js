@@ -52,6 +52,11 @@ module.exports = ctx => ({
       },
     }
   },
+  plugins: [
+    ['@vuepress/search', {
+      searchMaxSuggestions: 10
+    }]
+  ],
   // plugins: [
   //   ['@vuepress/back-to-top', true],
   //   ['@vuepress/pwa', {

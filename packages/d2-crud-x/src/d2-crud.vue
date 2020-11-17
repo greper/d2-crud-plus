@@ -356,7 +356,7 @@ export default {
     },
     handleDialogOpened (event) {
       // TODO 暂时无效
-      this.$emit('form-dialog-opened', { event: event, form: this.formData })
+      this.$emit('form-dialog-opened', { event: event, form: this.formData, row: this.formDataStorage })
     },
     getFormComponentRef (key) {
       if (this.$refs) {
@@ -371,7 +371,8 @@ export default {
         mode: this.formMode,
         key: key,
         value: this.formData[key],
-        form: this.formData
+        form: this.formData,
+        row: this.formDataStorage
       }
     }
   }

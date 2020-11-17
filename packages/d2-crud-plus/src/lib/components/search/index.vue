@@ -10,7 +10,9 @@
      <el-form-item
        v-for="(item) in currentColumns" :key="item.key"
        v-if="getItemAttr(item,'show',true)"
-       :label="item.title?item.title:item.label" :prop="item.key">
+       :label="item.title?item.title:item.label" :prop="item.key"
+        v-bind="item.itemProps"
+     >
         <template v-if="item.slot === true">
           <slot :name="item.key+'SearchSlot'" :form="form" />
         </template>

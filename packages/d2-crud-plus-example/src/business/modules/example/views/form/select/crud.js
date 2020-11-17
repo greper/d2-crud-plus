@@ -201,7 +201,10 @@ export const crudOptions = (vm) => {
         width: 180,
         search: {
           disabled: false,
-          title: '多选'
+          title: '多选',
+          itemProps: { // 单独设置labelWidth
+            labelWidth: '50px'
+          }
         },
         type: 'select',
         form: {

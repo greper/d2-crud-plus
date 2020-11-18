@@ -271,14 +271,12 @@ crudOptions={
             // 之前执行
           },
           dict: { // 数据字典配置， 供select等组件通过value匹配label
-            data: [ // 本地数据字典
+            data: [ // 本地数据字典，若data为null，则通过http请求获取远程数据字典
               { value: 'sz', label: '深圳' },
               { value: 'gz', label: '广州' }, 
               { value: 'wh', label: '武汉' }, 
               { value: 'sh', label: '上海' }
             ],
-            // 若data为空，则通过http请求获取远程数据字典
-            // 也可以传入一个异步请求来自定义请求方式
             url:'/dict/get', 
             // url(dict,{form,component}){return '/dict/newUrl'} // 如果url是一个方法，则表示是动态构建url
             cache: true, //是否启用cache，默认开启
@@ -286,7 +284,7 @@ crudOptions={
             label:'label', // label的属性名
             children:'children', // children的属性名
             isTree: false, //是否是树形结构
-            clone: false, //获取到
+            clone: false, //是否获取到字典数据后clone一份再传递给组件
             getData: (url,dict,{form,component})=>{return Promise}, //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
             getNodes(values){return nodeArr}, //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
             transfer:(data,options)=>{return data},// 可以修改获取到的远程数据，比如将字典的id字段转成字符串形式（缓存开启时只会执行一次）

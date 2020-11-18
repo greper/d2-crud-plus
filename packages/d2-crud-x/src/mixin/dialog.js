@@ -190,9 +190,9 @@ export default {
         groupTemplate: this.formTemplateGroupStorage
       })
     },
-    fetchDetail (index, row) {
+    fetchDetail (index, row, formMode) {
       if (this.options.fetchDetail != null) {
-        const ret = this.options.fetchDetail(index, row)
+        const ret = this.options.fetchDetail(index, row, formMode)
         if (ret instanceof Promise) {
           return ret
         } else {

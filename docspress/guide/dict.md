@@ -6,7 +6,7 @@
 
 ## 数据字典的配置   
 通常配置在column下,然后被分别赋值到component.dict和form.component.dict
-```javascript
+```js
 export const crudOptions = {
   columns: [ //字段配置
     {
@@ -104,7 +104,7 @@ dict:{
 
 方法3
 或者手动设置
-```
+```js
 dict:{
  getData:(url,dict,{form,component})=>{ //配置此参数会覆盖全局的getRemoteDictFunc
           return request(url).then(ret=>{
@@ -120,13 +120,13 @@ dict:{
 直接修改dict.data无法动态修改select的选项数据
 
 方式1： 配置DictSelect组件的options(数据结构与dict.data一致)，options参数比dict.data具有更高优先级，并且可以动态修改
-```
+```js
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
        getColumn.component.props.options=[{字典数据}]
  },
 ```
 方式2： 参考选择联动http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/linkage
-```
+```js
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
             form.city = undefined // 将“city”的值置空
             form.county = undefined// 将“county”的值置空
@@ -136,7 +136,7 @@ valueChange (key, value, form, { getColumn, mode, component, immediate, getCompo
           },
 ```
 DictSelect、DictRadio、DictCheckbox组件ref暴露如下一些方法可以操作字典：
-```
+```js
 component.clearDict()  //清除字典
 component.loadDict() //加载字典
 component.setDictData(data) //修改字典数据
@@ -144,10 +144,22 @@ component.getDictData()
 ```
 
 方式3：动态修改dict.url 也会触发字典重载
-```
+```js
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
        getColumn.component.props.dict.url=dict.url?params=xxx //不同的参数获取不同的字典列表
  },
 
 ```
 
+## 字典缓存仅页面级别生效
+在页面的created方法中清空所有字典缓存即可    
+```js
+import { d2CrudPlus } from 'd2-crud-plus'
+export const crudOptions= {
+ pageOptions:{
+    onInitAfter(){ //初始化完成后，清空所有字典缓存
+        d2CrudPlus.util.dict.clear() 
+    }
+ }
+}
+```

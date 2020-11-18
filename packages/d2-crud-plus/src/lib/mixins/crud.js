@@ -284,6 +284,9 @@ export default {
 
       this.getPageSizeFromStorage()
 
+      if (this.crud.pageOptions && this.crud.pageOptions.onInitAfter) {
+        this.crud.pageOptions.onInitAfter()
+      }
       this.initAfter()
       log.info('crud inited:', crud)
     },

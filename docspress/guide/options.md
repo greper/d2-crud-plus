@@ -45,6 +45,7 @@ export const crudOptions = {
     defaultRender:(h,scope)=>{return (<span>{scope.value}</span>)} //没有配置组件的，默认渲染render
   },
   pageOptions:{
+    onInitAfter: function(){}, //初始化完成后触发，与覆盖this.initAfter()方法效果一样
     compact: false, //是否紧凑页面模式
     export: {
         local:true,//本地导出，false为服务端导出

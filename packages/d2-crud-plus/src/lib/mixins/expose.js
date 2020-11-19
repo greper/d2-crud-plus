@@ -85,6 +85,10 @@ export default {
       return d2Crud == null || d2Crud.d2CrudData
     },
 
+    setD2CrudTableData (data) {
+      this.$set(this.getD2Crud(), 'd2CrudData', data)
+    },
+
     /**
      * 获取编辑框的formData
      * 仅在编辑对话框打开的情况下可用

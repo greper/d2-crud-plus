@@ -85,6 +85,10 @@ export default {
       return d2Crud == null || d2Crud.d2CrudData
     },
 
+    /**
+     * 动态设置列表数据
+     * @param data
+     */
     setD2CrudTableData (data) {
       this.$set(this.getD2Crud(), 'd2CrudData', data)
     },

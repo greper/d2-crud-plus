@@ -283,4 +283,9 @@ module.exports = {
 
 ```
 
+## 13. 动态列显隐
+```js
+this.crud.columnsMap.xxxx.show =false
+this.handleColumnsFilterChanged(this.crud.columns)
+```
 

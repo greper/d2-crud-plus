@@ -129,6 +129,7 @@
                          v-if="handleRowHandleButtonShow(item.show, scope)"
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope)"
                          :icon="handleAttribute(item.icon,null,scope)"
+                         :type="handleAttribute(item.type,null,scope)"
                          @click="item.doClick(scope)"
                          :label="handleAttribute(item.text,null,scope)"
                          v-bind="item"
@@ -466,10 +467,16 @@ export default {
 
   &.d2p-form-drawer{
     .el-drawer__body{
-      padding:20px
+      padding:20px;
+      overflow-y: scroll;
     }
     .d2p-form-footer{
       text-align: right;
+    }
+    .el-drawer__header {
+      margin-bottom: 0px;
+      padding: 20px 20px 20px;
+      border-bottom: solid 1px #eee;
     }
   }
 }

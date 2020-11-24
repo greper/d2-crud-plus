@@ -478,6 +478,7 @@ export default {
       padding: 20px 20px 20px;
       border-bottom: solid 1px #eee;
     }
+    .el-drawer__close-btn:focus{outline:none}
   }
 }
 .page-compact{

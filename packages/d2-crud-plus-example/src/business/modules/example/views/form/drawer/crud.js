@@ -8,8 +8,8 @@ export const crudOptions = (vm) => {
     },
     formOptions: {
       type: 'drawer',
-      draggable: false,
-      fullscreen: null,
+      draggable: false, // 抽屉模式一定要关闭拖拽
+      fullscreen: null, // 抽屉模式关闭全屏按钮
       size: '50%',
       saveRemind: true,
       defaultSpan: 12 // 默认的表单 span

@@ -58,6 +58,7 @@ export default {
     },
     async pageRequest (query) {
       const ret = await GetList(query)
+      // 修复合计行错位问题
       await this.$nextTick() // 等待加载完成后触发重排布局
       this.getD2CrudTable().store.scheduleLayout()
       return ret

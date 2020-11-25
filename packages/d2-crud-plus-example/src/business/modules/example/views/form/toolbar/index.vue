@@ -31,6 +31,9 @@
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
+
+        <el-button size="small" type="primary" @click="dynamicColumns"><i class="el-icon-plus"/> 动态修改列测试</el-button>
+
         <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
       </div>
     </d2-crud-x>
@@ -64,6 +67,15 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    dynamicColumns () {
+      if (this.columnsBak == null) {
+        this.columnsBak = this.crud.columns
+        this.crud.columns = [{ title: '测试', key: 'test', show: true }]
+      } else {
+        this.crud.columns = this.columnsBak
+        this.columnsBak = null
+      }
     }
   }
 }

@@ -254,6 +254,10 @@ this.$nextTick(() => {
 })
 ```
 
+[错位解决方案演示](http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/column)
+看下方合计行
+
+
 ## 10. 怎么给select设置默认选中第一个选项？
 ```js
 form:{

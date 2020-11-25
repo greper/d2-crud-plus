@@ -50,18 +50,17 @@ export default {
   },
   computed: {
   },
-  mounted () {
-    // 修复首次加载表尾合计行无法显示的bug
-    setTimeout(() => {
-      this.getD2CrudTable().store.scheduleLayout()
-    }, 1)
+  async mounted () {
   },
   methods: {
     getCrudOptions () {
       return crudOptions
     },
-    pageRequest (query) {
-      return GetList(query)
+    async pageRequest (query) {
+      const ret = await GetList(query)
+      await this.$nextTick() // 等待加载完成后触发重排布局
+      this.getD2CrudTable().store.scheduleLayout()
+      return ret
     },
     addRequest (row) {
       return AddObj(row)

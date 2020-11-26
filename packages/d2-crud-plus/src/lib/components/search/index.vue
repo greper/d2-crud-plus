@@ -278,9 +278,10 @@ export default {
       }
       // 表单重置事件
       this.$emit('reset')
-      if (this.searchDebounce) {
-        // 防抖查询
-        this.searchDebounce()
+      if (this.options.searchAfterReset) {
+        this.$nextTick(() => {
+          this.doSearch()
+        })
       }
     },
     isInput (item) {

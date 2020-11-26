@@ -88,6 +88,7 @@ export const crudOptions = {
       wait: 500, //延迟500毫秒
       ... //options : https://www.lodashjs.com/docs/lodash.debounce
     },
+    searchAfterReset:true,//点击重置后是否立即查询
     buttons:{
       search:{ // 配置false，隐藏按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 

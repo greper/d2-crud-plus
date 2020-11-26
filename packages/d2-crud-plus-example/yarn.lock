@@ -916,7 +916,7 @@
   dependencies:
     loader-utils "^1.4.0"
 
-"@d2-projects/vue-table-export@^1.1.0":
+"@d2-projects/vue-table-export@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@d2-projects/vue-table-export/-/vue-table-export-1.1.0.tgz#f3fa573a4d1b4d1fbb3f6c154e71e8cc7efe2146"
   integrity sha512-57ZztO6BLzw0uTs4rqapUUbe//HkUezUTB1Eun9Kmiy8o5+slJ88sfBX3qhKTZZDvUDT4yxx9fyEnkAFDLlnYw==
@@ -3995,7 +3995,7 @@ cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^2.13.2:
+d2-crud-plus@^2.13.3:
   version "2.13.3"
   resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.13.3.tgz#e9fbba7ebd9c46e5e1ab739ee91842492a8b3103"
   integrity sha512-ChYH5QAUTKt8m5hXKxNMT9xGX5QmT26qgXIGWvNyKu9hXt8t4Yn6ghiKB3J0fZH9ENQNn331id0acgfzJV9tAA==
@@ -4004,7 +4004,7 @@ d2-crud-plus@^2.13.2:
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 
-d2-crud-x@^2.13.2:
+d2-crud-x@^2.13.3:
   version "2.13.3"
   resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.13.3.tgz#62152e1f9d1cec5b2a63246a367cf4055759b668"
   integrity sha512-8CBXZBO6Ya0oF/3bympyyTsojNOB5phwTQtlQjsac9+AQITZNDyIXqsBvrHAX5U4NQakAT1RaD7sGvGy/lJTBw==
@@ -4016,7 +4016,7 @@ d2-crud-x@^2.13.2:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^2.13.2:
+d2p-extends@^2.13.3:
   version "2.13.3"
   resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-2.13.3.tgz#d8122b29632768014e4e018a1fa3dc8a56525007"
   integrity sha512-LMMQgHdBz+chHJp+HQbcGx4+eJOuk8/cyiPnF1zCJqu/8eIS3PuIDAlHjcJu9smKVKKxmf7ISovM32BG9C0MgA==

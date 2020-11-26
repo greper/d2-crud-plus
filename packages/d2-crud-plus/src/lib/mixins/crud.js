@@ -82,7 +82,7 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false, show: true, form: {}, size: 'small', columns: [] },
+        searchOptions: { disabled: false, show: true, form: {}, size: 'small', columns: [], searchAfterReset: true },
         list: [],
         loading: false,
         pagination: {
@@ -1103,6 +1103,9 @@ export default {
         columns: columns,
         data: list,
         ...exportOptions
+      }
+      if (!options.merges) {
+        options.merges = []
       }
       log.debug('export options：', options)
       const type = exportOptions.type ? exportOptions.type : 'excel'

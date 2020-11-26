@@ -18,6 +18,7 @@ export const crudOptions = {
       dict: { url: '/area/tree', isTree: true, value: 'id' },
       form: {
         component: { span: 24 },
+        rules: [{ required: true, message: '请选择' }],
         helper: '树形，忽略完全选中节点的子节点，精简结果'
       }
     },
@@ -31,6 +32,7 @@ export const crudOptions = {
           span: 24,
           props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
         },
+        rules: [{ required: true, message: '请选择', trigger: 'change' }],
         helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
       }
     },
@@ -43,7 +45,8 @@ export const crudOptions = {
         component: {
           span: 24,
           props: { multiple: false }
-        }
+        },
+        rules: [{ required: true, message: '请选择', trigger: 'change' }]
       }
     }
   ]

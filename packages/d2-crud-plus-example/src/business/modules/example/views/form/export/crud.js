@@ -5,6 +5,7 @@ export const crudOptions = (vm) => {
     },
     pageOptions: {
       export: {
+        local: true,
         title: '导出示例表格名称',
         formatter (row, context) { // 格式化数据
           if (row.status != null) {

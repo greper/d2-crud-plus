@@ -2,7 +2,11 @@ export const crudOptions = {
   options: {
     // height: null,
     // maxHeight: null
-    height: '100%'
+    height: '100%',
+    fetchDetail (index, row, mode) {
+      console.log(index, row, mode)
+      return row
+    }
   },
   pageOptions: {
     compact: true // 是否紧凑型页面

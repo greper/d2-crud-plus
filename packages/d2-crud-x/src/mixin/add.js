@@ -11,6 +11,9 @@ export default {
       if (!templage) {
         templage = this.addTemplate
       }
+      if (addData && addData instanceof MouseEvent) {
+        addData = undefined
+      }
 
       return this.openDialog(undefined, addData, templage)
 

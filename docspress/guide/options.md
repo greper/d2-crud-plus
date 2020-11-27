@@ -119,7 +119,8 @@ export const crudOptions = {
     maxHeight: 'auto',
     events:{ //el-table事件监听
       'expand-change':(event)=>{}
-    } 
+    },
+    fetchDetail(index,row,mode){return row},// 打开对话框前调用，获取form详情数据
   },
   pagination: { //翻页配置,更多配置参考el-pagination
     currentPage: 1,

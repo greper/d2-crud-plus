@@ -162,6 +162,7 @@ export default {
       const refs = this.getD2Crud().$refs['form_item_' + key]
       if (refs == null || refs.length === 0) {
         log.warn('该字段组件还未初始化，或者已被禁用')
+        return
       }
       return refs[0].getComponentRef()
     },

@@ -336,12 +336,12 @@ crudOptions:{
                     dict:{},//详细见dict配置。运行时，会将column.dict复制到此处，再由此处配置的dict覆盖
                   },
                   placeholder:'',
-                  disabled: false, //是否在表单中禁用组件
-                  // disabled(context){return false}//还可以配置为方法
-                  readonly: false, //表单组件是否是只读
-                  // readonly(context){return false} //还可以配置为方法
-                  show: true, //是否显示该字段，
-                  // show(context){return false} //还可以配置为方法         
+                  disabled: false, //是否在表单中禁用组件，可以配置为方法，动态禁用↓  ↓  ↓  ↓   
+                  // disabled(context){return false}
+                  readonly: false, //表单组件是否是只读，还可以配置为方法，动态只读↓  ↓  ↓  ↓   
+                  // readonly(context){return false} 
+                  show: true, //是否显示该字段，还可以配置为方法，动态显隐↓  ↓  ↓  ↓   
+                  // show(context){return false}       
                   on:{ //除input change事件外，更多组件事件监听
                     select(event){console.log(event)} //监听表单组件的select事件
                   },
@@ -356,6 +356,7 @@ crudOptions:{
                   order:10,//排序号，默认为10，数字越小 越靠前
                   span: 12 //该字段占据多宽，24为占满一行
                 },
+                //注意：↓↓↓↓ 以下三个disabled，仅初始化时有效，不可动态启用，需要动态显隐字段请配置component.show
                 disabled:false, //完全关闭该字段在表单中显示
                 addDisabled: false, //是否仅在添加编辑框中关闭该字段
                 editDisabled: false, //是否仅在修改编辑框中关闭该字段

@@ -63,12 +63,14 @@ export const crudOptions = (vm) => {
           },
           // value: '2', // 添加时的初始值
           rules: [{ required: true, message: '请选择一个选项' }],
-          valueChange (key, value) {
+          valueChange: function (key, value) {
             if (value != null) {
               console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
             } else {
               console.log('-----你选择了', value)
             }
+            const componentRef = vm.getFormComponentRef('status')
+            console.log('componentRef', componentRef)
           },
           helper: {
             render (h) {

@@ -280,7 +280,7 @@ crudOptions={
             onReady:(data,dict,options)=>{ }  //每个组件都会执行一次，配置clone=true后可以随便修改字典数据,只会影响自己组件的数据
           },
           //行内单元格显示组件
-          component:{ 
+          component:{  //与form.component类似，更多配置请参考下方form中的component配置
             name:'dict-select', 
             //如果是非vModel组件，则没有value属性
             //此处配置组件的参数名，将row[key]绑定给指定prop
@@ -291,9 +291,9 @@ crudOptions={
             placeholder,
             disabled:false, //可以传入一个方法
             show:true,//是否显示单元格组件
-            on:{},//事件绑定
-            scopedSlots:{}, //插槽
-            children:[] //子元素
+            on:{},//事件绑定，参考下方form中的on配置
+            slots:{}, //scoped插槽，参考下方form中的slots配置
+            children:[] //子元素，参考下方form中的children配置
           },
           disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
           show: true, //是否在列表中显示该列（列配置中可选），也可以配置一个无参方法

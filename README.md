@@ -5,6 +5,10 @@
 # 【d2-crud-plus】面向配置的crud编程
 基于d2-admin 的 d2-crud 的扩展,简化d2-crud配置，快速开发crud功能。   
 
+<a href='https://gitee.com/greper/d2-crud-plus'><img src='https://gitee.com/greper/d2-crud-plus/badge/star.svg?theme=dark' alt='star'/></a>
+<a href='https://github.com/greper/d2-crud-plus'><img alt="GitHub stars" src="https://img.shields.io/github/stars/greper/d2-crud-plus?logo=github"></a>
+    
+
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>

@@ -304,9 +304,12 @@ export default {
       this.emit(res, list)
     },
     isHasUploadingItem () {
-      for (const item of this.fileList) {
-        if (item.status === 'uploading') {
-          return true
+      const fileList = this.$refs.fileUploader.uploadFiles
+      if (fileList && fileList.length > 0) {
+        for (const item of fileList) {
+          if (item.status === 'uploading') {
+            return true
+          }
         }
       }
       return false

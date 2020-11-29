@@ -1,15 +1,5 @@
 import util from '@/libs/util'
-const createUploaderValidator = (vm, key) => {
-  return (rule, value, callback) => {
-    const ref = vm.getFormComponentRef(key)
-    console.log('uploaderValidator:', ref, ref.isHasUploadingItem())
-    if (ref && ref.isHasUploadingItem()) {
-      callback(new Error('还有未上传完成的文件'))
-      return
-    }
-    callback()
-  }
-}
+import { D2pFileUploader } from 'd2p-extends'
 export const crudOptions = (vm) => {
   return {
     options: {
@@ -71,7 +61,10 @@ export const crudOptions = (vm) => {
             }
           },
           helper: '限制文件大小不能超过50k',
-          rules: [{ required: true, message: '必填' }, { validator: createUploaderValidator(vm, 'image'), message: '还有文件正在上传，请等待上传完成，或删除它' }]
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }]
         }
       },
       {

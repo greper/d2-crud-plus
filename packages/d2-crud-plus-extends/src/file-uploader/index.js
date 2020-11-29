@@ -27,6 +27,18 @@ function install (Vue, options) {
   }
 }
 
+const createAllUploadedValidator = (getFormComponentRef) => {
+  return (rule, value, callback) => {
+    const ref = getFormComponentRef(rule.fullField)
+    if (ref && ref.isHasUploadingItem()) {
+      callback(new Error('还有未上传完成的文件'))
+      return
+    }
+    callback()
+  }
+}
+
 export default {
-  install
+  install,
+  createAllUploadedValidator
 }

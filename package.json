@@ -9,8 +9,11 @@
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@vuepress/shared-utils": "yarn yarn 1.2.0",
+    "flexsearch": "nextapps-de/flexsearch",
+    "html-to-text": "^5.1.1",
     "lerna": "^3.21.0",
-    "vuepress": "^1.5.4",
+    "segmentit": "^2.0.3",
+    "vuepress": "^1.7.1",
     "vuepress-theme-docmirror": "^1.5.4"
   },
   "resolutions": {

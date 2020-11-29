@@ -129,6 +129,7 @@
                          v-if="handleRowHandleButtonShow(item.show, scope)"
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope)"
                          :icon="handleAttribute(item.icon,null,scope)"
+                         :type="handleAttribute(item.type,null,scope)"
                          @click="item.doClick(scope)"
                          :label="handleAttribute(item.text,null,scope)"
                          v-bind="item"
@@ -356,7 +357,7 @@ export default {
     },
     handleDialogOpened (event) {
       // TODO 暂时无效
-      this.$emit('form-dialog-opened', { event: event, form: this.formData })
+      this.$emit('form-dialog-opened', { event: event, form: this.formData, row: this.formDataStorage })
     },
     getFormComponentRef (key) {
       if (this.$refs) {
@@ -371,7 +372,8 @@ export default {
         mode: this.formMode,
         key: key,
         value: this.formData[key],
-        form: this.formData
+        form: this.formData,
+        row: this.formDataStorage
       }
     }
   }
@@ -465,11 +467,18 @@ export default {
 
   &.d2p-form-drawer{
     .el-drawer__body{
-      padding:20px
+      padding:20px;
+      overflow-y: scroll;
     }
     .d2p-form-footer{
       text-align: right;
     }
+    .el-drawer__header {
+      margin-bottom: 0px;
+      padding: 20px 20px 20px;
+      border-bottom: solid 1px #eee;
+    }
+    .el-drawer__close-btn:focus{outline:none}
   }
 }
 .page-compact{

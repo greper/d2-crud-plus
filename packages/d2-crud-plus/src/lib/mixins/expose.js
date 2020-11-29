@@ -1,4 +1,5 @@
 import DictUtil from '../utils/util.dicts'
+import log from '../utils/util.log'
 /**
  * 暴露的方法
  */
@@ -65,7 +66,11 @@ export default {
      * @returns
      */
     getD2Crud () {
-      return this.$refs[this.crud.format.ref.d2Crud]
+      const ref = this.$refs[this.crud.format.ref.d2Crud]
+      if (ref == null) {
+        log.warn('d2Crud还未初始化，请在mounted之后调用此方法')
+      }
+      return ref
     },
 
     /**
@@ -73,7 +78,11 @@ export default {
      * @returns {*}
      */
     getD2CrudTable () {
-      return this.getD2Crud().$refs.elTable
+      const ref = this.getD2Crud().$refs.elTable
+      if (ref == null) {
+        log.warn('el-table还未初始化，请在mounted之后调用此方法')
+      }
+      return ref
     },
 
     /**
@@ -83,6 +92,14 @@ export default {
     getD2CrudTableData () {
       const d2Crud = this.getD2Crud()
       return d2Crud == null || d2Crud.d2CrudData
+    },
+
+    /**
+     * 动态设置列表数据
+     * @param data
+     */
+    setD2CrudTableData (data) {
+      this.$set(this.getD2Crud(), 'd2CrudData', data)
     },
 
     /**
@@ -134,6 +151,19 @@ export default {
       // 根据dict 获取字典数据
       DictUtil.mergeDefault(dict)
       return DictUtil.get(dict, options)
+    },
+
+    /**
+     * 获取表单组件ref
+     * @param key
+     * @returns {undefined}
+     */
+    getFormComponentRef (key) {
+      const refs = this.getD2Crud().$refs['form_item_' + key]
+      if (refs == null || refs.length === 0) {
+        log.warn('该字段组件还未初始化，或者已被禁用')
+      }
+      return refs[0].getComponentRef()
     },
 
     /**

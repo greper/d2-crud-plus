@@ -196,10 +196,12 @@
 * 类型: Function
 * 可选值: 无
 * 默认值: 无
-```
+```js
 {
   options:{
-    fetchDetail(index,row){
+
+     //添加时，index为null
+    fetchDetail(index,row,mode){
         return request({url:'getInfoById',params:{row.id}}).then(ret=>{
             return ret.data
         })

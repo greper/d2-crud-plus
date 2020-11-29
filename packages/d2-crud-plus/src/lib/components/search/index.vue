@@ -10,7 +10,9 @@
      <el-form-item
        v-for="(item) in currentColumns" :key="item.key"
        v-if="getItemAttr(item,'show',true)"
-       :label="item.title?item.title:item.label" :prop="item.key">
+       :label="item.title?item.title:item.label" :prop="item.key"
+        v-bind="item.itemProps"
+     >
         <template v-if="item.slot === true">
           <slot :name="item.key+'SearchSlot'" :form="form" />
         </template>
@@ -276,9 +278,10 @@ export default {
       }
       // 表单重置事件
       this.$emit('reset')
-      if (this.searchDebounce) {
-        // 防抖查询
-        this.searchDebounce()
+      if (this.options.searchAfterReset) {
+        this.$nextTick(() => {
+          this.doSearch()
+        })
       }
     },
     isInput (item) {

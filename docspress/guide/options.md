@@ -45,6 +45,7 @@ export const crudOptions = {
     defaultRender:(h,scope)=>{return (<span>{scope.value}</span>)} //没有配置组件的，默认渲染render
   },
   pageOptions:{
+    onInitAfter: function(){}, //初始化完成后触发，与覆盖this.initAfter()方法效果一样
     compact: false, //是否紧凑页面模式
     export: {
         local:true,//本地导出，false为服务端导出
@@ -87,20 +88,21 @@ export const crudOptions = {
       wait: 500, //延迟500毫秒
       ... //options : https://www.lodashjs.com/docs/lodash.debounce
     },
+    searchAfterReset:true,//点击重置后是否立即查询
     buttons:{
       search:{ // 配置false，隐藏按钮
         thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
-        text: '查看', //按钮文字， null= 取消文字
+        text: '查看', //按钮文字， null= 取消文字，↓↓↓↓也可以传入一个方法↓↓↓↓
         //text(scope){return 'xx'}
         type: 'warning', // 按钮类型
-        icon:'el-view', //按钮图标
+        icon:'el-view', //按钮图标，↓↓↓↓也可以传入一个方法↓↓↓↓
          //icon(scope){return 'xx'}
         size: 'small', // 按钮大小
         circle: false,//圆形按钮 ，需要thin=true,且text=null
-        show:true, // 是否显示按钮
-        //show(index,row){return row.status==='xxx'} //也可以传入一个方法根据数据决定该按钮是否显示
-        disabled:false, // 是否禁用
-        //disabled(index,row){return row.status==='xxx'} //也可以传入一个方法根据数据决定该按钮是否禁用
+        show:true, // 是否显示按钮，↓↓↓↓也可以传入一个方法根据数据决定该按钮是否显示↓↓↓↓↓↓↓↓
+        //show(index,row){return row.status==='xxx'} 
+        disabled:false, // 是否禁用，↓↓↓↓也可以传入一个方法根据数据决定该按钮是否禁用↓↓↓↓
+        //disabled(index,row){return row.status==='xxx'} 
         order: 1 //排序号，数字小，排前面
       }, 
       reset:{} //同上
@@ -117,7 +119,8 @@ export const crudOptions = {
     maxHeight: 'auto',
     events:{ //el-table事件监听
       'expand-change':(event)=>{}
-    } 
+    },
+    fetchDetail(index,row,mode){return row},// 打开对话框前调用，获取form详情数据
   },
   pagination: { //翻页配置,更多配置参考el-pagination
     currentPage: 1,
@@ -144,20 +147,7 @@ export const crudOptions = {
     //行操作栏，与d2-crud一致，默认配置有修改与删除
     width: 100, // 操作列宽度
     title: '操作',// 操作列名
-    view:{//查看按钮
-        thin: false, //瘦模式，thin=true 且 text=null 可以设置方形按钮节省位置 
-        text: '查看', //按钮文字， null= 取消文字
-        title: undefined, //鼠标停留的提示文字
-        type: 'warning', // 按钮类型
-        icon:'el-view', //按钮图标
-        size: 'small', // 按钮大小
-        circle: false,//圆形按钮 ，需要thin=true,且text=null
-        show:true, // 是否显示按钮
-        //show(index,row){return true}// 还可以配置为方法 
-        disabled:false, // 是否禁用
-        //disabled(index,row){return true} //还可以配置为方法 
-        order: 1 //排序号，数字小，排前面，默认顺序：查看=1、编辑=2、删除=3、自定义=4
-    }, 
+    view:{},//查看按钮，配置请参考上方searchOptions.buttons
     edit:{}, //编辑按钮,配置同上
     remove:{}, //删除按钮,配置同上
     custom:[//自定义按钮
@@ -270,14 +260,12 @@ crudOptions={
             // 之前执行
           },
           dict: { // 数据字典配置， 供select等组件通过value匹配label
-            data: [ // 本地数据字典
+            data: [ // 本地数据字典，若data为null，则通过http请求获取远程数据字典
               { value: 'sz', label: '深圳' },
               { value: 'gz', label: '广州' }, 
               { value: 'wh', label: '武汉' }, 
               { value: 'sh', label: '上海' }
             ],
-            // 若data为空，则通过http请求获取远程数据字典
-            // 也可以传入一个异步请求来自定义请求方式
             url:'/dict/get', 
             // url(dict,{form,component}){return '/dict/newUrl'} // 如果url是一个方法，则表示是动态构建url
             cache: true, //是否启用cache，默认开启
@@ -285,14 +273,14 @@ crudOptions={
             label:'label', // label的属性名
             children:'children', // children的属性名
             isTree: false, //是否是树形结构
-            clone: false, //获取到
+            clone: false, //是否获取到字典数据后clone一份再传递给组件
             getData: (url,dict,{form,component})=>{return Promise}, //  覆盖全局getRemoteDictData方法,返回 Promise<[dictData]>
             getNodes(values){return nodeArr}, //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
             transfer:(data,options)=>{return data},// 可以修改获取到的远程数据，比如将字典的id字段转成字符串形式（缓存开启时只会执行一次）
             onReady:(data,dict,options)=>{ }  //每个组件都会执行一次，配置clone=true后可以随便修改字典数据,只会影响自己组件的数据
           },
           //行内单元格显示组件
-          component:{ 
+          component:{  //与form.component类似，更多配置请参考下方form中的component配置
             name:'dict-select', 
             //如果是非vModel组件，则没有value属性
             //此处配置组件的参数名，将row[key]绑定给指定prop
@@ -303,9 +291,9 @@ crudOptions={
             placeholder,
             disabled:false, //可以传入一个方法
             show:true,//是否显示单元格组件
-            on:{},//事件绑定
-            scopedSlots:{}, //插槽
-            children:[] //子元素
+            on:{},//事件绑定，参考下方form中的on配置
+            slots:{}, //scoped插槽，参考下方form中的slots配置
+            children:[] //子元素，参考下方form中的children配置
           },
           disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
           show: true, //是否在列表中显示该列（列配置中可选），也可以配置一个无参方法
@@ -348,12 +336,12 @@ crudOptions:{
                     dict:{},//详细见dict配置。运行时，会将column.dict复制到此处，再由此处配置的dict覆盖
                   },
                   placeholder:'',
-                  disabled: false, //是否在表单中禁用组件
-                  // disabled(context){return false}//还可以配置为方法
-                  readonly: false, //表单组件是否是只读
-                  // readonly(context){return false} //还可以配置为方法
-                  show: true, //是否显示该字段，
-                  // show(context){return false} //还可以配置为方法         
+                  disabled: false, //是否在表单中禁用组件，可以配置为方法，动态禁用↓  ↓  ↓  ↓   
+                  // disabled(context){return false}
+                  readonly: false, //表单组件是否是只读，还可以配置为方法，动态只读↓  ↓  ↓  ↓   
+                  // readonly(context){return false} 
+                  show: true, //是否显示该字段，还可以配置为方法，动态显隐↓  ↓  ↓  ↓   
+                  // show(context){return false}       
                   on:{ //除input change事件外，更多组件事件监听
                     select(event){console.log(event)} //监听表单组件的select事件
                   },
@@ -368,6 +356,7 @@ crudOptions:{
                   order:10,//排序号，默认为10，数字越小 越靠前
                   span: 12 //该字段占据多宽，24为占满一行
                 },
+                //注意：↓↓↓↓ 以下三个disabled，仅初始化时有效，不可动态启用，需要动态显隐字段请配置component.show
                 disabled:false, //完全关闭该字段在表单中显示
                 addDisabled: false, //是否仅在添加编辑框中关闭该字段
                 editDisabled: false, //是否仅在修改编辑框中关闭该字段

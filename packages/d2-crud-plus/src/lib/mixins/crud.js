@@ -82,7 +82,7 @@ export default {
         editTemplate: {},
         addRules: {},
         editRules: {},
-        searchOptions: { disabled: false, show: true, form: {}, size: 'small', columns: [] },
+        searchOptions: { disabled: false, show: true, form: {}, size: 'small', columns: [], searchAfterReset: true },
         list: [],
         loading: false,
         pagination: {
@@ -259,6 +259,9 @@ export default {
       crud.columns = []
       crud.searchOptions.columns = []
       crud.columnsMap = {}
+      if (columns == null) {
+        console.warn('crudOptions.columns不能为空')
+      }
       for (const item of columns) {
         this.initColumnItem(crud.columns, item)
       }
@@ -281,6 +284,9 @@ export default {
 
       this.getPageSizeFromStorage()
 
+      if (this.crud.pageOptions && this.crud.pageOptions.onInitAfter) {
+        this.crud.pageOptions.onInitAfter()
+      }
       this.initAfter()
       log.info('crud inited:', crud)
     },
@@ -1097,6 +1103,9 @@ export default {
         columns: columns,
         data: list,
         ...exportOptions
+      }
+      if (!options.merges) {
+        options.merges = []
       }
       log.debug('export options：', options)
       const type = exportOptions.type ? exportOptions.type : 'excel'

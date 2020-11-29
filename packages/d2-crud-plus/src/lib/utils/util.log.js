@@ -1,6 +1,7 @@
 let debug = () => {}
 let info = () => {}
 let error = () => {}
+let warn = () => {}
 function getCallerInfo () {
   const e = new Error()
   return e.stack.split('\n')[3]
@@ -21,12 +22,14 @@ if (process.env.NODE_ENV !== 'production') {
       console.log('[info]', ...args)
     }
   }
-
+  warn = (...args) => {
+    console.warn('[warn]', ...args)
+  }
   error = (...args) => {
     console.error('[error]', ...args)
   }
 }
 
 export default {
-  debug, info, error
+  debug, info, error, warn
 }

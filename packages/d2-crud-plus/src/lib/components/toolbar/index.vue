@@ -102,9 +102,13 @@ export default {
       }
     }
   },
+  watch: {
+    columns (value) {
+      this.setColumns(value)
+    }
+  },
   created () {
-    this.columnsFilter.options = lodash.cloneDeep(this.columns)
-    this.columnsFilter.value = lodash.cloneDeep(this.columns)
+    this.setColumns(this.columns)
   },
   computed: {
     _export () {
@@ -141,6 +145,10 @@ export default {
     },
     doExport () {
       this.$emit('export')
+    },
+    setColumns (columns) {
+      this.columnsFilter.options = lodash.cloneDeep(columns)
+      this.columnsFilter.value = lodash.cloneDeep(columns)
     }
   }
 }

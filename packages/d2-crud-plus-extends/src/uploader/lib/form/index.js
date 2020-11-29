@@ -11,7 +11,8 @@ export default {
    * @param option {file,filename,action,data,headers}
    * @param config
    * @returns {Promise<unknown>}
-   */ async upload ({ file, fileName, onProgress, onError, config }) {
+   */
+  async upload ({ file, fileName, onProgress, onError, config }) {
     const options = lodash.cloneDeep(this.options)
     lodash.merge(options, config)
     config = options
@@ -39,12 +40,13 @@ export default {
       //   percent: 0
       // })
       ajax(option,
-        (res) => {
+        async (res) => {
           try {
-            const url = config.successHandle(res)
+            const url = await config.successHandle(res)
             resolve(url)
           } catch (e) {
             onError(e)
+            reject(e)
           }
         },
         (e) => {

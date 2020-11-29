@@ -22,7 +22,7 @@
           <el-button slot="prefix" class="d2-mr-5" size="small" type="success" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
 
           <template slot="slotExampleSearchSlot" slot-scope="scope">
-            <el-input v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"/>
+            <el-input ref="slotExample" v-model="scope.form['slotExample']" placeholder="blur有事件触发" @blur="inputBlur('search')"/>
           </template>
           <el-button slot="suffix"  size="small" type="success" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
 
@@ -46,7 +46,7 @@
         <el-tag>{{scope.row['slotExample']}}</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
-        slot自定义：<el-input :disabled="scope.mode==='view'" v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
+        slot自定义：<el-input ref="slotExampleFormRef" :disabled="scope.mode==='view'" v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>
       </template>
       <template slot="slotExampleHelperSlot" slot-scope="scope">
         <el-alert type="warning" >

@@ -1,5 +1,15 @@
 import util from '@/libs/util'
-
+const createUploaderValidator = (vm, key) => {
+  return (rule, value, callback) => {
+    const ref = vm.getFormComponentRef(key)
+    console.log('uploaderValidator:', ref, ref.isHasUploadingItem())
+    if (ref && ref.isHasUploadingItem()) {
+      callback(new Error('还有未上传完成的文件'))
+      return
+    }
+    callback()
+  }
+}
 export const crudOptions = (vm) => {
   return {
     options: {
@@ -55,7 +65,13 @@ export const crudOptions = (vm) => {
             },
             span: 24
           },
-          helper: '限制文件大小不能超过50k'
+          on: {
+            blur (event) {
+              console.log('blur', event)
+            }
+          },
+          helper: '限制文件大小不能超过50k',
+          rules: [{ required: true, message: '必填' }, { validator: createUploaderValidator(vm, 'image'), message: '还有文件正在上传，请等待上传完成，或删除它' }]
         }
       },
       {

@@ -93,9 +93,13 @@ export default {
         ...config.sdkOpts
       })
     }
-    return client.put(key, file).then((ret) => {
-      const result = { url: config.domain + '/' + key, key: key }
+    return client.put(key, file).then(async (ret) => {
+      let result = { url: config.domain + '/' + key, key: key }
       log.debug('alioss success', result)
+      if (config.successHandle) {
+        result = await config.successHandle(result)
+        return result
+      }
       return result
     }).catch(err => {
       onError(err)

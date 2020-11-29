@@ -79,14 +79,19 @@ export default {
           }
           onProgress(e)
         }
-      }, function (err, data) {
+      }, async function (err, data) {
         if (err != null) {
           onError(err)
           log.debug(err)
           reject(err)
         } else {
           log.debug('上传成功', data)
-          const result = { url: config.domain + '/' + key, key: key }
+          let result = { url: config.domain + '/' + key, key: key }
+          if (config.successHandle) {
+            result = await config.successHandle(result)
+            resolve(result)
+            return
+          }
           resolve(result)
         }
       })

@@ -1,5 +1,5 @@
 <template>
-  <div class="d2p-file-uploader" :class="{'is-disabled':disabled}">
+  <div class="d2p-file-uploader" :class="{'is-disabled':disabled}" >
   <el-upload :class="uploadClass"
              :file-list="fileList"
              :disabled="disabled"
@@ -9,6 +9,7 @@
              :on-success="handleUploadFileSuccess"
              :on-error="handleUploadFileError"
              :on-progress="handleUploadProgress"
+             @blur="handleBlur"
              ref="fileUploader"
              v-bind="_elProps"
   >
@@ -169,6 +170,9 @@ export default {
     }
   },
   methods: {
+    handleBlur () {
+      console.log('blur')
+    },
     getDefaultElProps () {
       return {
         limit: 0,
@@ -286,10 +290,10 @@ export default {
       this.$emit('success', res, file)
       const list = []
       for (const item of fileList) {
-        if (item.status === 'uploading') {
-          log.debug('当前文件上传完成，等待剩下的文件全部上传成功后再更新value')
-          return
-        }
+        // if (item.status === 'uploading') {
+        //   log.debug('当前文件上传完成，等待剩下的文件全部上传成功后再更新value')
+        //   return
+        // }
         if (item.response != null && item.response.url != null) {
           list.push({ ...item.response })
         } else {
@@ -298,6 +302,14 @@ export default {
       }
       log.debug('handleUploadFileSuccess list', list, res)
       this.emit(res, list)
+    },
+    isHasUploadingItem () {
+      for (const item of this.fileList) {
+        if (item.status === 'uploading') {
+          return true
+        }
+      }
+      return false
     },
     handleUploadFileRemove (file, fileList) {
       this.fileList = fileList

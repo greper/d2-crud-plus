@@ -40,9 +40,10 @@
 </template>
 
 <script>
-import { AddObj, GetList, UpdateObj, DelObj } from './api'
+import { AddObj, DelObj, GetList, UpdateObj } from './api'
 import { crudOptions } from './crud'
 import { d2CrudPlus } from 'd2-crud-plus'
+
 export default {
   name: 'formAddi',
   components: {},
@@ -58,17 +59,17 @@ export default {
     getCrudOptions () {
       return crudOptions
     },
-    pageRequest (query) {
+    async pageRequest (query) {
       return GetList(query)
     },
-    addRequest (row) {
+    async addRequest (row) {
       return AddObj(row)
     },
-    updateRequest (row) {
-      return UpdateObj(row)
+    async updateRequest (row) {
+      return await UpdateObj(row)
     },
-    delRequest (row) {
-      return DelObj(row.id)
+    async delRequest (row) {
+      return await DelObj(row.id)
     },
     addIndex () {
       if (this.addIndexValue == null) {

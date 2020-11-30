@@ -16,7 +16,9 @@
     "vue",
     "element",
     "d2-crud-plus",
-    "d2-admin"
+    "d2-admin",
+    "config-crud",
+    "配置化crud"
   ],
   "main": "dist/d2-crud-plus.umd.js",
   "scripts": {

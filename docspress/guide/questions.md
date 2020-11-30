@@ -292,4 +292,17 @@ module.exports = {
 this.crud.columnsMap.xxxx.show =false
 this.handleColumnsFilterChanged(this.crud.columns)
 ```
+## 14. 文件还没上传完，用户就点击提交，获取不到这个上传文件值怎么办
 
+需要设置自定义校验
+```js
+import { D2pFileUploader } from 'd2p-extends'
+//给文件上传组件配置如下校验规则即可
+form:{ 
+    rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+        validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+        message: '还有文件正在上传，请等待上传完成，或删除它'
+    }]
+}
+
+```

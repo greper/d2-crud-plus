@@ -118,6 +118,10 @@ Vue.use(D2pUploader, {
         // }
         return ret.data
       })
+    },
+    successHandle (ret) { // 上传完成后可以在此处处理结果，修改url什么的
+      console.log('success handle:', ret)
+      return ret
     }
   },
   alioss: {
@@ -136,6 +140,10 @@ Vue.use(D2pUploader, {
     },
     sdkOpts: { // sdk配置
       secure: true // 默认为非https上传,为了安全，设置为true
+    },
+    successHandle (ret) { // 上传完成后可以在此处处理结果，修改url什么的
+      console.log('success handle:', ret)
+      return ret
     }
   },
   qiniu: {
@@ -148,12 +156,16 @@ Vue.use(D2pUploader, {
         return ret.data // {token:xxx,expires:xxx}
       })
     },
+    successHandle (ret) { // 上传完成后可以在此处处理结果，修改url什么的
+      console.log('success handle:', ret)
+      return ret
+    },
     domain: 'http://d2p.file.veryreader.com'
   },
   form: {
     action: process.env.VUE_APP_API + 'upload/form/upload',
     name: 'file',
-    successHandle (ret) { // 需要将res.url 设置为url
+    successHandle (ret) { // 上传完成后的结果处理， 此处后台返回的结果应该为 ret = {data:'fileurl'}
       if (ret.data == null || ret.data === '') {
         throw new Error('上传失败')
       }

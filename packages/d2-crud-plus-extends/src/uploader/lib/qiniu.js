@@ -90,8 +90,14 @@ export default {
           onError(err)
           reject(err)
         },
-        complete (res) {
-          resolve({ url: config.domain + '/' + key, key: key })
+        async complete (res) {
+          let ret = { url: config.domain + '/' + key, key: key }
+          if (config.successHandle) {
+            ret = await config.successHandle(ret)
+            resolve(ret)
+            return
+          }
+          resolve(ret)
         }
       }) // 上传开始
       // subscription.unsubscribe() // 上传取消

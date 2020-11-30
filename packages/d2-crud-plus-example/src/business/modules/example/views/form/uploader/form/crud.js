@@ -1,5 +1,5 @@
 import util from '@/libs/util'
-
+import { D2pFileUploader } from 'd2p-extends'
 export const crudOptions = (vm) => {
   return {
     options: {
@@ -55,7 +55,16 @@ export const crudOptions = (vm) => {
             },
             span: 24
           },
-          helper: '限制文件大小不能超过50k'
+          on: {
+            blur (event) {
+              console.log('blur', event)
+            }
+          },
+          helper: '限制文件大小不能超过50k',
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }]
         }
       },
       {

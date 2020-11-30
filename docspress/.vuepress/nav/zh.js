@@ -34,7 +34,7 @@ module.exports = [
       {
         text: '友情链接',
         items: [
-          { text: 'DevSidecar', link: 'https://gitee.com/docmirror/dev-sidecar' }
+          { text: 'Github加速工具', link: 'https://gitee.com/docmirror/dev-sidecar' }
         ]
       },
     ]

@@ -48,6 +48,7 @@ export default {
     },
     // 对外提供 v-model
     value (value) {
+      this.dispatch('ElFormItem', 'el.form.blur')
       this.$emit('change', value)
       if (this.editor.getContent() === value) {
         return

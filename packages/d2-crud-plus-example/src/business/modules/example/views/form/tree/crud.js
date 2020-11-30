@@ -32,7 +32,7 @@ export const crudOptions = {
           span: 24,
           props: { ignoreFullCheckedChildren: false, leafOnly: true, includeHalfChecked: false }
         },
-        rules: [{ required: true, message: '请选择', trigger: 'change' }],
+        rules: [{ required: true, message: '请选择' }],
         helper: '树形，不忽略完全选中节点的子节点，只需要叶子节点'
       }
     },
@@ -46,7 +46,7 @@ export const crudOptions = {
           span: 24,
           props: { multiple: false }
         },
-        rules: [{ required: true, message: '请选择', trigger: 'change' }]
+        rules: [{ required: true, message: '请选择' }]
       }
     }
   ]

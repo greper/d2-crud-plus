@@ -65,7 +65,7 @@ export const crudOptions = (vm) => {
           rules: [{ required: true, message: '请选择一个选项' }],
           valueChange: function (key, value) {
             if (value != null) {
-              console.log('-----你选择了', value, vm.crud.columnsMap.status.component.props.dict.dataMap[value].label)
+              console.log('-----你选择了', value, vm.crud?.columnsMap?.status?.component?.props?.dict?.dataMap[value].label)
             } else {
               console.log('-----你选择了', value)
             }

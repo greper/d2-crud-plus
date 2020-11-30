@@ -19,7 +19,10 @@ export const crudOptions = {
       title: '图标选择',
       key: 'iconSelect',
       sortable: true,
-      type: 'icon-selector'
+      type: 'icon-selector',
+      form: {
+        rules: [{ required: true, message: '请选择' }]
+      }
     },
     {
       title: '用户可输入',

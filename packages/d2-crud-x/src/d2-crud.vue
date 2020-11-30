@@ -130,7 +130,7 @@
                          :disabled="handleRowHandleButtonDisabled(item.disabled, scope)"
                          :icon="handleAttribute(item.icon,null,scope)"
                          :type="handleAttribute(item.type,null,scope)"
-                         @click="item.doClick(scope)"
+                         @click.stop="item.doClick(scope)"
                          :label="handleAttribute(item.text,null,scope)"
                          v-bind="item"
               />

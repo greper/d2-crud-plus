@@ -31,7 +31,11 @@ export const crudOptions = (vm) => {
               uploader: {
                 type: 'form'
               }
-            }
+            },
+            rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+              validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+              message: '还有文件正在上传，请等待上传完成，或删除它'
+            }]
           }
         }
       },
@@ -85,7 +89,11 @@ export const crudOptions = (vm) => {
                 limit: 5 // 限制5个文件
               }
             }
-          }
+          },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }]
         },
         component: {
           props: {
@@ -120,7 +128,11 @@ export const crudOptions = (vm) => {
               }
             },
             span: 20
-          }
+          },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }]
         }
       }
 

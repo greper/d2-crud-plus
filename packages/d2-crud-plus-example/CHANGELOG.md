@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.4](https://github.com/greper/d2-crud-plus/compare/v2.13.3...v2.13.4) (2020-11-30)
+
+
+### Bug Fixes
+
+* fetchDetail文档完善 ([046ecf0](https://github.com/greper/d2-crud-plus/commit/046ecf04ce5fae77dfe65c328be70ea75776d080))
+* search form 支持itemProps配置 ([110a38c](https://github.com/greper/d2-crud-plus/commit/110a38c695597c2ddcca45adbe2988c9e681c217))
+* 修复关闭自动查询后，重置也不自动查询的问题 ([5defb7f](https://github.com/greper/d2-crud-plus/commit/5defb7f460ae16de4588b25ce9d89c52fb27ae24))
+* 修复列设置无法感知变化的bug ([4062984](https://github.com/greper/d2-crud-plus/commit/4062984ed576065e8a75235f4577bedaf534c588))
+* 修复合计行错位的bug ([61fa8f8](https://github.com/greper/d2-crud-plus/commit/61fa8f88ef34fb915675f6c327467800634c39b9))
+* 修复某些组件修改值后无法触发校验的bug ([8dfc13f](https://github.com/greper/d2-crud-plus/commit/8dfc13f8fe99206faddd74f41be33f13ce74acc8))
+* 取消抽屉模式焦点关闭按钮边框 ([b8c8b3e](https://github.com/greper/d2-crud-plus/commit/b8c8b3e637f3be3097ec3c328c1753cce3b07bcf))
+* 文件未全部上传完成时阻止表单提交 ([24c831a](https://github.com/greper/d2-crud-plus/commit/24c831adbaf44080b12ba9534313dc3e63f511f4))
+
+
+### Performance Improvements
+
+* 支持设置tag 主题 ([b57b2bd](https://github.com/greper/d2-crud-plus/commit/b57b2bdafa7ec6219c654e861590d14b80aa7418))
+* 文件上传增加successHandle方法处理上传结果 ([2314000](https://github.com/greper/d2-crud-plus/commit/23140001926df3a56edd0b2730e1b2392fc1a319))
+* 获取表单组件ref ([afd0040](https://github.com/greper/d2-crud-plus/commit/afd0040cdeb45dae03d723d448b17874f2ae03e9))
+
+
+
+
+
 ## [2.13.3](https://github.com/greper/d2-crud-plus/compare/v2.13.2...v2.13.3) (2020-11-15)
 
 

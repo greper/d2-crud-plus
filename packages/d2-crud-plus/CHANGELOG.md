@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.4](https://github.com/greper/d2-crud-plus/compare/v2.13.3...v2.13.4) (2020-11-30)
+
+
+### Bug Fixes
+
+* search form 支持itemProps配置 ([110a38c](https://github.com/greper/d2-crud-plus/commit/110a38c695597c2ddcca45adbe2988c9e681c217))
+* 修复关闭自动查询后，重置也不自动查询的问题 ([5defb7f](https://github.com/greper/d2-crud-plus/commit/5defb7f460ae16de4588b25ce9d89c52fb27ae24))
+* 修复列设置无法感知变化的bug ([4062984](https://github.com/greper/d2-crud-plus/commit/4062984ed576065e8a75235f4577bedaf534c588))
+* 修复某些组件修改值后无法触发校验的bug ([8dfc13f](https://github.com/greper/d2-crud-plus/commit/8dfc13f8fe99206faddd74f41be33f13ce74acc8))
+
+
+### Performance Improvements
+
+* 支持设置tag 主题 ([b57b2bd](https://github.com/greper/d2-crud-plus/commit/b57b2bdafa7ec6219c654e861590d14b80aa7418))
+* 获取表单组件ref ([3ce3615](https://github.com/greper/d2-crud-plus/commit/3ce36151a4409bc72d4f8652f1fea41858171a02))
+* 获取表单组件ref ([afd0040](https://github.com/greper/d2-crud-plus/commit/afd0040cdeb45dae03d723d448b17874f2ae03e9))
+
+
+
+
+
 ## [2.13.3](https://github.com/greper/d2-crud-plus/compare/v2.13.2...v2.13.3) (2020-11-15)
 
 

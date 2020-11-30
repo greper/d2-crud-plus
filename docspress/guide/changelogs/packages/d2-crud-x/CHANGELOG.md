@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.4](https://github.com/greper/d2-crud-plus/compare/v2.13.3...v2.13.4) (2020-11-30)
+
+
+### Bug Fixes
+
+* dialog-opened 支持返回row全量数据 ([fcfb4ea](https://github.com/greper/d2-crud-plus/commit/fcfb4ea577642572063395dbeb9ba8254cab280d))
+* fetchDetail 增加formMode ([1996a1b](https://github.com/greper/d2-crud-plus/commit/1996a1b6ed0ad54a18d0134d725c08b18a644453))
+* fetchDetail文档完善 ([046ecf0](https://github.com/greper/d2-crud-plus/commit/046ecf04ce5fae77dfe65c328be70ea75776d080))
+* 修复抽屉表单没有滚动条的bug ([7a6a951](https://github.com/greper/d2-crud-plus/commit/7a6a95144a701aada67c5fc0948591d32d3dd9aa))
+* 修复行操作按钮的事件冒泡问题，https://github.com/greper/d2-crud-plus/issues/93 ([fa76408](https://github.com/greper/d2-crud-plus/commit/fa7640873b1a0670d7d851d66c0b0b37ff195f36))
+* 取消抽屉模式焦点关闭按钮边框 ([b8c8b3e](https://github.com/greper/d2-crud-plus/commit/b8c8b3e637f3be3097ec3c328c1753cce3b07bcf))
+
+
+
+
+
 ## [2.13.3](https://github.com/greper/d2-crud-plus/compare/v2.13.2...v2.13.3) (2020-11-15)
 
 

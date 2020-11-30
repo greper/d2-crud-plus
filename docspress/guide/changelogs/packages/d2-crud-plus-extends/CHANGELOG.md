@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.4](https://github.com/greper/d2-crud-plus/compare/v2.13.3...v2.13.4) (2020-11-30)
+
+
+### Bug Fixes
+
+* 修复某些组件修改值后无法触发校验的bug ([8dfc13f](https://github.com/greper/d2-crud-plus/commit/8dfc13f8fe99206faddd74f41be33f13ce74acc8))
+* 文件未全部上传完成时阻止表单提交 ([24c831a](https://github.com/greper/d2-crud-plus/commit/24c831adbaf44080b12ba9534313dc3e63f511f4))
+
+
+### Performance Improvements
+
+* 文件上传增加successHandle方法处理上传结果 ([2314000](https://github.com/greper/d2-crud-plus/commit/23140001926df3a56edd0b2730e1b2392fc1a319))
+
+
+
+
+
 ## [2.13.3](https://github.com/greper/d2-crud-plus/compare/v2.13.2...v2.13.3) (2020-11-15)
 
 

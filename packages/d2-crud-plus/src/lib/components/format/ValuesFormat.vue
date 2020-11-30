@@ -51,6 +51,10 @@ export default {
       require: false,
       default: 'primary'
     },
+    effect: {
+      require: false
+    },
+
     // 自动颜色列表，【 primary, success, warning, danger 】
     autoColors: {
       type: Array
@@ -132,6 +136,9 @@ export default {
       this.$emit('click', { item: item })
     },
     setColor (item, dict) {
+      if (!item.effect && this.effect) {
+        item.effect = this.effect
+      }
       if (item[dict.color]) {
         return
       }

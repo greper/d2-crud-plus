@@ -381,6 +381,11 @@ export const crudOptions = (vm) => {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
           }
+        },
+        component: {
+          props: {
+            effect: 'plain'
+          }
         }
       },
       {

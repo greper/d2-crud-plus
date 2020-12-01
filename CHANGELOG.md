@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.5](https://github.com/greper/d2-crud-plus/compare/v2.13.4...v2.13.5) (2020-12-01)
+
+
+### Bug Fixes
+
+* 修复上传失败时，删除后文件value为null的bug ([91fc69a](https://github.com/greper/d2-crud-plus/commit/91fc69a9c74096a6ef3f851ad512e17504b9551d))
+
+
+
+
+
 ## [2.13.4](https://github.com/greper/d2-crud-plus/compare/v2.13.3...v2.13.4) (2020-11-30)
 
 

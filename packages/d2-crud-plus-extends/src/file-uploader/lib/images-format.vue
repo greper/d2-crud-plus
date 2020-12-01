@@ -72,6 +72,9 @@ export default {
         urls.push(this.value)
       } else if (this.value instanceof Array) {
         for (const item of this.value) {
+          if (item == null) {
+            continue
+          }
           if (item.url != null) {
             urls.push(item.url)
           } else {

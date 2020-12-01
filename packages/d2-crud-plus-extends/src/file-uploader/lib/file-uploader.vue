@@ -317,6 +317,7 @@ export default {
     },
     handleUploadFileRemove (file, fileList) {
       this.fileList = fileList
+      console.log('remove', fileList)
       this.emitList(fileList)
     },
     handleUploadFileError (err, file, fileList) {
@@ -345,7 +346,7 @@ export default {
       if (list) {
         const tmp = []
         list.forEach(item => {
-          tmp.push(item.value)
+          tmp.push(this.getReturnValue(item))
         })
         list = tmp
       }

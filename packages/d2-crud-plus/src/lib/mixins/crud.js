@@ -287,6 +287,11 @@ export default {
       if (this.crud.pageOptions && this.crud.pageOptions.onInitAfter) {
         this.crud.pageOptions.onInitAfter()
       }
+      if (this.crud.formOptions && this.crud.formOptions.type === 'drawer') {
+        // 抽屉模式禁用draggable和全屏
+        this.crud.formOptions.draggable = false
+        this.crud.formOptions.fullscreen = null
+      }
       this.initAfter()
       log.info('crud inited:', crud)
     },

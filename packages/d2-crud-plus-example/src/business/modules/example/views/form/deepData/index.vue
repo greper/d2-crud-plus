@@ -41,8 +41,10 @@ export default {
     getCrudOptions () {
       return crudOptions(this)
     },
-    pageRequest (query) {
-      return GetList(query)
+    async pageRequest (query) {
+      const ret = await GetList(query)
+      //  ret.data.records 可以随意修改
+      return ret
     },
     addRequest (row) {
       return AddObj(row)

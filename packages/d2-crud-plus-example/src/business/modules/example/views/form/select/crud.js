@@ -447,6 +447,7 @@ export const crudOptions = (vm) => {
         },
         disabled: true,
         form: {
+          rules: [{ required: true, message: '请选择' }],
           component: { props: { type: 'el-checkbox-button' } }
         }
       }

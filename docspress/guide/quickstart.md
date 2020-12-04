@@ -23,7 +23,7 @@ src
 ### 基本示例运行
 执行如下命令即可运行示例项目
 ```shell script
-git clone https://github.com/greper/d2-crud-plus.git
+git clone https://gitee.com/greper/d2-crud-plus.git
 cd d2-crud-plus/packages/d2-crud-plus-example
 yarn install  #或者npm install
 npm run dev
@@ -49,7 +49,7 @@ npm run dev:pm
 需要安装`lerna`，执行如下命令
 ```shell script
 npm install lerna -g
-git clone https://github.com/greper/d2-crud-plus.git
+git clone https://gitee.com/greper/d2-crud-plus.git
 cd d2-crud-plus
 lerna link
 cd d2-crud-plus/packages/d2-crud-plus-example

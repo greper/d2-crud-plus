@@ -417,7 +417,7 @@ export function DelObj (id) {
 
 ::: tip    
 示例中的数据为mock数据，实际开发中需要替换为你的真实后端接口      
-如果后端打算使用java的话，你可以参考[配套java后端](https://github.com/greper/d2-crud-plus-server)   
+如果后端打算使用java的话，你可以参考[配套java后端](https://gitee.com/greper/d2-crud-plus-server)   
 以上代码还可以通过[代码生成](./generate.md)   
 :::
 ### 4.  添加路由和菜单
@@ -438,10 +438,10 @@ export function DelObj (id) {
 ### 6. d2-crud-plus-with-d2admin-starter
 觉得自己集成挺麻烦的？    
 这里已经准备了一个`d2-crud-plus`与`d2-admin`集成好了的启动项目   
-[d2-crud-plus-with-d2admin-starter](https://github.com/greper/d2-crud-plus-with-d2admin-starter)
+[d2-crud-plus-with-d2admin-starter](https://gitee.com/greper/d2-crud-plus-with-d2admin-starter)
 
 
-[d2-crud-plus-with-d2admin-starter-带权限版](https://github.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission)
+[d2-crud-plus-with-d2admin-starter-带权限版](https://gitee.com/greper/d2-crud-plus-with-d2admin-starter/tree/permission)
 
 
 参考文章：[如何从零开始搭建一套带权限的后台管理系统](https://www.jianshu.com/p/cdccadcf6ce9)

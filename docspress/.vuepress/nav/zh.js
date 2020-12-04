@@ -32,6 +32,12 @@ module.exports = [
         ]
       },
       {
+        text: '衍生项目',
+        items: [
+          { text: '后台获取配置的CRUD', link: 'https://cloud.battcn.com/#/index' },
+        ]
+      },
+      {
         text: '友情链接',
         items: [
           { text: 'Github加速工具', link: 'https://gitee.com/docmirror/dev-sidecar' }

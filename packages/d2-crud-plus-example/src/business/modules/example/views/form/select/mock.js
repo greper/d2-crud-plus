@@ -15,7 +15,8 @@ const list = [
     status_custom_2: '0',
     checkedRadio: '1',
     switch: true,
-    mcascader: [['zhinan', 'shejiyuanze', 'yizhi']]
+    mcascader: [['zhinan', 'shejiyuanze', 'yizhi']],
+    checkbox_btn: '1'
   },
   {
     status: '1',

@@ -89,8 +89,10 @@ export default {
     getCrudOptions () {
       return crudOptions(this)
     },
-    pageRequest (query) {
-      return GetList(query)
+    async pageRequest (query) {
+      const ret = await GetList(query)
+      console.log('ret', ret)
+      return ret
     },
     addRequest (row) {
       return AddObj(row)

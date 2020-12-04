@@ -173,7 +173,8 @@ function getGuideSidebar(groupA, groupB, groupC) {
                 'upgradechange',
                 'questions',
                 'contact',
-                'donate'
+                'donate',
+                'users'
             ]
         },
         {

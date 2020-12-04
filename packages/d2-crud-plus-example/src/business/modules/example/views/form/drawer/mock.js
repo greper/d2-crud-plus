@@ -12,7 +12,8 @@ const list = [
     checkbox: '0',
     status_custom_1: '0',
     status_custom_2: '0',
-    checkedRadio: '1'
+    checkedRadio: '1',
+    checkbox_btn: '1'
   },
   {
     status: '1',
@@ -20,7 +21,8 @@ const list = [
     status_custom_2: '2',
     mselect: 'sh,sz',
     slotExample: 'slotExample',
-    checkbox: '0'
+    checkbox: '0',
+    checkbox_btn: '1,2'
   },
   {
     date: '2016-05-03',

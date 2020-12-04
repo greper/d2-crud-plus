@@ -443,9 +443,9 @@ export const crudOptions = (vm) => {
         search: { disabled: true },
         type: 'checkbox',
         dict: {
+          data: [{ value: '1', label: '1' }, { value: '2', label: '2' }, { value: '3', label: '3' }],
           url: '/dicts/OpenStatusEnum?a=2'
         },
-        disabled: true,
         form: {
           rules: [{ required: true, message: '请选择' }],
           component: { props: { type: 'el-checkbox-button' } }

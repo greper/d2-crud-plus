@@ -173,8 +173,9 @@ const actions = {
         }
         const defaultMenuIndex = parseInt(menuDefault)
         if (defaultMenuIndex >= 0) {
-          console.log('加载左侧菜单：第', defaultMenuIndex, '个')
-          commit('d2admin/menu/asideSet', menuHeader[defaultMenuIndex].children, { root: true })
+          const menus = menuHeader[defaultMenuIndex].children || []
+          console.log('加载左侧菜单：第', defaultMenuIndex, '个,左侧菜单数据：', menus)
+          commit('d2admin/menu/asideSet', menus, { root: true })
         }
       }
       // 重新初始化菜单搜索功能

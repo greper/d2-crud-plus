@@ -83,7 +83,11 @@ export const crudOptions = (vm) => {
         component: {
           props: {
             buildUrl (value, item) {
-              return '/api/upload/form/download?key=' + value
+              console.log('build url:', value)
+              if (value && value.indexOf('http') !== 0) {
+                return '/api/upload/form/download?key=' + value
+              }
+              return value
             }
           }
         }

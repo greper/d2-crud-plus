@@ -4968,7 +4968,7 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-flexsearch@^0.6.32, flexsearch@nextapps-de/flexsearch:
+flexsearch@nextapps-de/flexsearch:
   version "0.6.32"
   resolved "https://codeload.github.com/nextapps-de/flexsearch/tar.gz/f01f05e5683d8db644241ff0e27555207084ec07"
 
@@ -5858,9 +5858,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 init-package-json@^1.10.3:
   version "1.10.3"
@@ -10575,13 +10575,6 @@ vuepress-plugin-container@^2.0.2:
   integrity sha1-aIweWpcJobhlhgW8ruWAs6uxnRY=
   dependencies:
     markdown-it-container "^2.0.0"
-
-vuepress-plugin-flexsearch@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-flexsearch/-/vuepress-plugin-flexsearch-0.1.0.tgz#2b8472de0b5c0804b09bb45ec7f789fb52bea895"
-  integrity sha512-lXQthnPoLNh2RHg1ZT4Acr/2/Kml0cMV+0t2E/n6flg03LgJ3nZAQYLdiUNR9RRFtGQR79+Ifl6T4yBIoGC0Ww==
-  dependencies:
-    flexsearch "^0.6.32"
 
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"

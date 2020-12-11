@@ -49,7 +49,17 @@ export const crudOptions = (vm) => {
           component: {
             props: {
               uploader: {
-                type: 'form'
+                type: 'form',
+                successHandle (ret, option) {
+                  if (ret.data == null || ret.data === '') {
+                    throw new Error('上传失败')
+                  }
+                  return { url: ret.data, key: option.data.key }
+                }
+              },
+              returnType: 'key', // 添加和编辑上传提交的值不要url，而只要key
+              buildUrl (value, item) {
+                return '/api/upload/form/download?key=' + value
               },
               elProps: { // 与el-uploader 配置一致
                 multiple: true,
@@ -69,6 +79,13 @@ export const crudOptions = (vm) => {
             validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
             message: '还有文件正在上传，请等待上传完成，或删除它'
           }]
+        },
+        component: {
+          props: {
+            buildUrl (value, item) {
+              return '/api/upload/form/download?key=' + value
+            }
+          }
         }
       },
       {

@@ -42,7 +42,10 @@ export default {
       ajax(option,
         async (res) => {
           try {
-            const url = await config.successHandle(res)
+            const url = await config.successHandle(res, option)
+            if (url && typeof url === 'object' && url.key == null) {
+              url.key = key
+            }
             resolve(url)
           } catch (e) {
             onError(e)

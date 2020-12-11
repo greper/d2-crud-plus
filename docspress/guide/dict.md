@@ -4,6 +4,17 @@
 配置数据字典之后， type=【select/area-selector/cascader/tree-selector】
 这些字段类型就可以通过数据字典获取label及其选项，无需自己写各种各样乱七八糟的options
 
+## 字典配置复制
+```js
+columns[
+  { 
+    dict:{}  
+  }
+]
+```
+字段下配置dict会在页面初始化后复制到`search.component.props`、`form.component.props`、`component.props` 下     
+如果需要search、form、component有不同的表现，直接配置对应位置的dict即可覆盖基本配置     
+更多信息请先阅读:[核心逻辑](./mixins.md)
 ## 数据字典的配置   
 通常配置在column下,然后被分别赋值到component.dict和form.component.dict
 ```js

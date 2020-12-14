@@ -9,9 +9,9 @@
              @cell-component-ready="handleCellComponentReady"
              @cell-component-custom-event="handleCellComponentCustomEvent"
     >
-      <template slot-scope="scope" :slot="item.key+'Slot'">
+      <template slot-scope="scope2" :slot="item.key+'Slot'">
         <template v-if="item.rowSlot">
-          <slot :name="item.key+'Slot'" :row="scope.row"/>
+          <slot :name="item.key+'Slot'" :row="scope2.row" :index="scope2.index" :rowIndex="scope2.index"/>
         </template>
       </template>
     </d2-cell>

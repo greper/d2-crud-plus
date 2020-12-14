@@ -33,7 +33,7 @@
                   v-bind="getItem().itemProps"
     >
         <template v-if="getItem().slot === true">
-          <slot :name="item.key+'Slot'" :row="getRow()" :isLineEdit="isLineEdit()"/>
+          <slot :name="item.key+'Slot'" :rowIndex="rowIndex" :index="rowIndex" :row="getRow()" :isLineEdit="isLineEdit()"/>
         </template>
         <render-custom-component
           v-else-if="getItem().component "

@@ -468,9 +468,17 @@ export default {
         overflow-y: auto;
         flex:1;
       }
+      .el-dialog__header{
+        padding: 20px 20px 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .el-dialog__footer {
+        padding: 10px 20px 10px;
+        border-top: 1px solid #eee;
+      }
     }
-
   }
+
   .el-form[formMode=view]{
     .el-form-item__label{
       color:#909090

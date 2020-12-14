@@ -3236,10 +3236,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-x@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.13.1.tgz#c7ef7b80baf77cf0646013aa982a93c31ca2b51b"
-  integrity sha512-DfjPKwxIInOc/fG2lLPVj6GA5/znX2OzfgNWf8amTAsRtbTkbwCTbCp3BxmZxcS9OJAwxYbwiZ0U/GQD9UA3cg==
+d2-crud-x@^2.13.4:
+  version "2.13.4"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.13.4.tgz#24fdd58f2f8fece962b9be41caefb00253aa4105"
+  integrity sha512-On14yzk/qhQTS18FVXoUjIJ+iIsuca7aAYaNYFMrbXw4mOv9qIm+36ZgYYSMaHCQdXeVTHt2oFPq8zFAg/WhEA==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -4712,9 +4712,9 @@ hex-color-regex@^1.1.0:
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
 highlight.js@^9.6.0:
-  version "9.18.1"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.1.tgz#ed21aa001fe6252bb10a3d76d47573c6539fe13c"
-  integrity sha512-OrVKYz70LHsnCgmbXctv/bfuvntIKDz177h0Co37DQ5jamGZLVmoCVMtjMtNZY3X9DrCcKfklHPNeA0uPZhSJg==
+  version "9.18.5"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.18.5.tgz#d18a359867f378c138d6819edfc2a8acd5f29825"
+  integrity sha512-a5bFyofd/BHCX52/8i8uJkjr9DYwXIPnM/plwI6W7ezItLGqzt7X2G2nXuYSfsIJdkwwj/g9DG1LkcGJI/dDoA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

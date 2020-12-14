@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.6](https://github.com/greper/d2-crud-plus/compare/v2.13.5...v2.13.6) (2020-12-14)
+
+
+### Bug Fixes
+
+* 抽屉模式禁用拖拽和全屏，取消抽屉模式下的focus效果 ([bd3db8f](https://github.com/greper/d2-crud-plus/commit/bd3db8fc320c8b3150543632ae51162a47f30a21))
+* 修复树形table，修改无法更新值的问题 ([a18f26e](https://github.com/greper/d2-crud-plus/commit/a18f26e9b3cfb8fee8f959e65a0c5d8c8f04550c))
+* 修复行slot获取不到index的bug ([880c0aa](https://github.com/greper/d2-crud-plus/commit/880c0aaa035b5a87ac4ef44f248cc37786272fce))
+
+
+### Performance Improvements
+
+* 对话框表单支持最大高度，滚动条在对话框内部 ([0b2e2dd](https://github.com/greper/d2-crud-plus/commit/0b2e2dd500d2292945411a8029d27355999ffe0c))
+* form上传支持returnType: key ([e120327](https://github.com/greper/d2-crud-plus/commit/e1203275b41e781b98545a0748687030c317cefc))
+* form上传支持returnType: key ([168f5ed](https://github.com/greper/d2-crud-plus/commit/168f5edf7fe2ea0540032259e024d1002c46f3f7))
+
+
+
+
+
 ## [2.13.5](https://github.com/greper/d2-crud-plus/compare/v2.13.4...v2.13.5) (2020-12-01)
 
 **Note:** Version bump only for package @d2-plus/d2-crud-plus-example

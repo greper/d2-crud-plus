@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.6](https://github.com/greper/d2-crud-plus/compare/v2.13.5...v2.13.6) (2020-12-14)
+
+
+### Bug Fixes
+
+* 抽屉模式禁用拖拽和全屏，取消抽屉模式下的focus效果 ([bd3db8f](https://github.com/greper/d2-crud-plus/commit/bd3db8fc320c8b3150543632ae51162a47f30a21))
+* 修复行slot获取不到index的bug ([880c0aa](https://github.com/greper/d2-crud-plus/commit/880c0aaa035b5a87ac4ef44f248cc37786272fce))
+
+
+
+
+
 ## [2.13.5](https://github.com/greper/d2-crud-plus/compare/v2.13.4...v2.13.5) (2020-12-01)
 
 **Note:** Version bump only for package d2-crud-plus

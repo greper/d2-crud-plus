@@ -17,7 +17,6 @@
     "vuepress-theme-docmirror": "^1.5.4"
   },
   "resolutions": {
-    "watchpack": "1.6.1"
   },
   "scripts": {
     "lerna:build": "lerna run build",

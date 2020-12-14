@@ -4968,7 +4968,7 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-flexsearch@^0.6.32, flexsearch@nextapps-de/flexsearch:
+flexsearch@nextapps-de/flexsearch:
   version "0.6.32"
   resolved "https://codeload.github.com/nextapps-de/flexsearch/tar.gz/f01f05e5683d8db644241ff0e27555207084ec07"
 
@@ -10576,13 +10576,6 @@ vuepress-plugin-container@^2.0.2:
   dependencies:
     markdown-it-container "^2.0.0"
 
-vuepress-plugin-flexsearch@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-flexsearch/-/vuepress-plugin-flexsearch-0.1.0.tgz#2b8472de0b5c0804b09bb45ec7f789fb52bea895"
-  integrity sha512-lXQthnPoLNh2RHg1ZT4Acr/2/Kml0cMV+0t2E/n6flg03LgJ3nZAQYLdiUNR9RRFtGQR79+Ifl6T4yBIoGC0Ww==
-  dependencies:
-    flexsearch "^0.6.32"
-
 vuepress-plugin-smooth-scroll@^0.0.3:
   version "0.0.3"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-smooth-scroll/download/vuepress-plugin-smooth-scroll-0.0.3.tgz#6eff2d4c186cca917cc9f7df2b0af7de7c8c6438"
@@ -10609,7 +10602,7 @@ vuepress@^1.7.1:
     opencollective-postinstall "^2.0.2"
     update-notifier "^4.0.0"
 
-watchpack@1.6.1, watchpack@^1.6.0:
+watchpack@^1.6.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.6.1.tgz#280da0a8718592174010c078c7585a74cd8cd0e2"
   integrity sha512-+IF9hfUFOrYOOaKyfaI7h7dquUIOgyEMoQMLA7OP5FxegKA2+XdXThAZ9TU2kucfhDH7rfMHs1oPYziVGWRnZA==

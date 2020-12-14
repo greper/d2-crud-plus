@@ -32,6 +32,7 @@
              <el-input v-model="scope.form.noConfigProp"></el-input>
            </el-form-item>
          </div>
+         全部row字段数据：{{scope.row}}
        </template>
 
      </d2-crud-x>

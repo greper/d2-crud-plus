@@ -23,20 +23,22 @@ function delById (req, list) {
     }
   }
 }
-export default {
-  findById (id, list) {
-    for (const item of list) {
-      if (item.id === id) {
-        return item
-      }
-      if (item.children != null && item.children.length > 0) {
-        const sub = this.findById(id, item.children)
-        if (sub != null) {
-          return sub
-        }
+
+function findById (id, list) {
+  for (const item of list) {
+    if (item.id === id) {
+      return item
+    }
+    if (item.children != null && item.children.length > 0) {
+      const sub = findById(id, item.children)
+      if (sub != null) {
+        return sub
       }
     }
-  },
+  }
+}
+export default {
+
   buildMock (options) {
     const name = options.name
     if (options.copyTimes == null) {
@@ -186,11 +188,9 @@ export default {
         path: '/' + name + '/update',
         method: 'post',
         handle (req) {
-          for (const item of list) {
-            if (item.id === req.body.id) {
-              Object.assign(item, req.body)
-              break
-            }
+          const item = findById(req.body.id, list)
+          if (item) {
+            Object.assign(item, req.body)
           }
           return {
             code: 0,

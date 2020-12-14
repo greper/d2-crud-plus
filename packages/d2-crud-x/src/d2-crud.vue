@@ -167,7 +167,7 @@
       v-on:update:visible="handleDialogShowUpdate"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
-      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer}"
+      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer,'d2p-max-height':formOptions.maxHeight}"
       v-bind="formOptions"
     >
       <template slot="title">
@@ -458,6 +458,18 @@ export default {
         cursor: auto !important;
       }
     }
+  }
+  &.d2p-max-height{
+    .el-dialog{
+      max-height:70vh;
+      display: flex;
+      flex-direction: column;
+      .el-dialog__body{
+        overflow-y: auto;
+        flex:1;
+      }
+    }
+
   }
   .el-form[formMode=view]{
     .el-form-item__label{

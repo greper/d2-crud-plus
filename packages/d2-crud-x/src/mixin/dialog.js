@@ -92,6 +92,16 @@ export default {
     }
   },
   computed: {
+    formMaxHeight () {
+      if (this.formOptions && this.formOptions.maxHeight) {
+        const maxHeight = this.formOptions.maxHeight
+        if (!isNaN(maxHeight)) {
+          return maxHeight + 'px'
+        }
+        return maxHeight
+      }
+      return null
+    }
   },
   methods: {
     getFormTitle () {

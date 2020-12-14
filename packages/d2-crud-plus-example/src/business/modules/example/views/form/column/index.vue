@@ -68,7 +68,7 @@ export default {
     },
     async updateRequest (row) {
       await UpdateObj(row)
-      this.reloadTreeChildren(row.parentId)
+      // this.reloadTreeChildren(row.parentId)
     },
     async delRequest (row) {
       await DelObj(row.id)

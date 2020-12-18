@@ -1086,7 +1086,7 @@ export default {
           data: this.crud.list
         })
       }).catch((error) => {
-        console.error(error)
+        log.error('export:', error)
       })
     },
     doExport (context) {

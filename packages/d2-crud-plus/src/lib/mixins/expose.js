@@ -199,6 +199,11 @@ export default {
      */
     // this.getSearch().getForm()
 
+    /**
+     *  触发search组件的查询按钮点击，能够获取search组件当前的form表单值进行查询
+     */
+    // this.getSearch().doSearch()
+
     // --------------以下是crud暴露的方法，可以修改列表中的数据等--------------
     /**
      * 外部暴露的更新单元格数据方法

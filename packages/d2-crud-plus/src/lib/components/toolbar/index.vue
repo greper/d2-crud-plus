@@ -55,7 +55,7 @@ export default {
       default: false
     },
     /**
-     * 列配置
+     * 列配置，传null隐藏按钮
      */
     columns: {
       type: Array,

@@ -42,7 +42,15 @@ export const crudOptions = (vm) => {
         form: {
           helper: '添加和编辑时必填，编辑时额外需要校验长度',
           // 由于数组配置合并时是取并集，不同的部分需要分开配置
-          rules: [{ required: true, message: '请输入姓名' }]
+          rules: [{ required: true, message: '请输入姓名' }],
+          component: {
+            name: 'el-input',
+            maxlength: 5, // 原生属性要写在这里
+            props: {
+              type: 'text',
+              showWordLimit: true
+            }
+          }
         },
         editForm: { // 由于数组配置合并时是取并集，所以需要分开配置
           rules: [{ min: 2, max: 5, message: '姓名长度为2-5' }]

@@ -23,19 +23,32 @@
         </transition-group>
       </div>
     </div>
-    <el-dialog
+    <el-dialog custom-class="d2p-tree-selector-dialog"
       title="选择"
       :visible.sync="dialogVisible"
       width="30%" append-to-body>
-      <div>
-        <el-tree
-          :data="data"
-          @check-change="handleCheckChange"
-          @current-change="handleCurrentChange"
-          v-bind="_elProps"
-          ref="elTree">
-        </el-tree>
+      <div class="tree-wrapper">
+        <div v-if="treeFilter" class="filter-bar" style="padding-bottom: 20px">
+          <el-input
+            prefix-icon="el-icon-search"
+            placeholder="输入关键字进行过滤"
+            v-model="filterText" size="small" >
+          </el-input>
+        </div>
+
+        <div class="tree-body">
+          <el-tree
+            :data="data"
+            @check-change="handleCheckChange"
+            @current-change="handleCurrentChange"
+            :filterNodeMethod="filterNode"
+            v-bind="_elProps"
+            ref="elTree">
+          </el-tree>
+        </div>
+
       </div>
+
       <span slot="footer" class="dialog-footer">
           <el-button @click="dialogVisible = false">取 消</el-button>
           <el-button type="primary" @click="selectSubmit">确 定</el-button>
@@ -61,6 +74,12 @@ export default {
     filter: {
       type: Function,
       require: false
+    },
+    // 树形组件节点过滤，可以配置elProps.filterNodeMethod ，覆盖默认的过滤方法
+    treeFilter: {
+      type: Boolean,
+      require: false,
+      default: true
     },
     // 是否多选，传入false为单选
     multiple: {
@@ -89,7 +108,8 @@ export default {
       collapseTags: false,
       data: [],
       selected: [],
-      dialogVisible: false
+      dialogVisible: false,
+      filterText: undefined
     }
   },
   created () {
@@ -125,6 +145,9 @@ export default {
       this.$emit('change', value)
       this.dispatch('ElFormItem', 'el.form.blur')
       this.setValue(value)
+    },
+    filterText (val) {
+      this.$refs.elTree.filter(val)
     }
   },
   methods: {
@@ -308,6 +331,10 @@ export default {
         values.push(this.getValueKey(item))
       }
       return values
+    },
+    filterNode (value, data) {
+      if (!value) return true
+      return this.getValueLabel(data).indexOf(value) !== -1
     }
   }
 }
@@ -317,6 +344,25 @@ export default {
   width: 100%;
   .el-cascader{
     width: 100%;
+  }
+}
+.d2p-tree-selector-dialog{
+  &.el-dialog{
+    max-height:70vh;
+    display: flex;
+    flex-direction: column;
+    .el-dialog__body{
+      flex:1;
+      overflow-y: auto;
+    }
+    .el-dialog__header{
+      padding: 20px 20px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .el-dialog__footer {
+      padding: 10px 20px 10px;
+      border-top: 1px solid #eee;
+    }
   }
 }
 </style>

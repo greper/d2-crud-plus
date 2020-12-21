@@ -2,7 +2,7 @@
   <d2-container  :class="{'page-compact':crud.pageOptions.compact}">
     <template slot="header">
       异步后台获取crud配置
-      <span style="color:gray;font-size: 12px">【主要看getCrudOptions方法】</span>
+      <span style="color:gray;font-size: 12px">【主要看index.vue中getCrudOptions方法即可】</span>
     </template>
     <d2-crud-x
         ref="d2Crud"

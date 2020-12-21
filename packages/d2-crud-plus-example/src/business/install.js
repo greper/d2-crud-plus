@@ -64,6 +64,7 @@ Vue.use(d2CrudPlus, {
         size: 'small'
       },
       formOptions: {
+        maxHeight: true,
         saveRemind: true, // 有修改时，是否提醒保存
         closeOnClickModal: true, // 点击对话框背景关闭对话框,实际使用过程中容易误触把对话框关闭，导致输入内容丢失，建议设置为false
         nullToBlankStr: true, // 提交修改表单时，将undefined的数据修改为空字符串''，可以解决无法清空字段的问题

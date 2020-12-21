@@ -255,6 +255,11 @@ export default {
      */
     doDialogOpen (context) {},
 
+    /**
+     * 对话框关闭事件，包括保存时关闭和取消关闭
+     * @param context
+     */
+    doDialogClosed (context) {},
     /***
      * 对话框打开后被调用（注意：此时组件还没有被mounted）
      * 可以设置一些默认值，或者做一些动态修改的工作

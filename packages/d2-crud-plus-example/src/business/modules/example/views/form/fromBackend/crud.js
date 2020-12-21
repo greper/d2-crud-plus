@@ -7,6 +7,8 @@ export const crudOptions = `
     options: {
       height: '100%'
     },
+    addTitle:'创建',
+    editTitle:'更新',
     columns: [
       {
         title: 'ID',

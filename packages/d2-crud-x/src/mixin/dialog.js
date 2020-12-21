@@ -308,6 +308,8 @@ export default {
         }
       }
       this.$emit('dialog-cancel', done)
+
+      this.handleDialogClosed()
     },
     /**
      * @description 保存完成
@@ -320,15 +322,23 @@ export default {
           this.handleAddRow(rowData)
         }
       }
-      this.formDataStorage = {}
       this.handleCloseDialog()
+      this.formDataStorage = {}
     },
     /**
      * @description 关闭模态框
      */
     handleCloseDialog () {
-      this.formDataBefore = null
       this.handleDialogShowUpdate(false)
+      this.handleDialogClosed()
+      this.formDataBefore = null
+    },
+    handleDialogClosed () {
+      this.$emit('dialog-closed', {
+        mode: this.formMode,
+        row: this.formDataStorage,
+        form: this.formData
+      })
     }
   }
 }

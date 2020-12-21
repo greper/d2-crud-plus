@@ -168,7 +168,10 @@ export default {
         editRules: this.crud.editRules,
         formOptions: this.crud.formOptions,
         options: this.crud.options,
-        loading: this.crud.loading
+        loading: this.crud.loading,
+        addTitle: this.crud.addTitle,
+        editTitle: this.crud.editTitle,
+        viewTitle: this.crud.viewTitle
       }
       if (this.crud.indexRow) {
         props.indexRow = this.crud.indexRow
@@ -198,6 +201,7 @@ export default {
         'pagination-change': this.handlePaginationChange,
         'dialog-open': this.handleDialogOpen,
         'dialog-opened': this.handleDialogOpened,
+        'dialog-closed': this.handleDialogClosed,
         'dialog-cancel': this.handleDialogCancel,
         'select-all': this.handleSelectAll,
         'sort-change': this.handleSortChange
@@ -752,6 +756,13 @@ export default {
       }
 
       this.doDialogOpened(context)
+    },
+    /**
+     * 编辑对话框打开后要做的操作
+     */
+    handleDialogClosed (context) {
+      log.debug('handleDialogClosed:', context)
+      this.doDialogClosed(context)
     },
     /**
      * 点击添加按钮

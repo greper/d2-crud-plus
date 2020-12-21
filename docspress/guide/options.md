@@ -74,6 +74,7 @@ export const crudOptions = {
     labelPosition: 'left',
     saveLoading: false,
     gutter: 20,
+    maxHeight: true, // 对话框内部显示滚动条
     defaultSpan: 12, // 默认表单字段所占宽度
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据，默认会自动刷新表格，所以不需要更新本地数据
   },

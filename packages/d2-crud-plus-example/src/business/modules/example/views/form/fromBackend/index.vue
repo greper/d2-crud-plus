@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     async getCrudOptions () {
-      const ret = await GetCrud()
+      const ret = await GetCrud() // 异步从后台获取crud
       // 警告： eval有安全风险，此处为了演示支持配置方法。
       // 如无必要，请不要用eval，如果crud配置中并不需要配置方法的话，直接 return JSON.parse(ret.data) 即可
       // eslint-disable-next-line no-eval

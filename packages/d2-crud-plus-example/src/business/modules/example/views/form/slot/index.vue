@@ -40,10 +40,10 @@
 
       <template slot="createDateSlot" slot-scope="scope">
         创建时间：{{scope.row['createDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
-        更新时间：{{scope.row['updateDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}}<br/>
+        更新时间：{{scope.row['updateDate'] | date_timeline('YYYY-MM-DD HH:mm:ss')}} <br/>
       </template>
       <template slot="slotExampleSlot" slot-scope="scope">
-        <el-tag>{{scope.row['slotExample']}}</el-tag>
+        <el-tag>{{scope.row['slotExample']}} 【index:{{scope.index}}】</el-tag>
       </template>
       <template slot="slotExampleFormSlot" slot-scope="scope">
         slot自定义：<el-input ref="slotExampleFormRef" :disabled="scope.mode==='view'" v-model="scope.form['slotExample']" placeholder="这是通过slot自定义的" style="width:130px" @blur="inputBlur('form')" ></el-input>

@@ -12,6 +12,7 @@ export const crudOptions = (vm) => {
       componentType: 'row'
     },
     formOptions: {
+      maxHeight: true,
       defaultSpan: 12 // 默认的表单 span
     },
     searchOptions: {

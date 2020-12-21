@@ -66,22 +66,23 @@ export default {
     addRequest (row) {
       return AddObj(row)
     },
-    updateRequest (row) {
-      return UpdateObj(row)
+    async updateRequest (row) {
+      await UpdateObj(row)
+      // this.reloadTreeChildren(row.parentId)
     },
-    delRequest (row) {
-      return DelObj(row.id).then(ret => {
-        // 手动更新加载项
-        const data = this.getD2Crud().$refs.elTable.store.states.treeData
-        if (data != null) {
-          const item = data[row.parentId]
-          if (item != null) {
-            item.loaded = false
-            item.expanded = false
-          }
+    async delRequest (row) {
+      await DelObj(row.id)
+      this.reloadTreeChildren(row.parentId)
+    },
+    reloadTreeChildren (parentId) {
+      const data = this.getD2Crud().$refs.elTable.store.states.treeData
+      if (data != null) {
+        const item = data[parentId]
+        if (item != null) {
+          item.loaded = false
+          item.expanded = false
         }
-        return ret
-      })
+      }
     },
     batchDelRequest (ids) {
       return BatchDel(ids)

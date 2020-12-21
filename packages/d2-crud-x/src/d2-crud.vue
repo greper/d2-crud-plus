@@ -111,7 +111,7 @@
         >
             <template slot-scope="scope" :slot="item.key+'Slot'">
               <template v-if="item.rowSlot">
-                <slot :name="item.key+'Slot'" :row="scope.row" :index="scope.$index" :rowIndex="scope.$rowIndex"/>
+                <slot :name="item.key+'Slot'" :row="scope.row" :index="scope.index" :rowIndex="scope.index"/>
               </template>
             </template>
         </d2-column>
@@ -167,12 +167,12 @@
       v-on:update:visible="handleDialogShowUpdate"
       :before-close="handleDialogCancel"
       v-d2p-drag-dialog="handleAttribute(formOptions.draggable,true)"
-      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer}"
+      :class="{'d2p-drag-dialog':handleAttribute(formOptions.draggable,true),'d2p-form-drawer':isFormDrawer,'d2p-max-height':formOptions.maxHeight}"
       v-bind="formOptions"
     >
       <template slot="title">
        <span> {{getFormTitle()}}</span>
-        <slot name="FormHeaderSlot" :mode="formMode" :data="formData"  :form="formData"/>
+        <slot name="FormHeaderSlot" :mode="formMode" :data="formData"  :form="formData" :row="formDataStorage"/>
         <button v-if="formOptions.fullscreen!=null" type="button"  class="el-dialog__headerbtn fullscreen" @click="formOptions.fullscreen = !formOptions.fullscreen" ><i class="el-dialog__close el-icon el-icon-full-screen"/></button>
       </template>
       <el-form
@@ -203,10 +203,10 @@
                 @form-component-custom-event="handleFormComponentCustomEvent"
               >
                 <template :slot="key+'FormSlot'">
-                    <slot :name="key+'FormSlot'" :form="formData" :mode="formMode"/>
+                    <slot :name="key+'FormSlot'" :form="formData" :mode="formMode" :row="formDataStorage"/>
                 </template>
                 <template :slot="key+'HelperSlot'">
-                    <slot :name="key+'HelperSlot'" :form="formData" :mode="formMode"/>
+                    <slot :name="key+'HelperSlot'" :form="formData" :mode="formMode" :row="formDataStorage"/>
                 </template>
               </d2-form-item>
             </el-col>
@@ -239,10 +239,10 @@
                       @form-component-custom-event="handleFormComponentCustomEvent"
                     >
                       <template :slot="key+'FormSlot'">
-                        <slot :name="key+'FormSlot'" :form="formData"/>
+                        <slot :name="key+'FormSlot'" :form="formData" :row="formDataStorage"/>
                       </template>
                       <template :slot="key+'HelperSlot'">
-                        <slot :name="key+'HelperSlot'" :form="formData"/>
+                        <slot :name="key+'HelperSlot'" :form="formData" :row="formDataStorage"/>
                       </template>
                     </d2-form-item>
                   </el-col>
@@ -252,11 +252,11 @@
           </template>
         </el-collapse>
         <div class="form-body-append">
-          <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData"/>
+          <slot name="FormBodyAppendSlot" :mode="formMode" :form="formData" :row="formDataStorage"/>
         </div>
       </el-form>
       <div class="d2p-form-footer" :slot="isFormDrawer?'default':'footer'" >
-        <slot name="FormFooterSlot" :mode="formMode" :data="formData" :form="formData" />
+        <slot name="FormFooterSlot" :mode="formMode" :data="formData" :form="formData" :row="formDataStorage" />
         <el-button v-if="getAttribute(formOptions,'saveButtonShow', true)"
           :size="getAttribute(formOptions,'saveButtonSize', null)"
           :type="getAttribute(formOptions,'saveButtonType' ,null)"
@@ -459,6 +459,26 @@ export default {
       }
     }
   }
+  &.d2p-max-height{
+    .el-dialog{
+      max-height:70vh;
+      display: flex;
+      flex-direction: column;
+      .el-dialog__body{
+        overflow-y: auto;
+        flex:1;
+      }
+      .el-dialog__header{
+        padding: 20px 20px 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .el-dialog__footer {
+        padding: 10px 20px 10px;
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+
   .el-form[formMode=view]{
     .el-form-item__label{
       color:#909090

@@ -65,7 +65,8 @@ export const crudOptions = (vm) => {
           slot: true,
           helper: { slot: true }
         },
-        rowSlot: true
+        rowSlot: true,
+        width: 220
       },
       {
         title: '主题',

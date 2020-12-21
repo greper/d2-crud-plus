@@ -27,15 +27,13 @@
       @change="handleFormDataChange($event,colKey)"
       @ready="handleFormComponentReady($event,colKey)"
       @custom="handleFormComponentCustomEvent($event,colKey)"
-    >
-    </render-custom-component>
+    />
     <render-component
       v-else-if="getFormComponent().render"
       :render-function="getFormComponent().render"
       :scope="{key: colKey, value: formData[colKey], row: formData}"
       @change="handleFormDataChange($event,colKey)"
-    >
-    </render-component>
+    />
     <template v-if="template.helper">
       <div class="form-item-helper" v-if=" typeof  template.helper === 'string'">{{template.helper}}</div>
       <div class="form-item-helper"  v-else-if="template.helper.slot === true">

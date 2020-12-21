@@ -3179,13 +3179,12 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/d2-crud-plus/-/d2-crud-plus-1.16.1.tgz#603e6a2b6eb236449f06fc2b797744939675c654"
-  integrity sha512-vxq9RVen9g95CTR3zoZB/F8w+4vHxUA2y18fBh1kvimxTOq/khrs4FXxufaYXsEHJzq6cDZtyLu1DwKMWjdxIQ==
+d2-crud-plus@^2.13.5:
+  version "2.13.5"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.13.5.tgz#f593fd0af8411d739cfc455d6c82a61fdb5426cb"
+  integrity sha512-WlSpEfz2BUW1/nes7viRBiq4UCm/mjnj+0kFwhZEvUlueuiEcIO3eO060Sg1BN1AgYF3JjTTTJEZEqTOAO8U3w==
   dependencies:
     dayjs "^1.8.17"
-    lodash "^4.17.19"
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.13.6](https://github.com/greper/d2-crud-plus/compare/v2.13.5...v2.13.6) (2020-12-14)
+
+
+### Bug Fixes
+
+* 修复行slot获取不到index的bug ([880c0aa](https://github.com/greper/d2-crud-plus/commit/880c0aaa035b5a87ac4ef44f248cc37786272fce))
+
+
+### Performance Improvements
+
+* form上传支持returnType: key ([168f5ed](https://github.com/greper/d2-crud-plus/commit/168f5edf7fe2ea0540032259e024d1002c46f3f7))
+
+
+
+
+
 ## [2.13.5](https://github.com/greper/d2-crud-plus/compare/v2.13.4...v2.13.5) (2020-12-01)
 
 

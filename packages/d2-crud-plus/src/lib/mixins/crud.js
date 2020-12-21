@@ -240,7 +240,7 @@ export default {
      * 每个column的add、edit、search共用一个form.component的配置
      */
     async initColumns () {
-      this.initBefore()
+      await this.initBefore()
       let crudOptions = await this.getCrudOptions()
       const commonOptions = CommonOptionsUtil.create()
       mergeWith(commonOptions, crudOptions, (objValue, srcValue, key, object, source, stack) => {
@@ -292,7 +292,7 @@ export default {
         this.crud.formOptions.draggable = false
         this.crud.formOptions.fullscreen = null
       }
-      this.initAfter()
+      await this.initAfter()
       log.info('crud inited:', crud)
     },
     initColumnsGroup (mode, crud) {

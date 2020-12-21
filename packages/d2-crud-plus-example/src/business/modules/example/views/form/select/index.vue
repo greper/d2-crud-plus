@@ -87,6 +87,7 @@ export default {
       })
     },
     getCrudOptions () {
+      // 模拟异步从后台获取参数
       return crudOptions(this)
     },
     async pageRequest (query) {

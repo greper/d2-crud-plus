@@ -228,8 +228,8 @@ export default {
      * crud 初始化，被_onCreated调用
      * @private
      */
-    _doStart () {
-      this.initColumns()
+    async _doStart () {
+      await this.initColumns()
       this.doLoad()
     },
 
@@ -239,9 +239,9 @@ export default {
      * 将columns的type 解析成不同的component配置
      * 每个column的add、edit、search共用一个form.component的配置
      */
-    initColumns () {
+    async initColumns () {
       this.initBefore()
-      let crudOptions = this.getCrudOptions()
+      let crudOptions = await this.getCrudOptions()
       const commonOptions = CommonOptionsUtil.create()
       mergeWith(commonOptions, crudOptions, (objValue, srcValue, key, object, source, stack) => {
         if (lodash.isArray(srcValue)) {

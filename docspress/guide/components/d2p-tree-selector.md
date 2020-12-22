@@ -7,6 +7,7 @@
 |---|---|---|---|---|
 |value|值|`Number` / `String` / `Boolean` / `Array` / `Object`|`false`|-|
 |filter|过滤，value中的nodes过滤方法 参数为nodes|`Function`|`false`|-|
+|treeFilter|树形组件节点过滤，可以配置elProps.filterNodeMethod ，覆盖默认的过滤方法|`Boolean`|`false`|true|
 |multiple|是否多选，传入false为单选|`Boolean`|`false`|true|
 |ignoreFullCheckedChildren|是否忽略选中节点的子节点|`Boolean`|`false`|true|
 |leafOnly|是否只返回叶子节点|`Boolean`|`false`|false|

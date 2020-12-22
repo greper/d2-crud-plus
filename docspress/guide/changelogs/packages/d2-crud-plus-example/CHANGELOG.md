@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
+
+
+### Features
+
+* 操作列按钮折叠 ([661c55d](https://github.com/greper/d2-crud-plus/commit/661c55d82989fbe37dc9683864e174bcde0e53d3))
+* crud配置异步从后台获取演示案例 ([c76922b](https://github.com/greper/d2-crud-plus/commit/c76922bf612cf02408f7be2b9bbcfbe0c873f1b6))
+
+
+### Performance Improvements
+
+* 树形组件优化，增加过滤，对话框内部滚动条，增加对话框关闭事件 ([87eda0f](https://github.com/greper/d2-crud-plus/commit/87eda0fe0ece60876920f2b436cbe74cab58b022))
+* 优化操作列按钮折叠 ([5f8fb03](https://github.com/greper/d2-crud-plus/commit/5f8fb03e67a7c64801411607a44299115747c45e))
+* 正则表达式用例 ([21f5181](https://github.com/greper/d2-crud-plus/commit/21f5181d5b973bd5c355f5f3bf231ca5d88d7545))
+
+
+
+
+
 ## [2.13.6](https://github.com/greper/d2-crud-plus/compare/v2.13.5...v2.13.6) (2020-12-14)
 
 

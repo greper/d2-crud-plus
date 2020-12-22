@@ -536,6 +536,7 @@ export default {
      */
     handlePaginationChange (val) {
       this.doPaginationMerge(val)
+      this.doPaginationChanged(val)
       this.doRefresh({ from: 'pagination' })
     },
     doPaginationMerge (page) {

@@ -69,9 +69,9 @@ addPage(elMenus, 'form/header', '多级表头')
 addPage(elMenus, 'form/column', '特殊列')
 addPage(elMenus, 'form/fix', '固定列')
 
-const d2pGroupMenu = addPage(enhanceMenus, null, 'D2P增强', 'new')
+const d2pGroupMenu = addPage(enhanceMenus, null, '增强示例', 'new')
 const d2pMenus = d2pGroupMenu.children
-addPage(d2pMenus, 'form/fromBackend', '后台获取CRUD配置', 'new')
+addPage(d2pMenus, 'form/fromBackend', '后台获取CRUD', 'new')
 addPage(d2pMenus, 'form/customType', '自定义字段类型')
 addPage(d2pMenus, 'form/toolbar', '工具条')
 addPage(d2pMenus, 'form/batchDel', '批量删除')

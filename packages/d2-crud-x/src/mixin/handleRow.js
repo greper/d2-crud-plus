@@ -1,3 +1,4 @@
+import logger from '../util/util.log'
 export default {
   props: {
     /**
@@ -115,6 +116,10 @@ export default {
           btns.push({
             doClick: (scope) => {
               scope = this.getCellScope(scope)
+              if (!item.emit) {
+                logger.warn('该按钮还未配置emit')
+                return
+              }
               this.$emit(item.emit, scope)
             },
             order: 4,

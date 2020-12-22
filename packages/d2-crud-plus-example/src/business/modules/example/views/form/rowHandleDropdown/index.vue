@@ -7,7 +7,9 @@
         ref="d2Crud"
         v-bind="_crudProps"
         v-on="_crudListeners"
-        >
+        @customBtn1="$message('测试按钮1')"
+        @customBtn2="$message('测试按钮2')"
+    >
 
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />

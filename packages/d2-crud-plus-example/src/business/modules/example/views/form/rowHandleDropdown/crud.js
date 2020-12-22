@@ -12,25 +12,29 @@ export const crudOptions = (vm) => {
     rowHandle: {
       dropdown: { // 操作列折叠
         atLeast: 1, // 至少1个以上的按钮才会被折叠
-        text: '更多操作', // dropdown按钮文字
-        type: 'warn'
+        text: '更多', // dropdown按钮文字
+        type: 'warning',
+        icon: 'el-icon-more'
       },
       fixed: 'right',
       view: {
-        thin: true,
-        text: null
+        text: '查看'
       },
       edit: {
         thin: true,
         type: 'primary',
-        // circle: true,
-        text: null
+        text: '编辑'
       },
       remove: {
         thin: true,
-        text: null
+        order: 1000,
+        text: '删除'
       },
-      width: 140
+      width: 220,
+      custom: [
+        { icon: 'el-icon-share', text: '测试按钮1', emit: 'customBtn1' },
+        { icon: 'el-icon-search', text: '测试按钮2', emit: 'customBtn2' }
+      ]
     },
     columns: [
       {
@@ -75,8 +79,7 @@ export const crudOptions = (vm) => {
         },
         form: {
           helper: '禁用字典缓存，每次打开对话框都会发出字典请求'
-        },
-        minWidth: 200
+        }
       },
       {
         title: '单选，本地',
@@ -88,8 +91,7 @@ export const crudOptions = (vm) => {
         type: 'select',
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        },
-        minWidth: 200
+        }
       },
       {
         title: '多选,本地',
@@ -110,34 +112,7 @@ export const crudOptions = (vm) => {
         },
         dict: {
           data: [{ value: 'sz', label: '深圳' }, { value: 'gz', label: '广州' }, { value: 'wh', label: '武汉' }, { value: 'sh', label: '上海' }]
-        },
-        minWidth: 200
-      },
-      {
-        title: '级联单选',
-        key: 'cascader1',
-        sortable: true,
-        search: {
-          disabled: false
-        },
-        type: 'cascader',
-        dict: {
-          url: '/select/cascadeData'
-        },
-        minWidth: 200
-      },
-      {
-        title: '级联多选',
-        key: 'mcascader',
-        sortable: true,
-        search: {
-          disabled: true
-        },
-        type: 'cascader-multi',
-        dict: {
-          url: '/select/cascadeData'
-        },
-        minWidth: 200
+        }
       },
       {
         title: 'radio',
@@ -152,8 +127,7 @@ export const crudOptions = (vm) => {
           rules: [{ required: true, message: '请选择一个选项' }],
           component: { span: 24 },
           helper: 'rule校验，我是必填项'
-        },
-        minWidth: 200
+        }
       },
       {
         title: '开关组件',
@@ -174,8 +148,7 @@ export const crudOptions = (vm) => {
           valueChange (key, value, form) {
             console.log('您选中了：', value)
           }
-        },
-        minWidth: 200
+        }
       }
     ]
   }

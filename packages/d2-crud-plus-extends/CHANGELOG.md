@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
+
+
+### Performance Improvements
+
+* 树形组件优化，增加过滤，对话框内部滚动条，增加对话框关闭事件 ([87eda0f](https://github.com/greper/d2-crud-plus/commit/87eda0fe0ece60876920f2b436cbe74cab58b022))
+
+
+
+
+
 ## [2.13.6](https://github.com/greper/d2-crud-plus/compare/v2.13.5...v2.13.6) (2020-12-14)
 
 

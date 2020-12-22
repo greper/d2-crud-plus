@@ -7,6 +7,7 @@
         ref="d2Crud"
         v-bind="_crudProps"
         v-on="_crudListeners"
+        @btnOrder="$message('按钮排序，order越小越靠前')"
         @customBtn1="$message('测试按钮1')"
         @customBtn2="$message('测试按钮2')"
     >

@@ -11,9 +11,9 @@ export const crudOptions = (vm) => {
     },
     rowHandle: {
       dropdown: { // 操作列折叠
-        atLeast: 1, // 至少1个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
+        atLeast: 2, // 至少几个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
         text: '更多', // dropdown按钮文字
-        type: 'warning',
+        type: 'primary',
         icon: 'el-icon-more'
       },
       fixed: 'right',
@@ -30,10 +30,17 @@ export const crudOptions = (vm) => {
         order: 1000,
         text: '删除'
       },
-      width: 220,
+      width: 320,
       custom: [
-        { icon: 'el-icon-share', text: '测试按钮1', emit: 'customBtn1' },
-        { icon: 'el-icon-search', text: '测试按钮2', emit: 'customBtn2' }
+        {
+          icon: 'el-icon-order',
+          text: '按钮排序',
+          emit: 'btnOrder',
+          size: 'small',
+          order: 1 // 数字越小越靠前
+        },
+        { icon: 'el-icon-share', text: '测试按钮1', emit: 'customBtn1', size: 'small' },
+        { icon: 'el-icon-search', text: '测试按钮2', emit: 'customBtn2', size: 'small' }
       ]
     },
     columns: [

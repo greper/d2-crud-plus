@@ -149,7 +149,7 @@
                   :size="handleAttribute(rowHandle.dropdown.size,'small',scope)"
                   v-bind="rowHandle.dropdown"
                 >
-                  {{rowHandle.dropdown.text || '更多'}}
+                  {{handleAttribute(rowHandle.dropdown.text,'更多',scope)}}
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </d2-button>
                 <el-dropdown-menu slot="dropdown"  >

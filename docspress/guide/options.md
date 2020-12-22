@@ -157,7 +157,11 @@ export const crudOptions = {
          //点击事件,需要在<d2-crud-x @custom-emit="yourHandle"/>
          emit: 'custom-emit' 
       }
-    ] 
+    ],
+    dropdown: {
+      atLeast: 2, // 至少2个以上才收入下拉框中，配置0全部按钮收入下拉框
+      text: '更多' // 按钮文字
+    }, 
   },
   formGroup: {  //表单分组
     type: 'collapse', // tab暂未实现

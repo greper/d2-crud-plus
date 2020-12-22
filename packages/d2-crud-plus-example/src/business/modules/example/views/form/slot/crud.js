@@ -11,6 +11,9 @@ export const crudOptions = (vm) => {
       center: true // 标题与按钮居中布局
     },
     rowHandle: {
+      dropdown: {
+        atLeast: 2 // 至少2个以上才收入下拉框中
+      },
       width: 400,
       edit: {
         text (scope) {

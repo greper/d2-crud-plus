@@ -446,6 +446,17 @@ export default {
         }
         return row
       })
+    },
+
+    /**
+     *  翻页变化事件,默认执行滚动条恢复到顶部
+     * @param val
+     */
+    doPaginationChanged (val) {
+      try {
+        this.getD2CrudTable().bodyWrapper.scrollTop = 0
+      } catch (e) {
+      }
     }
   }
 }

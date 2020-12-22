@@ -63,6 +63,7 @@ addPage(formMenus, 'form/independent', '组件独立使用', 'new')
 const enhanceMenus = []
 addPage(enhanceMenus, 'form/d2crud', 'd2Crud原版')
 addPage(enhanceMenus, 'form/fromBackend', '后台获取CRUD配置', 'new')
+addPage(enhanceMenus, 'form/rowHandleDropdown', '操作按钮折叠', 'new')
 addPage(enhanceMenus, 'form/lineEdit', '行编辑高级版', 'new')
 addPage(enhanceMenus, 'form/drawer', '抽屉表单')
 addPage(enhanceMenus, 'form/localPagination', '前端分页')

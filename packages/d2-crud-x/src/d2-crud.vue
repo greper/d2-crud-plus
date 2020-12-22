@@ -122,8 +122,9 @@
           v-bind="forBindPropsRowHandle(rowHandle)"
         >
           <template slot-scope="scope">
+
             <template
-              v-for="(item, index) in ((lineEditor && lineEditor.active && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleBtns)"
+              v-for="(item, index) in ((lineEditor && lineEditor.active && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleFlatBtns)"
             >
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope)"
@@ -135,9 +136,40 @@
                          v-bind="item"
               />
             </template>
+
             <!-- 即将废弃 -->
             <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row" ></slot>
             <slot name="rowHandleSlot" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
+            <!-- 下拉按钮菜单 -->
+            <span class="d2p-handle-row-dropdown">
+              <el-dropdown  v-if="_handleDropdownBtns && _handleDropdownBtns.length>0"
+                            @command="handleRowHandleDropdownItemClick($event,scope)">
+                <d2-button
+                  :disabled="handleRowHandleButtonDisabled(rowHandle.dropdown.disabled, scope)"
+                  :type="handleAttribute(rowHandle.dropdown.type,'primary',scope)"
+                  :size="handleAttribute(rowHandle.dropdown.size,'small',scope)"
+                  v-bind="rowHandle.dropdown"
+                >
+                  {{rowHandle.dropdown.text || '更多'}}
+                  <i class="el-icon-arrow-down el-icon--right"></i>
+                </d2-button>
+                <el-dropdown-menu slot="dropdown"  >
+                  <template
+                    v-for="(item, index) in _handleDropdownBtns"
+                  >
+                    <el-dropdown-item :key="index"
+                                      v-if="handleRowHandleButtonShow(item.show, scope)"
+                                      :icon="handleAttribute(item.icon,null,scope)"
+                                      :command="item"
+                                      :disabled="handleRowHandleButtonDisabled(item.disabled, scope)">
+                      {{ handleAttribute(item.text,null,scope) }}
+                    </el-dropdown-item>
+                  </template>
+
+                </el-dropdown-menu>
+              </el-dropdown>
+            </span>
+
           </template>
 
         </component>
@@ -385,6 +417,12 @@ export default {
 .d2-crud-x {
   display: flex;
   flex-direction: column;
+  .d2p-handle-row-dropdown:first-child{
+    margin-left:0px
+  }
+  .d2p-handle-row-dropdown{
+    margin-left:10px
+  }
   .d2-crud-header {
     /*border-bottom: 1px dotted rgba(0, 0, 0, 0.2);*/
   }

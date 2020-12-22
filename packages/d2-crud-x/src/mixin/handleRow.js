@@ -35,6 +35,28 @@ export default {
       })
       return btns
     },
+    _handleDropdownBtnsAtleast () {
+      if (!this.rowHandle || !this.rowHandle.dropdown) {
+        return 0
+      }
+      return this.rowHandle.dropdown.atLeast || 0
+    },
+    _handleDropdownBtns () {
+      const btns = this._handleBtns
+      const atLeast = this._handleDropdownBtnsAtleast
+      if (atLeast >= btns.length) {
+        return
+      }
+      return btns.slice(atLeast)
+    },
+    _handleFlatBtns () {
+      const btns = this._handleBtns
+      const atLeast = this._handleDropdownBtnsAtleast
+      if (atLeast === 0) {
+        return []
+      }
+      return btns.slice(0, atLeast)
+    },
     _handleBtns () {
       const btns = []
       if (this.rowHandle.view) {
@@ -117,6 +139,9 @@ export default {
         return show(scope.index, scope.row)
       }
       return Boolean(show)
+    },
+    handleRowHandleDropdownItemClick ($event, scope) {
+      $event.doClick(scope)
     },
     /**
      * @description 控制操作列 disabled 的方法

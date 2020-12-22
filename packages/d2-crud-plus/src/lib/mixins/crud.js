@@ -234,7 +234,7 @@ export default {
      */
     async _doStart () {
       await this.initColumns()
-      this.doLoad()
+      await this.doLoad()
     },
 
     /**
@@ -244,11 +244,11 @@ export default {
      * 每个column的add、edit、search共用一个form.component的配置
      */
     async initColumns () {
+      this.initBefore()
       let crudOptions = this.getCrudOptions()
       if (crudOptions instanceof Promise) {
         crudOptions = await crudOptions
       }
-      await this.initBefore(crudOptions)
       const commonOptions = CommonOptionsUtil.create()
       mergeWith(commonOptions, crudOptions, (objValue, srcValue, key, object, source, stack) => {
         if (lodash.isArray(srcValue)) {

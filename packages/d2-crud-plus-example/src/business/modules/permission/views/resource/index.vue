@@ -46,28 +46,30 @@ export default {
     getCrudOptions () {
       return crudOptions(this)
     },
-    pageRequest (query) {
-      return GetTree(query).then(ret => {
-        const list = ret.data
-        ret.data = {
-          current: 1,
-          size: 10000,
-          total: 100,
-          records: list
+    async pageRequest (query) {
+      const ret = await GetTree(query)
+      const list = ret.data
+      ret.data = {
+        current: 1,
+        size: 10000,
+        total: 100,
+        records: list
+      }
+      this.$nextTick(async () => {
+        await this.$nextTick() // 多等一次
+        const data = this.getD2Crud().$refs.elTable.store.states.treeData
+        if (data != null) {
+          foreach(data, (value, key) => {
+            // 默认展开两层
+            if (value.children && value.level <= 1) {
+              value.expanded = true
+            }
+          })
         }
-        setTimeout(() => { // 注意：有风险，当后台返回数据很快，并且列表复杂渲染速度很慢，this.getD2Crud().$refs.elTable会报空指针异常
-          const data = this.getD2Crud().$refs.elTable.store.states.treeData
-          if (data != null) {
-            foreach(data, (value, key) => {
-              // 默认展开两层
-              if (value.children && value.level <= 1) {
-                value.expanded = true
-              }
-            })
-          }
-        }, 1)
-        return ret
+        await this.$nextTick()
+        this.getD2CrudTable().doLayout()
       })
+      return ret
     },
     clearResourceTreeDictCache () {
       d2CrudPlus.util.dict.clear('/permission/manager/resource/tree')

@@ -38,7 +38,7 @@ function findById (id, list) {
   }
 }
 export default {
-
+  findById,
   buildMock (options) {
     const name = options.name
     if (options.copyTimes == null) {

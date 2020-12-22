@@ -1,6 +1,7 @@
 import { request } from '@/api/service'
 export const crudOptions = (vm) => {
   return {
+    pagination: false,
     rowHandle: {
       view: {
         thin: true,

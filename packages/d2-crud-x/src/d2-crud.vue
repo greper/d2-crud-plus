@@ -52,7 +52,7 @@
             v-bind="forBindProps(selectionRow)"
           />
           <component
-            v-if="(expandRow || expandRow === '') && thisIsVxeTable"
+            v-if="(expandRow || expandRow === '')"
             :is="getTableColumnImpl()"
             type="expand"
             :title="handleAttribute(expandRow.title, '')"
@@ -141,9 +141,8 @@
             <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row" ></slot>
             <slot name="rowHandleSlot" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
             <!-- 下拉按钮菜单 -->
-            <span class="d2p-handle-row-dropdown" v-if="!isShowLineEditModeBtns(scope)" >
-              <el-dropdown  v-if="rowHandle.dropdown &&  _handleDropdownBtns && _handleDropdownBtns.length>0"
-                            @command="handleRowHandleDropdownItemClick($event,scope)">
+            <span class="d2p-handle-row-dropdown" v-if="!isShowLineEditModeBtns(scope) && rowHandle.dropdown &&  _handleDropdownBtns && _handleDropdownBtns.length>0" >
+              <el-dropdown @command="handleRowHandleDropdownItemClick($event,scope)">
                 <d2-button
                   :disabled="handleRowHandleButtonDisabled(rowHandle.dropdown.disabled, scope)"
                   :type="handleAttribute(rowHandle.dropdown.type,'primary',scope)"

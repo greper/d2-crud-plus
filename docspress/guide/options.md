@@ -158,8 +158,10 @@ export const crudOptions = {
          emit: 'custom-emit' 
       }
     ],
-    dropdown: {
-      atLeast: 2, // 至少2个以上才收入下拉框中，配置0全部按钮收入下拉框
+    dropdown: { //配置false关闭dropdown
+      // atLeast 至少几个以上按钮才收入下拉框中，配置0全部按钮收入下拉框
+      // 注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置，虽然它没有显示）
+      atLeast: 2, 
       text: '更多' // 按钮文字
     }, 
   },

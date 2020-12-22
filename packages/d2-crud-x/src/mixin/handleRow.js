@@ -38,25 +38,29 @@ export default {
     },
     _handleDropdownBtnsAtleast () {
       if (!this.rowHandle || !this.rowHandle.dropdown) {
-        return 0
+        return 999999
       }
       return this.rowHandle.dropdown.atLeast || 0
     },
     _handleDropdownBtns () {
       const btns = this._handleBtns
       const atLeast = this._handleDropdownBtnsAtleast
-      if (atLeast >= btns.length) {
+      if (atLeast > btns.length) {
         return
       }
-      return btns.slice(atLeast)
+      const dropdownBtns = btns.slice(atLeast)
+      logger.debug('dropdownbtns:', dropdownBtns)
+      return dropdownBtns
     },
     _handleFlatBtns () {
       const btns = this._handleBtns
       const atLeast = this._handleDropdownBtnsAtleast
-      if (atLeast === 0) {
-        return []
+      if (atLeast == null) {
+        return btns
       }
-      return btns.slice(0, atLeast)
+      const flatBtns = btns.slice(0, atLeast)
+      logger.debug('flatBtns:', flatBtns)
+      return flatBtns
     },
     _handleBtns () {
       const btns = []
@@ -171,6 +175,9 @@ export default {
         props.label = this.handleAttribute(rowHandle.columnHeader, '操作')
       }
       return props
+    },
+    isShowLineEditModeBtns (scope) {
+      return (this.lineEditor && this.lineEditor.active && scope.$index === this.lineEditor.index)
     }
   }
 }

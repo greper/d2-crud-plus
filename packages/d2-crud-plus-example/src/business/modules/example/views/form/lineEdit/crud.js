@@ -18,6 +18,9 @@ export const crudOptions = (vm) => {
       defaultSpan: 12 // 默认的表单 span
     },
     rowHandle: {
+      dropdown: {
+        atLeast: 2
+      },
       width: 260,
       fixed: 'right',
       edit: {

@@ -124,7 +124,7 @@
           <template slot-scope="scope">
 
             <template
-              v-for="(item, index) in ((lineEditor && lineEditor.active && scope.$index === lineEditor.index)?_lineEditModeBtns:_handleFlatBtns)"
+              v-for="(item, index) in (isShowLineEditModeBtns(scope)?_lineEditModeBtns:_handleFlatBtns)"
             >
               <d2-button :key="index"
                          v-if="handleRowHandleButtonShow(item.show, scope)"
@@ -141,8 +141,8 @@
             <slot name="rowHandle" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row" ></slot>
             <slot name="rowHandleSlot" :index="scope.$index" :rowIndex="scope.$rowIndex" :row="scope.row"></slot>
             <!-- 下拉按钮菜单 -->
-            <span class="d2p-handle-row-dropdown">
-              <el-dropdown  v-if="_handleDropdownBtns && _handleDropdownBtns.length>0"
+            <span class="d2p-handle-row-dropdown" v-if="!isShowLineEditModeBtns(scope)" >
+              <el-dropdown  v-if="rowHandle.dropdown &&  _handleDropdownBtns && _handleDropdownBtns.length>0"
                             @command="handleRowHandleDropdownItemClick($event,scope)">
                 <d2-button
                   :disabled="handleRowHandleButtonDisabled(rowHandle.dropdown.disabled, scope)"

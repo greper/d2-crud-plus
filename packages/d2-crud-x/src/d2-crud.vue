@@ -153,9 +153,7 @@
                   <i class="el-icon-arrow-down el-icon--right"></i>
                 </d2-button>
                 <el-dropdown-menu slot="dropdown"  >
-                  <template
-                    v-for="(item, index) in _handleDropdownBtns"
-                  >
+                  <template v-for="(item, index) in _handleDropdownBtns">
                     <el-dropdown-item :key="index"
                                       v-if="handleRowHandleButtonShow(item.show, scope)"
                                       :icon="handleAttribute(item.icon,null,scope)"

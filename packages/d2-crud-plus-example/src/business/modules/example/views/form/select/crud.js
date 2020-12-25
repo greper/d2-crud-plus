@@ -27,7 +27,7 @@ export const crudOptions = (vm) => {
       {
         title: 'ID',
         key: 'id',
-        width: 90,
+        width: 50,
         form: {
           disabled: true
         }
@@ -111,6 +111,11 @@ export const crudOptions = (vm) => {
             value: '2' // 默认值
           },
           helper: 'dict.getData可以覆盖全局配置的getRemoteDictFunc'
+        },
+        component: {
+          props: {
+            type: 'text' // 不使用tab，纯文本展示
+          }
         }
       },
       {

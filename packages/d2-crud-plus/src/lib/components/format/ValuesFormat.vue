@@ -175,4 +175,7 @@ export default {
   .d2p-values-format .tag-item{
     margin-right: 10px;
   }
+  .d2p-values-format>span{
+    margin-right: 5px;
+  }
 </style>

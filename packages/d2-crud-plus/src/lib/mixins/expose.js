@@ -110,6 +110,14 @@ export default {
     getEditForm () {
       return this.getD2Crud().formData
     },
+
+    /**
+     * 获取编辑框打开时，当前行的数据
+     * 仅在编辑对话框打开的情况下可用
+     */
+    getEditRow () {
+      return this.getD2Crud().formDataStorage
+    },
     /**
      * 获取编辑框的模式[view,edit,add]
      * 仅在编辑对话框打开的情况下可用

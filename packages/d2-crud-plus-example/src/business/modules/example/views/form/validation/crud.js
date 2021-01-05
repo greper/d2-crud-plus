@@ -62,7 +62,7 @@ export const crudOptions = (vm) => {
         align: 'left',
         form: {
           // 由于数组配置合并时是取并集，不同的部分需要分开配置
-          rules: [{ pattern: /^\d+$/, message: '必须为整数', trigger: 'blur' }],
+          rules: [{ pattern: /^\d+$/, message: '必须为整数' }],
           helper: '正则表达式'
         }
       },

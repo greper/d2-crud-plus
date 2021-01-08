@@ -283,7 +283,7 @@ export default {
      * @description 取消保存行数据
      */
     handleDialogCancel (done) {
-      if (this.formOptions.saveRemind) {
+      if (this.formOptions.saveRemind && this.formMode !== 'view') {
         if (!_isequal(this.formData, this.formDataBefore)) {
           // 提醒保存
           let confirm = this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {

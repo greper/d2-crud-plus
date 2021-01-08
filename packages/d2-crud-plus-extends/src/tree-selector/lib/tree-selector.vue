@@ -2,10 +2,11 @@
   <div class="d2p-tree-selector">
     <div  class="el-cascader el-cascader--default" :class="{'is-disabled':disabled}" @click="openDialog">
       <div class="el-input el-input--default el-input--suffix" :class="{'is-disabled':disabled}" >
-        <el-input ref="reference" :disabled="disabled" />
+        <el-input ref="reference" :disabled="disabled"  />
         <span class="el-input__suffix">
-          <span class="el-input__suffix-inner"><i class="el-input__icon el-icon-arrow-down" @click="openDialog"/>
-        </span>
+          <span class="el-input__suffix-inner">
+            <i class="el-input__icon el-icon-arrow-down" @click="openDialog"/>
+          </span>
         </span>
       </div>
       <div class="el-cascader__tags" ref="tags">
@@ -13,10 +14,11 @@
           <el-tag
             v-for="item in selected"
             :key="getValueKey(item)"
-            :closable="false"
+            :closable="clearable"
             :size="collapseTagSize"
             :hit="false"
             type="info"
+            @close="itemClosed(item)"
             disable-transitions>
             <span class="el-select__tags-text">{{ getValueLabel(item) }}</span>
           </el-tag>
@@ -24,14 +26,14 @@
       </div>
     </div>
     <el-dialog custom-class="d2p-tree-selector-dialog"
-      title="选择"
+      :title="dialogTitle"
       :visible.sync="dialogVisible"
       width="30%" append-to-body>
       <div class="tree-wrapper">
         <div v-if="treeFilter" class="filter-bar" style="padding-bottom: 20px">
           <el-input
             prefix-icon="el-icon-search"
-            placeholder="输入关键字进行过滤"
+            :placeholder="filterPlaceholder"
             v-model="filterText" size="small" >
           </el-input>
         </div>
@@ -50,8 +52,8 @@
       </div>
 
       <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">取 消</el-button>
-          <el-button type="primary" @click="selectSubmit">确 定</el-button>
+          <el-button @click="dialogVisible = false">{{cancelText}}</el-button>
+          <el-button type="primary" @click="selectSubmit">{{confirmText}}</el-button>
         </span>
     </el-dialog>
   </div>
@@ -75,6 +77,23 @@ export default {
       type: Function,
       require: false
     },
+    // 过滤的placeholder
+    filterPlaceholder: {
+      type: String,
+      default: '输入关键字进行过滤'
+    },
+    dialogTitle: {
+      type: String,
+      default: '选择'
+    },
+    cancelText: {
+      type: String,
+      default: '取消'
+    },
+    confirmText: {
+      type: String,
+      default: '确定'
+    },
     // 树形组件节点过滤，可以配置elProps.filterNodeMethod ，覆盖默认的过滤方法
     treeFilter: {
       type: Boolean,
@@ -95,6 +114,9 @@ export default {
     // el-tree的属性配置
     elProps: {
       type: Object
+    },
+    clearable: {
+      type: Boolean
     },
     // 数据字典配置
     dict: {
@@ -254,8 +276,11 @@ export default {
     },
     selectSubmit () {
       const nodes = this.refreshSelected()
-      let values = this.formatValue(nodes)
       this.dialogVisible = false
+      this.doValueInputChanged(nodes)
+    },
+    doValueInputChanged (nodes) {
+      let values = this.formatValue(nodes)
       this.resetInputHeight()
       if (!this.multiple) {
         values = values && values.length > 0 ? values[0] : undefined
@@ -263,6 +288,12 @@ export default {
       this.currentValue = values
       this.dispatch('ElFormItem', 'el.form.blur')
       this.$emit('input', values)
+    },
+    itemClosed (item) {
+      const newNodes = lodash.without(this.selected, item)
+      console.log('new value', item, newNodes)
+      this.$set(this, 'selected', newNodes)
+      this.doValueInputChanged(newNodes)
     },
     refreshSelected () {
       let nodes = null

@@ -229,6 +229,7 @@ export default {
       return rowData
     },
     buildEditSubmitData () {
+      debugger
       const rowData = _clonedeep(this.formDataStorage)
       _forEach(this.formData, (value, key) => {
         if (value == null && this.formOptions && this.formOptions.nullToBlankStr) {
@@ -276,6 +277,23 @@ export default {
           })
         } else if (this.formMode === 'view') {
           this.handleDialogSaveDone(rowData)
+        } else {
+          // 自定义表单
+          rowData = this.formData
+          this.$emit('row-' + this.formMode, {
+            index: this.editIndex,
+            row: this.formDataStorage,
+            form: rowData
+          }, (param = null) => {
+            if (param === false) {
+              this.handleCloseDialog()
+              return
+            }
+            this.handleDialogSaveDone({
+              ...rowData,
+              ...param
+            })
+          })
         }
       })
     },

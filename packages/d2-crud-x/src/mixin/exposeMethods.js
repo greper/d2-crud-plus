@@ -42,7 +42,25 @@ export default {
         this.handleAdd(template, addData)
       } else if (mode === 'view') {
         this.handleView(rowIndex, this.d2CrudData[rowIndex], template)
+      } else {
+        let row = addData
+        if (rowIndex != null) {
+          row = this.d2CrudData[rowIndex]
+        }
+        this.handleCustomDialog(mode, rowIndex, row, template)
       }
+    },
+    handleCustomDialog (mode, rowIndex, row, template) {
+      this.formMode = mode
+      this.$emit('dialog-open', {
+        mode: mode,
+        row
+      })
+      this.editIndex = rowIndex
+      if (!template) {
+        throw new Error('template不能为空')
+      }
+      return this.openDialog(rowIndex, row, template)
     },
     /**
      * @description 外部暴露的关闭模态框方法

@@ -27,6 +27,13 @@ export const crudOptions = (vm) => {
           size: 'small',
           emit: 'custom-emit',
           order: 1 // 数字越小越排前面
+        },
+        {
+          text: '自定义对话框',
+          type: 'warning',
+          size: 'small',
+          emit: 'custom-dialog',
+          order: 5 // 数字越小越排前面
         }
       ]
     },

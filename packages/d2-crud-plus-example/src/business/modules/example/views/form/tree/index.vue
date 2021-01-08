@@ -16,6 +16,12 @@
         <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus"/> 新增</el-button>
         <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners"/>
       </div>
+
+      <template slot="FormBodyAppendSlot">
+        <el-button size="small" @click="doClearDict">clearDict</el-button>
+        <el-button size="small" @click="doReloadDict">reloadDict</el-button>
+        <el-button size="small" @click="doGetDictData">getDictData</el-button>
+      </template>
     </d2-crud-x>
   </d2-container>
 </template>
@@ -46,6 +52,18 @@ export default {
     },
     delRequest (row) {
       return DelObj(row.id)
+    },
+    doClearDict () {
+      this.getFormComponentRef('tree3').clearDict()
+    },
+    doReloadDict () {
+      this.getFormComponentRef('tree3').reloadDict()
+    },
+    doGetDictData () {
+      const data = this.getFormComponentRef('tree3').getDictData()
+      this.$alert(JSON.stringify(data), 'dictData', {
+        confirmButtonText: '确定'
+      })
     }
   }
 }

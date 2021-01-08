@@ -40,7 +40,7 @@
 
         <div class="tree-body">
           <el-tree
-            :data="data"
+            :data="_options"
             @check-change="handleCheckChange"
             @current-change="handleCurrentChange"
             :filterNodeMethod="filterNode"
@@ -66,7 +66,7 @@ import log from '../../utils/util.log'
 // 树形选择组件，需要import {D2pTreeSelector} from 'd2p-extends'
 export default {
   name: 'd2p-tree-selector',
-  mixins: [d2CrudPlus.inputBase],
+  mixins: [d2CrudPlus.input, d2CrudPlus.inputDict],
   props: {
     // 值
     value: {
@@ -115,8 +115,12 @@ export default {
     elProps: {
       type: Object
     },
+    /**
+     * 是否可以清除
+     */
     clearable: {
-      type: Boolean
+      type: Boolean,
+      default: true
     },
     // 数据字典配置
     dict: {
@@ -128,7 +132,6 @@ export default {
     return {
       currentValue: undefined,
       collapseTags: false,
-      data: [],
       selected: [],
       dialogVisible: false,
       filterText: undefined
@@ -138,7 +141,7 @@ export default {
     // if (this.dict) {
     //   this.dict = d2CrudPlus.util.dict.mergeDefault(this.dict, true)
     // }
-    this.initData()
+    // this.initData()
   },
   computed: {
     _elProps () {
@@ -173,14 +176,21 @@ export default {
     }
   },
   methods: {
-    initData () {
-      d2CrudPlus.util.dict.get(this.dict).then(ret => {
-        this.$set(this, 'data', ret)
-        this.setValue(this.value)
-      })
+    // initData () {
+    //   d2CrudPlus.util.dict.get(this.dict).then(ret => {
+    //     this.$set(this, 'data', ret)
+    //     this.setValue(this.value)
+    //   })
+    // },
+    onDictLoaded () {
+      log.debug('onDictLoaded')
+      this.setValue(this.value)
     },
     setValue (value) {
       if (this.currentValue === this.value) {
+        return
+      }
+      if (this._options == null || this._options.length === 0) {
         return
       }
       let arrValue = value
@@ -198,7 +208,7 @@ export default {
       } else {
         const nodes = []
         for (const item of arrValue) {
-          const data = this.data
+          const data = this._options
           const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)
           if (node != null) {
             nodes.push(node)

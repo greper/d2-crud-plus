@@ -1,5 +1,5 @@
 import dict from '../utils/util.dicts'
-
+import log from '../utils/util.log'
 export default {
   inject: {
     d2CrudContext: {
@@ -71,8 +71,11 @@ export default {
       this.dict.data = undefined
       this.dict.dataMap = undefined
       this.dictOptions = undefined
+      log.debug('clearDict')
+      this.onDictChanged()
     },
     reloadDict () {
+      log.debug('reloadDict')
       this.clearDict()
       // 清空可选项
       if (this.dict.url) {
@@ -81,9 +84,11 @@ export default {
       }
     },
     getDictData () {
+      log.debug('getDictData')
       return this._options
     },
     loadDict () {
+      log.debug('loadDict')
       const options = { component: this }
       if (this.d2CrudContext) {
         options.form = this.d2CrudContext.getForm()
@@ -97,10 +102,14 @@ export default {
       })
     },
     setDictData (data) {
+      log.debug('setDictData')
       this.$set(this, 'dictOptions', data)
     },
     onDictLoaded () {
-
+      log.debug('onDictLoaded')
+    },
+    onDictChanged () {
+      log.debug('onDictChanged')
     }
   }
 }

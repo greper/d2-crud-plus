@@ -10,6 +10,7 @@
               :type="item[dict.color]"
               @click="onClick(item)"
               :effect="item.effect"
+              v-bind="elProps"
       >
         {{item[dict.label]}}
       </el-tag>
@@ -62,6 +63,13 @@ export default {
     // 自动主题列表，【 light, plain 】
     autoEffects: {
       type: Array
+    },
+    // el-tag的参数
+    elProps: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     },
     // 展示类型【text, tag】
     type: {

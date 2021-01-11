@@ -205,14 +205,18 @@ export default {
     },
     fetchDetail (index, row, formMode, modeContext) {
       if (this.options.fetchDetail != null) {
-        const ret = this.options.fetchDetail(index, row, formMode, modeContext)
-        if (ret instanceof Promise) {
-          return ret
-        } else {
-          return new Promise(resolve => {
+        let ret = this.options.fetchDetail(index, row, formMode, modeContext)
+        if (!(ret instanceof Promise)) {
+          ret = new Promise(resolve => {
             resolve(ret)
           })
         }
+        if (this.options.fetchDetailAppendHandler) {
+          ret = ret.then((info) => {
+            this.options.fetchDetailAppendHandler(info, index, row, formMode, modeContext)
+          })
+        }
+        return ret
       } else {
         return new Promise(resolve => {
           if (row != null) {

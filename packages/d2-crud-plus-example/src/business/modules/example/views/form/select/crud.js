@@ -84,6 +84,11 @@ export const crudOptions = (vm) => {
             click (event) {
               console.log('点击事件', event)
             }
+          },
+          props: {
+            elProps: {
+              disableTransitions: true
+            }
           }
         }
       },

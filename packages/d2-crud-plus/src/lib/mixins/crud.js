@@ -75,7 +75,11 @@ export default {
           border: true,
           highlightCurrentRow: false,
           size: 'mini',
-          maxHeightAdjust: undefined //
+          maxHeightAdjust: undefined, //
+          fetchDetailAppendHandler: (info) => {
+            this._doRowValueBuilder([info])
+            log.debug('fetchDetailAppendHandler', info)
+          }
         },
         columns: [],
         addTemplate: {},
@@ -665,14 +669,8 @@ export default {
         const current = format(data, pageFormat.current)
         const size = format(data, pageFormat.size)
         const total = format(data, pageFormat.total)
-        for (const key in this.crud.columnsMap) {
-          const col = this.crud.columnsMap[key]
-          if (col.valueBuilder) {
-            for (const row of records) {
-              col.valueBuilder(row, col)
-            }
-          }
-        }
+
+        this._doRowValueBuilder(records)
 
         if (records == null || current == null || size == null || total == null) {
           console.warn('请确保format配置或response的格式正确,response:', ret, ',format:', pageFormat)
@@ -695,6 +693,16 @@ export default {
         this.crud.loading = false
         this.doAfterRefresh(query, options)
       })
+    },
+    _doRowValueBuilder (records) {
+      for (const key in this.crud.columnsMap) {
+        const col = this.crud.columnsMap[key]
+        if (col.valueBuilder) {
+          for (const row of records) {
+            col.valueBuilder(row, col)
+          }
+        }
+      }
     },
     /**
      * 拍平数据

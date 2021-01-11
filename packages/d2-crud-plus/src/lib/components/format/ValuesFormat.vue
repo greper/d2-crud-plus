@@ -10,7 +10,7 @@
               :type="item[dict.color]"
               @click="onClick(item)"
               :effect="item.effect"
-              v-bind="elProps"
+              v-bind="_elProps"
       >
         {{item[dict.label]}}
       </el-tag>
@@ -20,6 +20,7 @@
 
 <script>
 import formatDict from '../../mixins/format-dict'
+import { merge } from 'lodash'
 const COLOR_LIST = ['primary', 'success', 'warning', 'danger']
 const EFFECT_LIST = ['plain', 'light']
 
@@ -66,10 +67,7 @@ export default {
     },
     // el-tag的参数
     elProps: {
-      type: Object,
-      default: () => {
-        return {}
-      }
+      type: Object
     },
     // 展示类型【text, tag】
     type: {
@@ -85,6 +83,11 @@ export default {
     return {}
   },
   computed: {
+    _elProps () {
+      const defaultElProps = { }
+      merge(defaultElProps, this.elProps)
+      return defaultElProps
+    },
     _items () {
       if (this.value == null || this.value === '') {
         return []

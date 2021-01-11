@@ -47,7 +47,7 @@ const uploadGroupMenu = addPage(formMenus, null, '文件上传')
 const uploadMenus = uploadGroupMenu.children
 addPage(uploadMenus, 'form/uploader', '文件上传')
 addPage(uploadMenus, 'form/cropper', '图片裁剪上传')
-addPage(uploadMenus, 'form/uploader/form', '本地上传')
+addPage(uploadMenus, 'form/uploader/form', '表单上传')
 addPage(uploadMenus, 'form/uploader/cos', '腾讯云上传')
 addPage(uploadMenus, 'form/uploader/alioss', '阿里云上传')
 addPage(uploadMenus, 'form/uploader/qiniu', '七牛上传')

@@ -29,7 +29,8 @@ export const crudOptions = (vm) => {
           component: {
             props: {
               uploader: {
-                type: 'form'
+                type: 'form',
+                withCredentials: true
               }
             },
             rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交

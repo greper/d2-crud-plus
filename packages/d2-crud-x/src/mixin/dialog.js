@@ -213,7 +213,7 @@ export default {
         }
         if (this.options.fetchDetailAppendHandler) {
           ret = ret.then((info) => {
-            this.options.fetchDetailAppendHandler(info, index, row, formMode, modeContext)
+            return this.options.fetchDetailAppendHandler(info, index, row, formMode, modeContext)
           })
         }
         return ret

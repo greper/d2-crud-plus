@@ -79,6 +79,7 @@ export default {
           fetchDetailAppendHandler: (info) => {
             this._doRowValueBuilder([info])
             log.debug('fetchDetailAppendHandler', info)
+            return info
           }
         },
         columns: [],

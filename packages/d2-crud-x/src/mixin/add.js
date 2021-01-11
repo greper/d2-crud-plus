@@ -3,7 +3,7 @@ export default {
     /**
      * @description 新增行数据
      */
-    handleAdd (templage = null, addData) {
+    handleAdd (templage = null, addData, modeContext) {
       this.formMode = 'add'
       this.$emit('dialog-open', {
         mode: 'add'
@@ -15,7 +15,7 @@ export default {
         addData = undefined
       }
 
-      return this.openDialog(undefined, addData, templage)
+      return this.openDialog(null, addData, templage, modeContext)
 
       // const formData = {}
       // this.formTemplateStorage = templage ? _clonedeep(templage) : {}

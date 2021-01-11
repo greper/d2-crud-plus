@@ -155,6 +155,10 @@ export default {
             title: '添加字段1',
             key: 'key2'
           }
+        },
+        rowIndex: null,
+        modeContext: {
+          test: '这里是modeContext----add'
         }
       })
     },
@@ -166,13 +170,16 @@ export default {
       console.log('context,', context)
       // 打开自定义模版的对话框
       this.getD2Crud().showDialog({
-        mode: 'custom', // 当前打开模式,可选项[add,edit,view]
+        mode: 'custom', // 当前打开模式,可选项[add,edit,view, 还可以自定义任意字符串]
         rowIndex: context.index, // 编辑或查看时，哪一行的数据
         template: {
           key1: {
             title: '字段1',
             key: 'key1'
           }
+        },
+        modeContext: {
+          test: '这里是modeContext---edit'
         }
       })
     },
@@ -184,13 +191,16 @@ export default {
     customDialogSave (data, done) {
       console.log('自定义对话框确认', data)
       this.$alert(JSON.stringify(data), '保存的数据')
-
+      console.log('modeContext', data)
       // 按钮loading
       this.crud.formOptions.saveLoading = true
       setTimeout(() => {
         done() // 关闭对话框
         this.crud.formOptions.saveLoading = false
       }, 1000)
+    },
+    doDialogClosed (context) {
+      console.log('dialog closed', context)
     }
 
   }

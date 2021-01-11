@@ -17,7 +17,7 @@ export default {
      * @param {Object} row 行数据
      * @param templage
      */
-    handleEdit (index, row, templage = null) {
+    handleEdit (index, row, templage = null, modeContext) {
       this.formMode = 'edit'
       this.$emit('dialog-open', {
         mode: 'edit',
@@ -27,7 +27,7 @@ export default {
       if (!templage) {
         templage = this.editTemplate
       }
-      return this.openDialog(index, row, templage)
+      return this.openDialog(index, row, templage, modeContext)
     },
 
     async lineEditAdd ({ addData = {}, templage }) {

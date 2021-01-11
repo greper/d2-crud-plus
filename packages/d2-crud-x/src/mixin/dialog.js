@@ -87,6 +87,7 @@ export default {
        * @description 表单模板暂存
        */
       formTemplateStorage: {},
+      formModeContext: null,
       formTemplateGroupStorage: {},
       formGroupsActive: []
     }
@@ -118,7 +119,7 @@ export default {
     getFormData () {
       return this.formData
     },
-    async buildFormData (index, row, templage) {
+    async buildFormData (index, row, templage, modeContext) {
       if (templage == null) {
         console.warn('template为空,mode:', this.formMode)
         templage = {}
@@ -135,7 +136,7 @@ export default {
           tempGroups[key] = value
         })
       }
-      let newRow = await this.fetchDetail(index, row, this.formMode)
+      let newRow = await this.fetchDetail(index, row, this.formMode, modeContext)
       newRow = newRow || {}
       this.formDataStorage = newRow
       const formGroupsActive = []
@@ -187,8 +188,9 @@ export default {
         })
       }
     },
-    async openDialog (index, row, templage) {
-      const { newRow, formData } = await this.buildFormData(index, row, templage)
+    async openDialog (index, row, templage, modeContext = null) {
+      this.formModeContext = modeContext
+      const { newRow, formData } = await this.buildFormData(index, row, templage, modeContext)
 
       this.handleDialogShowUpdate(true)
 
@@ -197,12 +199,13 @@ export default {
         row: newRow,
         form: formData,
         template: this.formTemplateStorage,
-        groupTemplate: this.formTemplateGroupStorage
+        groupTemplate: this.formTemplateGroupStorage,
+        modeContext
       })
     },
-    fetchDetail (index, row, formMode) {
+    fetchDetail (index, row, formMode, modeContext) {
       if (this.options.fetchDetail != null) {
-        const ret = this.options.fetchDetail(index, row, formMode)
+        const ret = this.options.fetchDetail(index, row, formMode, modeContext)
         if (ret instanceof Promise) {
           return ret
         } else {
@@ -229,7 +232,6 @@ export default {
       return rowData
     },
     buildEditSubmitData () {
-      debugger
       const rowData = _clonedeep(this.formDataStorage)
       _forEach(this.formData, (value, key) => {
         if (value == null && this.formOptions && this.formOptions.nullToBlankStr) {
@@ -252,7 +254,8 @@ export default {
           rowData = this.buildEditSubmitData()
           this.$emit('row-edit', {
             index: this.editIndex,
-            row: rowData
+            row: rowData,
+            modeContext: this.formModeContext
           }, (param = null) => {
             if (param === false) {
               this.handleCloseDialog()
@@ -274,7 +277,7 @@ export default {
               ...rowData,
               ...param
             })
-          })
+          }, { modeContext: this.modeContext })
         } else if (this.formMode === 'view') {
           this.handleDialogSaveDone(rowData)
         } else {
@@ -283,7 +286,8 @@ export default {
           this.$emit('row-' + this.formMode, {
             index: this.editIndex,
             row: this.formDataStorage,
-            form: rowData
+            form: rowData,
+            modeContext: this.formModeContext
           }, (param = null) => {
             if (param === false) {
               this.handleCloseDialog()
@@ -355,7 +359,8 @@ export default {
       this.$emit('dialog-closed', {
         mode: this.formMode,
         row: this.formDataStorage,
-        form: this.formData
+        form: this.formData,
+        modeContext: this.formModeContext
       })
     }
   }

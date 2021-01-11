@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/greper/d2-crud-plus/compare/v2.14.0...v2.15.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* [#128](https://github.com/greper/d2-crud-plus/issues/128) 树形组件支持清除 ([63c3caa](https://github.com/greper/d2-crud-plus/commit/63c3caa8b309e7055094c3d538485e9bbbc795ec))
+* [#129](https://github.com/greper/d2-crud-plus/issues/129) [#128](https://github.com/greper/d2-crud-plus/issues/128) 优化树形组件，支持ref字典操作 ([85f7627](https://github.com/greper/d2-crud-plus/commit/85f7627096f7aa0a0f4116e079068566907ca938))
+* [#133](https://github.com/greper/d2-crud-plus/issues/133) fit属性无效的bug ([a5c286c](https://github.com/greper/d2-crud-plus/commit/a5c286c7c1a8884ec72424dad994f26bb46859c6))
+
+
+
+
+
 # [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
 
 

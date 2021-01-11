@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/greper/d2-crud-plus/compare/v2.14.0...v2.15.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* [#124](https://github.com/greper/d2-crud-plus/issues/124) fetchDetail会经过valueBuilder处理 ([f995c10](https://github.com/greper/d2-crud-plus/commit/f995c10e432d28f36d928513a47a1a2878dc5d4a))
+* [#135](https://github.com/greper/d2-crud-plus/issues/135) 关闭查看模式下的修改检测提示 ([304311d](https://github.com/greper/d2-crud-plus/commit/304311d904fd3351e31e658ba4b237aad4a25861))
+
+
+### Features
+
+* 自定义表单对话框 ([09cb596](https://github.com/greper/d2-crud-plus/commit/09cb59675aa2b034b09f367498226fbf1d6c9451))
+* showDialog 支持自定义mode，同时增加modeContext参数，支持mode=edit的同时可以有不同的处理 ([168face](https://github.com/greper/d2-crud-plus/commit/168facecae56b4c943777010763ce6c93480e69a))
+
+
+
+
+
 # [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
 
 

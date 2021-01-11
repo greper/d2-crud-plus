@@ -13,6 +13,7 @@
 |effect|-|—|`false`|-|
 |autoColors|自动颜色列表，【 primary, success, warning, danger 】|`Array`|`false`|-|
 |autoEffects|自动主题列表，【 light, plain 】|`Array`|`false`|-|
+|elProps|el-tag的参数|`Object`|`false`|-|
 |type|展示类型【text, tag】|—|`false`|'tag'|
 |changeReload|valuechange 是否reload|—|`false`|undefined|
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/greper/d2-crud-plus/compare/v2.14.0...v2.15.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* [#124](https://github.com/greper/d2-crud-plus/issues/124) fetchDetail会经过valueBuilder处理 ([f995c10](https://github.com/greper/d2-crud-plus/commit/f995c10e432d28f36d928513a47a1a2878dc5d4a))
+* [#129](https://github.com/greper/d2-crud-plus/issues/129) [#128](https://github.com/greper/d2-crud-plus/issues/128) 优化树形组件，支持ref字典操作 ([85f7627](https://github.com/greper/d2-crud-plus/commit/85f7627096f7aa0a0f4116e079068566907ca938))
+* [#132](https://github.com/greper/d2-crud-plus/issues/132) 支持关闭tag动画 ([eda454d](https://github.com/greper/d2-crud-plus/commit/eda454d54c2293716fcbe5313df648230cb9ec31))
+* 最后一页，切换每页条数时，current为小数的bug ([6f37a03](https://github.com/greper/d2-crud-plus/commit/6f37a031f6bca062864f02d4d873c346a0914610))
+
+
+### Features
+
+* showDialog 支持自定义mode，同时增加modeContext参数，支持mode=edit的同时可以有不同的处理 ([168face](https://github.com/greper/d2-crud-plus/commit/168facecae56b4c943777010763ce6c93480e69a))
+
+
+
+
+
 # [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
 
 

@@ -1,3 +1,5 @@
+import * as Api from '@/business/modules/example/views/form/area/api'
+
 export const crudOptions = {
   options: {
     height: '100%'
@@ -47,6 +49,41 @@ export const crudOptions = {
           props: { multiple: false, clearable: true }
         },
         rules: [{ required: true, message: '请选择' }]
+      }
+    },
+    {
+      title: '树形懒加载',
+      key: 'tree5',
+      type: 'tree-selector',
+      dict: {
+        isTree: true,
+        label: 'name',
+        value: 'code',
+        getNodes (values) { // 配置行展示远程获取nodes
+          return Api.GetNodesByValues(values)
+        }
+      },
+      form: {
+        component: {
+          span: 24,
+          props: {
+            multiple: false,
+            elProps: {
+              lazy: true,
+              load (node, resolve) { // 懒加载
+                if (node.level === 0) {
+                  Api.GetTreeChildrenByParentId().then(data => {
+                    resolve(data)
+                  })
+                  return
+                }
+                Api.GetTreeChildrenByParentId(node.data.code).then(data => {
+                  resolve(data)
+                })
+              }
+            }
+          }
+        }
       }
     }
   ]

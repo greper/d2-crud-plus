@@ -183,14 +183,12 @@ export default {
     //   })
     // },
     onDictLoaded () {
-      log.debug('onDictLoaded')
+      log.debug('onDictLoaded', this.dict, this.value)
       this.setValue(this.value)
     },
     setValue (value) {
+      log.debug('setValue:', this.currentValue, this.value, this._options)
       if (this.currentValue === this.value) {
-        return
-      }
-      if (this._options == null || this._options.length === 0) {
         return
       }
       let arrValue = value
@@ -202,11 +200,15 @@ export default {
         arrValue = [arrValue]
       }
       if (this.dict.getNodes) {
+        log.debug('getNodes:', arrValue)
         this.dict.getNodes(arrValue).then(nodes => {
           this.selectedNodes(nodes, value)
         })
       } else {
         const nodes = []
+        if (this._options == null || this._options.length === 0) {
+          return
+        }
         for (const item of arrValue) {
           const data = this._options
           const node = d2CrudPlus.util.dict.getByValue(item, data, this.dict)

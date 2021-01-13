@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.3](https://github.com/greper/d2-crud-plus/compare/v2.15.2...v2.15.3) (2021-01-13)
+
+
+### Bug Fixes
+
+* 删除debugger ([0d33498](https://github.com/greper/d2-crud-plus/commit/0d33498ac5aa087e7e8bf901b0d7f3d62711ec15))
+
+
+
+
+
 ## [2.15.2](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.15.2) (2021-01-13)
 
 

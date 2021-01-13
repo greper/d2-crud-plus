@@ -166,11 +166,6 @@ export default {
     }
   },
   watch: {
-    value (value) {
-      this.$emit('change', value)
-      this.dispatch('ElFormItem', 'el.form.blur')
-      this.setValue(value)
-    },
     filterText (val) {
       this.$refs.elTree.filter(val)
     }
@@ -378,6 +373,11 @@ export default {
     filterNode (value, data) {
       if (!value) return true
       return this.getValueLabel(data).indexOf(value) !== -1
+    },
+    onChange (value) {
+      this.$emit('change', value)
+
+      this.dispatch('ElFormItem', 'el.form.blur')
     }
   }
 }

@@ -64,6 +64,9 @@ export const crudOptions = {
         }
       },
       form: {
+        valueChange (value, key) {
+          console.log('value chagned:', key, value)
+        },
         component: {
           span: 24,
           props: {

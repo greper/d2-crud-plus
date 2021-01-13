@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.2](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.15.2) (2021-01-13)
+
+
+### Bug Fixes
+
+* 树形组件onchange触发两次的bug ([87426b2](https://github.com/greper/d2-crud-plus/commit/87426b2dc1e975a3ec77ff07678e523075fab9b3))
+
+
+
+
+
 ## [2.15.1](https://github.com/greper/d2-crud-plus/compare/v2.15.0...v2.15.1) (2021-01-12)
 
 

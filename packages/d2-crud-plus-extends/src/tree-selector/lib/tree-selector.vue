@@ -194,7 +194,7 @@ export default {
       if (!(arrValue instanceof Array)) {
         arrValue = [arrValue]
       }
-      if (this.dict.getNodes) {
+      if (this.dict && this.dict.getNodes) {
         log.debug('getNodes:', arrValue)
         this.dict.getNodes(arrValue).then(nodes => {
           this.selectedNodes(nodes, value)

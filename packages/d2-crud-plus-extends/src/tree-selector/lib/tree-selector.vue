@@ -388,6 +388,9 @@ export default {
   .el-cascader{
     width: 100%;
   }
+  .is-disabled .el-tag__close.el-icon-close {
+    display: none;
+  }
 }
 .d2p-tree-selector-dialog{
   &.el-dialog{

@@ -120,6 +120,7 @@ export default {
           btns.push({
             doClick: (scope) => {
               scope = this.getCellScope(scope)
+              scope.self = item
               if (!item.emit) {
                 logger.warn('该按钮还未配置emit')
                 return

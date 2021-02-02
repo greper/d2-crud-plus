@@ -1140,7 +1140,10 @@ export default {
       const type = exportOptions.type ? exportOptions.type : 'excel'
       this.$export[type](options)
         .then(() => {
-          this.$message('导出成功')
+          this.$message({
+            message: '导出成功',
+            type: 'success'
+          })
         })
     }
 

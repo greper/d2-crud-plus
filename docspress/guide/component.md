@@ -33,7 +33,7 @@ component:{ //添加和修改时form表单的组件
   on:{ //除input change事件外，更多组件事件监听
     select(event){console.log(event)} //监听表单组件的select事件
   },
-  scopedSlots:{ //scoped插槽jsx
+  slots:{ //scoped插槽jsx
      default:(h,scope)=>{ //默认的scoped插槽
         return (<div>{scope.data}</div>)
      }

@@ -499,6 +499,10 @@ export default {
       max-height:70vh;
       display: flex;
       flex-direction: column;
+
+      &.is-fullscreen{
+        max-height:100%;
+      }
       .el-dialog__body{
         overflow-y: auto;
         flex:1;

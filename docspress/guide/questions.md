@@ -254,6 +254,25 @@ this.$nextTick(() => {
 })
 ```
 
+
+例如：
+
+```js
+export default {
+  methods: {
+    async pageRequest (query) {
+      const ret = await  GetList(query)
+        // 请至少保证有一列没有设置固定宽度，否则也会有错位问题
+        // 修复合计行错位问题
+        this.$nextTick(async () => { // 这里要异步执行
+            // await this.$nextTick() //如果一次nextTick不行，那就两次
+            this.getD2CrudTable().store.scheduleLayout()
+        }) // 等待加载完成后触发重排布局
+    },
+  }
+}
+```
+
 [错位解决方案演示](http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/column)
 看下方合计行
 

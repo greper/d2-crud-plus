@@ -15,7 +15,7 @@ export default {
      * @param {Object} row 行数据
      * @param templage
      */
-    handleView (index, row, templage = null) {
+    handleView (index, row, templage = null, modeContext) {
       this.formMode = 'view'
       this.$emit('dialog-open', {
         mode: 'view',
@@ -25,7 +25,7 @@ export default {
       if (!templage) {
         templage = this.viewTemplate
       }
-      return this.openDialog(index, row, templage)
+      return this.openDialog(index, row, templage, modeContext)
     }
 
   }

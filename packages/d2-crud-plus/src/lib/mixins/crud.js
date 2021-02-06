@@ -75,7 +75,12 @@ export default {
           border: true,
           highlightCurrentRow: false,
           size: 'mini',
-          maxHeightAdjust: undefined //
+          maxHeightAdjust: undefined, //
+          fetchDetailAppendHandler: (info) => {
+            this._doRowValueBuilder([info])
+            log.debug('fetchDetailAppendHandler', info)
+            return info
+          }
         },
         columns: [],
         addTemplate: {},
@@ -665,14 +670,8 @@ export default {
         const current = format(data, pageFormat.current)
         const size = format(data, pageFormat.size)
         const total = format(data, pageFormat.total)
-        for (const key in this.crud.columnsMap) {
-          const col = this.crud.columnsMap[key]
-          if (col.valueBuilder) {
-            for (const row of records) {
-              col.valueBuilder(row, col)
-            }
-          }
-        }
+
+        this._doRowValueBuilder(records)
 
         if (records == null || current == null || size == null || total == null) {
           console.warn('请确保format配置或response的格式正确,response:', ret, ',format:', pageFormat)
@@ -687,7 +686,7 @@ export default {
         this.$set(this.crud, 'list', records)
 
         if (requestCurrent > 1 && records && records.length === 0) {
-          const pageTotal = total % size === 0 ? total / size : total / size + 1
+          const pageTotal = total % size === 0 ? Math.floor(total / size) : Math.floor(total / size) + 1
           this.doPageTurn(pageTotal)
           this.doRefresh(options)
         }
@@ -695,6 +694,16 @@ export default {
         this.crud.loading = false
         this.doAfterRefresh(query, options)
       })
+    },
+    _doRowValueBuilder (records) {
+      for (const key in this.crud.columnsMap) {
+        const col = this.crud.columnsMap[key]
+        if (col.valueBuilder) {
+          for (const row of records) {
+            col.valueBuilder(row, col)
+          }
+        }
+      }
     },
     /**
      * 拍平数据
@@ -1131,7 +1140,10 @@ export default {
       const type = exportOptions.type ? exportOptions.type : 'excel'
       this.$export[type](options)
         .then(() => {
-          this.$message('导出成功')
+          this.$message({
+            message: '导出成功',
+            type: 'success'
+          })
         })
     }
 

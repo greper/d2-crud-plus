@@ -34,15 +34,34 @@ export default {
       mode,
       rowIndex = 0,
       template = null,
-      addData = null
+      addData = null,
+      modeContext = null
     }) {
       if (mode === 'edit') {
-        this.handleEdit(rowIndex, this.d2CrudData[rowIndex], template)
+        this.handleEdit(rowIndex, this.d2CrudData[rowIndex], template, modeContext)
       } else if (mode === 'add') {
-        this.handleAdd(template, addData)
+        this.handleAdd(template, addData, modeContext)
       } else if (mode === 'view') {
-        this.handleView(rowIndex, this.d2CrudData[rowIndex], template)
+        this.handleView(rowIndex, this.d2CrudData[rowIndex], template, modeContext)
+      } else {
+        let row = addData
+        if (rowIndex != null) {
+          row = this.d2CrudData[rowIndex]
+        }
+        this.handleCustomDialog(mode, rowIndex, row, template, modeContext)
       }
+    },
+    handleCustomDialog (mode, rowIndex, row, template, modeContext) {
+      this.formMode = mode
+      this.$emit('dialog-open', {
+        mode: mode,
+        row
+      })
+      this.editIndex = rowIndex
+      if (!template) {
+        throw new Error('template不能为空')
+      }
+      return this.openDialog(rowIndex, row, template, modeContext)
     },
     /**
      * @description 外部暴露的关闭模态框方法

@@ -87,6 +87,7 @@ export default {
        * @description 表单模板暂存
        */
       formTemplateStorage: {},
+      formModeContext: null,
       formTemplateGroupStorage: {},
       formGroupsActive: []
     }
@@ -118,7 +119,7 @@ export default {
     getFormData () {
       return this.formData
     },
-    async buildFormData (index, row, templage) {
+    async buildFormData (index, row, templage, modeContext) {
       if (templage == null) {
         console.warn('template为空,mode:', this.formMode)
         templage = {}
@@ -135,7 +136,7 @@ export default {
           tempGroups[key] = value
         })
       }
-      let newRow = await this.fetchDetail(index, row, this.formMode)
+      let newRow = await this.fetchDetail(index, row, this.formMode, modeContext)
       newRow = newRow || {}
       this.formDataStorage = newRow
       const formGroupsActive = []
@@ -187,8 +188,9 @@ export default {
         })
       }
     },
-    async openDialog (index, row, templage) {
-      const { newRow, formData } = await this.buildFormData(index, row, templage)
+    async openDialog (index, row, templage, modeContext = null) {
+      this.formModeContext = modeContext
+      const { newRow, formData } = await this.buildFormData(index, row, templage, modeContext)
 
       this.handleDialogShowUpdate(true)
 
@@ -197,19 +199,24 @@ export default {
         row: newRow,
         form: formData,
         template: this.formTemplateStorage,
-        groupTemplate: this.formTemplateGroupStorage
+        groupTemplate: this.formTemplateGroupStorage,
+        modeContext
       })
     },
-    fetchDetail (index, row, formMode) {
+    fetchDetail (index, row, formMode, modeContext) {
       if (this.options.fetchDetail != null) {
-        const ret = this.options.fetchDetail(index, row, formMode)
-        if (ret instanceof Promise) {
-          return ret
-        } else {
-          return new Promise(resolve => {
+        let ret = this.options.fetchDetail(index, row, formMode, modeContext)
+        if (!(ret instanceof Promise)) {
+          ret = new Promise(resolve => {
             resolve(ret)
           })
         }
+        if (this.options.fetchDetailAppendHandler) {
+          ret = ret.then((info) => {
+            return this.options.fetchDetailAppendHandler(info, index, row, formMode, modeContext)
+          })
+        }
+        return ret
       } else {
         return new Promise(resolve => {
           if (row != null) {
@@ -251,7 +258,8 @@ export default {
           rowData = this.buildEditSubmitData()
           this.$emit('row-edit', {
             index: this.editIndex,
-            row: rowData
+            row: rowData,
+            modeContext: this.formModeContext
           }, (param = null) => {
             if (param === false) {
               this.handleCloseDialog()
@@ -273,9 +281,27 @@ export default {
               ...rowData,
               ...param
             })
-          })
+          }, { modeContext: this.modeContext })
         } else if (this.formMode === 'view') {
           this.handleDialogSaveDone(rowData)
+        } else {
+          // 自定义表单
+          rowData = this.formData
+          this.$emit('row-' + this.formMode, {
+            index: this.editIndex,
+            row: this.formDataStorage,
+            form: rowData,
+            modeContext: this.formModeContext
+          }, (param = null) => {
+            if (param === false) {
+              this.handleCloseDialog()
+              return
+            }
+            this.handleDialogSaveDone({
+              ...rowData,
+              ...param
+            })
+          })
         }
       })
     },
@@ -283,7 +309,7 @@ export default {
      * @description 取消保存行数据
      */
     handleDialogCancel (done) {
-      if (this.formOptions.saveRemind) {
+      if (this.formOptions.saveRemind && this.formMode !== 'view') {
         if (!_isequal(this.formData, this.formDataBefore)) {
           // 提醒保存
           let confirm = this.$confirm('检测到未保存的内容，是否在离开页面前保存修改？', '确认信息', {
@@ -337,7 +363,8 @@ export default {
       this.$emit('dialog-closed', {
         mode: this.formMode,
         row: this.formDataStorage,
-        form: this.formData
+        form: this.formData,
+        modeContext: this.formModeContext
       })
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <d2-container :class="{'page-compact':crud.pageOptions.compact}">
-    <template slot="header">本地上传
+    <template slot="header">表单上传
       <example-helper title="帮助" >
         <div>
           <link-button href="http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/extends/file-uploader.html">文件上传</link-button>

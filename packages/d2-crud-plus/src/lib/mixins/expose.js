@@ -110,6 +110,14 @@ export default {
     getEditForm () {
       return this.getD2Crud().formData
     },
+
+    /**
+     * 获取编辑框打开时，当前行的数据
+     * 仅在编辑对话框打开的情况下可用
+     */
+    getEditRow () {
+      return this.getD2Crud().formDataStorage
+    },
     /**
      * 获取编辑框的模式[view,edit,add]
      * 仅在编辑对话框打开的情况下可用
@@ -233,6 +241,8 @@ export default {
     //   rowIndex = 0, //编辑或查看时，哪一行的数据
     //   template = null, //表单模版
     //   addData = null //添加时的默认数据
+    //   modeContext= null //打开对话框的上下文参数，在updateRequest addRequest时会带上，可以根据不同的参数做不同的处理
+    //      对话框打开期间，可以通过this.getD2Crud().formModeContext 获取和修改modeContext的数据
     // })
 
     /**

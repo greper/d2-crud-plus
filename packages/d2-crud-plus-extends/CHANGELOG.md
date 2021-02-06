@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.3](https://github.com/greper/d2-crud-plus/compare/v2.15.2...v2.15.3) (2021-01-13)
+
+
+### Bug Fixes
+
+* 删除debugger ([0d33498](https://github.com/greper/d2-crud-plus/commit/0d33498ac5aa087e7e8bf901b0d7f3d62711ec15))
+
+
+
+
+
+## [2.15.2](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.15.2) (2021-01-13)
+
+
+### Bug Fixes
+
+* 树形组件onchange触发两次的bug ([87426b2](https://github.com/greper/d2-crud-plus/commit/87426b2dc1e975a3ec77ff07678e523075fab9b3))
+
+
+
+
+
+## [2.15.1](https://github.com/greper/d2-crud-plus/compare/v2.15.0...v2.15.1) (2021-01-12)
+
+
+### Bug Fixes
+
+* [#136](https://github.com/greper/d2-crud-plus/issues/136) 修复树形懒加载时不反显的bug ([ec08af0](https://github.com/greper/d2-crud-plus/commit/ec08af0d1ddd024004bd1cd5e075baa243ae9be5))
+
+
+
+
+
+# [2.15.0](https://github.com/greper/d2-crud-plus/compare/v2.14.0...v2.15.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* [#128](https://github.com/greper/d2-crud-plus/issues/128) 树形组件支持清除 ([63c3caa](https://github.com/greper/d2-crud-plus/commit/63c3caa8b309e7055094c3d538485e9bbbc795ec))
+* [#129](https://github.com/greper/d2-crud-plus/issues/129) [#128](https://github.com/greper/d2-crud-plus/issues/128) 优化树形组件，支持ref字典操作 ([85f7627](https://github.com/greper/d2-crud-plus/commit/85f7627096f7aa0a0f4116e079068566907ca938))
+* [#133](https://github.com/greper/d2-crud-plus/issues/133) fit属性无效的bug ([a5c286c](https://github.com/greper/d2-crud-plus/commit/a5c286c7c1a8884ec72424dad994f26bb46859c6))
+
+
+
+
+
 # [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
 
 

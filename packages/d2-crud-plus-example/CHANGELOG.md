@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.3](https://github.com/greper/d2-crud-plus/compare/v2.15.2...v2.15.3) (2021-01-13)
+
+**Note:** Version bump only for package @d2-plus/d2-crud-plus-example
+
+
+
+
+
+## [2.15.2](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.15.2) (2021-01-13)
+
+
+### Bug Fixes
+
+* 树形组件onchange触发两次的bug ([87426b2](https://github.com/greper/d2-crud-plus/commit/87426b2dc1e975a3ec77ff07678e523075fab9b3))
+
+
+
+
+
+## [2.15.1](https://github.com/greper/d2-crud-plus/compare/v2.15.0...v2.15.1) (2021-01-12)
+
+
+### Bug Fixes
+
+* [#136](https://github.com/greper/d2-crud-plus/issues/136) 修复树形懒加载时不反显的bug ([ec08af0](https://github.com/greper/d2-crud-plus/commit/ec08af0d1ddd024004bd1cd5e075baa243ae9be5))
+
+
+
+
+
+# [2.15.0](https://github.com/greper/d2-crud-plus/compare/v2.14.0...v2.15.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* [#124](https://github.com/greper/d2-crud-plus/issues/124) fetchDetail会经过valueBuilder处理 ([f995c10](https://github.com/greper/d2-crud-plus/commit/f995c10e432d28f36d928513a47a1a2878dc5d4a))
+* [#128](https://github.com/greper/d2-crud-plus/issues/128) 树形组件支持清除 ([63c3caa](https://github.com/greper/d2-crud-plus/commit/63c3caa8b309e7055094c3d538485e9bbbc795ec))
+* [#129](https://github.com/greper/d2-crud-plus/issues/129) [#128](https://github.com/greper/d2-crud-plus/issues/128) 优化树形组件，支持ref字典操作 ([85f7627](https://github.com/greper/d2-crud-plus/commit/85f7627096f7aa0a0f4116e079068566907ca938))
+* 修复必须为整数校验的bug ([5da498f](https://github.com/greper/d2-crud-plus/commit/5da498f2f20ffc088ce86c86dcbf1f242a454475))
+
+
+### Features
+
+* 自定义表单对话框 ([09cb596](https://github.com/greper/d2-crud-plus/commit/09cb59675aa2b034b09f367498226fbf1d6c9451))
+* showDialog 支持自定义mode，同时增加modeContext参数，支持mode=edit的同时可以有不同的处理 ([168face](https://github.com/greper/d2-crud-plus/commit/168facecae56b4c943777010763ce6c93480e69a))
+
+
+
+
+
 # [2.14.0](https://github.com/greper/d2-crud-plus/compare/v2.13.6...v2.14.0) (2020-12-22)
 
 

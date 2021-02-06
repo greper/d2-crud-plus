@@ -337,8 +337,10 @@ crud页面内容都一样，通常直接复制即可
     <template slot="header">测试页面</template>
     <d2-crud-x
         ref="d2Crud"
-        v-bind="_crudProps"
+        v-bind="_crudProps" 
         v-on="_crudListeners">
+        <!-- 自动绑定参数与事件 -->
+        <!-- 包含详细参数见：https://gitee.com/greper/d2-crud-plus/blob/master/packages/d2-crud-plus/src/lib/mixins/crud.js#L164-->
       <div slot="header">
         <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch"  />
         <el-button-group>

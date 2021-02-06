@@ -81,6 +81,7 @@ Vue.use(D2pUploader, {
     successHandle (res) { // 上传成功后，后台返回结果处理
       return { url: res.data }  // data是该文件的url
     },
+    withCredentials: false //是否带cookie
   }
    // ,buildKey(){} //key生成规则方法，也可以配置在组件的uploader参数里面，默认根据时间日期和文件名称生成
 })

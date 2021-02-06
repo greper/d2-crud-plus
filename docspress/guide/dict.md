@@ -45,6 +45,8 @@ export const crudOptions = {
         children: 'children', // 数据字典中children字段的属性名
         isTree: false, // 此数据字典是否是树形的，通常用于级联组件、地区选择组件等处
         clone: false, // 是否在获取到字典数据之后clone一份,clone之后不影响全局缓存，可以随意修改
+        getNodes(values){return nodeArr}, //根据value数组，返回节点数据，用于懒加载时，行展示组件的label显示
+        transfer:(data,options)=>{return data},// 可以修改获取到的远程数据，比如将字典的id字段转成字符串形式（缓存开启时只会执行一次）
         onReady(data, dict, context){
           //远程数据字典加载完成事件，每个引用该字典的组件都会触发一次
         }   

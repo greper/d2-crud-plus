@@ -14,6 +14,7 @@
     "start": "npm run serve",
     "dev": "npm run serve ",
     "dev:pm": "vue-cli-service serve --open --mode pm",
+    "dev:prod": "vue-cli-service serve --open --mode preview",
     "test": "vue-cli-service serve --open --mode test",
     "test:pm": "vue-cli-service serve --open --mode test_pm",
     "dev:pm:remote": "vue-cli-service serve --open --mode pm_remote",

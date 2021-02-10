@@ -165,6 +165,17 @@ export default {
       this.list.splice(index, 1)
       this.emit()
     },
+    isHasUploadingItem () {
+      const fileList = this.list
+      if (fileList && fileList.length > 0) {
+        for (const item of fileList) {
+          if (item.status === 'uploading') {
+            return true
+          }
+        }
+      }
+      return false
+    },
     async cropComplete (ret) {
       const blob = ret.blob
       const dataUrl = ret.dataUrl

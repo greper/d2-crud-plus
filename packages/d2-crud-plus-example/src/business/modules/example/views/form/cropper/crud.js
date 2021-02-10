@@ -1,3 +1,5 @@
+import { D2pFileUploader } from 'd2p-extends'
+
 export const crudOptions = (vm) => {
   return {
     options: {
@@ -23,7 +25,11 @@ export const crudOptions = (vm) => {
         form: {
           valueChange (key, value, form, context) {
             console.log('avatar chagned', key, value)
-          }
+          },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }]
         }
       },
       {
@@ -37,6 +43,10 @@ export const crudOptions = (vm) => {
               limit: 5
             }
           },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }],
           helper: '可上传5张图片'
         }
       },
@@ -52,6 +62,10 @@ export const crudOptions = (vm) => {
               }
             }
           },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }],
           helper: '16 / 9'
         }
       },
@@ -65,6 +79,10 @@ export const crudOptions = (vm) => {
               type: 'alioss'
             }
           },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }],
           helper: '上传到阿里云oss'
         }
 
@@ -79,6 +97,10 @@ export const crudOptions = (vm) => {
               type: 'qiniu'
             }
           },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }],
           helper: '上传到七牛'
         }
       },
@@ -96,6 +118,10 @@ export const crudOptions = (vm) => {
               }
             }
           },
+          rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+            validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+            message: '还有文件正在上传，请等待上传完成，或删除它'
+          }],
           helper: '上传到本地服务器'
         }
       }

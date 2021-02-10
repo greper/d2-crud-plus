@@ -30,7 +30,7 @@ export const crudOptions = (vm) => {
             props: {
               uploader: {
                 type: 'form',
-                withCredentials: true
+                withCredentials: false
               }
             },
             rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
@@ -84,7 +84,6 @@ export const crudOptions = (vm) => {
         component: {
           props: {
             buildUrl (value, item) {
-              console.log('build url:', value)
               if (value && value.indexOf('http') !== 0) {
                 return '/api/upload/form/download?key=' + value
               }

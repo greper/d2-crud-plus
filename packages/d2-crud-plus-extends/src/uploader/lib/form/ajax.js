@@ -69,6 +69,7 @@ export default function upload (option, onSuccess, onError) {
 
   xhr.open('post', action, true)
 
+  debugger
   if (option.withCredentials && 'withCredentials' in xhr) {
     xhr.withCredentials = true
   }

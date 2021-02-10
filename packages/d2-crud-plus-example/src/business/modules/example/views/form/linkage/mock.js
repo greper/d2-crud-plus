@@ -78,7 +78,6 @@ mock.push({
   path: '/linkage/city',
   method: 'get',
   handle (req) {
-    console.log('xxx', req)
     const province = parseInt(req.params.province)
     const a = tree.filter(item => {
       return item.id === province

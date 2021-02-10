@@ -74,18 +74,8 @@ export default {
         return {}
       }
       return GetObj(row.id).then(res => {
-        this.changeEditor(res.data.change)
         return res.data
       })
-    },
-    changeEditor (value) {
-      if (value === 'quill') {
-        this.getEditFormTemplate('content').component.show = true
-        this.getEditFormTemplate('content_ueditor').component.show = false
-      } else {
-        this.getEditFormTemplate('content').component.show = false
-        this.getEditFormTemplate('content_ueditor').component.show = true
-      }
     },
     handleFormComponentReady (event, key, form) {
       console.log('form component ready:', event, key, form)

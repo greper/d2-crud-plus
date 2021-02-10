@@ -16,7 +16,7 @@ apiList.push(...apiList1)
 apiList.forEach(apiFile => {
   for (const item of apiFile) {
     mock
-      .onAny(new RegExp('^/api' + item.path))
+      .onAny(new RegExp('/api' + item.path))
       .reply(config => {
         console.log('------------fake request start -------------')
         console.log('request:', config)

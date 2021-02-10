@@ -167,6 +167,7 @@ Vue.use(D2pUploader, {
   form: {
     action: process.env.VUE_APP_API + 'upload/form/upload',
     name: 'file',
+    withCredentials: false,
     successHandle (ret) { // 上传完成后的结果处理， 此处后台返回的结果应该为 ret = {data:'fileurl'}
       if (ret.data == null || ret.data === '') {
         throw new Error('上传失败')

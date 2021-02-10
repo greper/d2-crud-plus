@@ -47,12 +47,7 @@ export const crudOptions = (vm) => {
         sortable: false,
         type: 'radio',
         disabled: true,
-        dict: { data: [{ value: 'quill', label: 'Quill' }, { value: 'ueditor', label: 'UEditor' }] },
-        form: {
-          valueChange (key, value, form) {
-            vm.changeEditor(value)
-          }
-        }
+        dict: { data: [{ value: 'quill', label: 'Quill' }, { value: 'ueditor', label: 'UEditor' }, { value: 'wang', label: 'WangEditor' }] }
       },
       {
         title: '内容',
@@ -76,7 +71,9 @@ export const crudOptions = (vm) => {
                 console.log('text-change:', event)
               }
             },
-            show: true
+            show (context) {
+              return context.form.change === 'quill'
+            }
           }
         }
       },
@@ -97,7 +94,33 @@ export const crudOptions = (vm) => {
                 serverUrl: '/api/ueditor/'
               }
             },
-            show: false
+            show (context) {
+              return context.form.change === 'ueditor'
+            }
+          }
+        }
+      },
+      {
+        title: '内容',
+        key: 'content_wang',
+        sortable: true,
+        width: 300,
+        type: 'editor-wang', // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+        disabled: true, // 设置true可以在行展示中隐藏
+        form: {
+          component: {
+            disabled: () => {
+              return vm.getEditForm().disable
+            },
+            props: {
+              config: {
+                // withCredentials: false,
+                // uploadImgServer: 'http://localhost:7070/api/upload/form/upload'
+              }
+            },
+            show (context) {
+              return context.form.change === 'wang'
+            }
           }
         }
       }

@@ -8,7 +8,8 @@
 import { D2pFullEditor } from 'd2p-extends'
 Vue.use(D2pFullEditor)
 ```
-#### 1.1 quill文件上传配置
+#### 1.1 使用 quill、WangEditor
+图片上传配置
 ```js
 // 安装文件上传扩展插件，整个项目配置一次即可
 // 支持quill的图片上传
@@ -17,10 +18,12 @@ Vue.use(D2pFileUploader, {
 }
 ```
 
-#### 1.2 ueditor安装
+#### 1.2 使用ueditor
+
+##### ueditor安装
 复制 `./packages/d2-crud-plus-example/public/lib/UEditor` 到你的项目中对应目录下
 
-#### 1.3 ueditor上传配置
+##### ueditor上传配置
 后端实现参考：https://github.com/greper/d2-crud-plus-server.git
 
 ###  2. crud 

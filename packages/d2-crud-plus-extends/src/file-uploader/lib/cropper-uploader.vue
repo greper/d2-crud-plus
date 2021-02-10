@@ -60,8 +60,7 @@ export default {
     },
     // 上传后端类型，[form, cos, qiniu , alioss]
     type: {
-      type: String,
-      default: 'cos'
+      type: String
     },
     // 上传提示
     uploadTip: {

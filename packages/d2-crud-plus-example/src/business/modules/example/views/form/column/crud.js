@@ -55,6 +55,8 @@ export const crudOptions = {
         data: { id: tree.id }
       }).then(ret => {
         console.log('懒加载数据', ret.data)
+        // 执行valueBuilder
+        this._doRowValueBuilder(ret.data)
         resolve(ret.data)
       })
     },

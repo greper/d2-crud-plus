@@ -14,8 +14,7 @@
     "lerna": "^3.21.0",
     "segmentit": "^2.0.3",
     "vuepress": "^1.7.1",
-    "vuepress-theme-docmirror": "^1.5.4",
-    "wangeditor": "^4.6.5"
+    "vuepress-theme-docmirror": "^1.5.4"
   },
   "resolutions": {
   },

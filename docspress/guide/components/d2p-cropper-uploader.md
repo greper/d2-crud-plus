@@ -6,7 +6,7 @@
 |Name|Description|Type|Required|Default|
 |---|---|---|---|---|
 |value|初始图片url|`String` / `Array`|`false`|-|
-|type|上传后端类型，[form, cos, qiniu , alioss]|`String`|`false`|'cos'|
+|type|上传后端类型，[form, cos, qiniu , alioss]|`String`|`false`|-|
 |uploadTip|上传提示|`String`|`false`|-|
 |title|对话框标题|`String`|`false`|-|
 |cropperHeight|cropper的高度，默认为浏览器可视窗口高度的40%，最小270|`String` / `Number`|`false`|-|

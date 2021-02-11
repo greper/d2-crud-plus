@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.16.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* [#140](https://github.com/greper/d2-crud-plus/issues/140) 修复图片裁剪组件的默认类型 ([8effde3](https://github.com/greper/d2-crud-plus/commit/8effde3dd036e6bc22a2a6146e3f852488544cf7))
+* 加速登录 ([756457e](https://github.com/greper/d2-crud-plus/commit/756457e52d7d753625b7f2ecc41d37b124ed05ee))
+* 删除debugger ([0d33498](https://github.com/greper/d2-crud-plus/commit/0d33498ac5aa087e7e8bf901b0d7f3d62711ec15))
+* 树形展开执行valueBuilder ([e024c28](https://github.com/greper/d2-crud-plus/commit/e024c281ec93298f9c72ac98efe9a73029107c62))
+* 树形组件onchange触发两次的bug ([87426b2](https://github.com/greper/d2-crud-plus/commit/87426b2dc1e975a3ec77ff07678e523075fab9b3))
+* 修复max-height下无法全屏的bug ([5d8d529](https://github.com/greper/d2-crud-plus/commit/5d8d5299b319f037f9a6a136e9082799ffa023a1))
+* tree dict ([8dfdf93](https://github.com/greper/d2-crud-plus/commit/8dfdf9332ee25a85425d4049c89b77d210027319))
+* tree-selector disabled hide close btn ([ec443b5](https://github.com/greper/d2-crud-plus/commit/ec443b5db940f6a7d5a0cd02814d4f6f617e07a1))
+
+
+### Features
+
+* 图片裁剪支持校验未上传完成的图片 ([34097a5](https://github.com/greper/d2-crud-plus/commit/34097a58e32618756b65065ae6a86326af81a41d))
+* wangEditor ([18a7017](https://github.com/greper/d2-crud-plus/commit/18a70171b9f44ce2c491cf87b5e35c6ed92fe83a))
+
+
+### Performance Improvements
+
+* handle custom 按钮支持本身参数 ([7639baa](https://github.com/greper/d2-crud-plus/commit/7639baa8436f8b048f892a2450673978b50de7cb))
+
+
+
+
+
 ## [2.15.3](https://github.com/greper/d2-crud-plus/compare/v2.15.2...v2.15.3) (2021-01-13)
 
 

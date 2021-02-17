@@ -360,9 +360,9 @@ crudOptions:{
                   children:[ //子元素
                       (h)=>{return (<div slot="prefix">非scoped插槽</div>)}
                   ],
-                  order:10,//排序号，默认为10，数字越小 越靠前
                   span: 12 //该字段占据多宽，24为占满一行
                 },
+                order:10,//排序号，默认为10，数字越小 越靠前
                 //注意：↓↓↓↓ 以下三个disabled，仅初始化时有效，不可动态启用，需要动态显隐字段请配置component.show
                 disabled:false, //完全关闭该字段在表单中显示
                 addDisabled: false, //是否仅在添加编辑框中关闭该字段

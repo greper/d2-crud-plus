@@ -100,4 +100,4 @@ export const serviceForMock = createService()
 export const requestForMock = createRequestFunction(serviceForMock)
 
 // 网络请求数据模拟工具
-export const mock = new Adapter(serviceForMock, { delayResponse: 100 })
+export const mock = new Adapter(serviceForMock, { delayResponse: 10 })

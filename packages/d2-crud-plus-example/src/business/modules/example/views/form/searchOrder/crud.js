@@ -9,6 +9,8 @@ export const crudOptions = (vm) => {
     formOptions: {
       defaultSpan: 12 // 默认的表单 span
     },
+    searchOptions: {
+    },
     columns: [
       {
         title: 'ID',
@@ -23,7 +25,12 @@ export const crudOptions = (vm) => {
         title: '单选远程',
         key: 'status',
         sortable: true,
-        search: {},
+        search: {
+          disabled: false,
+          itemProps: {
+            rules: [{ required: true, message: '此项必填' }]
+          }
+        },
         type: 'select',
         dict: {
           url: '/dicts/OpenStatusEnum'

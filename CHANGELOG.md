@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.1](https://github.com/greper/d2-crud-plus/compare/v2.16.0...v2.16.1) (2021-02-22)
+
+
+### Performance Improvements
+
+* 支持重新加载crudOptions ([6d0ebdc](https://github.com/greper/d2-crud-plus/commit/6d0ebdc3856bab4b80bec38772ebebb8d9f99c97))
+
+
+
+
+
 # [2.16.0](https://github.com/greper/d2-crud-plus/compare/v2.15.1...v2.16.0) (2021-02-11)
 
 

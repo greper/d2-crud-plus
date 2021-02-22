@@ -16,8 +16,7 @@
     "vuepress": "^1.7.1",
     "vuepress-theme-docmirror": "^1.5.4"
   },
-  "resolutions": {
-  },
+  "resolutions": {},
   "scripts": {
     "lerna:build": "lerna run build",
     "lerna:version": "lerna version --conventional-commits",

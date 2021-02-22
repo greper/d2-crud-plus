@@ -3,24 +3,24 @@
     :is="getTableColumnImpl(tableType)"
     v-if="getAttr(item,'show',true)!==false"
     v-bind="forColumnBindProps(item)">
-  <template slot-scope="scope">
-    <d2-cell :item="item" :row="scope.row" :rowIndex="thisIsVxeTable?scope.$rowIndex:scope.$index"
-             @cell-data-change="handleCellDataChange"
-             @cell-component-ready="handleCellComponentReady"
-             @cell-component-custom-event="handleCellComponentCustomEvent"
-    >
-      <template slot-scope="scope2" :slot="item.key+'Slot'">
-        <template v-if="item.rowSlot">
-          <slot :name="item.key+'Slot'" :row="scope2.row" :index="scope2.index" :rowIndex="scope2.index"/>
+    <template slot-scope="scope">
+      <d2-cell :item="item" :row="scope.row" :rowIndex="thisIsVxeTable?scope.$rowIndex:scope.$index"
+               @cell-data-change="handleCellDataChange"
+               @cell-component-ready="handleCellComponentReady"
+               @cell-component-custom-event="handleCellComponentCustomEvent"
+      >
+        <template slot-scope="scope2" :slot="item.key+'Slot'">
+          <template v-if="item.rowSlot">
+            <slot :name="item.key+'Slot'" :row="scope2.row" :index="scope2.index" :rowIndex="scope2.index"/>
+          </template>
         </template>
-      </template>
-    </d2-cell>
-  </template>
+      </d2-cell>
+    </template>
     <template v-if="item.children && item.children.length>0">
-      <d2-column  v-for="(sub,index) in item.children" :key="index" :item="sub"
-                  @cell-data-change="handleCellDataChange"
-                  @cell-component-ready="handleCellComponentReady"
-                  @cell-component-custom-event="handleCellComponentCustomEvent"
+      <d2-column v-for="(sub,index) in item.children" :key="index" :item="sub"
+                 @cell-data-change="handleCellDataChange"
+                 @cell-component-ready="handleCellComponentReady"
+                 @cell-component-custom-event="handleCellComponentCustomEvent"
       >
         <template slot-scope="scope" :slot="sub.key+'Slot'">
           <template v-if="sub.rowSlot">
@@ -29,7 +29,7 @@
         </template>
       </d2-column>
     </template>
-</component>
+  </component>
 </template>
 
 <script>
@@ -38,6 +38,7 @@ import D2Cell from './d2-cell'
 import RenderComponent from './renderComponent'
 import _get from 'lodash.get'
 import _set from 'lodash.set'
+
 export default {
   name: 'd2-column',
   mixins: [

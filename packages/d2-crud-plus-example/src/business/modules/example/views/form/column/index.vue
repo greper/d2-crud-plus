@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     getCrudOptions () {
-      return crudOptions
+      return crudOptions(this)
     },
     async pageRequest (query) {
       const ret = await GetList(query)

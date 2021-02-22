@@ -17,6 +17,10 @@ export default {
     },
 
     /**
+     * 重新加载新配置，可以动态修改任意配置内容，比如增删列
+     */
+    // this.reInitColumns(crudOptions)
+    /**
      *  // 如果需要重复init，需要做一些清理工作
      * @private
      */

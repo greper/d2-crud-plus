@@ -7,6 +7,9 @@ export const crudOptions = (vm) => {
     options: {
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
+    viewOptions: {
+      componentType: 'row'
+    },
     columns: [
       {
         title: 'id',
@@ -26,7 +29,14 @@ export const crudOptions = (vm) => {
         title: '摘要',
         key: 'text',
         sortable: true,
-        type: 'text-area'
+        type: 'text-area',
+        viewForm: {
+          component: {
+            render (h, scope) {
+              return <div>{scope.value}</div>
+            }
+          }
+        }
       },
       {
         title: '禁用启用',

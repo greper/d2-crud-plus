@@ -8,7 +8,6 @@ export const crudOptions = (vm) => {
       height: '100%' // 表格高度100%, 使用toolbar必须设置
     },
     viewOptions: {
-      componentType: 'row'
     },
     columns: [
       {
@@ -32,6 +31,7 @@ export const crudOptions = (vm) => {
         type: 'text-area',
         viewForm: {
           component: {
+            name: null,
             render (h, scope) {
               return <div>{scope.value}</div>
             }

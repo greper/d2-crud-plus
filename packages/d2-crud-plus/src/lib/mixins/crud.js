@@ -466,6 +466,7 @@ export default {
             key: item.key,
             ...cloneDeep(form)
           }
+          view = merge(view, item.viewForm)
         } else {
           const component = merge({}, item.component, item.viewForm ? item.viewForm.component : null)
           view = {

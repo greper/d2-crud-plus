@@ -141,7 +141,8 @@ export default {
     initValue (value) {
       const list = []
       if (value == null || value === '') {
-        return list
+        this.$set(this, 'list', list)
+        return
       }
       if (typeof (value) === 'string') {
         list.push({ url: this.buildUrl(value), value: value, status: 'done' })

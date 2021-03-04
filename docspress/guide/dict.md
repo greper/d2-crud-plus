@@ -1,7 +1,7 @@
 
 # 数据字典
 
-配置数据字典之后， type=【select/area-selector/cascader/tree-selector】
+配置数据字典之后， type=【select/area-selector/cascader/tree-selector/radio/dict-switch/checkbox】
 这些字段类型就可以通过数据字典获取label及其选项，无需自己写各种各样乱七八糟的options
 
 ## 字典配置复制

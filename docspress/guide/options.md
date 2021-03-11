@@ -110,6 +110,7 @@ export const crudOptions = {
     }    
   },
   options: { // d2-crud及el-table的配置参数
+    hide:false, //隐藏表格， 配合 body插槽，可以实现酒店dashboard示例的效果
     stripe: true,
     border: true,
     highlightCurrentRow: false, //是否高亮选中行

@@ -13,6 +13,9 @@ export const crudOptions = (vm) => {
     rowHandle: {
       width: '260px'
     },
+    pagination: {
+      pageSizes: [10, 20, 50, 100, 200, 1000]
+    },
     columns: [
       {
         title: 'ID',

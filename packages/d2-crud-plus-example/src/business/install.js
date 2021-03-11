@@ -11,7 +11,9 @@ import { request, requestForMock } from '@/api/service'
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/index.css'
-
+// import VXETablePluginVirtualTree from 'vxe-table-plugin-virtual-tree'
+// import 'vxe-table-plugin-virtual-tree/dist/style.css'
+// VXETable.use(VXETablePluginVirtualTree)
 Vue.use(VXETable)
 
 // 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x />使用加强版

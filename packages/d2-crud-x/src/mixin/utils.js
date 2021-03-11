@@ -156,7 +156,7 @@ export default {
     },
     isVxeTable (tableType) {
       const table = this.getTableImpl(tableType)
-      if (table === 'vxe-table') {
+      if (table === 'vxe-table' || table === 'vxe-virtual-tree') {
         return true
       }
       return false

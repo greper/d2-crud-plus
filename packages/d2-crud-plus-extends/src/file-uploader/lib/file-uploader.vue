@@ -131,7 +131,9 @@ export default {
   },
   watch: {
     value (value) {
-      this.dispatch('ElFormItem', 'el.form.blur')
+      if (this.dispatch) {
+        this.dispatch('ElFormItem', 'el.form.blur')
+      }
       this.$emit('change', value)
       if (this.emitValue === value) {
         return

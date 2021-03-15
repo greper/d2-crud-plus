@@ -293,7 +293,9 @@ export default {
         values = values && values.length > 0 ? values[0] : undefined
       }
       this.currentValue = values
-      this.dispatch('ElFormItem', 'el.form.blur')
+      if (this.dispatch) {
+        this.dispatch('ElFormItem', 'el.form.blur')
+      }
       this.$emit('input', values)
     },
     itemClosed (item) {
@@ -377,7 +379,9 @@ export default {
     onChange (value) {
       this.$emit('change', value)
 
-      this.dispatch('ElFormItem', 'el.form.blur')
+      if (this.dispatch) {
+        this.dispatch('ElFormItem', 'el.form.blur')
+      }
     }
   }
 }

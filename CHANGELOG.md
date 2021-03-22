@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.2](https://github.com/greper/d2-crud-plus/compare/v2.16.1...v2.16.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* 修复懒加载的bug ([13f5e86](https://github.com/greper/d2-crud-plus/commit/13f5e863cebf24f9212d5800b08d3809456a83ab))
+* 修复图片上传设置null值不会覆盖旧值的bug ([b411b9e](https://github.com/greper/d2-crud-plus/commit/b411b9e5c22257a08af83375bd9416bfe7811525))
+* text-area过长时，view模式超出显示的问题 ([ad8499b](https://github.com/greper/d2-crud-plus/commit/ad8499baa408234f63ef8d24a7f3e1f0fc5abb4e))
+
+
+
+
+
 ## [2.16.1](https://github.com/greper/d2-crud-plus/compare/v2.16.0...v2.16.1) (2021-02-22)
 
 

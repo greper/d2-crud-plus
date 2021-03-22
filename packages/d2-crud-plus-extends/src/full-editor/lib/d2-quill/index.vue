@@ -89,7 +89,9 @@ export default {
           this.currentValue = val
           // 尝试更新
           if (this.Quill) {
-            this.dispatch('ElFormItem', 'el.form.blur')
+            if (this.dispatch) {
+              this.dispatch('ElFormItem', 'el.form.blur')
+            }
             this.$emit('change', val)
             this.Quill.pasteHTML(this.value)
           }

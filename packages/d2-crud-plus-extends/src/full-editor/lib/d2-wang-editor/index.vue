@@ -47,7 +47,9 @@ export default {
           this.currentValue = val
           // 尝试更新
           if (this.editor) {
-            this.dispatch('ElFormItem', 'el.form.blur')
+            if (this.dispatch) {
+              this.dispatch('ElFormItem', 'el.form.blur')
+            }
             this.$emit('change', val)
             // this.editor.txt.html(this.value)
           }

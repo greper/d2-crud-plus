@@ -2,7 +2,8 @@ import mockUtil from '@/business/mock/base'
 
 const options = {
   name: 'phone',
-  idGenerator: 0
+  idGenerator: 0,
+  copyTimes: 500
 }
 const list = [
   {

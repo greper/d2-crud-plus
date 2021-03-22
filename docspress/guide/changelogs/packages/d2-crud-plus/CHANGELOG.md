@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.2](https://github.com/greper/d2-crud-plus/compare/v2.16.1...v2.16.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* text-area过长时，view模式超出显示的问题 ([ad8499b](https://github.com/greper/d2-crud-plus/commit/ad8499baa408234f63ef8d24a7f3e1f0fc5abb4e))
+
+
+
+
+
 ## [2.16.1](https://github.com/greper/d2-crud-plus/compare/v2.16.0...v2.16.1) (2021-02-22)
 
 

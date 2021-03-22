@@ -2,7 +2,8 @@ import mockUtil from '@/business/mock/base'
 
 const options = {
   name: 'vxe/column',
-  idGenerator: 0
+  idGenerator: 0,
+  copyTimes: 300
 }
 const list = [
   {

@@ -15,6 +15,9 @@ export const crudOptions = {
     ],
     fixed: 'right'
   },
+  pagination: {
+    pageSizes: [10, 30, 50, 100, 200]
+  },
   pageOptions: {
     compact: true // 是否紧凑型页面
   },

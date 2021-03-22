@@ -817,10 +817,25 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime-corejs3@^7.11.2":
+  version "7.13.10"
+  resolved "https://registry.npm.taobao.org/@babel/runtime-corejs3/download/@babel/runtime-corejs3-7.13.10.tgz?cache=0&sync_timestamp=1615243225064&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime-corejs3%2Fdownload%2F%40babel%2Fruntime-corejs3-7.13.10.tgz#14c3f4c85de22ba88e8e86685d13e8861a82fe86"
+  integrity sha1-FMP0yF3iK6iOjoZoXRPohhqC/oY=
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.11.2":
+  version "7.13.10"
+  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.13.10.tgz?cache=0&sync_timestamp=1615243066705&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fruntime%2Fdownload%2F%40babel%2Fruntime-7.13.10.tgz#47d42a57b6095f4468da440388fdbad8bebf0d7d"
+  integrity sha1-R9QqV7YJX0Ro2kQDiP262L6/DX0=
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -3646,6 +3661,11 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.5:
     browserslist "^4.14.6"
     semver "7.0.0"
 
+core-js-pure@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.npm.taobao.org/core-js-pure/download/core-js-pure-3.9.1.tgz?cache=0&sync_timestamp=1614538285082&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js-pure%2Fdownload%2Fcore-js-pure-3.9.1.tgz#677b322267172bd490e4464696f790cbc355bec5"
+  integrity sha1-Z3syImcXK9SQ5EZGlveQy8NVvsU=
+
 core-js@^2.4.0:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
@@ -3995,19 +4015,19 @@ cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^2.13.3:
-  version "2.13.3"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.13.3.tgz#e9fbba7ebd9c46e5e1ab739ee91842492a8b3103"
-  integrity sha512-ChYH5QAUTKt8m5hXKxNMT9xGX5QmT26qgXIGWvNyKu9hXt8t4Yn6ghiKB3J0fZH9ENQNn331id0acgfzJV9tAA==
+d2-crud-plus@^2.16.1:
+  version "2.16.1"
+  resolved "https://registry.npm.taobao.org/d2-crud-plus/download/d2-crud-plus-2.16.1.tgz#496baf568911e56278305d9c5ed2a48740936362"
+  integrity sha1-SWuvVokR5WJ4MF2cXtKkh0CTY2I=
   dependencies:
     dayjs "^1.8.17"
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 
-d2-crud-x@^2.13.3:
-  version "2.13.3"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.13.3.tgz#62152e1f9d1cec5b2a63246a367cf4055759b668"
-  integrity sha512-8CBXZBO6Ya0oF/3bympyyTsojNOB5phwTQtlQjsac9+AQITZNDyIXqsBvrHAX5U4NQakAT1RaD7sGvGy/lJTBw==
+d2-crud-x@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.npm.taobao.org/d2-crud-x/download/d2-crud-x-2.16.0.tgz#e70f374653279df3e5fb8c68ce8648e168498804"
+  integrity sha1-5w83RlMnnfPl+4xozoZI4WhJiAQ=
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -4016,10 +4036,10 @@ d2-crud-x@^2.13.3:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^2.13.3:
-  version "2.13.3"
-  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-2.13.3.tgz#d8122b29632768014e4e018a1fa3dc8a56525007"
-  integrity sha512-LMMQgHdBz+chHJp+HQbcGx4+eJOuk8/cyiPnF1zCJqu/8eIS3PuIDAlHjcJu9smKVKKxmf7ISovM32BG9C0MgA==
+d2p-extends@^2.16.1:
+  version "2.16.1"
+  resolved "https://registry.npm.taobao.org/d2p-extends/download/d2p-extends-2.16.1.tgz#c127928c6550c16df6fb94fc59cf839b9a6d84c4"
+  integrity sha1-wSeSjGVQwW32+5T8Wc+Dm5pthMQ=
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
@@ -4032,6 +4052,7 @@ d2p-extends@^2.13.3:
     quill "^1.3.7"
     spark-md5 "^3.0.0"
     vue "^2.6.11"
+    wangeditor "^4.6.6"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -11334,6 +11355,11 @@ vuex@^3.1.2:
   resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.5.1.tgz#f1b8dcea649bc25254cf4f4358081dbf5da18b3d"
   integrity sha512-w7oJzmHQs0FM9LXodfskhw9wgKBiaB+totOdb8sNzbTB2KDCEEwEs29NzBZFh/lmEK1t5tDmM1vtsO7ubG1DFw==
 
+vxe-table-plugin-virtual-tree@^0.5.9:
+  version "0.5.9"
+  resolved "https://registry.npm.taobao.org/vxe-table-plugin-virtual-tree/download/vxe-table-plugin-virtual-tree-0.5.9.tgz#ad95b03d287cdfea40db7945930ba42466347988"
+  integrity sha1-rZWwPSh83+pA23lFkwukJGY0eYg=
+
 vxe-table@^2.9.15:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/vxe-table/-/vxe-table-2.10.0.tgz#70b829c3306c53fe73049d3cee9f90f3f33e406d"
@@ -11361,6 +11387,14 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
+
+wangeditor@^4.6.6:
+  version "4.6.8"
+  resolved "https://registry.npm.taobao.org/wangeditor/download/wangeditor-4.6.8.tgz?cache=0&sync_timestamp=1614857224258&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwangeditor%2Fdownload%2Fwangeditor-4.6.8.tgz#892f99eec6729b159d49599c7e8731993d8ddcba"
+  integrity sha1-iS+Z7sZymxWdSVmcfocxmT2N3Lo=
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@babel/runtime-corejs3" "^7.11.2"
 
 watchpack-chokidar2@^2.0.1:
   version "2.0.1"

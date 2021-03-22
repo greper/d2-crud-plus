@@ -88,7 +88,7 @@ export default {
       return this._options
     },
     loadDict () {
-      log.debug('loadDict')
+      log.debug('loadDict', this.dict)
       const options = { component: this }
       if (this.d2CrudContext) {
         options.form = this.d2CrudContext.getForm()

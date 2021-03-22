@@ -42,6 +42,7 @@ addPage(crudHandleMenus, 'crud/demo31', 'CRUD事件')
 
 addPage(formMenus, 'form/date', '日期时间')
 addPage(formMenus, 'form/select', '选择组件', '禁用选项，染色')
+addPage(formMenus, 'form/cascader', '级联组件')
 addPage(formMenus, 'form/phone', '国际电话输入框')
 const uploadGroupMenu = addPage(formMenus, null, '文件上传')
 const uploadMenus = uploadGroupMenu.children

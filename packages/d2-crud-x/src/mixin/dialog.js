@@ -327,6 +327,7 @@ export default {
             if (action === 'cancel') {
               // 放弃保存，并关闭
               this.$emit('dialog-cancel', done)
+              this.handleDialogClosed()
             } else {
               // 留在当前页面
             }

@@ -3236,10 +3236,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-x@^2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.13.1.tgz#c7ef7b80baf77cf0646013aa982a93c31ca2b51b"
-  integrity sha512-DfjPKwxIInOc/fG2lLPVj6GA5/znX2OzfgNWf8amTAsRtbTkbwCTbCp3BxmZxcS9OJAwxYbwiZ0U/GQD9UA3cg==
+d2-crud-x@^2.16.2:
+  version "2.16.2"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.16.2.tgz#d5970eb55ce1b9fdf7c519d6389a6b87d3848c35"
+  integrity sha512-4/t2p1fk2F9c/5P7PoQaZPc8MQMQdMDzSK60mWUpEVZDxi+e/ul0F7GykNMEgfDO7bWC01EI+3LR5By+rNuNQA==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -9177,9 +9177,9 @@ xtend@^4.0.0, xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
+  integrity sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
 
 yallist@^2.1.2:
   version "2.1.2"

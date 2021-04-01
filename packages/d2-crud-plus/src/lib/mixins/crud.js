@@ -483,9 +483,9 @@ export default {
           }
         }
 
-        merge(view, item.view)
         // 禁用，然后添加到viewTemplateList
         view.component.disabled = true
+        merge(view, item.view)
         if (!this.crud.viewTemplate) {
           this.crud.viewTemplate = {}
         }

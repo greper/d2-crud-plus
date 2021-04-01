@@ -4015,19 +4015,19 @@ cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^2.16.1:
-  version "2.16.1"
-  resolved "https://registry.npm.taobao.org/d2-crud-plus/download/d2-crud-plus-2.16.1.tgz#496baf568911e56278305d9c5ed2a48740936362"
-  integrity sha1-SWuvVokR5WJ4MF2cXtKkh0CTY2I=
+d2-crud-plus@^2.16.2:
+  version "2.16.2"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.16.2.tgz#3910fefb34119895ae849bb3cf5026479cfc1522"
+  integrity sha512-/fJiSPSuzENj4cA0bzKIKWCUMEsUiJKqPF+POb+a1Midql3fYC+nzf93gL8rkPOnFpjSTImxOR7yD+zvJGY7RA==
   dependencies:
     dayjs "^1.8.17"
     vue "^2.6.11"
     vuedraggable "^2.24.0"
 
-d2-crud-x@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.npm.taobao.org/d2-crud-x/download/d2-crud-x-2.16.0.tgz#e70f374653279df3e5fb8c68ce8648e168498804"
-  integrity sha1-5w83RlMnnfPl+4xozoZI4WhJiAQ=
+d2-crud-x@^2.16.2:
+  version "2.16.2"
+  resolved "https://registry.yarnpkg.com/d2-crud-x/-/d2-crud-x-2.16.2.tgz#d5970eb55ce1b9fdf7c519d6389a6b87d3848c35"
+  integrity sha512-4/t2p1fk2F9c/5P7PoQaZPc8MQMQdMDzSK60mWUpEVZDxi+e/ul0F7GykNMEgfDO7bWC01EI+3LR5By+rNuNQA==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"
@@ -4036,10 +4036,10 @@ d2-crud-x@^2.16.0:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^2.16.1:
-  version "2.16.1"
-  resolved "https://registry.npm.taobao.org/d2p-extends/download/d2p-extends-2.16.1.tgz#c127928c6550c16df6fb94fc59cf839b9a6d84c4"
-  integrity sha1-wSeSjGVQwW32+5T8Wc+Dm5pthMQ=
+d2p-extends@^2.16.2:
+  version "2.16.2"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-2.16.2.tgz#1376ceac6b6c2e8572819b34c2cb8e9d14dc5bcc"
+  integrity sha512-hnMnoAF2xFDcN2nMof2zTLiphO3mkt6Auqx5nlULVI31TCC5KAvrqPA/OKfnx+3j2uyLJYQkBlwA9zwLEV3JVg==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
@@ -11756,9 +11756,9 @@ xtend@^4.0.0, xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
+  integrity sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
 
 yallist@^2.1.2:
   version "2.1.2"

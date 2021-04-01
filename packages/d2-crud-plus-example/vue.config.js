@@ -178,5 +178,5 @@ module.exports = {
     }
   },
   // 解决ie打不开的问题
-  transpileDependencies: ['d2p-extends','@d2-projects/vue-table-export']
+  transpileDependencies: ['d2p-extends', '@d2-projects/vue-table-export']
 }

@@ -64,7 +64,10 @@ export const crudOptions = {
         quoted:false	//每项数据是否加引号
     }
   },
-  formOptions: { // 编辑对话框及el-form的配置
+  formOptions: { 
+    // 支持el-dialog的配置
+    // 支持el-form的配置
+    // 支持el-drawer的配置
     type:'dialog',//默认对话框模式，drawer 抽屉模式
     size: '50%', //抽屉模式的宽度
     fullscreen: true,//全屏按钮，传null则隐藏全屏按钮，抽屉模式请隐藏
@@ -78,7 +81,8 @@ export const crudOptions = {
     defaultSpan: 12, // 默认表单字段所占宽度
     updateTableDataAfterEdit: false // 添加和删除提交后，是否直接更新本地table的数据，默认会自动刷新表格，所以不需要更新本地数据
   },
-  searchOptions: { //查询配置参数, 支持el-form的配置参数
+  searchOptions: { //查询配置参数,
+    // 支持el-form的配置参数
     form:{ //默认搜索参数
       name:'小明' // 请求列表默认会带上此处配置参数,重置后会恢复成此处配置的值
     },
@@ -109,7 +113,8 @@ export const crudOptions = {
       reset:{} //同上
     }    
   },
-  options: { // d2-crud及el-table的配置参数
+  options: { // d2-crud
+    // 支持el-table的配置参数
     hide:false, //隐藏表格， 配合 body插槽，可以实现酒店dashboard示例的效果
     stripe: true,
     border: true,
@@ -124,7 +129,8 @@ export const crudOptions = {
     },
     fetchDetail(index,row,mode){return row},// 打开对话框前调用，获取form详情数据
   },
-  pagination: { //翻页配置,更多配置参考el-pagination
+  pagination: { //翻页配置
+    // 支持el-pagination
     currentPage: 1,
     pageSize: 20,
     total: 1,

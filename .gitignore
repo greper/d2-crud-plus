@@ -36,3 +36,4 @@ lerna-debug.log
 /packages/vue-table-export/
 
 
+/.gradle/

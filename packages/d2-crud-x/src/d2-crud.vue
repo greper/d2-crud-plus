@@ -101,8 +101,8 @@
         </template>
 
         <!-- 使用d2-column递归组件 -->
-        <d2-column v-for="(item, index) in columns"
-                   :key="index"
+        <d2-column v-for="(item,index) in columns"
+                   :key="buildColumnKey(item,index)"
                    :item="item"
                    :tableType="options.tableType"
                    @cell-data-change="handleCellDataChange"
@@ -395,6 +395,9 @@ export default {
           return wrapper[0].getComponentRef()
         }
       }
+    },
+    buildColumnKey (item, index) {
+      return (item.key || '') + index // + new Date().getTime()
     },
     getContext (key) {
       return {

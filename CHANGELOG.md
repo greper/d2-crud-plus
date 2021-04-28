@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.3](https://github.com/greper/d2-crud-plus/compare/v2.16.2...v2.16.3) (2021-04-28)
+
+
+### Bug Fixes
+
+* 点击放弃保存，不执行dialogClosed的bug ([c28bb91](https://github.com/greper/d2-crud-plus/commit/c28bb91d58570ce08c8ca8d10ed2a12f1b098bf6))
+* 多级列，动态更新，丢失部分列显示的bug ([bfdfb26](https://github.com/greper/d2-crud-plus/commit/bfdfb26b4336053a6f069e8c351080f774fac613))
+* dispatch为空错误 ([19e322e](https://github.com/greper/d2-crud-plus/commit/19e322ed7c3b8f02c8cef6cea5d810c12e5e4a7f))
+* ie兼容性 ([29b2b6b](https://github.com/greper/d2-crud-plus/commit/29b2b6b4471a1c5ef570a203b913372f3f1dd421))
+
+
+
+
+
 ## [2.16.2](https://github.com/greper/d2-crud-plus/compare/v2.16.1...v2.16.2) (2021-03-11)
 
 

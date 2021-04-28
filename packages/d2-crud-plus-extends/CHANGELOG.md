@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.3](https://github.com/greper/d2-crud-plus/compare/v2.16.2...v2.16.3) (2021-04-28)
+
+
+### Bug Fixes
+
+* dispatch为空错误 ([19e322e](https://github.com/greper/d2-crud-plus/commit/19e322ed7c3b8f02c8cef6cea5d810c12e5e4a7f))
+
+
+
+
+
 ## [2.16.2](https://github.com/greper/d2-crud-plus/compare/v2.16.1...v2.16.2) (2021-03-11)
 
 

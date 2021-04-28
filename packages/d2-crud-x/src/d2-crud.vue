@@ -397,7 +397,7 @@ export default {
       }
     },
     buildColumnKey (item, index) {
-      return (item.key || '') + index // + new Date().getTime()
+      return (item.key || '') + (item.uniqueKey || '') + index // + new Date().getTime()
     },
     getContext (key) {
       return {

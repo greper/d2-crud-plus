@@ -325,3 +325,6 @@ form:{
 }
 
 ```
+
+## 15. 切换页面tab页签时如何设置不刷新页面（页面缓存）
+router的name和页面组件的name保持一致，然后设置router的meta.cache=true

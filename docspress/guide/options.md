@@ -309,6 +309,7 @@ crudOptions={
             slots:{}, //scoped插槽，参考下方form中的slots配置
             children:[] //子元素，参考下方form中的children配置
           },
+          uniqueKey:'',//列的唯一id，多级表头动态更新时会导致无法刷新，可以配置它为不同的key，即可解决
           disabled: false, //是否禁止该列（列配置中不显示），不影响form表单
           show: true, //是否在列表中显示该列（列配置中可选），也可以配置一个无参方法
           // 是否启用该cell的slot插槽,需要d2-crud-x才支持

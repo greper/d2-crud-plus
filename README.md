@@ -13,6 +13,15 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
+## fast-crud
+
+支持`vue3`的`fast-crud`已发布，开发crud更快、更强、更爽。
+
+文档地址： http://fast-crud.docmirror.cn/    
+示例地址： [antdv版](http://fast-crud.docmirror.cn/antdv/)  /  [element版](http://fast-crud.docmirror.cn/element/)    
+仓库地址： [Github](https://github.com/fast-crud/fast-crud)  /  [Gitee](https://gitee.com/fast-crud/fast-crud)
+
+
 ## 帮助文档 
 %%%%%%%%%%%%%%%%%%%%%%% 帮助文档 ↓%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 > 

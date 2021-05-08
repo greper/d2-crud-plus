@@ -135,6 +135,17 @@ export default {
         : {}
     }
   },
+  mounted () {
+    this.$notify({
+      title: 'fast-crud发布啦，赶快点我',
+      message: 'fast-crud是d2-crud-plus的vue3全新设计版，功能更强、速度更快、开发更爽',
+      type: 'success',
+      duration: 10000,
+      onClick () {
+        window.open('http://fast-crud.docmirror.cn/')
+      }
+    })
+  },
   methods: {
     ...mapActions('d2admin/menu', [
       'asideCollapseToggle'

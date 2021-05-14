@@ -158,7 +158,6 @@ export const crudOptions = (vm) => {
         component: {
           props: {
             buildUrl (value) {
-              console.log('buildUrl', value)
               if (value.url) {
                 return value.url
               }

@@ -154,6 +154,17 @@ export const crudOptions = (vm) => {
             validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
             message: '还有文件正在上传，请等待上传完成，或删除它'
           }]
+        },
+        component: {
+          props: {
+            buildUrl (value) {
+              console.log('buildUrl', value)
+              if (value.url) {
+                return value.url
+              }
+              return value
+            }
+          }
         }
       }
 

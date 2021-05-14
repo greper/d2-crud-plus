@@ -55,6 +55,10 @@ export default {
         for (const val of this.value) {
           valueArr.push(this.getItem(val))
         }
+      } else if (this.value instanceof Object) {
+        debugger
+        valueArr = []
+        valueArr.push(this.getItem(this.value))
       }
       return valueArr
     }
@@ -69,10 +73,11 @@ export default {
       return url
     },
     getItem (value) {
+      const url = this.buildUrl(value)
       return {
-        url: this.buildUrl(value),
+        url,
         value: value,
-        name: this.getFileName(value),
+        name: this.getFileName(url),
         color: this.color
       }
     }

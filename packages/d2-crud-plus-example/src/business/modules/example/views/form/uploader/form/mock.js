@@ -18,7 +18,7 @@ const list = [
   },
   {
     avatar: 'http://greper.veryreader.com/extends/avatar.jpg',
-    file: 'http://greper.veryreader.com/extends/avatar.jpg',
+    file: { url: 'http://greper.veryreader.com/extends/avatar.jpg' },
     image: 'http://greper.veryreader.com/extends/avatar.jpg'
   }
 ]

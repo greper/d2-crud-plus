@@ -56,7 +56,6 @@ export default {
           valueArr.push(this.getItem(val))
         }
       } else if (this.value instanceof Object) {
-        debugger
         valueArr = []
         valueArr.push(this.getItem(this.value))
       }

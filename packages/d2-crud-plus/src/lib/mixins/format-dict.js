@@ -27,6 +27,11 @@ export default {
       loading: false
     }
   },
+  watch: {
+    dict (newDict) {
+      this.loadDict()
+    }
+  },
   created () {
     if (this.dict) {
       if (this.dict.immediate !== false) {

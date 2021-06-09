@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.6](https://github.com/greper/d2-crud-plus/compare/v2.16.3...v2.16.6) (2021-06-09)
+
+
+### Bug Fixes
+
+* 修复隐藏字段列显示时，valuesformat 的label不显示的bug ([ab0a730](https://github.com/greper/d2-crud-plus/commit/ab0a730a1fe1d38d423df9b573c5f9f986f997b0))
+
+
+
+
+
 ## [2.16.3](https://github.com/greper/d2-crud-plus/compare/v2.16.2...v2.16.3) (2021-04-28)
 
 **Note:** Version bump only for package d2-crud-plus

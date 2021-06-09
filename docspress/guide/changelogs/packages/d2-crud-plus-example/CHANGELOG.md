@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.6](https://github.com/greper/d2-crud-plus/compare/v2.16.3...v2.16.6) (2021-06-09)
+
+
+### Bug Fixes
+
+* 图片value为object不执行buildUrl的bug ([0e277c4](https://github.com/greper/d2-crud-plus/commit/0e277c405c35a14bf69b14cf350b3486a318ed3a))
+
+
+
+
+
 ## [2.16.3](https://github.com/greper/d2-crud-plus/compare/v2.16.2...v2.16.3) (2021-04-28)
 
 

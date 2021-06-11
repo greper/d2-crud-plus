@@ -133,6 +133,28 @@ export const crudOptions = (vm) => {
             }
           }
         }
+      },
+      {
+        title: '内容2',
+        key: 'content_wang2',
+        sortable: true,
+        width: 300,
+        type: 'editor-wang', // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+        disabled: true, // 设置true可以在行展示中隐藏
+        form: {
+          component: {
+            disabled: () => {
+              return vm.getEditForm().disable
+            },
+            props: {
+              index: 2,
+              config: {
+                // withCredentials: false,
+                // uploadImgServer: 'http://localhost:7070/api/upload/form/upload'
+              }
+            }
+          }
+        }
       }
     ]
   }

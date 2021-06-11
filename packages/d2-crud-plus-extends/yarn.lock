@@ -920,10 +920,25 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime-corejs3@^7.11.2":
+  version "7.14.5"
+  resolved "https://registry.npmjs.org/@babel/runtime-corejs3/-/runtime-corejs3-7.14.5.tgz#0d9bf00d59c0b73185c462c323efffd0f4c37283"
+  integrity sha512-cBbwXj3F2xjnQJ0ERaFRLjxhUSBYsQPXJ7CERz/ecx6q6hzQ99eTflAPFC3ks4q/IG4CWupNVdflc4jlFBJVsg==
+  dependencies:
+    core-js-pure "^3.14.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.11.0":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
   integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.11.2":
+  version "7.14.5"
+  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.14.5.tgz#665450911c6031af38f81db530f387ec04cd9a98"
+  integrity sha512-121rumjddw9c3NCQ55KGkyE1h/nzWhU/owjhw0l4mQrkzz4x9SGS1X8gFLraHwX7td3Yo4QTL+qj0NcIzN87BA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2902,6 +2917,11 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.5:
     browserslist "^4.8.5"
     semver "7.0.0"
 
+core-js-pure@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.14.0.tgz#72bcfacba74a65ffce04bf94ae91d966e80ee553"
+  integrity sha512-YVh+LN2FgNU0odThzm61BsdkwrbrchumFq3oztnE9vTKC4KS2fvnPmcx8t6jnqAyOTCTF4ZSiuK8Qhh7SNcL4g==
+
 core-js@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
@@ -3179,10 +3199,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^2.13.5:
-  version "2.13.5"
-  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.13.5.tgz#f593fd0af8411d739cfc455d6c82a61fdb5426cb"
-  integrity sha512-WlSpEfz2BUW1/nes7viRBiq4UCm/mjnj+0kFwhZEvUlueuiEcIO3eO060Sg1BN1AgYF3JjTTTJEZEqTOAO8U3w==
+d2-crud-plus@^2.16.6:
+  version "2.16.7"
+  resolved "https://registry.npmjs.org/d2-crud-plus/-/d2-crud-plus-2.16.7.tgz#43accdcc23ee5b4f7082acc3c9dc9b2c02126a1c"
+  integrity sha512-rx+GoZW6vcJo9ebLGD5AxChkn7NMysUFWbJIEKrvJ3V+9cvTh0hBiUDpvTgAQ55EJHvI8PxaxtmkNPeDe3B7cg==
   dependencies:
     dayjs "^1.8.17"
     vue "^2.6.11"
@@ -8468,6 +8488,11 @@ tslib@^1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
   integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
 
+tslib@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
+  integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
+
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -8821,6 +8846,15 @@ vuedraggable@^2.24.0:
   integrity sha512-IlslPpc+iZ2zPNSJbydFZIDrE+don5u+Nc/bjT2YaF+Azidc+wxxJKfKT0NwE68AKk0syb0YbZneAcnynqREZQ==
   dependencies:
     sortablejs "^1.10.1"
+
+wangeditor@^4.6.6:
+  version "4.7.3"
+  resolved "https://registry.npmjs.org/wangeditor/-/wangeditor-4.7.3.tgz#135407960cb728cb10c850e685557049e807d87e"
+  integrity sha512-O6mbZkpGPksGWHYl7dKtYFbdfULn5oS7DYF9RS1WpG9rBumqa5CtLaxryc6P0i4IYb/fKRE55hD2XpkPzILpjg==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    "@babel/runtime-corejs3" "^7.11.2"
+    tslib "^2.1.0"
 
 watchpack@^1.6.0:
   version "1.6.1"

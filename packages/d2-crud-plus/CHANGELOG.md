@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.7](https://github.com/greper/d2-crud-plus/compare/v2.16.6...v2.16.7) (2021-06-11)
+
+
+### Bug Fixes
+
+* updateRequest内抛异常会在上方debug显示错误记录的bug ([4a005da](https://github.com/greper/d2-crud-plus/commit/4a005da68e4f9384cf6637f83cea97f0397d8340))
+
+
+
+
+
 ## [2.16.6](https://github.com/greper/d2-crud-plus/compare/v2.16.3...v2.16.6) (2021-06-09)
 
 

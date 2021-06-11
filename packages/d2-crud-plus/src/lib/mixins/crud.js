@@ -847,12 +847,15 @@ export default {
       this.addBefore(row)
       const promise = this.addRequest(row)
       if (promise == null || !(promise instanceof Promise)) {
+        this.crud.formOptions.saveLoading = false
         return
       }
       return promise.then(() => {
         this.showAddMessage({ row })
         done()
         return this.addAfter(row)
+      }).catch(error => {
+        console.error('error', error)
       }).finally(() => {
         this.crud.formOptions.saveLoading = false
       })
@@ -870,12 +873,15 @@ export default {
       this.editBefore(row)
       const promise = this.updateRequest(row)
       if (promise == null || !(promise instanceof Promise)) {
+        this.crud.formOptions.saveLoading = false
         return
       }
       return promise.then((ret) => {
         this.showEditMessage({ index, row })
         done()
         return this.editAfter(row)
+      }).catch(error => {
+        console.error('error', error)
       }).finally(() => {
         this.crud.formOptions.saveLoading = false
       })
@@ -893,6 +899,7 @@ export default {
       this.addBefore(row)
       const promise = this.addRequest(row)
       if (promise == null || !(promise instanceof Promise)) {
+        this.crud.formOptions.saveLoading = false
         return
       }
       return promise.then((ret) => {

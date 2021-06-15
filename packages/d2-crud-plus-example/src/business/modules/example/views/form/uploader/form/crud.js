@@ -21,6 +21,19 @@ export const crudOptions = (vm) => {
         }
       },
       {
+        title: '动态header',
+        key: 'header',
+        width: 90,
+        disabled: true,
+        form: {
+          helper: '这里输入的值，会传入到头像上传的header里面',
+          valueChange (key, value, form, { getColumn }) {
+            const column = getColumn('avatar1')
+            column.component.props.uploader.headers.customHeader = value
+          }
+        }
+      },
+      {
         title: '头像',
         key: 'avatar1',
         type: 'avatar-uploader',
@@ -30,7 +43,8 @@ export const crudOptions = (vm) => {
             props: {
               uploader: {
                 type: 'form',
-                withCredentials: false
+                withCredentials: false,
+                headers: {}
               }
             },
             rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交

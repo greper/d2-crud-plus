@@ -123,6 +123,7 @@ export const crudOptions = (vm) => {
               return vm.getEditForm().disable
             },
             props: {
+              index: 1, // 当同一个页面有多个editor时，需要配置不同的index
               config: {
                 // withCredentials: false,
                 // uploadImgServer: 'http://localhost:7070/api/upload/form/upload'

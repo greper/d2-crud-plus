@@ -1,11 +1,12 @@
 <template>
   <div class="d2p-wangeditor">
-    <div id="wEditor"></div>
+    <div :id="id"></div>
     <textarea name="" class="wang-editor-preview" readonly v-model="currentValue"></textarea>
   </div>
 </template>
 
 <script>
+
 import WangEditor from 'wangeditor'
 // import { D2pUploader } from 'd2p-extends'
 import lodash from 'lodash'
@@ -25,6 +26,12 @@ export default {
     config: {
       type: Object
     },
+    /**
+     * 同一个页面多个edit时，需要配置不同的index
+     */
+    index: {
+      default: '1'
+    },
     uploader: {
       type: Object,
       default: () => {
@@ -37,6 +44,11 @@ export default {
       editor: null,
       currentValue: '',
       options: {}
+    }
+  },
+  computed: {
+    id () {
+      return 'wangeditor' + this.index
     }
   },
   watch: {
@@ -63,7 +75,7 @@ export default {
   },
   methods: {
     init () {
-      const editor = new WangEditor('#wEditor')
+      const editor = new WangEditor('#' + this.id)
       lodash.merge(wangConfig, this.config)
       lodash.merge(editor.config, wangConfig)
       editor.config.onchange = (newHtml) => {

@@ -10,6 +10,13 @@ export default {
       }
     }
   },
+  watch: {
+    data () {
+      if (this.lineEditor.active === true) {
+        this.lineEditor.active = false
+      }
+    }
+  },
   methods: {
     /**
      * @description 编辑行数据

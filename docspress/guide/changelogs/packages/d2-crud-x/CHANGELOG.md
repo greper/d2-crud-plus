@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.8](https://github.com/greper/d2-crud-plus/compare/v2.16.7...v2.16.8) (2021-06-16)
+
+
+### Bug Fixes
+
+* 修复在添加状态下，点击刷新会丢失一条数据的bug ([ff7a065](https://github.com/greper/d2-crud-plus/commit/ff7a065c6b5aae07044c04ef894e8bd84e53ed3f))
+* wangeditor 不能多个的问题 ([81a5211](https://github.com/greper/d2-crud-plus/commit/81a52114d971843e493a1afc1cb1c9f308614041))
+
+
+
+
+
 ## [2.16.6](https://github.com/greper/d2-crud-plus/compare/v2.16.3...v2.16.6) (2021-06-09)
 
 

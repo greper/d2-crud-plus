@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group class="d2p-dict-radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange">
+  <el-radio-group ref="target" class="d2p-dict-radio" :value="value" v-bind="_elProps"  @input="onInput" @change="onChange" v-on="extraEvents">
     <component :is="type" :disabled="disabled" :readonly="readonly" v-for="option in _options"
               :key="option[dict.value]"
               :label="option[dict.value]"
@@ -11,10 +11,11 @@
 <script>
 import inputBase from '../../mixins/input-base'
 import inputDict from '../../mixins/input-dict'
+import inputEvents from '../../mixins/input-events'
 // 字典radio选择器
 export default {
   name: 'dict-radio',
-  mixins: [inputBase, inputDict],
+  mixins: [inputBase, inputEvents, inputDict],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -52,6 +53,9 @@ export default {
   data () {
     return {
     }
+  },
+  created () {
+    this.initExtraEvents()
   },
   computed: {
     _elProps () {

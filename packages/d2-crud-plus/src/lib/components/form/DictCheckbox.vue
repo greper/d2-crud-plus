@@ -1,5 +1,7 @@
 <template>
-  <el-checkbox-group class="d2p-dict-checkbox" :value="currentValue" :disabled="disabled" :readonly="readonly"  v-bind="_elProps" style="width:100%" @input="onInput">
+  <el-checkbox-group ref="target" class="d2p-dict-checkbox" :value="currentValue"
+                     :disabled="disabled" :readonly="readonly"
+                     v-bind="_elProps" style="width:100%" @input="onInput" v-on="extraEvents">
     <component :is="type" :disabled="disabled" :readonly="readonly" v-for="option in _options"
                  :key="option[dict.value]"
                  :label="option[dict.value]"
@@ -11,10 +13,11 @@
 <script>
 import input from '../../mixins/input'
 import inputDict from '../../mixins/input-dict'
+import inputEvents from '../../mixins/input-events'
 // 字典radio选择器
 export default {
   name: 'dict-checkbox',
-  mixins: [input, inputDict],
+  mixins: [input, inputEvents, inputDict],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -61,6 +64,9 @@ export default {
         ...this.elProps
       }
     }
+  },
+  created () {
+    this.initExtraEvents()
   },
   methods: {
     setValue (newVal) {

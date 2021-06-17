@@ -1,5 +1,6 @@
 <template>
   <el-select
+    ref="target"
     class="d2p-dict-select"
     :value="currentValue"
     v-bind="_elProps"
@@ -7,6 +8,7 @@
     :disabled="disabled" :readonly="readonly"
     @input="onInput"
     @change="doChange"
+    v-on="extraEvents"
     style="width:100%"
   >
     <el-option
@@ -23,11 +25,11 @@
 <script>
 import input from '../../mixins/input'
 import inputDict from '../../mixins/input-dict'
-
+import inputEvents from '../../mixins/input-events'
 // 字典选择器
 export default {
   name: 'dict-select',
-  mixins: [input, inputDict],
+  mixins: [input, inputEvents, inputDict],
   props: {
     // 值
     value: { type: [Number, String, Boolean, Array], require: false },
@@ -68,10 +70,6 @@ export default {
       require: false
     }
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     _elProps () {
       return {
@@ -84,8 +82,16 @@ export default {
     }
   },
   created () {
+    console.log('this.', this)
+    this.initExtraEvents()
   },
   methods: {
+    doBlur (e) {
+      this.$emit('blur', e)
+    },
+    test (t) {
+      console.log('test', t)
+    },
     doChange (value) {
       // log.debug('changed', value)
     },

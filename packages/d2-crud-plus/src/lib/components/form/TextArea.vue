@@ -1,6 +1,7 @@
 <template>
 
   <el-input
+    ref="target"
     class="d2p-textarea"
     type="textarea"
     :rows='rows'
@@ -12,6 +13,7 @@
     @change="onChange"
     @input="onInput"
     v-bind="_elProps"
+    v-on="extraEvents"
   >
   </el-input>
 </template>
@@ -19,10 +21,11 @@
 <script>
 // text-area封装
 import input from '../../mixins/input'
+import inputEvents from '../../mixins/input-events'
 
 export default {
   name: 'text-area',
-  mixins: [input],
+  mixins: [input, inputEvents],
   props: {
     // 宽度，数字后面要带px
     width: { type: String, require: false, default: '100%' },
@@ -40,6 +43,9 @@ export default {
         ...this.elProps
       }
     }
+  },
+  created () {
+    this.initExtraEvents()
   },
   methods: {
   }

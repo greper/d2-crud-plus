@@ -217,6 +217,21 @@ export const crudOptions = (vm) => {
           title: '多选',
           itemProps: { // 单独设置labelWidth
             labelWidth: '50px'
+          },
+          component: {
+            props: {
+              elProps: {
+                // filterable: false
+              }
+            },
+            events: {
+              clear: () => {
+                console.log('test111')
+              },
+              blur: () => {
+                console.log('test22')
+              }
+            }
           }
         },
         type: 'select',

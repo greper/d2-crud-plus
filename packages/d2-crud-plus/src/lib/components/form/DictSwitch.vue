@@ -1,5 +1,6 @@
 <template>
   <el-switch
+    ref="target"
     :value="value"
     @input="onElInput"
     @change="onChange"
@@ -12,6 +13,7 @@
     :inactive-value="_inActive[dict.value]"
     :inactive-text="_inActive[dict.label]"
     v-bind="_elProps"
+    v-on="extraEvents"
   >
   </el-switch>
 </template>
@@ -19,10 +21,11 @@
 <script>
 import inputBase from '../../mixins/input-base'
 import inputDict from '../../mixins/input-dict'
+import inputEvents from '../../mixins/input-events'
 // 字典switch
 export default {
   name: 'dict-switch',
-  mixins: [inputBase, inputDict],
+  mixins: [inputBase, inputEvents, inputDict],
   props: {
     // 数据字典
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -74,6 +77,7 @@ export default {
     }
   },
   created () {
+    this.initExtraEvents()
   },
   methods: {
     setValue (value) {

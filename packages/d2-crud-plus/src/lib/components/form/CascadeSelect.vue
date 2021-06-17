@@ -1,10 +1,13 @@
 <template>
   <el-cascader
+    ref="target"
     class="d2p-cascade"
     :value="currentValue"
     :disabled="disabled" :readonly="readonly"
     v-bind="_elProps"
-    @input="onInput" />
+    @input="onInput"
+    v-on="extraEvents"
+  />
 </template>
 
 <script>
@@ -12,10 +15,11 @@ import { merge } from 'lodash'
 import input from '../../mixins/input'
 import inputDict from '../../mixins/input-dict'
 import log from '../../utils/util.log'
+import inputEvents from '../../mixins/input-events'
 // 级联选择器
 export default {
   name: 'cascade-select',
-  mixins: [input, inputDict],
+  mixins: [input, inputEvents, inputDict],
   props: {
     // 数据字典<br/>
     // {url:'xxx',data:[],value:'',label:'',children:''}
@@ -73,6 +77,7 @@ export default {
 
   },
   created () {
+    this.initExtraEvents()
   },
   methods: {
     setValue (value) {

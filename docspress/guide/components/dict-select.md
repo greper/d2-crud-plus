@@ -19,3 +19,13 @@
 <!-- @vuese:dict-select:props:end -->
 
 
+## Events
+
+<!-- @vuese:dict-select:events:start -->
+|Event Name|Description|Parameters|
+|---|---|---|
+|blur|-|-|
+
+<!-- @vuese:dict-select:events:end -->
+
+

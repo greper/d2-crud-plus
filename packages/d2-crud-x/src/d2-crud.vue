@@ -2,10 +2,6 @@
   <div
     class="d2-crud d2-crud-x"
     :class="{'d2-crud-height100':(options && options.height==='100%')}"
-    v-loading="loading"
-    :element-loading-text="getAttribute(loadingOptions,'text', null)"
-    :element-loading-spinner="getAttribute(loadingOptions,'spinner', null)"
-    :element-loading-background="getAttribute(loadingOptions,'background', null)"
   >
     <div class="d2-crud-header" v-if="$slots.header">
       <slot name="header"/>
@@ -13,7 +9,12 @@
     <div class="d2-crud-body" v-if="options && options.hide === true">
       <slot name="body"/>
     </div>
-    <div class="d2-crud-body" v-else >
+    <div class="d2-crud-body"
+         v-loading="loading"
+         :element-loading-text="getAttribute(loadingOptions,'text', null)"
+         :element-loading-spinner="getAttribute(loadingOptions,'spinner', null)"
+         :element-loading-background="getAttribute(loadingOptions,'background', null)"
+         v-else >
       <component
         :is="(options.lineEdit&&options.lineEdit.validation)?'el-form':'div'"
         style="height:100%"
@@ -27,6 +28,7 @@
       <component
         :is="getTableImpl(options.tableType)"
         ref="elTable"
+
         :data="d2CrudData"
         v-bind="options"
         @select="handleSelect"

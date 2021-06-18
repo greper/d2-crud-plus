@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.16.9](https://github.com/greper/d2-crud-plus/compare/v2.16.8...v2.16.9) (2021-06-18)
+
+
+### Bug Fixes
+
+* dict-xxx的el事件绑定 ([aa98cf6](https://github.com/greper/d2-crud-plus/commit/aa98cf690562325f40475e2750d25bf727ee4dce))
+
+
+
+
+
 ## [2.16.8](https://github.com/greper/d2-crud-plus/compare/v2.16.7...v2.16.8) (2021-06-16)
 
 

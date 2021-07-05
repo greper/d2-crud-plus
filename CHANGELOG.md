@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/greper/d2-crud-plus/compare/v2.16.9...v2.17.0) (2021-07-05)
+
+
+### Features
+
+* 上传增加beforeUpload参数，success事件改成{res,file} ([8039203](https://github.com/greper/d2-crud-plus/commit/803920372ce18bea4516d5f6d1d85ce70feef196))
+
+
+
+
+
 ## [2.16.9](https://github.com/greper/d2-crud-plus/compare/v2.16.8...v2.16.9) (2021-06-18)
 
 

@@ -114,6 +114,10 @@ export default {
     uploader: {
       type: Object,
       default () { return {} }
+    },
+    // 与el-upload一致
+    beforeUpload: {
+      type: Function
     }
   },
   data () {
@@ -190,7 +194,10 @@ export default {
             window.open(file.url)
           }
         },
-        beforeUpload: (file) => {
+        beforeUpload: async (file) => {
+          if (this.beforeUpload) {
+            await this.beforeUpload(file, { vm: this })
+          }
           if (this.sizeLimit == null) {
             return true
           }
@@ -290,7 +297,7 @@ export default {
       const url = this.buildUrl(value, res)
       file.url = res.url = url
       this.resetFileList(fileList)
-      this.$emit('success', res, file)
+      this.$emit('success', { res, file })
       const list = []
       for (const item of fileList) {
         // if (item.status === 'uploading') {
@@ -393,14 +400,15 @@ export default {
       if (!lodash.isEmpty(this.custom)) {
         config.custom = this.custom
       }
+      const uploadOption = {
+        file: option.file,
+        fileName: option.file.name,
+        onProgress: option.onProgress,
+        onError: option.onError,
+        config: config
+      }
       return this.getUploader().then(uploader => {
-        return uploader.upload({
-          file: option.file,
-          fileName: option.file.name,
-          onProgress: option.onProgress,
-          onError: option.onError,
-          config: config
-        })
+        return uploader.upload(uploadOption)
       }).then(ret => {
         if (this.suffix != null) {
           ret.url += this.suffix

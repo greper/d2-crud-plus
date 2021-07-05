@@ -55,6 +55,37 @@ export const crudOptions = (vm) => {
         }
       },
       {
+        title: 'beforeUpload',
+        key: 'beforeUpload',
+        type: 'avatar-uploader',
+        width: 120,
+        form: {
+          helper: '上传前拒绝',
+          component: {
+            props: {
+              uploader: {
+                type: 'form',
+                action: 'http://www.docmirror.cn:7070/api/upload/form/upload'
+              },
+              beforeUpload: async (file, context) => {
+                console.log('before upload', file)
+                vm.$message.error('rejected from beforeUpload')
+                throw new Error('before upload error')
+              }
+            },
+            on: {
+              success (event) {
+                console.log('上传成功', event)
+              }
+            },
+            rules: [{ // 当有文件还未上传完成时，阻止表单提交，等待全部上传完成，才允许提交
+              validator: D2pFileUploader.createAllUploadedValidator(vm.getFormComponentRef),
+              message: '还有文件正在上传，请等待上传完成，或删除它'
+            }]
+          }
+        }
+      },
+      {
         title: '照片墙',
         key: 'image',
         type: 'image-uploader',

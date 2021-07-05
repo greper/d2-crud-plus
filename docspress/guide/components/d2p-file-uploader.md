@@ -22,6 +22,7 @@
 |uploader|上传组件参数，会临时覆盖全局上传配置参数[d2p-uploader](/guide/extends/uploader.html)|`Object`|`false`|default() {
   return {};
 }|
+|beforeUpload|与el-upload一致|`Function`|`false`|-|
 
 <!-- @vuese:d2p-file-uploader:props:end -->
 

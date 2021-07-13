@@ -4015,10 +4015,10 @@ cz-conventional-changelog@3.3.0, cz-conventional-changelog@^3.2.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-d2-crud-plus@^2.16.9:
-  version "2.16.9"
-  resolved "https://registry.nlark.com/d2-crud-plus/download/d2-crud-plus-2.16.9.tgz#d873356a2e80d02929f1f4b00ebcfb9c585f0405"
-  integrity sha1-2HM1ai6A0Ckp8fSwDrz7nFhfBAU=
+d2-crud-plus@^2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/d2-crud-plus/-/d2-crud-plus-2.17.1.tgz#3add681b9131136bcede5e12ed500e7e9e215491"
+  integrity sha512-Y3g/aQGSSbWpek4UBTA7lkOqPUUV8mKPOz3Pfs2jCUCKps6LzbFjCvs0VPFd/V9GCCcOygnYKApYEIuoo6Ws+A==
   dependencies:
     dayjs "^1.8.17"
     vue "^2.6.11"
@@ -4036,10 +4036,10 @@ d2-crud-x@^2.16.9:
     lodash.merge "^4.5.0"
     lodash.set "^4.3.2"
 
-d2p-extends@^2.17.0:
-  version "2.17.0"
-  resolved "https://registry.nlark.com/d2p-extends/download/d2p-extends-2.17.0.tgz#349178fec0e4284fdb85237263c4b466f042fcc9"
-  integrity sha1-NJF4/sDkKE/bhSNyY8S0ZvBC/Mk=
+d2p-extends@^2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/d2p-extends/-/d2p-extends-2.17.1.tgz#45a5809c51c3e6337a9ec1e5d33977c23d0121e9"
+  integrity sha512-8Zvw8snepsDAOgqZQI8LG/Jesz3LTfDDKEyChQYeQxZGw+LZMrJIeFbDLlOezU0/i40m01Cg4RFl6N2KSWo/8A==
   dependencies:
     base64-js "^1.3.0"
     china-division "^2.2.0"
@@ -11081,9 +11081,9 @@ url-loader@^2.2.0:
     schema-utils "^2.5.0"
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
-  integrity sha512-d3uaVyzDB9tQoSXFvuSUNFibTd9zxd2bkVrDRvF5TmvWWQwqE4lgYJ5m+x1DbecWkw+LK4RNl2CU1hHuOKPVlg==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.1.tgz#d5fa9890af8a5e1f274a2c98376510f6425f6e3b"
+  integrity sha512-HOfCOUJt7iSYzEx/UqgtwKRMC6EU91NFhsCHMv9oM03VJcVo2Qrp8T8kI9D7amFf1cu+/3CEhgb3rF9zL7k85Q==
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"

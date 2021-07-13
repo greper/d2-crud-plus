@@ -288,6 +288,7 @@ export default {
           this.avatarLoading = undefined
         }
       }
+      this.$emit('progress', event, { file, fileList, vm: this })
     },
     handleUploadFileSuccess (res, file, fileList) {
       res.size = res.size != null ? res.size : file.size
@@ -297,7 +298,7 @@ export default {
       const url = this.buildUrl(value, res)
       file.url = res.url = url
       this.resetFileList(fileList)
-      this.$emit('success', { res, file })
+      this.$emit('success', res, file)
       const list = []
       for (const item of fileList) {
         // if (item.status === 'uploading') {

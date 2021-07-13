@@ -3199,10 +3199,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-plus@^2.16.6:
-  version "2.16.7"
-  resolved "https://registry.npmjs.org/d2-crud-plus/-/d2-crud-plus-2.16.7.tgz#43accdcc23ee5b4f7082acc3c9dc9b2c02126a1c"
-  integrity sha512-rx+GoZW6vcJo9ebLGD5AxChkn7NMysUFWbJIEKrvJ3V+9cvTh0hBiUDpvTgAQ55EJHvI8PxaxtmkNPeDe3B7cg==
+d2-crud-plus@^2.16.9:
+  version "2.16.9"
+  resolved "https://registry.nlark.com/d2-crud-plus/download/d2-crud-plus-2.16.9.tgz#d873356a2e80d02929f1f4b00ebcfb9c585f0405"
+  integrity sha1-2HM1ai6A0Ckp8fSwDrz7nFhfBAU=
   dependencies:
     dayjs "^1.8.17"
     vue "^2.6.11"

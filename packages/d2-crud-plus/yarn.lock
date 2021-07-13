@@ -3236,10 +3236,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-d2-crud-x@^2.16.6:
-  version "2.16.6"
-  resolved "https://registry.npmjs.org/d2-crud-x/-/d2-crud-x-2.16.6.tgz#b48be86c03cea6ec054f1d2338291d44e227106e"
-  integrity sha512-KtNoeLoIrS175ZeCVWvnND3BetNwiPXYVfLrK6M5tnez2yuAAhE4cApXscQABOV3earlqE2ZOEHKDWsY00M8dQ==
+d2-crud-x@^2.16.9:
+  version "2.16.9"
+  resolved "https://registry.nlark.com/d2-crud-x/download/d2-crud-x-2.16.9.tgz#86727e8728ae224bfb8587238b63efa20a01999d"
+  integrity sha1-hnJ+hyiuIkv7hYcji2PvogoBmZ0=
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.foreach "^4.5.0"

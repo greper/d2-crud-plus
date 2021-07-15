@@ -196,7 +196,10 @@ export default {
         },
         beforeUpload: async (file) => {
           if (this.beforeUpload) {
-            await this.beforeUpload(file, { vm: this })
+            const ret = await this.beforeUpload(file, { vm: this })
+            if (ret === false) {
+              return
+            }
           }
           if (this.sizeLimit == null) {
             return true
@@ -329,10 +332,12 @@ export default {
       this.fileList = fileList
       console.log('remove', fileList)
       this.emitList(fileList)
+      this.$emit('remove', file, fileList)
     },
     handleUploadFileError (err, file, fileList) {
       console.error('文件上传失败', err, file, fileList)
       this.$message({ type: 'error', message: '文件上传失败' })
+      this.$emit('error', err, file, fileList)
     },
     previewAvatar ($event) {
       $event.stopPropagation()

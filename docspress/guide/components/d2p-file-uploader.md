@@ -33,8 +33,12 @@
 |Event Name|Description|Parameters|
 |---|---|---|
 |change|-|-|
+|progress|-|-|
 |success|-|-|
+|remove|-|-|
+|error|-|-|
 |input|-|-|
+|start|-|-|
 
 <!-- @vuese:d2p-file-uploader:events:end -->
 

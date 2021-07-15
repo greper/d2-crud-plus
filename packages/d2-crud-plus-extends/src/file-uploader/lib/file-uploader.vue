@@ -408,6 +408,7 @@ export default {
         onError: option.onError,
         config: config
       }
+      this.$emit('start', uploadOption)
       return this.getUploader().then(uploader => {
         return uploader.upload(uploadOption)
       }).then(ret => {

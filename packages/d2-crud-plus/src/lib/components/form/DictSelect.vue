@@ -82,7 +82,6 @@ export default {
     }
   },
   created () {
-    console.log('this.', this)
     this.initExtraEvents()
   },
   methods: {
@@ -90,7 +89,6 @@ export default {
       this.$emit('blur', e)
     },
     test (t) {
-      console.log('test', t)
     },
     doChange (value) {
       // log.debug('changed', value)

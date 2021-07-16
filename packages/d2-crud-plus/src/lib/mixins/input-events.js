@@ -11,7 +11,6 @@ export default {
       const events = _.omit(this.$listeners, ignores)
       _.forEach(events, (item, key) => {
         extraEvents[key] = (e) => {
-          console.log('emit', key, e)
           this.$emit(key, e)
         }
       })

@@ -9,7 +9,7 @@
 ```
 ### 2.支持字段组件通过插槽自定义【slot】   
 * #### crud配置
-```
+```js
 export const crudOptions = {
   columns: [
     {

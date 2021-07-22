@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.17.5](https://github.com/greper/d2-crud-plus/compare/v2.17.3...v2.17.5) (2021-07-19)
+
+
+### Bug Fixes
+
+* 重新发布版本，修复example启动报webpack loader的问题 ([c9a3c96](https://github.com/greper/d2-crud-plus/commit/c9a3c96eeed7c2f377066a931d1d772ff9c1c88a))
+
+
+
+
+
 ## [2.16.9](https://github.com/greper/d2-crud-plus/compare/v2.16.8...v2.16.9) (2021-06-18)
 
 

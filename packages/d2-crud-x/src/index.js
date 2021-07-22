@@ -7,8 +7,6 @@ const install = (Vue, options) => {
   }
   Vue.component(name, d2Crud)
   Vue.directive('d2p-drag-dialog', drag)
-
-  // debug
 }
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)

@@ -5,6 +5,10 @@ export const crudOptions = (vm) => {
     },
     options: {
       lineEdit: {
+        addRow (data, row) {
+          data.push(row)
+          return data.length - 1
+        },
         validation: true // 行编辑是否需要校验
       },
       height: '100%' // 表格高度100%, 使用toolbar必须设置

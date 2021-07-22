@@ -42,12 +42,17 @@ export default {
         this.$message('请先保存或取消上一个行编辑')
         return
       }
-      this.d2CrudData.unshift(addData)
+      let index = 0
+      if (this.options && this.options.lineEdit && this.options.lineEdit.addRow) {
+        index = this.options.lineEdit.addRow(this.d2CrudData, addData)
+      } else {
+        this.d2CrudData.unshift(addData)
+      }
+
       if (this.defaultSort) {
         this.handleSortDataChange()
       }
       this.formMode = 'lineEdit'
-      const index = 0
       this.editIndex = index
       if (!templage) {
         templage = this.addTemplate
@@ -62,6 +67,8 @@ export default {
         rules: this.addRules,
         validation: this.options.lineEdit && this.options.lineEdit.validation
       })
+
+      this.$emit('lineEdit.add', { index, data: this.d2CrudData, form: formData, row: addData })
     },
     /**
      * @description 进入行编辑模式
@@ -88,12 +95,14 @@ export default {
         rules: this.editRules,
         validation: this.options.lineEdit && this.options.lineEdit.validation
       })
+      this.$emit('lineEdit.edit', { index, data: this.d2CrudData, form: formData, row })
     },
 
     handleLineEditCancel () {
       if (this.lineEditor == null) {
         throw new Error('当前不在行编辑模式')
       }
+      this.$emit('lineEdit.cancel', { index: this.lineEditor.index, data: this.d2CrudData })
       if (this.lineEditor.isAdd) {
         this.handleRemoveRow(this.lineEditor.index)
       }
@@ -103,6 +112,7 @@ export default {
       if (this.lineEditor == null) {
         throw new Error('当前不在行编辑模式')
       }
+      this.$emit('lineEdit.save', { index: index, data: this.d2CrudData, row })
       if (this.options.lineEdit && this.options.lineEdit.validation) {
         this.$refs.lineEditForm.validate((valid) => {
           if (!valid) {

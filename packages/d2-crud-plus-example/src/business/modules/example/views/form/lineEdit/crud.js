@@ -5,10 +5,11 @@ export const crudOptions = (vm) => {
     },
     options: {
       lineEdit: {
-        addRow (data, row) {
-          data.push(row)
-          return data.length - 1
-        },
+        // 如下addRow配置，可以将新增行放在表格最后一行
+        // addRow (data, row) {
+        //   data.push(row)
+        //   return data.length - 1
+        // },
         validation: true // 行编辑是否需要校验
       },
       height: '100%' // 表格高度100%, 使用toolbar必须设置

@@ -1,6 +1,6 @@
 {
   "name": "d2-crud-plus-test",
-  "version": "2.17.5",
+  "version": "2.17.6",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",

@@ -8,7 +8,7 @@ export const crudOptions = (vm) => {
         // 如下addRow配置，可以将新增行放在表格最后一行
         // addRow (data, row) {
         //   data.push(row)
-        //   return data.length - 1
+        //   return data.length - 1 //这里要返回新增行的index
         // },
         validation: true // 行编辑是否需要校验
       },

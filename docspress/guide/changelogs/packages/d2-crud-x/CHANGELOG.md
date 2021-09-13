@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.17.7](https://github.com/greper/d2-crud-plus/compare/v2.17.6...v2.17.7) (2021-09-13)
+
+
+### Bug Fixes
+
+* 修复只有一个文本输入框时，按回车键刷新页面的bug ([3e06349](https://github.com/greper/d2-crud-plus/commit/3e06349002d3a09037f904337f7bf21b52350983))
+
+
+
+
+
+## [2.17.6](https://github.com/greper/d2-crud-plus/compare/v2.17.5...v2.17.6) (2021-07-23)
+
+
+### Performance Improvements
+
+* 支持自定义行编辑添加行方式,增加行编辑事件 ([e0c6873](https://github.com/greper/d2-crud-plus/commit/e0c6873c3d0eb5bd91a1bbaa8b1fd7e2991d0533))
+
+
+
+
+
 ## [2.17.5](https://github.com/greper/d2-crud-plus/compare/v2.17.3...v2.17.5) (2021-07-19)
 
 

@@ -40,6 +40,7 @@ addPage(crudHandleMenus, 'crud/demo30', '表单事件监听')
 addPage(crudHandleMenus, 'crud/demo26', '表单自定义组件')
 addPage(crudHandleMenus, 'crud/demo31', 'CRUD事件')
 
+addPage(formMenus, 'form/text', '文本')
 addPage(formMenus, 'form/date', '日期时间')
 addPage(formMenus, 'form/select', '选择组件', '禁用选项，染色')
 addPage(formMenus, 'form/cascader', '级联组件')

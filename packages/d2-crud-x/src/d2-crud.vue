@@ -213,6 +213,7 @@
         :rules="handleFormRulesMode()"
         :fullscreen="formOptions.fullscreen"
         :formMode="formMode"
+        @submit.native.prevent
         v-bind="formOptions"
       >
         <el-row v-bind="formOptions" >

@@ -5,6 +5,7 @@
       :inline="true"
       :model="form"
       ref="searchForm"
+      @submit.native.prevent
       v-bind="options" class="d2p-search-form" >
      <slot name="prefix" :form="this.form"></slot>
      <el-form-item

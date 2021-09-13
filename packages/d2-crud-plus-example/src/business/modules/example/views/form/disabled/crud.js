@@ -233,7 +233,8 @@ export const crudOptions = (vm) => {
           component: {
             span: 24
           },
-          valueChange (key, value, form) {
+          valueChange (key, value, form, { immediate }) {
+            console.log('valueChange', key, value, immediate)
             const column = vm.getEditFormTemplate('text3')
             if (column && column.component) {
               column.component.disabled = value

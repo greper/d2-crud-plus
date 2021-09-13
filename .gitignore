@@ -37,3 +37,4 @@ lerna-debug.log
 
 
 /.gradle/
+/packages/d2-crud-plus-example/yarn.lock

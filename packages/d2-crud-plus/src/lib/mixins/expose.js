@@ -238,6 +238,19 @@ export default {
     // this.getD2Crud().removeRow(index)
 
     /**
+     * 外部暴露的激活行内编辑
+     */
+    // this.getD2Crud().handleLineEdit(index,row)
+    /**
+     * 外部暴露的取消行内编辑
+     */
+    // this.getD2Crud().handleLineEditCancel(index,row)
+    /**
+     * 外部暴露的保存行内编辑
+     */
+    // this.getD2Crud().handleLineEditSave(index,row)
+
+    /**
      * 外部暴露的打开模态框方法
      */
     // this.getD2Crud().showDialog({

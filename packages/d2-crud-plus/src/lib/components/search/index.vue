@@ -263,10 +263,10 @@ export default {
         if (valid) {
           this.$emit('submit', lodash.cloneDeep(this.form))
         } else {
-          this.$notify.error({
-            title: '错误',
-            message: '表单校验失败'
-          })
+          // this.$notify.error({
+          //   title: '错误',
+          //   message: '表单校验失败'
+          // })
           return false
         }
       })

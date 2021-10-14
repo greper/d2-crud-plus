@@ -95,7 +95,9 @@ export const crudOptions = function (vm) {
     },
     selectionRow: {
       align: 'center',
-      width: 100
+      width: 100,
+      selectable: (row, index) => {
+      }
     },
     expandRow: { // 或者直接传true,不显示title，不居中
       title: '展开',

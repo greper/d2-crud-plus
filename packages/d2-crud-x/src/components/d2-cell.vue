@@ -65,6 +65,14 @@ export default {
   mixins: [
     utils
   ],
+  created() {
+    if(this.d2CrudContext){
+      if(this.rowIndex || this.rowIndex === 0) {
+        console.log("cell:" + this.rowIndex + '_' + this.item.key)
+        this.d2CrudContext.d2Crud.cells['row' + this.rowIndex + '_' + this.item.key] = this
+      }
+    }
+  },
   provide: function () {
     return {
       d2CrudContext: {

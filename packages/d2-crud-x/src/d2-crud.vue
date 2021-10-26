@@ -333,9 +333,9 @@ export default {
       }
     }
   },
-  data(){
+  data () {
     return {
-      cells:{
+      cells: {
 
       }
     }

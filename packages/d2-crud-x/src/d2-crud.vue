@@ -325,10 +325,18 @@ export default {
   provide: function () {
     return {
       d2CrudContext: {
+        d2Crud: this,
         getForm: this.getFormData,
         getLineEditor: () => {
           return this.lineEditor
         }
+      }
+    }
+  },
+  data(){
+    return {
+      cells:{
+
       }
     }
   },

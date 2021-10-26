@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.17.9](https://github.com/greper/d2-crud-plus/compare/v2.17.8...v2.17.9) (2021-10-26)
+
+**Note:** Version bump only for package d2-crud-plus
+
+
+
+
+
+## [2.17.8](https://github.com/greper/d2-crud-plus/compare/v2.17.7...v2.17.8) (2021-10-08)
+
+
+### Bug Fixes
+
+* 删除查询表单校验提示 ([a89268a](https://github.com/greper/d2-crud-plus/commit/a89268aa98500ddbb51c29ddd8930436b4cf0d07))
+
+
+
+
+
 ## [2.17.7](https://github.com/greper/d2-crud-plus/compare/v2.17.6...v2.17.7) (2021-09-13)
 
 

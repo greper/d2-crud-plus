@@ -135,7 +135,7 @@ dict:{
 方式1： 配置DictSelect组件的options(数据结构与dict.data一致)，options参数比dict.data具有更高优先级，并且可以动态修改
 ```js
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
-       getColumn.component.props.options=[{字典数据}]
+       getColumn('key').component.props.options=[{字典数据}]
  },
 ```
 方式2： 参考选择联动http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html#/demo/form/linkage
@@ -159,7 +159,7 @@ component.getDictData()
 方式3：动态修改dict.url 也会触发字典重载
 ```js
 valueChange (key, value, form, { getColumn, mode, component, immediate, getComponent }) {
-       getColumn.component.props.dict.url=dict.url?params=xxx //不同的参数获取不同的字典列表
+       getColumn('key').component.props.dict.url=dict.url?params=xxx //不同的参数获取不同的字典列表
  },
 
 ```

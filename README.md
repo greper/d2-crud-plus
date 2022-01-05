@@ -1,5 +1,5 @@
 
-![](http://greper.veryreader.com/extends/banner1.png)
+![](http://greper.docmirror.cn/extends/banner1.png)
 
 
 # 【d2-crud-plus】面向配置的crud编程
@@ -144,8 +144,8 @@ export const crudOptions = (vm)=>{ // vm即this
 
 [欢迎bug反馈，需求建议，技术交流等（请备注d2-crud-plus）](http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/contact.html)
 
-![](http://d2p.file.veryreader.com/greper/contact.png)
+![](http://d2p.file.docmirror.cn/greper/contact.png)
 
 ## 赞赏
 支持维护，给我打打鸡血,抱拳抱拳    
-![](http://d2p.file.veryreader.com/greper/donate.jpg-400_400)
+![](http://d2p.file.docmirror.cn/greper/donate.jpg-400_400)

@@ -164,7 +164,7 @@ Vue.use(D2pUploader, {
       console.log('success handle:', ret)
       return ret
     },
-    domain: 'http://d2p.file.veryreader.com'
+    domain: 'http://d2p.file.docmirror.cn'
   },
   form: {
     action: process.env.VUE_APP_API + 'upload/form/upload',

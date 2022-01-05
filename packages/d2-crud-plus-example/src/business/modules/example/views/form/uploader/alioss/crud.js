@@ -149,7 +149,7 @@ export const crudOptions = (vm) => {
               },
               uploader: {
                 type: 'alioss',
-                // action: 'http://d2p.veryreader.com:7070/api/upload/form/upload',
+                // action: 'http://d2p.docmirror.cn:7070/api/upload/form/upload',
                 custom: {
                   keepName: true // 保持文件名，注意：中文及特殊符号文件名在ios上支持不是很好
                 }

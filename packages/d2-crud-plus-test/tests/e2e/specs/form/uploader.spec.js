@@ -190,7 +190,7 @@ describe('文件上传', () => {
     doAfter () {
       cy.log('检查图片加载失败')
       cy.getCell({ col: 3 }).find('.el-image img').then($el => {
-        expect($el.attr('src')).to.be.equal('http://greper.veryreader.com/extends/error.jpg')
+        expect($el.attr('src')).to.be.equal('http://greper.docmirror.cn/extends/error.jpg')
       })
       cy.getCell({ col: 4 }).find('.el-image .el-icon-picture-outline')
     }

@@ -18,8 +18,14 @@
 支持`vue3`的`fast-crud`已发布，开发crud更快、更强、更爽。
 
 文档地址： http://fast-crud.docmirror.cn/    
-示例地址： [antdv版](http://fast-crud.docmirror.cn/antdv/)  /  [element版](http://fast-crud.docmirror.cn/element/)    
+示例地址： [antdv版](http://fast-crud.docmirror.cn/antdv/)  /  [element版](http://fast-crud.docmirror.cn/element/)   /  [native-ui版](http://fast-crud.docmirror.cn/native/)     
 仓库地址： [Github](https://github.com/fast-crud/fast-crud)  /  [Gitee](https://gitee.com/fast-crud/fast-crud)
+
+
+## 不再维护通知
+抱歉，由于精力有限，d2-crud-plus将不再维护     
+各位可以尝试使用更强大的fast-crud（仅支持vue3，不兼容d2-crud-plus，无法从d2p直接升级到fast-crud）
+
 
 
 ## 帮助文档 

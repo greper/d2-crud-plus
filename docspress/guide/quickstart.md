@@ -34,7 +34,7 @@ npm run dev
 # 临时使用npmjs registry，即可安装最新版本
 yarn add d2-crud-x d2-crud-plus d2p-extends  --registry  http://registry.npmjs.org
 #如果install太慢，使用淘宝镜像
-yarn install --registry  https://registry.npm.taobao.org
+yarn install --registry  https://registry.npmmirror.com
 ```
 
 ### 权限管理示例运行

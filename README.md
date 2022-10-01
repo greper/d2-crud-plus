@@ -13,6 +13,12 @@
 
 <a href="https://github.com/d2-projects/d2-admin" target="_blank"><img src="https://raw.githubusercontent.com/d2-projects/d2-admin/master/docs/image/d2-admin%402x.png" width="200"></a>
 
+## 警告：不再维护通知
+↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+抱歉，由于精力有限，d2-crud-plus将不再维护（不加新功能、不修bug、可能也不再回复问题）。
+如果你是新项目，强烈建议直接使用fast-crud
+↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
 ## fast-crud
 
 支持`vue3`的`fast-crud`已发布，开发crud更快、更强、更爽。
@@ -21,11 +27,7 @@
 示例地址： [antdv版](http://fast-crud.docmirror.cn/antdv/)  /  [element版](http://fast-crud.docmirror.cn/element/)   /  [native-ui版](http://fast-crud.docmirror.cn/native/)     
 仓库地址： [Github](https://github.com/fast-crud/fast-crud)  /  [Gitee](https://gitee.com/fast-crud/fast-crud)
 
-
-## 不再维护通知
-抱歉，由于精力有限，d2-crud-plus将不再维护     
-各位可以尝试使用更强大的fast-crud（仅支持vue3，不兼容d2-crud-plus，无法从d2p直接升级到fast-crud）
-
+注意：fast-crud仅支持vue3，不兼容d2-crud-plus，无法从d2p直接升级到fast-crud
 
 
 ## 帮助文档 

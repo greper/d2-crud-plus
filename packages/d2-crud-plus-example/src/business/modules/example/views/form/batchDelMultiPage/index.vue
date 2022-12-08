@@ -31,13 +31,15 @@
 <script>
 import * as api from './api'
 import { crudOptions } from './crud'
+import _ from 'lodash'
 import { d2CrudPlus } from 'd2-crud-plus'
 export default {
-  name: 'formBatchDelMultiPage',
+  name: 'formBatchDel',
   components: {},
   mixins: [d2CrudPlus.crud],
   data () {
     return {
+      multiPageSelected: []
     }
   },
   methods: {
@@ -45,6 +47,7 @@ export default {
       return crudOptions
     },
     pageRequest (query) {
+      this.selectBack = true
       return api.GetList(query)
     },
     addRequest (row) {
@@ -60,7 +63,46 @@ export default {
       return api.BatchDel(ids)
     },
 
-
+    async doAfterRefresh () {
+      await this.$nextTick()
+      this.selectBack = true
+      const data = this.getD2CrudTableData()
+      for (const item of this.multiPageSelected) {
+        const found = _.find(data, (record) => {
+          return item.id === record.id
+        })
+        if (found) {
+          this.getD2CrudTable().toggleRowSelection(found, true)
+        }
+      }
+      this.multipleSelection = this.multiPageSelected
+      this.selectBack = false
+    },
+    doSelectionChange (selection) {
+      if (this.selectBack) {
+        return
+      }
+      const data = this.getD2CrudTableData()
+      const unselectedIds = _.filter(data, (record) => {
+        const found = selection.find((item) => {
+          return item.id === record.id
+        })
+        return found == null
+      }).map(item => { return item.id })
+      console.log('unselectedIds', unselectedIds)
+      this.multiPageSelected = _.filter(this.multiPageSelected, (record) => {
+        return !_.includes(unselectedIds, record.id)
+      })
+      console.log('selected1', this.multiPageSelected)
+      this.multiPageSelected = _.union(this.multiPageSelected, selection, (item) => {
+        return item.id
+      })
+      console.log('selected2', this.multiPageSelected)
+      this.multipleSelection = this.multiPageSelected
+    }
+  },
+  doSelectAll (selection) {
+    this.doSelectionChange(selection)
   }
 }
 </script>

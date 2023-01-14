@@ -9,19 +9,22 @@ const list = [
     date: '2016-05-02',
     status: '0',
     province: 'sz',
-    date2: '2016-05-02'
+    date2: '2016-05-02',
+    jsxRenderSub: 'test1'
   },
   {
     date: '2016-05-04',
     status: '1',
     province: 'sh,sz',
-    date2: '2016-05-02'
+    date2: '2016-05-02',
+    jsxRenderSub: 'test2'
   },
   {
     date: 2232433534511,
     status: '1',
     province: 'gz',
-    date2: '2016-05-02'
+    date2: '2016-05-02',
+    jsxRenderSub: 'test3'
   }
 ]
 options.list = list

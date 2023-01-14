@@ -63,6 +63,21 @@ export const crudOptions = {
           { value: 'sh', label: '上海' }
         ]
       }
+    },
+    {
+      title: 'jsxRender',
+      key: 'jsxRender',
+      children: [
+        {
+          title: 'jsxRenderSub',
+          key: 'jsxRenderSub',
+          component: {
+            render: (h, scope) => {
+              return (<div>表单render：{scope.value}</div>)
+            }
+          }
+        }
+      ]
     }
   ]
 }

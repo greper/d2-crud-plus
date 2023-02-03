@@ -11,7 +11,7 @@
     "@vuepress/shared-utils": "yarn yarn 1.2.0",
     "flexsearch": "nextapps-de/flexsearch",
     "html-to-text": "^5.1.1",
-    "lerna": "^3.21.0",
+    "lerna": "^6.4.1",
     "segmentit": "^2.0.3",
     "vuepress": "^1.7.1",
     "vuepress-theme-docmirror": "^1.5.4"
